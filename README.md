@@ -1,4 +1,4 @@
-# Group Project 2020 (This will be our system name)
+# Medi Hub
 
 ## Please note that you have to edit this file after every significant change
 
