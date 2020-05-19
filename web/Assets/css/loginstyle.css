@@ -1,10 +1,11 @@
 body{
     margin: 0;
-    padding: 0;
-    background-image: url('/Assets/images/Background-image-login.jpg');
+    padding: 100;
+    background-image: url('../images/Background-image-login.jpg');
     background-position: top;
     background-size: 1920px 1080px;
     font-family: sans-serif;
+    
 
 }
 
@@ -19,6 +20,7 @@ body{
     transform: translate(-50%,-50%);
     box-sizing: border-box;
     padding: 70px 30px;
+    
 }
 
 .avatar-image{
@@ -73,3 +75,4 @@ h1{
 .login-container a{
     color: lightgreen;
 }
+
