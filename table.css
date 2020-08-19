@@ -1,0 +1,79 @@
+.table-hub{
+     table-layout: fixed;
+     width: 100%;
+     border-collapse:collapse;
+     min-width: 400px;
+     border-radius: 5px 5px 0 0;
+     overflow: hidden;
+}
+.table-hub thead tr{
+     background-color: green;
+     color: white;
+     text-align: left;
+     font-weight: bold;
+}
+.table-hub td,.table-hub th{
+     padding: 12px 15px;
+}
+.table-hub tbody tr{
+     border-bottom: 1px solid #dddddd;
+}
+.table-hub tbody tr:nth-of-type(even){
+     background-color: #f3f3f3;
+}
+.table-hub tbody tr:last-of-type{
+     border-bottom: 2px solid green;
+}
+/* table-hub-appoint is dedicated fot appointment tables
+   table-hub-time is for the unordered lists inside appointment tables
+   tabl-hub-owner fot hopital names in appointment tables*/
+.table-hub-appoint{
+     font-weight: bold;
+     font-size: 20px;
+}
+.table-hub-time{
+     padding-inline-start: 0;
+}
+.table-hub-owner{
+     width: 150px;
+}
+.table-hub-time li{
+     display: inline;
+     text-align: left;
+     margin: 0 2px 0 2px;
+     padding: 0 2px 0 2px;
+}
+.table-hub-time li a{
+     text-decoration: none;
+}
+.table-hub-time li a:link{
+     color: red;
+}
+.table-hub-time li a:visited{
+     color: red;
+}
+.table-hub-time li a:hover{
+     color: black;
+}
+.table-hub-time li a:active{
+     color: blue;
+}
+
+@media(max-width: 540px) {
+     .table-hub{
+
+     }
+     .table-hub thead{
+          display: none;
+     }
+     .table-hub, .table-hub tbody, .table-hub tr, .table-hub td{
+          display: block;
+          width: 100%;
+     }
+     .table-hub td{
+          align-items: center;
+          text-align: center;
+          margin: 5px;
+          position: relative;
+     }
+}
