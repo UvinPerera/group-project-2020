@@ -1,0 +1,105 @@
+.topnav {
+  background-color: #000000;
+  overflow: hidden;
+}
+.topnav a {
+   float: left;
+   color: #ffffff;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+.create {
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.create button {
+  background-color: teal;
+  border: white;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+
+}
+
+.create h6 {
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+  font-size: 19px;
+  margin: 2px;
+
+}
+.ver {
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.ver table {
+     table-layout: fixed;
+     width: 100%;
+     border-collapse:collapse;
+     min-width: 300px;
+     border-radius: 5px 5px 5px 5px;
+     overflow: hidden;
+}
+
+.ver table thead tr{
+     background-color: teal;
+     color: white;
+     text-align: left;
+     font-weight: bold;
+     font-family:"Times New Roman", Times, serif;
+     font-size: 22px;
+
+}
+.ver table td, table th{
+     padding: 12px 15px;
+}
+
+.ver table tbody tr{
+     border-bottom: 2px solid #ddd;
+     border-left: 3px solid teal;
+     border-right: 4px solid teal;
+}
+
+.ver table tbody tr:nth-of-type(even){
+     background-color: #f3f3f3;
+}
+
+.ver table tbody tr:last-of-type{
+     border-bottom: 2px solid teal;
+}
+
+.ver table tbody tr td {
+  font-family: "Times New Roman", Times, serif;
+  color: Black;
+  font-size: 22px;
+
+}
+
+.ver table li {
+     display: inline;
+     text-align: left;
+     margin: 0 2px 0 2px;
+     padding: 0 2px 0 2px;
+     font-size: 15px;
+}
+
+.ver table li button {
+  background-color: teal;
+  color: white;
+  border-style: solid;
+  border-radius: 10px 10px 10px 10px;
+  border-color: teal
+}
