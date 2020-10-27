@@ -9,6 +9,7 @@ body {
 font-family: Arial, Helvetica, sans-serif;
 }
 
+/*navbar styling*/
 ul {
 list-style-type: none;
 margin: 0;
@@ -33,9 +34,7 @@ text-decoration: none;
 li a:hover {
 background-color:  #0087a1;
 }
-#end{
-margin-right: 15px;
-}
+
 .styled {
   border:0px;
   margin-top :13px;
@@ -69,12 +68,14 @@ h2{
   font-size: 40px;
 }
 
+/*Logo styling*/
 #logo{
 margin-left: 2%;
 float: left;
 margin-top: 0%;
 }
 
+/*Two Column styling*/
 .column {
   float: left;
   width: 40%;
@@ -95,6 +96,7 @@ margin-top: 0%;
   width: 80%;
   margin-bottom: 15px;
 }
+
 textarea{
   color:grey;
   font-family: sans-serif;
@@ -135,22 +137,26 @@ textarea{
   opacity: 0.9;
   border-radius: 7px;
 }
-#id{
-  padding-left: 10px;
-}
+
 
 .btn:hover {
   opacity: 1;
 }
+/*Administrater card styling */
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: auto;
   text-align: center;
 }
+
+/*Content Styling*/
 p{
   font-family: 'Montserrat', sans-serif;
   line-height: 30px;
 }
+
+/*Footer Styling*/
 
 footer{
   background-color: #2b3030;
