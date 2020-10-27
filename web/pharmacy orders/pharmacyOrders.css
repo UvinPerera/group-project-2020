@@ -1,0 +1,221 @@
+
+*{
+margin:0;
+padding:0;
+}
+
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+}
+
+/*navbar styling*/
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #2b3030;
+}
+
+li {
+float: right;
+font-family: 'Montserrat', sans-serif;
+}
+
+li a {
+display: inline-block;
+color: white;
+text-align: center;
+padding: 17px 14px;
+text-decoration: none;
+}
+
+li a:hover {
+background-color:  #0087a1;
+}
+
+.styled {
+  border:0px;
+  margin-top :13px;
+  margin-left: 10px;
+  margin-right: 15px;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color:  #0087a1;
+  line-height: 2;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+              inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+  background-color: white;
+  color:black;
+  text-shadow:none;
+}
+
+.styled:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+              inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+h2{
+  font-family: 'Spartan',sans-serif;
+  font-size: 40px;
+}
+
+/*Logo styling*/
+#logo{
+margin-left: 2%;
+float: left;
+margin-top: 0%;
+}
+
+.formContainer{
+  padding:50px;
+}
+
+.contentContainer{
+  margin-top: 20px;
+  padding-left:40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+.itemContainer{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  padding: 25px;
+  border: 3px solid;
+  border-color: #0087a1;
+}
+
+.itemName{
+  padding:7px;
+  border:none;
+  width:40%;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.quantity{
+  margin-left:500px;
+  width:8%;
+  padding:7px;
+  border:none;
+}
+.price{
+  margin-left: 60px;
+  display:inline;
+  color:#0087a1;
+}
+
+.itemDescription{
+  padding:7px;
+  border:none;
+  width:65%;
+}
+
+.shipping{
+  margin-top: 30px;
+  padding-left: 40px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.button {
+  border:0px;
+  margin-top: 4px;
+  padding: 5px 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+  background-color:  #0087a1;
+  line-height: 3;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+              inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.button:hover {
+  background-color: white;
+  color:black;
+  text-shadow:none;
+}
+
+.button:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+              inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.radiobtn{
+  color: #0087a1;
+}
+
+#home{
+  margin-left: 50px;
+}
+#difAdd{
+  margin-left: 50px;
+}
+textarea{
+    margin-left: 50px;
+    border-width: medium;
+    border-color: #0087a1;
+    margin-bottom: 20px;
+}
+#add{
+  margin-left: 50px;
+}
+#outletlabel{
+  margin-left: 50px;
+}
+.dropdown{
+  margin-left: 30px;
+  padding:10px;
+  text-align: center;
+  width: 12%;
+  height: 45px;
+  border-width: medium;
+  border-color: #0087a1;
+}
+/*Footer Styling*/
+
+footer{
+  background-color: #2b3030;
+}
+.footerColumn {
+float: left;
+width: 47%;
+padding: 10px 10px;
+}
+.footerRow {
+margin: 0 -5px;
+width:60%;}
+
+.footerRow:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.footerText{
+color:white;
+}
+
+.a.fa {
+padding: 25px;
+font-size: 30px;
+width: 10px;
+text-align: center;
+text-decoration: none;
+border-radius: 50%;
+color:white;
+}

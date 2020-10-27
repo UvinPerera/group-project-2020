@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title> MediHub </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="pharmacyOrders.css" media="screen" />
+</head>
+
+
+  <body>
+
+    <!--Navigation bar -->
+    <div style="background-color:#2b3030;" id="sidebarPlace"></div>
+    <div class="navbar" id="navbar">
+      <ul>
+        <li><button class="styled" type="button"> SIGN IN </button></li>
+        <li><button class="styled" type="button"> SIGN UP </button></li>
+        <li><a href="#" id="end">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Emergency Services</a></li>
+        <li><a href="#">Home</a></li>
+        <li id="logo"><img src="images/onlylogo.png" width="15.5%"></li>
+      </ul>
+    </div>
+
+    <!--Container containing pharmacy order contact -->
+    <div class="formContainer">
+      <br><h2 style="text-align: center"> Pharmacy Orders </h2>
+      <div class="contentContainer">
+      <form>
+        <label>Select Prescription</label>
+        <select id = "prescriptionList" name="prescription" class="dropdown">
+               <option value = "1"> Prescription 1</option>
+               <option value = "2"> Prescription 2</option>
+               <option value = "3"> Prescription 3</option>
+               <option value = "4"> Prescription 4</option>
+         </select>
+
+       </div>
+
+         <div class="itemContainer">
+           <input type="text" id="item1Name" value="Item Full Name" class="itemName">
+           <select id = "quantityList1" name="quantity" class="quantity">
+                  <option value = "1"> 1</option>
+                  <option value = "2"> 2</option>
+                  <option value = "3"> 3</option>
+                  <option value = "4"> 4</option>
+                  <option value = "5"> 5</option>
+                  <option value = "6"> 6</option>
+            </select>
+            <div class="price" id="price1"><strong>Rs. 1,500</strong> </div>
+            <input type="text" value="Description of items" class="itemDescription" id="itemDescription1">
+         </div>
+
+         <div class="itemContainer">
+           <input type="text" id="item2Name" value="Item Full Name" class="itemName">
+           <select id = "quantityList2" name="quantity" class="quantity">
+                  <option value = "1"> 1</option>
+                  <option value = "2"> 2</option>
+                  <option value = "3"> 3</option>
+                  <option value = "4"> 4</option>
+                  <option value = "5"> 5</option>
+                  <option value = "6"> 6</option>
+            </select>
+            <div class="price" id="price2"><strong>Rs. 600</strong> </div>
+            <input type="text" value="Description of items" class="itemDescription" id="itemDescription2">
+         </div>
+
+         <div class="itemContainer">
+           <input type="text" id="item3Name" value="Item Full Name" class="itemName">
+           <select id = "quantityList3" name="quantity" class="quantity">
+                  <option value = "1"> 1</option>
+                  <option value = "2"> 2</option>
+                  <option value = "3"> 3</option>
+                  <option value = "4"> 4</option>
+                  <option value = "5"> 5</option>
+                  <option value = "6"> 6</option>
+            </select>
+            <div class="price" id="price3"><strong>Rs. 2,600</strong> </div>
+            <input type="text" value="Description of items" class="itemDescription" id="itemDescription3">
+         </div>
+        <div class="shipping">Select Shipping Method <br><br>
+          <input type="radio" id="delivery" name="deliveryType" class="radiobtn" value="delivery">
+           <label for="delivery">Delivery</label><br><br><br>
+           <input type="radio" id="home" name="address" class="radiobtn" value="home">
+            <label for="home">Delivery to Home Dddress</label><br><br>
+           <input type="radio" id="difAdd" name="address" class="radiobtn" value="difAdd">
+             <label for="home">Use this address</label><br><br>
+          <textarea rows=10 cols=100> Add Address </textarea><br>
+          <button class="button" id="add">Add Address</button><br><br><br>
+          <input type="radio" id="pickup" name="deliveryType" class="radiobtn" value="pickup">
+           <label for="pickup">PickUp</label><br><br><br>
+           <label id="outletlabel">Select Outlet</label>
+           <select id = "outlet" name="outlet" class="dropdown" >
+                  <option value = "1">Outlet 1</option>
+                  <option value = "2">Outlet 2</option>
+                  <option value = "3">Outlet 3</option>
+            </select>
+        </div>
+    </div>
+    <center><button class="button">Proceed to Payment</button></center><br><br><br>
+  </form>
+
+  </div>
+    <!--Footer-->
+
+      <footer>
+        <center>
+        <div class="footerRow">
+          <div class="footerColumn">
+            <div class="footerText">
+              </br>ABOUT </br></br>
+              MediHub is a mainly a patient portal providing users eaiser access to all medical services. </br>MediHub also
+              provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
+              them with the best experience in accessing medical services</br>
+            </div>
+          </div>
+          <div class="footerColumn"></br>
+            <div class="footerText">
+              </br></br>
+              <a href="#" class="a fa fa-facebook"></a>
+              <a href="#" class="a fa fa-twitter"></a>
+              <a href="#" class="a fa fa-google"></a>
+              <a href="#" class="a fa fa-instagram"></a>
+            </div>
+          </div>
+        </div>
+        </br>
+        <div class="footerText">
+          All rights Reserved @MediHub2020
+        </div>
+        </br></br>
+      </center>
+      </footer>
+    </body>
+  </html>
