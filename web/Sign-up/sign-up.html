@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title> MediHub </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="signup.css" media="screen" />
+</head>
+
+
+  <body>
+    <style media="screen">
+        body{
+          background-image:url('images/img.png');
+        }
+    </style>
+
+    <!--Navigation bar -->
+    <div style="background-color:#2b3030;" id="sidebarPlace"></div>
+    <div class="navbar" id="navbar">
+      <ul>
+        <li><button class="styled" type="button"> SIGN IN </button></li>
+        <li><button class="styled" type="button"> SIGN UP </button></li>
+        <li><a href="#" id="end">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Emergency Services</a></li>
+        <li><a href="#">Home</a></li>
+        <li id="logo"><img src="images/onlylogo.png" width="15.5%"></li>
+      </ul>
+    </div>
+
+    <div class="regform"><h1><br>Registration Form</h1><br></div>
+   <div class="main">
+     <form class="" action="index.html" method="post">
+
+       <div id="name">
+         <br>
+         <h2 class="name">Name</h2>
+         <input class="firstname" type="text" name="first_name">
+         <label class="firstlable">first name</label>
+         <input class="lastname" type="text" name="last_name">
+         <label class="lastlable">last name</label>
+       </div>
+
+       <h2 class="name">Display Name</h2>
+       <input class="input" type="text" name="display_name" >
+
+       <h2 class="name">NIC No</h2>
+       <input class="input" type="text" name="nic_no" >
+
+       <h2 class="name">Date of Birth</h2>
+       <input class="input" type="date" name="dob" >
+
+       <h2 class="name">Address 1</h2>
+       <input class="input" type="text" name="address_1" >
+
+       <h2 class="name">Address 2</h2>
+       <input class="input" type="text" name="address_2" >
+
+       <h2 class="name">City</h2>
+       <input class="input" type="text" name="city" >
+
+       <h2 class="name">Zip Code</h2>
+       <input class="input" type="text" name="zip_code" >
+
+       <h2 class="name">District</h2>
+       <input class="input" type="text" name="district" >
+
+       <h2 class="name">Province</h2>
+       <input class="input" type="text" name="province" >
+
+       <h2 class="name">Email</h2>
+       <input class="input" type="email" name="email" >
+
+       <h2 class="name">Contact No</h2>
+       <input class="mobile" type="text" name="mobile" >
+       <label class="mobilelable">mobile</label>
+       <input class="landline" type="text" name="land_line" >
+       <label class="landlinelable">Land line</label>
+
+
+
+       <h2 class="name">Password</h2>
+       <input class="input" type="password" name="password" >
+
+       <h2 class="name">Confirm Password</h2>
+       <input class="input" type="text" name="confirm_passsword" >
+
+       <h2 class="name">Register as</h2>
+       <select class="input option" name="Register_as">
+         <option disabled="disabled" selected="selected">--Choose Option--</option>
+         <option>Patient</option>
+         <option>Doctor</option>
+       </select>
+
+      <h2 class="name">Gender</h2>
+       <label class="radio">
+           <input class="radio-one" type="radio" name="gender" value="male">
+           Male
+      </label>
+       <label class="radio">
+           <input class="radio-two" type="radio" name="gender" value="female">
+           Female
+        </label>
+       <br><br><br><br>
+
+       <div>
+         <center>
+         <button class="button"><b>Cancel</b></button>
+         <button class="button"><b>Submit</b></button>
+         </center>
+       </div>
+       <br><br><br><br>
+     </form>
+   </div>
+    <div class="empty"></div>
+    <!--Footer-->
+
+    <footer>
+      <center>
+      <div class="footerRow">
+        <div class="footerColumn">
+          <div class="footerText">
+            <br>ABOUT <br><br>
+            MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
+            provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
+            them with the best experience in accessing medical services<br>
+          </div>
+        </div>
+        <div class="footerColumn"><br>
+          <div class="footerText">
+            <br><br>
+            <a href="#" class="a fa fa-facebook"></a>
+            <a href="#" class="a fa fa-twitter"></a>
+            <a href="#" class="a fa fa-google"></a>
+            <a href="#" class="a fa fa-instagram"></a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="footerText">
+        All rights Reserved @MediHub2020
+      </div>
+      <br><br>
+    </center>
+    </footer>
+  </body>
+</html>
