@@ -1,0 +1,376 @@
+
+*{
+margin:0;
+padding:0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+}
+/*navigation bar styling*/
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #2b3030;
+}
+
+li {
+float: right;
+font-family: 'Montserrat', sans-serif;
+}
+
+li a {
+display: inline-block;
+color: white;
+text-align: center;
+padding: 17px 14px;
+text-decoration: none;
+}
+
+li a:hover {
+background-color:  #0087a1;
+}
+
+.styled {
+  border:0px;
+  margin-top :13px;
+  margin-left: 10px;
+  margin-right: 15px;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color:  #0087a1;
+  line-height: 2;
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+              inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+  background-color: white;
+  color:black;
+  text-shadow:none;
+}
+
+.styled:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+              inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.navbar{
+width: 100%;
+}
+
+/*Logo Styling*/
+
+#logo{
+margin-left: 2%;
+float: left;
+margin-top: 0%;
+}
+
+/*Main Picture Styling*/
+
+#pic{
+width: 100%;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+
+.container {
+position: relative;
+width: 100%;
+  background-color:#ebf0f8;
+}
+
+/*Button Styling8*/
+
+.container .btn {
+position: absolute;
+top: 80%;
+left: 37%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+color: white;
+text-shadow: 1px 1px 1px #000;
+border-radius: 14px;
+border:none;
+background-color: rgba(0,135,161);
+line-height: 1.3;
+box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+            inset -2px -2px 3px rgba(0, 0, 0, .6);
+padding: 14px 24px;
+
+}
+.container .btn:hover {
+  background-color: white;
+  color:black;
+  text-shadow:none;
+}
+.column {
+float: left;
+width: 33.33%;
+
+color:black;
+}
+
+/* Float four columns side by side */
+.column {
+float: left;
+width: 25%;
+padding: 15px 15px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+margin: 0 -5px;
+width:90%;}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Style the counter cards */
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+padding: 16px;
+text-align: center;
+background-color: #f1f1f1;
+border-radius: 10px;
+}
+.textI{
+width:70%;
+text-align: justify;
+}
+
+.flip-box {
+background-color: transparent;
+width: 300px;
+height: 420px;
+border: 1px solid #f1f1f1;
+perspective: 1000px; /* Remove this if you don't want the 3D effect */
+font-family: 'Montserrat', sans-serif;
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+position: relative;
+width: 100%;
+height: 100%;
+text-align: center;
+transition: transform 0.8s;
+transform-style: preserve-3d;
+font-size: 1.1em;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+position: absolute;
+width: 100%;
+height: 100%;
+-webkit-backface-visibility: hidden; /* Safari */
+backface-visibility: hidden;
+}
+
+/* Style the front side */
+.flip-box-front {
+border-radius: 15px;
+background-color: #fcfcfc;
+color: black;
+font-family: 'Montserrat', sans-serif;
+font-size:1.3em;
+}
+
+/* Style the back side */
+.flip-box-back {
+background-color: #2b3030;
+color: white;
+transform: rotateY(180deg);
+}
+
+#services,#comments{
+background-color: #ebf0f8;
+}
+
+/*Button Styling*/
+
+.btn {
+border: 2px solid black;
+background-color: white;
+color: black;
+padding: 14px 28px;
+font-size: 16px;
+cursor: pointer;
+}
+
+.default:hover {
+background: #e7e7e7;
+}
+.text{
+padding: 10px;
+}
+
+
+.column2 {
+float: left;
+width: 33.33%;
+padding: 15px 15px;
+background-color: white;
+}
+.row2 {
+margin: 0 -5px;
+width:80%;}
+
+/* Clear floats after the columns */
+.row2:after {
+content: "";
+display: table;
+clear: both;
+}
+.columnComment {
+float: left;
+width: 70%;
+padding: 45px 25px;
+}
+.columnPicture {
+float: left;
+width: 30%;
+padding: 15px 15px;
+}
+.row3 {
+margin: 0 -5px;
+width:90%;}
+/* Clear floats after the columns */
+.row3:after {
+content: "";
+display: table;
+clear: both;
+}
+.divider {
+  width: 80px;
+  height: 4px;
+  margin: 30px auto 30px;
+  background-color: rgba(0,135,161);
+  border: none;
+}
+.avatar {
+vertical-align: middle;
+border-radius: 50%;
+}
+h3{
+color: rgba(0,135,161);
+font-size: 1.6em;
+}
+footer{
+  background-color: #2b3030;
+}
+.column4 {
+float: left;
+width: 50%;
+padding: 10px 10px;
+}
+.row4 {
+margin: 0 -5px;
+width:60%;}
+
+.row4:after {
+content: "";
+display: table;
+clear: both;
+}
+.footerText{
+color:white;
+}
+.fa {
+padding: 25px;
+font-size: 30px;
+width: 10px;
+text-align: center;
+text-decoration: none;
+border-radius: 50%;
+color:white;
+}
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+.column {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+}
+.column2 {
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+}
+.row4 {
+  margin: 0 -5px;
+  width:100%;}
+
+}
+
+/* The side navigation menu */
+.sidenav {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+padding-top: 60px;
+transition: 0.4s;
+}
+
+/* The navigation menu links */
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+transition: margin-left .5s;
+padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
