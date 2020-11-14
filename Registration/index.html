@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>Registration</title>
+   <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+</head>
+<body>
+  <style media="screen">
+    body{
+      background-image:url('img.jpg');
+    }
+  </style>
+   <div class="regform"><h1>Registration Form</h1></div>
+   <div class="main">
+     <form class="" action="index.html" method="post">
+
+       <div id="name">
+         <h2 class="name">Name</h2>
+         <input class="firstname" type="text" name="first_name">
+         <label class="firstlable">first name</label>
+         <input class="lastname" type="text" name="lact_name">
+         <label class="lastlable">last name</label>
+       </div>
+
+       <h2 class="name">Address</h2>
+       <input class="address" type="text" name="address" >
+
+       <h2 class="name">NIC No</h2>
+       <input class="nicno" type="text" name="nic_no" >
+
+       <h2 class="name">Email</h2>
+       <input class="email" type="text" name="email" >
+
+       <h2 class="name">Contact No</h2>
+       <input class="mobile" type="text" name="mobile" >
+       <label class="mobilelable">mobile</label>
+       <input class="fixedline" type="text" name="fixed_line" >
+       <label class="fixedlinelable">fixed line</label>
+
+
+
+       <h2 class="name">Password</h2>
+       <input class="password" type="text" name="password" >
+
+       <h2 class="name">Confirm Password</h2>
+       <input class="confirmpassword" type="text" name="confirm_passsword" >
+
+       <h2 class="name">Register as</h2>
+       <select class="option" name="Register_as">
+         <option disabled="disabled" selected="selected">--Choose Option--</option>
+         <option>Customer</option>
+         <option>Employee</option>
+       </select>
+
+      <h2 class="name">Gender</h2>
+       <label class="radio">
+           <input class="radio-one" type="radio" value="male">
+           Male
+      </label>
+       <label class="radio">
+           <input class="radio-two" type="radio" value="female">
+           Female
+        </label>
+       <br><br>
+
+       <div class="button-group">
+         <button><b>Cancel</b></button>
+         <button><b>Sumbit</b></button>
+       </div>
+
+     </form>
+
+   </div>
+
+
+</body>
+</html>
