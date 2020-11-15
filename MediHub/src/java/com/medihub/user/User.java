@@ -3,7 +3,7 @@ package com.medihub.user;
 
 /**
  *
- * @author Yash
+ * @author tharshan
  */
 public class User {
     

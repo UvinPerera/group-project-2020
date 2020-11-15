@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.util.List;
 /**
  *
- * @author Yash
+ * @author tharshan
  */
 
 public class Patient extends User {
