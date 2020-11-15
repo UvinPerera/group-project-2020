@@ -27,7 +27,7 @@ public class Registration extends HttpServlet {
         {
             
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
             Statement stmt=con.createStatement();  
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");
@@ -49,7 +49,7 @@ public class Registration extends HttpServlet {
             User user=new User();
             user.setEmail(email);
             
-            int rs=stmt.executeUpdate("INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,district,zip_code,mobile,land_line,password,user_type) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+user.getEmail()+"','"+address1+"','"+address2+"','"+districtczip_codepassword+"',"+user_type+")");  
+            int rs=stmt.executeUpdate("INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,district,zip_code,mobile,land_line,password,user_type) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+user.getEmail()+"','"+address1+"','"+address2+"','"+district+"','"+zip_code+"','"+password+"',"+user_type+")");  
             response.sendRedirect("login.jsp");
             con.close();  
         }

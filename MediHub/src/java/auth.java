@@ -28,8 +28,9 @@ public class auth extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                PrintWriter out = response.getWriter();
                 try{Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
                 Statement stmt=con.createStatement(); 
                 String email=request.getParameter("email");
                 String password=request.getParameter("userpassword");
@@ -45,7 +46,7 @@ public class auth extends HttpServlet {
                 }
                 
                 
-                String type="Patient";
+                
                 //String actualUsername = "Yashithi";
                 //String actualPassword ="kay";
                 if(!displayName.isEmpty()){
@@ -78,7 +79,9 @@ public class auth extends HttpServlet {
                 else{
                     response.sendRedirect("invalid.html");
                 }
-                }catch(Exception e){}
+                }catch(Exception e){
+                    out.println(e.toString());
+                }
     }
     /**
      * Returns a short description of the servlet.

@@ -24,12 +24,15 @@
         <li><button class="styled" type="button" onclick="window.location.href='login.jsp';"> SIGN IN </button></li>
         <li><button class="styled" type="button" onclick="window.location.href='signUp.jsp';"> SIGN UP</button></li> 
         <%}else{%>
+           
+            <li><button class="styled" type="button" onclick="window.location.href='patientDashboard.jsp';"> PROFILE</button></li> 
             <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li> 
         <%}%>
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
       <li><a href="/medihub">Home</a></li>
+      
       <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
   </div>
