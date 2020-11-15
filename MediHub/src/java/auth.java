@@ -1,4 +1,4 @@
-import com.medihub.db.DbConfig;
+import com.medihub.db.*;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,57 +30,72 @@ public class auth extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 PrintWriter out = response.getWriter();
-                try{Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection(DbConfig.dbUrl,DbConfig.username,DbConfig.password);
-                Statement stmt=con.createStatement(); 
-                String email=request.getParameter("email");
-                String password=request.getParameter("userpassword");
-                ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"'"); 
-                String displayName="";
-                int userType=1;
-                
-                while(rs.next())
+                try
                 {
-                    displayName=rs.getString("display_name");
-                    userType=rs.getInt("user_type");
+                    //getting from DbConfig class
+                    DbConfig db = DbConfig.getInstance();
+                    Connection con = db.getConnecton();
                     
-                }
+                    Statement stmt=con.createStatement(); 
+                    String email=request.getParameter("email");
+                    String password=request.getParameter("userpassword");
+                    ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"'"); 
+                    String displayName="";
+                    int userType=-1;
+                    int id=-1;
+                
+                    while(rs.next())
+                    {
+                        displayName=rs.getString("display_name");
+                        userType=rs.getInt("user_type");
+                        id=rs.getInt("id");
+                    
+                    }
                 
                 
                 
-                //String actualUsername = "Yashithi";
-                //String actualPassword ="kay";
-                if(!displayName.isEmpty()){
-                    if(userType==0){
-                        response.sendRedirect("adminDashboard.jsp");
+                    //String actualUsername = "Yashithi";
+                    //String actualPassword ="kay";
+                    if(!displayName.isEmpty()){
+                        
                         HttpSession session = request.getSession();
                         session.setAttribute("username", displayName);
+                        session.setAttribute("id", id);
+                        session.setAttribute("userType", userType);
+                        response.sendRedirect("Dashboard");
+                        
+//                        if(userType==0){
+//                            response.sendRedirect("adminDashboard.jsp");
+//                            HttpSession session = request.getSession();
+//                            session.setAttribute("username", displayName);
+//                        }
+//                        else if(userType==1){
+//                            response.sendRedirect("patientDashboard.jsp");
+//                            HttpSession session = request.getSession();
+//                            session.setAttribute("username", displayName);
+//                        }
+//                        else if(userType==2){
+//                            response.sendRedirect("doctorDashboard.jsp");
+//                            HttpSession session = request.getSession();
+//                            session.setAttribute("username",displayName);
+//                        }
+//                        else if(userType==3){
+//                            response.sendRedirect("hospitalDashboard.jsp");
+//                            HttpSession session = request.getSession();
+//                            session.setAttribute("username",displayName);
+//                        }
+//                        else if(userType==4){
+//                            response.sendRedirect("pharmacyDashboard.jsp");
+//                            HttpSession session = request.getSession();
+//                            session.setAttribute("username",displayName);
+//                        }
                     }
-                    else if(userType==1){
-                        response.sendRedirect("patientDashboard.jsp");
-                        HttpSession session = request.getSession();
-                        session.setAttribute("username", displayName);
-                    }
-                    else if(userType==2){
-                        response.sendRedirect("doctorDashboard.jsp");
-                        HttpSession session = request.getSession();
-                        session.setAttribute("username",displayName);
-                    }
-                    else if(userType==3){
-                        response.sendRedirect("hospitalDashboard.jsp");
-                        HttpSession session = request.getSession();
-                        session.setAttribute("username",displayName);
-                    }
-                    else if(userType==4){
-                        response.sendRedirect("pharmacyDashboard.jsp");
-                        HttpSession session = request.getSession();
-                        session.setAttribute("username",displayName);
+                    else{
+                        response.sendRedirect("invalid.html");
                     }
                 }
-                else{
-                    response.sendRedirect("invalid.html");
-                }
-                }catch(Exception e){
+                catch(Exception e)
+                {
                     out.println(e.toString());
                 }
     }

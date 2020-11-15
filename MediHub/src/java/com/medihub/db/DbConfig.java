@@ -1,6 +1,4 @@
 package com.medihub.db;
-
-
 import com.medihub.user.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
