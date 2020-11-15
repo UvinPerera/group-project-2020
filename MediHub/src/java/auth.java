@@ -1,3 +1,4 @@
+import com.medihub.db.DbConfig;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,7 +31,7 @@ public class auth extends HttpServlet {
             throws ServletException, IOException {
                 PrintWriter out = response.getWriter();
                 try{Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
+                Connection con=DriverManager.getConnection(DbConfig.dbUrl,DbConfig.username,DbConfig.password);
                 Statement stmt=con.createStatement(); 
                 String email=request.getParameter("email");
                 String password=request.getParameter("userpassword");

@@ -1,4 +1,5 @@
 
+import com.medihub.db.DbConfig;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
+import com.medihub.db.*;
 
 /**
  *
@@ -27,7 +29,7 @@ public class Registration extends HttpServlet {
         {
             
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
+            Connection con=DriverManager.getConnection(DbConfig.dbUrl,DbConfig.username,DbConfig.password);
             Statement stmt=con.createStatement();  
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");
