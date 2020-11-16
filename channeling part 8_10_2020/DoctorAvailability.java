@@ -6,7 +6,8 @@ public class DoctorAvailability {
     public int hospitalId;
     public String date;
     public String startTime;
-    public String endTime;
+    public int maxCount;
+    public int count;
     public int status;
     public String createdAt;
     public String updatedAt;

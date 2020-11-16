@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2020 at 07:54 PM
+-- Generation Time: Nov 16, 2020 at 10:35 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -49,6 +49,7 @@ CREATE TABLE `channeling` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) DEFAULT NULL,
   `doctor_availability_id` int(11) DEFAULT NULL,
+  `appointment_no` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -184,7 +185,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `slmc`, `slmc_card_proof_location`, `specialisation_1`, `specialisation_2`, `titles`, `degrees`, `approved_by`, `approved_at`) VALUES
-(3, 999, '', 1, 2, 'MBBS,MD', 'MD', 1, '2020-10-30 21:17:23');
+(3, 999, '', 1, 2, 'DR', 'MBBS, MD', 1, '2020-10-30 21:17:23');
 
 -- --------------------------------------------------------
 
