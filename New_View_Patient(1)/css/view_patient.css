@@ -112,6 +112,9 @@ body{
   border-radius: 50%;
   border: 3px solid #0087a1;
 }
+.middle_container h4{
+  margin-left:20px;
+}	
 .right_container{
   margin-left: 20px;
   margin-top: 20px;
