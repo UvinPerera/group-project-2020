@@ -1,0 +1,9 @@
+SELECT id FROM pharmacies
+WHERE (inputId = Id) AND (status =1);
+
+Update Pharmacies
+SET status = 0
+WHERE (inputId = Id) AND (status =1);
+
+DELETE id FROM Pharamacies
+WHERE (inputId = Id) AND (status = 1); 
