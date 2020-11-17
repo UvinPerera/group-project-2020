@@ -20,7 +20,11 @@
   <body>
     <style media="screen">
         body{
-          background-image:url('./public/images/img.png');
+          background-image:url('./public/images/bgimg.png');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+
         }
     </style>
 
@@ -44,10 +48,10 @@
        <div id="name">
          <br>
          <h2 class="name">Name</h2>
-         <input class="firstname" type="text" name="first_name" id="firstname">
-         <label class="firstlable">first name</label>
-         <input class="lastname" type="text" name="last_name" id="lastname">
-         <label class="lastlable">last name</label>
+         <input class="firstname" type="text" name="first_name" id="firstname" placeholder="First Name">
+         <!-- <label class="firstlable">first name</label> -->
+         <input class="lastname" type="text" name="last_name" id="lastname" placeholder="Last Name">
+         <!-- <label class="lastlable">last name</label> -->
        </div>
          <div class="danger" id="firstNameError">
           <div class="alert-message alert-message-danger" >
@@ -56,7 +60,7 @@
          </div>
 
        <h2 class="name" >Display Name</h2>
-       <input class="input" type="text" name="display_name" id="displayName">
+       <input class="input" type="text" name="display_name" id="displayName" placeholder="Display Name">
        <div class="danger" id="displayNameError">
           <div class="alert-message alert-message-danger" >
                 <h4>Display name cant empty and must contain only letters</h4>
@@ -64,7 +68,7 @@
        </div>
 
        <h2 class="name">NIC No</h2>
-       <input class="input" type="text" name="nic_no" id="nic">
+       <input class="input" type="text" name="nic_no" id="nic" placeholder="NIC number">
        <div class="danger" id="nicError">
           <div class="alert-message alert-message-danger" >
                 <h4>National Identity Card Number cant empty</h4>
@@ -72,7 +76,7 @@
        </div>
 
        <h2 class="name">Date of Birth</h2>
-       <input class="input" type="date" name="dob" id="dob">
+       <input class="input" type="date" name="dob" id="dob" placeholder="DOB">
        <div class="danger" id="dobError">
           <div class="alert-message alert-message-danger" >
                 <h4>Date of Birth cant empty</h4>
@@ -93,7 +97,7 @@
        </div>
              
         <h2 class="name">Email</h2>
-       <input class="input" type="email" name="email" id="email">
+       <input class="input" type="email" name="email" id="email" placeholder="Email">
        <div class="danger" id="emailError">
           <div class="alert-message alert-message-danger" >
                 <h4>Enter a valid email address</h4>
@@ -101,7 +105,7 @@
        </div>
        
        <h2 class="name">Address 1</h2>
-       <input class="input" type="text" name="address_1" id="address1">
+       <input class="input" type="text" name="address_1" id="address1" placeholder="Address 1">
        <div class="danger" id="addressError">
           <div class="alert-message alert-message-danger" >
                 <h4>Address 01 can't be empty</h4>
@@ -109,10 +113,10 @@
        </div>
 
        <h2 class="name">Address 2</h2>
-       <input class="input" type="text" name="address_2" id="address2">
+       <input class="input" type="text" name="address_2" id="address2" placeholder="Address 2">
 
        <h2 class="name">City</h2>
-       <input class="input" type="text" name="city" id="city">
+       <input class="input" type="text" name="city" id="city" placeholder="City">
        <div class="danger" id="cityError">
           <div class="alert-message alert-message-danger" >
                 <h4>City can't be empty</h4>
@@ -120,7 +124,7 @@
        </div>
 
        <h2 class="name">District</h2>
-       <input class="input" type="text" name="district" id="district">
+       <input class="input" type="text" name="district" id="district" placeholder="District">
        <div class="danger" id="districtError">
           <div class="alert-message alert-message-danger" >
                 <h4>Select a valid District </h4>
@@ -128,7 +132,7 @@
        </div>
        
         <h2 class="name">Zip Code</h2>
-       <input class="input" type="text" name="zip_code" id="zip">
+       <input class="input" type="text" name="zip_code" id="zip" placeholder="Zip code">
        <div class="danger" id="zipError">
           <div class="alert-message alert-message-danger" >
                 <h4>Enter a valid zip code </h4>
@@ -136,9 +140,9 @@
        </div>
 
        <h2 class="name">Contact No</h2>
-       <input class="mobile" type="text" name="mobile" id="mobile">
+       <input class="mobile" type="text" name="mobile" id="mobile" placeholder="Mobile number">
        <label class="mobilelable">mobile</label>
-       <input class="landline" type="text" name="land_line" id="land">
+       <input class="landline" type="text" name="land_line" id="land" placeholder="Land number">
        <label class="landlinelable">Land line</label>
        <div class="danger" id="numberError">
           <div class="alert-message alert-message-danger" >
@@ -149,7 +153,7 @@
 
 
        <h2 class="name">Password</h2>
-       <input class="input" type="password" name="password" id="password">
+       <input class="input" type="password" name="password" id="password" placeholder="Password">
        <div id="errorMsg"></div>
        <div class="danger" id="passwordError">
           <div class="alert-message alert-message-danger" >
@@ -158,7 +162,7 @@
        </div>
 
        <h2 class="name">Confirm Password</h2>
-       <input class="input" type="password" name="confirm_passsword" id="password2">
+       <input class="input" type="password" name="confirm_passsword" id="password2" placeholder="Confirm Password">
         <div id="errorMsg"></div>
        <div class="danger" id="password2Error">
           <div class="alert-message alert-message-danger" >
@@ -184,13 +188,13 @@
 
        <div>
            <br><br>
-         <center>
+         <div class="button-container">
              <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
              <button class="button" type="reset" id="clear"><b>Clear</b></button>
             
             <button class="button" type="submit"><b>Submit</b></button>
          
-         </center>
+         </div>
        </div>
        <br><br><br><br>
      </form>

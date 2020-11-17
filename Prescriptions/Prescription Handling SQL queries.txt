@@ -1,0 +1,15 @@
+SELECT channeling_id FROM prescriptions
+WHERE (inputId = prescriptions.id) AND (prescriptions.status = 1);
+
+UPDATE prescriptions
+SET status =0 
+WHERE (inputId = prescriptions.id) AND (prescriptions.status = 1);
+
+UPDATE prescriptions
+SET channeling_id=value
+WHERE (inputId = prescriptions.id) AND (prescriptions.status = 1);
+
+DELETE FROM prescriptions
+WHERE WHERE (inputId = prescriptions.id) AND (prescriptions.status = 1);
+
+

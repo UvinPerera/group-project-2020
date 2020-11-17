@@ -6,12 +6,18 @@ public class Channelling {
     public int id;
     public int patientId;
     public int doctorAvalabilityId;
+    public int appointmentNo;
     public String description;
     public int status;
     public String createdAt;
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
+    
+    public String date;
+    public String time;
+    public String doctor;
+    public String hospital;
 
 //    flow by doctor
 //         send DoctorSpecialisation.getAllDoctorSpecialisation(); to front

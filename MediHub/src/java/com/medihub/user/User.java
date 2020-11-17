@@ -1,9 +1,10 @@
-
 package com.medihub.user;
+import com.medihub.db.*;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Yash
+ * @author tharshan
  */
 public class User {
     
@@ -25,6 +26,28 @@ public class User {
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
+    
+    public static String getDashboard(int userType) {
+        if(userType==0){
+            return ("adminDashboard.jsp");
+        }
+        else if(userType==1){
+            return ("patientDashboard.jsp");
+        }
+        else if(userType==2){
+            return ("doctorDashboard.jsp");
+        }
+        else if(userType==3){
+            return ("hospitalDashboard.jsp");
+        }
+        else if(userType==4){
+            return ("pharmacyDashboard.jsp");
+        }
+        else {
+            return ("invalid.html");
+        }
+        
+    }
     
     public void register() {
 

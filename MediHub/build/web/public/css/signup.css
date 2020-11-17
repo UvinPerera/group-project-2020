@@ -23,6 +23,10 @@ float: right;
 font-family: 'Montserrat', sans-serif;
 }
 
+.input{
+  font-family: 'Montserrat', sans-serif;
+}
+
 li a {
 display: inline-block;
 color: white;
@@ -75,7 +79,7 @@ margin-top: 0%;
 
 .regform{
   width: 800px;
-  background-color: rgb(0,0,0,0.6);
+  background-color: rgb(0,0,0,0.9);
   margin: auto;
   margin-top:60px;
   color:#FFFFFF;
@@ -84,7 +88,7 @@ margin-top: 0%;
   border-radius: 15px 15px 0px 0px;
 }
 .main{
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.85);
   width: 800px;
   margin:auto;
   }
@@ -103,6 +107,7 @@ margin-top: 0%;
     color: white;
     font-size: 18px;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
   }
   .firstname{
     position: relative;
@@ -199,9 +204,13 @@ margin-top: 0%;
     top:-45px;
   }
 
+  .option{
+    height: 35px;
+  }
   
   .option option{
     font-size: 16px;
+    
   }
   .radio{
     display: inline-block;
@@ -319,4 +328,7 @@ color:white;
 }
 .danger{
   margin-left:200px;
+}
+.button-container{
+ margin-left: 250px;
 }
