@@ -66,26 +66,61 @@ body{
   color: #3c3939;
   background-color: #f1f1f1;
 }
-.profile_card{
-  width: 400px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: #fff;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.7);
-  margin-left:600px; 
+/* Split the screen in half */
+.split {
+  height:350px;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-.image_container{
-  position: relative;
-  radius: 15px 15px 0 0;
+
+/* Control the left side */
+.left {
+  left: 15%;
+  background-color: #2b3030;
+  border:3px solid #0087a1;
+  color: white;
 }
-.info{
-  margin-right: 16px;
+/* Control the middle side */
+.middle {
+  left: 40%;
+  background-color: #fff;
+  border:3px solid #0087a1;
 }
-.main_container{
-  margin-right: 10px;
+/* Control the right side */
+.right {
+  right: 15%;
+  background-color: #fff;
+  border:3px solid #0087a1;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #0087a1;
+}
+.right_container{
+  margin-left: 20px;
+  margin-top: 20px;
 }
 footer{
   background-color: #2b3030;
+  position:absolute;
+  width: 100%;
+  bottom: 0;
 }
 .column4 {
 float: left;
