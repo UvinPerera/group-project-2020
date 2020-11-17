@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
 <head>
@@ -26,7 +31,14 @@
             <h1><center>Hello, <%=username%> <br>WELCOME TO MEDIHUB!</center></h1>
   </div>
   <br><br><br>
-
+  
+  <%
+       
+       ArrayList al = new ArrayList();
+       if(request.getAttribute("reminders")!=null){
+           al=(ArrayList )request.getAttribute("reminders");
+        }
+  %>
   <div class="page_divide">
         <section class="profile">
           <div class="card-container">
@@ -41,27 +53,64 @@
                 </div>
                 <br><br>
                 <div>
-                  <a href="#" class="btn">View Profile</a>
+                  <a href="patientview" class="btn">View Profile</a>
                 <br><br><br>
                   <a href="#" class="btn">Edit Profile</a>
                 </div>
              </div>
           </div>
         </section>
+        <div class="tiles">
+            <div class="tileset">
+                <section class="Service">
+                    <button class="styled" type="button">E-Channeling</button>
+                </section>
+                <section class="Service">
+                    <button class="styled" type="button">Orders</button>
+                </section>
+                <section class="Service">
+                    <button class="styled" type="button">Medical Records</button>
+                </section>
+                <section class="Service">
+                  <button class="styled" type="button">Service Review</button>
+                </section>
+            </div>
+            <div class="appointment">
+              <table class="table-hub table-hub-appoint">
+                  <thead>
+                        <tr>
+                            <th class="table-hub-owner">Hospital</th>
+                            <th class="table-hub-time-head">Time</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                      <%for(int i=0;i<al.size();i++){%>
+                        <tr>
+                            <%
+                                ArrayList a2 = new ArrayList();
+                                a2 =(ArrayList ) al.get(i);
+                            %>
+                            <td class="table-hub-owner"><%=a2.get(0)%></td>
+                            
+                            <td>
+                                  <ul class="table-hub-time">
+                                    
+                                      <li><a href="" onclick="">Time 1</a></li>
+                                      <li><a href="" onclick="">Time 2</a></li>
+                                      <li><a href="" onclick="">Time 3</a></li>
+                                      <li><a href="" onclick="">Time 4</a></li>
+                                  </ul>
+                            </td>
+                        </tr>
+                      <%}%> 
+                  </tbody>
+              </table>
+          </div>
 
-        <section class="Service">
-            <button class="styled" type="button">E-Channeling</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">Orders</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">Medical Records</button>
-        </section>
-        <section class="Service">
-           <button class="styled" type="button">Service Review</button>
-        </section>
       </div>
+  </div>
+
+      
 </body>
 <br><br>
 <center>

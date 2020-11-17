@@ -1,4 +1,3 @@
-import com.medihub.db.*;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,72 +29,63 @@ public class auth extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 PrintWriter out = response.getWriter();
-                try
+                try{Class.forName("com.mysql.jdbc.Driver");  
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
+                Statement stmt=con.createStatement(); 
+                String email=request.getParameter("email");
+                String password=request.getParameter("userpassword");
+                ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"'"); 
+                String displayName="";
+                int userType=1;
+                int userId=1;
+                while(rs.next())
                 {
-                    //getting from DbConfig class
-                    DbConfig db = DbConfig.getInstance();
-                    Connection con = db.getConnecton();
+                    displayName=rs.getString("display_name");
+                    userType=rs.getInt("user_type");
+                    userId=rs.getInt("id");
                     
-                    Statement stmt=con.createStatement(); 
-                    String email=request.getParameter("email");
-                    String password=request.getParameter("userpassword");
-                    ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"' and status=1"); 
-                    String displayName="";
-                    int userType=-1;
-                    int id=-1;
-                
-                    while(rs.next())
-                    {
-                        displayName=rs.getString("display_name");
-                        userType=rs.getInt("user_type");
-                        id=rs.getInt("id");
-                    
-                    }
+                }
                 
                 
                 
-                    //String actualUsername = "Yashithi";
-                    //String actualPassword ="kay";
-                    if(!displayName.isEmpty()){
-                        
+                //String actualUsername = "Yashithi";
+                //String actualPassword ="kay";
+                if(!displayName.isEmpty()){
+                    if(userType==0){
+                        response.sendRedirect("adminDashboard.jsp");
                         HttpSession session = request.getSession();
                         session.setAttribute("username", displayName);
-                        session.setAttribute("id", id);
-                        session.setAttribute("userType", userType);
-                        response.sendRedirect("Dashboard");
-                        
-//                        if(userType==0){
-//                            response.sendRedirect("adminDashboard.jsp");
-//                            HttpSession session = request.getSession();
-//                            session.setAttribute("username", displayName);
-//                        }
-//                        else if(userType==1){
-//                            response.sendRedirect("patientDashboard.jsp");
-//                            HttpSession session = request.getSession();
-//                            session.setAttribute("username", displayName);
-//                        }
-//                        else if(userType==2){
-//                            response.sendRedirect("doctorDashboard.jsp");
-//                            HttpSession session = request.getSession();
-//                            session.setAttribute("username",displayName);
-//                        }
-//                        else if(userType==3){
-//                            response.sendRedirect("hospitalDashboard.jsp");
-//                            HttpSession session = request.getSession();
-//                            session.setAttribute("username",displayName);
-//                        }
-//                        else if(userType==4){
-//                            response.sendRedirect("pharmacyDashboard.jsp");
-//                            HttpSession session = request.getSession();
-//                            session.setAttribute("username",displayName);
-//                        }
+                        session.setAttribute("userid", userId);
                     }
-                    else{
-                        response.sendRedirect("invalid.html");
+                    else if(userType==1){
+                        response.sendRedirect("patient");
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username", displayName);
+                        session.setAttribute("userid", userId);
+                    }
+                    else if(userType==2){
+                        response.sendRedirect("doctorDashboard.jsp");
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username",displayName);
+                        session.setAttribute("userid", userId);
+                    }
+                    else if(userType==3){
+                        response.sendRedirect("hospitalDashboard.jsp");
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username",displayName);
+                        session.setAttribute("userid", userId);
+                    }
+                    else if(userType==4){
+                        response.sendRedirect("pharmacyDashboard.jsp");
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username",displayName);
+                        session.setAttribute("userid", userId);
                     }
                 }
-                catch(Exception e)
-                {
+                else{
+                    response.sendRedirect("invalid.html");
+                }
+                }catch(Exception e){
                     out.println(e.toString());
                 }
     }

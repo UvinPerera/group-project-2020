@@ -25,10 +25,7 @@ public class logout extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
        session.removeAttribute("username");
-       session.removeAttribute("id");
-       session.removeAttribute("userType");
-       
-       response.sendRedirect("index.jsp");
+       response.sendRedirect("/medihub");
         
     }
 

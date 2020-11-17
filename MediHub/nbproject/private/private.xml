@@ -3,15 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/com/medihub/patient/Patient.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/auth.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/Registration.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/Dashboard.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/logout.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/web/index.jsp</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/src/java/com/medihub/user/User.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/main/MediHub/web/doctorDashboard.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/src/java/logout.java</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/src/java/Registration.java</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/index.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/src/java/com/medihub/patient/PatientView.java</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/src/java/auth.java</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/patientDashboard.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/About.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/viewpatient.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/src/java/Patient.java</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/contactUs.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/public/css/view_patient.css</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/EmergencyServices.jsp</file>
+            <file>file:/C:/Users/hp/Desktop/New%20folder%20(2)/medihub/web/public/css/Dashboard_Patient.css</file>
         </group>
     </open-files>
 </project-private>

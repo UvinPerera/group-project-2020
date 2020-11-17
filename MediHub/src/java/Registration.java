@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
-import com.medihub.db.*;
 
 /**
  *
@@ -26,10 +25,9 @@ public class Registration extends HttpServlet {
             PrintWriter out = response.getWriter();
         try
         {
-            //getting from DbConfig class
-            DbConfig db = DbConfig.getInstance();
-            Connection con = db.getConnecton();
             
+            Class.forName("com.mysql.jdbc.Driver");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
             Statement stmt=con.createStatement();  
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");
