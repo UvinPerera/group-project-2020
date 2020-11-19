@@ -66,7 +66,7 @@
                     <button class="styled" type="button">E-Channeling</button>
                 </section>
                 <section class="Service">
-                    <button class="styled" type="button">Orders</button>
+                    <button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
                 </section>
                 <section class="Service">
                     <button class="styled" type="button">Medical Records</button>

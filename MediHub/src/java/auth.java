@@ -52,7 +52,7 @@ public class auth extends HttpServlet {
                 //String actualPassword ="kay";
                 if(!displayName.isEmpty()){
                     if(userType==0){
-                        response.sendRedirect("adminDashboard.jsp");
+                        response.sendRedirect("admin");
                         HttpSession session = request.getSession();
                         session.setAttribute("username", displayName);
                         session.setAttribute("userid", userId);
@@ -64,13 +64,13 @@ public class auth extends HttpServlet {
                         session.setAttribute("userid", userId);
                     }
                     else if(userType==2){
-                        response.sendRedirect("doctorDashboard.jsp");
+                        response.sendRedirect("doctor");
                         HttpSession session = request.getSession();
                         session.setAttribute("username",displayName);
                         session.setAttribute("userid", userId);
                     }
                     else if(userType==3){
-                        response.sendRedirect("hospitalDashboard.jsp");
+                        response.sendRedirect("hospital");
                         HttpSession session = request.getSession();
                         session.setAttribute("username",displayName);
                         session.setAttribute("userid", userId);
