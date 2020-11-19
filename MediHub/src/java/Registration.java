@@ -1,4 +1,5 @@
 
+import com.medihub.db.*;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,9 +26,10 @@ public class Registration extends HttpServlet {
             PrintWriter out = response.getWriter();
         try
         {
-            
-            Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
+            //getting from DbConfig class
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+                    
             Statement stmt=con.createStatement();  
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");
