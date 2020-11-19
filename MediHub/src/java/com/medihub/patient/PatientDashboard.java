@@ -8,6 +8,8 @@ package com.medihub.patient;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,6 +54,11 @@ public class PatientDashboard extends HttpServlet {
                 
 //                get pending appointments from patient class
                 Patient p = new Patient(patientId); //create patient object
+                
+//                List<Channelling> c =new ArrayList<Channelling>();
+//                Channelling ch = new Channelling(); 
+//                c=p.getPendingAppointments();
+//                out.print(c.size());
 
                 request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);

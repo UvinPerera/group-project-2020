@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2020 at 04:31 PM
+-- Generation Time: Nov 19, 2020 at 09:58 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -42,10 +42,10 @@ INSERT INTO `admins` (`id`, `privilege`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channeling`
+-- Table structure for table `channelling`
 --
 
-CREATE TABLE `channeling` (
+CREATE TABLE `channelling` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) DEFAULT NULL,
   `doctor_availability_id` int(11) DEFAULT NULL,
@@ -59,19 +59,19 @@ CREATE TABLE `channeling` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `channeling`
+-- Dumping data for table `channelling`
 --
 
-INSERT INTO `channeling` (`id`, `patient_id`, `doctor_availability_id`, `appointment_no`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+INSERT INTO `channelling` (`id`, `patient_id`, `doctor_availability_id`, `appointment_no`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channeling_feedbacks`
+-- Table structure for table `channelling_feedbacks`
 --
 
-CREATE TABLE `channeling_feedbacks` (
+CREATE TABLE `channelling_feedbacks` (
   `id` int(11) NOT NULL,
   `channeling_id` int(11) DEFAULT NULL,
   `doctor_feedback` varchar(2048) DEFAULT NULL,
@@ -86,12 +86,12 @@ CREATE TABLE `channeling_feedbacks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channeling_payments`
+-- Table structure for table `channelling_payments`
 --
 
-CREATE TABLE `channeling_payments` (
+CREATE TABLE `channelling_payments` (
   `id` int(11) NOT NULL,
-  `channeling_id` int(11) DEFAULT NULL,
+  `channelling_id` int(11) DEFAULT NULL,
   `payment_amount` float DEFAULT NULL,
   `payment_method` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
@@ -102,13 +102,20 @@ CREATE TABLE `channeling_payments` (
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `channelling_payments`
+--
+
+INSERT INTO `channelling_payments` (`id`, `channelling_id`, `payment_amount`, `payment_method`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 1, 1000, 1, 'Full Payment Done', 1, '2020-11-19 21:30:15', '2020-11-19 21:30:15', 4, 4);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `channeling_refunds`
+-- Table structure for table `channelling_refunds`
 --
 
-CREATE TABLE `channeling_refunds` (
+CREATE TABLE `channelling_refunds` (
   `id` int(11) NOT NULL,
   `channeling_id` int(11) DEFAULT NULL,
   `refund_amount` float DEFAULT NULL,
@@ -2088,6 +2095,7 @@ CREATE TABLE `doctor_availability` (
   `start_time` time DEFAULT NULL,
   `max_count` int(11) DEFAULT 0,
   `count` int(11) NOT NULL DEFAULT 0,
+  `payment` float DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -2099,8 +2107,8 @@ CREATE TABLE `doctor_availability` (
 -- Dumping data for table `doctor_availability`
 --
 
-INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `max_count`, `count`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 3, 1, '2021-01-01', '08:00:00', 10, 1, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
+INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 3, 1, '2021-01-01', '08:00:00', 10, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -2688,9 +2696,9 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `channeling`
+-- Indexes for table `channelling`
 --
-ALTER TABLE `channeling`
+ALTER TABLE `channelling`
   ADD PRIMARY KEY (`id`),
   ADD KEY `patient_id` (`patient_id`),
   ADD KEY `doctor_availability_id` (`doctor_availability_id`),
@@ -2698,28 +2706,28 @@ ALTER TABLE `channeling`
   ADD KEY `updated_by` (`updated_by`);
 
 --
--- Indexes for table `channeling_feedbacks`
+-- Indexes for table `channelling_feedbacks`
 --
-ALTER TABLE `channeling_feedbacks`
+ALTER TABLE `channelling_feedbacks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `channeling_id` (`channeling_id`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
 
 --
--- Indexes for table `channeling_payments`
+-- Indexes for table `channelling_payments`
 --
-ALTER TABLE `channeling_payments`
+ALTER TABLE `channelling_payments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `channeling_id` (`channeling_id`),
+  ADD KEY `channeling_id` (`channelling_id`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`),
   ADD KEY `refund_method` (`payment_method`);
 
 --
--- Indexes for table `channeling_refunds`
+-- Indexes for table `channelling_refunds`
 --
-ALTER TABLE `channeling_refunds`
+ALTER TABLE `channelling_refunds`
   ADD PRIMARY KEY (`id`),
   ADD KEY `channeling_id` (`channeling_id`),
   ADD KEY `created_by` (`created_by`),
@@ -3016,27 +3024,27 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `channeling`
+-- AUTO_INCREMENT for table `channelling`
 --
-ALTER TABLE `channeling`
+ALTER TABLE `channelling`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `channeling_feedbacks`
+-- AUTO_INCREMENT for table `channelling_feedbacks`
 --
-ALTER TABLE `channeling_feedbacks`
+ALTER TABLE `channelling_feedbacks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `channeling_payments`
+-- AUTO_INCREMENT for table `channelling_payments`
 --
-ALTER TABLE `channeling_payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `channelling_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `channeling_refunds`
+-- AUTO_INCREMENT for table `channelling_refunds`
 --
-ALTER TABLE `channeling_refunds`
+ALTER TABLE `channelling_refunds`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -3188,39 +3196,39 @@ ALTER TABLE `admins`
   ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `channeling`
+-- Constraints for table `channelling`
 --
-ALTER TABLE `channeling`
-  ADD CONSTRAINT `channeling_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_ibfk_2` FOREIGN KEY (`doctor_availability_id`) REFERENCES `doctor_availability` (`id`),
-  ADD CONSTRAINT `channeling_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+ALTER TABLE `channelling`
+  ADD CONSTRAINT `channelling_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_ibfk_2` FOREIGN KEY (`doctor_availability_id`) REFERENCES `doctor_availability` (`id`),
+  ADD CONSTRAINT `channelling_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `channeling_feedbacks`
+-- Constraints for table `channelling_feedbacks`
 --
-ALTER TABLE `channeling_feedbacks`
-  ADD CONSTRAINT `channeling_feedbacks_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
-  ADD CONSTRAINT `channeling_feedbacks_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_feedbacks_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+ALTER TABLE `channelling_feedbacks`
+  ADD CONSTRAINT `channelling_feedbacks_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channelling` (`id`),
+  ADD CONSTRAINT `channelling_feedbacks_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_feedbacks_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `channeling_payments`
+-- Constraints for table `channelling_payments`
 --
-ALTER TABLE `channeling_payments`
-  ADD CONSTRAINT `channeling_payments_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
-  ADD CONSTRAINT `channeling_payments_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_payments_ibfk_4` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`id`);
+ALTER TABLE `channelling_payments`
+  ADD CONSTRAINT `channelling_payments_ibfk_1` FOREIGN KEY (`channelling_id`) REFERENCES `channelling` (`id`),
+  ADD CONSTRAINT `channelling_payments_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_payments_ibfk_4` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`id`);
 
 --
--- Constraints for table `channeling_refunds`
+-- Constraints for table `channelling_refunds`
 --
-ALTER TABLE `channeling_refunds`
-  ADD CONSTRAINT `channeling_refunds_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
-  ADD CONSTRAINT `channeling_refunds_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_refunds_ibfk_4` FOREIGN KEY (`refund_method`) REFERENCES `payment_methods` (`id`);
+ALTER TABLE `channelling_refunds`
+  ADD CONSTRAINT `channelling_refunds_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channelling` (`id`),
+  ADD CONSTRAINT `channelling_refunds_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channelling_refunds_ibfk_4` FOREIGN KEY (`refund_method`) REFERENCES `payment_methods` (`id`);
 
 --
 -- Constraints for table `cities`
@@ -3411,7 +3419,7 @@ ALTER TABLE `pharmacy_orders`
 -- Constraints for table `prescriptions`
 --
 ALTER TABLE `prescriptions`
-  ADD CONSTRAINT `prescriptions_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
+  ADD CONSTRAINT `prescriptions_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channelling` (`id`),
   ADD CONSTRAINT `prescriptions_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `prescriptions_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
