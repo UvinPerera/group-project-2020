@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Patient extends User {
     
-    public List<Channelling> getPendingAppointments(int id){
+    public List<Channelling> getPendingAppointments(){
         
         //date and time foramtting
         Date date = Calendar.getInstance().getTime();  
@@ -27,12 +27,12 @@ public class Patient extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String q_select="select c.id, c.appointment_no, c.description, da.date, da.start_time, d.titles, d.degrees, u.first_name, h.name from channeling c ";
-        String q_join_da="join doctor_availability da on c.doctor_avalability_id=da.id ";
+        String q_select="select c.id, h.name, d.titles, u.first_name, d.degrees, c.appointment_no, da.date, da.start_time, c.description from channeling c ";
+        String q_join_da="join doctor_availability da on c.doctor_availability_id=da.id ";
         String q_join_d="join doctors d on da.doctor_id=d.id ";
         String q_join_u="join users u on d.id=u.id ";
         String q_join_h="join hospitals h on da.hospital_id=h.id ";
-        String q_where="where c.status=1 and patient_id='"+id+"' and da.date>='"+strDate+"' and da.start_time>'"+strTime+"'";
+        String q_where="where c.status=1 and patient_id="+this.id+" and da.date>='"+strDate+"' and da.start_time>'"+strTime+"'";
         String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_where;
         
         try
@@ -78,12 +78,11 @@ public class Patient extends User {
             e.printStackTrace();
             return null;        
         }
-        
-        
-        
-        
-        
       
+    }
+    
+    public Patient(int id){
+        this.id=id;
     }
     
     public void makeAppointment() {

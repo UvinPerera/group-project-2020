@@ -1,4 +1,5 @@
 
+import com.medihub.db.*;
 import java.sql.*; 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
-import com.medihub.db.*;
 
 /**
  *
@@ -29,7 +29,7 @@ public class Registration extends HttpServlet {
             //getting from DbConfig class
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
-            
+                    
             Statement stmt=con.createStatement();  
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");

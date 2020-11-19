@@ -1,6 +1,5 @@
 package com.medihub.user;
 import com.medihub.db.*;
-import javax.servlet.http.HttpSession;
 
 /**
  *
