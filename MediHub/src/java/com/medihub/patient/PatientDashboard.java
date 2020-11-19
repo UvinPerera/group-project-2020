@@ -6,14 +6,8 @@ package com.medihub.patient;
  * and open the template in the editor.
  */
 
-import com.medihub.db.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,26 +49,17 @@ public class PatientDashboard extends HttpServlet {
              PrintWriter out = response.getWriter();
             try
             {
-                //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT hospitals.name,medication_reminders.* FROM (((((`medication_reminders` INNER JOIN prescriptions ON medication_reminders.prescription_id=prescriptions.id)INNER JOIN channeling on prescriptions.channeling_id = channeling.id)INNER JOIN users ON channeling.patient_id=users.id) INNER JOIN doctor_availability ON channeling.doctor_availability_id = doctor_availability.id)INNER JOIN hospitals ON hospitals.id=doctor_availability.hospital_id) WHERE users.id="+patientId);
-                ArrayList Reminders = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 7 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Reminders.add(row);
-                }
-                
-                request.setAttribute("reminders", Reminders);
+//                get pending appointments from patient class
+                Patient p = new Patient(patientId); //create patient object
+
+                request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);
-                }catch(Exception e){
-                    out.println(e.toString());
                 }
+            catch(Exception e)
+            {
+                out.println(e.toString());
+            }
            
     }
 
