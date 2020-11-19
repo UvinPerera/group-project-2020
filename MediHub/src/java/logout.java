@@ -25,7 +25,7 @@ public class logout extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
        session.removeAttribute("username");
-       response.sendRedirect("/medihub");
+       response.sendRedirect("/MediHub");
         
     }
 
