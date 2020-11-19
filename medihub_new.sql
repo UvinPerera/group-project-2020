@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2020 at 08:56 AM
+-- Generation Time: Nov 19, 2020 at 04:31 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -93,6 +93,7 @@ CREATE TABLE `channeling_payments` (
   `id` int(11) NOT NULL,
   `channeling_id` int(11) DEFAULT NULL,
   `payment_amount` float DEFAULT NULL,
+  `payment_method` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -110,7 +111,8 @@ CREATE TABLE `channeling_payments` (
 CREATE TABLE `channeling_refunds` (
   `id` int(11) NOT NULL,
   `channeling_id` int(11) DEFAULT NULL,
-  `payment_amount` int(11) DEFAULT NULL,
+  `refund_amount` float DEFAULT NULL,
+  `refund_method` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2368,7 +2370,8 @@ CREATE TABLE `notifications` (
 CREATE TABLE `order_payments` (
   `id` int(11) NOT NULL,
   `pharmacy_order_id` int(11) DEFAULT NULL,
-  `payment_amount` int(11) DEFAULT NULL,
+  `payment_amount` float DEFAULT NULL,
+  `payment_method` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2386,7 +2389,8 @@ CREATE TABLE `order_payments` (
 CREATE TABLE `order_refunds` (
   `id` int(11) NOT NULL,
   `pharmacy_order_id` int(11) DEFAULT NULL,
-  `payment_amount` int(11) DEFAULT NULL,
+  `refund_amount` float DEFAULT NULL,
+  `refund_method` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -2394,6 +2398,33 @@ CREATE TABLE `order_refunds` (
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_methods`
+--
+
+CREATE TABLE `payment_methods` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `description` varchar(64) DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_methods`
+--
+
+INSERT INTO `payment_methods` (`id`, `name`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 'Cash', NULL, 1, '2020-11-19 15:01:52', '2020-11-19 15:01:52', 1, 1),
+(2, 'Visa', NULL, 1, '2020-11-19 15:01:52', '2020-11-19 15:01:52', 1, 1),
+(3, 'Master Card', NULL, 1, '2020-11-19 15:03:01', '2020-11-19 15:03:01', 1, 1),
+(4, 'Pay Here', NULL, 1, '2020-11-19 15:03:01', '2020-11-19 15:03:01', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2552,6 +2583,26 @@ INSERT INTO `provinces` (`id`, `name_en`, `name_si`, `name_ta`, `description`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `records`
+--
+
+CREATE TABLE `records` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  `path` varchar(256) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `record_categories`
 --
 
@@ -2662,7 +2713,8 @@ ALTER TABLE `channeling_payments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `channeling_id` (`channeling_id`),
   ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
+  ADD KEY `updated_by` (`updated_by`),
+  ADD KEY `refund_method` (`payment_method`);
 
 --
 -- Indexes for table `channeling_refunds`
@@ -2671,7 +2723,8 @@ ALTER TABLE `channeling_refunds`
   ADD PRIMARY KEY (`id`),
   ADD KEY `channeling_id` (`channeling_id`),
   ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
+  ADD KEY `updated_by` (`updated_by`),
+  ADD KEY `refund_method` (`refund_method`);
 
 --
 -- Indexes for table `cities`
@@ -2834,7 +2887,8 @@ ALTER TABLE `order_payments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pharmacy_order_id` (`pharmacy_order_id`),
   ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
+  ADD KEY `updated_by` (`updated_by`),
+  ADD KEY `payment_method` (`payment_method`);
 
 --
 -- Indexes for table `order_refunds`
@@ -2842,6 +2896,15 @@ ALTER TABLE `order_payments`
 ALTER TABLE `order_refunds`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pharmacy_order_id` (`pharmacy_order_id`),
+  ADD KEY `created_by` (`created_by`),
+  ADD KEY `updated_by` (`updated_by`),
+  ADD KEY `refund_method` (`refund_method`);
+
+--
+-- Indexes for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
 
@@ -2904,6 +2967,16 @@ ALTER TABLE `prescription_items`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `created_by` (`created_by`),
+  ADD KEY `updated_by` (`updated_by`);
+
+--
+-- Indexes for table `records`
+--
+ALTER TABLE `records`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `patient_id` (`patient_id`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
 
@@ -3051,6 +3124,12 @@ ALTER TABLE `order_refunds`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `pharmacies`
 --
 ALTER TABLE `pharmacies`
@@ -3079,6 +3158,12 @@ ALTER TABLE `prescription_items`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `records`
+--
+ALTER TABLE `records`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `record_categories`
@@ -3125,7 +3210,8 @@ ALTER TABLE `channeling_feedbacks`
 ALTER TABLE `channeling_payments`
   ADD CONSTRAINT `channeling_payments_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
   ADD CONSTRAINT `channeling_payments_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `channeling_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channeling_payments_ibfk_4` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`id`);
 
 --
 -- Constraints for table `channeling_refunds`
@@ -3133,7 +3219,8 @@ ALTER TABLE `channeling_payments`
 ALTER TABLE `channeling_refunds`
   ADD CONSTRAINT `channeling_refunds_ibfk_1` FOREIGN KEY (`channeling_id`) REFERENCES `channeling` (`id`),
   ADD CONSTRAINT `channeling_refunds_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `channeling_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `channeling_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `channeling_refunds_ibfk_4` FOREIGN KEY (`refund_method`) REFERENCES `payment_methods` (`id`);
 
 --
 -- Constraints for table `cities`
@@ -3273,7 +3360,8 @@ ALTER TABLE `notifications`
 ALTER TABLE `order_payments`
   ADD CONSTRAINT `order_payments_ibfk_1` FOREIGN KEY (`pharmacy_order_id`) REFERENCES `pharmacy_orders` (`id`),
   ADD CONSTRAINT `order_payments_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `order_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `order_payments_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `order_payments_ibfk_4` FOREIGN KEY (`payment_method`) REFERENCES `payment_methods` (`id`);
 
 --
 -- Constraints for table `order_refunds`
@@ -3281,7 +3369,15 @@ ALTER TABLE `order_payments`
 ALTER TABLE `order_refunds`
   ADD CONSTRAINT `order_refunds_ibfk_1` FOREIGN KEY (`pharmacy_order_id`) REFERENCES `pharmacy_orders` (`id`),
   ADD CONSTRAINT `order_refunds_ibfk_2` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `order_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `order_refunds_ibfk_3` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `order_refunds_ibfk_4` FOREIGN KEY (`refund_method`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `payment_methods`
+--
+ALTER TABLE `payment_methods`
+  ADD CONSTRAINT `payment_methods_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `payment_methods_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `pharmacies`
@@ -3334,6 +3430,15 @@ ALTER TABLE `prescription_items`
 ALTER TABLE `provinces`
   ADD CONSTRAINT `provinces_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `provinces_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `records`
+--
+ALTER TABLE `records`
+  ADD CONSTRAINT `records_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `record_categories` (`id`),
+  ADD CONSTRAINT `records_ibfk_2` FOREIGN KEY (`patient_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `records_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `records_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `record_categories`
