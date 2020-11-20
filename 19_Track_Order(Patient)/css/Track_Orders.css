@@ -169,6 +169,19 @@ align-items: center;
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
               inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
+.new{
+  display: inline-block;
+  float: right;
+}
+.create {
+  background-color: #ffffff;
+  overflow: hidden;
+  padding-left: 60px;
+}
+.add-text{
+  font-size: 15px;
+  padding-right: 20px;
+}
 footer{
   background-color: #2b3030;
   position: absolute;
