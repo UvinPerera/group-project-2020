@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(pat).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
 </head>
 <body>
   <div class="navbar" id="navbar">
@@ -22,6 +23,43 @@
         <li id="logo"><img src="logo.png" width="15.5%"></li>
       </ul>
   </div>
+  <div id="viewOrder" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>View Order</h2>
+      </div>
+      
+      <div class="modal-body">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="tableheading">Order ID</th>
+              <th class="tableheading">Pharmacy ID</th>
+              <th class="tableheading">Pharmacy Name</th>
+              <th class="tableheading">Date</th>
+              <th class="tableheading">Status</th>
+              <th class="tableheading">Description</th>
+              
+            </tr>
+            <tr>
+              <td class="Row">001</td>
+              <td class="Row">101</td>
+              <td class="Row">Apolo Pharmacy</td>
+              <td class="Row">15/10/2020</td>
+              <td class="Row">Oredred</td>
+              <td class="Row">This is some random description of something boring</td>
+            
+              </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+
+</div>
   <br><br>
   <div class="Dropdown">
     <select name='Dropdown'>
@@ -67,9 +105,9 @@
         <td class="Row">Oredred</td>
         <td>
           <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+              <li><button class="btn" id="vieworder"><i class="fa fa-eye"></i></button></li>
+              <li><button class="btn" id="editorder"><i class="fa fa-edit"></i></button></li>
+              <li><button class="btn" id="deleteOrder" onclick="confirm('Do you want to delete this order?')"><i class="fa fa-trash"></i></button></li>
           </ul>
         </td>
       </tr>
@@ -119,6 +157,8 @@
     </table>
  </div>
  <br>
+
+ 
 </body>
 <br><br>
 <center>
@@ -149,4 +189,23 @@
   <br><br>
 </footer>
 </center>
+
+<script>
+var modal = document.getElementById("viewOrder");
+var btn = document.getElementById("vieworder");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </html>

@@ -119,7 +119,7 @@ width: 100%;
 border-collapse:collapse;
 min-width: 300px;
 border-radius: 5px 5px 5px 5px;
-overflow: hidden;
+/*overflow: hidden;*/
 
 }
 .tableheading{
