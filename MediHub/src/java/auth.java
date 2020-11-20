@@ -40,7 +40,7 @@ public class auth extends HttpServlet {
                     Statement stmt=con.createStatement(); 
                     String email=request.getParameter("email");
                     String password=request.getParameter("userpassword");
-                    ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"'"); 
+                    ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"' and status=1"); 
                     String displayName="";
                     int userType=1;
                     int userId=1;

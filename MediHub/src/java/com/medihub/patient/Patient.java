@@ -27,14 +27,16 @@ public class Patient extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String q_select="select c.id, h.name, d.titles, u.first_name, d.degrees, c.appointment_no, da.date, da.start_time, c.description from channeling c ";
+        String q_select="select c.id, h.name, d.titles, u.first_name, d.degrees, c.appointment_no, da.date, da.start_time, c.description, da.payment, pm.name as payment_method, cp.payment_method as paid_amount, cp.description as payment_description, cp.status as payment_status from channelling c ";
         String q_join_da="join doctor_availability da on c.doctor_availability_id=da.id ";
         String q_join_d="join doctors d on da.doctor_id=d.id ";
         String q_join_u="join users u on d.id=u.id ";
         String q_join_h="join hospitals h on da.hospital_id=h.id ";
-        String q_where="where c.status=1 and patient_id="+this.id+" and da.date>='"+strDate+"' and da.start_time>'"+strTime+"'";
-        String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_where;
-        
+        String q_join_cp="join channelling_payments cp on cp.channelling_id=c.id ";
+        String q_join_pm="join payment_methods pm on cp.payment_method=pm.id ";
+        String q_where="where c.status=1 and patient_id="+this.id+" and ((da.date>='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>='"+strDate+"')";
+        String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_join_cp + q_join_pm + q_where;
+  
         try
         {
             DbConfig db = DbConfig.getInstance();
@@ -57,7 +59,7 @@ public class Patient extends User {
 //            Channelling[] ch = new Channelling[numRows];
             List<Channelling> c =new ArrayList<Channelling>();
             Channelling ch = new Channelling(); 
-            
+                        
             while(rs.next()) { 
                 ch.id = rs.getInt("id"); 
                 ch.appointmentNo = rs.getInt("appointment_no"); 
@@ -66,6 +68,11 @@ public class Patient extends User {
                 ch.date = rs.getString("date"); 
                 ch.time = rs.getString("start_time"); 
                 ch.doctor = rs.getString("titles")+". "+rs.getString("first_name")+" "+rs.getString("degrees"); 
+                ch.payment_method = rs.getString("payment_method"); 
+                ch.payment_amount = rs.getFloat("payment"); 
+                ch.paid_amount = rs.getFloat("paid_amount"); 
+                ch.payment_description = rs.getString("payment_description"); 
+                ch.payment_status = rs.getInt("payment_status"); 
                 
                 c.add(ch);
             }

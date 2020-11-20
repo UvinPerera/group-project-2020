@@ -23,6 +23,11 @@ public class Channelling {
     public String time;
     public String doctor;
     public String hospital;
+    public String payment_method;
+    public float payment_amount;
+    public float paid_amount;
+    public int payment_status;
+    public String payment_description;
 
 //    flow by doctor
 //         send DoctorSpecialisation.getAllDoctorSpecialisation(); to front
