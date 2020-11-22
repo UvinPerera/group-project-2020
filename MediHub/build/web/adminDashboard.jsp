@@ -51,7 +51,7 @@
         </section>
 
         <section class="Service">
-            <button class="styled" type="button">Manage Pateints</button>
+            <button class="styled" type="button" onclick="window.location.href='managePatients.jsp'">Manage Pateints</button>
         </section>
         <section class="Service">
             <button class="styled" type="button">Manage Doctors</button>

@@ -24,7 +24,7 @@
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/medihub">Home</a></li>
+      <li><a href="/MediHub">Home</a></li>
       <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
   </div>
@@ -149,11 +149,11 @@
                             date[<%= table.indexOf(row) %>]                 ="<%= row.date %>";         
                             time[<%= table.indexOf(row) %>]                 ="<%= row.start_time %>";         
                             description[<%= table.indexOf(row) %>]          ="<%= row.description %>"; 
-                            paymentMethod[<%= table.indexOf(row) %>]       ="<%= row.payment_method %>";    
-                            paymentAmount[<%= table.indexOf(row) %>]       =<%= row.payment_amount %>;      
-                            paidAmount[<%= table.indexOf(row) %>]          =<%= row.paid_amount %>;
-                            paymentDescription[<%= table.indexOf(row) %>]  ="<%= row.payment_description %>";         
-                            paymentStatus[<%= table.indexOf(row) %>]       =<%= row.payment_status %>;        
+                            paymentMethod[<%= table.indexOf(row) %>]        ="<%= row.payment_method %>";    
+                            paymentAmount[<%= table.indexOf(row) %>]        =<%= row.payment_amount %>;      
+                            paidAmount[<%= table.indexOf(row) %>]           =<%= row.paid_amount %>;
+                            paymentDescription[<%= table.indexOf(row) %>]   ="<%= row.payment_description %>";         
+                            paymentStatus[<%= table.indexOf(row) %>]        =<%= row.payment_status %>;        
                     </script>
                         
                         
@@ -167,9 +167,30 @@
             <%
                 }
                 else
-                {
-                    out.write("no datas");
-                }
+                {%>
+                    <div class="tablecont">
+                    <table class="table-hub table-hub-appoint">
+                        <thead>
+                            <tr>
+                                <th class="table-hub-owner">Channelling ID</th>
+                                <th class="table-hub-owner">Hospital</th>
+                                <th class="table-hub-owner">Doctor</th>
+                                <th class="table-hub-owner">Appointment No</th>
+                                <th class="table-hub-owner">Date</th>
+                                <th class="table-hub-owner">Time</th>
+                                <th class="table-hub-owner">Description</th>
+                                <th class="table-hub-owner">Action</th>
+                                <!--<th class="table-hub-time-head">Time</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No Channeling data Available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <%}
             %>
             
             <!--pending appointments ends-->
