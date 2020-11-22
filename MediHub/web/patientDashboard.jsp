@@ -131,7 +131,7 @@
                             <td class="table-hub-owner"><%= row.doctor %>       </td>
                             <td class="table-hub-owner"><%= row.appointmentNo %></td>
                             <td class="table-hub-owner"><%= row.date %>         </td>
-                            <td class="table-hub-owner"><%= row.time %>         </td>
+                            <td class="table-hub-owner"><%= row.start_time %>         </td>
                             <td class="table-hub-owner"><%= row.description %>  </td>
                             <td>
                                 <ul class="actions">
@@ -147,7 +147,7 @@
                             doctor[<%= table.indexOf(row) %>]               ="<%= row.doctor %>";    
                             appointmentNo[<%= table.indexOf(row) %>]        =<%= row.appointmentNo %>;
                             date[<%= table.indexOf(row) %>]                 ="<%= row.date %>";         
-                            time[<%= table.indexOf(row) %>]                 ="<%= row.time %>";         
+                            time[<%= table.indexOf(row) %>]                 ="<%= row.start_time %>";         
                             description[<%= table.indexOf(row) %>]          ="<%= row.description %>"; 
                             paymentMethod[<%= table.indexOf(row) %>]       ="<%= row.payment_method %>";    
                             paymentAmount[<%= table.indexOf(row) %>]       =<%= row.payment_amount %>;      

@@ -20,7 +20,8 @@ public class Channelling {
     public int updatedBy;
     
     public String date;
-    public String time;
+    public String start_time;
+    public String end_time;
     public String doctor;
     public String hospital;
     public String payment_method;
