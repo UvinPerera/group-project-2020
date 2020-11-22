@@ -7,7 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/Manage_Patients.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Patients.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
 </head>
 <body>
   <div class="navbar">
@@ -40,6 +41,50 @@
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
   </div>
   <br>
+  
+      
+  <div id="viewPatient" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>View Order</h2>
+      </div>
+      
+      <div class="modal-body">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="tableheading">Patient ID</th>
+              <th class="tableheading">Patient</th>
+              <th class="tableheading">Phone Number</th>
+              <th class="tableheading">DOB</th>
+              
+              <th class="tableheading">NIC</th>
+              <th class="tableheading">Status</th>
+            
+              <th class="tableheading">Description</th>
+              
+            </tr>
+            <tr>
+              <td class="Row">001</td>
+              <td class="Row">John</td>
+              <td class="Row">0771231231</td>
+              <td class="Row">15/10/2020</td>
+              <td class="Row">985678908V</td>
+              <td class="Row">Active</td>
+              <td class="Row">This is some random description of something boring</td>
+            
+              </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+
+</div>
+    </div>
   <div class="container-table">
     <table class="table">
       <thead>
@@ -59,8 +104,8 @@
         <td class="Row">Active</td>
         <td>
           <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+              <li><button class="btn" id="viewpatient"><i class="fa fa-eye"></i></button></li>
+              <li><button class="btn" onclick="confirm('Do you want to remove this patient')"><i class="fa fa-trash"></i></button></li>
           </ul>
         </td>
       </tr>
@@ -134,4 +179,22 @@
   <br><br>
 </footer>
 </center>
+<script>
+var modal = document.getElementById("viewPatient");
+var btn = document.getElementById("viewpatient");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </html>

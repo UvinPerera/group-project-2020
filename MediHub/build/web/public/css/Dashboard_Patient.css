@@ -224,6 +224,7 @@
        min-width: 400px;
        border-radius: 5px 5px 0 0;
        overflow: hidden;
+       
   }
   .table-hub thead tr{
        background-color: #0087a1;
@@ -393,6 +394,10 @@ th, td {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.tablecont{
+  padding: 30px 30px 30px 30px;
 }
 
 /*modal css end*/
