@@ -79,6 +79,7 @@
             <%
                 if(request.getAttribute("appointments")!=null){
                     List<Channelling> table = (ArrayList<Channelling>)request.getAttribute("appointments");
+                    if(table.size()>0){
             %>
                     <!--js array-->
                     <script>
@@ -114,7 +115,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+<!--                        <tr>
                             <td>000</td>
                             <td>demo hos</td>
                             <td>demo doc</td>
@@ -123,7 +124,7 @@
                             <td>00:00</td>
                             <td>demo description</td>
                             <td>demo action</td>
-                        </tr>
+                        </tr>-->
                         <% for(Channelling row : table) { %>
                         <tr>
                             <td class="table-hub-owner"><%= row.getId() %>      </td>
@@ -167,20 +168,20 @@
             <%
                 }
                 else
-                {%>
+                {%> 
                     <div class="tablecont">
                     <table class="table-hub table-hub-appoint">
                         <thead>
                             <tr>
-                                <th class="table-hub-owner">Channelling ID</th>
+<!--                                <th class="table-hub-owner">Channelling ID</th>
                                 <th class="table-hub-owner">Hospital</th>
                                 <th class="table-hub-owner">Doctor</th>
                                 <th class="table-hub-owner">Appointment No</th>
                                 <th class="table-hub-owner">Date</th>
                                 <th class="table-hub-owner">Time</th>
                                 <th class="table-hub-owner">Description</th>
-                                <th class="table-hub-owner">Action</th>
-                                <!--<th class="table-hub-time-head">Time</th>-->
+                                <th class="table-hub-owner">Action</th>-->
+                                <th class="table-hub-time-head">Pending Appointments</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -190,7 +191,7 @@
                         </tbody>
                     </table>
                 </div>
-                <%}
+                <%}}
             %>
             
             <!--pending appointments ends-->
