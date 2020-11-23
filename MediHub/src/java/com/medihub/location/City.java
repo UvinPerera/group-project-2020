@@ -35,7 +35,7 @@ public class City {
     
     public List<City> getAllCitiesByDistrict(int cDistrict) {
         
-        String query = "select id, name_en from districts where status=1 and district_id="+cDistrict;
+        String query = "select id, name_en from cities where status=1 and district_id="+cDistrict;
         
         try
         {
@@ -46,9 +46,9 @@ public class City {
             ResultSet rs = pst.executeQuery();
             
             List<City> c =new ArrayList<City>();
-            City ci = new City(); 
                         
             while(rs.next()) { 
+                City ci = new City(); 
                 ci.id = rs.getInt("id"); 
                 ci.nameEn = rs.getString("name_en");
                 
@@ -68,7 +68,7 @@ public class City {
     
     public String getAllCitiesByDistrictAsString(int cDistrict) {
         
-        String query = "select id, name_en from districts where status=1 and district_id="+cDistrict;
+        String query = "select id, name_en from cities where status=1 and district_id="+cDistrict;
         
         try
         {
@@ -95,7 +95,7 @@ public class City {
         catch(Exception e)
         {
             e.printStackTrace();
-            return null;        
+            return e.toString();        
         }
         
     }

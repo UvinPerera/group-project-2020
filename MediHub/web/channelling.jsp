@@ -1,6 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.location.*"%>
+<%@page import="com.medihub.doctor.*"%>
+<%@page import="com.medihub.hospital.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -18,7 +21,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="./public/css/channelling.css" media="screen" >
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      </head>
+    </head>
     <body>
         <div class="navbar" id="navbar">
             <ul>
@@ -31,24 +34,190 @@
             </ul>
         </div>
         
-        <div class="Dropdown">
-            <select name='Dropdown'>
-              <option value='Action' selected><a href="">All</a></option>
-              <option value='Action'><a href="#">Active</a></option>
-              <option value='Action'><a href="#">Inactive</a></option>
-              <option value='Action'><a href="#">Blacklisted</a></option>
-            </select>
-            <br>
-            <select name='Dropdown' class="filter_dropdown">
-               <option value='Action' selected><a href="">All</a></option>
-               <option value='Action'><a href="#">ID</a></option>
-               <option value='Action'><a href="#">Patient</a></option>
-               <option value=99><a href="#">Phone Number</a></option>
-               <option value='Action'><a href="#">Status</a></option>
-            </select>
-            <input type="text" class="filter_text" placeholder="Filter">
-            <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
-          </div>
+        <!--<form class="" action="registration" method="post" id="regform">-->
+            
+            <div class="Dropdown">
+                <select name='district' id="district">
+                  <option value='' selected>Select District</option>
+                        <%
+                            if(request.getAttribute("districts")!=null){
+                                List<District> table = (ArrayList<District>)request.getAttribute("districts");
+                                if(table.size()>0){
+                                    for(District row : table) { %>
+                                        <option value='<%= row.id %>'><%= row.nameEn %></option>
+                        <%
+                                }}}
+                        %>
+                </select>
+                <br>
+                <select name='city' id="city" class="filter_dropdown">
+                    <option value='' selected>Select City</option>
+                   
+                </select>
+                
+                <select name='hospital' id="hospital" class="filter_dropdown">
+                    <option value='' selected>Select Hospital</option>
+                   
+                </select>
+                
+                <select name='doctorSpecialisation' id="doctorSpecialisation" class="filter_dropdown">
+                    <option value='' selected>Select Specialisation</option>
+                   
+                </select>
+                
+                <input type="date" name="date" id="date" class="form-control"/>
+                
+            </div>
         
+            
+            
+        <!--</form>-->
+        
+        
+<!--     ##################
+            table starts
+         ##################-->
+            
+        <div class="container-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="tableheading">Doctor</th>
+                        <th class="tableheading" colspan="4">Time (Payment)</th>
+                    </tr>
+                </thead>
+                <tbody id="doctorAvailability">
+                    <tr>
+                        <td class="Row" colspan="5">Select Filters</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
+
+<script>
+    
+    //date selection limiting
+    function validDate(){
+        var today = new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        var nextWeekDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        document.getElementsByName("date")[0].setAttribute('min', today);
+        document.getElementsByName("date")[0].setAttribute('max', nextWeekDate);
+    }
+    
+    $('#date').click(function(){
+        validDate();
+    });
+    
+//    onchange district
+    $('#district').change(function(){
+        var districtId=$(this).find(':selected').val();
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        
+        $.ajax({
+            url: "channelling",
+            type: "get", //send it through get method
+            data: { 
+              stage: "district", 
+              district: districtId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#city').html("<option>Select City</option>"+response);
+            },
+            error: function(xhr) {
+                alert("CityByDistrict Error");
+            }
+          });
+
+    });
+    
+//    onchange city
+    $('#city').change(function(){
+        var cityId=$(this).find(':selected').val();
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        
+        $.ajax({
+            url: "channelling",
+            type: "get", //send it through get method
+            data: { 
+              stage: "city", 
+              city: cityId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#hospital').html("<option>Select Hospital</option>"+response);
+            },
+            error: function(xhr) {
+                alert("HospitalByCity Error");
+            }
+          });
+
+    });
+    
+//    onchange hospital
+    $('#hospital').change(function(){
+        var hospitalId=$(this).find(':selected').val();
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        
+        $.ajax({
+            url: "channelling",
+            type: "get", //send it through get method
+            data: { 
+              stage: "hospital", 
+              hospital: hospitalId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#doctorSpecialisation').html("<option>Select Specialisation</option>"+response);
+            },
+            error: function(xhr) {
+                alert("SpecialisationByHospital Error");
+            }
+          });
+
+    });
+    
+//    onchange date
+    $('#date').change(function(){
+        var hospitalId=$("#hospital").find(':selected').val();
+        var doctorSpecialisationId=$("#doctorSpecialisation").find(':selected').val();
+        var date=$(this).val();
+        
+        $.ajax({
+            url: "channelling",
+            type: "get", //send it through get method
+            data: { 
+              stage: "hospital", 
+              hospital: hospitalId,
+              doctorSpecialisation: doctorSpecialisationId,
+              date: date
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+                if(response=="")
+                {
+                    $('#doctorAvailability').html(response);
+                }
+                else
+                {
+                    $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">No Available Doctors</td></tr>");
+                }
+              
+            },
+            error: function(xhr) {
+                alert("DoctorAvailability Error");
+            }
+          });
+
+    });
+    
+
+    
+</script>

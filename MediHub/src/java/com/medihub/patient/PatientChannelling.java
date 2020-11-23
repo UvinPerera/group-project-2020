@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "PatientChannelling", urlPatterns = {"/PatientChannelling"})
+@WebServlet(name = "PatientChannelling", urlPatterns = {"/channelling"})
 public class PatientChannelling extends HttpServlet {
 
     /**
@@ -54,72 +54,114 @@ public class PatientChannelling extends HttpServlet {
                 HttpSession session = request.getSession();
                 int patientId =Integer.parseInt(session.getAttribute("userid").toString());
                 PrintWriter out = response.getWriter();
-                response.setContentType("application/json");
-                 
-                try
-                {
-                    //getting city data
-                    if(request.getParameter("stage")=="district")
+//                response.setContentType("application/json");
+
+                    String stage= request.getParameter("stage");
+                
+                    if(stage==null)
                     {
-                        int districtId=Integer.parseInt(request.getParameter("district"));
-                        City c = new City();
-                        String returnData=c.getAllCitiesByDistrictAsString(districtId);
-//                        request.setAttribute("data", returnData); //directly get cities
-                        response.setContentType("text/html;charset=UTF-8");
-                        response.getWriter().write(returnData);
+                        try
+                        {
+                            District d = new District();
+                            List<District> returnData =new ArrayList<District>();
+                            returnData=d.getAllDistricts();
+                            request.setAttribute("districts", returnData); //directly get districts
+                            request.getRequestDispatcher("channelling.jsp").forward(request, response);
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
+                    }
+                    
+                    //getting city data
+                    else if(request.getParameter("district")!=null)
+                    {
+                        try
+                        {
+                            int districtId=Integer.parseInt(request.getParameter("district"));
+                            City c = new City();
+                            String returnData=c.getAllCitiesByDistrictAsString(districtId);
+                            response.setContentType("text/html;charset=UTF-8");
+                            out.print(returnData);
+                            
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
                     }
                     
                     //getting hospital data
-                    else if(request.getParameter("stage")=="city")
+                    else if(request.getParameter("city")!=null)
                     {
-                        int cityId=Integer.parseInt(request.getParameter("city"));
-                        Hospital h = new Hospital();
-                        String returnData=h.getAllHospitalsByCityAsString(cityId);
-//                        request.setAttribute("data", returnData); //directly get cities
-                        response.setContentType("text/html;charset=UTF-8");
-                        response.getWriter().write(returnData);
+                        try
+                        {
+                            int cityId=Integer.parseInt(request.getParameter("city"));
+                            Hospital h = new Hospital();
+                            String returnData=h.getAllHospitalsByCityAsString(cityId);
+                            response.setContentType("text/html;charset=UTF-8");
+                            out.write(returnData);
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
                     }
                     
                     //getting speciality data
-                    else if(request.getParameter("stage")=="hospital")
+                    else if(request.getParameter("hospital")!=null && request.getParameter("doctorSpecialisation")==null && request.getParameter("date")==null)
                     {
-                        int hospitalId=Integer.parseInt(request.getParameter("hospital"));
-                        DoctorSpecialisation ds = new DoctorSpecialisation();
-                        String returnData=ds.getAllSpecialisationsByHospitalAsString(hospitalId);
-//                        request.setAttribute("data", returnData); //directly get cities
-                        response.setContentType("text/html;charset=UTF-8");
-                        response.getWriter().write(returnData);
+                        try
+                        {
+                            int hospitalId=Integer.parseInt(request.getParameter("hospital"));
+                            DoctorSpecialisation ds = new DoctorSpecialisation();
+                            String returnData=ds.getAllSpecialisationsByHospitalAsString(hospitalId);
+                            response.setContentType("text/html;charset=UTF-8");
+                            out.write(returnData);
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
                     }
                     
                     //getting doctor data
-                    else if(request.getParameter("stage")=="special")
+                    else if(request.getParameter("hospital")!=null && request.getParameter("doctorSpecialisation")!=null && request.getParameter("date")!=null)
                     {
-                        int hospitalId=Integer.parseInt(request.getParameter("hospital"));
-                        int doctorSpecialisationId=Integer.parseInt(request.getParameter("doctorSpecialisation"));
-                        String date=request.getParameter("date");
-                        DoctorAvailability da = new DoctorAvailability();
-                        String returnData=da.getAllDoctorAvailabilitiesByHospital(hospitalId,doctorSpecialisationId,date);
-//                        request.setAttribute("data", returnData); //directly get cities
-                        response.setContentType("text/html;charset=UTF-8");
-                        response.getWriter().write(returnData);
+                        try
+                        {
+                            int hospitalId=Integer.parseInt(request.getParameter("hospital"));
+                            int doctorSpecialisationId=Integer.parseInt(request.getParameter("doctorSpecialisation"));
+                            String date=request.getParameter("date");
+                            DoctorAvailability da = new DoctorAvailability();
+                            String returnData=da.getAllDoctorAvailabilitiesByHospital(hospitalId,doctorSpecialisationId,date);
+                            response.setContentType("text/html;charset=UTF-8");
+                            out.write(returnData);
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
                     }
                     
                     //returning district data by default
-                    else
-                    {
-                        District d = new District();
-                        List<District> returnData =new ArrayList<District>();
-                        returnData=d.getAllDistricts();
-                        request.setAttribute("district", returnData); //directly get districts
-                        request.getRequestDispatcher("channelling.jsp").forward(request, response);
-                    }
+//                    else 
+//                    {
+//                        try
+//                        {
+//                            District d = new District();
+//                            List<District> returnData =new ArrayList<District>();
+//                            returnData=d.getAllDistricts();
+//                            request.setAttribute("districts", returnData); //directly get districts
+//                            request.getRequestDispatcher("channelling.jsp").forward(request, response);
+//                        }
+//                        catch(Exception e)
+//                        {
+//                            out.println(e.toString());
+//                        }
+//                    }
 
-                }
-                
-                catch(Exception e)
-                {
-                    out.println(e.toString());
-                }
     }
 
     

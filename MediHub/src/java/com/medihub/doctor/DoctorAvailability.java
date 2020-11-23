@@ -9,6 +9,10 @@ import com.medihub.db.DbConfig;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -32,13 +36,19 @@ public class DoctorAvailability {
     
     
     public String getAllDoctorAvailabilitiesByHospital(int cHospital, int cSpecialisation, String cDate) {
+        //date and time foramtting
+        Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");  
+        String strDate = dateFormat.format(date);
+        String strTime = timeFormat.format(date);
         
-        String q_select = "select da.id, da.doctor_id, d.titles, u.first_name, u.last_name, d.degress, da.start_time, da.payment from doctor_availability ";
+        String q_select = "select da.id, da.doctor_id, d.titles, u.first_name, u.last_name, d.degrees, da.start_time, da.payment from doctor_availability da ";
         String q_join_h  = "join hospitals h on h.id=da.hospital_id ";
         String q_join_d  = "join doctors d on d.id=da.doctor_id ";
         String q_join_u  = "join users u on d.id=u.id ";
-        String q_where  = "where da.status=1 and h.id="+cHospital+" and da.date='"+cDate+"' and (d.specialisation_1='"+cSpecialisation+"' or d.specialisation_2='"+cSpecialisation+"' and da.count<da.max_count)";
-        String q_order  = "order by da.doctor.id";
+        String q_where  = "where da.status=1 and h.id="+cHospital+" and da.date='"+cDate+"' and (d.specialisation_1='"+cSpecialisation+"' or d.specialisation_2='"+cSpecialisation+"' and da.count<da.max_count) and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"')";
+        String q_order  = "order by da.doctor_id";
         String query = q_select + q_join_h + q_join_d + q_join_u + q_where + q_order;
         
         try
@@ -62,15 +72,15 @@ public class DoctorAvailability {
                 
                 if(doctorId!=old && old==0)
                 {
-                    da="<tr row_id=\""+doctorId+"\"><td value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"</td>";
+                    da="<tr row_id=\""+doctorId+"\"><td value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"<br>Rs "+payment+"</td>";
                 }
                 else if(doctorId!=old && old!=0)
                 {
-                    da="</tr><tr row_id=\""+doctorId+"\"><td value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"<br>"+payment+"</td>";
+                    da="</tr><tr row_id=\""+doctorId+"\"><td value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"<br>Rs "+payment+"</td>";
                 }
                 else
                 {
-                    da="<td value=\""+id+"\">"+startTime+"<br>"+payment+"</td>";
+                    da="<td value=\""+id+"\">"+startTime+"<br>Rs "+payment+"</td>";
                 }
                 
                 old=doctorId; //assigning current doc id to old

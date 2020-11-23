@@ -58,9 +58,10 @@ public class Patient extends User {
             //create channelling object array
 //            Channelling[] ch = new Channelling[numRows];
             List<Channelling> c =new ArrayList<Channelling>();
-            Channelling ch = new Channelling(); 
+            
                         
             while(rs.next()) { 
+                Channelling ch = new Channelling(); 
                 ch.id = rs.getInt("id"); 
                 ch.appointmentNo = rs.getInt("appointment_no"); 
                 ch.description = rs.getString("description"); 

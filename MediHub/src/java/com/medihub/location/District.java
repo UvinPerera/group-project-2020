@@ -42,9 +42,9 @@ public class District {
             ResultSet rs = pst.executeQuery();
             
             List<District> d =new ArrayList<District>();
-            District di = new District(); 
                         
             while(rs.next()) { 
+                District di = new District(); 
                 di.id = rs.getInt("id"); 
                 di.nameEn = rs.getString("name_en");
                 

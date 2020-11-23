@@ -58,9 +58,9 @@ public class Hospital {
             ResultSet rs = pst.executeQuery();
             
             List<Hospital> h =new ArrayList<Hospital>();
-            Hospital ho = new Hospital(); 
                         
             while(rs.next()) { 
+                Hospital ho = new Hospital(); 
                 ho.id = rs.getInt("id"); 
                 ho.displayName = rs.getString("display_name");
                 
@@ -80,7 +80,7 @@ public class Hospital {
     
     public String getAllHospitalsByCityAsString(int cCity) {
         
-        String query = "select id, display_name from hospitals where status=1 and district_id="+cCity;
+        String query = "select id, display_name from hospitals where status=1 and city="+cCity;
         
         try
         {

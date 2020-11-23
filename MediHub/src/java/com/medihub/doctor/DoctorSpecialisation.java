@@ -27,13 +27,13 @@ public class DoctorSpecialisation {
     
     public String getAllSpecialisationsByHospitalAsString(int cHospital) {
         
-        String q_select = "select ds.id, ds.name from hospitals ";
-        String q_join_dh  = "join doctor_hospital dh on h.id=dh.id ";
-        String q_join_d  = "join doctors d on d.id=dh.id ";
+        String q_select = "select ds.id, ds.name from hospitals h ";
+        String q_join_dh  = "join doctor_hospital dh on h.id=dh.hospital_id ";
+        String q_join_d  = "join doctors d on d.id=dh.doctor_id ";
         String q_join_u  = "join users u on d.id=u.id ";
         String q_join_ds  = "join doctor_specialisation ds on d.specialisation_1=ds.id or d.specialisation_2=ds.id ";
         String q_where  = "where u.status=1 and h.id="+cHospital;
-        String query = q_select + q_join_dh + q_join_d + q_join_ds + q_where;
+        String query = q_select + q_join_dh + q_join_d + q_join_u + q_join_ds + q_where;
         
         try
         {
