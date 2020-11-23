@@ -61,7 +61,7 @@
         <div class="tiles">
             <div class="tileset">
                 <section class="Service">
-                    <button class="styled" type="button">E-Channeling</button>
+                    <button class="styled" type="button" onclick="window.location.href='channelling';">E-Channeling</button>
                 </section>
                 <section class="Service">
                     <button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>

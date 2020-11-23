@@ -110,7 +110,7 @@ public class PatientChannelling extends HttpServlet {
                         District d = new District();
                         List<District> returnData =new ArrayList<District>();
                         returnData=d.getAllDistricts();
-                        request.setAttribute("data", returnData); //directly get districts
+                        request.setAttribute("district", returnData); //directly get districts
                         request.getRequestDispatcher("channelling.jsp").forward(request, response);
                     }
 
