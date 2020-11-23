@@ -55,10 +55,6 @@ public class PatientDashboard extends HttpServlet {
 //                get pending appointments from patient class
                 Patient p = new Patient(patientId); //create patient object
                 
-//                List<Channelling> c =new ArrayList<Channelling>();
-//                Channelling ch = new Channelling(); 
-//                c=p.getPendingAppointments();
-//                out.print(c.size());
 
                 request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);

@@ -19,7 +19,7 @@
         <li><a href="#" id="end">About</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
+        <li><a href="/MediHub">Home</a></li>
         <li id="logo"><img src="logo.png" width="15.5%"></li>
       </ul>
   </div>
