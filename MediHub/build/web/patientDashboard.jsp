@@ -53,7 +53,7 @@
                 <div>
                   <a href="patientview" class="btn">View Profile</a>
                 <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
+                  <a href="editpatient" class="btn">Edit Profile</a>
                 </div>
              </div>
           </div>

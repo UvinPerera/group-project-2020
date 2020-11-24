@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.medihub.patient;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,12 +18,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author hp
  */
-@WebServlet(urlPatterns = {"/patient"})
-public class Patient extends HttpServlet {
+@WebServlet(name = "EditPatient", urlPatterns = {"/editpatient"})
+public class EditPatient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,32 +49,42 @@ public class Patient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HttpSession session = request.getSession();
+             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
             try{Class.forName("com.mysql.jdbc.Driver");  
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT hospitals.name,medication_reminders.* FROM (((((`medication_reminders` INNER JOIN prescriptions ON medication_reminders.prescription_id=prescriptions.id)INNER JOIN channelling on prescriptions.channelling_id = channelling.id)INNER JOIN users ON channelling.patient_id=users.id) INNER JOIN doctor_availability ON channelling.doctor_availability_id = doctor_availability.id)INNER JOIN hospitals ON hospitals.id=doctor_availability.hospital_id) WHERE users.id="+patientId);
-                ArrayList Reminders = new ArrayList();
+                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+patientId);
+                ArrayList Details = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 7 ; i++){
+                        for (int i = 1; i <= 20 ; i++){
                             row.add(rs.getString(i));
                         }
-                        Reminders.add(row);
+                        Details.add(row);
                 }
                 
-                request.setAttribute("reminders", Reminders);
-                request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);
+                request.setAttribute("details", Details);
+                request.getRequestDispatcher("editPatient.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
-           
+       
+                
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+
     
-    
+    @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

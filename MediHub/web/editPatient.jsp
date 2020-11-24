@@ -1,3 +1,11 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.patient.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
 <head>
@@ -7,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./editProfile.css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="./public/css/editProfile.css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </head>
@@ -23,11 +31,19 @@
         <li id="logo"><img src="images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
-
+<%ArrayList al = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       if(request.getAttribute("details")!=null){
+           al=(ArrayList )request.getAttribute("details");
+            
+            a2 =(ArrayList ) al.get(0);
+        }
+%>
+<%=a2%>
  <div class="contentContainer">
   <div class="profile">
-    <img src="images/p3.jpg" id="profile">
-    <h2 style="text-align:center; margin-bottom:25px;">Jane Doe</h2>
+      <img src="./public/images/p3.jpg" id="profile">
+    <h2 style="text-align:center; margin-bottom:25px;"><%=a2.get(3)%></h2>
     <button class="button" id="profilePic"><b>Change Profile Picture</b></button>
   </div>
 
@@ -36,28 +52,28 @@
 
     <div class="record">
     <div class="label">First Name </div>
-    <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name">
+    <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Last Name </div>
-    <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name">
+    <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%=a2.get(2)%>">
   </div>
 
   <div class="record">
     <div class="label">NIC No</div>
-    <input class="data" type="text" name="nic_no" id="nic" placeholder="NIC number">
+    <input class="data" type="text" name="nic_no" id="nic" placeholder="NIC number" value="<%=a2.get(7)%>">
   </div>
 
   <div class="record">
     <div class="label">Date of Birth</div>
-    <input class="data" type="date" name="dob" id="dob" placeholder="DOB">
+    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Gender</div>
     <select class="data" name="gender" id="gender"  style=" height: 50px;">
-      <option disabled="disabled" selected="selected">--Choose Option--</option>
+      <option disabled="disabled" selected="selected"><%=a2.get(1).toString().equals("M")?"Male":"Female"%></option>
       <option>Male</option>
       <option>Female</option>
       <option>Not preferred to say</option>
@@ -66,42 +82,42 @@
 
   <div class="record">
     <div class="label">Email</div>
-    <input class="data" type="email" name="email" id="email" placeholder="Email">
+    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1">
+    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2">
+    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">City</div>
-    <input class="data" type="text" name="city" id="city" placeholder="City">
+    <input class="data" type="text" name="city" id="city" placeholder="City" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">District</div>
-    <input class="data" type="text" name="district" id="district" placeholder="District">
+    <input class="data" type="text" name="district" id="district" placeholder="District" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Zip Code</div>
-    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code">
+    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Land</div>
-    <input class="data" type="text" name="land_line" id="land" placeholder="Land number">
+    <input class="data" type="text" name="land_line" id="land" placeholder="Land number" value="<%=a2.get(1)%>">
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Mobile</div>
-    <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number">
+    <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number" value="<%=a2.get(1)%>">
   </div>
 
   <div class="buttons">
