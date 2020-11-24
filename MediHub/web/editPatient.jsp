@@ -67,13 +67,13 @@
 
   <div class="record">
     <div class="label">Date of Birth</div>
-    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%=a2.get(1)%>">
+    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%=a2.get(8)%>">
   </div>
 
   <div class="record">
     <div class="label">Gender</div>
     <select class="data" name="gender" id="gender"  style=" height: 50px;">
-      <option disabled="disabled" selected="selected"><%=a2.get(1).toString().equals("M")?"Male":"Female"%></option>
+      <option disabled="disabled" selected="selected"><%=a2.get(9).toString().equals("M")?"Male":"Female"%></option>
       <option>Male</option>
       <option>Female</option>
       <option>Not preferred to say</option>
@@ -82,17 +82,17 @@
 
   <div class="record">
     <div class="label">Email</div>
-    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%=a2.get(1)%>">
+    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%=a2.get(4)%>">
   </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%=a2.get(12)%>">
   </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%=a2.get(13)%>">
   </div>
 
   <div class="record">
@@ -102,22 +102,22 @@
 
   <div class="record">
     <div class="label">District</div>
-    <input class="data" type="text" name="district" id="district" placeholder="District" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="district" id="district" placeholder="District" value="Colombo">
   </div>
 
   <div class="record">
     <div class="label">Zip Code</div>
-    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="<%=a2.get(15)%>">
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Land</div>
-    <input class="data" type="text" name="land_line" id="land" placeholder="Land number" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="land_line" id="land" placeholder="Land number" value="<%=a2.get(11)%>">
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Mobile</div>
-    <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number" value="<%=a2.get(1)%>">
+    <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number" value="<%=a2.get(10)%>">
   </div>
 
   <div class="buttons">
