@@ -45,18 +45,7 @@ public class Patient extends User {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
-            int numRows=0;
-            int i=0;
-            
-            //get the total row size
-//            if (rs.last()) 
-//            {
-//                numRows = rs.getRow();
-//                rs.beforeFirst(); 
-//            }
-            
-            //create channelling object array
-//            Channelling[] ch = new Channelling[numRows];
+          
             List<Channelling> c =new ArrayList<Channelling>();
             
                         
