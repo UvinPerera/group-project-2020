@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="com.medihub.location.*"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <html lang="en-US">
 
 <head>
@@ -86,9 +89,9 @@
        <h2 class="name">Gender</h2>
        <select class="input option" name="gender" id="gender">
          <option disabled="disabled" selected="selected">--Choose Option--</option>
-         <option>Male</option>
-         <option>Female</option>
-         <option>Not preferred to say</option>
+         <option value="M">Male</option>
+         <option value="F">Female</option>
+         <option value="N">Not preferred to say</option>
        </select>
        <div class="danger" id="genderError">
           <div class="alert-message alert-message-danger" >
@@ -115,21 +118,36 @@
        <h2 class="name">Address 2</h2>
        <input class="input" type="text" name="address_2" id="address2" placeholder="Address 2">
 
-       <h2 class="name">City</h2>
-       <input class="input" type="text" name="city" id="city" placeholder="City">
-       <div class="danger" id="cityError">
-          <div class="alert-message alert-message-danger" >
-                <h4>City can't be empty</h4>
-          </div>
-       </div>
+        <h2 class="name">District</h2>
+        <select class="input option" name="district" id="district">
+          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                         <%
+                             if(request.getAttribute("districts")!=null){
+                                 List<District> table = (ArrayList<District>)request.getAttribute("districts");
+                                 if(table.size()>0){
+                                     for(District row : table) { %>
+                                         <option value='<%= row.id %>'><%= row.nameEn %></option>
+                         <%
+                                 }}}
+                         %>
 
-       <h2 class="name">District</h2>
-       <input class="input" type="text" name="district" id="district" placeholder="District">
-       <div class="danger" id="districtError">
+        </select>
+        <div class="danger" id="districtError">
           <div class="alert-message alert-message-danger" >
                 <h4>Select a valid District </h4>
           </div>
-       </div>
+        </div>
+        
+        <h2 class="name">City</h2>
+        <select class="input option" name='city' id="city" class="filter_dropdown">
+            <option value='' selected>--Choose Option--</option>
+
+        </select>
+        <div class="danger" id="cityError">
+          <div class="alert-message alert-message-danger" >
+                <h4>City can't be empty</h4>
+          </div>
+        </div>
        
         <h2 class="name">Zip Code</h2>
        <input class="input" type="text" name="zip_code" id="zip" placeholder="Zip code">
@@ -171,12 +189,12 @@
        </div>
 
        <h2 class="name">Register as</h2>
-       <select class="input option" name="Register_as" id="type">
+       <select class="input option" name="type" id="type">
          <option disabled="disabled" selected="selected">--Choose Option--</option>
-         <option>Patient</option>
-         <option>Doctor</option>
-         <option>Pharmacy</option>
-         <option>Hospital</option>
+         <option value="1">Patient</option>
+         <option value="2">Doctor</option>
+         <option value="3">Hospital</option>
+         <option value="4">Pharmacy</option>
        </select>
        <div id="errorMsg"></div>
        <div class="danger" id="typeError">
@@ -314,6 +332,32 @@
                 return false;
             }
         })
+        
+        
+        
+//    onchange district
+    $('#district').change(function(){
+        var districtId=$(this).find(':selected').val();
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        
+        $.ajax({
+            url: "channelling",
+            type: "get", //send it through get method
+            data: { 
+              stage: "district", 
+              district: districtId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#city').html("<option disabled>--Choose Option--</option>"+response);
+            },
+            error: function(xhr) {
+                alert("CityByDistrict Error");
+            }
+          });
+
+    });
 
     </script>
   </body>

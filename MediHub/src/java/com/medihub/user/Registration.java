@@ -1,3 +1,5 @@
+package com.medihub.user;
+
 
 import com.medihub.db.*;
 import java.sql.*; 
@@ -41,17 +43,15 @@ public class Registration extends HttpServlet {
             String password=request.getParameter("password");
             String address1=request.getParameter("address_1");
             String address2=request.getParameter("address_2");
-            String district=request.getParameter("district");
+            int district=Integer.parseInt(request.getParameter("district"));
+            int city=Integer.parseInt(request.getParameter("city"));
+            int type=Integer.parseInt(request.getParameter("type"));
             String zip_code=request.getParameter("zip_code");
             
+//            User user=new User();
+//            user.setEmail(email);
             
-            
-            int user_type=1;
-            
-            User user=new User();
-            user.setEmail(email);
-            
-            int rs=stmt.executeUpdate("INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,district,zip_code,mobile,land_line,password,user_type) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+user.getEmail()+"','"+address1+"','"+address2+"','"+district+"','"+zip_code+"','"+password+"',"+user_type+")");  
+            int rs=stmt.executeUpdate("INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,district,zip_code,mobile,land_line,password,user_type) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+district+","+city+",'"+zip_code+"','"+password+"',"+type+")");  
             response.sendRedirect("login.jsp");
             con.close();  
         }

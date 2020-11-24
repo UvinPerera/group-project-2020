@@ -5,6 +5,7 @@
  */
 package com.medihub.patient;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -52,8 +53,10 @@ public class EditPatient extends HttpServlet {
              HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
-            try{Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","password");
+            try{
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
                 Statement stmt=con.createStatement(); 
                 ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+patientId);
                 ArrayList Details = new ArrayList();

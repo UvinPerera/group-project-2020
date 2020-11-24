@@ -1,3 +1,5 @@
+package com.medihub.user;
+
 import java.sql.*; 
 import com.medihub.db.*;
 
