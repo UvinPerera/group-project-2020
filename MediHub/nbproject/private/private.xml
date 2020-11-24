@@ -2,40 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/Patient.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/Channelling.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/public/css/Dashboard_Patient.css</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/auth.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/admin/AdminDashboard.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/PatientDashboard.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/manageReviews.jsp</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/patientDashboard.jsp</file>
-=======
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/auth.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/login.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/managePatients.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/PatientDashboard.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/adminDashboard.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/Patient.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/viewpatient.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/index.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/About.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/contactUs.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/trackOrder(pat).jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/PatientView.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/invalid.html</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/patientDashboard.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/manageHospital.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/EmergencyServices.jsp</file>
->>>>>>> 97e0d9114ad5a214a2961d1fffe7d8bb464141d0
->>>>>>> 42b19e5d3f59f30af1a7fb46900507cbfa616eeb
-        </group>
+        <group/>
     </open-files>
 </project-private>
