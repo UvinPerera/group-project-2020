@@ -3,13 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.user;
+package com.medihub.location;
 
-import com.medihub.doctor.DoctorAvailability;
-import com.medihub.doctor.DoctorSpecialisation;
-import com.medihub.hospital.Hospital;
-import com.medihub.location.City;
-import com.medihub.location.District;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -25,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "SingUp", urlPatterns = {"/signup"})
-public class SingUp extends HttpServlet {
+@WebServlet(name = "getCityAsString", urlPatterns = {"/getCityAsString"})
+public class getCityAsString extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,11 +43,12 @@ public class SingUp extends HttpServlet {
                 
                 try
                 {
-                    District d = new District();
-                    List<District> returnData =new ArrayList<District>();
-                    returnData=d.getAllDistricts();
-                    request.setAttribute("districts", returnData); //directly get districts
-                    request.getRequestDispatcher("signUp.jsp").forward(request, response);
+                    int districtId=Integer.parseInt(request.getParameter("district"));
+                    City c = new City();
+                    String returnData=c.getAllCitiesByDistrictAsString(districtId);
+                    response.setContentType("text/html;charset=UTF-8");
+                    out.print(returnData);
+
                 }
                 catch(Exception e)
                 {
