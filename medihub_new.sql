@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2020 at 10:59 PM
+-- Generation Time: Nov 26, 2020 at 04:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -63,7 +63,8 @@ CREATE TABLE `channelling` (
 --
 
 INSERT INTO `channelling` (`id`, `patient_id`, `doctor_availability_id`, `appointment_no`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2);
+(1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2),
+(9, 2, 1, 2, 'Booked for Priyatharshan', 1, '2020-11-26 07:11:12', '2020-11-26 07:11:12', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -2109,7 +2110,7 @@ CREATE TABLE `doctor_availability` (
 --
 
 INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `end_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 3, 1, '2021-01-01', '08:00:00', '10:00:00', 10, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
+(1, 3, 1, '2021-01-01', '08:00:00', '10:00:00', 20, 2, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -3029,7 +3030,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `channelling`
 --
 ALTER TABLE `channelling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `channelling_feedbacks`
