@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.location;
+package com.medihub.hospital;
 
+import com.medihub.hospital.Hospital;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -20,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "getCityAsString", urlPatterns = {"/getcityasstring"})
-public class getCityAsString extends HttpServlet {
+@WebServlet(name = "getHospitalByCityAsString", urlPatterns = {"/gethospitalbycityasstring"})
+public class getHospitalByCityAsString extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,12 +45,11 @@ public class getCityAsString extends HttpServlet {
                 
                 try
                 {
-                    int districtId=Integer.parseInt(request.getParameter("district"));
-                    City c = new City();
-                    String returnData=c.getAllCitiesByDistrictAsString(districtId);
+                    int cityId=Integer.parseInt(request.getParameter("city"));
+                    Hospital h = new Hospital();
+                    String returnData=h.getAllHospitalsByCityAsString(cityId);
                     response.setContentType("text/html;charset=UTF-8");
-                    out.print(returnData);
-
+                    out.write(returnData);
                 }
                 catch(Exception e)
                 {

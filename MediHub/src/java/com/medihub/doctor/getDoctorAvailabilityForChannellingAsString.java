@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.location;
+package com.medihub.doctor;
 
+import com.medihub.hospital.*;
+import com.medihub.hospital.Hospital;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -20,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "getCityAsString", urlPatterns = {"/getcityasstring"})
-public class getCityAsString extends HttpServlet {
+@WebServlet(name = "getDoctorAvailabilityForChannellingAsString", urlPatterns = {"/getdoctoravailabilityforChannellingasstring"})
+public class getDoctorAvailabilityForChannellingAsString extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,12 +46,13 @@ public class getCityAsString extends HttpServlet {
                 
                 try
                 {
-                    int districtId=Integer.parseInt(request.getParameter("district"));
-                    City c = new City();
-                    String returnData=c.getAllCitiesByDistrictAsString(districtId);
+                    int hospitalId=Integer.parseInt(request.getParameter("hospital"));
+                    int doctorSpecialisationId=Integer.parseInt(request.getParameter("doctorSpecialisation"));
+                    String date=request.getParameter("date");
+                    DoctorAvailability da = new DoctorAvailability();
+                    String returnData=da.getAllDoctorAvailabilitiesByHospital(hospitalId,doctorSpecialisationId,date);
                     response.setContentType("text/html;charset=UTF-8");
-                    out.print(returnData);
-
+                    out.write(returnData);
                 }
                 catch(Exception e)
                 {

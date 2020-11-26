@@ -22,7 +22,7 @@ public class Patient extends User {
         //date and time foramtting
         Date date = Calendar.getInstance().getTime();  
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
-        DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");  
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
         String strDate = dateFormat.format(date);
         String strTime = timeFormat.format(date);
                
@@ -32,9 +32,9 @@ public class Patient extends User {
         String q_join_d="join doctors d on da.doctor_id=d.id ";
         String q_join_u="join users u on d.id=u.id ";
         String q_join_h="join hospitals h on da.hospital_id=h.id ";
-        String q_join_cp="join channelling_payments cp on cp.channelling_id=c.id ";
-        String q_join_pm="join payment_methods pm on cp.payment_method=pm.id ";
-        String q_where="where c.status=1 and patient_id="+this.id+" and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"')";
+        String q_join_cp="left join channelling_payments cp on cp.channelling_id=c.id ";
+        String q_join_pm="left join payment_methods pm on cp.payment_method=pm.id ";
+        String q_where="where c.status=1 and patient_id="+this.id+" and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"') limit 10";
         String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_join_cp + q_join_pm + q_where;
   
         try

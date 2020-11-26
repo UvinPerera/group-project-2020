@@ -193,8 +193,8 @@
          <option disabled="disabled" selected="selected">--Choose Option--</option>
          <option value="1">Patient</option>
          <option value="2">Doctor</option>
-         <option value="3">Hospital</option>
-         <option value="4">Pharmacy</option>
+         <option value="3">Hospital Admin</option>
+         <option value="4">Pharmacy Admin</option>
        </select>
        <div id="errorMsg"></div>
        <div class="danger" id="typeError">

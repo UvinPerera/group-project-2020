@@ -132,11 +132,11 @@
                             <td class="table-hub-owner"><%= row.doctor %>       </td>
                             <td class="table-hub-owner"><%= row.appointmentNo %></td>
                             <td class="table-hub-owner"><%= row.date %>         </td>
-                            <td class="table-hub-owner"><%= row.start_time %>         </td>
+                            <td class="table-hub-owner"><%= row.start_time %>   </td>
                             <td class="table-hub-owner"><%= row.description %>  </td>
                             <td>
                                 <ul class="actions">
-                                    <li><button id="popUp" class="btn" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
+                                    <li><button id="popUp" class="btn" onclick="popup(<%= table.indexOf(row) %>);" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
                                     <!--<li><button class="btn"><i class="fa fa-reply"></i></button></li>-->
                                 </ul>
                             </td>
@@ -314,10 +314,12 @@
     var print = document.getElementById("print");
 
     // When the user clicks on the button, open the modal
-    btn.onclick = function() 
+//    btn.onclick = function() 
+    function popup(indexId)
     {
         modal.style.display = "block";
-        var index=btn.getAttribute("index");
+//        var index=btn.getAttribute("index");
+        var index=indexId;
         
         document.getElementById("modal_id").innerHTML = id[index];
         document.getElementById("modal_date_time").innerHTML = date[index]+" "+time[index];
@@ -332,7 +334,7 @@
         var status="";
         var colour="";
         
-        if(paymentStatus[index]==1)
+        if(paymentStatus[index]!="")
         {
             status="Paid";
             colour="green";
