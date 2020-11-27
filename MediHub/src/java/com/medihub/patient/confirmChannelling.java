@@ -75,7 +75,6 @@ public class ConfirmChannelling extends HttpServlet {
                             String returnData=c.checkDuplication(doctorAvalabilityId,patientId);
                             response.setContentType("text/html;charset=UTF-8");
                             out.write(returnData);
-//                            out.write("1");
                         }
                         catch(Exception e)
                         {
