@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Hospital.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="css/Manage_Doctors.css" media="screen" />
 </head>
 <body>
   <div class="navbar">
@@ -31,12 +31,11 @@
    </select>
    <br>
    <select name='Dropdown' class="filter_dropdown">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Hospital ID</a></option>
-      <option value='Action'><a href="#">Hospital</a></option>
-      <option value=99><a href="#">Director</a></option>
-      <option value='Action'><a href="#">City</a></option>
-      <option value='Action'><a href="#">Status</a></option>
+     <option value='Action' selected><a href="">All</a></option>
+     <option value='Action'><a href="#">ID</a></option>
+     <option value='Action'><a href="#">Doctor</a></option>
+     <option value=99><a href="#">Special</a></option>
+     <option value='Action'><a href="#">Status</a></option>
    </select>
    <input type="text" class="filter_text" placeholder="Filter">
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
@@ -46,7 +45,7 @@
           <a href="#" class=""><button class="btn"><i class="fa fa-plus-circle"></i></button></a>
       </div>
       <div class="add-text">
-          Add New Hospital
+          Add New Doctor
       </div>
     </div>
 
@@ -56,20 +55,18 @@
     <table class="table">
       <thead>
       <tr>
-        <th class="tableheading">Hospital ID</th>
-        <th class="tableheading">Hospital</th>
-        <th class="tableheading">Director</th>
-        <th class="tableheading">City</th>
-        <th class="tableheading">Status</th>
-        <th class="tableheading">Actions</th>
+          <th class="tableheading">Doctor ID</th>
+          <th class="tableheading">Doctor</th>
+          <th class="tableheading">Special</th>
+          <th class="tableheading">Status</th>
+          <th class="tableheading">Actions</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <td class="Row">001</td>
-        <td class="Row">Asiri Hospital</td>
-        <td class="Row">John Doe</td>
-        <td class="Row">Matara</td>
+        <td class="Row">Dr.John Doe</td>
+        <td class="Row">Dermatologists</td>
         <td class="Row">Active</td>
         <td>
           <ul class="actions">
@@ -81,38 +78,35 @@
       </tr>
       <tr>
         <td class="Row">002</td>
-        <td class="Row">Hemas Hospital</td>
-        <td class="Row">James Potter</td>
-        <td class="Row">Galle</td>
-        <td class="Row">Inactive</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">003</td>
-        <td class="Row">Lanka Hospital</td>
-        <td class="Row">George Leo</td>
-        <td class="Row">Colombo</td>
-        <td class="Row">Blacklisted</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">004</td>
-        <td class="Row">Vasana Hospital</td>
-        <td class="Row">David Oscar</td>
-        <td class="Row">Dehiwela</td>
+        <td class="Row">Dr.James Potter</td>
+        <td class="Row">Cardiologists</td>
         <td class="Row">Pending</td>
+        <td>
+          <ul class="actions">
+              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
+              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
+              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+       <td class="Row">003</td>
+       <td class="Row">Dr.George Leo</td>
+       <td class="Row">Gastroenterologists</td>
+       <td class="Row">Inactive</td>
+        <td>
+          <ul class="actions">
+              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
+              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
+              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+      <td class="Row">004</td>
+      <td class="Row">Dr.David Oscar</td>
+      <td class="Row">Endocrinologists</td>
+      <td class="Row">Blacklisted</td>
         <td>
           <ul class="actions">
               <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
