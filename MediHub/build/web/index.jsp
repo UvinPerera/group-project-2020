@@ -22,7 +22,7 @@
         <% if(session.getAttribute("username")==null){%>
         
         <li><button class="styled" type="button" onclick="window.location.href='login.jsp';"> SIGN IN </button></li>
-        <li><button class="styled" type="button" onclick="window.location.href='signUp.jsp';"> SIGN UP</button></li> 
+        <li><button class="styled" type="button" onclick="window.location.href='signup';"> SIGN UP</button></li> 
         <%}else{%>
            
             <li><button class="styled" type="button" onclick="window.location.href='patient';"> PROFILE</button></li> 

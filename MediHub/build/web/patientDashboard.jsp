@@ -8,72 +8,80 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
+
 <head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Dashboard_Patient.css" media="screen" >
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset=utf-8>
+    <title>MediHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/Dashboard_Patient.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-  <div class="navbar" id="navbar">
-    <ul>
-      <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
-      <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-    </ul>
-  </div>
-  <div class="welcome">
-      <% String username="";
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
+            <li><a href="About.jsp" id="end">About</a></li>
+            <li><a href="contactUs.jsp">Contact</a></li>
+            <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+            <li><a href="/MediHub">Home</a></li>
+            <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+        </ul>
+    </div>
+    <div class="welcome">
+        <% String username="";
           username= session.getAttribute("username").toString();
        %>
-            <h1><center>Hello, <%=username%> <br>WELCOME TO MEDIHUB!</center></h1>
-  </div>
-  <br><br><br>
-  
+        <h1>
+            <center>Hello, <%=username%> <br>WELCOME TO MEDIHUB!</center>
+        </h1>
+    </div>
+    <br><br><br>
 
-  <div class="page_divide">
+
+    <div class="page_divide">
         <section class="profile">
-          <div class="card-container">
-             <div class="upper-container">
-                <div class="image-container">
-                  <img src="./public/images/p3.jpg">
+            <div class="card-container">
+                <div class="upper-container">
+                    <div class="image-container">
+                        <img src="./public/images/p3.jpg">
+                    </div>
                 </div>
-             </div>
-             <div class="lower-container">
-                <div>
-                   <h5><%=username%></h5>
+                <div class="lower-container">
+                    <div>
+                        <h5><%=username%></h5>
+                    </div>
+                    <br><br>
+                    <div>
+                        <a href="patientview" class="btn">View Profile</a>
+                        <br><br><br>
+                        <a href="editpatient" class="btn">Edit Profile</a>
+                    </div>
                 </div>
-                <br><br>
-                <div>
-                  <a href="patientview" class="btn">View Profile</a>
-                <br><br><br>
-                  <a href="editpatient" class="btn">Edit Profile</a>
-                </div>
-             </div>
-          </div>
-        </section>
-        <div class="tiles">
-            <div class="tileset">
-                <section class="Service">
-                    <button class="styled" type="button" onclick="window.location.href='channelling';">E-Channeling</button>
-                </section>
-                <section class="Service">
-                    <button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
-                </section>
-                <section class="Service">
-                    <button class="styled" type="button">Medical Records</button>
-                </section>
-                <section class="Service">
-                  <button class="styled" type="button">Service Review</button>
-                </section>
             </div>
-            
+        </section>
+        <div class="tilecont" style="max-width: 1080px;">
+            <div class="tiles">
+                <div class="tileset">
+                    <section class="Service">
+                        <button class="styled" type="button"
+                            onclick="window.location.href='channelling';">E-Channeling</button>
+                    </section>
+                    <section class="Service">
+                        <button class="styled" type="button"
+                            onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
+                    </section>
+                    <section class="Service">
+                        <button class="styled" type="button">Medical Records</button>
+                    </section>
+                    <section class="Service">
+                        <button class="styled" type="button">Service Review</button>
+                    </section>
+                </div>
+            </div>
+
             <!--pending appointments starts-->
             <!--checking for availability-->
             <%
@@ -81,24 +89,24 @@
                     List<Channelling> table = (ArrayList<Channelling>)request.getAttribute("appointments");
                     if(table.size()>0){
             %>
-                    <!--js array-->
-                    <script>
-                        var id =[];
-                        var hospital=[];
-                        var doctor=[];
-                        var appointmentNo=[];
-                        var date=[];
-                        var time=[];
-                        var description=[];
-                        var paymentMethod=[];
-                        var paymentAmount=[];
-                        var paidAmount=[];
-                        var paymentDescription=[];
-                        var paymentStatus = [];
-                        var size=<%= table.size() %>;
-                    </script>
-                    <!--js array end-->
-                    
+            <!--js array-->
+            <script>
+                var id = [];
+                var hospital = [];
+                var doctor = [];
+                var appointmentNo = [];
+                var date = [];
+                var time = [];
+                var description = [];
+                var paymentMethod = [];
+                var paymentAmount = [];
+                var paidAmount = [];
+                var paymentDescription = [];
+                var paymentStatus = [];
+                var size =<%= table.size() %>;
+            </script>
+            <!--js array end-->
+
             <div class="appointment">
                 <table class="table-hub table-hub-appoint">
                     <thead>
@@ -115,7 +123,7 @@
                         </tr>
                     </thead>
                     <tbody>
-<!--                        <tr>
+                        <!--                        <tr>
                             <td>000</td>
                             <td>demo hos</td>
                             <td>demo doc</td>
@@ -127,37 +135,38 @@
                         </tr>-->
                         <% for(Channelling row : table) { %>
                         <tr>
-                            <td class="table-hub-owner"><%= row.getId() %>      </td>
-                            <td class="table-hub-owner"><%= row.hospital %>     </td>
-                            <td class="table-hub-owner"><%= row.doctor %>       </td>
+                            <td class="table-hub-owner"><%= row.getId() %> </td>
+                            <td class="table-hub-owner"><%= row.hospital %> </td>
+                            <td class="table-hub-owner"><%= row.doctor %> </td>
                             <td class="table-hub-owner"><%= row.appointmentNo %></td>
-                            <td class="table-hub-owner"><%= row.date %>         </td>
-                            <td class="table-hub-owner"><%= row.start_time %>         </td>
-                            <td class="table-hub-owner"><%= row.description %>  </td>
+                            <td class="table-hub-owner"><%= row.date %> </td>
+                            <td class="table-hub-owner"><%= row.start_time %> </td>
+                            <td class="table-hub-owner"><%= row.description %> </td>
                             <td>
                                 <ul class="actions">
-                                    <li><button id="popUp" class="btn" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
+                                    <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');"
+                                            index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
                                     <!--<li><button class="btn"><i class="fa fa-reply"></i></button></li>-->
                                 </ul>
                             </td>
                         </tr>
-                        
-                    <script>
+
+                        <script>
                             id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;
-                            hospital[<%= table.indexOf(row) %>]             ="<%= row.hospital %>";     
-                            doctor[<%= table.indexOf(row) %>]               ="<%= row.doctor %>";    
+                            hospital[<%= table.indexOf(row) %>]             ="<%= row.hospital %>";
+                            doctor[<%= table.indexOf(row) %>]               ="<%= row.doctor %>";
                             appointmentNo[<%= table.indexOf(row) %>]        =<%= row.appointmentNo %>;
-                            date[<%= table.indexOf(row) %>]                 ="<%= row.date %>";         
-                            time[<%= table.indexOf(row) %>]                 ="<%= row.start_time %>";         
-                            description[<%= table.indexOf(row) %>]          ="<%= row.description %>"; 
-                            paymentMethod[<%= table.indexOf(row) %>]        ="<%= row.payment_method %>";    
-                            paymentAmount[<%= table.indexOf(row) %>]        =<%= row.payment_amount %>;      
+                            date[<%= table.indexOf(row) %>]                 ="<%= row.date %>";
+                            time[<%= table.indexOf(row) %>]                 ="<%= row.start_time %>";
+                            description[<%= table.indexOf(row) %>]          ="<%= row.description %>";
+                            paymentMethod[<%= table.indexOf(row) %>]        ="<%= row.payment_method %>";
+                            paymentAmount[<%= table.indexOf(row) %>]        =<%= row.payment_amount %>;
                             paidAmount[<%= table.indexOf(row) %>]           =<%= row.paid_amount %>;
-                            paymentDescription[<%= table.indexOf(row) %>]   ="<%= row.payment_description %>";         
+                            paymentDescription[<%= table.indexOf(row) %>]   ="<%= row.payment_description %>";
                             paymentStatus[<%= table.indexOf(row) %>]        =<%= row.payment_status %>;        
-                    </script>
-                        
-                        
+                        </script>
+
+
                         <%}%> 
                     </tbody>
                 </table>
@@ -168,12 +177,12 @@
             <%
                 }
                 else
-                {%> 
-                    <div class="tablecont">
-                    <table class="table-hub table-hub-appoint">
-                        <thead>
-                            <tr>
-<!--                                <th class="table-hub-owner">Channelling ID</th>
+                {%>
+                        <div class="tablecont">
+                            <table class="table-hub table-hub-appoint">
+                                <thead>
+                                    <tr>
+                                        <!--                                <th class="table-hub-owner">Channelling ID</th>
                                 <th class="table-hub-owner">Hospital</th>
                                 <th class="table-hub-owner">Doctor</th>
                                 <th class="table-hub-owner">Appointment No</th>
@@ -181,82 +190,83 @@
                                 <th class="table-hub-owner">Time</th>
                                 <th class="table-hub-owner">Description</th>
                                 <th class="table-hub-owner">Action</th>-->
-                                <th class="table-hub-time-head">Pending Appointments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>No Channeling data Available</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <%}}
+                                        <th class="table-hub-time-head">Pending Appointments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>No Channeling data Available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <%}}
             %>
-            
-            <!--pending appointments ends-->
 
+                        <!--pending appointments ends-->
+
+            </div>
         </div>
-  </div>
-            
+
         <!-- Modal starts -->
         <div id="modalBox" class="modal">
 
-          <!-- Modal content -->
-          <div id="printPart" class="modal-content">
-            <span class="close">&times;</span>
-            <h3 style="text-align: center;">Appointment Details</h3>
-            <table style="border:none; text-align: left;">
-              
-                <tr>
-                    <td>                            Channelling ID :        </td>
-                    <td id="modal_id">              **                      </td>
-                    <td>                            Date / Time :           </td>
-                    <td id="modal_date_time">       **                      </td>
-                </tr>         
+            <!-- Modal content -->
+            <div id="printPart" class="modal-content">
+                <span class="close">&times;</span>
+                <h3 style="text-align: center;">Appointment Details</h3>
+                <table style="border:none; text-align: left;">
 
-                <tr>
-                    <td>                            Hospital :              </td>
-                    <td id="modal_hospital">        **                      </td>
-                    <td>                            Description :              </td>
-                    <td id="modal_description">     **                      </td>
-                </tr>
+                    <tr>
+                        <td> Channelling ID : </td>
+                        <td id="modal_id"> ** </td>
+                        <td> Date / Time : </td>
+                        <td id="modal_date_time"> ** </td>
+                    </tr>
 
-                <tr>
-                    <td>                            Doctor :                </td>
-                    <td id="modal_doctor">          **                      </td>
-                    <td>                            Appointment No :        </td>
-                    <td id="modal_appointmet_no">   **                      </td>
-                </tr>
+                    <tr>
+                        <td> Hospital : </td>
+                        <td id="modal_hospital"> ** </td>
+                        <td> Description : </td>
+                        <td id="modal_description"> ** </td>
+                    </tr>
 
-                <tr>
-                    <td>                            Payment Method :        </td>
-                    <td id="modal_Payment_method">  **                      </td>
-                    <td>                            Payment Amount :        </td>
-                    <td id="modal_payment_amount">  **                      </td>
-                </tr>
+                    <tr>
+                        <td> Doctor : </td>
+                        <td id="modal_doctor"> ** </td>
+                        <td> Appointment No : </td>
+                        <td id="modal_appointmet_no"> ** </td>
+                    </tr>
 
-                <tr>
-                    <td>                                Payment Description :   </td>
-                    <td id="modal_payment_description"> **                      </td>
-                    <td>                                Payment Status :        </td>
-                    <td id="modal_payment_status">      **                      </td>
-                </tr>
+                    <tr>
+                        <td> Payment Method : </td>
+                        <td id="modal_Payment_method"> ** </td>
+                        <td> Payment Amount : </td>
+                        <td id="modal_payment_amount"> ** </td>
+                    </tr>
 
-                <tr>
-                    <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
-                </tr>
-                <tr>
-                    <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
-                </tr>
-                <tr>
-                    <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button></td>
-                </tr>
-              
-            </table>
+                    <tr>
+                        <td> Payment Description : </td>
+                        <td id="modal_payment_description"> ** </td>
+                        <td> Payment Status : </td>
+                        <td id="modal_payment_status"> ** </td>
+                    </tr>
 
-          </div>
-          <!--Modal content ends-->
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <!--Modal content ends-->
 
         </div>
 
@@ -266,41 +276,43 @@
 </body>
 <br><br>
 <center>
-  <footer>
-    <div class="row4">
-      <div class="column4">
-        <div class="footerText">
-          <br>ABOUT <br><br>
-          MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-          provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-          them with the best experience in accessing medical<br> services.<br>
-        </div>
-      </div>
-      <!--<div class="column4"><br>
+    <footer>
+        <div class="row4">
+            <div class="column4">
+                <div class="footerText">
+                    <br>ABOUT <br><br>
+                    MediHub is a mainly a patient portal providing users eaiser access to all medical services.
+                    <br>MediHub also
+                    provides different doctors, hospitals and pharmacies interact with the patients directly in order to
+                    provide
+                    them with the best experience in accessing medical<br> services.<br>
+                </div>
+            </div>
+            <!--<div class="column4"><br>
         <div class="footerText"> -->
-          <br><br>
-          <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-google"></a>
-          <a href="#" class="fa fa-instagram"></a>
+            <br><br>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-instagram"></a>
         </div>
-    <!--  </div>
+        <!--  </div>
     </div> -->
-    <br>
-    <div class="footerText">
-      All rights Reserved @MediHub2020
-    </div>
-    <br><br>
-  </footer>
+        <br>
+        <div class="footerText">
+            All rights Reserved @MediHub2020
+        </div>
+        <br><br>
+    </footer>
 </center>
 
 </html>
 
 <script>
-    
-//    #########################
-//    modal script start
-//    #########################
+
+    //    #########################
+    //    modal script start
+    //    #########################
 
     var modal = document.getElementById("modalBox");
 
@@ -309,18 +321,19 @@
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    
+
     //modal print btn
     var print = document.getElementById("print");
 
     // When the user clicks on the button, open the modal
-    btn.onclick = function() 
-    {
+    //    btn.onclick = function() 
+    function popup(indexId) {
         modal.style.display = "block";
-        var index=btn.getAttribute("index");
-        
+        //        var index=btn.getAttribute("index");
+        var index = indexId;
+
         document.getElementById("modal_id").innerHTML = id[index];
-        document.getElementById("modal_date_time").innerHTML = date[index]+" "+time[index];
+        document.getElementById("modal_date_time").innerHTML = date[index] + " " + time[index];
         document.getElementById("modal_hospital").innerHTML = hospital[index];
         document.getElementById("modal_description").innerHTML = description[index];
         document.getElementById("modal_doctor").innerHTML = doctor[index];
@@ -328,30 +341,27 @@
         document.getElementById("modal_Payment_method").innerHTML = paymentMethod[index];
         document.getElementById("modal_payment_amount").innerHTML = paymentAmount[index];
         document.getElementById("modal_payment_description").innerHTML = paymentDescription[index];
-        
-        var status="";
-        var colour="";
-        
-        if(paymentStatus[index]==1)
-        {
-            status="Paid";
-            colour="green";
+
+        var status = "";
+        var colour = "";
+
+        if (paymentStatus[index] != "") {
+            status = "Paid";
+            colour = "green";
         }
-        else
-        {
-            status="Not Paid";
-            colour="red";
+        else {
+            status = "Not Paid";
+            colour = "red";
         }
         document.getElementById("modal_payment_status").style.color = colour;
         document.getElementById("modal_payment_status").innerHTML = status;
-        
+
     }
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() 
-    {
+    span.onclick = function () {
         modal.style.display = "none";
-        
+
         document.getElementById("modal_id").innerHTML = "**";
         document.getElementById("modal_date_time").innerHTML = "**";
         document.getElementById("modal_hospital").innerHTML = "**";
@@ -362,16 +372,15 @@
         document.getElementById("modal_payment_amount").innerHTML = "**";
         document.getElementById("modal_payment_description").innerHTML = "**";
         document.getElementById("modal_payment_status").innerHTML = "**";
-        
-        
+
+
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) 
-    {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            
+
             document.getElementById("modal_id").innerHTML = "**";
             document.getElementById("modal_date_time").innerHTML = "**";
             document.getElementById("modal_hospital").innerHTML = "**";
@@ -384,25 +393,24 @@
             document.getElementById("modal_payment_status").innerHTML = "**";
         }
     }
-    
+
     //when printing
-    print.onclick = function() 
-    {
-        print.style.display="none";
+    print.onclick = function () {
+        print.style.display = "none";
         var win = window.open();
-        var printContent=$("#printPart").html();
-        
+        var printContent = $("#printPart").html();
+
         $(win.document.body).html(printContent);
         win.print();
-        print.style.display="block";
+        print.style.display = "block";
     }
-    
+
 //    #########################
 //    modal script end
 //    #########################
 
 
-    
 
-    
+
+
 </script>

@@ -54,16 +54,16 @@
             <button class="styled" type="button" onclick="window.location.href='managePatients.jsp'">Manage Pateints</button>
         </section>
         <section class="Service">
-            <button class="styled" type="button">Manage Doctors</button>
+            <button class="styled" type="button" onclick="window.location.href='manageDoctors.jsp'">Manage Doctors</button>
         </section>
         <section class="Service">
-            <button class="styled" type="button">Manage Hospitals</button>
+            <button class="styled" type="button" onclick="window.location.href='manageHospital.jsp'">Manage Hospitals</button>
         </section>
         <section class="Service">
-            <button class="styled" type="button">Manage Pharmacies</button>
+            <button class="styled" type="button" onclick="window.location.href='managePharmacy.jsp'">Manage Pharmacies</button>
         </section>
         <section class="Service">
-            <button class="styled" type="button">Manage Reviews</button>
+            <button class="styled" type="button" onclick="window.location.href='manageReviews.jsp'">Manage Reviews</button>
         </section>
         <section class="Service">
             <button class="styled" type="button">Report Generations</button>
