@@ -38,13 +38,13 @@
              </div>
              <div class="lower-container">
                 <div>
-                   <h5>Rose Ann</h5>
+                   <h5><%=username%></h5>
                 </div>
                 <br><br>
                 <div>
-                  <a href="#" class="btn">View Profile</a>
+                  <a href="viewpharmacy.jsp" class="btn" >View Profile</a>
                 <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
+                  <a href="editpharmacy.jsp" class="btn">Edit Profile</a>
                 </div>
              </div>
           </div>
