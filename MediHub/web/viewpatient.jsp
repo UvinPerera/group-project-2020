@@ -79,7 +79,7 @@
 <br><br>
 
 <center>
-<footer style="margin-top: 700px;">
+<footer>
   <div class="row4">
     <div class="column4">
       <div class="footerText">
