@@ -1,3 +1,14 @@
+<%-- 
+    Document   : viewpharmacy
+    Created on : Nov 24, 2020, 10:50:50 AM
+    Author     : Yash
+--%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
 <head>
@@ -20,12 +31,24 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
+    <% String username="";
+       username= session.getAttribute("username").toString();
+  
+       
+       ArrayList al = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       if(request.getAttribute("profile")!=null){
+           al=(ArrayList)request.getAttribute("profile");
+            
+            a2 =(ArrayList) al.get(0);
+        }
+  %>
 
  <div class="contentContainer">
   <div class="">
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
-    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
+    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;"><%=username%></h4>
     <button class="button" id="profilePic" onclick="window.location.href='pharmacyDashboard.jsp';"><b>Back</b></button>
   </div>
   <div class="login">
@@ -44,57 +67,57 @@
 
     <div class="record">
     <div class="label">Name</div>
-    <div class="data">MediHub Pharmacy</div>
+    <div class="data"><%=a2.get(2)%></div>
   </div>
 
   <div class="record">
     <div class="label">License No</div>
-    <div class="data">3573458</div>
+    <div class="data"><%=a2.get(3)%></div>
   </div>
 
   <div class="record">
     <div class="label">Pharmacist ID</div>
-    <div class="data">190000000V</div>
+    <div class="data"><%=a2.get(5)%></div>
   </div>
 
   <div class="record">
     <div class="label">Land Number</div>
-    <div class="data">07154342325</div>
+    <div class="data"><%=a2.get(8)%></div>
   </div>
 
   <div class="record">
     <div class="label">Fax Number</div>
-    <div class="data">075284385</div>
+    <div class="data"><%=a2.get(9)%></div>
   </div>
 
   <div class="record">
     <div class="label">Email</div>
-    <div class="data">johndoe@gmail.com</div>
+    <div class="data"><%=a2.get(10)%></div>
   </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <div class="data">No.100,First lane</div>
+    <div class="data"><%=a2.get(11)%></div>
   </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <div class="data">Kottegoda Road</div>
+    <div class="data"><%=a2.get(12)%></div>
   </div>
 
   <div class="record">
     <div class="label">City</div>
-    <div class="data">Weligama</div>
+    <div class="data"><%=a2.get(13)%></div>
   </div>
 
   <div class="record">
     <div class="label">Longitude</div>
-    <div class="data">Matara</div>
+    <div class="data"><%=a2.get(14)%></div>
   </div>
 
   <div class="record">
     <div class="label">Latitude</div>
-    <div class="data">81700</div>
+    <div class="data"><%=a2.get(15)%></div>
 
   </div>
 </div>
