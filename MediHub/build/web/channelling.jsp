@@ -101,7 +101,7 @@
     
     //date selection limiting
     function validDate(){
-        var today = new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        var today = new Date().toISOString().split('T')[0];
         var nextWeekDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         document.getElementsByName("date")[0].setAttribute('min', today);
         document.getElementsByName("date")[0].setAttribute('max', nextWeekDate);
