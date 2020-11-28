@@ -77,8 +77,9 @@
 
 </body>
 <br><br>
+
 <center>
-<footer>
+<footer style="margin-top: 700px;">
   <div class="row4">
     <div class="column4">
       <div class="footerText">

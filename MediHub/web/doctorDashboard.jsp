@@ -42,9 +42,9 @@
                 </div>
                 <br><br>
                 <div>
-                  <a href="#" class="btn">View Profile</a>
+                  <a href="viewdoctor.jsp" class="btn">View Profile</a>
                 <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
+                  <a href="editDoctorProfile.jsp" class="btn">Edit Profile</a>
                 </div>
              </div>
           </div>
