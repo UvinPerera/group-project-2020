@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/hospitalDashboard.jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/public/css/viewpharmacy.css</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/patient/EditPatient.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/user/User.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/pharmacy/pharmacyView.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/public/css/cookiePopup.css</file>
             <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/viewpharmacy.jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/patientDashboard.jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/manageAppointments.jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/manageDoctors(hos).jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/public/css/view_pharmacy.css</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/patient/PatientView.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/viewpatient.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/patient/Patient.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/index.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/pharmacyDashboard.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/src/java/com/medihub/pharmacy/editPharmacy.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medi/group-project-2020/MediHub/web/medicalRecords.jsp</file>
         </group>
     </open-files>
 </project-private>
