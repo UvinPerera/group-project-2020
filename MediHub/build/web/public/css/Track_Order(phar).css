@@ -111,6 +111,7 @@ input[type=text] {
 .container-table{
   padding: 6px 6px;
   overflow: hidden;
+  margin-bottom: 40px;
 
 }
 .table{
@@ -173,6 +174,7 @@ align-items: center;
 footer{
   background-color: #2b3030;
   position: absolute;
+  margin-top: 40px;
   right: 0;
   bottom: 0;
   left: 0;

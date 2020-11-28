@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2020 at 09:58 PM
+-- Generation Time: Nov 26, 2020 at 04:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -63,7 +63,8 @@ CREATE TABLE `channelling` (
 --
 
 INSERT INTO `channelling` (`id`, `patient_id`, `doctor_availability_id`, `appointment_no`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2);
+(1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2),
+(9, 2, 1, 2, 'Booked for Priyatharshan', 1, '2020-11-26 07:11:12', '2020-11-26 07:11:12', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -2030,31 +2031,31 @@ CREATE TABLE `districts` (
 --
 
 INSERT INTO `districts` (`id`, `province_id`, `name_en`, `name_si`, `name_ta`, `description`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 6, 'Ampara', 'අම්පාර', 'அம்பாறை', NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 8, 'Anuradhapura', 'අනුරාධපුරය', 'அனுராதபுரம்', NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 7, 'Badulla', 'බදුල්ල', 'பதுளை', NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 6, 'Batticaloa', 'මඩකලපුව', 'மட்டக்களப்பு', NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 1, 'Colombo', 'කොළඹ', 'கொழும்பு', NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 3, 'Galle', 'ගාල්ල', 'காலி', NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 1, 'Gampaha', 'ගම්පහ', 'கம்பஹா', NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 3, 'Hambantota', 'හම්බන්තොට', 'அம்பாந்தோட்டை', NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 9, 'Jaffna', 'යාපනය', 'யாழ்ப்பாணம்', NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 1, 'Kalutara', 'කළුතර', 'களுத்துறை', NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 2, 'Kandy', 'මහනුවර', 'கண்டி', NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 5, 'Kegalle', 'කෑගල්ල', 'கேகாலை', NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 9, 'Kilinochchi', 'කිලිනොච්චිය', 'கிளிநொச்சி', NULL, NULL, NULL, NULL, NULL, NULL),
-(14, 4, 'Kurunegala', 'කුරුණෑගල', 'குருணாகல்', NULL, NULL, NULL, NULL, NULL, NULL),
-(15, 9, 'Mannar', 'මන්නාරම', 'மன்னார்', NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 2, 'Matale', 'මාතලේ', 'மாத்தளை', NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 3, 'Matara', 'මාතර', 'மாத்தறை', NULL, NULL, NULL, NULL, NULL, NULL),
-(18, 7, 'Monaragala', 'මොණරාගල', 'மொணராகலை', NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 9, 'Mullaitivu', 'මුලතිව්', 'முல்லைத்தீவு', NULL, NULL, NULL, NULL, NULL, NULL),
-(20, 2, 'Nuwara Eliya', 'නුවර එළිය', 'நுவரேலியா', NULL, NULL, NULL, NULL, NULL, NULL),
-(21, 8, 'Polonnaruwa', 'පොළොන්නරුව', 'பொலன்னறுவை', NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 4, 'Puttalam', 'පුත්තලම', 'புத்தளம்', NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 5, 'Ratnapura', 'රත්නපුර', 'இரத்தினபுரி', NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 6, 'Trincomalee', 'ත්‍රිකුණාමලය', 'திருகோணமலை', NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 9, 'Vavuniya', 'වව්නියාව', 'வவுனியா', NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 6, 'Ampara', 'අම්පාර', 'அம்பாறை', NULL, 1, NULL, NULL, NULL, NULL),
+(2, 8, 'Anuradhapura', 'අනුරාධපුරය', 'அனுராதபுரம்', NULL, 1, NULL, NULL, NULL, NULL),
+(3, 7, 'Badulla', 'බදුල්ල', 'பதுளை', NULL, 1, NULL, NULL, NULL, NULL),
+(4, 6, 'Batticaloa', 'මඩකලපුව', 'மட்டக்களப்பு', NULL, 1, NULL, NULL, NULL, NULL),
+(5, 1, 'Colombo', 'කොළඹ', 'கொழும்பு', NULL, 1, NULL, NULL, NULL, NULL),
+(6, 3, 'Galle', 'ගාල්ල', 'காலி', NULL, 1, NULL, NULL, NULL, NULL),
+(7, 1, 'Gampaha', 'ගම්පහ', 'கம்பஹா', NULL, 1, NULL, NULL, NULL, NULL),
+(8, 3, 'Hambantota', 'හම්බන්තොට', 'அம்பாந்தோட்டை', NULL, 1, NULL, NULL, NULL, NULL),
+(9, 9, 'Jaffna', 'යාපනය', 'யாழ்ப்பாணம்', NULL, 1, NULL, NULL, NULL, NULL),
+(10, 1, 'Kalutara', 'කළුතර', 'களுத்துறை', NULL, 1, NULL, NULL, NULL, NULL),
+(11, 2, 'Kandy', 'මහනුවර', 'கண்டி', NULL, 1, NULL, NULL, NULL, NULL),
+(12, 5, 'Kegalle', 'කෑගල්ල', 'கேகாலை', NULL, 1, NULL, NULL, NULL, NULL),
+(13, 9, 'Kilinochchi', 'කිලිනොච්චිය', 'கிளிநொச்சி', NULL, 1, NULL, NULL, NULL, NULL),
+(14, 4, 'Kurunegala', 'කුරුණෑගල', 'குருணாகல்', NULL, 1, NULL, NULL, NULL, NULL),
+(15, 9, 'Mannar', 'මන්නාරම', 'மன்னார்', NULL, 1, NULL, NULL, NULL, NULL),
+(16, 2, 'Matale', 'මාතලේ', 'மாத்தளை', NULL, 1, NULL, NULL, NULL, NULL),
+(17, 3, 'Matara', 'මාතර', 'மாத்தறை', NULL, 1, NULL, NULL, NULL, NULL),
+(18, 7, 'Monaragala', 'මොණරාගල', 'மொணராகலை', NULL, 1, NULL, NULL, NULL, NULL),
+(19, 9, 'Mullaitivu', 'මුලතිව්', 'முல்லைத்தீவு', NULL, 1, NULL, NULL, NULL, NULL),
+(20, 2, 'Nuwara Eliya', 'නුවර එළිය', 'நுவரேலியா', NULL, 1, NULL, NULL, NULL, NULL),
+(21, 8, 'Polonnaruwa', 'පොළොන්නරුව', 'பொலன்னறுவை', NULL, 1, NULL, NULL, NULL, NULL),
+(22, 4, 'Puttalam', 'පුත්තලම', 'புத்தளம்', NULL, 1, NULL, NULL, NULL, NULL),
+(23, 5, 'Ratnapura', 'රත්නපුර', 'இரத்தினபுரி', NULL, 1, NULL, NULL, NULL, NULL),
+(24, 6, 'Trincomalee', 'ත්‍රිකුණාමලය', 'திருகோணமலை', NULL, 1, NULL, NULL, NULL, NULL),
+(25, 9, 'Vavuniya', 'වව්නියාව', 'வவுனியா', NULL, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2093,6 +2094,7 @@ CREATE TABLE `doctor_availability` (
   `hospital_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
   `max_count` int(11) DEFAULT 0,
   `count` int(11) NOT NULL DEFAULT 0,
   `payment` float DEFAULT NULL,
@@ -2107,8 +2109,8 @@ CREATE TABLE `doctor_availability` (
 -- Dumping data for table `doctor_availability`
 --
 
-INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 3, 1, '2021-01-01', '08:00:00', 10, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
+INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `end_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 3, 1, '2021-01-01', '08:00:00', '10:00:00', 20, 2, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -2664,7 +2666,6 @@ CREATE TABLE `users` (
   `address_1` varchar(128) DEFAULT NULL,
   `address_2` varchar(128) DEFAULT NULL,
   `city` int(11) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
@@ -2678,12 +2679,14 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `zip_code`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 'Admin', NULL, 'Admin', 'admin@medihub.com', 'admin123', 0, '000', '2020-10-30', 'M', NULL, NULL, '', '', 1, NULL, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
-(2, 'Uvin', 'Perera', 'Uvin', 'uvin@gmial.com', '123', 1, '111', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(3, 'Yashithi', 'Dharma', 'Yash', 'yash@gmial.com', '123', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(4, 'Aysha', 'Ifra', 'Aysha', 'aysha@gmial.com', '123', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(5, 'Priyatharshan', 'Balachandran', 'Tharshan', 'tharshan@gmial.com', '123', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 'Admin', NULL, 'Admin', 'admin@medihub.com', 'admin123', 0, '000', '2020-10-30', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
+(2, 'Uvin', 'Perera', 'Uvin', 'uvin@gmial.com', '123', 1, '111', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(3, 'Yashithi', 'Dharma', 'Yash', 'yash@gmial.com', '123', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(4, 'Aysha', 'Ifra', 'Aysha', 'aysha@gmial.com', '123', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(5, 'Priyatharshan', 'Balachandran', 'Tharshan', 'tharshan@gmial.com', '123', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(7, 'John', 'Doe', 'John', 'john@gmail.com', 'Qwerty12345', 1, '837475847V', '1997-07-08', 'M', 772746374, 112847563, '01, 2nd cross street', 'qwerty', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Jane', 'Doe', 'Jane', 'jane@gmail.com', 'Qwerty12345', 1, '837472847V', '1997-06-20', 'F', 767837499, 112847563, '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -3027,7 +3030,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `channelling`
 --
 ALTER TABLE `channelling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `channelling_feedbacks`
@@ -3183,7 +3186,7 @@ ALTER TABLE `record_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

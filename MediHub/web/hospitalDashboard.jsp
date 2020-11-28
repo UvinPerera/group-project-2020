@@ -51,10 +51,10 @@
         </section>
 
         <section class="Service">
-            <button class="styled" type="button">Manage Appointment</button>
+            <button class="styled" type="button" onclick="window.location.href='manageAppointments.jsp'">Manage Appointment</button>
         </section>
         <section class="Service">
-            <button class="styled" type="button">Manage Doctors</button>
+            <button class="styled" type="button" onclick="window.location.href='manageDoctors(hos).jsp'">Manage Doctors</button>
         </section>
       </div>
 </body>

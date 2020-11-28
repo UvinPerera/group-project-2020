@@ -65,7 +65,7 @@ public class PatientView extends HttpServlet {
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 23 ; i++){
+                        for (int i = 1; i <= 22 ; i++){
                             row.add(rs.getString(i));
                         }
                         Profile.add(row);

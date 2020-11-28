@@ -94,6 +94,11 @@
                 </tbody>
             </table>
         </div>
+
+<!--        ################
+            table ends
+        ################-->
+
     </body>
 </html>
 
@@ -107,9 +112,9 @@
         document.getElementsByName("date")[0].setAttribute('max', nextWeekDate);
     }
     
-    $('#date').click(function(){
-        validDate();
-    });
+//    $('#date').click(function(){
+//        validDate();
+//    });
     
 //    onchange district
     $('#district').change(function(){
@@ -117,7 +122,7 @@
         $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
-            url: "channelling",
+            url: "getcityasstring",
             type: "get", //send it through get method
             data: { 
               stage: "district", 
@@ -141,7 +146,7 @@
         $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
-            url: "channelling",
+            url: "gethospitalbycityasstring",
             type: "get", //send it through get method
             data: { 
               stage: "city", 
@@ -165,7 +170,7 @@
         $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
-            url: "channelling",
+            url: "getspecialisationbyhospitalasstring",
             type: "get", //send it through get method
             data: { 
               stage: "hospital", 
@@ -190,7 +195,7 @@
         var date=$(this).val();
         
         $.ajax({
-            url: "channelling",
+            url: "getdoctoravailabilityforChannellingasstring",
             type: "get", //send it through get method
             data: { 
               stage: "hospital", 
@@ -201,7 +206,7 @@
             success: function(response) {
               //populate city data
 //              alert(response);
-                if(response=="")
+                if(response!=="")
                 {
                     $('#doctorAvailability').html(response);
                 }
@@ -218,6 +223,46 @@
 
     });
     
+    //confirm channeling
+//    $('#confirmChannelling').click(function(){
+    function confirmChannelling(doctorAvailabilityId){
+//        var doctorAvailabilityId=$(this).attr("da-id");
+//        alert(doctorAvailabilityId);
+//        alert("sfg");
+        
+        $.ajax({
+            url: "confirmchannelling",
+            type: "get", //send it through get method
+            data: { 
+              doctorAvailabilityId: doctorAvailabilityId, 
+              check: "0"
+            },
+            success: function(response) {
+              //check dulpication
+//              alert(response);
+              if(response==1)
+              {
+                  var c = confirm("Another channelling found for same doctor availability !\nAre you sure want to channel for another person?");
+                  if(c==true)
+                  {
+                      document.location.href="confirmchannelling?check=1&doctorAvailabilityId="+doctorAvailabilityId;
+                  }
+                  else
+                  {
+                      alert("You Cancelled the channelling ! ");
+                  }
+              }
+              else
+              {
+                    document.location.href="confirmchannelling?doctorAvailabilityId="+doctorAvailabilityId;
+              }
+            },
+            error: function(xhr) {
+                alert("SpecialisationByHospital Error");
+            }
+          });
 
+    };
+//    });
     
 </script>
