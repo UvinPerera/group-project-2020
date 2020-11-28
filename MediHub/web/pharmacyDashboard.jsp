@@ -51,7 +51,7 @@
         </section>
 
         <section class="Service">
-            <button class="styled" type="button">Received Orders</button>
+            <button class="styled" type="button" onclick="window.location.href='trackOrder(phar).jsp'">Received Orders</button>
         </section>
         <section class="Service">
             <button class="styled" type="button">Track Orders</button>
