@@ -1,15 +1,15 @@
 <%-- 
-    Document   : viewpharmacy
-    Created on : Nov 24, 2020, 10:50:50 AM
-    Author     : Yash
+    Document   : viewadmin
+    Created on : Nov 28, 2020, 4:54:53 PM
+    Author     : Ifra
 --%>
-
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
-<!doctype html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset=utf-8>
@@ -17,13 +17,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/viewpharmacy.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/viewadmin.css" media="screen" />
 </head>
 <body>
 
   <div class="navbar" id="navbar">
       <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
+        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
         <li><a href="#" id="end">About</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Emergency Services</a></li>
@@ -31,25 +31,13 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
-    <% String username="";
-       username= session.getAttribute("username").toString();
-  
-       
-       ArrayList al = new ArrayList();
-       ArrayList a2 = new ArrayList();
-       if(request.getAttribute("profile")!=null){
-           al=(ArrayList)request.getAttribute("profile");
-            
-            a2 =(ArrayList) al.get(0);
-        }
-  %>
 
  <div class="contentContainer">
   <div class="">
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
-    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;"><%=username%></h4>
-    <button class="button" id="profilePic" onclick="window.location.href='pharmacyDashboard.jsp';"><b>Back</b></button>
+    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
+    <button class="button" id="profilePic" onclick="window.location.href='adminDashboard.jsp'"><b>Back</b></button>
   </div>
   <div class="login">
     <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
@@ -66,61 +54,71 @@
     <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
 
     <div class="record">
-    <div class="label">Name</div>
-    <div class="data"><%=a2.get(2)%></div>
+    <div class="label">First Name </div>
+    <div class="data">Admin</div>
   </div>
 
   <div class="record">
-    <div class="label">License No</div>
-    <div class="data"><%=a2.get(3)%></div>
+    <div class="label">Last Name </div>
+    <div class="data">Admin</div>
   </div>
 
   <div class="record">
-    <div class="label">Pharmacist ID</div>
-    <div class="data"><%=a2.get(5)%></div>
+    <div class="label">NIC No</div>
+    <div class="data">977000000V</div>
   </div>
 
   <div class="record">
-    <div class="label">Land Number</div>
-    <div class="data"><%=a2.get(8)%></div>
+    <div class="label">Date of Birth</div>
+    <div class="data">10/15/1997</div>
   </div>
 
   <div class="record">
-    <div class="label">Fax Number</div>
-    <div class="data"><%=a2.get(9)%></div>
+    <div class="label">Gender</div>
+    <div class="data">Female</div>
   </div>
 
   <div class="record">
     <div class="label">Email</div>
-    <div class="data"><%=a2.get(10)%></div>
+    <div class="data">johndoe@gmail.com</div>
   </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <div class="data"><%=a2.get(11)%></div>
+    <div class="data">No.100,First lane</div>
   </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <div class="data"><%=a2.get(12)%></div>
+    <div class="data">Kottegoda Road</div>
   </div>
 
   <div class="record">
     <div class="label">City</div>
-    <div class="data"><%=a2.get(13)%></div>
+    <div class="data">Weligama</div>
   </div>
 
   <div class="record">
-    <div class="label">Longitude</div>
-    <div class="data"><%=a2.get(14)%></div>
+    <div class="label">District</div>
+    <div class="data">Matara</div>
   </div>
 
   <div class="record">
-    <div class="label">Latitude</div>
-    <div class="data"><%=a2.get(15)%></div>
+    <div class="label">Zip Code</div>
+    <div class="data">81700</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Contact Number - Land</div>
+    <div class="data">041-2250111</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Contact Number - Mobile</div>
+    <div class="data">077-2250111</div>
+  </div>
 
   </div>
-</div>
 </div>
 
 
@@ -151,3 +149,4 @@
     </div>
     <br><br>
 </html>
+

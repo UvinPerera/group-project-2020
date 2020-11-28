@@ -17,7 +17,7 @@
       <li><a href="#">Contact</a></li>
       <li><a href="#">Emergency Services</a></li>
       <li><a href="#">Home</a></li>
-      <li id="logo"><img src="logo.png" width="15.5%"></li>
+      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
   </div>
   <br><br>
@@ -43,7 +43,7 @@
 
    <div class="new">
     <div class="create">
-          <a href="#" class=""><button class="btn"><i class="fa fa-plus-circle"></i></button></a>
+          <a href="#" class=""><button class="btn" onclick="window.location.href='signup';"><i class="fa fa-plus-circle"></i></button></a>
       </div>
       <div class="add-text">
           Add New Hospital

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/main.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/cookiePopup.css" media="screen" />
 </head>
 
 <body>
@@ -183,9 +184,14 @@
     </div>
     </div>
     </div>
+    <div id="cookieConsent">
+    <div id="closeCookieConsent">x</div>
+    This website uses cookies. <a href="#" target="_blank">More information</a> <a class="accept">I Accept</a>
+</div>
+
 </body>
 
-<!--fotter-->
+<!--footer-->
 <footer>
   <div class="row4">
     <div class="column4">
@@ -234,6 +240,8 @@
       `;
   //  alert(screen.width);
    }
+   
+   
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
@@ -242,6 +250,20 @@
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
+  
+  var cookiePopup = document.getElementById("cookieConsent");
+  
+  var close = document.getElementById("closeCookieConsent");
+  
+  close.onclick = function() {
+      cookiePopup.style.display = "none";
+    }
+  
+  var accept = document.getElementsByClassName("accept")[0];
+  
+  accept.onclick = function() {
+      cookiePopup.style.display = "none";
+    }
 
 </script>
 

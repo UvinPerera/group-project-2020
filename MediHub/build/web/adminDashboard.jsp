@@ -11,7 +11,7 @@
 <body>
   <div class="navbar" id="navbar">
     <ul>
-      <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
+      <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
       <li><a href="#" id="end">About</a></li>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Emergency Services</a></li>
@@ -38,13 +38,13 @@
              </div>
              <div class="lower-container">
                 <div>
-                   <h5>Rose Ann</h5>
+                   <h5><%=username%></h5>
                 </div>
                 <br><br>
                 <div>
-                  <a href="#" class="btn">View Profile</a>
+                  <button class="btn" onclick="window.location.href='viewadmin.jsp'" >View Profile</button>
                 <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
+                  <button class="btn" onclick="window.location.href='editadmin.jsp'">Edit Profile</button>
                 </div>
              </div>
           </div>
