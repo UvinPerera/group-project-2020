@@ -74,7 +74,7 @@
                             onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
                     </section>
                     <section class="Service">
-                        <button class="styled" type="button">Medical Records</button>
+                        <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button>
                     </section>
                     <section class="Service">
                         <button class="styled" type="button">Service Review</button>
@@ -139,14 +139,6 @@
                             <td class="table-hub-owner"><%= row.hospital %> </td>
                             <td class="table-hub-owner"><%= row.doctor %> </td>
                             <td class="table-hub-owner"><%= row.appointmentNo %></td>
-<<<<<<< HEAD
-                            <td class="table-hub-owner"><%= row.date %>         </td>
-                            <td class="table-hub-owner"><%= row.start_time %>   </td>
-                            <td class="table-hub-owner"><%= row.description %>  </td>
-                            <td>
-                                <ul class="actions">
-                                    <li><button id="popUp" class="btn" onclick="popup(<%= table.indexOf(row) %>);" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
-=======
                             <td class="table-hub-owner"><%= row.date %> </td>
                             <td class="table-hub-owner"><%= row.start_time %> </td>
                             <td class="table-hub-owner"><%= row.description %> </td>
@@ -154,7 +146,6 @@
                                 <ul class="actions">
                                     <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');"
                                             index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
->>>>>>> 40c8ee8489409a107b6508306b2e07f7773a4ea7
                                     <!--<li><button class="btn"><i class="fa fa-reply"></i></button></li>-->
                                 </ul>
                             </td>
@@ -335,22 +326,12 @@
     var print = document.getElementById("print");
 
     // When the user clicks on the button, open the modal
-<<<<<<< HEAD
-//    btn.onclick = function() 
-    function popup(indexId)
-    {
-        modal.style.display = "block";
-//        var index=btn.getAttribute("index");
-        var index=indexId;
-        
-=======
     //    btn.onclick = function() 
     function popup(indexId) {
         modal.style.display = "block";
         //        var index=btn.getAttribute("index");
         var index = indexId;
 
->>>>>>> 40c8ee8489409a107b6508306b2e07f7773a4ea7
         document.getElementById("modal_id").innerHTML = id[index];
         document.getElementById("modal_date_time").innerHTML = date[index] + " " + time[index];
         document.getElementById("modal_hospital").innerHTML = hospital[index];
@@ -360,16 +341,6 @@
         document.getElementById("modal_Payment_method").innerHTML = paymentMethod[index];
         document.getElementById("modal_payment_amount").innerHTML = paymentAmount[index];
         document.getElementById("modal_payment_description").innerHTML = paymentDescription[index];
-<<<<<<< HEAD
-        
-        var status="";
-        var colour="";
-        
-        if(paymentStatus[index]!="")
-        {
-            status="Paid";
-            colour="green";
-=======
 
         var status = "";
         var colour = "";
@@ -377,7 +348,6 @@
         if (paymentStatus[index] != "") {
             status = "Paid";
             colour = "green";
->>>>>>> 40c8ee8489409a107b6508306b2e07f7773a4ea7
         }
         else {
             status = "Not Paid";

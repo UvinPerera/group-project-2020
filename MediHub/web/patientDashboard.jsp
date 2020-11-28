@@ -74,7 +74,7 @@
                             onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
                     </section>
                     <section class="Service">
-                        <button class="styled" type="button">Medical Records</button>
+                        <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button>
                     </section>
                     <section class="Service">
                         <button class="styled" type="button">Service Review</button>
