@@ -6,66 +6,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/view_pharmacy.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/viewpharmacy.css" media="screen" />
 </head>
 <body>
+
   <div class="navbar" id="navbar">
-    <ul>
-      <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
-      <li><a href="#" id="end">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Emergency Services</a></li>
-      <li><a href="#">Home</a></li>
-      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-    </ul>
+      <ul>
+        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
+        <li><a href="#" id="end">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Emergency Services</a></li>
+        <li><a href="#">Home</a></li>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+      </ul>
   </div>
-  <div class="profile_card">
-    <div class="image_container">
-       <img src="./public/images/p3.jpg" style="width:400px; height:300px">
-       <div class="user">
-        <h2>Rose Ann</h2>
-       </div>
-    </div>
-    <div class="main_container">
-       <p><i class="fa fa-medkit" style="color:black;font-size:15px;"></i>Medi Center</p>
-       <p><i class="fa fa-circle" style="color:black;font-size:15px;"></i>License No. 10002</p>
-       <p><i class="fa fa-map-marker" style="color:black;font-size:15px;"></i>License Proof Location</p>
-       <p><i class="fa fa-id-card" style="color:black;font-size:15px;"></i>Pharmacy ID</p>
-       <p><i class="fa fa-map-marker" style="color:black;font-size:15px;"></i>Pharmacy Id Proof Location</p>
-       <p><i class="fa fa-phone" style="color:black;font-size:15px;"></i>0412211111</p>
-       <p><i class="fa fa-fax" style="color:black;font-size:15px;"></i>0411111111</p>
-       <p><i class="fa fa-envelope" style="color:black;font-size:15px;"></i>medicenter@gmail.com</p>
-       <p><i class="fa fa-home" style="color:black;font-size:15px;"></i>No.65, Reid AVenue, Colombo 07.</p>
-      <p><i class="fa fa-file-text" style="color:black;font-size:15px;"></i>Descripition</p>
-    </div>
+
+ <div class="contentContainer">
+  <div class="">
+  <div class="profile">
+    <img src="./public/images/p3.jpg" id="profile">
+    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
+    <button class="button" id="profilePic" onclick="window.location.href='pharmacyDashboard.jsp';"><b>Back</b></button>
   </div>
-</body>
-<center>
+  <div class="login">
+    <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
+    <br><br>
+    <h5>First access time :</h5>
+    <p>Monday, 21 January 2019, 8:48 AM</p>
+    <br><br>
+    <h5>Last access time :</h5>
+    <p>Tuesday, 17 January 2020, 9:00 AM</p>
+    <br><br><br><br>
+  </div>
+  </div>
+  <div class="information">
+    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
+
+    <div class="record">
+    <div class="label">Name</div>
+    <div class="data">MediHub Pharmacy</div>
+  </div>
+
+  <div class="record">
+    <div class="label">License No</div>
+    <div class="data">3573458</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Pharmacist ID</div>
+    <div class="data">190000000V</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Land Number</div>
+    <div class="data">07154342325</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Fax Number</div>
+    <div class="data">075284385</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Email</div>
+    <div class="data">johndoe@gmail.com</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Address 1</div>
+    <div class="data">No.100,First lane</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Address 2</div>
+    <div class="data">Kottegoda Road</div>
+  </div>
+
+  <div class="record">
+    <div class="label">City</div>
+    <div class="data">Weligama</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Longitude</div>
+    <div class="data">Matara</div>
+  </div>
+
+  <div class="record">
+    <div class="label">Latitude</div>
+    <div class="data">81700</div>
+
+  </div>
+</div>
+</div>
+
+
   <footer>
-    <div class="row4">
-      <div class="column4">
+    <center>
+    <div class="footerRow">
+      <div class="footerColumn">
         <div class="footerText">
           <br>ABOUT <br><br>
           MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
           provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-          them with the best experience in accessing medical<br> services.<br>
+          them with the best experience in accessing medical services<br>
         </div>
       </div>
-      <!--<div class="column4"><br>
-        <div class="footerText"> -->
+      <div class="footerColumn"><br>
+        <div class="footerText">
           <br><br>
-          <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-google"></a>
-          <a href="#" class="fa fa-instagram"></a>
+          <a href="#" class="a fa fa-facebook"></a>
+          <a href="#" class="a fa fa-twitter"></a>
+          <a href="#" class="a fa fa-google"></a>
+          <a href="#" class="a fa fa-instagram"></a>
         </div>
-    <!--  </div>
-    </div> -->
+      </div>
+    </div>
     <br>
     <div class="footerText">
       All rights Reserved @MediHub2020
     </div>
     <br><br>
-  </footer>
-</center>
 </html>
