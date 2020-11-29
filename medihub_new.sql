@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2020 at 04:07 AM
+-- Generation Time: Nov 29, 2020 at 08:56 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -2374,6 +2374,24 @@ CREATE TABLE `notifications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `file_path` varchar(512) DEFAULT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_payments`
 --
 
@@ -2510,7 +2528,6 @@ INSERT INTO `pharmacy_admins` (`user_id`, `pharmacy_id`, `reference_number`, `de
 
 CREATE TABLE `pharmacy_orders` (
   `id` int(11) NOT NULL,
-  `prescription_id` int(11) DEFAULT NULL,
   `pharmacy_id` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -2892,6 +2909,13 @@ ALTER TABLE `notifications`
   ADD KEY `updated_by` (`updated_by`);
 
 --
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
 -- Indexes for table `order_payments`
 --
 ALTER TABLE `order_payments`
@@ -2949,7 +2973,6 @@ ALTER TABLE `pharmacy_admins`
 --
 ALTER TABLE `pharmacy_orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `prescription_id` (`prescription_id`),
   ADD KEY `pharmacy_id` (`pharmacy_id`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
@@ -3054,13 +3077,13 @@ ALTER TABLE `channelling_refunds`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4095;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3893;
 
 --
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `doctor_availability`
@@ -3123,6 +3146,12 @@ ALTER TABLE `notifications`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `order_payments`
 --
 ALTER TABLE `order_payments`
@@ -3168,7 +3197,7 @@ ALTER TABLE `prescription_items`
 -- AUTO_INCREMENT for table `provinces`
 --
 ALTER TABLE `provinces`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `records`
@@ -3366,6 +3395,12 @@ ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `pharmacy_orders` (`id`);
+
+--
 -- Constraints for table `order_payments`
 --
 ALTER TABLE `order_payments`
@@ -3413,7 +3448,6 @@ ALTER TABLE `pharmacy_admins`
 -- Constraints for table `pharmacy_orders`
 --
 ALTER TABLE `pharmacy_orders`
-  ADD CONSTRAINT `pharmacy_orders_ibfk_1` FOREIGN KEY (`prescription_id`) REFERENCES `prescriptions` (`id`),
   ADD CONSTRAINT `pharmacy_orders_ibfk_2` FOREIGN KEY (`pharmacy_id`) REFERENCES `pharmacies` (`id`),
   ADD CONSTRAINT `pharmacy_orders_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `pharmacy_orders_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
