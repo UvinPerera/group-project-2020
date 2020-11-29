@@ -3,28 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/src/java/com/medihub/admin/PharmacyManage.java</file>
             <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/src/java/com/medihub/admin/ManagePharmacy.java</file>
-=======
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/EditPatient.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/managePharmacy.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/manageDoctors.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/test.html</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/adminDashboard.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/manageReviews.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/Patient.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/doctorDashboard.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/viewpatient.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/public/css/signup.css</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/trackOrder(pat).jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/patient/PatientView.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/patientDashboard.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/manageHospital.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/signUp.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/editPatient.jsp</file>
->>>>>>> 8c594fcd864644b69c83c87f8301ff07122da438
         </group>
     </open-files>
 </project-private>

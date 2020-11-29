@@ -33,8 +33,8 @@
    <select name='Dropdown' class="filter_dropdown">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Pharmacy ID</a></option>
-      <option value='Action'><a href="#">pharmacy</a></option>
-      <option value='Action'><a href="#">Director</a></option>
+      <option value='Action'><a href="#">pharmacy Name</a></option>
+      <option value='Action'><a href="#">License No</a></option>
       <option value='Action'><a href="#">City</a></option>
       <option value='Action'><a href="#">Status</a></option>
    </select>
@@ -57,8 +57,8 @@
       <thead>
       <tr>
         <th class="tableheading">Pharmacy ID</th>
-        <th class="tableheading">Pharmacy</th>
-        <th class="tableheading">Director</th>
+        <th class="tableheading">Pharmacy Name</th>
+        <th class="tableheading">License No</th>
         <th class="tableheading">City</th>
         <th class="tableheading">Status</th>
         <th class="tableheading">Actions</th>
