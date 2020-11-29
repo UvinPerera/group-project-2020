@@ -30,58 +30,65 @@
             <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
         </ul>
     </div>
-    <div class="welcome">
-        <% String username="";
+    <% String username="";
           username= session.getAttribute("username").toString();
        %>
-        <h1>
-            <center>Hello, <%=username%> <br>WELCOME TO MEDIHUB!</center>
-        </h1>
-    </div>
-    <br><br><br>
+       
+    <div class="container">
+        
+        <div class="profile">
+          <img src="./public/images/p3.jpg" id="profile">
+          <h2 style="text-align:center; margin-bottom:25px;"><%=username%></h2><br>
+          <div><center>
+            <a href="patientview" class="btn">View Profile</a>
+            <br><br><br>
+            <a href="editpatient" class="btn">Edit Profile</a>
+            <br><br><br>
+            <a href="" class="btn deactivate">Deactivate</a>
+              </center>
+          </div>
+          
+        </div>
+          
+          <div class="contentBox">
+              <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Services')" id="defaultOpen">Your Services</button>
+                <button class="tablinks" onclick="openTab(event, 'Appointments')">Upcoming Appointments</button>
+                <button class="tablinks" onclick="openTab(event, 'Notifications')">Upcoming Notifications</button>
+               
+              </div>
+              
+               
+        <div id="Services" class="tabcontent">
+          <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='channelling';">E-Channeling</button></center>
+          
+          </div>
+      
+            
+          <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button></center>
+          
+          </div>
+            <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='placeOrder.jsp'">Place Pharmacy Order</button></center>
+          
+          </div>
+                      
+            <div class="serviceTile">
+              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Track Pharmacy Orders</button></center>
+          
+          </div>
+            <div class="serviceTile">
+              <center> <button class="styled" type="button">Service Review</button></center>
+          
+          </div>
+          
+        </div>
+              <div id="Notifications" class="tabcontent"> There are no upcoming Notifications yet..</div>
 
-
-    <div class="page_divide">
-        <section class="profile">
-            <div class="card-container">
-                <div class="upper-container">
-                    <div class="image-container">
-                        <img src="./public/images/p3.jpg">
-                    </div>
-                </div>
-                <div class="lower-container">
-                    <div>
-                        <h5><%=username%></h5>
-                    </div>
-                    <br><br>
-                    <div>
-                        <a href="patientview" class="btn">View Profile</a>
-                        <br><br><br>
-                        <a href="editpatient" class="btn">Edit Profile</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="tilecont" style="max-width: 1080px;">
-            <div class="tiles">
-                <div class="tileset">
-                    <section class="Service">
-                        <button class="styled" type="button"
-                            onclick="window.location.href='channelling';">E-Channeling</button>
-                    </section>
-                    <section class="Service">
-                        <button class="styled" type="button"
-                            onclick="window.location.href='trackOrder(pat).jsp'">Orders</button>
-                    </section>
-                    <section class="Service">
-                        <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button>
-                    </section>
-                    <section class="Service">
-                        <button class="styled" type="button">Service Review</button>
-                    </section>
-                </div>
-            </div>
-
+        <div id="Appointments" class="tabcontent">
+            
             <!--pending appointments starts-->
             <!--checking for availability-->
             <%
@@ -106,24 +113,22 @@
                 var size =<%= table.size() %>;
             </script>
             <!--js array end-->
-
+            
             <div class="appointment">
                 <table class="table-hub table-hub-appoint">
                     <thead>
                         <tr>
-                            <th class="table-hub-owner">Channelling ID</th>
-                            <th class="table-hub-owner">Hospital</th>
-                            <th class="table-hub-owner">Doctor</th>
                             <th class="table-hub-owner">Appointment No</th>
+                            <th class="table-hub-owner">Hospital</th>
+                            <th class="table-hub-owner">Doctor</th>                            
                             <th class="table-hub-owner">Date</th>
                             <th class="table-hub-owner">Time</th>
-                            <th class="table-hub-owner">Description</th>
                             <th class="table-hub-owner">Action</th>
                             <!--<th class="table-hub-time-head">Time</th>-->
                         </tr>
                     </thead>
                     <tbody>
-                        <!--                        <tr>
+                        <!--<tr>
                             <td>000</td>
                             <td>demo hos</td>
                             <td>demo doc</td>
@@ -135,17 +140,15 @@
                         </tr>-->
                         <% for(Channelling row : table) { %>
                         <tr>
-                            <td class="table-hub-owner"><%= row.getId() %> </td>
+                            <td class="table-hub-owner"><%= row.appointmentNo %></td>
                             <td class="table-hub-owner"><%= row.hospital %> </td>
                             <td class="table-hub-owner"><%= row.doctor %> </td>
-                            <td class="table-hub-owner"><%= row.appointmentNo %></td>
                             <td class="table-hub-owner"><%= row.date %> </td>
                             <td class="table-hub-owner"><%= row.start_time %> </td>
-                            <td class="table-hub-owner"><%= row.description %> </td>
                             <td>
                                 <ul class="actions">
                                     <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');"
-                                            index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
+                                                index="<%= table.indexOf(row) %>"><center><i class="fa fa-eye"></i></<center></button></li>
                                     <!--<li><button class="btn"><i class="fa fa-reply"></i></button></li>-->
                                 </ul>
                             </td>
@@ -270,9 +273,23 @@
 
         </div>
 
-        <!--Modal ends-->
 
 
+          
+            
+            
+            
+            
+            
+        </div>
+              
+              
+          </div>
+          
+         
+
+        </div>
+   
 </body>
 <br><br>
 <center>
@@ -309,6 +326,27 @@
 </html>
 
 <script>
+    document.getElementById("defaultOpen").click();
+    
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+}
 
     //    #########################
     //    modal script start

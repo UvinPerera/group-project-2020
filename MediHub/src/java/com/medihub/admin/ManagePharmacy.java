@@ -14,19 +14,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.medihub.db.*;
+import com.medihub.db.DbConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author Ifra
  */
 public class ManagePharmacy{
-  public static void main(String[] args) throws SQLException{
+  public static void main(String[] args){
    Scanner sc = new Scanner(System.in);
    ManagePharmacy p = new ManagePharmacy();
    int Choice;
@@ -65,24 +66,9 @@ public class ManagePharmacy{
   }while(Choice!=4);
 
 }
-  
-  public Connect getConnection(){
-      try{
-          
-          DriverManager.registerDriver(new com.medihub.db());
-          
-          Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","passwords")
-          
-          return con;
-          
-         }catch (Eception e){
-          
-           e.printStackTrace();
-      }
-      return null;
-  }
 
-  public void CreatePharmacy(){
+public void CreatePharmacy(){
+      
        Scanner sc = new Scanner(System.in);
        Pharmacy i = new Pharmacy();
        
@@ -139,41 +125,18 @@ public class ManagePharmacy{
        i.setApproved_At(iApproved_At);
 
       try{
-          Connection con =getConnecton();
-            
-          PreparedStatement pst = con.prepareStatement("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,descriptiopn,status,approved_by,approved_at) values(?,?,?,?,?,?,?,?,?,?,?,?)");
-          pst.setString(1, i.getName());
-          pst.setInt(2, i.getLicense_no());
-          pst.setString(3,i.getLicense_Proof_Location());
-          pst.setString(4,i.getPharmacist_Proof_Location());
-          pst.setInt(5, i.getStatus());
-          pst.setString(6,i.getLand_Number());
-          pst.setString(7,i.Fax());
-          pst.setString(8, i.getAddress());
-          pst.setString(9,i.getCity());
-          pst.setString(10, i.getDistrict());
-          pst.setInt(11, i.getApproved_By());
-          pst.setInt(12, i.getApproved_By());
-          
-      }catch(Eception e){
+          DbConfig db = DbConfig.getInstance();
+          Connection con = db.getConnecton();
+           Statement stmt=con.createStatement(); 
+           int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,description,status,approved_by,approved_at) values('kamal',12,'colombo','col','ka','123','1234','asd@gmial.com','afag','eff','afgr',1,1,'2020-10-30 21:34:06')");
+
+      }catch(Exception e){
           
            e.printStackTrace();
       }
        
   }
-  public void ReadPharmacy() throws SQLException{
-      try{
-          try (Connection con = getConnecton(); PreparedStatement pst = con.prepareStatement("select * from pharmacies"); ResultSet rs = pst.executeQuery()) {
-              while(rs.next())
-              {
-                  System.out.println(rs.getString(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8)+" "+rs.getString(9)+" " +rs.getString(10)+" "+rs.getInt(11)+" "+rs.getInt(12));
-              }
-          }
-          
-    }catch (Eception e){
-          
-           e.printStackTrace();
-      }
+  public void ReadPharmacy(){
   }
 
   public void UpdatePharmacy(){
@@ -231,7 +194,7 @@ public class ManagePharmacy{
         ph.setApproved_At(iApproved_At);*/
   }
   public void DeletePharmacy(){
-     int id;
+    
      
   }
 }
@@ -250,8 +213,7 @@ class Pharmacy{
   private String District;
   private int Approved_By;
   private int Approved_At;
-
-  //Generate set and get methods
+  
   public int getId(){
     return Id;
   }

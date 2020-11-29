@@ -1,10 +1,4 @@
-<%@page import="java.util.ArrayList"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <meta charset=utf-8>
@@ -12,27 +6,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/view_patient.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/view_doctor.css" media="screen" />
 </head>
 <body>
-
   <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><a href="#" id="end">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
+    <ul>
+      <li><button class="styled" type="button" onclick="window.location.href='logout';"> Log out </button></li>
+      <li><a href="#" id="end">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Emergency Services</a></li>
+      <li><a href="#">Home</a></li>
+      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+    </ul>
   </div>
-
- <div class="contentContainer">
+  <div class="contentContainer">
   <div class="">
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
     <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
-    <button class="button" id="profilePic" onclick="window.location.href='adminDashboard.jsp'"><b>Back</b></button>
+    <button class="button" id="profilePic" onclick="window.location.href='doctor'"><b>Back</b></button>
   </div>
   <div class="login">
     <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
@@ -49,28 +41,28 @@
     <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
 
     <div class="record">
-    <div class="label">First Name </div>
-    <div class="data">Admin</div>
+    <div class="label">Name</div>
+    <div class="data">MediHub Center</div>
   </div>
 
   <div class="record">
-    <div class="label">Last Name </div>
-    <div class="data">Admin</div>
+    <div class="label">License No</div>
+    <div class="data">3573458</div>
   </div>
 
   <div class="record">
-    <div class="label">NIC No</div>
-    <div class="data">977000000V</div>
+    <div class="label">Director ID</div>
+    <div class="data">190000000V</div>
   </div>
 
   <div class="record">
-    <div class="label">Date of Birth</div>
-    <div class="data">10/15/1997</div>
+    <div class="label">Land Number</div>
+    <div class="data">07154342325</div>
   </div>
 
   <div class="record">
-    <div class="label">Gender</div>
-    <div class="data">Female</div>
+    <div class="label">Fax Number</div>
+    <div class="data">075284385</div>
   </div>
 
   <div class="record">
@@ -94,28 +86,17 @@
   </div>
 
   <div class="record">
-    <div class="label">District</div>
+    <div class="label">Longitude</div>
     <div class="data">Matara</div>
   </div>
 
   <div class="record">
-    <div class="label">Zip Code</div>
+    <div class="label">Latitude</div>
     <div class="data">81700</div>
-  </div>
-
-  <div class="record">
-    <div class="label">Contact Number - Land</div>
-    <div class="data">041-2250111</div>
-  </div>
-
-  <div class="record">
-    <div class="label">Contact Number - Mobile</div>
-    <div class="data">077-2250111</div>
-  </div>
 
   </div>
 </div>
-<<<<<<< HEAD
+</div>
 
 
   <footer>
@@ -128,23 +109,6 @@
           provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
           them with the best experience in accessing medical services<br>
         </div>
-=======
-<br>
-
-
-</body>
-<br><br>
-
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
->>>>>>> b9cc8a15c3818b01c367e58e1a556e5dba1eebdd
       </div>
       <div class="footerColumn"><br>
         <div class="footerText">
@@ -162,4 +126,3 @@
     </div>
     <br><br>
 </html>
-

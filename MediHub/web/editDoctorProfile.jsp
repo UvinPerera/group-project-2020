@@ -104,6 +104,38 @@
       <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number">
     </div>
 
+    <h3 style="text-align:center;font-size: 35px;margin-top: 40px;margin-bottom:40px;"> Doctor information</h3>
+
+    <div class="record">
+      <div class="label">SLMC</div>
+      <input class="data" type="text" name="slmc" id="slmc" placeholder="SLMC Number">
+    </div>
+
+    <div class="record">
+      <div class="label">SLMC License</div>
+      <input class="data" type="file" name="slmc_card_proof_location" id="slmc_card_proof_location" placeholder="SLMC License">
+    </div>
+
+    <div class="record">
+      <div class="label">Specialization 01</div>
+      <input class="data" type="text" name="specialisation_1" id="specialisation_1" placeholder="Specialisation 01">
+    </div>
+
+    <div class="record">
+      <div class="label">Specialization 02</div>
+      <input class="data" type="text" name="specialisation_2" id="specialisation_2" placeholder="Specialisation 02">
+    </div>
+
+    <div class="record">
+      <div class="label">Titles</div>
+      <input class="data" type="text" name="titles" id="titles" placeholder="Titles">
+    </div>
+
+    <div class="record">
+      <div class="label">Degrees</div>
+      <input class="data" type="text" name="degrees" id="degrees" placeholder="Degrees">
+    </div>
+
     <div class="buttons">
         <br><br>
         <button class="button" id="id" onclick="window.location.href='doctor'"><b>Cancel</b></button>

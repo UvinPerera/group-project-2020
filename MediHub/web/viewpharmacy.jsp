@@ -63,61 +63,61 @@
   </div>
   </div>
   <div class="information">
-    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
+    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Pharmacy Details</h3>
 
     <div class="record">
     <div class="label">Name</div>
-    <div class="data"><%=a2.get(2)%></div>
+    <div class="data"><%=a2.get(1)%></div>
   </div>
 
   <div class="record">
     <div class="label">License No</div>
-    <div class="data"><%=a2.get(3)%></div>
+    <div class="data"><%=a2.get(2)%></div>
   </div>
 
   <div class="record">
     <div class="label">Pharmacist ID</div>
-    <div class="data"><%=a2.get(5)%></div>
+    <div class="data"><%=a2.get(4)%></div>
   </div>
 
   <div class="record">
     <div class="label">Land Number</div>
-    <div class="data"><%=a2.get(8)%></div>
+    <div class="data"><%=a2.get(7)%></div>
   </div>
 
   <div class="record">
     <div class="label">Fax Number</div>
-    <div class="data"><%=a2.get(9)%></div>
+    <div class="data"><%=a2.get(8)%></div>
   </div>
 
   <div class="record">
     <div class="label">Email</div>
-    <div class="data"><%=a2.get(10)%></div>
+    <div class="data"><%=a2.get(9)%></div>
   </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <div class="data"><%=a2.get(11)%></div>
+    <div class="data"><%=a2.get(10)%></div>
   </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <div class="data"><%=a2.get(12)%></div>
+    <div class="data"><%=a2.get(11)%></div>
   </div>
 
   <div class="record">
     <div class="label">City</div>
-    <div class="data"><%=a2.get(13)%></div>
+    <div class="data"><%=a2.get(12)%></div>
   </div>
 
   <div class="record">
     <div class="label">Longitude</div>
-    <div class="data"><%=a2.get(14)%></div>
+    <div class="data"><%=a2.get(13)%></div>
   </div>
 
   <div class="record">
     <div class="label">Latitude</div>
-    <div class="data"><%=a2.get(15)%></div>
+    <div class="data"><%=a2.get(14)%></div>
 
   </div>
 </div>

@@ -64,65 +64,133 @@
   
   body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #EEE;
+
   }
-  .welcome{
-    font-family: 'Spartan',sans-serif;
-    height: 100px;
-    background-color:#0087a1;
-    color:#FFFFFF;
-    padding: 10px 10px 10px 10px;
-    padding-top: 30px;
-    text-align: center;
-    border-radius: 0px 0px 15px 15px;
-  }
+  
+
   h2{
     color: Black;
     text-shadow: 2px 2px 2px #FFF;
   }
-  .page_divide{
-    display: flex;
-    margin-left: 20px;
-    margin-right: 25px;
-    margin-top: 45px;
-    margin-bottom: 65px;
+  
+  .container{
+  width:97%;
+
+}
+  .profile{
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-bottom: 1%;
+    background-color:  #F1F1F1;
+    width:22%;
+    height:540px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
+}
+  #profile{
+    width:62%;
+    margin-left: 18%;
+    margin-top: 35px;
+    border-radius: 150px;
+    margin-bottom: 35px;
+}
+
+#profilePic{
+  width:80%;
+  margin-left: 10%;
+  margin-bottom: 50px;
+}
+
+
+.contentBox{
+    background-color:#fbfbfb;
+    height:870px;
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 29%;
+    margin-bottom: 3%;
+    width:67.5%; 
+    box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width:33.33%;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+#services{
+    border-right:#000 solid thin;
+}
+
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+
+.tab button.active {
+  background-color: #0087a1;
+  color: white;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-top: none;
+}
+.serviceTile{
+    width:35%;
+    margin-top: 35px;
+    margin-left: 4.5%;
+    margin-right: 4.5%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 20px;
+    height: 180px;
+    box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
+    float:left;
+}
+
+.styled{
+    font-family: 'Montserrat', sans-serif;
+    height: 160px;
+    width: 90%;
+    margin-top:10px;
+    background-color:#fbfbfb;
+    border: 3px solid #0087a1;
+    color: #0087a1;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
   }
-  .page_divide section{
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-  .card-container{
-   width:225px;
-   height: auto;
-   margin-top: 5px;
-   margin-left: 25px;
-   background: #FFF;
-   border-radius:6px;
-  /* position:absolute;*/
-   box-shadow: 0px 1px 10px #000;
-   font-family: Arial, Helvetica, sans-serif;;
-  }
-  .upper-container{
-    height: 150px;
+  .styled:hover{
     background: #0087a1;
-    border-radius:6px 6px 0 0;
+    color: #fff;
+    border: 3px solid #0087a1;
   }
-  .image-container{
-    transform: translate(50px,50px);
+  .styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
   }
-  .image-container img{
-    width:120px;
-    height:120px;
-    border-radius:none;
-  }
-  .lower-container{
-    height: 150px;
-    background: #FFF;
-    border-radius: 0 0 6px 6px;
-    padding: 50px;
-    text-align: center;
-  }
+
+
   .btn{
     padding:12px 20px;
     background: #0087a1;
@@ -148,30 +216,10 @@
     height: 200px;
     border-radius: 10px 10px 10px 10px;
   }
-  .styled{
-    height: 50px;
-    width: 200px;
-    margin: auto;
-    background-color: #EEE;
-    border: 3px solid #0087a1;
-    color: #0087a1;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .styled:hover{
-    background: #0087a1;
-    color: #fff;
-    border: 3px solid #0087a1;
-  }
-  .styled:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-                inset 2px 2px 3px rgba(0, 0, 0, .6);
-  }
+  
   footer{
     background-color: #2b3030;
-    margin-top: 50px;
+    margin-top: 900px;
   }
   .column4 {
   float: left;
@@ -203,7 +251,9 @@
   
   .appointment{
        display: inline-flex;
-       padding: 20px 20px 20px 20px;
+       padding-left: 20px;
+       padding-right: 15px;
+       padding-top: 50px;
   }
   .tiles{
        display: grid;
@@ -213,15 +263,14 @@
        padding: 20px 20px 20px 20px;
   }
   /*table css start*/
-  
+ 
   .table-hub-time-head{
        text-align: center;
   }
   .table-hub{
        table-layout: fixed;
-       width: 100%;
+       width: 70%;
        border-collapse:collapse;
-       min-width: 400px;
        border-radius: 5px 5px 0 0;
        overflow: hidden;
        
@@ -233,7 +282,8 @@
        font-weight: bold;
   }
   .table-hub td,.table-hub th{
-       padding: 12px 15px;
+       padding: 4px 4px;
+       line-height: 2.5;
   }
   .table-hub tbody tr{
        border-bottom: 1px solid #dddddd;
@@ -249,7 +299,7 @@
      tabl-hub-owner fot hopital names in appointment tables*/
   .table-hub-appoint{
        font-weight: bold;
-       font-size: 20px;
+       font-size: 15px;
   }
   .table-hub-time{
        padding-inline-start: 0;
@@ -313,17 +363,13 @@
 #popUp{
   border:0px;
   margin-top: 4px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 5px 20px;
-  width:15%;
-  border-radius: 20px;
+  width:10%;
+  border-radius: 50px;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   color: white;
   text-shadow: 1px 1px 1px #000;
   background-color:  #0087a1;
-  line-height: 3;
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
               inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
@@ -404,3 +450,13 @@ th, td {
 
 
 /*0087a1*/
+
+.deactivate{
+    background-color: #ff4747;
+}
+
+  .deactivate:hover{
+    background: transparent;
+    color: #ff4747;
+    border: 2px solid #ff4747;
+  }

@@ -39,7 +39,7 @@
             a2 =(ArrayList ) al.get(0);
         }
 %>
-<%=a2%>
+
  <div class="contentContainer">
   <div class="profile">
       <img src="./public/images/p3.jpg" id="profile">

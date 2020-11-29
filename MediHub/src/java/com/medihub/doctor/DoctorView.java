@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.pharmacy;
+package com.medihub.doctor;
 
 import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,11 +21,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author yash
+ * @author Yash
  */
-
-@WebServlet(name = "PharmacyView", urlPatterns = {"/pharmacyview"})
-public class pharmacyView extends HttpServlet {
+@WebServlet(name = "DoctorView", urlPatterns = {"/DoctorView"})
+public class DoctorView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +35,8 @@ public class pharmacyView extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -51,7 +50,7 @@ public class pharmacyView extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+            int doctorId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
             
@@ -62,24 +61,22 @@ public class pharmacyView extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+pharmacyId);
+                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+doctorId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 25 ; i++){
+                        for (int i = 1; i <= 22 ; i++){
                             row.add(rs.getString(i));
                         }
                         Profile.add(row);
                 }
                 
                 request.setAttribute("profile", Profile);
-                request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
+                request.getRequestDispatcher("viewdoctor.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
     }
-
-    
     @Override
     public String getServletInfo() {
         return "Short description";

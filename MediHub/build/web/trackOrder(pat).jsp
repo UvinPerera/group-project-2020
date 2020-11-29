@@ -23,6 +23,7 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
+   
   <div id="viewOrder" class="modal">
 
     <div class="modal-content">
@@ -84,7 +85,8 @@
 
   </div>
   <br>
-  <div class="container-table">
+
+  <div class="container-table" style="clear:both;">
     <table class="table">
       <thead>
       <tr>
