@@ -64,11 +64,7 @@
               <center> <button class="styled" type="button" onclick="window.location.href='channelling';">E-Channeling</button></center>
           
           </div>
-             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Place Order</button></center>
-              </div>
-          
-  
+      
             
           <div class="serviceTile">
               <center> <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button></center>
@@ -76,7 +72,7 @@
           </div>
                       
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Track Orders</button></center>
+              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Pharmacy Orders</button></center>
           
           </div>
             <div class="serviceTile">
