@@ -1,39 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.medihub.admin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.medihub.db.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-
+/**
+ *
+ * @author Ifra
+ */
 public class ManagePharmacy{
-  public static void main(String[] args){
+  public static void main(String[] args) throws SQLException{
    Scanner sc = new Scanner(System.in);
    ManagePharmacy p = new ManagePharmacy();
-   ArrayList <Pharmacy> globalPharmacy= new ArrayList <Pharmacy>();
    int Choice;
    do{
    System.out.println("...Enter Your Choice...");
-   System.out.println("Press 1 for Create");
-   System.out.println("Press 2 for Read");
-   System.out.println("Press 3 for Update");
-   System.out.println("Press 4 for Delete");
+   System.out.println("1.Create");
+   System.out.println("2.Read");
+   System.out.println("3.Update");
+   System.out.println("4.Delete");
 
    Choice = sc.nextInt();
 
    switch(Choice)
    {
      case 1 :
- 		   globalPharmacy.add(p.CreatePharmacy());
-       System.out.println("Create Successfully");
- 		   break;
+ 	p.CreatePharmacy();
+        break;
 
      case 2 :
-   		 p.ReadPharmacy(globalPharmacy);
-   		 break;
+   	p.ReadPharmacy();
+        break;
 
      case 3 :
-       p.UpdatePharmacy(globalPharmacy);
+       p.UpdatePharmacy();
        break;
 
      case 4 :
-       p.DeletePharmacy(globalPharmacy);
+       p.DeletePharmacy();
        break;
 
 
@@ -43,12 +64,28 @@ public class ManagePharmacy{
    }
   }while(Choice!=4);
 
+}
+  
+  public Connect getConnection(){
+      try{
+          
+          DriverManager.registerDriver(new com.medihub.db());
+          
+          Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","root","passwords")
+          
+          return con;
+          
+         }catch (Eception e){
+          
+           e.printStackTrace();
+      }
+      return null;
   }
 
-  public Pharmacy CreatePharmacy(){
+  public void CreatePharmacy(){
        Scanner sc = new Scanner(System.in);
        Pharmacy i = new Pharmacy();
-
+       
        System.out.println("Enter Pharmacy ID:");
        int iId=sc.nextInt();
        i.setId(iId);
@@ -101,30 +138,46 @@ public class ManagePharmacy{
        int iApproved_At=sc.nextInt();
        i.setApproved_At(iApproved_At);
 
-       return i;
-
+      try{
+          Connection con =getConnecton();
+            
+          PreparedStatement pst = con.prepareStatement("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,descriptiopn,status,approved_by,approved_at) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+          pst.setString(1, i.getName());
+          pst.setInt(2, i.getLicense_no());
+          pst.setString(3,i.getLicense_Proof_Location());
+          pst.setString(4,i.getPharmacist_Proof_Location());
+          pst.setInt(5, i.getStatus());
+          pst.setString(6,i.getLand_Number());
+          pst.setString(7,i.Fax());
+          pst.setString(8, i.getAddress());
+          pst.setString(9,i.getCity());
+          pst.setString(10, i.getDistrict());
+          pst.setInt(11, i.getApproved_By());
+          pst.setInt(12, i.getApproved_By());
+          
+      }catch(Eception e){
+          
+           e.printStackTrace();
+      }
+       
   }
-  public void ReadPharmacy(ArrayList <Pharmacy> pharmacy){
-    for(int i=0;i<pharmacy.size();i++){
-      System.out.println(pharmacy.get(i).getId());
-      System.out.println(pharmacy.get(i).getName());
-      System.out.println(pharmacy.get(i).getLicense_no());
-      System.out.println(pharmacy.get(i).getLicense_Proof_Location());
-      System.out.println(pharmacy.get(i).getPharmacist_Proof_Location());
-      System.out.println(pharmacy.get(i).getStatus());
-      System.out.println(pharmacy.get(i).getLand_Number());
-      System.out.println(pharmacy.get(i).getFax());
-      System.out.println(pharmacy.get(i).getAddress());
-      System.out.println(pharmacy.get(i).getCity());
-      System.out.println(pharmacy.get(i).getDistrict());
-      System.out.println(pharmacy.get(i).getApproved_By());
-      System.out.println(pharmacy.get(i).getApproved_At());
-
-    }
+  public void ReadPharmacy() throws SQLException{
+      try{
+          try (Connection con = getConnecton(); PreparedStatement pst = con.prepareStatement("select * from pharmacies"); ResultSet rs = pst.executeQuery()) {
+              while(rs.next())
+              {
+                  System.out.println(rs.getString(1)+" "+rs.getInt(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getString(7)+" "+rs.getString(8)+" "+rs.getString(9)+" " +rs.getString(10)+" "+rs.getInt(11)+" "+rs.getInt(12));
+              }
+          }
+          
+    }catch (Eception e){
+          
+           e.printStackTrace();
+      }
   }
 
-  public void UpdatePharmacy(ArrayList <Pharmacy> pharmacy){
-       Scanner sc=new Scanner(System.in);
+  public void UpdatePharmacy(){
+     /*Scanner sc=new Scanner(System.in);
         System.out.println("Enter Pharmacy ID : ");
         int iId=sc.nextInt();
         Pharmacy ph = pharmacy.get(iId);
@@ -175,14 +228,11 @@ public class ManagePharmacy{
 
         System.out.println("Enter new Approved At:");
         int iApproved_At=sc.nextInt();
-        ph.setApproved_At(iApproved_At);
+        ph.setApproved_At(iApproved_At);*/
   }
-  public void DeletePharmacy(ArrayList <Pharmacy> pharmacy){
-    Scanner sc=new Scanner(System.in);
-    System.out.println("Enter Pharmacy ID : ");
-    int iId=sc.nextInt();
-    Pharmacy ph = pharmacy.get(iId);
-    pharmacy.remove(ph);
+  public void DeletePharmacy(){
+     int id;
+     
   }
 }
 
@@ -293,3 +343,4 @@ class Pharmacy{
   }
 
 }
+
