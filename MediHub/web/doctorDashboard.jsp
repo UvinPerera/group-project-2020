@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Dashboard_Doctor.css" media="screen" />
+  <link rel="stylesheet" type="text/css" media="screen" href="./public/css/reminder.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./public/css/form.css">
 </head>
 <body>
   <div class="navbar" id="navbar">
@@ -51,7 +53,7 @@
           
           </div>
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href=''">Set Medication Reminder</button></center>
+                <center><button class="styled" type="button" id="medicationreminder">Set Medication Reminder</button></center>
           
           </div>
         </div>
@@ -59,6 +61,46 @@
             <div id="Appointments" class="tabcontent"> There are no upcoming appointments yet..</div>
       </div>
   </div>
+          <div id="medicationReminder" class="modal">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+               
+                   <h3>Add Medication Reminder</h3>
+               
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <label>Prescription ID: </label>
+                    <select class="input option">
+                        <option disabled="disabled" selected="selected">--Choose Option--</option>
+                        <option value="1">Prescription 1</option>
+                        <option value="2">Prescription 2</option>
+                        <option value="3">Prescription 3</option>
+                        <option value="4">Prescription 4</option>
+                    </select>
+                <br>
+                <br>
+                    <label>Duration: </label>
+                    <input type="number" class="input duration" placeholder="Enter duration">
+                    <br><br>
+                    <label>Through SMS: </label>
+                    <input type="checkbox" class="tsms">
+                    <br><br>
+                    <label>Through Email: </label>
+                    <input type="checkbox" class="temail">
+                    <br><br>
+                    <label>Description: </label>
+                    <br><br>
+                    <textarea class="description" placeholder="Enter description to be displayed to the patient"></textarea>
+                    <button class="button" type="submit">Add Presecription</button>
+                    
+                </form>
+
+            </div>
+        </div>
 </body>
 <br><br>
 <center>
@@ -113,4 +155,23 @@
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
 }
+</script>
+
+<script>
+    var modal = document.getElementById("medicationReminder");
+    var btn = document.getElementById("medicationreminder");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 </script>

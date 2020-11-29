@@ -37,12 +37,18 @@
   
   .modal-header {
   
-    background-color: #0087a1;
+    background-color: #544886;
     color: white;
     height: 45px;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 30px;
+    
+  }
+
+  .modal-header>h2 {
+  
+    color: white;
     
   }
 

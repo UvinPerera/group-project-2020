@@ -11,13 +11,15 @@
 
 <body>
 
-    <button id="vieworder">Modal</button>
-    <div id="viewOrder" class="modal">
+    <button id="medicationreminder">Modal</button>
+    <div id="medicationReminder" class="modal">
 
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Add medication reminder</h2>
+               <div>
+                   <h2>Add Medication Reminder</h2>
+               </div>
             </div>
 
             <div class="modal-body">
@@ -42,9 +44,9 @@
                     <input type="checkbox">
                     <br><br>
                     <label>Description: </label>
-                    <br>
-                    <input type="text" class="description" placeholder="Enter description for the reminder">
-                    <button type="submit">Add Presecription</button>
+                    <br><br>
+                    <textarea class="description" placeholder="Enter description to be displayed to the patient"></textarea>
+                    <button class="button" type="submit">Add Presecription</button>
                     
                 </form>
 
@@ -54,8 +56,8 @@
 
 </body>
 <script>
-    var modal = document.getElementById("viewOrder");
-    var btn = document.getElementById("vieworder");
+    var modal = document.getElementById("medicationReminder");
+    var btn = document.getElementById("medicationreminder");
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function () {
         modal.style.display = "block";
