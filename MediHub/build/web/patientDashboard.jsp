@@ -70,9 +70,13 @@
               <center> <button class="styled" type="button" onclick="window.location.href='medicalRecords.jsp'">Medical Records</button></center>
           
           </div>
+            <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='placeOrder.jsp'">Place Pharmacy Order</button></center>
+          
+          </div>
                       
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Pharmacy Orders</button></center>
+              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(pat).jsp'">Track Pharmacy Orders</button></center>
           
           </div>
             <div class="serviceTile">
