@@ -52,6 +52,7 @@
               <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Services')" id="defaultOpen">Your Services</button>
                 <button class="tablinks" onclick="openTab(event, 'Appointments')">Upcoming Appointments</button>
+                <button class="tablinks" onclick="openTab(event, 'Notifications')">Upcoming Notifications</button>
                
               </div>
               
@@ -76,6 +77,7 @@
           </div>
           
         </div>
+              <div id="Notifications" class="tabcontent"> There are no upcoming Notifications yet..</div>
 
         <div id="Appointments" class="tabcontent">
             

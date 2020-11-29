@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/adminDashboard.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/manageHospital.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/index.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/manageDoctors.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/managePharmacy.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medii/group-project-2020/MediHub/web/public/css/Dashboard_Admin.css</file>
+            <file>file:/C:/Users/Yash/Desktop/medii/group-project-2020/MediHub/web/adminDashboard.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medii/group-project-2020/MediHub/web/public/css/Dashboard_Doctor.css</file>
+            <file>file:/C:/Users/Yash/Desktop/medii/group-project-2020/MediHub/web/doctorDashboard.jsp</file>
         </group>
     </open-files>
 </project-private>
