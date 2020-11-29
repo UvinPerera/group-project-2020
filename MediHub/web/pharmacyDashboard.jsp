@@ -27,9 +27,9 @@
           <img src="./public/images/p3.jpg" id="profile">
           <h2 style="text-align:center; margin-bottom:25px;"><%=username%></h2><br>
           <div><center>
-            <a href="viewdoctor.jsp" class="btn">View Profile</a>
+            <a href="pharmacyview" class="btn">View Profile</a>
             <br><br><br>
-            <a href="editDoctorProfile.jsp" class="btn">Edit Profile</a>
+            <a href="editpharmacy" class="btn">Edit Profile</a>
             <br><br><br>
             <a href="" class="btn deactivate">Deactivate</a>
               </center>
@@ -45,11 +45,11 @@
         </div>    
         <div id="Services" class="tabcontent">
           <div class="serviceTile">
-              <center> <button class="styled" type="button" onclick="window.location.href='trackOrder(phar).jsp'">Received Orders</button></center>
+              <center> <button class="styled" type="button" onclick="window.location.href=''">Received Orders</button></center>
           
           </div>
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href=''">Track Orders</button></center>
+              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(phar).jsp'">Track Orders</button></center>
           
           </div>
         </div>

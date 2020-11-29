@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebServlet(name = "PharmacyView", urlPatterns = {"/pharmacyview"})
-public class pharmacyView extends HttpServlet {
+public class PharmacyView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -62,11 +62,11 @@ public class pharmacyView extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+pharmacyId);
+                ResultSet rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE pharmacist_id="+pharmacyId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 25 ; i++){
+                        for (int i = 1; i <= 22 ; i++){
                             row.add(rs.getString(i));
                         }
                         Profile.add(row);
