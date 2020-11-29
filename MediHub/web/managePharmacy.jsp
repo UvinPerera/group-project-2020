@@ -12,7 +12,7 @@
 <body>
   <div class="navbar">
     <ul>
-      <li><button class="style" type="button"> Joen Doe </button></li>
+      <li><button class="style" type="button">Admin</button></li>
       <li><a href="#" id="end">About</a></li>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Emergency Services</a></li>
