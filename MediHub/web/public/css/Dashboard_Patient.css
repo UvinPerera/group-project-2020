@@ -84,7 +84,7 @@
     margin-bottom: 1%;
     background-color:  #F1F1F1;
     width:22%;
-    height:500px;
+    height:540px;
     border-radius: 15px;
     box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
 }
@@ -450,3 +450,13 @@ th, td {
 
 
 /*0087a1*/
+
+.deactivate{
+    background-color: #ff4747;
+}
+
+  .deactivate:hover{
+    background: transparent;
+    color: #ff4747;
+    border: 2px solid #ff4747;
+  }

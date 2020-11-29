@@ -80,7 +80,7 @@ h2{
     margin-bottom: 1%;
     background-color:  #F1F1F1;
     width:22%;
-    height:500px;
+    height:540px;
     border-radius: 15px;
     box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
 }
@@ -124,7 +124,7 @@ h2{
   border: none;
   outline: none;
   cursor: pointer;
-  width:50%;
+  width:33.3%;
   padding: 14px 16px;
   transition: 0.3s;
 }
@@ -255,6 +255,10 @@ h2{
       padding-top: 40px;
       padding-left: 30px;
   }
+   #Notifications{
+      padding-top: 40px;
+      padding-left: 30px;
+  }
 .btn{
   padding:12px 20px;
   background: #544886;
@@ -304,3 +308,12 @@ text-decoration: none;
 border-radius: 50%;
 color:white;
 }
+.deactivate{
+    background-color: #ff5b5b;
+}
+
+  .deactivate:hover{
+    background: transparent;
+    color: #ff5b5b;
+    border: 2px solid #ff5b5b;
+  }
