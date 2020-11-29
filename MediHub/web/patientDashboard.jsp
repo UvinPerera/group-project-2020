@@ -71,7 +71,7 @@
           
           </div>
             <div class="serviceTile">
-              <center> <button class="styled" type="button" onclick="window.location.href='placeOrder.jsp'">Place Pharmacy Order</button></center>
+              <center> <button class="styled" type="button" onclick="window.location.href='patientorders'">Place Pharmacy Order</button></center>
           
           </div>
                       
