@@ -7,17 +7,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/Manage_Doctors.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Doctors.css" media="screen" />
 </head>
 <body>
   <div class="navbar">
     <ul>
-      <li><button class="style" type="button"> Joen Doe </button></li>
+      <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
+      <li><button class="style" type="button" onclick="window.location.href='hospitalDashboard.jsp'"> Profile </button></li>
       <li><a href="#" id="end">About</a></li>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Emergency Services</a></li>
       <li><a href="#">Home</a></li>
-      <li id="logo"><img src="logo.png" width="15.5%"></li>
+      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
   </div>
   <br><br>

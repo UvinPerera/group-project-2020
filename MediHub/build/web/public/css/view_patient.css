@@ -74,6 +74,7 @@ body{
   z-index: 1;
   overflow-x: hidden;
   padding-top: 20px;
+  
 }
 
 /* Control the left side */
@@ -82,18 +83,21 @@ body{
   background-color: #2b3030;
   border:3px solid #0087a1;
   color: white;
+  
 }
 /* Control the middle side */
 .middle {
   left: 40%;
   background-color: #fff;
   border:3px solid #0087a1;
+  
 }
 /* Control the right side */
 .right {
   right: 15%;
   background-color: #fff;
   border:3px solid #0087a1;
+ 
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -124,6 +128,7 @@ footer{
   position:absolute;
   width: 100%;
   bottom: 0;
+ 
 }
 .column4 {
 float: left;

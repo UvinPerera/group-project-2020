@@ -22,41 +22,43 @@
     <% String username="";
           username= session.getAttribute("username").toString();
        %>
-  <div class="welcome">
-            <h1><center>Hello, <%=username%> <br>Welcome to Medihub!</center></h1>
 
-  </div>
-  <br><br><br>
-
-  <div class="page_divide">
-        <section class="profile">
-        <div class="card-container">
-             <div class="upper-container">
-                <div class="image-container">
-                  <img src="./public/images/p3.jpg">
-                </div>
-             </div>
-             <div class="lower-container">
-                <div>
-                   <h5><%=username%></h5>
-                </div>
-                <br><br>
-                <div>
-                  <a href="#" class="btn">View Profile</a>
-                <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
-                </div>
-             </div>
+  <div class="container">
+      <div class="profile">
+          <img src="./public/images/p3.jpg" id="profile">
+          <h2 style="text-align:center; margin-bottom:25px;"><%=username%></h2><br>
+          <div><center>
+            <a href="viewdoctor.jsp"class="btn">View Profile</a>
+            <br><br><br>
+            <a href="editDoctorProfile.jsp" class="btn">Edit Profile</a>
+            <br><br><br>
+            <a href="" class="btn deactivate">Deactivate</a>
+              </center>
           </div>
-        </section>
+          
+        </div>
 
-        <section class="Service">
-            <button class="styled" type="button">Create Prescription</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">Set Medication Reminder</button>
-        </section>
+        <div class="contentBox">
+              <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Services')" id="defaultOpen">Your Services</button>
+                <button class="tablinks" onclick="openTab(event, 'Appointments')">Upcoming Appointments</button>
+                <button class="tablinks" onclick="openTab(event, 'Notifications')">Upcoming Notifications</button>
+               
+        </div>    
+        <div id="Services" class="tabcontent">
+          <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='';">Create Prescription</button></center>
+          
+          </div>
+            <div class="serviceTile">
+              <center><button class="styled" type="button" onclick="window.location.href=''">Set Medication Reminder</button></center>
+          
+          </div>
+        </div>
+            <div id="Notifications" class="tabcontent"> There are no upcoming Notifications yet..</div>
+            <div id="Appointments" class="tabcontent"> There are no upcoming appointments yet..</div>
       </div>
+  </div>
 </body>
 <br><br>
 <center>
@@ -89,3 +91,26 @@
 </center>
 
 </html>
+<script>
+       document.getElementById("defaultOpen").click();
+    
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+}
+</script>

@@ -15,12 +15,12 @@
 <body>
   <div class="navbar" id="navbar">
       <ul>
-        <li><button class="style" type="button"> Logout </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='logout';"> Logout </button></li>
         <li><a href="#" id="end">About</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Emergency Services</a></li>
         <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="logo.png" width="15.5%"></li>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
   <div id="viewOrder" class="modal">

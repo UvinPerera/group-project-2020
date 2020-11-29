@@ -68,6 +68,7 @@ public class EditPatient extends HttpServlet {
                         Details.add(row);
                 }
                 
+                
                 request.setAttribute("details", Details);
                 request.getRequestDispatcher("editPatient.jsp").forward(request, response);
                 }catch(Exception e){
