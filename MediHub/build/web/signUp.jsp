@@ -341,7 +341,7 @@
         $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
-            url: "getCityAsString",
+            url: "getcityasstring",
             type: "get", //send it through get method
             data: { 
               stage: "district", 

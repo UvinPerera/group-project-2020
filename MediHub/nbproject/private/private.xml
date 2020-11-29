@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/Channelling.java</file>
+            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/EditPatient.java</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/channelling.jsp</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/PatientChannelling.java</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/ChannellingResult.java</file>
@@ -13,6 +14,7 @@
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/channellingResult.jsp</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/doctor/DoctorAvailability.java</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/payment/Payment.java</file>
+            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/db/DbConfig.java</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/confirmChannelling.jsp</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/ConfirmChannelling.java</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/patient/PatientDashboard.java</file>
