@@ -10,7 +10,7 @@ label{
 
 .option{
     height: 35px;
-    margin-left: 45px;
+    margin-left: 50px;
   }
   
   .option option{
@@ -49,7 +49,7 @@ label{
     text-align: center;
     color: white;
     text-shadow: 1px 1px 1px #000;
-    background-color:  #0087a1;
+    background-color:  #544886;
     line-height: 3;
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
@@ -66,4 +66,10 @@ label{
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
   }
   
+.temail{
+  margin-left: 50px;
+}
 
+.tsms{
+  margin-left: 60px;
+}
