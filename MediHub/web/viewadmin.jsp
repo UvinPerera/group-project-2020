@@ -36,7 +36,7 @@
   <div class="">
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
-    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
+    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Admin</h4>
     <button class="button" id="profilePic" onclick="window.location.href='adminDashboard.jsp'"><b>Back</b></button>
   </div>
   <div class="login">
@@ -55,12 +55,12 @@
 
     <div class="record">
     <div class="label">First Name </div>
-    <div class="data">Admin</div>
+    <div class="data">Aysha</div>
   </div>
 
   <div class="record">
     <div class="label">Last Name </div>
-    <div class="data">Admin</div>
+    <div class="data">Ifra</div>
   </div>
 
   <div class="record">
@@ -80,7 +80,7 @@
 
   <div class="record">
     <div class="label">Email</div>
-    <div class="data">johndoe@gmail.com</div>
+    <div class="data">admin@medihub.com</div>
   </div>
 
   <div class="record">
@@ -90,7 +90,7 @@
 
   <div class="record">
     <div class="label">Address 2</div>
-    <div class="data">Kottegoda Road</div>
+    <div class="data">Main Street</div>
   </div>
 
   <div class="record">
