@@ -27,7 +27,7 @@
  <div class="contentContainer">
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
-    <h2 style="text-align:center; margin-bottom:25px;">Jane Doe</h2>
+    <h3 style="text-align:center; margin-bottom:25px;">Admin</h3>
     <button class="button" id="profilePic"><b>Change Profile Picture</b></button>
   </div>
 
