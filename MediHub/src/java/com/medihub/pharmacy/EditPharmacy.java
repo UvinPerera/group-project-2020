@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.patient;
+package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,10 +21,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author hp
+ * @author Yash
  */
-@WebServlet(name = "EditPatient", urlPatterns = {"/editpatient"})
-public class EditPatient extends HttpServlet {
+@WebServlet(name = "EditPharmacy", urlPatterns = {"/editpharmacy"})
+public class EditPharmacy extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +35,7 @@ public class EditPatient extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+ 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -50,15 +49,15 @@ public class EditPatient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+                HttpSession session = request.getSession();
+            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
             try{
                 DbConfig db = DbConfig.getInstance();
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+patientId);
+                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+pharmacyId);
                 ArrayList Details = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
@@ -68,14 +67,22 @@ public class EditPatient extends HttpServlet {
                         Details.add(row);
                 }
                 
+                ResultSet rs2=stmt.executeQuery("SELECT * FROM pharmacies WHERE pharmacist_id="+pharmacyId);
+                ArrayList Details2 = new ArrayList();
+                while(rs2.next()){
+                        ArrayList row2 = new ArrayList();
+                        for (int i = 1; i <= 20 ; i++){
+                            row2.add(rs2.getString(i));
+                        }
+                        Details2.add(row2);
+                }
                 
                 request.setAttribute("details", Details);
-                request.getRequestDispatcher("editPatient.jsp").forward(request, response);
+                request.setAttribute("details2", Details2);
+                request.getRequestDispatcher("editpharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
-       
-                
     }
 
     /**
@@ -86,8 +93,13 @@ public class EditPatient extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
 
-    
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

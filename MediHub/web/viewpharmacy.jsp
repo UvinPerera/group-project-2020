@@ -63,7 +63,7 @@
   </div>
   </div>
   <div class="information">
-    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
+    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Pharmacy Details</h3>
 
     <div class="record">
     <div class="label">Name</div>
