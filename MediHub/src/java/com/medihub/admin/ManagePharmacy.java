@@ -32,7 +32,6 @@ public class ManagePharmacy{
    ManagePharmacy p = new ManagePharmacy();
    int Choice;
    do{
-   System.out.println("...Enter Your Choice...");
    System.out.println("1.Create");
    System.out.println("2.Read");
    System.out.println("3.Update");
@@ -43,7 +42,7 @@ public class ManagePharmacy{
    switch(Choice)
    {
      case 1 :
- 	p.CreatePharmacy();
+ 	p.Createpharmacy();
         break;
 
      case 2 :
@@ -67,7 +66,7 @@ public class ManagePharmacy{
 
 }
 
-public void CreatePharmacy(){
+public void Createpharmacy(){
       
        Scanner sc = new Scanner(System.in);
        Pharmacy i = new Pharmacy();
@@ -140,62 +139,10 @@ public void CreatePharmacy(){
   }
 
   public void UpdatePharmacy(){
-     /*Scanner sc=new Scanner(System.in);
-        System.out.println("Enter Pharmacy ID : ");
-        int iId=sc.nextInt();
-        Pharmacy ph = pharmacy.get(iId);
 
-        System.out.println("Enter New Name : ");
-        String iName=sc.next();
-        ph.setName(iName);
-
-        System.out.println("Enter New Pharmacy License No:");
-        int iLicense_no=sc.nextInt();
-        ph.setLicense_no(iLicense_no);
-
-        System.out.println("Enter New License Proof Location:");
-        String iLicense_Proof_Location=sc.next();
-        ph.setLicense_Proof_Location(iLicense_Proof_Location);
-
-        System.out.println("Enter New Pharmacist Proof Location:");
-        String iPharmacist_Proof_Location=sc.next();
-        ph.setPharmacist_Proof_Location(iPharmacist_Proof_Location);
-
-        System.out.println("Enter New Status:");
-        int iStatus=sc.nextInt();
-        ph.setStatus(iStatus);
-
-        System.out.println("Enter New Land Number:");
-        String iLand_Number=sc.next();
-        ph.setLand_Number(iLand_Number);
-
-        System.out.println("Enter New Fax:");
-        String iFax=sc.next();
-        ph.setFax(iFax);
-
-        System.out.println("Enter New Address:");
-        String iAddress=sc.next();
-        ph.setAddress(iAddress);
-
-        System.out.println("Enter New City");
-        String iCity=sc.next();
-        ph.setCity(iCity);
-
-        System.out.println("Enter New District:");
-        String iDistrict=sc.next();
-        ph.setFax(iDistrict);
-
-        System.out.println("Enter New Approved By :");
-        int iApproved_By=sc.nextInt();
-        ph.setApproved_By(iApproved_By);
-
-        System.out.println("Enter new Approved At:");
-        int iApproved_At=sc.nextInt();
-        ph.setApproved_At(iApproved_At);*/
   }
   public void DeletePharmacy(){
-    
-     
+      
   }
 }
 
