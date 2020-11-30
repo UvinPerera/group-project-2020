@@ -95,10 +95,6 @@ public void Createpharmacy(){
        String iDisplay_Name=sc.next();
        i.setDisplay_Name(iDisplay_Name);
        
-       System.out.println("Enter Status:");
-       int iStatus=sc.nextInt();
-       i.setStatus(iStatus);
-
        System.out.println("Enter Land Number:");
        String iLand_Number=sc.next();
        i.setLand_Number(iLand_Number);
@@ -120,8 +116,13 @@ public void Createpharmacy(){
        i.setAddress2(iAddress2);
        
        System.out.println("Enter City:");
-       String iCity=sc.next();
+       int iCity=sc.nextInt();
        i.setCity(iCity);
+       
+       
+       System.out.println("Enter Status:");
+       int iStatus=sc.nextInt();
+       i.setStatus(iStatus);
 
        System.out.println("Enter Created By :");
        int iCreated_By=sc.nextInt();
@@ -132,7 +133,7 @@ public void Createpharmacy(){
           DbConfig db = DbConfig.getInstance();
           Connection con = db.getConnecton();
            Statement stmt=con.createStatement(); 
-           int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,description,status,approved_by,approved_at) values('kamal',12,'colombo','col','ka','123','1234','asd@gmial.com','afag','eff','afgr',1,1,'2020-10-30 21:34:06')");
+           int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy','011-1231231','011-9879879','citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");
 
       }catch(Exception e){
           
@@ -158,13 +159,13 @@ class Pharmacy{
   private int Pharmacist_Id;
   private String Pharmacist_Proof_Location;
   private String Display_Name;
-  private int Status;
   private String Land_Number;
   private String Fax;
   private String Email;
   private String Address1;
   private String Address2;
-  private String City;
+  private int City;
+  private int Status;
   private int Created_By;
 
 
@@ -210,13 +211,6 @@ class Pharmacy{
     this.Display_Name = Display_Name;
   }
   
-  public int getStatus(){
-    return Status;
-  }
-  public void setStatus(int Status){
-    this.Status = Status;
-  }
-
   public String getLand_Number(){
     return Land_Number;
   }
@@ -252,13 +246,20 @@ class Pharmacy{
     this.Address2 = Address2;
   }
   
-  public String getCity(){
+  public int getCity(){
     return City;
   }
-  public void setCity(String City){
+  public void setCity(int City){
     this.City = City;
   }
-
+  
+  public int getStatus(){
+    return Status;
+  }
+  public void setStatus(int Status){
+    this.Status = Status;
+  }
+  
   public int getCreated_By(){
     return Created_By;
   }
