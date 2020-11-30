@@ -4,6 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/SubmitOrder.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/TrackPatientOrder.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/web/update_order.jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/UpdatePaitentOrder.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/EditPatient.java</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/EditOrderUpdate.java</file>
         </group>
     </open-files>
 </project-private>
