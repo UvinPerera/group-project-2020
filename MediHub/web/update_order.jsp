@@ -43,7 +43,7 @@
 %>
   <div class="container">
     <h1>Update Order </h1><br>
-    <form action="updatepatientorder" method="post">
+    <form action="updatepatientorder?orderid=<%=a2.get(0)%>"" method="post">
 
       <h2 class="details">Order ID</h2>
       <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
@@ -58,10 +58,10 @@
         <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
 
         <h2 class="details"> Patient Order Description</h2>
-         <input class="input" type="text" name="patientdescription" id="patientorderdescription" placeholder="<%=a2.get(4)%>" readonly>
+         <input class="input" type="text" name="patientdescription" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly>
 
          <h2 class="details">Order Description</h2>
-          <input class="input" type="text" name="description" id="orderdescription" placeholder="<%=a2.get(6)%>">
+          <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>">
 
       <h2 class="details">Prescription</h2>
        <input class="input" type="text" name="file_path" id="filepath" placeholder="<%=a2.get(5)%>" readonly>

@@ -1,6 +1,6 @@
 <%-- 
     Document   : trackOrder(phar)
-    Created on : Nov 24, 2020, 10:50:50 AM
+    Created on : Nov 30, 2020, 03:50:50 AM
     Author     : Yash
 --%>
 
@@ -111,7 +111,7 @@
           
           <ul class="actions">
               <li><button id="popUp" class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
-              <li><a href="editorderupdate"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+                              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
               <li><a href="deleteorder"><button class="btn"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td> 

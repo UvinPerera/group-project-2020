@@ -40,13 +40,15 @@ public class EditOrderUpdate extends HttpServlet {
             throws ServletException, IOException {
              HttpSession session = request.getSession();
             int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
-             PrintWriter out = response.getWriter();
+            int orderId = Integer.parseInt(request.getParameter("orderid"));
+            PrintWriter out = response.getWriter();
+            
             try{
                 DbConfig db = DbConfig.getInstance();
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description as order_description, oi.file_path, oi.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id=1");
+                ResultSet rs =stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description as order_description, oi.file_path, oi.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.id="+orderId);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
