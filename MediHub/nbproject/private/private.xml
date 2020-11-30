@@ -3,16 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewHospital.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewPharmacy.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewDoctor.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/public/css/review.css</file>
-=======
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/db/DbConfig.java</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/public/css/view_patient.css</file>
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/viewpatient.jsp</file>
->>>>>>> 850522b93dbac25b61addd2d7732bc7f5fb250bb
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/web/trackOrder(phar).jsp</file>
+            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/DeleteOrder.java</file>
         </group>
     </open-files>
 </project-private>

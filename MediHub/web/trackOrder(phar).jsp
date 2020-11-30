@@ -111,8 +111,8 @@
           
           <ul class="actions">
               <li><button id="popUp" class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
-                              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
-              <li><a href="deleteorder"><button class="btn"><i class="fa fa-trash"></i></button></a></li> 
+              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td> 
          <script>
@@ -189,34 +189,7 @@
  <br>
 </body>
 <br><br>
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
-      </div>
-    </div>
-    <!--<div class="column4"><br>
-      <div class="footerText"> -->
-        <br><br>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-      </div>
-  <!--  </div>
-  </div> -->
-  <br>
-  <div class="footerText">
-    All rights Reserved @MediHub2020
-  </div>
-  <br><br>
-</footer>
-</center>
+
 </html>
 <script>
     //    #########################
@@ -273,5 +246,16 @@
         $(win.document.body).html(printContent);
         win.print();
         print.style.display = "block";
+    }
+    
+        function confirmdelete(index) {
+        var orderId=index;
+        var del = confirm("Are you sure you want delete this order permenently ?");
+        if (del == true){
+            window.location.href="deleteorder?orderid="+orderId;
+          //$(location).attr('href',reidrect);
+        }
+        
+
     }
    </script>
