@@ -71,10 +71,6 @@ public void Createpharmacy(){
        Scanner sc = new Scanner(System.in);
        Pharmacy i = new Pharmacy();
        
-       System.out.println("Enter Pharmacy ID:");
-       int iId=sc.nextInt();
-       i.setId(iId);
-
        System.out.println("Enter Pharmacy Name:");
        String iName=sc.next();
        i.setName(iName);
@@ -86,11 +82,19 @@ public void Createpharmacy(){
        System.out.println("Enter License Proof Location:");
        String iLicense_Proof_Location=sc.next();
        i.setLicense_Proof_Location(iLicense_Proof_Location);
+       
+       System.out.println("Enter Pharmacist Id:");
+       int iPharmacist_Id=sc.nextInt();
+       i.setPharmacist_Id(iPharmacist_Id);
 
        System.out.println("Enter Pharmacist Proof Location:");
        String iPharmacist_Proof_Location=sc.next();
        i.setPharmacist_Proof_Location(iPharmacist_Proof_Location);
-
+       
+       System.out.println("Enter Pharmacy Display Name:");
+       String iDisplay_Name=sc.next();
+       i.setDisplay_Name(iDisplay_Name);
+       
        System.out.println("Enter Status:");
        int iStatus=sc.nextInt();
        i.setStatus(iStatus);
@@ -102,26 +106,27 @@ public void Createpharmacy(){
        System.out.println("Enter Fax:");
        String iFax=sc.next();
        i.setFax(iFax);
+       
+       System.out.println("Enter Email:");
+       String iEmail=sc.next();
+       i.setEmail(iEmail);
 
-       System.out.println("Enter Address:");
-       String iAddress=sc.next();
-       i.setAddress(iAddress);
-
+       System.out.println("Enter Address1:");
+       String iAddress1=sc.next();
+       i.setAddress1(iAddress1);
+       
+       System.out.println("Enter Address2:");
+       String iAddress2=sc.next();
+       i.setAddress2(iAddress2);
+       
        System.out.println("Enter City:");
        String iCity=sc.next();
        i.setCity(iCity);
 
-       System.out.println("Enter District:");
-       String iDistrict=sc.next();
-       i.setDistrict(iDistrict);
+       System.out.println("Enter Created By :");
+       int iCreated_By=sc.nextInt();
+       i.setCreated_By(iCreated_By);
 
-       System.out.println("Enter Approved By :");
-       int iApproved_By=sc.nextInt();
-       i.setApproved_By(iApproved_By);
-
-       System.out.println("Enter Approved At:");
-       int iApproved_At=sc.nextInt();
-       i.setApproved_At(iApproved_At);
 
       try{
           DbConfig db = DbConfig.getInstance();
@@ -147,26 +152,22 @@ public void Createpharmacy(){
 }
 
 class Pharmacy{
-  private int Id;
   private String Name;
   private int License_no;
   private String License_Proof_Location;
+  private int Pharmacist_Id;
   private String Pharmacist_Proof_Location;
+  private String Display_Name;
   private int Status;
   private String Land_Number;
   private String Fax;
-  private String Address;
+  private String Email;
+  private String Address1;
+  private String Address2;
   private String City;
-  private String District;
-  private int Approved_By;
-  private int Approved_At;
-  
-  public int getId(){
-    return Id;
-  }
-  public void setId(int Id){
-    this.Id = Id;
-  }
+  private int Created_By;
+
+
   public String getName(){
     return Name;
   }
@@ -187,14 +188,28 @@ class Pharmacy{
   public void setLicense_Proof_Location(String License_Proof_Location){
     this.License_Proof_Location = License_Proof_Location;
   }
-
+  
+  public int getPharmacist_Id(){
+    return Pharmacist_Id;
+  }
+  public void setPharmacist_Id(int Pharmacist_Id){
+    this.Pharmacist_Id = Pharmacist_Id;
+  }
+  
   public String getPharmacist_Proof_Location(){
     return Pharmacist_Proof_Location;
   }
   public void setPharmacist_Proof_Location(String Pharmacist_Proof_Location){
     this.Pharmacist_Proof_Location = Pharmacist_Proof_Location;
   }
-
+  
+  public String getDisplay_Name(){
+    return Display_Name;
+  }
+  public void setDisplay_Name(String Name){
+    this.Display_Name = Display_Name;
+  }
+  
   public int getStatus(){
     return Status;
   }
@@ -215,14 +230,28 @@ class Pharmacy{
   public void setFax(String Fax){
     this.Fax = Fax;
   }
-
-  public String getAddress(){
-    return Address;
+  
+  public String getEmail(){
+    return Email;
   }
-  public void setAddress(String Address){
-    this.Address = Address;
+  public void setEmail(String Email){
+    this.Email = Email;
   }
-
+  
+  public String getAddress1(){
+    return Address1;
+  }
+  public void setAddress1(String Address1){
+    this.Address1 = Address1;
+  }
+  
+  public String getAddress2(){
+    return Address2;
+  }
+  public void setAddress2(String Address2){
+    this.Address2 = Address2;
+  }
+  
   public String getCity(){
     return City;
   }
@@ -230,26 +259,10 @@ class Pharmacy{
     this.City = City;
   }
 
-  public String getDistrict(){
-    return District;
+  public int getCreated_By(){
+    return Created_By;
   }
-  public void setDistrict(String District){
-    this.District = District;
+  public void setCreated_By(int Created_By){
+    this.Created_By = Created_By;
   }
-
-  public int getApproved_By(){
-    return Approved_By;
-  }
-  public void setApproved_By(int Approved_By){
-    this.Approved_By = Approved_By;
-  }
-
-  public int getApproved_At(){
-    return Approved_At;
-  }
-  public void setApproved_At(int Approved_At){
-    this.Approved_At = Approved_At;
-  }
-
 }
-

@@ -16,19 +16,7 @@ import java.sql.Statement;
  */
 public class DbConfig {
     public static String dbUrl="jdbc:mysql://localhost:3306/medihub?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
-<<<<<<< HEAD
     public static String password="passwords";
-=======
-
-<<<<<<< HEAD
-    public static String password="";
-
-=======
-
-
-    public static String password="";
->>>>>>> 64002ee3272eaa37754df7e2afa9263161e970cb
->>>>>>> 850522b93dbac25b61addd2d7732bc7f5fb250bb
     public static String username="root";
     
     
