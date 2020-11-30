@@ -149,13 +149,13 @@
           </div>
         </div>
        
-        <h2 class="name">Zip Code</h2>
+<!--        <h2 class="name">Zip Code</h2>
        <input class="input" type="text" name="zip_code" id="zip" placeholder="Zip code">
        <div class="danger" id="zipError">
           <div class="alert-message alert-message-danger" >
                 <h4>Enter a valid zip code </h4>
           </div>
-       </div>
+       </div>-->
 
        <h2 class="name">Contact No</h2>
        <input class="mobile" type="text" name="mobile" id="mobile" placeholder="Mobile number">
@@ -207,7 +207,7 @@
        <div>
            <br><br>
          <div class="button-container">
-             <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
+             <button class="button" id="id" onclick="window.location.href='/MediHub';"><b>Cancel</b></button>
              <button class="button" type="reset" id="clear"><b>Clear</b></button>
             
             <button class="button" type="submit"><b>Submit</b></button>
@@ -258,13 +258,30 @@
         $("#addressError").hide();
         $("#cityError").hide();
         $("#districtError").hide();
-        $("#zipError").hide();
+//        $("#zipError").hide();
         $("#numberError").hide();
         $("#passwordError").hide();
         $("#password2Error").hide();
         $("#typeError").hide();
         
         $("#regform").on('submit',function(e){
+            
+            //to always refresh when submitting (hide and show only relevant)
+            $("#firstNameError").hide();
+            $("#displayNameError").hide();
+            $("#nicError").hide();
+            $("#dobError").hide();
+            $("#genderError").hide();
+            $("#emailError").hide();
+            $("#addressError").hide();
+            $("#cityError").hide();
+            $("#districtError").hide();
+    //        $("#zipError").hide();
+            $("#numberError").hide();
+            $("#passwordError").hide();
+            $("#password2Error").hide();
+            $("#typeError").hide();
+            
             var x=0;
                if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)||($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
                 $("#firstNameError").show();
@@ -304,12 +321,13 @@
                 $("#districtError").show();
                 x=1;
             }
-            if($("#zip").val().match(/^[0-9]{5}$/)==null){
-               $("#zipError").show();
-                x=1;
-            }
+//            if($("#zip").val().match(/^[0-9]{5}$/)==null){
+//               $("#zipError").show();
+//                x=1;
+//            }
             
-            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+//            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||(($("#land").val().match(/^[0-9]{10}$/)==null) && ($("#land").val()==""))){
               $("#numberError").show();
                 x=1;
             }
@@ -338,7 +356,6 @@
 //    onchange district
     $('#district').change(function(){
         var districtId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
             url: "getcityasstring",

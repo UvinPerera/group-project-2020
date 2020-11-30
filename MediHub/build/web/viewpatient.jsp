@@ -1,4 +1,6 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.patient.Patient"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
@@ -26,6 +28,12 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
+                        <%
+                            if(request.getAttribute("districts")!=null){
+                                Patient row = (Patient)request.getAttribute("profile");
+                                
+                                
+                        %>
 
  <div class="contentContainer">
   <div class="">
@@ -38,10 +46,10 @@
     <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
     <br><br>
     <h5>First access time :</h5>
-    <p>Monday, 21 January 2019, 8:48 AM</p>
+    <p><%= row.createdAt %></p>
     <br><br>
     <h5>Last access time :</h5>
-    <p>Tuesday, 17 January 2020, 9:00 AM</p>
+    <p><%= row.updatedAt %></p>
     <br><br><br><br>
   </div>
   </div>
@@ -50,74 +58,70 @@
 
     <div class="record">
     <div class="label">First Name </div>
-    <div class="data">Admin</div>
+    <div class="data"><%= row.firstName %></div>
   </div>
 
   <div class="record">
     <div class="label">Last Name </div>
-    <div class="data">Admin</div>
+    <div class="data"><%= row.lastName %></div>
   </div>
 
   <div class="record">
     <div class="label">NIC No</div>
-    <div class="data">977000000V</div>
+    <div class="data"><%= row.nic %></div>
   </div>
 
   <div class="record">
     <div class="label">Date of Birth</div>
-    <div class="data">10/15/1997</div>
+    <div class="data"><%= row.dob %></div>
   </div>
 
   <div class="record">
     <div class="label">Gender</div>
-    <div class="data">Female</div>
+    <div class="data"><% if(row.gender=='M'){out.print("Male");}else if(row.gender=='M'){out.print("Female");}else{out.print("Not Secified");} %></div>
   </div>
 
   <div class="record">
     <div class="label">Email</div>
-    <div class="data">johndoe@gmail.com</div>
+    <div class="data"><%= row.email %></div>
   </div>
 
   <div class="record">
-    <div class="label">Address 1</div>
-    <div class="data">No.100,First lane</div>
+    <div class="label">Address</div>
+    <div class="data"><%= row.address1+"\n"+row.address2 %></div>
   </div>
 
-  <div class="record">
+<!--  <div class="record">
     <div class="label">Address 2</div>
     <div class="data">Kottegoda Road</div>
-  </div>
-
-  <div class="record">
-    <div class="label">City</div>
-    <div class="data">Weligama</div>
-  </div>
+  </div>-->
 
   <div class="record">
     <div class="label">District</div>
-    <div class="data">Matara</div>
+    <div class="data"><%= row.districtStr %></div>
   </div>
-
+  
   <div class="record">
-    <div class="label">Zip Code</div>
-    <div class="data">81700</div>
+    <div class="label">City</div>
+    <div class="data"><%= row.cityStr %></div>
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Land</div>
-    <div class="data">041-2250111</div>
+    <div class="data"><%= row.landNumber %></div>
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Mobile</div>
-    <div class="data">077-2250111</div>
+    <div class="data"><%= row.mobileNumber %></div>
   </div>
 
   </div>
 </div>
-
-
-
+  
+<!--closing jsp tag-->                        
+<% } %>
+<!--tag close-->
  
 
 <br><br>
