@@ -57,7 +57,7 @@ public class PatientView extends HttpServlet {
             try
             {
                 Patient p = new Patient(patientId);
-                
+//                out.print(p.getProfile().id);
                 request.setAttribute("profile", p.getProfile());
                 request.getRequestDispatcher("viewpatient.jsp").forward(request, response);
                 }catch(Exception e){

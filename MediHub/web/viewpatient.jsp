@@ -21,15 +21,15 @@
   <div class="navbar" id="navbar">
       <ul>
         <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><a href="#" id="end">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
+        <li><a href="About.jsp" id="end">About</a></li>
+        <li><a href="contactUs.jsp">Contact</a></li>
+        <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+        <li><a href="/MediHub">Home</a></li>
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
                         <%
-                            if(request.getAttribute("districts")!=null){
+                            if(request.getAttribute("profile")!=null){
                                 Patient row = (Patient)request.getAttribute("profile");
                                 
                                 
@@ -40,7 +40,7 @@
   <div class="profile">
     <img src="./public/images/p3.jpg" id="profile">
     <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
-    <button class="button" id="profilePic" onclick="window.location.href='adminDashboard.jsp'"><b>Back</b></button>
+    <button class="button" id="profilePic" onclick="window.location.href='patient'"><b>Back</b></button>
   </div>
   <div class="login">
     <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
@@ -78,7 +78,7 @@
 
   <div class="record">
     <div class="label">Gender</div>
-    <div class="data"><% if(row.gender=='M'){out.print("Male");}else if(row.gender=='M'){out.print("Female");}else{out.print("Not Secified");} %></div>
+    <div class="data"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></div>
   </div>
 
   <div class="record">

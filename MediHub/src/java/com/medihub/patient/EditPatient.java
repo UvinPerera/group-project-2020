@@ -68,7 +68,7 @@ public class EditPatient extends HttpServlet {
                 request.setAttribute("cities", c.getAllCities()); //directly get districts
                 request.setAttribute("districts", d.getAllDistricts()); //directly get districts
                 request.setAttribute("profile", p.getProfile());
-                request.getRequestDispatcher("viewpatient.jsp").forward(request, response);
+                request.getRequestDispatcher("editPatient.jsp").forward(request, response);
             }
              catch(Exception e){
                     out.println(e.toString());

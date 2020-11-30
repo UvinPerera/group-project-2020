@@ -245,7 +245,7 @@
                   var c = confirm("Another channelling found for same doctor availability !\nAre you sure want to channel for another person?");
                   if(c==true)
                   {
-                      document.location.href="confirmchannelling?check=1&doctorAvailabilityId="+doctorAvailabilityId;
+                      window.location.href="confirmchannelling?check=1&doctorAvailabilityId="+doctorAvailabilityId;
                   }
                   else
                   {
@@ -254,7 +254,7 @@
               }
               else
               {
-                    document.location.href="confirmchannelling?doctorAvailabilityId="+doctorAvailabilityId;
+                    window.location.href="confirmchannelling?doctorAvailabilityId="+doctorAvailabilityId;
               }
             },
             error: function(xhr) {

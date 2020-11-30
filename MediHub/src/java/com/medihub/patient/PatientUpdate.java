@@ -57,13 +57,12 @@ public class PatientUpdate extends HttpServlet {
             String land_line=request.getParameter("land_number");
 //            int district=Integer.parseInt(request.getParameter("district"));
             int city=Integer.parseInt(request.getParameter("city"));
-            int type=Integer.parseInt(request.getParameter("type"));
+//            int type=Integer.parseInt(request.getParameter("type"));
 //            String zip_code=request.getParameter("zip_code");
             
-//            User user=new User();
-//            user.setEmail(email);
             
-            String query="UPDATE users SET"
+            
+            String query="UPDATE users SET "
                     + "first_name='"+first_name+"',"
                     + "last_name='"+last_name+"',"
                     + "display_name='"+display_name+"',"
@@ -77,8 +76,12 @@ public class PatientUpdate extends HttpServlet {
                     + "mobile_number='"+mobile+"',"
                     + "land_number='"+land_line+"',"
                     + "updated_by="+patientId+","
-                    + "updated_at=CURRENT_TIMESTAMP";
+                    + "updated_at=CURRENT_TIMESTAMP "
+                    + "where id="+patientId;
 //                    + "'"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
+            
+//            out.print(query);
+
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
