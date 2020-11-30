@@ -1,5 +1,12 @@
 package com.medihub.user;
 import com.medihub.db.*;
+import com.medihub.patient.Channelling;
+import com.medihub.patient.Patient;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -8,9 +15,13 @@ import com.medihub.db.*;
 public class User {
     
     public int id;
+    public String firstName;
+    public String lastName;
+    public String displayName;
     public String email;
     protected String password;
     public int userType;
+    public char gender;
     public String nic;
     public int city;
     public String address1;
@@ -25,6 +36,10 @@ public class User {
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
+    
+    public String districtStr;
+    public int district;
+    public String cityStr;
     
     public static String getDashboard(int userType) {
         if(userType==0){
@@ -46,6 +61,55 @@ public class User {
             return ("invalid.html");
         }
         
+    }
+    
+    public User getProfile(){
+        //sql query
+        String q_select="select u.*, c.name_en as city_name, d.name_en as district_name, d.id as district from users u ";
+        String q_join_c="join cities c on c.id=u.city ";
+        String q_join_d="join districts d on d.id=c.district ";
+        String q_where="where u.status=1 and u.id="+this.id;
+        String query=q_select + q_join_c + q_join_d + q_where;
+  
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()) { 
+                this.firstName=rs.getString("first_name");
+                this.lastName=rs.getString("last_name");
+                this.displayName=rs.getString("display_name");
+                this.id = rs.getInt("id"); 
+                this.email = rs.getString("email"); 
+                this.nic = rs.getString("nic"); 
+                this.district = rs.getInt("district"); 
+                this.districtStr = rs.getString("district_name"); 
+                this.city = rs.getInt("city"); 
+                this.cityStr = rs.getString("city_name"); 
+                this.address1 = rs.getString("address_1"); 
+                this.address2 = rs.getString("address_2"); 
+                this.mobileNumber = rs.getString("mobile_number"); 
+                this.landNumber = rs.getString("land_number"); 
+                this.dob = rs.getString("dob"); 
+                this.description = rs.getString("description"); 
+                this.createdAt = rs.getString("created_at");
+                this.updatedAt = rs.getString("updated_at");
+                
+                
+            }
+            
+            con.close();
+            return this;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
     }
     
     public void register() {

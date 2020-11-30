@@ -6,6 +6,7 @@
 package com.medihub.patient;
 
 import com.medihub.db.DbConfig;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,28 +55,24 @@ public class EditPatient extends HttpServlet {
              HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
-            try{
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
+            
+       
+             try
+            {
+                Patient p = new Patient(patientId);
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+patientId);
-                ArrayList Details = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 20 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Details.add(row);
-                }
+                District d = new District();
                 
+                City c = new City();
                 
-                request.setAttribute("details", Details);
-                request.getRequestDispatcher("editPatient.jsp").forward(request, response);
-                }catch(Exception e){
+                request.setAttribute("cities", c.getAllCities()); //directly get districts
+                request.setAttribute("districts", d.getAllDistricts()); //directly get districts
+                request.setAttribute("profile", p.getProfile());
+                request.getRequestDispatcher("viewpatient.jsp").forward(request, response);
+            }
+             catch(Exception e){
                     out.println(e.toString());
                 }
-       
                 
     }
 

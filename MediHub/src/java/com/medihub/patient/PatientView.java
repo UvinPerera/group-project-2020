@@ -56,22 +56,9 @@ public class PatientView extends HttpServlet {
             
             try
             {
-                //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
+                Patient p = new Patient(patientId);
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+patientId);
-                ArrayList Profile = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 22 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Profile.add(row);
-                }
-                
-                request.setAttribute("profile", Profile);
+                request.setAttribute("profile", p.getProfile());
                 request.getRequestDispatcher("viewpatient.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
