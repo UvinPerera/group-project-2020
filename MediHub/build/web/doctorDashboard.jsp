@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!doctype html>
 <html>
 <head>
@@ -24,7 +26,22 @@
     <% String username="";
           username= session.getAttribute("username").toString();
        %>
-
+<%ArrayList al = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       if(request.getAttribute("prescriptions")!=null){
+           al=(ArrayList )request.getAttribute("prescriptions");
+            
+            ;
+        }
+%>
+<%ArrayList a3 = new ArrayList();
+       ArrayList a4 = new ArrayList();
+       if(request.getAttribute("appointments")!=null){
+           a3=(ArrayList )request.getAttribute("appointments");
+            
+            
+        }
+%>
   <div class="container">
       <div class="profile">
           <img src="./public/images/p3.jpg" id="profile">
@@ -58,7 +75,37 @@
           </div>
         </div>
             <div id="Notifications" class="tabcontent"> There are no upcoming Notifications yet..</div>
-            <div id="Appointments" class="tabcontent"> There are no upcoming appointments yet..</div>
+            <div id="Appointments" class="tabcontent"> <!--There are no upcoming appointments yet..-->
+              <%for(int i=0;i<a3.size();i++){a4 =(ArrayList ) a3.get(i);%>
+              <div class="card">
+                
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Hospital</th>
+                      <th>Date</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      <th>Max Patients</th>
+                      <th>Current Patients</th>
+                      <th>Payment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%=a4.get(14)%></td>
+                      <td><%=a4.get(3)%></td>
+                      <td><%=a4.get(4)%></td>
+                      <td><%=a4.get(5)%></td>
+                      <td><%=a4.get(6)%></td>
+                      <td><%=a4.get(7)%></td>
+                      <td><%=a4.get(8)%></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <%}%>
+            </div>
       </div>
   </div>
           <div id="medicationReminder" class="modal">
@@ -72,30 +119,30 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form action="doctor" method="POST">
                     <label>Prescription ID: </label>
-                    <select class="input option">
+                    <select class="input option" name="pid">
                         <option disabled="disabled" selected="selected">--Choose Option--</option>
-                        <option value="1">Prescription 1</option>
-                        <option value="2">Prescription 2</option>
-                        <option value="3">Prescription 3</option>
-                        <option value="4">Prescription 4</option>
+                        <%for(int i=0;i<al.size();i++){a2 =(ArrayList ) al.get(i);%>
+                        <option value="<%=a2.get(0)%>">Prescription ID:<%=a2.get(0)%></option>
+                        
+                        <%}%>
                     </select>
                 <br>
                 <br>
                     <label>Duration: </label>
-                    <input type="number" class="input duration" placeholder="Enter duration">
+                    <input type="number" class="input duration" placeholder="Enter duration" name="duration">
                     <br><br>
                     <label>Through SMS: </label>
-                    <input type="checkbox" class="tsms">
+                    <input type="checkbox" class="tsms" name="sms">
                     <br><br>
                     <label>Through Email: </label>
-                    <input type="checkbox" class="temail">
+                    <input type="checkbox" class="temail" name="email">
                     <br><br>
                     <label>Description: </label>
                     <br><br>
-                    <textarea class="description" placeholder="Enter description to be displayed to the patient"></textarea>
-                    <button class="button" type="submit">Add Presecription</button>
+                    <textarea class="description" placeholder="Enter description to be displayed to the patient" name="desc"></textarea>
+                    <button class="button" type="submit">Add Prescription</button>
                     
                 </form>
 

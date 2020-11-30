@@ -5,13 +5,19 @@
  */
 package com.medihub.doctor;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,11 +49,72 @@ public class DoctorDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            request.getRequestDispatcher("doctorDashboard.jsp").forward(request, response);
+           
+             HttpSession session = request.getSession();
+            int doctorId =Integer.parseInt(session.getAttribute("userid").toString());
+             PrintWriter out = response.getWriter();
+            try{
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement(); 
+                ResultSet rs=stmt.executeQuery("SELECT * FROM prescriptions");
+                
+                
+                ArrayList Prescriptions = new ArrayList();
+                while(rs.next()){
+                        ArrayList row = new ArrayList();
+                        for (int i = 1; i <=1 ; i++){
+                            row.add(rs.getString(i));
+                        }
+                        Prescriptions.add(row);
+                }
+                
+                //rs.close();
+                rs=stmt.executeQuery("SELECT doctor_availability.*,hospitals.name FROM `doctor_availability` INNER JOIN hospitals ON doctor_availability.hospital_id=hospitals.id");
+                ArrayList Appointments = new ArrayList();
+                while(rs.next()){
+                        ArrayList row = new ArrayList();
+                        for (int i = 1; i <=15 ; i++){
+                            row.add(rs.getString(i));
+                        }
+                        Appointments.add(row);
+                }
+                
+                
+                request.setAttribute("prescriptions", Prescriptions);
+                request.setAttribute("appointments", Appointments);
+                request.getRequestDispatcher("doctorDashboard.jsp").forward(request, response);
+                }catch(Exception e){
+                    out.println(e.toString());
+                }
         
     }
 
-    
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            PrintWriter out = response.getWriter();
+            int presId = Integer.parseInt(request.getParameter("pid"));
+            int duration = Integer.parseInt(request.getParameter("duration"));
+            String description = request.getParameter("desc");
+            int sms = request.getParameter("sms").equals("on")?1:0;
+            int email = request.getParameter("email").equals("on")?1:0;
+            try{
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement(); 
+                int rs=stmt.executeUpdate("INSERT INTO medication_reminders(prescription_id,duration,through_mail,through_sms,description) VALUES("+presId+","+duration+","+email+","+sms+",'"+description+"')");
+                response.sendRedirect("doctor");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            
+            
+        
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";

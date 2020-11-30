@@ -46,7 +46,7 @@
         <div id="Services" class="tabcontent">
           
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href='trackOrder(phar).jsp'">Track Orders</button></center>
+              <center><button class="styled" type="button" onclick="window.location.href='trackpatientorder'">Track Orders</button></center>
           
           </div>
         </div>

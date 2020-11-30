@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "PharmacyManage", urlPatterns = {"/pharmacymanage"})
-public class PharmacyManage extends HttpServlet {
+@WebServlet(name = "CreatePharmacy", urlPatterns = {"/createpharmacy"})
+public class CreatePharmacy extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +30,6 @@ public class PharmacyManage extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,13 +45,16 @@ public class SubmitOrder extends HttpServlet {
             //getting from DbConfig class
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
+            
+            HttpSession session = request.getSession();
+            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
                     
             String itemDescription=request.getParameter("descriptions");
             String filepath=request.getParameter("file_path");
             int pharmacyid=Integer.parseInt(request.getParameter("pharmacy"));
             int id;
 
-            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at) VALUES(NULL,'"+pharmacyid+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
+            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by) VALUES(NULL,'"+pharmacyid+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"')";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             

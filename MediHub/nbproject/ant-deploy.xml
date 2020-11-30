@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <!--
 
     Licensed to the Apache Software Foundation (ASF) under one
@@ -19,6 +20,8 @@
     under the License.
 
 -->
+=======
+>>>>>>> f155594226ae0ddfbd2a3d3ff9aad52828c6e441
 <project default="-deploy-ant" basedir=".">
     <target name="-init-cl-deployment-env" if="deploy.ant.enabled">
         <property file="${deploy.ant.properties.file}" />
@@ -28,7 +31,7 @@
         <tempfile prefix="gfv3" property="gfv3.password.file" destdir="${java.io.tmpdir}"/>  <!-- do not forget to delete this! -->
         <echo message="AS_ADMIN_PASSWORD=${gfv3.password}" file="${gfv3.password.file}"/>
     </target>
-
+    
     <target name="-parse-sun-web" depends="-init-cl-deployment-env" if="sun.web.present">
         <tempfile prefix="gfv3" property="temp.sun.web" destdir="${java.io.tmpdir}"/>
         <copy file="${deploy.ant.docbase.dir}/WEB-INF/sun-web.xml" tofile="${temp.sun.web}"/>
