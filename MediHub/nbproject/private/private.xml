@@ -3,22 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/public/css/Dashboard_Patient.css</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/viewpatient.jsp</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/src/java/com/medihub/doctor/DoctorDashboard.java</file>
-            <file>file:/C:/Users/hp/Desktop/New%20folder%20(3)/group-project-2020/MediHub/web/doctorDashboard.jsp</file>
-=======
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/SubmitOrder.java</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/TrackPatientOrder.java</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/web/update_order.jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/UpdatePaitentOrder.java</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/patient/EditPatient.java</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/EditOrderUpdate.java</file>
->>>>>>> ab798fab8e49bb21b68ff7492dc5c92b772e0018
->>>>>>> f155594226ae0ddfbd2a3d3ff9aad52828c6e441
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewHospital.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewPharmacy.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/ReviewDoctor.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/public/css/review.css</file>
         </group>
     </open-files>
 </project-private>
