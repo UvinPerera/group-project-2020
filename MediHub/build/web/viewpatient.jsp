@@ -115,7 +115,12 @@
 
   </div>
 </div>
-<<<<<<< HEAD
+
+
+
+ 
+
+<br><br>
 
 
   <footer>
@@ -128,23 +133,6 @@
           provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
           them with the best experience in accessing medical services<br>
         </div>
-=======
-<br>
-
-
-</body>
-<br><br>
-
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
->>>>>>> b9cc8a15c3818b01c367e58e1a556e5dba1eebdd
       </div>
       <div class="footerColumn"><br>
         <div class="footerText">
@@ -161,5 +149,6 @@
       All rights Reserved @MediHub2020
     </div>
     <br><br>
+    </body>
 </html>
 

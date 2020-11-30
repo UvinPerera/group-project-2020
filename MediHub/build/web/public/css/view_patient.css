@@ -222,15 +222,12 @@ margin-top: 0%;
   margin-left: 10%;
   margin-bottom: 50px;
 }
+
 /*Footer Styling*/
 
 footer{
   margin-top: 60%;
   background-color: #2b3030;
-  position:absolute;
-  width: 100%;
-  bottom: 0;
-
 }
 .footerColumn {
 float: left;

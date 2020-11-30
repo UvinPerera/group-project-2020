@@ -100,5 +100,38 @@ public class City {
         
     }
     
+    public List<City> getAllCities() {
+        
+        String query = "select id, name_en from cities where status=1";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<City> c =new ArrayList<City>();
+                        
+            while(rs.next()) { 
+                City ci = new City(); 
+                ci.id = rs.getInt("id"); 
+                ci.nameEn = rs.getString("name_en");
+                
+                c.add(ci);
+            }
+            
+            con.close();
+            return c;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
     
 }

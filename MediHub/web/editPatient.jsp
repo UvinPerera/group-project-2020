@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -31,104 +32,193 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
-<%ArrayList al = new ArrayList();
-       ArrayList a2 = new ArrayList();
-       if(request.getAttribute("details")!=null){
-           al=(ArrayList )request.getAttribute("details");
-            
-            a2 =(ArrayList ) al.get(0);
-        }
-%>
+                        <%
+                            if(request.getAttribute("districts")!=null){
+                                Patient row = (Patient)request.getAttribute("profile");
+                                
+                                
+                        %>
 
  <div class="contentContainer">
   <div class="profile">
       <img src="./public/images/p3.jpg" id="profile">
-    <h2 style="text-align:center; margin-bottom:25px;"><%=a2.get(3)%></h2>
+    <h2 style="text-align:center; margin-bottom:25px;"><%= row.displayName %></h2>
     <button class="button" id="profilePic"><b>Change Profile Picture</b></button>
   </div>
 
   <div class="information">
+      <form class="" action="patientupdate" method="post" id="updateForm">
     <h3 style="text-align:center;font-size: 35px;margin-bottom:40px;"> Profile information</h3>
 
     <div class="record">
     <div class="label">First Name </div>
-    <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%=a2.get(1)%>">
-  </div>
+    <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
+    </div>
+    <div class="danger" id="firstNameError">
+          <div class="alert-message alert-message-danger" >
+                <h4>First name cant empty and must contain only letters</h4>
+          </div>
+         </div>
 
   <div class="record">
     <div class="label">Last Name </div>
-    <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%=a2.get(2)%>">
+    <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
   </div>
+  <div class="danger" id="lastNameError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Last name cant empty and must contain only letters</h4>
+          </div>
+         </div>
+
+  <div class="record">
+    <div class="label">Display Name </div>
+    <input class="data" type="text" name="display_name" id="lastname" placeholder="Display Name" value="<%= row.displayName %>">
+  </div>
+  <div class="danger" id="displayNameError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Display name cant empty and must contain only letters</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">NIC No</div>
-    <input class="data" type="text" name="nic_no" id="nic" placeholder="NIC number" value="<%=a2.get(7)%>">
+    <input class="data" type="text" name="nic_no" id="nic" placeholder="NIC number" value="<%= row.nic %>">
   </div>
+  <div class="danger" id="nicError">
+          <div class="alert-message alert-message-danger" >
+                <h4>National Identity Card Number cant empty</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">Date of Birth</div>
-    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%=a2.get(8)%>">
+    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%= row.dob %>">
   </div>
+  <div class="danger" id="dobError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Date of Birth cant empty</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">Gender</div>
     <select class="data" name="gender" id="gender"  style=" height: 50px;">
-      <option disabled="disabled" selected="selected"><%=a2.get(9).toString().equals("M")?"Male":"Female"%></option>
-      <option>Male</option>
-      <option>Female</option>
-      <option>Not preferred to say</option>
+      <option value="M" <% if(row.gender=='M'){out.print("Selected");}%>>Male</option>
+      <option value="F" <% if(row.gender=='F'){out.print("Selected");}%>>Female</option>
+      <option value="N" <% if(row.gender=='N'){out.print("Selected");}%>>Not preferred to say</option>
     </select>
   </div>
+    <div class="danger" id="genderError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Gender cant be empty</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">Email</div>
-    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%=a2.get(4)%>">
+    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%= row.dob %>">
   </div>
+  <div class="danger" id="emailError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Enter a valid email address</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">Address 1</div>
-    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%=a2.get(12)%>">
+    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%= row.address1 %>">
   </div>
+  <div class="danger" id="addressError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Address 1 can't be empty</h4>
+          </div>
+       </div>
 
   <div class="record">
     <div class="label">Address 2</div>
-    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%=a2.get(13)%>">
+    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%= row.address2 %>">
   </div>
+  
+  <div class="record">
+    <div class="label">District</div>
+    <select class="input option data" name="district" id="district">
+                         <%
+                             if(request.getAttribute("districts")!=null){
+                                 List<District> districts = (ArrayList<District>)request.getAttribute("districts");
+                                 if(districts.size()>0){
+                                     for(District district : districts) { %>
+                                         <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
+                         <%
+                                 }}}
+                         %>
+
+    </select>
+  </div>
+        <div class="danger" id="districtError">
+         <div class="alert-message alert-message-danger" >
+               <h4>Select a valid District </h4>
+         </div>
+        </div>
 
   <div class="record">
     <div class="label">City</div>
-    <input class="data" type="text" name="city" id="city" placeholder="City" value="<%=a2.get(1)%>">
-  </div>
+    <select class="input option data" name="city" id="city">
+                         <%
+                             if(request.getAttribute("cities")!=null){
+                                 List<City> cities = (ArrayList<City>)request.getAttribute("districts");
+                                 if(cities.size()>0){
+                                     for(City city : cities) { %>
+                                         <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
+                         <%
+                                 }}}
+                         %>
 
-  <div class="record">
-    <div class="label">District</div>
-    <input class="data" type="text" name="district" id="district" placeholder="District" value="Colombo">
+    </select>
   </div>
+   <div class="danger" id="cityError">
+          <div class="alert-message alert-message-danger" >
+                <h4>City can't be empty</h4>
+          </div>
+        </div>                      
 
-  <div class="record">
+
+<!--  <div class="record">
     <div class="label">Zip Code</div>
-    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="<%=a2.get(15)%>">
-  </div>
+    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="">
+  </div>-->
 
   <div class="record">
     <div class="label">Contact Number - Land</div>
-    <input class="data" type="text" name="land_line" id="land" placeholder="Land number" value="<%=a2.get(11)%>">
+    <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="<%= row.landNumber %>">
   </div>
 
   <div class="record">
     <div class="label">Contact Number - Mobile</div>
-    <input class="data" type="text" name="mobile" id="mobile" placeholder="Mobile number" value="<%=a2.get(10)%>">
+    <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
   </div>
+  
+  <div class="danger" id="numberError">
+          <div class="alert-message alert-message-danger" >
+                <h4>Mobile Number cannot be empty and both numbers should be valid</h4>
+          </div>
+       </div>
+  
+  <!--close jsp tag-->
+  <% } %>
+  <!--close tag-->
 
   <div class="buttons">
       <br><br>
-      <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
-      <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Done</b></button>
+      <button class="button" id="id" onclick="window.location.href='/patient';"><b>Cancel</b></button>
+      <!--<button class="button" id="id" onclick="//window.location.href='/patientupdate';"><b>Done</b></button>-->
+      <button class="button" type="reset" id="clear"><b>Reset</b></button>
+      <button class="button" type="submit"><b>Update</b></button>
    </div>
-
+  
+      </form>
   </div>
 </div>
-</div>
+<!--</div>-->
 
 
   <footer>
@@ -157,3 +247,141 @@
       All rights Reserved @MediHub2020
     </div>
     </br></br>
+
+    <script>
+        
+        
+        $("#firstNameError").hide();
+        $("#displayNameError").hide();
+        $("#nicError").hide();
+        $("#dobError").hide();
+        $("#genderError").hide();
+        $("#emailError").hide();
+        $("#addressError").hide();
+        $("#cityError").hide();
+        $("#districtError").hide();
+//        $("#zipError").hide();
+        $("#numberError").hide();
+        $("#passwordError").hide();
+        $("#password2Error").hide();
+        $("#typeError").hide();
+        
+        $("#updateForm").on('submit',function(e){
+            
+            //to always refresh when submitting (hide and show only relevant)
+            $("#firstNameError").hide();
+            $("#displayNameError").hide();
+            $("#nicError").hide();
+            $("#dobError").hide();
+            $("#genderError").hide();
+            $("#emailError").hide();
+            $("#addressError").hide();
+            $("#cityError").hide();
+            $("#districtError").hide();
+    //        $("#zipError").hide();
+            $("#numberError").hide();
+            $("#passwordError").hide();
+            $("#password2Error").hide();
+            $("#typeError").hide();
+            
+            var x=0;
+               if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)){
+                $("#firstNameError").show();
+                x=1;
+                
+            }
+               if(($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
+                $("#lastNameError").show();
+                x=1;
+                
+            }
+            if(($("#displayName").val()=="")||($("#displayName").val().match(/^[A-Za-z]*$/)== null)){
+                $("#displayNameError").show();
+                x=1;
+                
+            }
+            if($("#nic").val()==""){
+                $("#nicError").show();
+                x=1;
+            }
+            if($("#dob").val()==""){
+                $("#dobError").show();
+                x=1;
+            }
+            if($("#gender").val()==""){
+                $("#genderError").show();
+                x=1;
+            }
+             if ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null){
+                $("#emailError").show();
+                x=1;
+             }
+              if($("#address1").val()==""){
+                $("#addressError").show();
+                x=1;
+            }
+            if($("#city").val()==""){
+                $("#cityError").show();
+                x=1;
+            }
+            if($("#district").val()==""){
+                $("#districtError").show();
+                x=1;
+            }
+//            if($("#zip").val().match(/^[0-9]{5}$/)==null){
+//               $("#zipError").show();
+//                x=1;
+//            }
+            
+//            if(($("#mobile_number").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+            if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+              $("#numberError").show();
+                x=1;
+            }
+//           
+//            
+//            if ($("#password").val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/) == null) {
+//                $("#passwordError").show();
+//                x=1;
+//               
+//            }
+//            if ($("#password").val()!==$("#password2").val()) {
+//               $("#password2Error").show();
+//                x=1;
+//            }
+//            if($("#type").val()==""){
+//               $("#typeError").show();
+//                x=1;
+//            }
+
+            if(x==1){
+                return false;
+            }
+        })
+        
+        
+        
+        //    onchange district
+    $('#district').change(function(){
+        var districtId=$(this).find(':selected').val();
+        
+        $.ajax({
+            url: "getcityasstring",
+            type: "get", //send it through get method
+            data: { 
+              stage: "district", 
+              district: districtId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#city').html("<option>Select City</option>"+response);
+            },
+            error: function(xhr) {
+                alert("CityByDistrict Error");
+            }
+          });
+
+    });
+        
+    </script>
