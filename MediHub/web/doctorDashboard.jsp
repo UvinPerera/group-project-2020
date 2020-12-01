@@ -66,7 +66,7 @@
         </div>    
         <div id="Services" class="tabcontent">
           <div class="serviceTile">
-              <center> <button class="styled" type="button" onclick="window.location.href='';">Create Prescription</button></center>
+              <center> <button class="styled" type="button" id="createpres">Create Prescription</button></center>
           
           </div>
             <div class="serviceTile">
@@ -148,6 +148,62 @@
 
             </div>
         </div>
+
+        </div>
+        <div id="createPres" class="modal">
+
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                 
+                     <h3>Create Prescription</h3>
+                 
+              </div>
+  
+              <div class="modal-body">
+                  <form>
+                      <label>Patient Number: </label>
+                      <select class="input option" name="pid">
+                          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                          <%for(int i=0;i<al.size();i++){a2 =(ArrayList ) al.get(i);%>
+                          <option value="<%=a2.get(0)%>"><%=a2.get(0)%></option>
+                          
+                          <%}%>
+                      </select>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="card" id="presitems">
+                    <div class="cardhead">
+                      <h4>Prescription Items</h4>
+                    </div>
+                    <div class="cardbody">
+                      <div style="display:inline ;width: fit-content;height: fit-content;margin-right: 20px;">
+                        <label>Generic Name: </label>
+                        <input type="text" class="input duration" placeholder="Enter generic name" name="duration">
+                      </div>
+                      <div style="display: inline;">
+                        <label>Dosage: </label>
+                        <input type="number" class="input duration" placeholder="Dosage in Days" name="duration">
+                      </div>  
+                    </div>
+                  </div>
+                  <div id="moreitems">
+
+                  </div>
+                  
+  
+              </div>
+              <div style="width: 100%;padding: 10px 10px; align-items: center;justify-content: center;">
+                <button class="button" id="additems" type="button">Add Prescription Items</button>
+                <button class="button" type="submit">Submit Prescription</button>
+              </div>
+            </form>
+          </div>
+          </div>
+        
+
+
 </body>
 <br><br>
 <center>
@@ -221,4 +277,45 @@
             modal.style.display = "none";
         }
     }
+</script>
+
+<script>
+  var modal1 = document.getElementById("createPres");
+  var btn1 = document.getElementById("createpres");
+  var span1 = document.getElementsByClassName("close")[1];
+  btn1.onclick = function () {
+      modal1.style.display = "block";
+  }
+
+  span1.onclick = function () {
+      modal1.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+      if (event.target == modal1) {
+          modal1.style.display = "none";
+      }
+  }
+</script>
+<script>
+  var btn2 = document.getElementById("additems");
+  btn2.onclick = function (){
+    document.getElementById("moreitems").innerHTML+=`
+    <div class="card" id="presitems">
+      <div class="cardhead">
+        <h4>Prescription Items</h4>
+      </div>
+      <div class="cardbody">
+        <div style="display:inline ;width: fit-content;height: fit-content;margin-right: 20px;">
+          <label>Generic Name: </label>
+          <input type="text" class="input duration" placeholder="Enter generic name" name="duration">
+        </div>
+        <div style="display: inline;">
+          <label>Dosage: </label>
+          <input type="number" class="input duration" placeholder="Dosage in Days" name="duration">
+        </div>  
+      </div>
+    </div>
+    `
+  }
 </script>
