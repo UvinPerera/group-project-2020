@@ -72,7 +72,7 @@
         <td>
           <ul class="actions">
             <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-            <li><a href="#"><button class="btn"><i class="fa fa-chain-broken"></i></button></a></li>
+            <li><button class="btn" onclick="confirm('Do you want to unlink this doctor')"><i class="fa fa-chain-broken"></i></button></li>
           </ul>
         </td>
       </tr>
