@@ -24,14 +24,15 @@
       </ul>
   </div>
   <br><br>
+  <h3>Manage Reviews</h3><hr>
   <div class="Dropdown">
-  <select name='Dropdown'>
+  <select name='Dropdown' class="filters">
     <option value='Action' selected><a href="">All</a></option>
     <option value='Action'><a href="#">Responded</a></option>
     <option value='Action'><a href="#">Not yet respond</a></option>
  </select>
- <br>
- <select name='Dropdown' class="filter_dropdown">
+ 
+ <select name='Dropdown' class="filter_dropdown filters">
     <option value='Action' selected><a href="">All</a></option>
     <option value='Action'><a href="#">Review ID</a></option>
     <option value='Action'><a href="#">Patient ID</a></option>
@@ -39,12 +40,13 @@
     <option value=99><a href="#">Date</a></option>
     <option value='Action'><a href="#">Status</a></option>
  </select>
- <input type="text" class="filter_text" placeholder="Filter">
- <input type="date" class="filter_date" placeholder="From">
- <input type="date" class="filter_date" placeholder="To">
+ <input type="text" class="filter_text textt" placeholder="Filter">
+ <input type="date" class="filter_date textt" placeholder="From">
+ <input type="date" class="filter_date textt" placeholder="To">
  <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
 </div>
 <br>
+<center>
   <div class="container-table">
     <table class="table">
       <thead>
@@ -113,6 +115,7 @@
       </tbody>
     </table>
  </div>
+</center>
 
 </body>
 <br><br><br>

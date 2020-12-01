@@ -103,10 +103,10 @@ input[type=text] {
 .btn1:active{
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
               inset 2px 2px 3px rgba(0, 0, 0, .6);
-}
-.container-table{
+}.container-table{
   padding: 6px 6px;
   overflow: hidden;
+  width: 92%;
 
 }
 .table{
@@ -116,6 +116,9 @@ input[type=text] {
   min-width: 300px;
   border-radius: 5px 5px 5px 5px;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
 
 }
 .tableheading{
@@ -169,6 +172,8 @@ align-items: center;
 .new{
   display: inline-block;
   float: right;
+  margin-top: 40px;
+    margin-bottom: 5px;
 }
 .create {
   background-color: #ffffff;
@@ -183,7 +188,7 @@ footer{
   background-color: #2b3030;
   position: absolute;
   right: 0;
-  bottom: 0;
+  margin-top:50px;
   left: 0;
 }
 .column4 {
@@ -213,3 +218,117 @@ text-decoration: none;
 border-radius: 50%;
 color:white;
 }
+
+h3{
+  font-family: 'Spartan',sans-serif;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 45px;
+}
+table{
+  width:95%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+th, td {
+  text-align: center;
+  padding: 18px;
+}
+/*tr:nth-child(even) {
+  background-color: #f2f2f2;
+}*/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  max-width: 60%;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 20px;
+}
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tablecont{
+  padding: 30px 30px 30px 30px;
+}
+
+/*modal css end*/
+
+
+
+.Dropdown{
+    width:90%;
+    background-color: #F1F1F1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+ 
+  font-weight: bold;
+  font-size: 18px;
+  padding:10px;
+  padding-top: 20px;
+  height:50px;
+  
+}
+
+.filters{
+    height:35px;
+    width:20%;
+    margin-bottom: 10px;
+    float:left;
+    margin-left: 20px;
+    margin-left: 20px;
+ 
+}
+
+  .textt{
+      width:20%;
+      margin-left: 485px;
+      height:45px;
+  }
+   hr{
+  width:91%;
+  text-align: center;
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+h3{
+  font-family: 'Spartan',sans-serif;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 25px;
+}
+
