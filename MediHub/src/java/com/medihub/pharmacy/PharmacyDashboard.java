@@ -47,7 +47,7 @@ public class PharmacyDashboard extends HttpServlet {
        
        HttpSession session = request.getSession();
         int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==5){
+        if(userid==4){
            request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
         }
         else{

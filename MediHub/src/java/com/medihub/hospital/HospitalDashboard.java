@@ -47,7 +47,7 @@ public class HospitalDashboard extends HttpServlet {
         
         HttpSession session = request.getSession();
         int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==4){
+        if(userid==3){
             request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
         }
         else{
