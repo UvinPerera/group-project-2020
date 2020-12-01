@@ -58,7 +58,7 @@
           
           </div>
             <div class="serviceTile">
-              <center><button class="styled" type="button" onclick="window.location.href='managePharmacy.jsp'">Manage Pharmacies</button></center>
+              <center><button class="styled" type="button" onclick="window.location.href='readpharmacy'">Manage Pharmacies</button></center>
           
           </div>
             <div class="serviceTile">
