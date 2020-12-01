@@ -6,15 +6,19 @@
 package com.medihub.admin;
 
 import com.medihub.db.DbConfig;
+import com.medihub.location.District;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -45,7 +49,29 @@ public class CreatePharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("managePharmacy.jsp").forward(request, response);
+        
+                HttpSession session = request.getSession();
+                int adminId =Integer.parseInt(session.getAttribute("userid").toString());
+                PrintWriter out = response.getWriter();
+//                response.setContentType("application/json");
+
+                    String stage= request.getParameter("stage");
+
+                        try
+                        {
+                            District d = new District();
+                            List<District> returnData =new ArrayList<District>();
+                            returnData=d.getAllDistricts();
+                            request.setAttribute("districts", returnData); //directly get districts
+                            request.getRequestDispatcher("createpharmacy.jsp").forward(request, response);
+                        }
+                        catch(Exception e)
+                        {
+                            out.println(e.toString());
+                        }
+                    
+                   
+
     }
 
     /**
@@ -59,22 +85,24 @@ public class CreatePharmacy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+                int adminId =Integer.parseInt(session.getAttribute("userid").toString());
          
            PrintWriter out = response.getWriter();
             String Pharmacy_Name = request.getParameter("pharmacy_name");
+            String Display_Name = request.getParameter("display_name");
             int License_Number = Integer.parseInt(request.getParameter("license_number"));
-            String License_Proof_Location = request.getParameter("license_proof_location");
-            int Pharmacist_Id = Integer.parseInt(request.getParameter("pharmacist_id"));
-            String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
+//            String License_Proof_Location = request.getParameter("license_proof_location");
+//            int Pharmacist_Id = Integer.parseInt(request.getParameter("pharmacist_id"));
+//            String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
             String Land_Number = request.getParameter("land_line");
             String Fax = request.getParameter("fax");
             String Email = request.getParameter("email");
             String Address1 = request.getParameter("address_1");
             String Address2 = request.getParameter("address_2");
-            int District = Integer.parseInt(request.getParameter("district"));
             int City = Integer.parseInt(request.getParameter("city"));
             String description = request.getParameter("description");
-            int Status = Integer.parseInt(request.getParameter("status"));
             
       // out.print(Pharmacy_Name);
       
@@ -84,8 +112,9 @@ public class CreatePharmacy extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy',0111231231,0119879879,'citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");
-                response.sendRedirect("managePharmacy.jsp");
+                int rs=stmt.executeUpdate("insert into pharmacies(name,display_name,license_number,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
+                        + "values('"+Pharmacy_Name+"','"+Display_Name+"',"+License_Number+",'"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+City+",1,'"+description+"',"+adminId+","+adminId+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
+                response.sendRedirect("readpharmacy");
             }
             catch(Exception e){
                 e.printStackTrace();
