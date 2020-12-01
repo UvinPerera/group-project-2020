@@ -53,8 +53,13 @@
 
   <!--Cover picture-->
   <div class="container">
+    
+    <% if(session.getAttribute("username")==null){%>
     <img src="./public/images/finale.jpeg" width="100%" id="pic">
     <button class="btn" onclick="window.location.href='signUp.jsp';">Sign Up</button>
+    <%}else{%>
+    <img src="./public/images/finale2.png" width="100%" id="pic">
+    <%}%>
   </div>
 
   <!--Content-->
