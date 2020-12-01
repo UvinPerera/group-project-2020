@@ -6,3 +6,4 @@ MediHub/build/web
 MediHub/build/public
 MediHub/build/META-INF
 MediHub/build/WEB-INF
+MediHub/src/java/com/medihub/db/DbConfig.java

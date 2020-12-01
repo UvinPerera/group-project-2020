@@ -59,7 +59,8 @@ public class CreatePharmacy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            PrintWriter out = response.getWriter();
+         
+           PrintWriter out = response.getWriter();
             String Pharmacy_Name = request.getParameter("pharmacy_name");
             int License_Number = Integer.parseInt(request.getParameter("license_number"));
             String License_Proof_Location = request.getParameter("license_proof_location");
@@ -79,15 +80,16 @@ public class CreatePharmacy extends HttpServlet {
       
       
       try{
-                DbConfig db = DbConfig.getInstance();
+               DbConfig db = DbConfig.getInstance();
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs=stmt.executeUpdate("INSERT INTO pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,land_number,fax,email,address_1,address_2,city,status,created_by) VALUES('"+Pharmacy_Name+"',"+License_Number+",'"+License_Proof_Location+"',"+Pharmacist_Id+",'"+Pharmacist_Proof_Location+"','"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+District+","+City+",'"+description+"',"+Status+")");
+                int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy',0111231231,0119879879,'citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");
                 response.sendRedirect("managePharmacy.jsp");
             }
             catch(Exception e){
                 e.printStackTrace();
+                out.print(e.toString());
             }
       
     }
