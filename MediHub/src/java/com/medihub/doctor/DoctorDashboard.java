@@ -52,6 +52,9 @@ public class DoctorDashboard extends HttpServlet {
            
              HttpSession session = request.getSession();
             int doctorId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userid = Integer.parseInt(session.getAttribute("usertype").toString());
+            
+            if(userid==2){
              PrintWriter out = response.getWriter();
             try{
                 DbConfig db = DbConfig.getInstance();
@@ -88,7 +91,9 @@ public class DoctorDashboard extends HttpServlet {
                 }catch(Exception e){
                     out.println(e.toString());
                 }
-        
+            }else{
+                request.getRequestDispatcher("403.jsp").forward(request, response);
+            }
     }
 
         protected void doPost(HttpServletRequest request, HttpServletResponse response)

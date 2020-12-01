@@ -20,7 +20,7 @@
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
       <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="images/onlylogo.png" width="15.5%"></li>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
 
