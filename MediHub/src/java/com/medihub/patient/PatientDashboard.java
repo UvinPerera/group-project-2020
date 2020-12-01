@@ -48,7 +48,10 @@ public class PatientDashboard extends HttpServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userid = Integer.parseInt(session.getAttribute("usertype").toString());
              PrintWriter out = response.getWriter();
+            if(userid==1){
+               
             try
             {
                 
@@ -62,6 +65,9 @@ public class PatientDashboard extends HttpServlet {
             catch(Exception e)
             {
                 out.println(e.toString());
+            }
+        }else{
+                request.getRequestDispatcher("403.jsp").forward(request, response);
             }
            
     }

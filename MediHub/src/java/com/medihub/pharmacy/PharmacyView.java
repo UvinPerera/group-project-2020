@@ -51,7 +51,7 @@ public class PharmacyView extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
             
@@ -62,7 +62,12 @@ public class PharmacyView extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE pharmacist_id="+pharmacyId);
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+adminId);
+                int pharmacyId=0;
+                while(rs.next()){
+                        pharmacyId=rs.getInt("pharmacy_id");
+                }
+                rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE id="+pharmacyId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();

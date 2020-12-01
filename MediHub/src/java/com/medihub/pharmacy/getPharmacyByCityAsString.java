@@ -3,10 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.hospital;
+package com.medihub.pharmacy;
 
+import com.medihub.hospital.*;
+import com.medihub.hospital.Hospital;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +21,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author hp
+ * @author tharshan
  */
-@WebServlet(name = "Hospital", urlPatterns = {"/hospital"})
-public class HospitalDashboard extends HttpServlet {
+@WebServlet(name = "getPharmacyByCityAsString", urlPatterns = {"/getpharmacybycityasstring"})
+public class getPharmacyByCityAsString extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,29 +35,29 @@ public class HospitalDashboard extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==3){
-            request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
-        }
-        else{
-            request.getRequestDispatcher("403.jsp").forward(request, response);
-        }
+                HttpSession session = request.getSession();
+                PrintWriter out = response.getWriter();
+//                response.setContentType("application/json");
+                
+                try
+                {
+                    int cityId=Integer.parseInt(request.getParameter("city"));
+                    Pharmacy p = new Pharmacy();
+                    String returnData=p.getAllPharmaciesByCityAsString(cityId);
+                    response.setContentType("text/html;charset=UTF-8");
+                    out.write(returnData);
+                }
+                catch(Exception e)
+                {
+                    out.println(e.toString());
+                }
+                    
+
     }
 
     /**

@@ -64,30 +64,35 @@ public class auth extends HttpServlet {
                             HttpSession session = request.getSession();
                             session.setAttribute("username", displayName);
                             session.setAttribute("userid", userId);
+                            session.setAttribute("usertype", userType);
                         }
                         else if(userType==1){
                             response.sendRedirect("patient");
                             HttpSession session = request.getSession();
                             session.setAttribute("username", displayName);
                             session.setAttribute("userid", userId);
+                            session.setAttribute("usertype", userType);
                         }
                         else if(userType==2){
                             response.sendRedirect("doctor");
                             HttpSession session = request.getSession();
                             session.setAttribute("username",displayName);
                             session.setAttribute("userid", userId);
+                            session.setAttribute("usertype", userType);
                         }
                         else if(userType==3){
                             response.sendRedirect("hospital");
                             HttpSession session = request.getSession();
                             session.setAttribute("username",displayName);
                             session.setAttribute("userid", userId);
+                            session.setAttribute("usertype", userType);
                         }
                         else if(userType==4){
-                            response.sendRedirect("pharmacyDashboard.jsp");
+                            response.sendRedirect("pharmacy");
                             HttpSession session = request.getSession();
                             session.setAttribute("username",displayName);
                             session.setAttribute("userid", userId);
+                            session.setAttribute("usertype", userType);
                         }
                     }
                     else{

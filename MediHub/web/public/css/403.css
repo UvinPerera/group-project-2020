@@ -9,7 +9,7 @@ body {
 font-family: Arial, Helvetica, sans-serif;
 }
 
-/*Menu styling*/
+/*Navigation Bar styling*/
 
 ul {
 list-style-type: none;
@@ -36,9 +36,7 @@ li a:hover {
 background-color:  #0087a1;
 }
 
-#end{
-margin-right: 15px;
-}
+/*Button Styling*/
 
 .styled {
   border:0px;
@@ -70,50 +68,55 @@ margin-right: 15px;
 
 h2{
   font-family: 'Spartan',sans-serif;
-  font-size: 40px;
+  font-size: 25px;
 }
+/*Logo Styling*/
 
-/*Logo of site*/
 #logo{
 margin-left: 2%;
 float: left;
 margin-top: 0%;
 }
-
-/*Two column styling*/
-.column {
-  float: left;
+.whistle{
+  width: 22%;
+  fill: #0087a1;
+  margin: 100px 40%;
+  text-align: left;
+  transform: translate(-50%, -50%);
+  transform: rotate(0);
+  transform-origin: 80% 30%;
+  animation: wiggle .2s infinite;
 }
 
-#left {
-  width: 40%;
-  padding: 50px;
+@keyframes wiggle {
+  0%{
+    transform: rotate(3deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(3deg);
+  }
+}
+h1{
+  margin-top: -100px;
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+  font-size: 90px;
+}
+h2{
+  color: #455d7a;
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 
-#right {
-  padding-top: 60px;
-  padding-left: 50px;
-  padding-bottom: 50px;
-  width: 50%;
-}
-/*Card styling8*/
+/*Footer Styling*/
 
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  padding: 35px;
-  padding-top: 55px;
-  padding-bottom: 60px;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-/*Footer styling*/
 footer{
+  margin-top: 80%;
   background-color: #2b3030;
 }
 .footerColumn {
@@ -144,7 +147,3 @@ text-decoration: none;
 border-radius: 50%;
 color:white;
 }
-.active{
-  background-color:  #0087a1;
-}
-

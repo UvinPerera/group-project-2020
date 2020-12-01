@@ -24,10 +24,24 @@
         <li><button class="styled" type="button" onclick="window.location.href='signUp.jsp';"> SIGN UP</button></li> 
         <%}else{%>
            
-            <li><button class="styled" type="button" onclick="window.location.href='patient';"> PROFILE</button></li> 
+            <% if(Integer.parseInt(session.getAttribute("usertype").toString())==0){%>
+            <li><button class="styled" type="button" onclick="window.location.href='admin';"> DASHBOARD</button></li> 
+            <%}%>
+            <% if(Integer.parseInt(session.getAttribute("usertype").toString())==1){%>
+            <li><button class="styled" type="button" onclick="window.location.href='patient';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==2){%>
+            <li><button class="styled" type="button" onclick="window.location.href='doctor';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==3){%>
+            <li><button class="styled" type="button" onclick="window.location.href='hospital';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==4){%>
+            <li><button class="styled" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> DASHBOARD</button></li> 
+            <%}%>
             <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li> 
         <%}%>
-        <li><a href="About.jsp" id="end">About</a></li>
+        <li class="active"><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
       <li><a href="/MediHub">Home</a></li>

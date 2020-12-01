@@ -25,14 +25,27 @@
         <li><button class="styled" type="button" onclick="window.location.href='login.jsp';"> SIGN IN </button></li>
         <li><button class="styled" type="button" onclick="window.location.href='signup';"> SIGN UP</button></li> 
         <%}else{%>
-           
-            <li><button class="styled" type="button" onclick="window.location.href='patient';"> PROFILE</button></li> 
+            <% if(Integer.parseInt(session.getAttribute("usertype").toString())==0){%>
+            <li><button class="styled" type="button" onclick="window.location.href='admin';"> DASHBOARD</button></li> 
+            <%}%>
+            <% if(Integer.parseInt(session.getAttribute("usertype").toString())==1){%>
+            <li><button class="styled" type="button" onclick="window.location.href='patient';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==2){%>
+            <li><button class="styled" type="button" onclick="window.location.href='doctor';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==3){%>
+            <li><button class="styled" type="button" onclick="window.location.href='hospital';"> DASHBOARD</button></li> 
+            <%}%>
+             <% if(Integer.parseInt(session.getAttribute("usertype").toString())==4){%>
+            <li><button class="styled" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> DASHBOARD</button></li> 
+            <%}%>
             <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li> 
         <%}%>
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
+      <li class="active"><a href="/MediHub">Home</a></li>
       
       <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
@@ -40,8 +53,13 @@
 
   <!--Cover picture-->
   <div class="container">
+    
+    <% if(session.getAttribute("username")==null){%>
     <img src="./public/images/finale.jpeg" width="100%" id="pic">
     <button class="btn" onclick="window.location.href='signUp.jsp';">Sign Up</button>
+    <%}else{%>
+    <img src="./public/images/finale2.png" width="100%" id="pic">
+    <%}%>
   </div>
 
   <!--Content-->

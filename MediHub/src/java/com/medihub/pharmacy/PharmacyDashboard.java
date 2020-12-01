@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,7 +44,15 @@ public class PharmacyDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
+       
+       HttpSession session = request.getSession();
+        int userid = Integer.parseInt(session.getAttribute("usertype").toString());
+        if(userid==4){
+           request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
+        }
+        else{
+            request.getRequestDispatcher("403.jsp").forward(request, response);
+        }
     }
 
    

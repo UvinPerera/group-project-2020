@@ -19,10 +19,10 @@
   <div class="navbar" id="navbar">
       <ul>
         <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><a href="#" id="end">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
+       <li><a href="About.jsp" id="end">About</a></li>
+      <li><a href="contactUs.jsp">Contact</a></li>
+      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+      <li><a href="/MediHub">Home</a></li>
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
@@ -74,7 +74,7 @@
    <input class="input" type="text" name="description" id="email" placeholder="Enter description">
 
    <div class="button-container">
-         <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
+         <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
          <button class="button" type="reset" id="clear"><b>Clear</b></button>
          <button class="button" type="submit"><b>Submit</b></button>
 
@@ -135,7 +135,7 @@
         $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
         
         $.ajax({
-            url: "gethospitalbycityasstring",
+            url: "getpharmacybycityasstring",
             type: "get", //send it through get method
             data: { 
               stage: "city", 
