@@ -38,7 +38,7 @@
             <li><button class="styled" type="button" onclick="window.location.href='hospital';"> DASHBOARD</button></li> 
             <%}%>
              <% if(Integer.parseInt(session.getAttribute("usertype").toString())==4){%>
-            <li><button class="styled" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> DASHBOARD</button></li> 
+            <li><button class="styled" type="button" onclick="window.location.href='pharmacy';"> DASHBOARD</button></li> 
             <%}%>
             <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li> 
         <%}%>
