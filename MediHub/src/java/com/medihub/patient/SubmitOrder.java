@@ -49,7 +49,7 @@ public class SubmitOrder extends HttpServlet {
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
                     
-            String itemDescription=request.getParameter("descriptions");
+            String itemDescription=request.getParameter("description");
             String filepath=request.getParameter("file_path");
             int pharmacyid=Integer.parseInt(request.getParameter("pharmacy"));
             int id;
