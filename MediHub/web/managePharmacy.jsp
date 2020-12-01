@@ -20,7 +20,8 @@
 <body>
   <div class="navbar" id="navbar">
       <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='admin'"> Dashboard </button></li>
         <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
