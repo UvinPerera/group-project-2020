@@ -46,7 +46,7 @@
          ##################-->
             
         <div class="container-table">
-            <table class="table" style="max-width: 60%">
+            <table class="table result" style="max-width: 60%">
             <%
                     if(request.getAttribute("channelling")!=null){
                         Channelling c = (Channelling)request.getAttribute("channelling");
@@ -54,7 +54,7 @@
                 <input type="hidden" name="id" value="<%= c.id%>"/>
                 <thead>
                     <tr>
-                        <th colspan="2" class="tableheading">Confirmation</th>
+                        <th colspan="2" class="tableheading resultheading">Confirmation</th>
                     </tr>
                 </thead>
                 <tbody id="doctorAvailability">
@@ -87,7 +87,7 @@
                         <td class="Row" style='color: <% if(c.payment_method!=null){out.print("green");}else{out.print("red");} %>;' ><% if(c.payment_method!=null){out.print("Paid");}else{out.print("Not Paid");} %></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button onclick='window.location.href="patient";' class="btn" id="final">OK</button></td>
+                        <td colspan="2"><button onclick='window.location.href="patient";' class="btn style ok" id="final">OK</button></td>
                     </tr>
                 </tbody>
                 <% } else { %>

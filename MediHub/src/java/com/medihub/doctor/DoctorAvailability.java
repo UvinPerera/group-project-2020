@@ -77,15 +77,15 @@ public class DoctorAvailability {
                 
                 if(doctorId!=old && old==0)
                 {
-                    da="<tr row_id=\""+doctorId+"\"><td class=\"Row\" value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"<br>Rs "+payment+"<br><button class=\"btn\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
+                    da="<tr row_id=\""+doctorId+"\"><td class=\"Row\" value=\""+doctorId+"\">"+Name+"</td><td colspan='4' class=\"datatd\" value=\""+id+"\">"+startTime+"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Rs "+payment+"<br><button class=\"style chanel\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
                 }
                 else if(doctorId!=old && old!=0)
                 {
-                    da="</tr><tr row_id=\""+doctorId+"\"><td class=\"Row\" value=\""+doctorId+"\">"+Name+"</td><td value=\""+id+"\">"+startTime+"<br>Rs "+payment+"<br><button class=\"btn\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
+                    da="</tr><tr row_id=\""+doctorId+"\"><td class=\"Row\" value=\""+doctorId+"\">"+Name+"</td><td colspan='4' class=\"datatd\" value=\""+id+"\">"+startTime+"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rs "+payment+"<br><button class=\"style chanel\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
                 }
                 else
                 {
-                    da="<td class=\"Row\" value=\""+id+"\">"+startTime+"<br>Rs "+payment+"<br><button class=\"btn\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
+                    da="<td colspan='4' class=\"Row\" value=\""+id+"\">"+startTime+"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rs "+payment+"<br><button class=\"style chanel\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
                 }
                 
                 old=doctorId; //assigning current doc id to old
