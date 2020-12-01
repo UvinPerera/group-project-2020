@@ -74,7 +74,7 @@
    <input class="input" type="text" name="description" id="email" placeholder="Enter description">
 
    <div class="button-container">
-         <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
+         <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
          <button class="button" type="reset" id="clear"><b>Clear</b></button>
          <button class="button" type="submit"><b>Submit</b></button>
 
