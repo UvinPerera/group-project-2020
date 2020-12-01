@@ -42,7 +42,7 @@
 
    <div class="new">
     <div class="create">
-          <a href="#" class=""><button class="btn" onclick="window.location.href='signup';"><i class="fa fa-plus-circle"></i></button></a>
+          <a href="createdoctor.jsp" class=""><button class="btn"><i class="fa fa-plus-circle"></i></button></a>
       </div>
       <div class="add-text">
           Add New Doctor

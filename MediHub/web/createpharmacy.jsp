@@ -66,7 +66,7 @@
     <div class="label">License Proof Location</div>
     <input class="data" type="text" name="license_proof_location" id="nic" placeholder="License Proof Location">
   </div>-->
-<!--        
+<!--       
    <div class="record">
     <div class="label">Pharmacist Id</div>
     <input class="data" type="text" name="pharmacist_id" id="pharmacist_id" placeholder="Pharmacist ID">
@@ -139,12 +139,13 @@
   </div>-->
 
   <div class="buttons">
-      <br><br>
+      <br>
       <button class="button" type="reset"><b>Clear</b></button>
       <button class="button" type="submit"><b>Submit</b></button>
+    <!--  <button class="button" onclick="window.location.href='readpharmacy'"><b>Cancel</b></button>-->
    </div>
     </form>
-   <button class="button" onclick="window.location.href='readpharmacy'"><b>Cancel</b></button>
+   
 
   </div>
 </div>

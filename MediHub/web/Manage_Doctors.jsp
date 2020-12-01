@@ -12,7 +12,7 @@
 <body>
   <div class="navbar">
     <ul>
-      <li><button class="style" type="button"> Joen Doe </button></li>
+      <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
   <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -42,7 +42,7 @@
 
    <div class="new">
     <div class="create">
-          <a href="#" class=""><button class="btn"><i class="fa fa-plus-circle"></i></button></a>
+          <a href="creatdoctor.jsp" class=""><button class="btn"><i class="fa fa-plus-circle"></i></button></a>
       </div>
       <div class="add-text">
           Add New Doctor

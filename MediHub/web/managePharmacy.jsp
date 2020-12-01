@@ -16,12 +16,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Manage_Pharmacy.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="./public/css/modal1.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
 </head>
 <body>
   <div class="navbar">
     <ul>
-      <li><button class="style" type="button">Admin</button></li>
+      <<li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -110,7 +110,7 @@
         <td class="Row" style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
         <td>
           <ul class="actions">
-              <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
+              <li><button id="popUp" class="btn3" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></li>
               <li><button class="btn"><i class="fa fa-edit"></i></button></li>
               <li><button class="btn"><i class="fa fa-trash"></i></button></li>
           </ul>
