@@ -50,7 +50,7 @@ public class TrackPatientOrder extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
             
@@ -61,8 +61,13 @@ public class TrackPatientOrder extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+adminId);
+                int pharmacyId=0;
+                while(rs.next()){
+                        pharmacyId=rs.getInt("pharmacy_id");
+                }
                 //ResultSet rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON oi.created_by=u.id WHERE oi.status=1 and po.pharmacy_id="+pharmacyId);
-                ResultSet rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description as order_description, oi.file_path, oi.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id=1");
+                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description as order_description, oi.file_path, oi.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();

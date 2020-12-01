@@ -67,7 +67,7 @@ public class PharmacyView extends HttpServlet {
                 while(rs.next()){
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
-                rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE pharmacist_id="+pharmacyId);
+                rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE id="+pharmacyId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
