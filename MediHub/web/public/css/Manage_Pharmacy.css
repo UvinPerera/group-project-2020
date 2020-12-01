@@ -218,7 +218,7 @@ color:white;
   /*modal css start*/
   
   
-#popUp{
+/*#popUp{
   border:0px;
   margin-top: 4px;
   width:10%;
@@ -240,7 +240,7 @@ color:white;
 #popUp:active {
   box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
               inset 2px 2px 3px rgba(0, 0, 0, .6);
-}
+}*/
 h3{
   font-family: 'Spartan',sans-serif;
   font-size: 35px;
@@ -306,3 +306,17 @@ th, td {
 }
 
 /*modal css end*/
+
+
+.Dropdown{
+    width:90%;
+    background-color: #F1F1F1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  padding:10px;
+  padding-top: 20px;
+  height:50px;
+}
