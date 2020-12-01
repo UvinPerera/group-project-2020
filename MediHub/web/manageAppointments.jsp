@@ -151,7 +151,7 @@
           <thead>
             <tr>
               <th class="tableheading">Appointment ID</th>
-              <th class="tableheading">Patient</th>
+              
               <th class="tableheading">Doctor</th>
               <th class="tableheading">Date</th>
               <th class="tableheading">Time</th>
@@ -161,7 +161,7 @@
             </tr>
             <tr>
               <td class="Row">001</td>
-              <td class="Row">John</td>
+              
               <td class="Row">Dr. John Doe</td>
               <td class="Row">15/10/2020</td>
               <td class="Row">5.00 pm</td>
