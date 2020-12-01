@@ -46,7 +46,7 @@
          ##################-->
             
         <div class="container-table">
-            <table class="table" style="max-width: 60%">
+            <table class="table result" style="max-width: 60%">
             <%
                     if(request.getAttribute("doctorAvalability")!=null){
                         DoctorAvailability da = (DoctorAvailability)request.getAttribute("doctorAvalability");
@@ -55,7 +55,7 @@
                 <input type="hidden" name="id" value="<%= da.id%>"/>
                 <thead>
                     <tr>
-                        <th colspan="2" class="tableheading">Confirmation</th>
+                        <th colspan="2" class="tableheading resultheading">Confirmation</th>
                     </tr>
                 </thead>
                 <tbody id="doctorAvailability">
@@ -78,14 +78,14 @@
                     <% if(request.getAttribute("check")!=null){ %>
                     <tr>
                         <td class="Row" >Patient Name</td>
-                        <td class="Row" ><input type="text" name="description" id="description" required="required"/></td>
+                        <td class="Row" ><input type="text" name="description" id="description" class="selectpatient" required="required"/></td>
                     </tr>
                     <% } %>
                     <tr>
                         <td class="Row" >Payment Method</td>
                         <td class="Row" >
                             <div class="Dropdown">
-                                <select name='payment_method' id="payment_method">
+                                <select name='payment_method' id="payment_method" class="selectpayment">
                                     <option disabled="disabled" value='' selected>Select Payment</option>
                                         <%
                                             if(request.getAttribute("payments")!=null){
@@ -105,7 +105,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan='2'><button type="submit" class="btn" id="final">Accept and Submit</button></td>
+                        <td colspan='2'><button type="submit" class="style accept" id="final">Accept and Submit</button></td>
                     </tr>
                 </tbody>
             </form>

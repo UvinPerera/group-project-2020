@@ -52,16 +52,17 @@
         
   %>
   <br><br>
-  <h3>Your Orders </h3>
+  <h3>Your Orders </h3><hr>
   <div class="Dropdown">
+      <center>
     <select name='Dropdown'class="filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Pending</a></option>
       <option value='Action'><a href="#">Shipped</a></option>
       <option value='Action'><a href="#">Accepted</a></option>
       <option value='Action'><a href="#">Rejected</a></option>
-   </select>
-   <br>
+    </select>
+   
    <select name='Dropdown' class="filter_dropdown filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Order ID</a></option>
@@ -74,6 +75,7 @@
    <input type="date" class="filter_date textt" placeholder="From">
    <input type="date" class="filter_date textt" placeholder="To">
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
+   </center>
   </div>
   <br> 
  <script>
