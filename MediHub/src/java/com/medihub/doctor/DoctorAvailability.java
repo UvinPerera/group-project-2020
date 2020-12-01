@@ -85,7 +85,7 @@ public class DoctorAvailability {
                 }
                 else
                 {
-                    da="<td colspan='4' class=\"Row\" value=\""+id+"\">"+startTime+"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rs "+payment+"<br><button class=\"style chanel\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
+                    da="<td colspan='4' class=\"datatd\" value=\""+id+"\">"+startTime+"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Rs "+payment+"<br><button class=\"style chanel\" onclick=\"confirmChannelling("+id+");\" da-id=\""+id+"\">Channel</button></td>";
                 }
                 
                 old=doctorId; //assigning current doc id to old

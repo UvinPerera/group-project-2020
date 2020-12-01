@@ -64,7 +64,7 @@
       <thead>
       <tr>
         <th class="tableheading">Appointment ID</th>
-        <th class="tableheading">Patient</th>
+        
         <th class="tableheading">Doctor</th>
         <th class="tableheading">Date</th>
         <th class="tableheading">Time</th>
@@ -75,7 +75,7 @@
       <tbody>
       <tr>
         <td class="Row">001</td>
-        <td class="Row">Jackob</td>
+       
         <td class="Row">Dr.John Doe</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">5.00 pm</td>
@@ -90,7 +90,7 @@
       </tr>
       <tr>
         <td class="Row">002</td>
-        <td class="Row">Ann</td>
+        
         <td class="Row">Dr.James Potter</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">3.00 pm</td>
@@ -105,7 +105,7 @@
       </tr>
       <tr>
         <td class="Row">003</td>
-        <td class="Row">Denial</td>
+        
         <td class="Row">Dr.George Leo</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">4.00 pm</td>
@@ -120,7 +120,7 @@
       </tr>
       <tr>
         <td class="Row">004</td>
-        <td class="Row">Ron</td>
+        
         <td class="Row">Dr.David Oscar</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">6.00 pm</td>
@@ -151,7 +151,7 @@
           <thead>
             <tr>
               <th class="tableheading">Appointment ID</th>
-              <th class="tableheading">Patient</th>
+              
               <th class="tableheading">Doctor</th>
               <th class="tableheading">Date</th>
               <th class="tableheading">Time</th>
@@ -161,7 +161,7 @@
             </tr>
             <tr>
               <td class="Row">001</td>
-              <td class="Row">John</td>
+              
               <td class="Row">Dr. John Doe</td>
               <td class="Row">15/10/2020</td>
               <td class="Row">5.00 pm</td>
