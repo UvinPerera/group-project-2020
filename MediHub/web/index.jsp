@@ -79,7 +79,7 @@
               <div class="flip-box-back card">
                 </br></br></br></br>Search for the doctor of your choice</br></br>Check their availability and schedule
                 an appointment</br></br></br>
-                <button class="btn default" >Find a Doctor</button>
+<!--                <button class="btn default" >Find a Doctor</button>-->
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@
               <div class="flip-box-back card">
                 </br></br></br></br>Is your doctor available?</br></br>Place an appointment and reserve time with your
                 doctor!</br></br>
-                <button class="btn default">Make Appointment</button>
+<!--                <button class="btn default">Make Appointment</button>-->
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@
               <div class="flip-box-back card">
                 </br></br></br></br>Upload any prescription and direct it to a pharmacy of choice.</br></br>They will
                 deliver your medication to your doorstep!</br></br>
-                <button class="btn default">Order Medication</button>
+<!--                <button class="btn default">Order Medication</button>-->
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@
               <div class="flip-box-back card">
                 </br></br></br></br>Is manually maintaining your medical files a hassle?</br></br>We've got you
                 covered.</br>Upload all your medical files online and direct them to your doctor!</br></br>
-                <button class="btn default">Upload Medical Records</button>
+<!--                <button class="btn default">Upload Medical Records</button>-->
               </div>
             </div>
           </div>
