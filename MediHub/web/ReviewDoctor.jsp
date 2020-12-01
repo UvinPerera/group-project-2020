@@ -22,6 +22,7 @@
   <div class="navbar" id="navbar">
         <ul>
             <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
+            <li><button class="style" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
            <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -56,7 +57,7 @@
                 <br><br><br>
                 <a href="editpatient" class="btn">Contact</a>
                 <br><br><br>
-                <a href="" class="btn deactivate">Report</a>
+                <!--<a href="" class="btn deactivate">Report</a>-->
               </center>
           </div>
 
