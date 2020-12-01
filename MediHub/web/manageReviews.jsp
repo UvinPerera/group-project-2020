@@ -12,15 +12,15 @@
   <script language="JavaScript" type="text/javascript" src="js/Manage_Reviews.js"></script>
 </head>
 <body>
-  <div class="navbar">
-    <ul>
-      <li><button class="style" type="button"> Joen Doe </button></li>
-      <li><a href="About.jsp" id="end">About</a></li>
+  <div class="navbar" id="navbar">
+      <ul>
+        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
       <li><a href="/MediHub">Home</a></li>
-      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-    </ul>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+      </ul>
   </div>
   <br><br>
   <div class="Dropdown">

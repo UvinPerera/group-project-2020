@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Manage_Appointment.css" media="screen" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Manage_Appointment.js"></script>
 
 </head>
@@ -16,7 +17,7 @@
   <div class="navbar">
     <ul>
       <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
-      <li><button class="style" type="button" onclick="window.location.href='hospitalDashboard.jsp'"> Profile </button></li>
+      <li><button class="style" type="button" onclick="window.location.href='hospitalDashboard.jsp'"> Dashboard </button></li>
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -63,7 +64,7 @@
       <thead>
       <tr>
         <th class="tableheading">Appointment ID</th>
-        <th class="tableheading">Patient</th>
+        
         <th class="tableheading">Doctor</th>
         <th class="tableheading">Date</th>
         <th class="tableheading">Time</th>
@@ -74,22 +75,22 @@
       <tbody>
       <tr>
         <td class="Row">001</td>
-        <td class="Row">Jackob</td>
+       
         <td class="Row">Dr.John Doe</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">5.00 pm</td>
         <td class="Row">Active</td>
         <td>
           <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
+              <li><button class="btn" id="viewappointment"><i class="fa fa-eye"></i></button></li>
               <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+              <li><button class="btn" onclick="confirm('Do you want to remove this appointment')"><i class="fa fa-trash"></i></button></li>
           </ul>
         </td>
       </tr>
       <tr>
         <td class="Row">002</td>
-        <td class="Row">Ann</td>
+        
         <td class="Row">Dr.James Potter</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">3.00 pm</td>
@@ -104,7 +105,7 @@
       </tr>
       <tr>
         <td class="Row">003</td>
-        <td class="Row">Denial</td>
+        
         <td class="Row">Dr.George Leo</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">4.00 pm</td>
@@ -119,7 +120,7 @@
       </tr>
       <tr>
         <td class="Row">004</td>
-        <td class="Row">Ron</td>
+        
         <td class="Row">Dr.David Oscar</td>
         <td class="Row">15/10/2020</td>
         <td class="Row">6.00 pm</td>
@@ -136,6 +137,45 @@
     </table>
  </div>
  <br>
+ <div id="viewAppointment" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>View Appointment</h2>
+      </div>
+      
+      <div class="modal-body">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="tableheading">Appointment ID</th>
+              
+              <th class="tableheading">Doctor</th>
+              <th class="tableheading">Date</th>
+              <th class="tableheading">Time</th>
+              <th class="tableheading">Status</th>
+              <th class="tableheading">Description</th>
+              
+            </tr>
+            <tr>
+              <td class="Row">001</td>
+              
+              <td class="Row">Dr. John Doe</td>
+              <td class="Row">15/10/2020</td>
+              <td class="Row">5.00 pm</td>
+              <td class="Row">Active</td>
+              <td class="Row">This is some random description of something boring</td>
+            
+              </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+
+</div>
 </body>
 <br><br>
 <center>
@@ -166,4 +206,23 @@
   <br><br>
 </footer>
 </center>
+
+<script>
+var modal = document.getElementById("viewAppointment");
+var btn = document.getElementById("viewappointment");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </html>

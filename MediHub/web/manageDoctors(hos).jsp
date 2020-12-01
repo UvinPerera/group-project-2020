@@ -13,7 +13,7 @@
   <div class="navbar">
     <ul>
       <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
-      <li><button class="style" type="button" onclick="window.location.href='hospitalDashboard.jsp'"> Profile </button></li>
+      <li><button class="style" type="button" onclick="window.location.href='hospital'"> Dashboard </button></li>
       <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -72,7 +72,7 @@
         <td>
           <ul class="actions">
             <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-            <li><a href="#"><button class="btn"><i class="fa fa-chain-broken"></i></button></a></li>
+            <li><button class="btn" onclick="confirm('Do you want to unlink this doctor')"><i class="fa fa-chain-broken"></i></button></li>
           </ul>
         </td>
       </tr>
