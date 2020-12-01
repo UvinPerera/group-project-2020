@@ -71,6 +71,7 @@ body{
     background-color: #F1F1F1;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
   font-weight: bold;
   font-size: 18px;
   padding:10px;
@@ -248,8 +249,8 @@ h3{
   font-family: 'Spartan',sans-serif;
   font-size: 35px;
   text-align: center;
-  margin-top: 6px;
-  margin-bottom: 25px;
+  margin-top: 3px;
+  margin-bottom: 20px;
 }
 
 .table{
@@ -327,10 +328,9 @@ h3{
       height:45px;
   }
    hr{
-  width:90%;
+  width:91%;
   text-align: center;
   border-top: 1px solid;
-  margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
 }

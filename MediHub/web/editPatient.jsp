@@ -25,6 +25,7 @@
   <div class="navbar" id="navbar">
       <ul>
         <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><button class="styled" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
         <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -208,10 +209,10 @@
       <br><br>
       <!--<button class="button" id="id" onclick="//window.location.href='/patientupdate';"><b>Done</b></button>-->
       <button class="button" type="reset" id="clear"><b>Reset</b></button>
-      <button class="button" type="submit"><b>Update</b></button>
-   </div>
+      <button class="button" type="submit"><b>Update</b></button>     
+      <button class="button" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
+      </div>
       </form>
-      <button class="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
   </div>
 </div>
 <!--</div>-->
