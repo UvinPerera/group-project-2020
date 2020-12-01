@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/web/trackOrder(phar).jsp</file>
-            <file>file:/C:/Users/Yash/Desktop/medihub/group-project-2020/MediHub/src/java/com/medihub/pharmacy/DeleteOrder.java</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/doctorDashboard.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/public/css/reminder.css</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/medicalRecords.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/src/java/com/medihub/admin/ManagePharmacy.java</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/web/public/css/form.css</file>
+            <file>file:/C:/Users/DELL/Documents/Project/group-project-2020/MediHub/src/java/com/medihub/db/DbConfig.java</file>
         </group>
     </open-files>
 </project-private>
