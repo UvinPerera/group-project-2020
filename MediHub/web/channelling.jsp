@@ -35,9 +35,11 @@
         </div>
         
         <!--<form class="" action="registration" method="post" id="regform">-->
-            
+            <br><br>
+            <h3>E-Channelling </h3><hr>
             <div class="Dropdown">
-                <select name='district' id="district">
+                <center>Select your Preferences </center><br>
+                <center><select name='district' id="district" class="filters">
                   <option value='' selected>Select District</option>
                         <%
                             if(request.getAttribute("districts")!=null){
@@ -48,24 +50,24 @@
                         <%
                                 }}}
                         %>
-                </select>
-                <br>
-                <select name='city' id="city" class="filter_dropdown">
+                    </select></center>
+                
+                <center><select name='city' id="city" class="filter_dropdown filters" >
                     <option value='' selected>Select City</option>
                    
-                </select>
+                    </select></center>
                 
-                <select name='hospital' id="hospital" class="filter_dropdown">
+                    <center><select name='hospital' id="hospital" class="filter_dropdown filters">
                     <option value='' selected>Select Hospital</option>
                    
-                </select>
+                        </select></center>
                 
-                <select name='doctorSpecialisation' id="doctorSpecialisation" class="filter_dropdown">
-                    <option value='' selected>Select Specialisation</option>
+                        <center><select name='doctorSpecialisation' id="doctorSpecialisation" class="filter_dropdown filters">
+                    <option value='' selected>Select Specialization</option>
                    
-                </select>
+                            </select></center>
                 
-                <input type="date" name="date" id="date" class="form-control"/>
+                        <center><input type="date" name="date" id="date" class="form-control textt"/></center>
                 
             </div>
         
