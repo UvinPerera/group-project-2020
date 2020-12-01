@@ -4,6 +4,16 @@
     Author     : Ifra
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.location.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!doctype html>
@@ -36,31 +46,36 @@
   <div class="information">
     <h3 style="text-align:center;font-size: 35px;margin-bottom:40px;"> Create Pharmacy</h3>
     
-    <form action="createpharmacy" method="POST">
+    <form action="createpharmacy" method="POST" id="">
     <div class="record">
     <div class="label">Pharmacy Name </div>
     <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="Pharmacy Name">
+  </div>
+        
+    <div class="record">
+    <div class="label">Display Name </div>
+    <input class="data" type="text" name="display_name" id="pharmacyname" placeholder="Display Name">
   </div>
 
   <div class="record">
     <div class="label">License Number </div>
     <input class="data" type="text" name="license_number" id="licensename" placeholder="License Number">
   </div>
-
+<!--
   <div class="record">
     <div class="label">License Proof Location</div>
     <input class="data" type="text" name="license_proof_location" id="nic" placeholder="License Proof Location">
-  </div>
-        
+  </div>-->
+<!--        
    <div class="record">
     <div class="label">Pharmacist Id</div>
-    <input class="data" type="text" name="pharmacist_id" id="pharmacist_id" placeholder="Pharmacist Proof Location">
-  </div>
+    <input class="data" type="text" name="pharmacist_id" id="pharmacist_id" placeholder="Pharmacist ID">
+  </div>-->
 
-  <div class="record">
+<!--  <div class="record">
     <div class="label">Pharmacist Proof Location</div>
     <input class="data" type="text" name="pharmacist_proof_location" id="pharmacistprooflocation" placeholder="Pharmacist Proof Location">
-  </div>
+  </div>-->
 
   <div class="record">
     <div class="label">Land Number</div>
@@ -89,31 +104,48 @@
         
    <div class="record">
     <div class="label">District</div>
-    <input class="data" type="text" name="district" id="district" placeholder="City">
+    <select class="input option data" name="district" id="district" style="height: 50px">
+          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                         <%
+                             if(request.getAttribute("districts")!=null){
+                                 List<District> table = (ArrayList<District>)request.getAttribute("districts");
+                                 if(table.size()>0){
+                                     for(District row : table) { %>
+                                         <option value='<%= row.id %>'><%= row.nameEn %></option>
+                         <%
+                                 }}}
+                         %>
+
+        </select>
   </div>
         
 
   <div class="record">
     <div class="label">City</div>
-    <input class="data" type="text" name="city" id="city" placeholder="City">
+    <select class="input option data" name='city' id="city" class="filter_dropdown" style="height: 50px"> 
+            <option value='' selected>--Choose Option--</option>
+
+        </select>
   </div>
 
   <div class="record">
     <div class="label">Description</div>
     <input class="data" type="text" name="description" id="description" placeholder="Description">
   </div>
-
+<!--
   <div class="record">
     <div class="label">Status</div>
     <input class="data" type="text" name="status" id="status" placeholder="Status">
-  </div>
+  </div>-->
 
   <div class="buttons">
       <br><br>
-      <button class="button" type="reset"><b>Cancel</b></button>
+      <button class="button" type="reset"><b>Clear</b></button>
       <button class="button" type="submit"><b>Submit</b></button>
    </div>
     </form>
+   <button class="button" onclick="window.location.href='readpharmacy'"><b>Cancel</b></button>
+
   </div>
 </div>
 </div>
@@ -145,4 +177,34 @@
       All rights Reserved @MediHub2020
     </div>
     </br></br>
+    </center>
+  </footer>
 
+<script>
+    
+    //    onchange district
+    $('#district').change(function(){
+        var districtId=$(this).find(':selected').val();
+        
+        $.ajax({
+            url: "getcityasstring",
+            type: "get", //send it through get method
+            data: { 
+              stage: "district", 
+              district: districtId
+            },
+            success: function(response) {
+              //populate city data
+//              alert(response);
+              $('#city').html("<option disabled>--Choose Option--</option>"+response);
+            },
+            error: function(xhr) {
+                alert("CityByDistrict Error");
+            }
+          });
+
+    });
+</script>
+
+</body>
+</html>

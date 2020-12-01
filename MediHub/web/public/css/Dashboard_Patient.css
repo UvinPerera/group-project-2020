@@ -269,7 +269,7 @@
   }
   .table-hub{
        table-layout: fixed;
-       width: 70%;
+       width: 100%;
        border-collapse:collapse;
        border-radius: 5px 5px 0 0;
        overflow: hidden;

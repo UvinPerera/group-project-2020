@@ -6,13 +6,16 @@
 package com.medihub.admin;
 
 import com.medihub.db.DbConfig;
+import com.medihub.pharmacy.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,29 +53,21 @@ public class ReadPharmacy extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            int pharmacyId =Integer.parseInt(session.getAttribute("pharmacyid").toString());
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
-            
+                        String query = "select p.*, c.name_en as city, d.name_en as district, u.display_name as pharmacist from pharmacies p "
+                                + "join cities c on c.id=p.city "+ "join districts d on d.id=c.district_id "
+                                + "join users u on u.id=p.pharmacist_id ";
+
             try
             {
-                //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
+            
+                Pharmacy p = new Pharmacy();
+//                out.print(p.getAllPharmacies().get(1).displayName);
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE id="+pharmacyId);
-                ArrayList Profile = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 22 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Profile.add(row);
-                }
-                
-                request.setAttribute("profile", Profile);
-                request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
+                request.setAttribute("pharmacies", p.getAllPharmacies());
+                request.getRequestDispatcher("managePharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }

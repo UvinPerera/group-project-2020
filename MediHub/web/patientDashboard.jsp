@@ -155,8 +155,7 @@
                             <td class="table-hub-owner"><%= row.start_time %> </td>
                             <td>
                                 <ul class="actions">
-                                    <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');"
-                                                index="<%= table.indexOf(row) %>"><center><i class="fa fa-eye"></i></<center></button></li>
+                                    <li><button id="popUp" class="btn" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><center><i class="fa fa-eye"></i></<center></button></li>
                                     <!--<li><button class="btn"><i class="fa fa-reply"></i></button></li>-->
                                 </ul>
                             </td>
@@ -211,7 +210,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <%}}
+                        <% }}
             %>
 
                         <!--pending appointments ends-->
