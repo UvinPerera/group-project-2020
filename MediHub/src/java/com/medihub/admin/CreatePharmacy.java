@@ -59,7 +59,7 @@ public class CreatePharmacy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         /*
+         
            PrintWriter out = response.getWriter();
             String Pharmacy_Name = request.getParameter("pharmacy_name");
             int License_Number = Integer.parseInt(request.getParameter("license_number"));
@@ -74,21 +74,22 @@ public class CreatePharmacy extends HttpServlet {
             int District = Integer.parseInt(request.getParameter("district"));
             int City = Integer.parseInt(request.getParameter("city"));
             String description = request.getParameter("description");
-            int Status = Integer.parseInt(request.getParameter("status"));*/
+            int Status = Integer.parseInt(request.getParameter("status"));
             
       // out.print(Pharmacy_Name);
       
       
       try{
-               /* DbConfig db = DbConfig.getInstance();
+               DbConfig db = DbConfig.getInstance();
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy','011-1231231','011-9879879','citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");*/
+                int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy',0111231231,0119879879,'citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");
                 response.sendRedirect("managePharmacy.jsp");
             }
             catch(Exception e){
                 e.printStackTrace();
+                out.print(e.toString());
             }
       
     }
