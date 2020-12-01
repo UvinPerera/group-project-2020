@@ -106,6 +106,7 @@
 .contentBox{
     background-color:#fbfbfb;
     height:auto;
+    min-height: 600px;
     position: absolute;
     margin-top: 2%;
     margin-left: 29%;
