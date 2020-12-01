@@ -26,11 +26,10 @@
   <div class="navbar" id="navbar">
       <ul>
         <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
-        <li><button class="style" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> Profile </button></li>
-        <li><a href="#" id="end">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
+         <li><a href="About.jsp" id="end">About</a></li>
+      <li><a href="contactUs.jsp">Contact</a></li>
+      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+      <li><a href="/MediHub">Home</a></li>
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
@@ -53,8 +52,9 @@
         
   %>
   <br><br>
+  <h3>Your Orders </h3>
   <div class="Dropdown">
-    <select name='Dropdown'>
+    <select name='Dropdown'class="filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Pending</a></option>
       <option value='Action'><a href="#">Shipped</a></option>
@@ -62,7 +62,7 @@
       <option value='Action'><a href="#">Rejected</a></option>
    </select>
    <br>
-   <select name='Dropdown' class="filter_dropdown">
+   <select name='Dropdown' class="filter_dropdown filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Order ID</a></option>
       <option value='Action'><a href="#">Patient ID</a></option>
@@ -70,9 +70,9 @@
       <option value=99><a href="#">Date</a></option>
       <option value='Action'><a href="#">Status</a></option>
    </select>
-   <input type="text" class="filter_text" placeholder="Filter">
-   <input type="date" class="filter_date" placeholder="From">
-   <input type="date" class="filter_date" placeholder="To">
+   <input type="text" class="filter_text textt" placeholder="Filter">
+   <input type="date" class="filter_date textt" placeholder="From">
+   <input type="date" class="filter_date textt" placeholder="To">
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
   </div>
   <br> 
@@ -110,7 +110,7 @@
         <td>
           
           <ul class="actions">
-              <li><button id="popUp" class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
+              <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
               <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
               <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
@@ -132,6 +132,7 @@
     </table>
       </div>
       <!-- Modal starts -->
+<center>
         <div id="modalBox" class="modal">
 
             <!-- Modal content -->
@@ -183,10 +184,12 @@
                 </table>
 
             </div>
+</center>
             <!--Modal content ends-->
         
  </div>
  <br>
+ <div><li><button class="style back" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> < Back to Dashboard </button></li></div>
 </body>
 <br><br>
 

@@ -26,7 +26,7 @@
         <li><button class="styled" type="button" onclick="window.location.href='signup';"> SIGN UP</button></li> 
         <%}else{%>
            
-            <li><button class="styled" type="button" onclick="window.location.href='patient';"> PROFILE</button></li> 
+            <li><button class="styled" type="button" onclick="window.location.href='';"> DASHBOARD</button></li> 
             <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li> 
         <%}%>
       <li><a href="About.jsp" id="end">About</a></li>

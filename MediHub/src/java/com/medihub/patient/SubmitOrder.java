@@ -53,12 +53,13 @@ public class SubmitOrder extends HttpServlet {
             String filepath=request.getParameter("file_path");
             int pharmacyid=Integer.parseInt(request.getParameter("pharmacy"));
             int id;
+            String status="Pending";
 
-            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by) VALUES(NULL,'"+pharmacyid+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"')";
+            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by,description) VALUES(NULL,'"+pharmacyid+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"','"+status+"')";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
-            String query2="INSERT INTO order_items (id,order_id,file_path,description,status,created_at,updated_at) VALUES(NULL,LAST_INSERT_ID(),'"+filepath+"','"+itemDescription+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
+            String query2="INSERT INTO order_items (id,order_id,file_path,description,status,created_at,updated_at,created_by) VALUES(NULL,LAST_INSERT_ID(),'"+filepath+"','"+itemDescription+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"')";
             PreparedStatement stmt2=con.prepareStatement(query2);  
             int rs2=stmt2.executeUpdate();
             
