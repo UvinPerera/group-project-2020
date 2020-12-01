@@ -57,7 +57,7 @@
                 <br><br><br>
                 <a href="editpatient" class="btn">Location in Map</a>
                 <br><br><br>
-                <!--<a href="" class="btn deactivate">Report</a>-->
+                <a href="" class="btn deactivate">Report</a>
               </center>
           </div>
 

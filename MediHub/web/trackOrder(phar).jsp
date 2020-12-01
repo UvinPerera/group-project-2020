@@ -26,6 +26,7 @@
   <div class="navbar" id="navbar">
       <ul>
         <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='pharmacy'"> Dashboard </button></li>
          <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -186,10 +187,12 @@
                 </table>
 
             </div>
+            
+             </div>
+
 </center>
             <!--Modal content ends-->
         
- </div>
  <br>
  <div><li><button class="style back" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> < Back to Dashboard </button></li></div>
 </body>
