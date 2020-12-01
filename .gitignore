@@ -1,4 +1,8 @@
-/MediHub/dist/
-/MediHub/nbproject/
-/MediHub/build/
-/Medihub/build.xml
+MediHub/dist/
+MediHub/nbproject/
+MediHub/build/
+Medihub/build.xml
+MediHub/build/web
+MediHub/build/public
+MediHub/build/META-INF
+MediHub/build/WEB-INF
