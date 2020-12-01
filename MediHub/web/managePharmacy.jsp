@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Manage_Pharmacy.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/modal1.css" media="screen" />
 </head>
 <body>
   <div class="navbar">
@@ -52,6 +53,7 @@
 
   </div>
   <br>
+ 
   <div class="container-table">
     <table class="table">
       <thead>
