@@ -18,15 +18,15 @@
   <link rel="stylesheet" type="text/css" href="./public/css/Manage_Pharmacy.css" media="screen" />
 </head>
 <body>
-  <div class="navbar">
-    <ul>
-      <li><button class="style" type="button">Admin</button></li>
-      <li><a href="About.jsp" id="end">About</a></li>
+  <div class="navbar" id="navbar">
+      <ul>
+        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
       <li><a href="/MediHub">Home</a></li>
-      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-    </ul>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+      </ul>
   </div>
   <br><br>
   <div class="Dropdown">
@@ -77,7 +77,7 @@
                 var pharmacist = [];
                 var district = [];
                 var city = [];
-                var status = [];
+                var pstatus = [];
                 
                 var size =<%= table.size() %>;
             </script>
@@ -121,7 +121,7 @@
             pharmacist[<%= table.indexOf(row) %>]                        = "<%= row.pharmacist %>";
             district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
             city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";
-            status[<%= table.indexOf(row) %>]                            = <%= row.status %>;
+            pstatus[<%= table.indexOf(row) %>]                            = <%= row.status %>;
 
         </script>
       
@@ -276,15 +276,15 @@
         var status = "";
         var colour = "";
 
-        if (status[index] == 1) {
+        if (pstatus[index] == 1) {
             status = "Active";
             colour = "green";
         }
-        else if (status[index] == 2) {
+        else if (pstatus[index] == 2) {
             status = "Pending";
             colour = "orange";
         }
-        else if (status[index] == 3) {
+        else if (pstatus[index] == 3) {
             status = "Blacklisted";
             colour = "red";
         }
