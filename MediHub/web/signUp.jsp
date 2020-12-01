@@ -35,7 +35,7 @@
     <div style="background-color:#2b3030;" id="sidebarPlace"></div>
     <div class="navbar" id="navbar">
       <ul>
-        <li><button class="styled" type="button" href="login.jsp"> SIGN IN </button></li>
+        <li><button class="styled" type="button" onclick="window.location.href='login.jsp'"> SIGN IN </button></li>
         <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
