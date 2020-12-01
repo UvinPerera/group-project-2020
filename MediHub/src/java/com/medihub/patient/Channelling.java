@@ -172,6 +172,7 @@ public class Channelling {
                 if (cr==0)
                 {
 //                    rolling back
+                    up=0;
                     while(up>0)
                     {
                     query="update doctor_availability set count=count-1 where id="+doctorAvailabilityId;

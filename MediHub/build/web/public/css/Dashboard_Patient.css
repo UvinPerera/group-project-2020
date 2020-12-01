@@ -105,7 +105,7 @@
 
 .contentBox{
     background-color:#fbfbfb;
-    height:870px;
+    height:auto;
     position: absolute;
     margin-top: 2%;
     margin-left: 29%;
@@ -219,7 +219,7 @@
   
   footer{
     background-color: #2b3030;
-    margin-top: 900px;
+    margin-top: 1100px;
   }
   .column4 {
   float: left;
@@ -425,6 +425,7 @@ th, td {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 20px;
 }
 
 
