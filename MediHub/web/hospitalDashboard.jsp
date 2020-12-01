@@ -28,9 +28,9 @@
           <img src="./public/images/p3.jpg" id="profile">
           <h2 style="text-align:center; margin-bottom:25px;"><%=username%></h2><br>
           <div><center>
-            <a href="viewdoctor.jsp" class="btn">View Profile</a>
+            <a href="viewhospital.jsp" class="btn">View Profile</a>
             <br><br><br>
-            <a href="editDoctorProfile.jsp" class="btn">Edit Profile</a>
+            <a href="edithospital.jsp" class="btn">Edit Profile</a>
             <br><br><br>
             <a href="" class="btn deactivate">Deactivate</a>
               </center>
