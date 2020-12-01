@@ -47,7 +47,7 @@
   </div>
 
   <div class="information">
-      <form class="" action="patientupdate" method="post" id="updateForm">
+      <form class="" action="patientupdate" method="POST" id="updateForm">
     <h3 style="text-align:center;font-size: 35px;margin-bottom:40px;"> Profile information</h3>
 
     <div class="record">
@@ -102,10 +102,10 @@
 
   <div class="record">
     <div class="label">Gender</div>
-    <select class="data" name="gender" id="gender"  style=" height: 50px;">
-      <option value="M" <% if(row.gender=='M'){out.print("Selected");}%>>Male</option>
-      <option value="F" <% if(row.gender=='F'){out.print("Selected");}%>>Female</option>
-      <option value="N" <% if(row.gender=='N'){out.print("Selected");}%>>Not preferred to say</option>
+    <select class="data" name="gender" id="gender" style="height: 50px;">
+        <option value="M" <% if(row.gender.equalsIgnoreCase("M")){out.print("Selected");}%>>Male</option>
+        <option value="F" <% if(row.gender.equalsIgnoreCase("F")){out.print("Selected");}%>>Female</option>
+        <option value="N" <% if(row.gender.equalsIgnoreCase("N")){out.print("Selected");}%>>Not preferred to say</option>
     </select>
   </div>
     <div class="danger" id="genderError">
@@ -116,7 +116,7 @@
 
   <div class="record">
     <div class="label">Email</div>
-    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%= row.dob %>">
+    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%= row.email %>">
   </div>
   <div class="danger" id="emailError">
           <div class="alert-message alert-message-danger" >
@@ -141,7 +141,7 @@
   
   <div class="record">
     <div class="label">District</div>
-    <select class="input option data" name="district" id="district">
+    <select class="data" name="district" id="district" style="height: 50px;">
                          <%
                              if(request.getAttribute("districts")!=null){
                                  List<District> districts = (ArrayList<District>)request.getAttribute("districts");
@@ -162,10 +162,10 @@
 
   <div class="record">
     <div class="label">City</div>
-    <select class="input option data" name="city" id="city">
+    <select class="data" name="city" id="city" style="height: 50px;">
                          <%
                              if(request.getAttribute("cities")!=null){
-                                 List<City> cities = (ArrayList<City>)request.getAttribute("districts");
+                                 List<City> cities = (ArrayList<City>)request.getAttribute("cities");
                                  if(cities.size()>0){
                                      for(City city : cities) { %>
                                          <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
@@ -177,7 +177,7 @@
   </div>
    <div class="danger" id="cityError">
           <div class="alert-message alert-message-danger" >
-                <h4>City can't be empty</h4>
+                <h4>Select a valid City </h4>
           </div>
         </div>                      
 
@@ -202,20 +202,16 @@
                 <h4>Mobile Number cannot be empty and both numbers should be valid</h4>
           </div>
        </div>
-  
-  <!--close jsp tag-->
-  <% } %>
-  <!--close tag-->
+
 
   <div class="buttons">
       <br><br>
-      <button class="button" id="id" onclick="window.location.href='/patient';"><b>Cancel</b></button>
       <!--<button class="button" id="id" onclick="//window.location.href='/patientupdate';"><b>Done</b></button>-->
       <button class="button" type="reset" id="clear"><b>Reset</b></button>
       <button class="button" type="submit"><b>Update</b></button>
    </div>
-  
       </form>
+      <button class="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
   </div>
 </div>
 <!--</div>-->
@@ -250,8 +246,10 @@
 
     <script>
         
+        document.getElementById("dob").value = "<%= row.dob %>";
         
         $("#firstNameError").hide();
+        $("#lastNameError").hide();
         $("#displayNameError").hide();
         $("#nicError").hide();
         $("#dobError").hide();
@@ -267,9 +265,9 @@
         $("#typeError").hide();
         
         $("#updateForm").on('submit',function(e){
-            
             //to always refresh when submitting (hide and show only relevant)
             $("#firstNameError").hide();
+            $("#lastNameError").hide();
             $("#displayNameError").hide();
             $("#nicError").hide();
             $("#dobError").hide();
@@ -315,7 +313,7 @@
              if ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null){
                 $("#emailError").show();
                 x=1;
-             }
+            }
               if($("#address1").val()==""){
                 $("#addressError").show();
                 x=1;
@@ -385,3 +383,8 @@
     });
         
     </script>
+    
+      
+  <!--close jsp tag-->
+  <% } %>
+  <!--close tag-->

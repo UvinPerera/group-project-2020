@@ -21,7 +21,7 @@ public class User {
     public String email;
     protected String password;
     public int userType;
-    public char gender;
+    public String gender;
     public String nic;
     public int city;
     public String address1;
@@ -67,7 +67,7 @@ public class User {
         //sql query
         String q_select="select u.*, c.name_en as city_name, d.name_en as district_name, d.id as district from users u ";
         String q_join_c="join cities c on c.id=u.city ";
-        String q_join_d="join districts d on d.id=c.district ";
+        String q_join_d="join districts d on d.id=c.district_id ";
         String q_where="where u.status=1 and u.id="+this.id;
         String query=q_select + q_join_c + q_join_d + q_where;
   
@@ -84,6 +84,7 @@ public class User {
                 this.lastName=rs.getString("last_name");
                 this.displayName=rs.getString("display_name");
                 this.id = rs.getInt("id"); 
+                this.gender = rs.getString("gender"); 
                 this.email = rs.getString("email"); 
                 this.nic = rs.getString("nic"); 
                 this.district = rs.getInt("district"); 

@@ -80,7 +80,15 @@
           
           </div>
             <div class="serviceTile">
-              <center> <button class="styled" type="button">Service Review</button></center>
+                <center> <button class="styled" type="button" onclick="window.location.href='ReviewHospital.jsp'">Browse Hospitals</button></center>
+          
+          </div>
+            <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='ReviewDoctor.jsp'">Browse Doctors</button></center>
+          
+          </div>
+            <div class="serviceTile">
+              <center> <button class="styled" type="button" onclick="window.location.href='ReviewPharmacy.jsp'">Browse Pharmacies</button></center>
           
           </div>
           
