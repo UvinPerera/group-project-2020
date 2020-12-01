@@ -31,11 +31,12 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
-
+ 
  <div class="contentContainer">
   <div class="information">
     <h3 style="text-align:center;font-size: 35px;margin-bottom:40px;"> Create Pharmacy</h3>
-
+    
+    <form action="createpharmacy" method="POST">
     <div class="record">
     <div class="label">Pharmacy Name </div>
     <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="Pharmacy Name">
@@ -43,17 +44,22 @@
 
   <div class="record">
     <div class="label">License Number </div>
-    <input class="data" type="text" name="last_name" id="lastname" placeholder="License Number">
+    <input class="data" type="text" name="license_number" id="licensename" placeholder="License Number">
   </div>
 
   <div class="record">
     <div class="label">License Proof Location</div>
-    <input class="data" type="text" name="licenseprooflocation" id="nic" placeholder="License Proof Location">
+    <input class="data" type="text" name="license_proof_location" id="nic" placeholder="License Proof Location">
+  </div>
+        
+   <div class="record">
+    <div class="label">Pharmacist Id</div>
+    <input class="data" type="text" name="pharmacist_id" id="pharmacist_id" placeholder="Pharmacist Proof Location">
   </div>
 
   <div class="record">
     <div class="label">Pharmacist Proof Location</div>
-    <input class="data" type="text" name="pharmacistprooflocation" id="pharmacistprooflocation" placeholder="Pharmacist Proof Location">
+    <input class="data" type="text" name="pharmacist_proof_location" id="pharmacistprooflocation" placeholder="Pharmacist Proof Location">
   </div>
 
   <div class="record">
@@ -78,8 +84,14 @@
 
   <div class="record">
     <div class="label">Address 2</div>
-    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2">
+    <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2">
   </div>
+        
+   <div class="record">
+    <div class="label">District</div>
+    <input class="data" type="text" name="district" id="district" placeholder="City">
+  </div>
+        
 
   <div class="record">
     <div class="label">City</div>
@@ -98,10 +110,10 @@
 
   <div class="buttons">
       <br><br>
-      <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
-      <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Done</b></button>
+      <button class="button" type="reset"><b>Cancel</b></button>
+      <button class="button" type="submit"><b>Submit</b></button>
    </div>
-
+    </form>
   </div>
 </div>
 </div>

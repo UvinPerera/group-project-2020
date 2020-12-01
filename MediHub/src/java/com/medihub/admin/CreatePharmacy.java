@@ -5,8 +5,11 @@
  */
 package com.medihub.admin;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +59,37 @@ public class CreatePharmacy extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         /*
+           PrintWriter out = response.getWriter();
+            String Pharmacy_Name = request.getParameter("pharmacy_name");
+            int License_Number = Integer.parseInt(request.getParameter("license_number"));
+            String License_Proof_Location = request.getParameter("license_proof_location");
+            int Pharmacist_Id = Integer.parseInt(request.getParameter("pharmacist_id"));
+            String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
+            String Land_Number = request.getParameter("land_line");
+            String Fax = request.getParameter("fax");
+            String Email = request.getParameter("email");
+            String Address1 = request.getParameter("address_1");
+            String Address2 = request.getParameter("address_2");
+            int District = Integer.parseInt(request.getParameter("district"));
+            int City = Integer.parseInt(request.getParameter("city"));
+            String description = request.getParameter("description");
+            int Status = Integer.parseInt(request.getParameter("status"));*/
+            
+      // out.print(Pharmacy_Name);
+      
+      
+      try{
+               /* DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement(); 
+                int rs=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,created_by) values('City Pharmacy',111,'Colombo',7,'Colombo','C_Pharmacy','011-1231231','011-9879879','citypharamcy@gmial.com','No.65,First Cross Street','Reid Place',3,1,1)");*/
+                response.sendRedirect("managePharmacy.jsp");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
       
     }
 
