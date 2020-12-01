@@ -88,7 +88,7 @@ public class auth extends HttpServlet {
                             session.setAttribute("usertype", userType);
                         }
                         else if(userType==4){
-                            response.sendRedirect("pharmacyDashboard.jsp");
+                            response.sendRedirect("pharmacy");
                             HttpSession session = request.getSession();
                             session.setAttribute("username",displayName);
                             session.setAttribute("userid", userId);
