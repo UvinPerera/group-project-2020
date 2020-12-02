@@ -154,8 +154,8 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
-                                <td class="review-given">
+                                <td class="review-text">
+Personable interactions, thorough explanations and counseling on the subject matter<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">3.0</div>
@@ -200,8 +200,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
-                                <td class="review-given">
+                                <td class="review-text">This was a wellness/annual physical visit. Dr. P.S.S Vimal is a personable guy, and good to talk with, beyond the medical business at hand. On the medical topics, on this visit and all prior ones, he has always taken the care and time to explain the complexities in clear terms, as to results, concerns, options, and the nuisances that go with them. Staff has always been top notch as well.The only issue was with the doctor was that he took waaay too much time.<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">3.0</div>
@@ -223,8 +222,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                              <center>  <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td><center>
-                                <td class="review-given">
+                              <center>  <td class="review-text">Dr. P.S.S Vimal takes the time to explain my treatment options to me so that I fully understand them and can make the right choices, weighing benefits against risks<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">5.0</div>

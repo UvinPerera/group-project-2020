@@ -155,16 +155,15 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
-                                <td class="review-given">
+                                <td class="review-text">Medhub is great however,the pharmacy took some time to deliver the order. But overall, Good Experience. I highly recommend this pharmacy.<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
-                                            <div class="review-title">3.0</div>
+                                            <div class="review-title">4.0</div>
                                             <div class="review-star">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
+                                                <span class="fa fa-star"></span>
                                                 <span class="fa fa-star-o"></span>
                                             </div>
                                         </div>
@@ -201,7 +200,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
+                                <td class="review-text">50% of the orders placed go unfilled. Customer service reps are as helpful as they can be. Maybe check for alternative pharmacies next time.</td>
                                 <td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
@@ -224,8 +223,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                              <center>  <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td><center>
-                                <td class="review-given">
+                              <center>  <td class="review-text">Since starting with Medihub, I have experienced fast delivery, and great customer service. I give them an overall A+!<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">5.0</div>

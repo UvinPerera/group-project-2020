@@ -158,8 +158,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
-                                <td class="review-given">
+                                <td class="review-text">Services were good. Good Job to all the nurses for being very supportive.<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">3.0</div>
@@ -204,16 +203,15 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                                <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td>
-                                <td class="review-given">
+                                <td class="review-text">The hospital is really very nice with all kind of latest equipment to do testing and surgery. Doctors are very nice and good in behavior and attitude. They are really loyal to tell you the fact about your disease and pros and cons of any kind of major surgery. Best part of the hospital is cleanliness. General word, private rooms everywhere they do maintain very high class cleanliness and sanity.<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
-                                            <div class="review-title">3.0</div>
+                                            <div class="review-title">4.0</div>
                                             <div class="review-star">
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <span class="fa fa-star-o"></span>
+                                                <span class="fa fa-star"></span>
                                                 <span class="fa fa-star-o"></span>
                                             </div>
                                         </div>
@@ -227,8 +225,7 @@
                                 <td class="review-img">
                                     <img src="./public/images/user.png" alt="profile image" href="" />
                                 </td>
-                              <center>  <td class="review-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi temporibus error perferendis recusandae distinctio consequuntur, dolores dolorem? Ut quidem, repellendus repellat velit dolorem vel soluta pariatur maxime officia quisquam doloremque!</td><center>
-                                <td class="review-given">
+                              <center>  <td class="review-text">Excellent service! Could't have had a better experience anywhere else!<td class="review-given">
                                     <div class="review-rating">
                                         <div class="box-review">
                                             <div class="review-title">5.0</div>
