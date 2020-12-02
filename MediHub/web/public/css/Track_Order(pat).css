@@ -109,17 +109,20 @@ box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
             inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 .container-table{
-padding: 6px 6px;
-overflow: hidden;
+  padding: 6px 6px;
+  overflow: hidden;
+  width: 92%;
 
 }
 .table{
-table-layout: fixed;
-width: 100%;
-border-collapse:collapse;
-min-width: 300px;
-border-radius: 5px 5px 5px 5px;
-/*overflow: hidden;*/
+  table-layout: fixed;
+  width: 100%;
+  border-collapse:collapse;
+  min-width: 300px;
+  border-radius: 5px 5px 5px 5px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 .tableheading{
@@ -174,7 +177,7 @@ footer{
 background-color: #2b3030;
 position: absolute;
 right: 0;
-bottom: 0;
+margin-top: 50px;
 left: 0;
 }
 .column4 {
@@ -203,6 +206,53 @@ text-align: center;
 text-decoration: none;
 border-radius: 50%;
 color:white;
+}
+
+
+
+.Dropdown{
+    width:90%;
+    background-color: #F1F1F1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+ 
+  font-weight: bold;
+  font-size: 18px;
+  padding:10px;
+  padding-top: 20px;
+  height:50px;
+  
+}
+
+.filters{
+    height:35px;
+    width:20%;
+    margin-bottom: 10px;
+    float:left;
+    margin-left: 20px;
+    margin-left: 20px;
+ 
+}
+
+  .textt{
+      width:20%;
+      margin-left: 400px;
+      height:45px;
+  }
+   hr{
+  width:91%;
+  text-align: center;
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+h3{
+  font-family: 'Spartan',sans-serif;
+  font-size: 35px;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 25px;
 }
 
 

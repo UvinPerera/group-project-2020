@@ -7,9 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Appointment.css" media="screen" />
+  
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Appointment.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Manage_Appointment.js"></script>
 
 </head>
@@ -24,18 +25,18 @@
       <li><a href="/MediHub">Home</a></li>
       <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
     </ul>
-  </div>
-  <br><br>
+  </div><br>
+    <h3>Manage Appointments</h3><hr>
   <div class="Dropdown">
-    <select name='Dropdown'>
+    <select name='Dropdown' class="filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Active</a></option>
       <option value='Action'><a href="#">Cancelled by patient</a></option>
       <option value='Action'><a href="#">Cancelled by service provider</a></option>
       <option value='Action'><a href="#">Completed</a></option>
    </select>
-   <br>
-   <select name='Dropdown' class="filter_dropdown">
+   
+   <select name='Dropdown' class="filter_dropdown filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">ID</a></option>
       <option value='Action'><a href="#">Doctor</a></option>
@@ -43,9 +44,9 @@
       <option value='Action'><a href="#">Time</a></option>
       <option value='Action'><a href="#">Status</a></option>
    </select>
-   <input type="text" class="filter_text" placeholder="Filter">
-   <input type="date" class="filter_date" placeholder="From">
-   <input type="date" class="filter_date" placeholder="To">
+   <input type="text" class="filter_text textt" placeholder="Filter">
+   <input type="date" class="filter_date textt" placeholder="From">
+   <input type="date" class="filter_date textt" placeholder="To">
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
 
    <div class="new">
@@ -59,6 +60,7 @@
 
   </div>
   <br>
+<center>
   <div class="container-table">
     <table class="table">
       <thead>
@@ -136,6 +138,7 @@
       </tbody>
     </table>
  </div>
+</center>
  <br>
  <div id="viewAppointment" class="modal">
 
