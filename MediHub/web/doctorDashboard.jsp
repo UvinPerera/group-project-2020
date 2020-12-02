@@ -152,7 +152,7 @@
         </div>
         <div id="createPres" class="modal">
 
-          <div class="modal-content">
+          <div class="modal-content" style="width: 80%">
               <div class="modal-header">
                   <span class="close">&times;</span>
                  
