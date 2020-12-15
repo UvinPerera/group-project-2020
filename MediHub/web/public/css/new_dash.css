@@ -271,6 +271,10 @@ main {
      font-weight: 700;
 }
 
+.charts_table td button{
+     margin: 0 5px;
+}
+
 .charts_table tbody tr {
      border-bottom: 1px solid #dddddd;
 }
@@ -493,6 +497,45 @@ main {
      height: 100vh;
 }
 
+.footer {
+     background: #f3f4f6;
+     margin-top: 10px;
+     justify-content: center;
+     text-align: center;
+}
+
+.footer_text {
+     padding: 5px;
+}
+
+.social {
+     padding: 5px; 
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.social > a {
+     color: #2b3030;
+     font-size: 16px;
+     margin-left: 20px;
+     margin-right: 20px;
+     text-decoration: none;
+     padding: 10px;
+}
+
+.social > a:hover {
+     background: #a5aaad;
+     color: #ffffff;
+}
+
+.copyrights {
+     display: flex;
+     padding: 5px;
+     justify-content: center;
+     text-align: center;
+}
+
 @media only screen and (max-width: 1200px) {
 
      .container {
@@ -541,6 +584,7 @@ main {
      .charts {
           grid-template-columns: 1fr;
           margin-top: 30px;
+          overflow-x: auto;
      }
 
      .navbar {
