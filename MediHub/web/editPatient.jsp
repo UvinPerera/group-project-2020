@@ -9,411 +9,346 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/editProfile.css" media="screen"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-</head>
-<body>
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     </head>
 
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><button class="styled" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
-        <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
+     <body>
+
+          <% 
+               String username="";
+               username= session.getAttribute("username").toString();
+          %>
+
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
+              
+              <jsp:include page="./public/includes/navbar.jsp"/>
+              
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
+
+               <main>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
+
+                         <div class="main_title">
+                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
+                              <div class="main_greeting">
+                                   <h1>Hello <%=username%></h1>
+                                   <p>Profile</p>
+                              </div>
+                         </div>
+                        
                         <%
-                            if(request.getAttribute("districts")!=null){
+                            if(request.getAttribute("profile")!=null){
                                 Patient row = (Patient)request.getAttribute("profile");
                                 
                                 
                         %>
-                        
-   <div class="uploadPopup" id="PopUp">
-       <span class="close">&times;</span>
-       <center>
-       <svg version="1.1" class="fill" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 419.2 419.2" style="enable-background:new 0 0 419.2 419.2;" xml:space="preserve"> <g> <g> <g> <circle cx="158" cy="144.4" r="28.8"/> <path d="M394.4,250.4c-13.6-12.8-30.8-21.2-49.6-23.6V80.4c0-15.6-6.4-29.6-16.4-40C318,30,304,24,288.4,24h-232 c-15.6,0-29.6,6.4-40,16.4C6,50.8,0,64.8,0,80.4v184.4V282v37.2c0,15.6,6.4,29.6,16.4,40c10.4,10.4,24.4,16.4,40,16.4h224.4 c14.8,12,33.2,19.6,53.6,19.6c23.6,0,44.8-9.6,60-24.8c15.2-15.2,24.8-36.4,24.8-60C419.2,286.8,409.6,265.6,394.4,250.4z M21.2,80.4c0-9.6,4-18.4,10.4-24.4c6.4-6.4,15.2-10.4,24.8-10.4h232c9.6,0,18.4,4,24.8,10.4c6.4,6.4,10.4,15.2,10.4,24.8v124.8 l-59.2-59.2c-4-4-10.8-4.4-15.2,0L160,236l-60.4-60.8c-4-4-10.8-4.4-15.2,0l-63.2,64V80.4z M56,355.2v-0.8 c-9.6,0-18.4-4-24.8-10.4c-6-6.4-10-15.2-10-24.8V282v-12.4L92,198.4l60.4,60.4c4,4,10.8,4,15.2,0l89.2-89.6l58.4,58.8 c-1.2,0.4-2.4,0.8-3.6,1.2c-1.6,0.4-3.2,0.8-5.2,1.6c-1.6,0.4-3.2,1.2-4.8,1.6c-1.2,0.4-2,0.8-3.2,1.6c-1.6,0.8-2.8,1.2-4,2 c-2,1.2-4,2.4-6,3.6c-1.2,0.8-2,1.2-3.2,2c-0.8,0.4-1.2,0.8-2,1.2c-3.6,2.4-6.8,5.2-9.6,8.4c-15.2,15.2-24.8,36.4-24.8,60 c0,6,0.8,11.6,2,17.6c0.4,1.6,0.8,2.8,1.2,4.4c1.2,4,2.4,8,4,12v0.4c1.6,3.2,3.2,6.8,5.2,9.6H56z M378.8,355.2 c-11.6,11.6-27.2,18.4-44.8,18.4c-16.8,0-32.4-6.8-43.6-17.6c-1.6-1.6-3.2-3.6-4.8-5.2c-1.2-1.2-2.4-2.8-3.6-4 c-1.6-2-2.8-4.4-4-6.8c-0.8-1.6-1.6-2.8-2.4-4.4c-0.8-2-1.6-4.4-2-6.8c-0.4-1.6-1.2-3.6-1.6-5.2c-0.8-4-1.2-8.4-1.2-12.8 c0-17.6,7.2-33.2,18.4-44.8c11.2-11.6,27.2-18.4,44.8-18.4s33.2,7.2,44.8,18.4c11.6,11.6,18.4,27.2,18.4,44.8 C397.2,328,390,343.6,378.8,355.2z"/> <path d="M341.6,267.6c-0.8-0.8-2-1.6-3.6-2.4c-1.2-0.4-2.4-0.8-3.6-0.8c-0.4,0-0.4,0-0.4,0c-0.4,0-0.4,0-0.4,0 c-1.2,0-2.4,0.4-3.6,0.8c-1.2,0.4-2.4,1.2-3.6,2.4l-24.8,24.8c-4,4-4,10.8,0,15.2c4,4,10.8,4,15.2,0l6.4-6.4v44 c0,6,4.8,10.8,10.8,10.8s10.8-4.8,10.8-10.8v-44l6.4,6.4c4,4,10.8,4,15.2,0c4-4,4-10.8,0-15.2L341.6,267.6z"/> </g> </g> </g> </svg>
-       <br><button class="button" id="update">Update Profile Picture</button>
-       </center>
-                            
-   </div>
- 
-                        
-                        
-  <div class="contentContainer">
-  <div class="profile">
-      <img src="./public/images/p3.jpg" id="profile">
-    <h2 style="text-align:center; margin-bottom:25px;"><%= row.displayName %></h2>
-    <button class="button" id="profilePic" onclick="openpopup();"><b>Change Profile Picture</b></button>
-  </div>
 
-  <div class="information">
-      <form class="" action="patientupdate" method="POST" id="updateForm">
-    <h3 style="text-align:center;font-size: 35px;margin-bottom:40px;"> Profile information</h3>
+                         <!-- change the main cards css fragments to change number of cards Available -->
+                         <form class="" action="patientupdate" method="POST" id="updateForm">
+                            <div class="main_cards">
 
-    <div class="record">
-    <div class="label">First Name </div>
-    <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
-    </div>
-    <div class="danger" id="firstNameError">
-          <div class="alert-message alert-message-danger" >
-                <h4>First name cant empty and must contain only letters</h4>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">First Name</p>
+                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
+                                        <div class="alert-danger" id="firstNameError">
+                                            * First name can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Last Name</p>
+                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
+                                        <div class="alert-danger" id="lastNameError">
+                                            * Last name can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="Display Name" value="<%= row.displayName %>">
+                                        <div class="alert-danger" id="displayNameError">
+                                            * Display name can't be empty and must contain only alphanumeric
+                                        </div>
+                                   </div>
+                              </div>
+                                        
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-secondary-p"><%= row.email %></p>
+                                   </div>
+                              </div>         
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">NIC</p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
+                                   </div>
+                              </div>
+                             
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Date of Birth</p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <select class="data" name="district" id="district">
+                                                            <%
+                                                                if(request.getAttribute("districts")!=null){
+                                                                    List<District> districts = (ArrayList<District>)request.getAttribute("districts");
+                                                                    if(districts.size()>0){
+                                                                        for(District district : districts) { %>
+                                                                            <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
+                                                            <%
+                                                                    }}}
+                                                            %>
+
+                                        </select>
+                                        <div class="alert-danger" id="districtError">
+                                            * Select valid district
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <select class="data" name="city" id="city">
+                                                            <%
+                                                                if(request.getAttribute("cities")!=null){
+                                                                    List<City> cities = (ArrayList<City>)request.getAttribute("cities");
+                                                                    if(cities.size()>0){
+                                                                        for(City city : cities) { %>
+                                                                            <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
+                                                            <%
+                                                                    }}}
+                                                            %>
+
+                                        </select>
+                                        <div class="alert-danger" id="cityError">
+                                            * Select valid city
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address 1</p>
+                                        <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%= row.address1 %>">
+                                        <div class="alert-danger" id="addressError">
+                                            * Address 1 can't be empty
+                                        </div>
+                                   </div>
+                              </div>
+                                        
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address 2</p>
+                                        <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2" value="<%= row.address2 %>">
+<!--                                        <div class="alert-danger" id="addressError">
+                                            * Address 2 can't be empty
+                                        </div>-->
+                                   </div>
+                              </div>
+                                                           
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
+                                        <div class="alert-danger" id="numberError">
+                                            * Enter valid mobile number
+                                        </div>                                   
+                                   </div>
+                              </div>
+                             
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="<%= row.landNumber %>">
+                                        <div class="alert-danger" id="landNumberError">
+                                            * Enter valid land number
+                                        </div>                                   
+                                   </div>
+                              </div>
+
+                              <div></div>
+                              <div></div>
+                              
+                              <div class="buttons">
+                                <button class="button" type="reset" id="clear"><b>Reset</b></button>
+                                <button class="button-success" type="submit"><b>Update</b></button>     
+                              </div>
+
+                         </div>
+                         </form>
+                         
+                        <% } %>
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
           </div>
-         </div>
-
-  <div class="record">
-    <div class="label">Last Name </div>
-    <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
-  </div>
-  <div class="danger" id="lastNameError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Last name cant empty and must contain only letters</h4>
-          </div>
-         </div>
-
-  <div class="record">
-    <div class="label">Display Name </div>
-    <input class="data" type="text" name="display_name" id="lastname" placeholder="Display Name" value="<%= row.displayName %>">
-  </div>
-  <div class="danger" id="displayNameError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Display name cant empty and must contain only letters</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">NIC No</div>
-    <input class="data" type="text" name="nic_no" id="nic" placeholder="NIC number" value="<%= row.nic %>">
-  </div>
-  <div class="danger" id="nicError">
-          <div class="alert-message alert-message-danger" >
-                <h4>National Identity Card Number cant empty</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">Date of Birth</div>
-    <input class="data" type="date" name="dob" id="dob" placeholder="DOB" value="<%= row.dob %>">
-  </div>
-  <div class="danger" id="dobError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Date of Birth cant empty</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">Gender</div>
-    <select class="data" name="gender" id="gender" style="height: 50px;">
-        <option value="M" <% if(row.gender.equalsIgnoreCase("M")){out.print("Selected");}%>>Male</option>
-        <option value="F" <% if(row.gender.equalsIgnoreCase("F")){out.print("Selected");}%>>Female</option>
-        <option value="N" <% if(row.gender.equalsIgnoreCase("N")){out.print("Selected");}%>>Not preferred to say</option>
-    </select>
-  </div>
-    <div class="danger" id="genderError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Gender cant be empty</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">Email</div>
-    <input class="data" type="email" name="email" id="email" placeholder="Email" value="<%= row.email %>">
-  </div>
-  <div class="danger" id="emailError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Enter a valid email address</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">Address 1</div>
-    <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%= row.address1 %>">
-  </div>
-  <div class="danger" id="addressError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Address 1 can't be empty</h4>
-          </div>
-       </div>
-
-  <div class="record">
-    <div class="label">Address 2</div>
-    <input class="data" type="text" name="address_2" id="address1" placeholder="Address 2" value="<%= row.address2 %>">
-  </div>
-  
-  <div class="record">
-    <div class="label">District</div>
-    <select class="data" name="district" id="district" style="height: 50px;">
-                         <%
-                             if(request.getAttribute("districts")!=null){
-                                 List<District> districts = (ArrayList<District>)request.getAttribute("districts");
-                                 if(districts.size()>0){
-                                     for(District district : districts) { %>
-                                         <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
-                         <%
-                                 }}}
-                         %>
-
-    </select>
-  </div>
-        <div class="danger" id="districtError">
-         <div class="alert-message alert-message-danger" >
-               <h4>Select a valid District </h4>
-         </div>
-        </div>
-
-  <div class="record">
-    <div class="label">City</div>
-    <select class="data" name="city" id="city" style="height: 50px;">
-                         <%
-                             if(request.getAttribute("cities")!=null){
-                                 List<City> cities = (ArrayList<City>)request.getAttribute("cities");
-                                 if(cities.size()>0){
-                                     for(City city : cities) { %>
-                                         <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
-                         <%
-                                 }}}
-                         %>
-
-    </select>
-  </div>
-   <div class="danger" id="cityError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Select a valid City </h4>
-          </div>
-        </div>                      
-
-
-<!--  <div class="record">
-    <div class="label">Zip Code</div>
-    <input class="data" type="text" name="zip_code" id="zip" placeholder="Zip code" value="">
-  </div>-->
-
-  <div class="record">
-    <div class="label">Contact Number - Land</div>
-    <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="<%= row.landNumber %>">
-  </div>
-
-  <div class="record">
-    <div class="label">Contact Number - Mobile</div>
-    <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
-  </div>
-  
-  <div class="danger" id="numberError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Mobile Number cannot be empty and both numbers should be valid</h4>
-          </div>
-       </div>
-
-
-  <div class="buttons">
-      <br><br>
-      <!--<button class="button" id="id" onclick="//window.location.href='/patientupdate';"><b>Done</b></button>-->
-      <button class="button" type="reset" id="clear"><b>Reset</b></button>
-      <button class="button" type="submit"><b>Update</b></button>     
-      <button class="button" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
-      </div>
-      </form>
-  </div>
-</div>
-<!--</div>-->
-
-
-  <footer>
-    <center>
-    <div class="footerRow">
-      <div class="footerColumn">
-        <div class="footerText">
-          </br>ABOUT </br></br>
-          MediHub is a mainly a patient portal providing users eaiser access to all medical services. </br>MediHub also
-          provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-          them with the best experience in accessing medical services</br>
-        </div>
-      </div>
-      <div class="footerColumn"></br>
-        <div class="footerText">
-          </br></br>
-          <a href="#" class="a fa fa-facebook"></a>
-          <a href="#" class="a fa fa-twitter"></a>
-          <a href="#" class="a fa fa-google"></a>
-          <a href="#" class="a fa fa-instagram"></a>
-        </div>
-      </div>
-    </div>
-    </br>
-    <div class="footerText">
-      All rights Reserved @MediHub2020
-    </div>
-    </br></br>
-
-    <script>
-        var popup = document.getElementById("PopUp");
-        var span = document.getElementsByClassName("close")[0];
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
+          
+          <script>
         
-        span.onclick = function () {
-        popup.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == popup) {
-            popup.style.display = "none";
-        }
-    }
-    function openpopup() {
-        popup.style.display = "block";
-     
-    }
-        
-        document.getElementById("dob").value = "<%= row.dob %>";
-        
-        $("#firstNameError").hide();
-        $("#lastNameError").hide();
-        $("#displayNameError").hide();
-        $("#nicError").hide();
-        $("#dobError").hide();
-        $("#genderError").hide();
-        $("#emailError").hide();
-        $("#addressError").hide();
-        $("#cityError").hide();
-        $("#districtError").hide();
-//        $("#zipError").hide();
-        $("#numberError").hide();
-        $("#passwordError").hide();
-        $("#password2Error").hide();
-        $("#typeError").hide();
-        
-        $("#updateForm").on('submit',function(e){
-            //to always refresh when submitting (hide and show only relevant)
             $("#firstNameError").hide();
             $("#lastNameError").hide();
             $("#displayNameError").hide();
-            $("#nicError").hide();
-            $("#dobError").hide();
-            $("#genderError").hide();
-            $("#emailError").hide();
             $("#addressError").hide();
             $("#cityError").hide();
             $("#districtError").hide();
-    //        $("#zipError").hide();
             $("#numberError").hide();
-            $("#passwordError").hide();
-            $("#password2Error").hide();
-            $("#typeError").hide();
-            
-            var x=0;
-               if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)){
-                $("#firstNameError").show();
-                x=1;
-                
-            }
-               if(($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
-                $("#lastNameError").show();
-                x=1;
-                
-            }
-            if(($("#displayName").val()=="")||($("#displayName").val().match(/^[A-Za-z]*$/)== null)){
-                $("#displayNameError").show();
-                x=1;
-                
-            }
-            if($("#nic").val()==""){
-                $("#nicError").show();
-                x=1;
-            }
-            if($("#dob").val()==""){
-                $("#dobError").show();
-                x=1;
-            }
-            if($("#gender").val()==""){
-                $("#genderError").show();
-                x=1;
-            }
-             if ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null){
-                $("#emailError").show();
-                x=1;
-            }
-              if($("#address1").val()==""){
-                $("#addressError").show();
-                x=1;
-            }
-            if($("#city").val()==""){
-                $("#cityError").show();
-                x=1;
-            }
-            if($("#district").val()==""){
-                $("#districtError").show();
-                x=1;
-            }
-//            if($("#zip").val().match(/^[0-9]{5}$/)==null){
-//               $("#zipError").show();
-//                x=1;
-//            }
-            
-//            if(($("#mobile_number").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
-            if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
-              $("#numberError").show();
-                x=1;
-            }
-//           
-//            
-//            if ($("#password").val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/) == null) {
-//                $("#passwordError").show();
-//                x=1;
-//               
-//            }
-//            if ($("#password").val()!==$("#password2").val()) {
-//               $("#password2Error").show();
-//                x=1;
-//            }
-//            if($("#type").val()==""){
-//               $("#typeError").show();
-//                x=1;
-//            }
+            $("#landNumberError").hide();
 
-            if(x==1){
-                return false;
-            }
-        })
-        
-        
-        
-        //    onchange district
-    $('#district').change(function(){
-        var districtId=$(this).find(':selected').val();
-        
-        $.ajax({
-            url: "getcityasstring",
-            type: "get", //send it through get method
-            data: { 
-              stage: "district", 
-              district: districtId
-            },
-            success: function(response) {
-              //populate city data
-//              alert(response);
-              $('#city').html("<option>Select City</option>"+response);
-            },
-            error: function(xhr) {
-                alert("CityByDistrict Error");
-            }
-          });
+            $("#updateForm").on('submit',function(e){
+//                event.preventDefault();
+                //to always refresh when submitting (hide and show only relevant)
+                $("#firstNameError").hide();
+                $("#lastNameError").hide();
+                $("#displayNameError").hide();
+                $("#addressError").hide();
+                $("#cityError").hide();
+                $("#districtError").hide();
+                $("#numberError").hide();
+                $("#landNumberError").hide();
 
-    });
+                var x=0;
+                   if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)){
+                    $("#firstNameError").show();
+                    x=1;
+
+                }
+                   if(($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
+                    $("#lastNameError").show();
+                    x=1;
+
+                }
+                if(($("#displayName").val()=="")||($("#displayName").val().match(/^[a-zA-Z0-9_]*$/)== null)){
+                    $("#displayNameError").show();
+                    x=1;
+
+                }
+                  if($("#address1").val()==""){
+                    $("#addressError").show();
+                    x=1;
+                }
+                if($("#city").val()==""){
+                    $("#cityError").show();
+                    x=1;
+                }
+                if($("#district").val()==""){
+                    $("#districtError").show();
+                    x=1;
+                }
+                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)){
+//                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+                  $("#numberError").show();
+                    x=1;
+                }
+                if(($("#land_number").val().match(/^[0-9]{10}$/)==null) && $("#land_number").val()!=""){
+//                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+                  $("#landNumberError").show();
+                    x=1;
+                }
+
+                if(x==1){
+                    return false;
+                }
+                else if(x==0){
+                    return true;
+                }
+            })
+
+
+
+            //    onchange district
+        $('#district').change(function(){
+            var districtId=$(this).find(':selected').val();
+
+            $.ajax({
+                url: "getcityasstring",
+                type: "get", //send it through get method
+                data: { 
+                  stage: "district", 
+                  district: districtId
+                },
+                success: function(response) {
+                  //populate city data
+    //              alert(response);
+                  $('#city').html("<option>Select City</option>"+response);
+                },
+                error: function(xhr) {
+                    alert("CityByDistrict Error");
+                }
+              });
+
+        });
         
     </script>
     
-      
-  <!--close jsp tag-->
-  <% } %>
   <!--close tag-->
+          
+     </body>
+</html>

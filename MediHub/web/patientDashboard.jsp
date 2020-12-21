@@ -33,29 +33,8 @@
               <!--######################-->
                  <!--navbar starting-->
               <!--######################-->
-               <nav class="navbar">
-                    <div class="nav_icon" onclick="toggleSidebar()">
-                         <i class="fa fa-bars"></i>
-                    </div>
-                    <div class="navbar_left">
-                         <a href="/MediHub">Home</a>
-                         <a href="EmergencyServices.jsp">Emergency services</a>
-                         <a href="contactUs.jsp">Contact Us</a>
-                         <a href="About.jsp">About Us</a>
-                         <!-- <a class="active_link" href="#">User Space</a> -->
-                    </div>
-                    <div class="navbar_right">
-                         <!-- <a href="#">
-                              <i class="fa fa-search"></i>
-                         </a>
-                         <a href="#">
-                              <i class="fa fa-clock-o"></i>
-                         </a> -->
-                         <a href="#">
-                              <img src="./public/images/p3.jpg" alt="avatar">
-                         </a>
-                    </div>
-               </nav>
+              
+              <jsp:include page="./public/includes/navbar.jsp"/>
               
               <!--######################-->
                  <!--navbar ending-->
@@ -378,125 +357,9 @@
                 <!--######################-->
                 <!--sidebar starting-->
                 <!--######################-->
-               <div id="sidebar">
-
-                    <div class="sidebar_title">
-                         <div class="sidebar_img">
-                              <img src="./public/images/onlylogo.png" alt="sidebar">
-                              <h1>Medihub</h1>
-                         </div>
-                         <i class="fa fa-times" id="sidebarIcon" onclick="closeSidebar()"></i>
-                    </div>
-
-                    <div class="sidebar_menu">
-                         <!-- this will be enabled in mobile view and disabled in pc -->
-                         <div id="nav_option_sidebar" class="nav_option_sidebar">
-
-                              <h2>Menu</h2>
-
-                              <div class="sidebar_link">
-                                   <i class="fa fa-home"></i>
-                                   <a href="/MediHub">Home</a>
-                              </div>
-     
-                              <div class="sidebar_link">
-                                   <i class="fa fa-ambulance"></i>
-                                   <a href="EmergencyServices.jsp">Emergency Services</a>
-                              </div>
-                              
-                              <div class="sidebar_link">
-                                   <i class="fa fa-phone"></i>
-                                   <a href="contactUs.jsp">Contact Us</a>
-                              </div>
-                              
-                              <div class="sidebar_link">
-                                   <i class="fa fa-binoculars"></i>
-                                   <a href="About.jsp">About Us</a>
-                              </div>
-
-                         </div>
-                         <!-- add "active_menu_link" to class to make it active -->
-                         <div class="sidebar_link active_menu_link">
-                              <i class="fa fa-dashboard"></i>
-                              <a href="patient">Dashboard</a>
-                         </div>
-
-                         <h2>Alerts</h2>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-bullseye"></i>
-                              <a href="#">Reminders</a>
-                         </div>
-
-                         <h2>Services</h2>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-hand-pointer-o"></i>
-                              <a href="channelling">E-Channelling</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-bookmark"></i>
-                              <a href="patientorders">Medicine Order</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-file-archive-o"></i>
-                              <a href="medicalRecords.jsp">Medical Records</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-stethoscope"></i>
-                              <a href="ReviewDoctor.jsp">Doctors</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-hospital-o"></i>
-                              <a href="ReviewHospital.jsp">Hospitals</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-medkit"></i>
-                              <a href="ReviewPharmacy.jsp">Pharmacies</a>
-                         </div>
-
-                         <h2>Report</h2>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-address-book"></i>
-                              <a href="#">Channelling</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-dropbox"></i>
-                              <a href="trackOrder(pat).jsp">Pharmacy Orders</a>
-                         </div>
-
-                         <h2>User</h2>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-user-circle"></i>
-                              <a href="patientview">View Profile</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-user-circle-o"></i>
-                              <a href="editpatient">Edit Profile</a>
-                         </div>
-
-                         <div class="sidebar_link">
-                              <i class="fa fa-user-secret"></i>
-                              <a href="#">Change Password</a>
-                         </div>
-
-                         <div class="sidebar_logout">
-                              <i class="fa fa-user-times"></i>
-                              <a href="logout">Logout</a>
-                         </div>
-
-                    </div>
-
-               </div>
+               
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
                 <!--######################-->
                 <!--sidebar ending-->
                 <!--######################-->
@@ -505,23 +368,9 @@
             <!--######################-->
             <!--footer starting-->
             <!--######################-->                                      
-            <footer class="footer">
-<!--                <div class="footer_text">
-                  ABOUT <br><br>
-                  MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-                  provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-                  them with the best experience in accessing medical services.
-                </div>-->
-                <div class="social"> 
-                  <a href="#" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-instagram"></a>
-                </div>
-                <div class="copyrights">
-                  All rights Reserved @MediHub2020
-                </div>
-            </footer>                                        
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
             <!--######################-->
             <!--footer ending-->
             <!--######################-->
