@@ -100,7 +100,7 @@
 
                          <h2>User</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewPatient.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpatient.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
                               <a href="patientview">View Profile</a>
                          </div>
