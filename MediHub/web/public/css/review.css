@@ -89,12 +89,12 @@ and open the template in the editor.
   }
     .profile{
       position: absolute;
-      margin-top: 5%;
+      margin-top: 2%;
       margin-left: 3%;
       margin-bottom: 5%;
       background-color:  #F1F1F1;
       width:22%;
-      height:565px;
+      height:585px;
       border-radius: 15px;
       box-shadow: 4px 4px 4px rgba(44, 62, 80, 0.10);
   }
@@ -330,6 +330,7 @@ and open the template in the editor.
     }
     .table-hub td,.table-hub th{
          padding: 4px 4px;
+         padding-left: 50px;
          line-height: 2.5;
     }
     .table-hub tbody tr{
@@ -517,7 +518,7 @@ and open the template in the editor.
     }
     .box-review {
         float: center;
-        width: 30%;
+        width: 100%;
         margin-top:10px;
         text-align: center;
     }
@@ -585,4 +586,28 @@ and open the template in the editor.
 
     .write-review > .btn {
         margin-left: 60px;
+    }
+
+    .search{
+         width:66%;
+        margin-top: 30px;
+        margin-left: 29%;
+/*        margin-right: auto;*/
+        margin-bottom: 0px;
+        background-color: #F1F1F1;
+        padding: 15px;
+        border-radius: 10px;
+    }
+    .searchinput{
+        width:90%;
+        line-height: 30px;
+        float:left;
+        text-align: center;
+    }
+    
+    .fill{
+        margin-left: 40px;
+        margin-top: 5px;
+
+        width:25px;
     }

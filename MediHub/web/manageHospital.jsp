@@ -12,7 +12,8 @@
 <body>
   <div class="navbar" id="navbar">
       <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
+        <li><button class="style" type="button" onclick="window.location.href='admin'"> Dashboard </button></li>
         <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
@@ -20,17 +21,17 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
   </div>
-  <br><br>
+    <br><br><h3>Manage Hospital</h3><hr>
   <div class="Dropdown">
-    <select name='Dropdown'>
+    <select name='Dropdown' class="filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Pending</a></option>
       <option value='Action'><a href="#">Active</a></option>
       <option value='Action'><a href="#">Inactive</a></option>
       <option value='Action'><a href="#">Blacklisted</a></option>
    </select>
-   <br>
-   <select name='Dropdown' class="filter_dropdown">
+   
+   <select name='Dropdown' class="filter_dropdown filters">
       <option value='Action' selected><a href="">All</a></option>
       <option value='Action'><a href="#">Hospital ID</a></option>
       <option value='Action'><a href="#">Hospital</a></option>
@@ -38,7 +39,7 @@
       <option value='Action'><a href="#">City</a></option>
       <option value='Action'><a href="#">Status</a></option>
    </select>
-   <input type="text" class="filter_text" placeholder="Filter">
+   <input type="text" class="filter_text textt" placeholder="Filter">
    <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
 
    <div class="new">
@@ -52,6 +53,7 @@
 
   </div>
   <br>
+<center>
   <div class="container-table">
     <table class="table">
       <thead>
@@ -124,6 +126,7 @@
       </tbody>
     </table>
  </div>
+</center>
  <br>
 </body>
 <br><br>
