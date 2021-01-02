@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2020 at 08:56 AM
+-- Generation Time: Jan 02, 2021 at 09:10 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `privilege` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admins`
@@ -56,15 +56,16 @@ CREATE TABLE `channelling` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `channelling`
 --
 
 INSERT INTO `channelling` (`id`, `patient_id`, `doctor_availability_id`, `appointment_no`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 2, 1, 1, 'demo channelling', 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 2, 2),
-(9, 2, 1, 2, 'Booked for Priyatharshan', 1, '2020-11-26 07:11:12', '2020-11-26 07:11:12', 2, 2);
+(30, 2, 4, 1, 'Booked for Self', 1, '2020-12-02 12:09:20', '2020-12-02 12:09:20', 2, 2),
+(32, 2, 1, 1, 'Booked for Self', 1, '2020-12-02 12:22:50', '2020-12-02 12:22:50', 2, 2),
+(33, 2, 3, 1, 'Booked for Self', 1, '2020-12-02 13:21:16', '2020-12-02 13:21:16', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,7 @@ CREATE TABLE `channelling_feedbacks` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,7 +102,7 @@ CREATE TABLE `channelling_payments` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `channelling_payments`
@@ -127,7 +128,7 @@ CREATE TABLE `channelling_refunds` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -139,8 +140,8 @@ CREATE TABLE `cities` (
   `id` int(11) NOT NULL,
   `district_id` int(11) DEFAULT NULL,
   `name_en` varchar(64) DEFAULT NULL,
-  `name_si` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
-  `name_ta` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `name_si` varchar(64) DEFAULT NULL,
+  `name_ta` varchar(64) DEFAULT NULL,
   `description` varchar(64) DEFAULT NULL,
   `postcode` varchar(64) DEFAULT NULL,
   `latitude` double DEFAULT NULL,
@@ -150,7 +151,7 @@ CREATE TABLE `cities` (
   `updated_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cities`
@@ -2016,15 +2017,15 @@ CREATE TABLE `districts` (
   `id` int(11) NOT NULL,
   `province_id` int(11) DEFAULT NULL,
   `name_en` varchar(64) DEFAULT NULL,
-  `name_si` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
-  `name_ta` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `name_si` varchar(64) DEFAULT NULL,
+  `name_ta` varchar(64) DEFAULT NULL,
   `description` varchar(64) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `districts`
@@ -2073,14 +2074,15 @@ CREATE TABLE `doctors` (
   `degrees` varchar(256) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `approved_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctors`
 --
 
 INSERT INTO `doctors` (`id`, `slmc`, `slmc_card_proof_location`, `specialisation_1`, `specialisation_2`, `titles`, `degrees`, `approved_by`, `approved_at`) VALUES
-(3, 999, '', 1, 2, 'DR', 'MBBS, MD', 1, '2020-10-30 21:17:23');
+(3, 999, '', 1, 2, 'DR', 'MBBS, MD', 1, '2020-10-30 21:17:23'),
+(7, 555, NULL, 4, 3, 'DR', 'BDS', 0, '2020-12-02 11:58:01');
 
 -- --------------------------------------------------------
 
@@ -2103,14 +2105,17 @@ CREATE TABLE `doctor_availability` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor_availability`
 --
 
 INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `end_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 3, 1, '2021-01-01', '08:00:00', '10:00:00', 20, 2, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4);
+(1, 3, 1, '2021-01-02', '08:00:00', '10:00:00', 20, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4),
+(2, 3, 1, '2021-01-02', '13:00:00', '14:00:00', 20, 0, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(3, 3, 1, '2020-12-03', '19:00:00', '21:00:00', 20, 1, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(4, 7, 1, '2020-12-03', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -2128,14 +2133,15 @@ CREATE TABLE `doctor_hospital` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor_hospital`
 --
 
 INSERT INTO `doctor_hospital` (`doctor_id`, `hospital_id`, `reference_number`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(3, 1, 999, 'Demo', 1, '2020-10-30 21:24:32', '2020-10-30 21:24:35', 1, 1);
+(3, 1, 999, 'Demo', 1, '2020-10-30 21:24:32', '2020-10-30 21:24:35', 1, 1),
+(7, 1, 75473, 'dental', 1, '2020-12-02 11:59:58', '2020-12-02 11:59:58', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -2156,7 +2162,7 @@ CREATE TABLE `doctor_reviews` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2173,7 +2179,7 @@ CREATE TABLE `doctor_specialisation` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `doctor_specialisation`
@@ -2199,8 +2205,9 @@ CREATE TABLE `hospitals` (
   `director_id` int(11) DEFAULT NULL,
   `director_id_proof_location` varchar(512) DEFAULT NULL,
   `display_name` varchar(64) DEFAULT NULL,
-  `land_number` int(11) DEFAULT NULL,
-  `fax` int(11) DEFAULT NULL,
+  `display_pic_path` varchar(256) DEFAULT NULL,
+  `land_number` varchar(11) DEFAULT NULL,
+  `fax` varchar(11) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `address_1` varchar(128) DEFAULT NULL,
   `address_2` varchar(128) DEFAULT NULL,
@@ -2217,14 +2224,14 @@ CREATE TABLE `hospitals` (
   `updated_by` int(11) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `approved_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospitals`
 --
 
-INSERT INTO `hospitals` (`id`, `name`, `license_number`, `license_proof_location`, `director_id`, `director_id_proof_location`, `display_name`, `land_number`, `fax`, `email`, `address_1`, `address_2`, `city`, `longitude`, `latitude`, `description`, `status`, `last_login`, `last_login_by`, `created_at`, `updated_at`, `created_by`, `updated_by`, `approved_by`, `approved_at`) VALUES
-(1, 'Medihub Hospital', 999, NULL, 3, NULL, 'MH Hospital', NULL, NULL, 'medihub@gmail.com', NULL, NULL, 1, NULL, NULL, 'Owners', 1, '2020-10-30 21:20:14', 4, '2020-10-30 21:22:01', '2020-10-30 21:22:04', 1, 1, 1, '2020-10-30 21:22:22');
+INSERT INTO `hospitals` (`id`, `name`, `license_number`, `license_proof_location`, `director_id`, `director_id_proof_location`, `display_name`, `display_pic_path`, `land_number`, `fax`, `email`, `address_1`, `address_2`, `city`, `longitude`, `latitude`, `description`, `status`, `last_login`, `last_login_by`, `created_at`, `updated_at`, `created_by`, `updated_by`, `approved_by`, `approved_at`) VALUES
+(1, 'Medihub Hospital', 999, NULL, 3, NULL, 'MH Hospital', NULL, NULL, NULL, 'medihub@gmail.com', NULL, NULL, 1, NULL, NULL, 'Owners', 1, '2020-10-30 21:20:14', 4, '2020-10-30 21:22:01', '2020-10-30 21:22:04', 1, 1, 1, '2020-10-30 21:22:22');
 
 -- --------------------------------------------------------
 
@@ -2235,6 +2242,7 @@ INSERT INTO `hospitals` (`id`, `name`, `license_number`, `license_proof_location
 CREATE TABLE `hospital_admins` (
   `user_id` int(11) NOT NULL,
   `hospital_id` int(11) NOT NULL,
+  `privilege` int(11) NOT NULL,
   `reference_number` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -2242,14 +2250,14 @@ CREATE TABLE `hospital_admins` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hospital_admins`
 --
 
-INSERT INTO `hospital_admins` (`user_id`, `hospital_id`, `reference_number`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(4, 1, 999, 'Demo', 1, '2020-10-30 21:27:28', '2020-10-30 21:27:30', 1, 1);
+INSERT INTO `hospital_admins` (`user_id`, `hospital_id`, `privilege`, `reference_number`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(4, 1, 1, 999, 'Demo', 1, '2020-10-30 21:27:28', '2020-10-30 21:27:30', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2270,7 +2278,7 @@ CREATE TABLE `hospital_reviews` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2289,7 +2297,7 @@ CREATE TABLE `intervals` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2307,7 +2315,7 @@ CREATE TABLE `interval_times` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2319,19 +2327,16 @@ CREATE TABLE `medical_records` (
   `id` int(11) NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `hospital_id` int(11) DEFAULT NULL,
-  `hospital_name` varchar(128) DEFAULT NULL,
-  `doctor_id` int(11) DEFAULT NULL,
-  `doctor_name` varchar(128) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `time` time DEFAULT NULL,
+  `channelling_id` int(11) DEFAULT NULL,
+  `path` varchar(256) NOT NULL,
+  `patient_id` int(11) NOT NULL,
   `description` varchar(2048) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2351,7 +2356,7 @@ CREATE TABLE `medication_reminders` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2369,7 +2374,7 @@ CREATE TABLE `notifications` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2406,7 +2411,7 @@ CREATE TABLE `order_payments` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2425,7 +2430,7 @@ CREATE TABLE `order_refunds` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2468,8 +2473,9 @@ CREATE TABLE `pharmacies` (
   `pharmacist_id` int(11) DEFAULT NULL,
   `pharmacist_id_proof_location` varchar(512) DEFAULT NULL,
   `display_name` varchar(64) DEFAULT NULL,
-  `land_number` int(11) DEFAULT NULL,
-  `fax` int(11) DEFAULT NULL,
+  `display_pic_path` varchar(256) DEFAULT NULL,
+  `land_number` varchar(11) DEFAULT NULL,
+  `fax` varchar(11) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `address_1` varchar(128) DEFAULT NULL,
   `address_2` varchar(128) DEFAULT NULL,
@@ -2486,14 +2492,15 @@ CREATE TABLE `pharmacies` (
   `updated_by` int(11) DEFAULT NULL,
   `approved_by` int(11) DEFAULT NULL,
   `approved_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pharmacies`
 --
 
-INSERT INTO `pharmacies` (`id`, `name`, `license_number`, `license_proof_location`, `pharmacist_id`, `pharmacist_id_proof_location`, `display_name`, `land_number`, `fax`, `email`, `address_1`, `address_2`, `city`, `longitude`, `latitude`, `description`, `status`, `last_login`, `last_login_by`, `created_at`, `updated_at`, `created_by`, `updated_by`, `approved_by`, `approved_at`) VALUES
-(1, 'Medihub Pharmacy', 999, NULL, 5, NULL, 'MH Pharmacy', NULL, NULL, 'medihub@gmail.com', NULL, NULL, 1, NULL, NULL, NULL, 1, '2020-10-30 21:33:43', 5, '2020-10-30 21:33:51', '2020-10-30 21:33:55', 1, 1, 1, '2020-10-30 21:34:06');
+INSERT INTO `pharmacies` (`id`, `name`, `license_number`, `license_proof_location`, `pharmacist_id`, `pharmacist_id_proof_location`, `display_name`, `display_pic_path`, `land_number`, `fax`, `email`, `address_1`, `address_2`, `city`, `longitude`, `latitude`, `description`, `status`, `last_login`, `last_login_by`, `created_at`, `updated_at`, `created_by`, `updated_by`, `approved_by`, `approved_at`) VALUES
+(1, 'Medihub Pharmacy', 999, NULL, 5, NULL, 'MH Pharmacy', NULL, NULL, NULL, 'medihub@gmail.com', NULL, NULL, 1, NULL, NULL, NULL, 1, '2020-10-30 21:33:43', 5, '2020-10-30 21:33:51', '2020-10-30 21:33:55', 1, 1, 1, '2020-10-30 21:34:06'),
+(2, 'qwerty', 123, NULL, NULL, NULL, 'qwerty', NULL, '0112736453', '0119829387', 'hi@bye.com', '04,kirula rd', 'colo', 340, NULL, NULL, 'qwerty', 1, NULL, NULL, '2020-12-01 15:26:07', '2020-12-01 15:26:07', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2504,6 +2511,7 @@ INSERT INTO `pharmacies` (`id`, `name`, `license_number`, `license_proof_locatio
 CREATE TABLE `pharmacy_admins` (
   `user_id` int(11) NOT NULL,
   `pharmacy_id` int(11) NOT NULL,
+  `privilege` int(11) NOT NULL,
   `reference_number` int(11) DEFAULT NULL,
   `description` varchar(512) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -2511,14 +2519,14 @@ CREATE TABLE `pharmacy_admins` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pharmacy_admins`
 --
 
-INSERT INTO `pharmacy_admins` (`user_id`, `pharmacy_id`, `reference_number`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(5, 1, 999, 'Demo', 1, '2020-10-30 21:32:12', '2020-10-30 21:32:14', 1, 1);
+INSERT INTO `pharmacy_admins` (`user_id`, `pharmacy_id`, `privilege`, `reference_number`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(5, 1, 1, 999, 'Demo', 1, '2020-10-30 21:32:12', '2020-10-30 21:32:14', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2535,7 +2543,7 @@ CREATE TABLE `pharmacy_orders` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2551,7 +2559,7 @@ CREATE TABLE `prescriptions` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2571,7 +2579,7 @@ CREATE TABLE `prescription_items` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2582,15 +2590,15 @@ CREATE TABLE `prescription_items` (
 CREATE TABLE `provinces` (
   `id` int(11) NOT NULL,
   `name_en` varchar(64) DEFAULT NULL,
-  `name_si` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
-  `name_ta` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `name_si` varchar(64) DEFAULT NULL,
+  `name_ta` varchar(64) DEFAULT NULL,
   `description` varchar(64) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `provinces`
@@ -2610,43 +2618,6 @@ INSERT INTO `provinces` (`id`, `name_en`, `name_si`, `name_ta`, `description`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `records`
---
-
-CREATE TABLE `records` (
-  `id` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `description` varchar(256) DEFAULT NULL,
-  `path` varchar(256) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `patient_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `record_categories`
---
-
-CREATE TABLE `record_categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(128) DEFAULT NULL,
-  `description` varchar(512) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `record_premissions`
 --
 
@@ -2659,7 +2630,7 @@ CREATE TABLE `record_premissions` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2672,14 +2643,15 @@ CREATE TABLE `users` (
   `first_name` varchar(64) DEFAULT NULL,
   `last_name` varchar(64) DEFAULT NULL,
   `display_name` varchar(64) DEFAULT NULL,
+  `profile_pic_path` varchar(256) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `user_type` int(11) DEFAULT NULL,
   `nic` varchar(12) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,
-  `mobile_number` int(11) DEFAULT NULL,
-  `land_number` int(11) DEFAULT NULL,
+  `mobile_number` varchar(11) DEFAULT NULL,
+  `land_number` varchar(11) DEFAULT NULL,
   `address_1` varchar(128) DEFAULT NULL,
   `address_2` varchar(128) DEFAULT NULL,
   `city` int(11) DEFAULT NULL,
@@ -2690,20 +2662,20 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 'Admin', NULL, 'Admin', 'admin@medihub.com', 'admin123', 0, '000', '2020-10-30', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
-(2, 'Uvin', 'Perera', 'Uvin', 'uvin@gmial.com', '123', 1, '111', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(3, 'Yashithi', 'Dharma', 'Yash', 'yash@gmial.com', '123', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(4, 'Aysha', 'Ifra', 'Aysha', 'aysha@gmial.com', '123', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(5, 'Priyatharshan', 'Balachandran', 'Tharshan', 'tharshan@gmial.com', '123', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(7, 'John', 'Doe', 'John', 'john@gmail.com', 'Qwerty12345', 1, '837475847V', '1997-07-08', 'M', 772746374, 112847563, '01, 2nd cross street', 'qwerty', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Jane', 'Doe', 'Jane', 'jane@gmail.com', 'Qwerty12345', 1, '837472847V', '1997-06-20', 'F', 767837499, 112847563, '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_pic_path`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 'Admin', NULL, 'Admin', NULL, 'admin@medihub.com', 'admin123', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
+(2, 'Uvin', 'Perera', 'Uvin', NULL, 'uvin@gmial.com', '123', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
+(3, 'Yashithi', 'Dharma', 'Yash', NULL, 'yash@gmial.com', '123', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(4, 'Aysha', 'Ifra', 'Aysha', NULL, 'aysha@gmial.com', '123', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, 'tharshan@gmial.com', '123', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(7, 'John', 'Doe', 'John', NULL, 'john@gmail.com', 'Qwerty12345', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(9, 'Jane', 'Doe', 'Jane', NULL, 'jane@gmail.com', 'Qwerty12345', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -2832,6 +2804,7 @@ ALTER TABLE `hospitals`
   ADD UNIQUE KEY `director_id_proof_location` (`director_id_proof_location`),
   ADD UNIQUE KEY `display_name` (`display_name`),
   ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `display_pic_path` (`display_pic_path`),
   ADD KEY `city` (`city`),
   ADD KEY `last_login_by` (`last_login_by`),
   ADD KEY `created_by` (`created_by`),
@@ -2882,12 +2855,11 @@ ALTER TABLE `interval_times`
 --
 ALTER TABLE `medical_records`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `hospital_id` (`hospital_id`),
-  ADD KEY `doctor_id` (`doctor_id`),
+  ADD UNIQUE KEY `path` (`path`),
   ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
+  ADD KEY `updated_by` (`updated_by`),
+  ADD KEY `patient_id` (`patient_id`),
+  ADD KEY `channelling_id` (`channelling_id`);
 
 --
 -- Indexes for table `medication_reminders`
@@ -3005,25 +2977,6 @@ ALTER TABLE `provinces`
   ADD KEY `updated_by` (`updated_by`);
 
 --
--- Indexes for table `records`
---
-ALTER TABLE `records`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `patient_id` (`patient_id`),
-  ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
-
---
--- Indexes for table `record_categories`
---
-ALTER TABLE `record_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `created_by` (`created_by`),
-  ADD KEY `updated_by` (`updated_by`);
-
---
 -- Indexes for table `record_premissions`
 --
 ALTER TABLE `record_premissions`
@@ -3041,6 +2994,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `nic` (`nic`),
   ADD UNIQUE KEY `mobile_number` (`mobile_number`),
+  ADD UNIQUE KEY `profile_pic_path` (`profile_pic_path`),
   ADD KEY `city` (`city`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
@@ -3053,7 +3007,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `channelling`
 --
 ALTER TABLE `channelling`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `channelling_feedbacks`
@@ -3089,7 +3043,7 @@ ALTER TABLE `districts`
 -- AUTO_INCREMENT for table `doctor_availability`
 --
 ALTER TABLE `doctor_availability`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `doctor_reviews`
@@ -3173,7 +3127,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `pharmacies`
 --
 ALTER TABLE `pharmacies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pharmacy_orders`
@@ -3198,18 +3152,6 @@ ALTER TABLE `prescription_items`
 --
 ALTER TABLE `provinces`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `records`
---
-ALTER TABLE `records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `record_categories`
---
-ALTER TABLE `record_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -3371,11 +3313,10 @@ ALTER TABLE `interval_times`
 -- Constraints for table `medical_records`
 --
 ALTER TABLE `medical_records`
-  ADD CONSTRAINT `medical_records_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `record_categories` (`id`),
-  ADD CONSTRAINT `medical_records_ibfk_2` FOREIGN KEY (`hospital_id`) REFERENCES `hospitals` (`id`),
-  ADD CONSTRAINT `medical_records_ibfk_3` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`),
   ADD CONSTRAINT `medical_records_ibfk_4` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `medical_records_ibfk_5` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `medical_records_ibfk_5` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `medical_records_ibfk_6` FOREIGN KEY (`patient_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `medical_records_ibfk_7` FOREIGN KEY (`channelling_id`) REFERENCES `channelling` (`id`);
 
 --
 -- Constraints for table `medication_reminders`
@@ -3475,22 +3416,6 @@ ALTER TABLE `prescription_items`
 ALTER TABLE `provinces`
   ADD CONSTRAINT `provinces_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `provinces_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `records`
---
-ALTER TABLE `records`
-  ADD CONSTRAINT `records_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `record_categories` (`id`),
-  ADD CONSTRAINT `records_ibfk_2` FOREIGN KEY (`patient_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `records_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `records_ibfk_4` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `record_categories`
---
-ALTER TABLE `record_categories`
-  ADD CONSTRAINT `record_categories_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `record_categories_ibfk_2` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `record_premissions`
