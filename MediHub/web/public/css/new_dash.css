@@ -278,6 +278,13 @@ main {
      font-weight: bold;
 }
 
+.charts_table tfoot tr {
+     background-color: #0087a1;
+     color: #ffffff;
+     text-align: left;
+     font-weight: bold;
+}
+
 .charts_table th, .charts_table td {
      padding: 12px 15px;
      white-space: nowrap;
@@ -290,6 +297,7 @@ main {
 
 .charts_table td button{
      margin: 0 5px;
+     border-radius: 5px;
 }
 
 .charts_table tbody tr {
@@ -306,6 +314,33 @@ main {
 
 .charts_table tbody tr:hover {
      color: rgba(0, 0, 0, 0.6);
+}
+
+.dataTables_wrapper {
+     padding: 5px 0 5px 0;
+     margin: 5px 0 5px 0;
+}
+
+.dataTable {
+     padding: 5px 0 5px 0;
+     margin: 5px 0 5px 0;
+}
+
+table.dataTable tr.dtrg-group td {
+    background-color: #e0e0e0;
+    text-align: left;
+}
+
+table.dataTable tr.dtrg-group.dtrg-level-1 td, table.dataTable tr.dtrg-group.dtrg-level-2 td {
+    background-color: #f0f0f0;
+}
+
+.modal th, td {
+    text-align: left;
+}
+
+.dataTable tfoot tr, .dataTable thead tr{
+     text-align: center;
 }
 
 .charts_right {
@@ -391,7 +426,9 @@ main {
 .buttons button {
     padding: 5px;
     margin: 5px;
-    border: 1px solid #2e4a66;
+    color: #ffffff;
+    background: #2e4a66;
+    border: 0px solid #2e4a66;
     border-radius: 5px;
 }
 
@@ -404,7 +441,7 @@ main {
 .buttons button:hover {
     padding: 5px;
     margin: 5px;
-    border: 1px solid #ffffff;
+    border: 0px solid #ffffff;
     color: rgba(0, 0, 0, 0.6);
 }
 

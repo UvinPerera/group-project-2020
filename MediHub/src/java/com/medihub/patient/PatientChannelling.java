@@ -8,7 +8,6 @@ package com.medihub.patient;
 import com.medihub.location.*;
 import com.medihub.hospital.*;
 import com.medihub.doctor.*;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -53,25 +52,42 @@ public class PatientChannelling extends HttpServlet {
         
                 HttpSession session = request.getSession();
                 int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+                int userType = Integer.parseInt(session.getAttribute("usertype").toString());
                 PrintWriter out = response.getWriter();
-//                response.setContentType("application/json");
-
-                    String stage= request.getParameter("stage");
-
-                        try
-                        {
-                            District d = new District();
-                            List<District> returnData =new ArrayList<District>();
-                            returnData=d.getAllDistricts();
-                            request.setAttribute("districts", returnData); //directly get districts
-                            request.getRequestDispatcher("channelling.jsp").forward(request, response);
-                        }
-                        catch(Exception e)
-                        {
-                            out.println(e.toString());
-                        }
+                
+                if(userType==1){
                     
-                   
+                    try
+                    {
+                        Hospital h = new Hospital();
+                        DoctorSpecialisation ds = new DoctorSpecialisation();
+//                        out.print(h.getAllActiveHospitals().get(0).displayName);
+                        if(request.getParameter("search")!=null){
+                            if(request.getParameter("search").equalsIgnoreCase("1")){
+//                                out.print(request.getParameter("search"));
+                                String getDoctor=request.getParameter("doctor");
+                                String getHospital=request.getParameter("hospital");
+                                String getSpecialisation=request.getParameter("specialisation");
+                                String getDate=request.getParameter("date");
+
+                                DoctorAvailability da = new DoctorAvailability();
+//                                out.print(da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate));
+                                request.setAttribute("availabilities", da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate));
+                            }
+                        }
+                        request.setAttribute("hospitals", h.getAllActiveHospitals()); //directly get districts
+                        request.setAttribute("specialisations", ds.getAllActiveSpecialisations()); //directly get districts
+                        request.getRequestDispatcher("channelling.jsp").forward(request, response);
+                    }
+                    catch(Exception e)
+                    {
+                        out.println(e.toString());
+                    }
+                    
+                }
+                else{
+                    request.getRequestDispatcher("403.jsp").forward(request, response);
+                }
 
     }
 
