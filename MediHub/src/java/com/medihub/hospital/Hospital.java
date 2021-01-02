@@ -45,6 +45,39 @@ public class Hospital {
     public int approvedBy;
     public String approvedAt;
     
+    public List<Hospital> getAllActiveHospitals() {
+        
+        String query = "select id, display_name from hospitals where status=1";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<Hospital> h =new ArrayList<Hospital>();
+                        
+            while(rs.next()) { 
+                Hospital ho = new Hospital(); 
+                ho.id = rs.getInt("id"); 
+                ho.displayName = rs.getString("display_name");
+                
+                h.add(ho);
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
     public List<Hospital> getAllHospitalsByCity(int cCity) {
         
         String query = "select id, display_name from hospitals where status=1 and city="+cCity;

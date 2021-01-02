@@ -21,7 +21,7 @@ public class Patient extends User {
         
         //date and time foramtting
         Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
         String strDate = dateFormat.format(date);
         String strTime = timeFormat.format(date);
