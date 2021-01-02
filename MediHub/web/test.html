@@ -1,157 +1,343 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.location.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/test.css" media="screen" />
-</head>
-<body>
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
-        <li><a href="#" id="end">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Emergency Services</a></li>
-        <li><a href="#">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
-    <% String username="";
-          username= session.getAttribute("username").toString();
-       %>
-  <div class="welcome">
-            <h1><center>Hello, <%=username%> <br>Welcome to Medihub!</center></h1>
 
-  </div>
-  <!--<br><br><br>-->
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     </head>
 
-  <div class="page_divide">
-        <section class="profile">
-        <div class="card-container">
-             <div class="upper-container">
-                <div class="image-container">
-                  <img src="./public/images/p3.jpg">
-                </div>
-             </div>
-             <div class="lower-container">
-                <div>
-                   <h5><%=username%></h5>
-                </div>
-                <br><br>
-                <div>
-                  <a href="#" class="btn">View Profile</a>
-                <br><br><br>
-                  <a href="#" class="btn">Edit Profile</a>
-                </div>
-             </div>
+     <body>
+
+          <% 
+               String username="";
+               username= session.getAttribute("username").toString();
+          %>
+
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
+              
+              <jsp:include page="./public/includes/navbar.jsp"/>
+              
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
+
+               <main>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
+
+                         <div class="main_title">
+                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
+                              <div class="main_greeting">
+                                   <h1>Hello <%=username%></h1>
+                                   <p>Profile</p>
+                              </div>
+                         </div>
+                        
+                        <%
+                            if(request.getAttribute("profile")!=null){
+                                Patient row = (Patient)request.getAttribute("profile");
+                                
+                                
+                        %>
+
+                         <!-- change the main cards css fragments to change number of cards Available -->
+                         <form class="" action="patientupdate" method="POST" id="updateForm">
+                            <div class="main_cards">
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">First Name</p>
+                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
+                                        <div class="alert-danger" id="firstNameError">
+                                            * First name can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Last Name</p>
+                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
+                                        <div class="alert-danger" id="lastNameError">
+                                            * Last name can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <input class="data" type="text" name="display_name" id="lastname" placeholder="Display Name" value="<%= row.displayName %>">
+                                        <div class="alert-danger" id="displayNameError">
+                                            * Display name can't be empty and must contain only alphanumeric
+                                        </div>
+                                   </div>
+                              </div>
+                                        
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-secondary-p"><%= row.email %></p>
+                                   </div>
+                              </div>         
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">NIC</p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
+                                   </div>
+                              </div>
+                             
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Date of Birth</p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <select class="data" name="district" id="district">
+                                                            <%
+                                                                if(request.getAttribute("districts")!=null){
+                                                                    List<District> districts = (ArrayList<District>)request.getAttribute("districts");
+                                                                    if(districts.size()>0){
+                                                                        for(District district : districts) { %>
+                                                                            <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
+                                                            <%
+                                                                    }}}
+                                                            %>
+
+                                        </select>
+                                        <div class="alert-danger" id="districtError">
+                                            * Select valid district
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <select class="data" name="city" id="city">
+                                                            <%
+                                                                if(request.getAttribute("cities")!=null){
+                                                                    List<City> cities = (ArrayList<City>)request.getAttribute("cities");
+                                                                    if(cities.size()>0){
+                                                                        for(City city : cities) { %>
+                                                                            <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
+                                                            <%
+                                                                    }}}
+                                                            %>
+
+                                        </select>
+                                        <div class="alert-danger" id="cityError">
+                                            * Select valid city
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address 1</p>
+                                        <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%= row.address1 %>">
+                                        <div class="alert-danger" id="addressError">
+                                            * Address 1 can't be empty
+                                        </div>
+                                   </div>
+                              </div>
+                                        
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address 2</p>
+                                        <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2" value="<%= row.address2 %>">
+<!--                                        <div class="alert-danger" id="addressError">
+                                            * Address 2 can't be empty
+                                        </div>-->
+                                   </div>
+                              </div>
+                                                           
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
+                                        <div class="alert-danger" id="numberError">
+                                            * First name can't be empty and must contain only letters
+                                        </div>                                   
+                                   </div>
+                              </div>
+                             
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="<%= row.landNumber %>">
+<!--                                        <div class="alert-danger" id="numberError">
+                                            * First name can't be empty and must contain only letters
+                                        </div>                                   -->
+                                   </div>
+                              </div>
+
+                              <div></div>
+                              <div></div>
+                              
+                              <div class="buttons">
+                                <button class="button" type="reset" id="clear"><b>Reset</b></button>
+                                <button class="button-success" type="submit"><b>Update</b></button>     
+                              </div>
+
+                         </div>
+                         </form>
+                         
+                        <% } %>
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
           </div>
-        </section>
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
+          
+          <script>
+        
+            $("#firstNameError").hide();
+            $("#lastNameError").hide();
+            $("#displayNameError").hide();
+            $("#addressError").hide();
+            $("#cityError").hide();
+            $("#districtError").hide();
+            $("#numberError").hide();
 
-        <section class="Service">
-            <button class="styled" type="button">Create Prescription</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">Set Medication Reminder</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">View Records</button>
-        </section>
-        <section class="Service">
-            <button class="styled" type="button">Check Availability</button>
-        </section>
-      </div>
-  
-  <!--table starts-->
-  <div>
-              <table class="table-hub table-hub-appoint">
-                   <thead>
-                        <tr>
-                             <th class="table-hub-owner">Hospital</th>
-                             <th>Time</th>
-                        </tr>
-                   </thead>
-                   <tbody>
-                        <tr>
-                             <td class="table-hub-owner">Doctor 1</td>
-                             <td>
-                                  <ul class="table-hub-time">
-                                       <li><a href="" onclick="">Time 1</a></li>
-                                       <li><a href="" onclick="">Time 2</a></li>
-                                       <li><a href="" onclick="">Time 3</a></li>
-                                       <li><a href="" onclick="">Time 4</a></li>
-                                  </ul>
-                             </td>
-                        </tr>
-                        <tr>
-                             <td class="table-hub-owner">Hospital 2</td>
-                             <td>
-                                  <ul class="table-hub-time">
-                                       <li><a href="" onclick="">Time 1</a></li>
-                                       <li><a href="" onclick="">Time 2</a></li>
-                                       <li><a href="" onclick="">Time 3</a></li>
-                                       <li><a href="" onclick="">Time 4</a></li>
-                                  </ul>
-                             </td>
-                        </tr>
-                        <tr>
-                             <td class="table-hub-owner">Doctor 3</td>
-                             <td>
-                                  <ul class="table-hub-time">
-                                       <li><a href="" onclick="">Time 1</a></li>
-                                       <li><a href="" onclick="">Time 2</a></li>
-                                       <li><a href="" onclick="">Time 3</a></li>
-                                       <li><a href="" onclick="">Time 4</a></li>
-                                  </ul>
-                             </td>
-                        </tr>
-                        <tr>
-                             <td class="table-hub-owner">Hopital 4</td>
-                             <td>
-                                  <ul class="table-hub-time">
-                                       <li><a href="" onclick="">Time 1</a></li>
-                                       <li><a href="" onclick="">Time 2</a></li>
-                                       <li><a href="" onclick="">Time 3</a></li>
-                                       <li><a href="" onclick="">Time 4</a></li>
-                                  </ul>
-                             </td>
-                        </tr>
-                   </tbody>
-              </table>
-          </div>
-  <!--table ends-->
-  
-<!--</body>-->
-<!--<br><br>-->
-<center>
-  <footer>
-    <div class="row4">
-      <div class="column4">
-        <div class="footerText">
-          <br>ABOUT <br><br>
-          MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-          provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-          them with the best experience in accessing medical<br> services.<br>
-        </div>
-      </div>
-      <!--<div class="column4"><br>
-        <div class="footerText"> -->
-          <br><br>
-          <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-google"></a>
-          <a href="#" class="fa fa-instagram"></a>
-        </div>
-    <!--  </div>
-    </div> -->
-    <br>
-    <div class="footerText">
-      All rights Reserved @MediHub2020
-    </div>
-    <br><br>
-  </footer>
-</center>
-</body>
+            $("#updateForm").on('submit',function(e){
+                //to always refresh when submitting (hide and show only relevant)
+                $("#firstNameError").hide();
+                $("#lastNameError").hide();
+                $("#displayNameError").hide();
+                $("#addressError").hide();
+                $("#cityError").hide();
+                $("#districtError").hide();
+                $("#numberError").hide();
+
+                var x=0;
+                   if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)){
+                    $("#firstNameError").show();
+                    x=1;
+
+                }
+                   if(($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
+                    $("#lastNameError").show();
+                    x=1;
+
+                }
+                if(($("#displayName").val()=="")||($("#displayName").val().match(/^[A-Za-z0-9]*$/)== null)){
+                    $("#displayNameError").show();
+                    x=1;
+
+                }
+                  if($("#address1").val()==""){
+                    $("#addressError").show();
+                    x=1;
+                }
+                if($("#city").val()==""){
+                    $("#cityError").show();
+                    x=1;
+                }
+                if($("#district").val()==""){
+                    $("#districtError").show();
+                    x=1;
+                }
+    //            if(($("#mobile_number").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+                  $("#numberError").show();
+                    x=1;
+                }
+
+                if(x==1){
+                    return false;
+                }
+            })
+
+
+
+            //    onchange district
+        $('#district').change(function(){
+            var districtId=$(this).find(':selected').val();
+
+            $.ajax({
+                url: "getcityasstring",
+                type: "get", //send it through get method
+                data: { 
+                  stage: "district", 
+                  district: districtId
+                },
+                success: function(response) {
+                  //populate city data
+    //              alert(response);
+                  $('#city').html("<option>Select City</option>"+response);
+                },
+                error: function(xhr) {
+                    alert("CityByDistrict Error");
+                }
+              });
+
+        });
+        
+    </script>
+    
+  <!--close tag-->
+          
+     </body>
 </html>

@@ -326,8 +326,8 @@
 //                x=1;
 //            }
             
-//            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
-            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||(($("#land").val().match(/^[0-9]{10}$/)==null) && ($("#land").val()==""))){
+            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+//            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||(($("#land").val().match(/^[0-9]{10}$/)==null) && ($("#land").val()==""))){
               $("#numberError").show();
                 x=1;
             }

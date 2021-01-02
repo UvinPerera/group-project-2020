@@ -86,12 +86,12 @@
                 <thead>
                     <tr>
                         <th class="tableheading">Doctor</th>
-                        <th class="tableheading" colspan="4">Time (Payment)</th>
+                        <th class="tableheading" colspan="8">Time (Payment)</th>
                     </tr>
                 </thead>
                 <tbody id="doctorAvailability">
                     <tr>
-                        <td class="Row" colspan="5">Select Filters</td>
+                        <td class="Row" colspan="9">Select Filters</td>
                     </tr>
 
                 </tbody>
@@ -122,7 +122,7 @@
 //    onchange district
     $('#district').change(function(){
         var districtId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
         
         $.ajax({
             url: "getcityasstring",
@@ -146,7 +146,7 @@
 //    onchange city
     $('#city').change(function(){
         var cityId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
         
         $.ajax({
             url: "gethospitalbycityasstring",
@@ -170,7 +170,7 @@
 //    onchange hospital
     $('#hospital').change(function(){
         var hospitalId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">Select Filters</td></tr>");
+        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
         
         $.ajax({
             url: "getspecialisationbyhospitalasstring",
@@ -215,7 +215,7 @@
                 }
                 else
                 {
-                    $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"5\">No Available Doctors</td></tr>");
+                    $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">No Available Doctors</td></tr>");
                 }
               
             },

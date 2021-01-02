@@ -125,7 +125,14 @@ public class Channelling {
         
             this.doctorAvalabilityId=doctorAvailabilityId;
             this.patientId=patientId;
-            this.description="Booked for "+description;
+            String n = "Self";
+            if(description!=null)
+            {
+                n=description;
+            }
+            this.description="Booked for "+n;
+            
+            
         String query = "select id, count, max_count from doctor_availability where status=1 and id="+doctorAvalabilityId;
         
         try

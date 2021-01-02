@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+
+     <head>
+          <meta charset=utf-8>
+          <title>MediHub</title>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/test.css" media="screen" />
+     </head>
+
+     <body>
+
+          <div class="container">
+               <nav class="navbar">
+                    <div class="nav_icon" onclick="toggleSidebar()">
+                         <i class="fa fa-bars"></i>
+                    </div>
+                    <div class="navbar_left">
+                         <a href="#">Home</a>
+                         <a href="#">Emergency services</a>
+                         <a href="#">Contact Us</a>
+                         <!-- <a class="active_link" href="#">User Space</a> -->
+                    </div>
+                    <div class="navbar_right">
+                         <a href="#">
+                              <i class="fa fa-search"></i>
+                         </a>
+                         <a href="#">
+                              <i class="fa fa-clock-o"></i>
+                         </a>
+                         <a href="#">
+                              <img src="" alt="avatar">
+                         </a>
+                    </div>
+               </nav>
+
+               <main>
+                    <div class="main_container">
+
+                         <div class="main_title">
+                              <img src="" alt="hello">
+                              <div class="main_greeting">
+                                   <h1>Hello UserName</h1>
+                                   <p>Welcome</p>
+                              </div>
+                         </div>
+
+                         <div class="main_cards">
+
+                              <div class="card">
+                                   <i class="fa fa-user-o fa-2x text-lightblue"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Pending Appointments</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <i class="fa fa-calendar fa-2x text-red"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Pending Orders</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <i class="fa fa-book fa-2x text-yellow"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Reminders</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <i class="fa fa-bell fa-2x text-green"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Notifications</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+
+                         </div>
+
+                         <div class="charts">
+
+                              <div class="charts_left">
+                                   <!-- <div class=""> -->
+                                        <div class="charts_left_title">
+                                             <div>
+                                                  <h1>Pending Appointments</h1>
+                                                  <!-- <p>Something</p> -->
+                                             </div>
+                                             <i class="fa fa-suitcase"></i>
+                                        </div>
+                                        <div class="charts_table_div">
+                                             <table class="charts_table">
+                                                  <thead>
+                                                       <tr>
+                                                            <th>#</th>
+                                                            <th>Hospital</th>
+                                                            <th>Doctor</th>
+                                                            <th>Date / Time</th>
+                                                            <th>App #</th>
+                                                            <th>View</th>
+                                                       </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                       <tr>
+                                                            <td>1</td>
+                                                            <td>Hospital 1</td>
+                                                            <td>Doctor 1</td>
+                                                            <td>2020-12-12<br>08:00:00</td>
+                                                            <td>11</td>
+                                                            <td><i class="fa fa-eye"></i></td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>1</td>
+                                                            <td>Hospital 1</td>
+                                                            <td>Doctor 1</td>
+                                                            <td>2020-12-12<br>08:00:00</td>
+                                                            <td>11</td>
+                                                            <td><i class="fa fa-eye"></i></td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>1</td>
+                                                            <td>Hospital 1</td>
+                                                            <td>Doctor 1</td>
+                                                            <td>2020-12-12<br>08:00:00</td>
+                                                            <td>11</td>
+                                                            <td><button><i class="fa fa-eye"></i></button></td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>1</td>
+                                                            <td>Hospital 1</td>
+                                                            <td>Doctor 1</td>
+                                                            <td>2020-12-12<br>08:00:00</td>
+                                                            <td>11</td>
+                                                            <td><i class="fa fa-eye"></i></td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td>1</td>
+                                                            <td>Hospital 1</td>
+                                                            <td>Doctor 1</td>
+                                                            <td>2020-12-12<br>08:00:00</td>
+                                                            <td>11</td>
+                                                            <td><i class="fa fa-eye"></i></td>
+                                                       </tr>
+                                                       <tr>
+                                                            <td colspan="6"><a href="#">View More...</a></td>
+                                                       </tr>
+                                                  </tbody>
+                                             </table>
+                                        </div>
+                                   <!-- </div> -->
+                              </div>
+
+                              <div class="charts_right">
+
+                                   <div class="charts_right_title">
+                                        <div>
+                                             <h1>chart 1</h1>
+                                             <p>Something</p>
+                                        </div>
+                                        <i class="fa fa-usd"></i>
+                                   </div>
+
+                                   <div class="charts_right_cards">
+
+                                        <div class="card1">
+                                             <h1>card 1</h1>
+                                             <p>card 1 details</p>
+                                        </div>
+
+                                        <div class="card2">
+                                             <h1>card 2</h1>
+                                             <p>card 2 details</p>
+                                        </div>
+
+                                        <div class="card3">
+                                             <h1>card 3</h1>
+                                             <p>card 3 details</p>
+                                        </div>
+
+                                        <div class="card4">
+                                             <h1>card 4</h1>
+                                             <p>card 4 details</p>
+                                        </div>
+
+                                   </div>
+
+                              </div>
+
+                         </div>
+
+                    </div>
+
+               </main>
+
+               <div id="sidebar">
+
+                    <div class="sidebar_title">
+                         <div class="sidebar_img">
+                              <img src="" alt="sidebar">
+                              <h1>Medihub</h1>
+                         </div>
+                         <i class="fa fa-times" id="sidebarIcon" onclick="closeSidebar()"></i>
+                    </div>
+
+                    <div class="sidebar_menu">
+
+                         <div id="nav_option_sidebar" class="nav_option_sidebar">
+
+                              <h2>Menu</h2>
+
+                              <div class="sidebar_link">
+                                   <i class="fa fa-home"></i>
+                                   <a href="#">Home</a>
+                              </div>
+     
+                              <div class="sidebar_link">
+                                   <i class="fa fa-ambulance"></i>
+                                   <a href="#">Emergency Services</a>
+                              </div>
+                              
+                              <div class="sidebar_link">
+                                   <i class="fa fa-phone"></i>
+                                   <a href="#">Contact Us</a>
+                              </div>
+
+                         </div>
+
+                         <div class="sidebar_link active_menu_link">
+                              <i class="fa fa-dashboard"></i>
+                              <a href="#">Dashboard</a>
+                         </div>
+
+                         <h2>Alerts</h2>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-bullseye"></i>
+                              <a href="#">Reminders</a>
+                         </div>
+
+                         <h2>Services</h2>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-hand-pointer-o"></i>
+                              <a href="#">E-Channelling</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-bookmark"></i>
+                              <a href="#">Medicine Order</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-file-archive-o"></i>
+                              <a href="#">Medical Records</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-stethoscope"></i>
+                              <a href="#">Doctors</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-hospital-o"></i>
+                              <a href="#">Hospitals</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-medkit"></i>
+                              <a href="#">Pharmacies</a>
+                         </div>
+
+                         <h2>Report</h2>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-address-book"></i>
+                              <a href="#">Channelling</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-dropbox"></i>
+                              <a href="#">Pharmacy Orders</a>
+                         </div>
+
+                         <h2>User</h2>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-user-circle"></i>
+                              <a href="#">View Profile</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-user-circle-o"></i>
+                              <a href="#">Edit Profile</a>
+                         </div>
+
+                         <div class="sidebar_link">
+                              <i class="fa fa-user-secret"></i>
+                              <a href="#">Change Password</a>
+                         </div>
+
+                         <div class="sidebar_logout">
+                              <i class="fa fa-user-times"></i>
+                              <a href="#">Logout</a>
+                         </div>
+
+                    </div>
+
+               </div>
+
+          </div>
+
+          <script src="./public/js/new_script.js"></script>
+
+     </body>
+</html>
