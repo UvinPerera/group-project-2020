@@ -53,9 +53,11 @@ public class ConfirmChannelling extends HttpServlet {
                     {
                         doctorAvalabilityId=Integer.parseInt(request.getParameter("doctorAvailabilityId"));
                         DoctorAvailability da = new DoctorAvailability();
-                        DoctorAvailability returnData =new DoctorAvailability();
-                        returnData=da.getDoctorAvailability(doctorAvalabilityId);
-                        request.setAttribute("doctorAvalability", returnData); 
+//                        DoctorAvailability returnData =new DoctorAvailability();
+//                        returnData=da.getDoctorAvailability(doctorAvalabilityId);
+                        Payment p = new Payment();
+                        request.setAttribute("payments", p.getPaymentMethods()); //directly get avail
+                        request.setAttribute("doctorAvalability", da.getDoctorAvailability(doctorAvalabilityId)); 
                         request.getRequestDispatcher("confirmChannelling.jsp").forward(request, response);
                     }
                     catch(Exception e)

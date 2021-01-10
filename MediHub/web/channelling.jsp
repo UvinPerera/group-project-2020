@@ -175,7 +175,7 @@
                                    <!-- <div class=""> -->
                                         <div class="charts_left_title">
                                              <div>
-                                                  <h1>Pending Appointments</h1>
+                                                  <h1>Appointments</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
                                              <i class="fa fa-suitcase"></i>
@@ -247,7 +247,7 @@
                                                        else
                                                        {
                                                   %>
-                                                  No pending Appointments !
+                                                  No Appointments Available !
                                                   <%
                                                        }}
                                                        else{
@@ -354,7 +354,7 @@
                           }
                           else
                           {
-                                window.location.href="confirmchannelling?doctorAvailabilityId="+doctorAvailabilityId;
+                                window.location.href="confirmchannelling?check=1&doctorAvailabilityId="+doctorAvailabilityId;
                           }
                         },
                         error: function(xhr) {
