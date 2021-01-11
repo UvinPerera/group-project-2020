@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
+import com.medihub.resources.*;
 
 /**
  *
@@ -18,9 +19,6 @@ import com.medihub.user.*;
  */
 @WebServlet(urlPatterns = {"/registration"})
 public class Registration extends HttpServlet {
-
-  
-
    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +34,7 @@ public class Registration extends HttpServlet {
             //getting from DbConfig class
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
-                    
+            // check  parameter empty or null
             String first_name=request.getParameter("first_name");
             String last_name=request.getParameter("last_name");
             String display_name=request.getParameter("display_name");
@@ -44,7 +42,12 @@ public class Registration extends HttpServlet {
             String dob=request.getParameter("dob");
             String gender=request.getParameter("gender");
             String email=request.getParameter("email");
-            String password=request.getParameter("password");
+            //start generate password hash
+                //  check password parameter value is empty before generate 
+                //  bcz if password is empty SecureUtils.generatePasswordHash(password) will return a null
+                //  validate every required parameters before the insert query.
+            String password= SecureUtils.generatePasswordHash(request.getParameter("password"));
+            //end generate password hash
             String address1=request.getParameter("address_1");
             String address2=request.getParameter("address_2");
             String mobile=request.getParameter("mobile");

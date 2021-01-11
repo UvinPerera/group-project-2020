@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.medihub.resources.*;
 
 /**
  *
@@ -41,7 +42,13 @@ public class auth extends HttpServlet {
                     
                     Statement stmt=con.createStatement(); 
                     String email=request.getParameter("email");
-                    String password=request.getParameter("userpassword");
+                     //start generate password hash
+                        //  check password parameter value is empty before generate 
+                        //  bcz if password is empty SecureUtils.generatePasswordHash(password) will return a null
+                        //  validate every required parameters before the select query.
+                    String password=SecureUtils.generatePasswordHash(request.getParameter("userpassword"));
+                    //end generate password hash
+
                     ResultSet rs=stmt.executeQuery("Select * from users where email='"+email+"' and password='"+password+"' and status=1"); 
                     String displayName="";
                     int userType=1;
@@ -51,11 +58,7 @@ public class auth extends HttpServlet {
                         displayName=rs.getString("display_name");
                         userType=rs.getInt("user_type");
                         userId=rs.getInt("id");
-
                     }
-
-
-
                     //String actualUsername = "Yashithi";
                     //String actualPassword ="kay";
                     if(!displayName.isEmpty()){
