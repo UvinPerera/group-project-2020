@@ -6,9 +6,12 @@
 package com.medihub.doctor;
 
 import com.medihub.db.DbConfig;
+import com.medihub.hospital.Hospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,6 +27,40 @@ public class DoctorSpecialisation {
     public String updatedAt;
     public String createdBy;
     public String updatedBy;
+    
+    public List<DoctorSpecialisation> getAllActiveSpecialisations() {
+        
+        String query = "select id, name from doctor_specialisation where status=1";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<DoctorSpecialisation> d =new ArrayList<DoctorSpecialisation>();
+                        
+            while(rs.next()) { 
+                DoctorSpecialisation ds = new DoctorSpecialisation(); 
+                ds.id = rs.getInt("id"); 
+                ds.name = rs.getString("name");
+                
+                d.add(ds);
+            }
+            
+            con.close();
+            return d;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+        
     
     public String getAllSpecialisationsByHospitalAsString(int cHospital) {
         

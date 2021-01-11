@@ -76,12 +76,12 @@
                         <td class="Row" >Appointment No</td>
                         <td class="Row" ><%=da.count+1 %> (Subject to Change if delayed)</td>
                     </tr>
-                    <% if(request.getAttribute("check")!=null){ %>
+                    <% // if(request.getAttribute("check")!=null){ %>
                     <tr>
                         <td class="Row" >Patient Name</td>
                         <td class="Row" ><input type="text" name="description" id="description" class="selectpatient" required="required"/></td>
                     </tr>
-                    <% } %>
+                    <% // } %>
                     <tr>
                         <td class="Row" >Payment Method</td>
                         <td class="Row" >
@@ -99,7 +99,7 @@
                                             else
                                             {
                                         %>
-                                        <option value='1' selected>Cash</option>
+<!--                                        <option value='1' selected>Cash</option>-->
                                         <% } %>
                                 </select>
                             </div>

@@ -147,7 +147,14 @@
                                                        </tr>
                                                   </thead>
                                                   <tbody>
-                                                       <% for(Channelling row : table) { %>
+                                                       <% 
+                                                           int cc = 0;
+                                                           for(Channelling row : table) { 
+                                                                cc++;
+                                                                if (cc>5){
+                                                                    break;
+                                                                }
+                                                       %>
                                                        <tr>
                                                             <td><%= row.id %></td>
                                                             <td><%= row.hospital %></td>
@@ -174,10 +181,12 @@
                                 
                                 
                                                         <%}%>
+                                                        
+                                                        <% if(table.size()>5) {%>
                                                         <tr>
                                                             <td colspan="6"><a href="#">View More...</a></td>
                                                         </tr>
-
+                                                        <%}%>
                                                   </tbody>
                                              </table>
                                         </div>
@@ -188,7 +197,10 @@
                                                        else
                                                        {
                                                   %>
-                                                  No pending Appointments !
+                                                  <div class="buttons">
+                                                      No pending Appointments !
+                                                      <a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>    
+                                                  </div>
                                                   <%
                                                        }}
                                                   %>
