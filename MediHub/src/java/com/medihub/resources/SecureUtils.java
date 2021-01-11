@@ -1,3 +1,4 @@
+//Password Hashing
 package com.medihub.resources;
 
 import java.nio.charset.StandardCharsets;
