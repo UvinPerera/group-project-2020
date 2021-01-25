@@ -50,34 +50,34 @@
                          <h2>Alerts</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-bullseye"></i>
+                              <i class="fa fa-bell"></i>
                               <a href="#">Notifications</a>
                          </div>
 
                          <h2>Services</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePatients.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hand-pointer-o"></i>
+                              <i class="fa fa-wheelchair"></i>
                               <a href="managePatients.jsp">Manage Patients</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageDoctors.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hand-pointer-o"></i>
+                              <i class="fa fa-stethoscope"></i>
                               <a href="manageDoctors.jsp">Manage Doctors</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePharamcy.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hand-pointer-o"></i>
+                              <i class="fa fa-medkit"></i>
                               <a href="managePharmacy.jsp">Manage Pharmacies</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageHospital.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hand-pointer-o"></i>
+                              <i class="fa fa-hospital-o"></i>
                               <a href="manageHospital.jsp">Manage Hospitals</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageReviews.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hand-pointer-o"></i>
+                              <i class="fa fa-reply-all"></i>
                               <a href="manageReviews.jsp">Manage Reviews</a>
                          </div>
 
@@ -86,12 +86,12 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewadmin.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
-                              <a href="viewadmin.jsp">View Profile</a>
+                              <a href="adminview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editPatient.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editadmin.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="editadmin.jsp">Edit Profile</a>
+                              <a href="editadmin">Edit Profile</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
