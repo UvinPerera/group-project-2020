@@ -17,7 +17,7 @@ import java.sql.*;
 import java.util.*;
 /**
  *
- * @author tharshan
+ * @author Ifra
  */
 
 public class Admin extends User {
