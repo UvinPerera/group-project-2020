@@ -3,7 +3,7 @@
   padding:0;
 }
 hr{
-  border-top: 15px solid #0087a1;
+  border-top: 25px solid  #2b3030;
 }
 
 #heading{
@@ -50,7 +50,25 @@ h6{
     color:black;
     text-shadow:none;
 }
+footer{
+    background-color: #2b3030;
+}
 
+
+.footerText{
+    color:white;
+    font-family: sans-serif;
+    text-align: center;
+}
+.fa {
+  padding: 25px;
+  font-size: 20px;
+  width: 6px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color:white;
+}
 .styled:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
