@@ -1,5 +1,9 @@
-package com.medihub.patient;
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.medihub.admin;
 
 import com.medihub.user.*;
 import com.medihub.db.*;
@@ -15,12 +19,12 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Yash
+ * @author DELL
  */
-@WebServlet(urlPatterns = {"/patientupdate"})
-public class PatientUpdate extends HttpServlet {
+@WebServlet(urlPatterns = {"/adminupdate"})
+public class AdminUpdate extends HttpServlet {
 
-  
+   
 
    
     @Override
@@ -29,7 +33,7 @@ public class PatientUpdate extends HttpServlet {
             PrintWriter out = response.getWriter();
             
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             
         try
         {
@@ -74,9 +78,9 @@ public class PatientUpdate extends HttpServlet {
                     + "city="+city+","
                     + "mobile_number='"+mobile+"',"
                     + "land_number='"+land_line+"',"
-                    + "updated_by="+patientId+","
+                    + "updated_by="+adminId+","
                     + "updated_at=CURRENT_TIMESTAMP "
-                    + "where id="+patientId;
+                    + "where id="+adminId;
 //                    + "'"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             
 //            out.print(query);
@@ -84,7 +88,7 @@ public class PatientUpdate extends HttpServlet {
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
-            response.sendRedirect("editpatient");
+            response.sendRedirect("editadmin");
             con.close();  
         }
         catch(Exception e)

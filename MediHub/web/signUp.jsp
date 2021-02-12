@@ -191,6 +191,7 @@
        <h2 class="name">Register as</h2>
        <select class="input option" name="type" id="type">
          <option disabled="disabled" selected="selected">--Choose Option--</option>
+         <option value="0">Administrator</option>
          <option value="1">Patient</option>
          <option value="2">Doctor</option>
          <option value="3">Hospital Admin</option>
