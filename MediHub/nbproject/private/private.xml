@@ -2,7 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/public/css/new_dash.css</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/public/includes/patientSidebar.jsp</file>
@@ -22,8 +21,5 @@
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/web/patientDashboard.jsp</file>
             <file>file:/Users/tharshan/Documents/ucsc/group_project/git/master/MediHub/src/java/com/medihub/resources/SecureUtils.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 8e7c8d9fa4db91d7dc70682f2ef6d7521fadce9a
     </open-files>
 </project-private>
