@@ -1,271 +1,193 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
-<%@page import="com.medihub.location.*"%>
-<%@page import="com.medihub.doctor.*"%>
-<%@page import="com.medihub.hospital.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset=utf-8>
-        <title>MediHub</title>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="./public/css/channelling.css" media="screen" >
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="navbar" id="navbar">
-            <ul>
-              <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT</button></li>
-              <li><button class="style" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
-              <li><a href="About.jsp" id="end">About</a></li>
-              <li><a href="contactUs.jsp">Contact</a></li>
-              <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-              <li><a href="/MediHub">Home</a></li>
-              <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-            </ul>
-        </div>
-        
-        <!--<form class="" action="registration" method="post" id="regform">-->
-            <br><br>
-            <h3>E-Channelling </h3><hr>
-            <div class="Dropdown">
-                <center>Select your Preferences </center><br>
-                <center><select name='district' id="district" class="filters">
-                  <option value='' selected>Select District</option>
-                        <%
-                            if(request.getAttribute("districts")!=null){
-                                List<District> table = (ArrayList<District>)request.getAttribute("districts");
-                                if(table.size()>0){
-                                    for(District row : table) { %>
-                                        <option value='<%= row.id %>'><%= row.nameEn %></option>
-                        <%
-                                }}}
-                        %>
-                    </select></center>
-                
-                <center><select name='city' id="city" class="filter_dropdown filters" >
-                    <option value='' selected>Select City</option>
-                   
-                    </select></center>
-                
-                    <center><select name='hospital' id="hospital" class="filter_dropdown filters">
-                    <option value='' selected>Select Hospital</option>
-                   
-                        </select></center>
-                
-                        <center><select name='doctorSpecialisation' id="doctorSpecialisation" class="filter_dropdown filters">
-                    <option value='' selected>Select Specialization</option>
-                   
-                            </select></center>
-                
-                        <center><input type="date" name="date" id="date" class="form-control textt"/></center>
-                
-            </div>
-        
-            
-            
-        <!--</form>-->
-        
-        
-<!--     ##################
-            table starts
-         ##################-->
-            
-        <div class="container-table">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="tableheading">Doctor</th>
-                        <th class="tableheading" colspan="8">Time (Payment)</th>
-                    </tr>
-                </thead>
-                <tbody id="doctorAvailability">
-                    <tr>
-                        <td class="Row" colspan="9">Select Filters</td>
-                    </tr>
 
-                </tbody>
-            </table>
-        </div>
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     </head>
 
-<!--        ################
-            table ends
-        ################-->
+     <body>
 
-    </body>
-</html>
+          <% 
+               String username="";
+               username= session.getAttribute("username").toString();
+          %>
 
-<script>
-    
-    //date selection limiting
-    function validDate(){
-        var today = new Date().toISOString().split('T')[0];
-        var nextWeekDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        document.getElementsByName("date")[0].setAttribute('min', today);
-        document.getElementsByName("date")[0].setAttribute('max', nextWeekDate);
-    }
-    
-//    $('#date').click(function(){
-//        validDate();
-//    });
-    
-//    onchange district
-    $('#district').change(function(){
-        var districtId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
-        
-        $.ajax({
-            url: "getcityasstring",
-            type: "get", //send it through get method
-            data: { 
-              stage: "district", 
-              district: districtId
-            },
-            success: function(response) {
-              //populate city data
-//              alert(response);
-              $('#city').html("<option>Select City</option>"+response);
-            },
-            error: function(xhr) {
-                alert("CityByDistrict Error");
-            }
-          });
-
-    });
-    
-//    onchange city
-    $('#city').change(function(){
-        var cityId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
-        
-        $.ajax({
-            url: "gethospitalbycityasstring",
-            type: "get", //send it through get method
-            data: { 
-              stage: "city", 
-              city: cityId
-            },
-            success: function(response) {
-              //populate city data
-//              alert(response);
-              $('#hospital').html("<option>Select Hospital</option>"+response);
-            },
-            error: function(xhr) {
-                alert("HospitalByCity Error");
-            }
-          });
-
-    });
-    
-//    onchange hospital
-    $('#hospital').change(function(){
-        var hospitalId=$(this).find(':selected').val();
-        $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">Select Filters</td></tr>");
-        
-        $.ajax({
-            url: "getspecialisationbyhospitalasstring",
-            type: "get", //send it through get method
-            data: { 
-              stage: "hospital", 
-              hospital: hospitalId
-            },
-            success: function(response) {
-              //populate city data
-//              alert(response);
-              $('#doctorSpecialisation').html("<option>Select Specialisation</option>"+response);
-            },
-            error: function(xhr) {
-                alert("SpecialisationByHospital Error");
-            }
-          });
-
-    });
-    
-//    onchange date
-    $('#date').change(function(){
-        var hospitalId=$("#hospital").find(':selected').val();
-        var doctorSpecialisationId=$("#doctorSpecialisation").find(':selected').val();
-        var date=$(this).val();
-        
-        $.ajax({
-            url: "getdoctoravailabilityforChannellingasstring",
-            type: "get", //send it through get method
-            data: { 
-              stage: "hospital", 
-              hospital: hospitalId,
-              doctorSpecialisation: doctorSpecialisationId,
-              date: date
-            },
-            success: function(response) {
-              //populate city data
-//              alert(response);
-                if(response!=="")
-                {
-                    $('#doctorAvailability').html(response);
-                }
-                else
-                {
-                    $('#doctorAvailability').html("<tr><td class=\"Row\" colspan=\"9\">No Available Doctors</td></tr>");
-                }
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
               
-            },
-            error: function(xhr) {
-                alert("DoctorAvailability Error");
-            }
-          });
+              <jsp:include page="./public/includes/navbar.jsp"/>
+              
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
 
-    });
-    
-    //confirm channeling
-//    $('#confirmChannelling').click(function(){
-    function confirmChannelling(doctorAvailabilityId){
-//        var doctorAvailabilityId=$(this).attr("da-id");
-//        alert(doctorAvailabilityId);
-//        alert("sfg");
-        
-        $.ajax({
-            url: "confirmchannelling",
-            type: "get", //send it through get method
-            data: { 
-              doctorAvailabilityId: doctorAvailabilityId, 
-              check: "0"
-            },
-            success: function(response) {
-              //check dulpication
-//              alert(response);
-              if(response==1)
-              {
-                  var c = confirm("Another channelling found for same doctor availability !\nAre you sure want to channel for another person?");
-                  if(c==true)
-                  {
-                      window.location.href="confirmchannelling?check=1&doctorAvailabilityId="+doctorAvailabilityId;
-                  }
-                  else
-                  {
-                      alert("You Cancelled the channelling ! ");
-                  }
-              }
-              else
-              {
-                    window.location.href="confirmchannelling?doctorAvailabilityId="+doctorAvailabilityId;
-              }
-            },
-            error: function(xhr) {
-                alert("SpecialisationByHospital Error");
-            }
-          });
+               <main>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
 
-    };
-//    });
-    
-</script>
+                         <div class="main_title">
+                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
+                              <div class="main_greeting">
+                                   <h1>Hello <%=username%></h1>
+                                   <p>Profile</p>
+                              </div>
+                         </div>
+                        
+                        <%
+                            if(request.getAttribute("profile")!=null){
+                                Patient row = (Patient)request.getAttribute("profile");
+                                
+                                
+                        %>
+
+                         <!-- change the main cards css fragments to change number of cards Available -->
+                         <div class="main_cards">
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">First Name</p>
+                                        <p class="text-secondary-p"><%= row.firstName %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Last Name</p>
+                                        <p class="text-secondary-p"><%= row.lastName %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <p class="text-secondary-p"><%= row.displayName %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-secondary-p"><%= row.email %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">NIC</p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
+                                   </div>
+                              </div>
+                             
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Date of Birth</p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <p class="text-secondary-p"><%= row.districtStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <p class="text-secondary-p"><%= row.cityStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address</p>
+                                        <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+                              
+                             <div class="card">
+                                   <div class="card_inner_profile" style="overflow-x: scroll; overflow-y: scroll;">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <p class="text-secondary-p"> row.mobileNumbejgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdj<br>rdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvd<br>jrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgf<br>jhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdy<br>fvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhr<br>vdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjht<br>vdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrv<br>drgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhr<br>vdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgd<br>yfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfj<br>htvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtb<br>jjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbf<br>jtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyf<br>vgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrg<br>dyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjjgfjhtvdjrdhrvdrgdyfvgjbfjtbjgnjyygjygnky</p>
+                                   </div>
+                              </div>
+                             
+                             <% if(!row.landNumber.equalsIgnoreCase("") || row.landNumber.equalsIgnoreCase("null")) { %>
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <p class="text-secondary-p"><%= row.landNumber %></p>
+                                   </div>
+                              </div>
+                             <% } %>
+
+                         </div>
+                         
+                        <% } %>
+                        
+                    </div>
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
+          </div>
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
+     </body>
+</html>
