@@ -17,7 +17,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/Dashboard_Admin.css" media="screen" />
           <!--<link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" /> -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      </head>
@@ -58,7 +58,15 @@
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
-
+                              
+                             <div class="card">
+                                   <i class="fa fa-user-o fa-2x text-lightblue"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Pending Reviews</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+                             
                               <div class="card">
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
@@ -66,8 +74,11 @@
                                         <span class="font-bold text-title">2</span>
                                    </div>
                               </div>
+                             
+                             
 
                          </div>
+                         
                  
                          <div class="charts">
 
@@ -234,22 +245,7 @@
                                                        <td>11</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
+                                                  
                                                   <tr>
                                                        <td>1</td>
                                                        <td>Hospital 1</td>
