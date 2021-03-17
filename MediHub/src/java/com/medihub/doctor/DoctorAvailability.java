@@ -140,7 +140,8 @@ public class DoctorAvailability {
         if(cHospital==null || cHospital.equalsIgnoreCase("")){
             q_where_hos="";
         }
-        String q_where_doc = "and (u.first_name LIKE '%"+cDoctor+"%' or u.last_name LIKE '%"+cDoctor+"%') "; 
+//        String q_where_doc = "and (u.first_name LIKE '%"+cDoctor+"%' or u.last_name LIKE '%"+cDoctor+"%') "; 
+        String q_where_doc = "and (u.id="+cDoctor+") "; 
         if(cDoctor==null || cDoctor.equalsIgnoreCase("")){
             q_where_doc="";
         }
@@ -173,7 +174,7 @@ public class DoctorAvailability {
                 DoctorAvailability da = new DoctorAvailability();
                 da.id = rs.getInt("id");
                 da.doctorId = rs.getInt("doctor_id");
-                da.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + rs.getString("degrees");
+                da.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " " + rs.getString("degrees");
                 da.hospitalId = rs.getInt("hospital_id");
                 da.hospitalName = rs.getString("display_name");
                 da.doctorSpecialisation1Id = rs.getInt("special_id_1");

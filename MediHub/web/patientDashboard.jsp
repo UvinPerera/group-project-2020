@@ -105,7 +105,7 @@
                                                   <h1>Pending Appointments</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
-                                             <i class="fa fa-suitcase"></i>
+                                             <!--<i class="fa fa-suitcase"></i>-->
                                         </div>
                                    
                                         <!--pending appointments starts-->
@@ -225,7 +225,7 @@
                                              <h1>Pending Orders</h1>
                                              <!-- <p>Something</p> -->
                                         </div>
-                                        <i class="fa fa-usd"></i>
+                                        <!--<i class="fa fa-usd"></i>-->
                                    </div>
 
                                    <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
