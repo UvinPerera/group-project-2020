@@ -24,9 +24,11 @@
           <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
+          <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
           <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
           <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
      </head>
 
      <body>
@@ -94,7 +96,11 @@
                                       <i class="fa fa-stethoscope fa-2x text-red"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Doctor Name</p>
-                                           <p class="text-secondary-p"><input placeholder="Search Doctor" type="text" name="doctor" id="doctor" maxlength="10" class="" value="<%= getDoctor %>"/></p>
+                                           <!--<p class="text-secondary-p doctor_select"><input placeholder="Search Doctor" type="text" name="doctor" id="doctor" maxlength="10" class="" value="<%= getDoctor %>"/></p>-->
+                                           
+                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor">
+                                               <option value="" disabled>Search Doctor</option>
+                                           </select>
                                       </div>
                                  </div>
 
@@ -105,7 +111,7 @@
                                            <p class="text-secondary-p">
                                                <!--<input placeholder="Search Hospital" list="hospitals" name="hospitalText" id="hospitalText" onkeyup="findList('hospitalText','hospital')">-->
                                                
-                                               <select name='hospital' id="hospital">
+                                               <select name='hospital' class="hospital_select" style="width: 100%" id="hospital">
                                                    <option value="">Select Hospital</option>
                                                     <%
                                                         if(request.getAttribute("hospitals")!=null){
@@ -128,7 +134,7 @@
                                            <p class="text-secondary-p">
                                                <!--<input placeholder="Select Specialisation" list="specialisations" name="specialisationText" id="specialisationText" onkeyup="findList('specialisationText','specialisation')">-->
                                                
-                                               <select name='specialisation' id="specialisation">
+                                               <select name='specialisation' class="specialisation_select" style="width: 100%" id="specialisation">
                                                    <option value="">Select Specialisation</option>
                                                     <%
                                                         if(request.getAttribute("specialisations")!=null){
@@ -148,7 +154,7 @@
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Date</p>
-                                           <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" value=""/></p>
+                                           <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
                                       </div>
                                  </div>
 
@@ -178,7 +184,7 @@
                                                   <h1>Appointments</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
-                                             <i class="fa fa-suitcase"></i>
+                                             <!--<i class="fa fa-suitcase"></i>-->
                                         </div>
                                    
                                         <!--pending appointments starts-->
@@ -296,6 +302,45 @@
           <script>
               
                 $(document).ready( function () {
+                    
+                    //select2
+                    $('.hospital_select').select2({
+                        placeholder: "Select Hospital",
+                        allowClear: true
+                    }).val("<%=getHospital%>").trigger("change");
+                    $('.specialisation_select').select2({
+                        placeholder: "Select Specialisation",
+                        allowClear: true
+                    }).val("<%=getSpecialisation%>").trigger("change");
+                    $('.doctor_select').select2({
+                        placeholder: "Select Doctor",
+                        minimumInputLength: 2,
+                        allowClear: true,
+                        ajax: {
+                            url: "getDoctors",
+                            dataType: 'json',
+                            type: "GET",
+                            quietMillis: 50,
+                            data: function (term) {
+                            return {
+                                q: term
+                            };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: $.map(data, function (item) {
+                                        return {
+                                            text: item.doctorName,
+                                            id: item.id
+                                        }
+                                    })
+                                };
+                            },
+                            cache: true
+                        }
+                    }).val("<%=getDoctor%>").trigger("change");
+        
+                    //data table
                     $('#avail').DataTable( {
                         order: [[0, 'asc'], [1, 'asc']],
                         rowGroup: {
