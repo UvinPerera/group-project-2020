@@ -44,7 +44,7 @@
                          <!-- add "active_menu_link" to class to make it active -->
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/patientDashboard.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dashboard"></i>
-                              <a href="patient">Dashboard</a>
+                              <a href="doctor">Dashboard</a>
                          </div>
 
                          <h2>Alerts</h2>
@@ -71,7 +71,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpatient.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
-                              <a href="patientview">View Profile</a>
+                              <a href="DoctorView">View Profile</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editPatient.jsp' ? 'active_menu_link' : ''}">
