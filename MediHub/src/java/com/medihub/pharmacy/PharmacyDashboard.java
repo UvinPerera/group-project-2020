@@ -48,12 +48,13 @@ public class PharmacyDashboard extends HttpServlet {
        HttpSession session = request.getSession();
         int userType = Integer.parseInt(session.getAttribute("usertype").toString());
         int pharmacyId = Integer.parseInt(session.getAttribute("userid").toString());
+        
         if(userType==4){
-               Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
+                Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
                 
 
                 request.setAttribute("orders", p.getAllOrders()); //directly get all order details
-                request.setAttribute("completedOrders", p.getCompletedOrders()); //directly get all order details
+                request.setAttribute("completedOrders", p.getCompletedOrders()); //directly get all completed order details
                 request.setAttribute("pendingOrders", p.getPendingOrders()); //directly get all pending order details
                 request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
         }

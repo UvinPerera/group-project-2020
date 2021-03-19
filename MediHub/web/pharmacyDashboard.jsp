@@ -203,7 +203,7 @@
                                         
                                         <%
                                              if(request.getAttribute("pendingOrders")!=null){
-                                                  List<Orders> table = (ArrayList<Orders>)request.getAttribute("orders");
+                                                  List<Orders> table = (ArrayList<Orders>)request.getAttribute("pendingOrders");
                                                   if(table.size()>0){
                                         %>
                                         <!--js array-->
@@ -315,7 +315,7 @@
                                         
                                         <%
                                              if(request.getAttribute("completedOrders")!=null){
-                                                  List<Orders> table = (ArrayList<Orders>)request.getAttribute("orders");
+                                                  List<Orders> table = (ArrayList<Orders>)request.getAttribute("completedOrders");
                                                   if(table.size()>0){
                                         %>
                                         <!--js array-->
@@ -406,31 +406,49 @@
                               <!-- Modal content -->
                               <div id="printPart" class="modal-content">
                                    <span id="modalCloseIcon" class="close">&times;</span>
-                                   <h3 style="text-align: center;">Appointment Details</h3>
+                                   <h3 style="text-align: center;">Order Details</h3>
                                    <table style="border:none; text-align: left;">
 
                                         <tr>
-                                             <td> Channelling ID : </td>
+                                             <td> Order ID : </td>
                                              <td id="modal_id"> ** </td>
-                                             <td> Date / Time : </td>
-                                             <td id="modal_date_time"> ** </td>
+                                             <td> Estimated Delivery Date : </td>
+                                             <td id="modal_delivery_date"> ** </td>
                                         </tr>
 
                                         <tr>
-                                             <td> Hospital : </td>
-                                             <td id="modal_hospital"> ** </td>
+<!--                                             <td> Patient ID : </td>
+                                             <td id="modal_patientId"> ** </td>-->
+                                             <td> Patient Name : </td>
+                                             <td id="modal_patientName"> ** </td>
+                                             
+                                        </tr>
+
+                                        <tr>
                                              <td> Description : </td>
                                              <td id="modal_description"> ** </td>
+                                             <td> Order Status : </td>
+                                             <td id="modal_orderStatus"> ** </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                             <td> Patient Address 01 : </td>
+                                             <td id="modal_address1"> ** </td>
+                                             <td> Patient Address 02 : </td>
+                                             <td id="modal_address2"> ** </td>
+                                             
+                                        </tr>
+                                        
+                                        <tr>
+                                             <td> Patient Mobile Number : </td>
+                                             <td id="modal_patientMobileNumber"> ** </td>
+                                             <td> Patient Land Number : </td>
+                                             <td id="modal_patientLandNumber"> ** </td>
+                                             
                                         </tr>
 
-                                        <tr>
-                                             <td> Doctor : </td>
-                                             <td id="modal_doctor"> ** </td>
-                                             <td> Appointment No : </td>
-                                             <td id="modal_appointmet_no"> ** </td>
-                                        </tr>
-
-                                        <tr>
+<!--                                        <tr>
                                              <td> Payment Method : </td>
                                              <td id="modal_Payment_method"> ** </td>
                                              <td> Payment Amount : </td>
@@ -442,7 +460,7 @@
                                              <td id="modal_payment_description"> ** </td>
                                              <td> Payment Status : </td>
                                              <td id="modal_payment_status"> ** </td>
-                                        </tr>
+                                        </tr>-->
 
                                         <tr>
                                              <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
@@ -473,7 +491,7 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
@@ -519,46 +537,46 @@
                var index = indexId;
 
                document.getElementById("modal_id").innerHTML = id[index];
-               document.getElementById("modal_date_time").innerHTML = date[index] + " " + time[index];
-               document.getElementById("modal_hospital").innerHTML = hospital[index];
+               document.getElementById("modal_delivery_date").innerHTML = expectedDeliveryDate[index] //+ " " + time[index];
+               //document.getElementById("modal_patientId").innerHTML = hospital[index];
+               document.getElementById("modal_patientName").innerHTML = patientFirstName[index]+ " " + patientLastName[index];;
                document.getElementById("modal_description").innerHTML = description[index];
-               document.getElementById("modal_doctor").innerHTML = doctor[index];
-               document.getElementById("modal_appointmet_no").innerHTML = appointmentNo[index];
-               document.getElementById("modal_Payment_method").innerHTML = paymentMethod[index];
-               document.getElementById("modal_payment_amount").innerHTML = paymentAmount[index];
-               document.getElementById("modal_payment_description").innerHTML = paymentDescription[index];
+               document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
+               document.getElementById("modal_address1").innerHTML = patientAddress1[index];
+               document.getElementById("modal_address2").innerHTML = patientAddress2[index];
+               document.getElementById("modal_patientMobileNumber").innerHTML = patientMobileNumber[index];
+               document.getElementById("modal_patientLandNumber").innerHTML = patientLandNumber[index];
 
-               var status = "";
-               var colour = "";
-
-               if (paymentStatus[index] != "") {
-                    status = "Paid";
-                    colour = "green";
-               }
-               else {
-                    status = "Not Paid";
-                    colour = "red";
-               }
-               document.getElementById("modal_payment_status").style.color = colour;
-               document.getElementById("modal_payment_status").innerHTML = status;
-
-               }
+//               var status = "";
+//               var colour = "";
+//
+//               if (paymentStatus[index] != "") {
+//                    status = "Paid";
+//                    colour = "green";
+//               }
+//               else {
+//                    status = "Not Paid";
+//                    colour = "red";
+//               }
+//               document.getElementById("modal_payment_status").style.color = colour;
+//               document.getElementById("modal_payment_status").innerHTML = status;
+//
+//               }
 
                // When the user clicks on <span> (x), close the modal
                span.onclick = function () {
                modal.style.display = "none";
 
                document.getElementById("modal_id").innerHTML = "**";
-               document.getElementById("modal_date_time").innerHTML = "**";
-               document.getElementById("modal_hospital").innerHTML = "**";
-               document.getElementById("modal_description").innerHTML = "**";
-               document.getElementById("modal_doctor").innerHTML = "**";
-               document.getElementById("modal_appointmet_no").innerHTML = "**";
-               document.getElementById("modal_Payment_method").innerHTML = "**";
-               document.getElementById("modal_payment_amount").innerHTML = "**";
-               document.getElementById("modal_payment_description").innerHTML = "**";
-               document.getElementById("modal_payment_status").innerHTML = "**";
-
+               document.getElementById("modal_delivery_date").innerHTML =  "**";//+ " " + time[index];
+               //document.getElementById("modal_patientId").innerHTML = hospital[index];
+               document.getElementById("modal_patientName").innerHTML = "**";
+               document.getElementById("modal_description").innerHTML =  "**";
+               document.getElementById("modal_orderStatus").innerHTML =  "**";
+               document.getElementById("modal_address1").innerHTML =  "**";
+               document.getElementById("modal_address2").innerHTML =  "**";
+               document.getElementById("modal_patientMobileNumber").innerHTML =  "**";
+               document.getElementById("modal_patientLandNumber").innerHTML =  "**";
 
                }
 
@@ -568,15 +586,16 @@
                     modal.style.display = "none";
 
                     document.getElementById("modal_id").innerHTML = "**";
-                    document.getElementById("modal_date_time").innerHTML = "**";
-                    document.getElementById("modal_hospital").innerHTML = "**";
-                    document.getElementById("modal_description").innerHTML = "**";
-                    document.getElementById("modal_doctor").innerHTML = "**";
-                    document.getElementById("modal_appointmet_no").innerHTML = "**";
-                    document.getElementById("modal_Payment_method").innerHTML = "**";
-                    document.getElementById("modal_payment_amount").innerHTML = "**";
-                    document.getElementById("modal_payment_description").innerHTML = "**";
-                    document.getElementById("modal_payment_status").innerHTML = "**";
+                document.getElementById("modal_delivery_date").innerHTML =  "**";//+ " " + time[index];
+                //document.getElementById("modal_patientId").innerHTML = hospital[index];
+                document.getElementById("modal_patientName").innerHTML = "**";
+                document.getElementById("modal_description").innerHTML =  "**";
+                document.getElementById("modal_orderStatus").innerHTML =  "**";
+                document.getElementById("modal_address1").innerHTML =  "**";
+                document.getElementById("modal_address2").innerHTML =  "**";
+                document.getElementById("modal_patientMobileNumber").innerHTML =  "**";
+                document.getElementById("modal_patientLandNumber").innerHTML =  "**";
+
                }
                }
 

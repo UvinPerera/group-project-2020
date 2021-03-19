@@ -278,27 +278,27 @@ public class Pharmacy extends User {
             String query2 = "select p.id,p.first_name,p.last_name,p.mobile_number,p.land_number,p.address_1,p.address_2 from users where p.id="+rs.getInt("created_by");
             PreparedStatement pst2 = con.prepareStatement(query2);
             ResultSet rs2 = pst2.executeQuery();
-            List<Orders> o = new ArrayList<Orders>();
+            List<Orders> o2 = new ArrayList<Orders>();
             
                         
             while(rs.next()) { 
-                Orders ord = new Orders(); 
-                ord.description = rs.getString("description"); 
-                ord.status = rs.getInt("status");
-                ord.patientId = rs.getInt("created_by");
-                ord.patientFirstName = rs2.getString("first_name");
-                ord.patientLastName = rs2.getString("last_name");
-                ord.patientAddress1= rs2.getString("address_1");
-                ord.patientAddress2 = rs2.getString("address_2");
-                ord.patientLandNumber = rs2.getString("land_number");
-                ord.patientMobileNumber = rs2.getString("mobile_number");
-                ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
-                ord.orderStatus = rs.getString("order_status");
-                o.add(ord);
+                Orders ord2 = new Orders(); 
+                ord2.description = rs.getString("description"); 
+                ord2.status = rs.getInt("status");
+                ord2.patientId = rs.getInt("created_by");
+                ord2.patientFirstName = rs2.getString("first_name");
+                ord2.patientLastName = rs2.getString("last_name");
+                ord2.patientAddress1= rs2.getString("address_1");
+                ord2.patientAddress2 = rs2.getString("address_2");
+                ord2.patientLandNumber = rs2.getString("land_number");
+                ord2.patientMobileNumber = rs2.getString("mobile_number");
+                ord2.expectedDeliveryDate = rs.getString("expected_delivery_date");
+                ord2.orderStatus = rs.getString("order_status");
+                o2.add(ord2);
             }
             
             con.close();
-            return o;
+            return o2;
         }
         catch(Exception e)
         {
