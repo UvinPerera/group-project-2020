@@ -1,5 +1,5 @@
 <%-- 
-    Document   : patientSidebar
+    Document   : adminSidebar
     Created on : Jan 11, 2021, 11:54:31 PM
     Author     : Ifra
 --%>

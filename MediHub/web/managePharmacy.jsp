@@ -121,51 +121,51 @@
                                                   <tr>
                                                        <th>#</th>
                                                        <th>Pharmacy</th>
-                                                       <th>Doctor</th>
-                                                       <th>Date / Time</th>
-                                                       <th>App #</th>
+                                                       <th>Director</th>
+                                                       <th>City</th>
+                                                       <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td>Pharmacy 1</td>
+                                                       <td>Director 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td>Pharmacy 1</td>
+                                                       <td>Director 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td>Pharmacy 1</td>
+                                                       <td>Director 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td>Pharmacy 1</td>
+                                                       <td>Director 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td>Pharmacy 1</td>
+                                                       <td>Director 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <tr>
