@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
 import com.medihub.resources.*;
+import com.medihub.email.EMail;
 
 /**
  *
@@ -63,7 +64,8 @@ public class Registration extends HttpServlet {
             String query="INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,city,mobile_number,land_number,password,user_type,status,created_at,updated_at) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
-            
+            EMail confrimEmail = new EMail();
+            confrimEmail.send("uvininduwaraperera@gmail.com","Test","Test");
             response.sendRedirect("login.jsp");
             con.close();  
         }
