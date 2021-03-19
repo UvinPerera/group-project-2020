@@ -258,24 +258,23 @@
                                                        </tr>
                                                        
                                                        <script>
-                                                            id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;
-                                                            hospital[<%= table.indexOf(row) %>]             ="<%= row.hospital %>";
-                                                            doctor[<%= table.indexOf(row) %>]               ="<%= row.doctor %>";
-                                                            appointmentNo[<%= table.indexOf(row) %>]        =<%= row.appointmentNo %>;
-                                                            date[<%= table.indexOf(row) %>]                 ="<%= row.date %>";
-                                                            time[<%= table.indexOf(row) %>]                 ="<%= row.start_time %>";
+                                                            id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;                                                            
+                                                            patientFirstName[<%= table.indexOf(row) %>]     ="<%= row.patientFirstName %>";
+                                                            patientLastName[<%= table.indexOf(row) %>]      ="<%= row.patientLastName %>";
+                                                            orderStatus[<%= table.indexOf(row) %>]          =<%= row.orderStatus %>;
+                                                            patientAddress1[<%= table.indexOf(row) %>]      ="<%= row.patientAddress1 %>";
+                                                            patientAddress2[<%= table.indexOf(row) %>]      ="<%= row. patientAddress2 %>";
+                                                            patientMobileNumber[<%= table.indexOf(row) %>]  ="<%= row.patientMobileNumber %>";
+                                                            patientLandNumber[<%= table.indexOf(row) %>]    ="<%= row.patientLandNumber %>";
+                                                            expectedDeliveryDate[<%= table.indexOf(row) %>] ="<%= row.expectedDeliveryDate %>";
                                                             description[<%= table.indexOf(row) %>]          ="<%= row.description %>";
-                                                            paymentMethod[<%= table.indexOf(row) %>]        ="<%= row.payment_method %>";
-                                                            paymentAmount[<%= table.indexOf(row) %>]        =<%= row.payment_amount %>;
-                                                            paidAmount[<%= table.indexOf(row) %>]           =<%= row.paid_amount %>;
-                                                            paymentDescription[<%= table.indexOf(row) %>]   ="<%= row.payment_description %>";
-                                                            paymentStatus[<%= table.indexOf(row) %>]        =<%= row.payment_status %>;        
+                                                                  
                                                         </script>
                                 
                                 
                                                         <%}%>
                                                         
-                                                        <% if(table.size()>5) {%>
+                                                        <% if(table.size()>10) {%>
                                                         <tr>
                                                             <td colspan="6"><a href="#">View More...</a></td>
                                                         </tr>
@@ -284,108 +283,119 @@
                                              </table>
                                         </div>
                                               
-                                        <!--when there is no pending appointments-->
+                                        <!--when there is no pending orders-->
                                                   <%
                                                        }
                                                        else
                                                        {
                                                   %>
                                                   <div class="buttons">
-                                                      No pending Appointments !
-                                                      <a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>    
+                                                      No pending Orders !
+                                                         
                                                   </div>
                                                   <%
                                                        }}
                                                   %>
 
 
-                                    <!--</div>--> 
-                              </div>
-                             <!--######################-->
-                                <!--left table section ending-->
-                             <!--######################-->
-                                                  
-                                                  
-                                                  
-                                                  
-                              <!--######################-->
-                                <!--right table section starting-->
-                             <!--######################-->
+                             </div>
+                             <!--end of left table-->
+                             <!--start of right table-->
+                             
                               <div class="charts_right">
 
                                    <div class="charts_right_title">
                                         <div>
-                                             <h1>Pending Orders</h1>
-                                             <!-- <p>Something</p> -->
+                                             <h1>Completed Orders</h1>
+                                             
                                         </div>
                                         <!--<i class="fa fa-usd"></i>-->
                                    </div>
+                                   <!--pending orders starts-->
+                                        
+                                        <%
+                                             if(request.getAttribute("completedOrders")!=null){
+                                                  List<Orders> table = (ArrayList<Orders>)request.getAttribute("orders");
+                                                  if(table.size()>0){
+                                        %>
+                                        <!--js array-->
+                                        <script>
+                                             var id = [];
+                                             var pharmacyId = [];
+                                             var description = [];
+                                             var status = [];
+                                             var orderStatus = [];
+                                             var patientId = [];
+                                             var patientFirstName = [];
+                                             var patientLastName = [];
+                                             var patientAddress1 = [];
+                                             var patientAddress2 = [];
+                                             var patientMobileNumber = [];
+                                             var patientLandNumber = [];
+                                             var expectedDeliveryDate = [];
+                                             var orderStatus = [];
+                                             var size =<%= table.size() %>;
+                                        </script>
+                                        <!--js array end-->
 
-                                   <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
+                                   <!-- limit the results to 5 in db query... view more option will lead to all results -->
                                    <div class="charts_table_div">
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
-                                                       <th>Pharmacy</th>
-                                                       <th>Doctor</th>
-                                                       <th>Date / Time</th>
-                                                       <th>App #</th>
-                                                       <th>Action</th>
+                                                            <th>Patient Name</th>
+                                                            <th>Order Status</th>
+                                                            <th>Expected Delivery Date</th>
+                                                            <th>Order Number</th>
+                                                            <th>View</th>
                                                   </tr>
                                              </thead>
-                                             <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
-                                                  </tr>
-                                             </tbody>
+                                          <tbody>
+                                                       <% 
+                                                           int cc = 0;
+                                                           for(Orders row : table) { 
+                                                                cc++;
+                                                                if (cc>10){
+                                                                    break;
+                                                                }
+                                                       %>
+                                                       <tr>
+                                                            <td><%= row.patientFirstName %><%= row.patientLastName %></td>
+                                                            <td><%= row.orderStatus %></td>
+                                                            <td><%= row.expectedDeliveryDate %></td>
+                                                            <td><%= row.id %>></td>
+                                                            
+                                                            <td><button id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></td>
+                                                       </tr>
+                                                       
+                                                       <script>
+                                                            id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;                                                            
+                                                            patientFirstName[<%= table.indexOf(row) %>]     ="<%= row.patientFirstName %>";
+                                                            patientLastName[<%= table.indexOf(row) %>]      ="<%= row.patientLastName %>";
+                                                            orderStatus[<%= table.indexOf(row) %>]          =<%= row.orderStatus %>;
+                                                            patientAddress1[<%= table.indexOf(row) %>]      ="<%= row.patientAddress1 %>";
+                                                            patientAddress2[<%= table.indexOf(row) %>]      ="<%= row. patientAddress2 %>";
+                                                            patientMobileNumber[<%= table.indexOf(row) %>]  ="<%= row.patientMobileNumber %>";
+                                                            patientLandNumber[<%= table.indexOf(row) %>]    ="<%= row.patientLandNumber %>";
+                                                            expectedDeliveryDate[<%= table.indexOf(row) %>] ="<%= row.expectedDeliveryDate %>";
+                                                            description[<%= table.indexOf(row) %>]          ="<%= row.description %>";
+                                                                  
+                                                        </script>
+                                
+                                
+                                                        <%}%>
+                                                        
+                                                        <% if(table.size()>10) {%>
+                                                        <tr>
+                                                            <td colspan="6"><a href="#">View More...</a></td>
+                                                        </tr>
+                                                        <%}%>
+                                                  </tbody>
                                         </table>
                                    </div>
 
                               </div>
-                             <!--######################-->
-                                <!--right table section ending-->
-                             <!--######################-->
+                             <!--end of right table-->
 
                          </div>
 

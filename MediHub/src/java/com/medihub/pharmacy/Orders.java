@@ -34,4 +34,11 @@ public class Orders {
     public String patientAddress2;
     public String patientMobileNumber;
     public String patientLandNumber;
+    
+    public int getId() {
+        return id;
+    }
+
 }
+
+  
