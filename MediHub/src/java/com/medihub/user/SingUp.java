@@ -58,7 +58,6 @@ public class SingUp extends HttpServlet {
                 {
                     out.println(e.toString());
                 }
-
                     
 
     }

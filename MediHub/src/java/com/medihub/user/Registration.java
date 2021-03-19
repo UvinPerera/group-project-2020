@@ -52,7 +52,7 @@ public class Registration extends HttpServlet {
             String address2=request.getParameter("address_2");
             String mobile=request.getParameter("mobile");
             String land_line=request.getParameter("land_line");
-//          int district=Integer.parseInt(request.getParameter("district"));
+//            int district=Integer.parseInt(request.getParameter("district"));
             int city=Integer.parseInt(request.getParameter("city"));
             int type=Integer.parseInt(request.getParameter("type"));
 //            String zip_code=request.getParameter("zip_code");
