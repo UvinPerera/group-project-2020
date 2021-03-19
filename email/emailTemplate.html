@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="emailTemplate.css" media="screen" />
+    
   </head>
   <body>
     <hr>
@@ -71,7 +71,7 @@
           <h6> Hello Name, </h6>
           Thank you for registering with MediHub! Please click the button to verify your email address.
           </br></br></br>
-          <button class="styled" type="button"> Click To Verify </button>
+          <button class="styled" type="button" onclick="window.location.href='#'"> Click To Verify </button>
          </br></br></br>
           Please note that failure to verify your email address within 24 hours will terminate your registration.</br></br>
           If you have any issues, please contact medihub54@gmail.com
@@ -92,5 +92,83 @@
     </div>
     </footer>
   </body>
+  <style>
+    *{
+  margin:0;
+  padding:0;
+}
+hr{
+  border-top: 25px solid  #2b3030;
+}
+
+#heading{
+  font-family: 'Montserrat', sans-serif;
+}
+
+#box{
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+h6{
+  font-family: sans-serif;
+
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+#emailBody{
+  padding-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.styled {
+    border:0px;
+    margin-left: 10px;
+    margin-right: 15px;
+    padding: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px #000;
+    background-color:  #0087a1;
+    line-height: 3;
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    background-color: white;
+    color:black;
+    text-shadow:none;
+}
+footer{
+    background-color: #2b3030;
+}
+
+
+.footerText{
+    color:white;
+    font-family: sans-serif;
+    text-align: center;
+}
+.fa {
+  padding: 25px;
+  font-size: 20px;
+  width: 6px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color:white;
+}
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+  </style>
 
 </html>

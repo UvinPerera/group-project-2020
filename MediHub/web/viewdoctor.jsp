@@ -1,128 +1,197 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/view_doctor.css" media="screen" />
-</head>
-<body>
-  <div class="navbar" id="navbar">
-    <ul>
-      <li><button class="styled" type="button" onclick="window.location.href='logout';"> Log out </button></li>
-     <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-      <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-    </ul>
-  </div>
-  <div class="contentContainer">
-  <div class="">
-  <div class="profile">
-    <img src="./public/images/p3.jpg" id="profile">
-    <h4 style="text-align:center; margin-bottom:25px;font-size:20px;fontweight:bold;">Jane Doe</h4>
-    <button class="button" id="profilePic" onclick="window.location.href='doctor'"><b>Back</b></button>
-  </div>
-  <div class="login">
-    <h4 style="text-align:center; margin-top:25px;font-size:20px;fontweight:bold;">Login Activity</h4>
-    <br><br>
-    <h5>First access time :</h5>
-    <p>Monday, 21 January 2019, 8:48 AM</p>
-    <br><br>
-    <h5>Last access time :</h5>
-    <p>Tuesday, 17 January 2020, 9:00 AM</p>
-    <br><br><br><br>
-  </div>
-  </div>
-  <div class="information">
-    <h3 style="text-align:center;font-size:25px;margin-bottom:40px;"> Personal Details</h3>
 
-    <div class="record">
-    <div class="label">Name</div>
-    <div class="data">MediHub Center</div>
-  </div>
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_doc.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     </head>
 
-  <div class="record">
-    <div class="label">License No</div>
-    <div class="data">3573458</div>
-  </div>
+     <body>
 
-  <div class="record">
-    <div class="label">Director ID</div>
-    <div class="data">190000000V</div>
-  </div>
+          <% 
+               String username="";
+               username= session.getAttribute("username").toString();
+          %>
 
-  <div class="record">
-    <div class="label">Land Number</div>
-    <div class="data">07154342325</div>
-  </div>
+          <%
+                            if(request.getAttribute("profile")!=null){
+                              ArrayList Profile = new ArrayList();
+                              ArrayList Profile1 = new ArrayList();
+                              Profile= (ArrayList)request.getAttribute("profile");
+                              Profile1 = (ArrayList)Profile.get(0);
+                                
+                        %>
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
+              
+              <jsp:include page="./public/includes/navbar.jsp"/>
+              
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
 
-  <div class="record">
-    <div class="label">Fax Number</div>
-    <div class="data">075284385</div>
-  </div>
+               <main>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
 
-  <div class="record">
-    <div class="label">Email</div>
-    <div class="data">johndoe@gmail.com</div>
-  </div>
+                         <div class="main_title">
+                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
+                              <div class="main_greeting">
+                                   <h1>Hello <%=username%></h1>
+                                   <p>Profile</p>
+                              </div>
+                         </div>
+                        
+                      
 
-  <div class="record">
-    <div class="label">Address 1</div>
-    <div class="data">No.100,First lane</div>
-  </div>
+                         <!-- change the main cards css fragments to change number of cards Available -->
+                         <div class="main_cards">
 
-  <div class="record">
-    <div class="label">Address 2</div>
-    <div class="data">Kottegoda Road</div>
-  </div>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">First Name</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(1)%></p>
+                                   </div>
+                              </div>
 
-  <div class="record">
-    <div class="label">City</div>
-    <div class="data">Weligama</div>
-  </div>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Last Name</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(2)%></p>
+                                   </div>
+                              </div>
 
-  <div class="record">
-    <div class="label">Longitude</div>
-    <div class="data">Matara</div>
-  </div>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(3)%></p>
+                                   </div>
+                              </div>
 
-  <div class="record">
-    <div class="label">Latitude</div>
-    <div class="data">81700</div>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(5)%></p>
+                                   </div>
+                              </div>
 
-  </div>
-</div>
-</div>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">NIC</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(8)%></p>
+                                   </div>
+                              </div>
+                             
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Date of Birth</p>
+                                        <p class="text-secondary-p"><%=Profile1.get(9)%></p>
+                                   </div>
+                              </div>
 
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <p class="text-secondary-p"><%if(Profile1.get(10).toString().equalsIgnoreCase("M")){out.print("Male");}else if(Profile1.get(10).toString().equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
 
-  <footer>
-    <center>
-    <div class="footerRow">
-      <div class="footerColumn">
-        <div class="footerText">
-          <br>ABOUT <br><br>
-          MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-          provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-          them with the best experience in accessing medical services<br>
-        </div>
-      </div>
-      <div class="footerColumn"><br>
-        <div class="footerText">
-          <br><br>
-          <a href="#" class="a fa fa-facebook"></a>
-          <a href="#" class="a fa fa-twitter"></a>
-          <a href="#" class="a fa fa-google"></a>
-          <a href="#" class="a fa fa-instagram"></a>
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="footerText">
-      All rights Reserved @MediHub2020
-    </div>
-    <br><br>
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <p class="text-secondary-p"></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <p class="text-secondary-p"></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address</p>
+                                        <p class="text-secondary-p"></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+                              
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <p class="text-secondary-p"></p>
+                                   </div>
+                              </div>
+                             
+                             
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <p class="text-secondary-p"></p>
+                                   </div>
+                              </div>
+                            
+
+                         </div>
+                         
+                        
+                        
+                    </div>
+                    <% } %>
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/doctorSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
+          </div>
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
+     </body>
 </html>

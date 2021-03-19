@@ -140,7 +140,7 @@
         
         <h2 class="name">City</h2>
         <select class="input option" name='city' id="city" class="filter_dropdown">
-            <option value='' selected>--Choose Option--</option>
+         <option value='' selected>--Choose Option--</option>
 
         </select>
         <div class="danger" id="cityError">
