@@ -110,7 +110,7 @@
                         <!--create button-->
                         <!--######################-->
                         <div class="buttons">
-                            <a href="createpharmacy" class=""><button class="button" ><b>Create a new hospital</b></button></a>
+                            <a href="createHospital.jsp" class=""><button class="button" ><b>Create a new hospital</b></button></a>
                         </div>
                         
                         <div class="charts">
