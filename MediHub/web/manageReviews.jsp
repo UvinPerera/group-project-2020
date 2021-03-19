@@ -51,7 +51,7 @@
                     <div class="main_container">
                         <div class="main_title">
                              <div class="main_greeting">
-                                 <h3> Manage Reviews</h3>
+                                 <h3>Manage Reviews</h3>
                              </div>
                         </div> 
                         <form class="" action="manageReview" method="GET" id="submitForm">
@@ -79,10 +79,10 @@
                                                <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
                                                    <option value='Action' selected><a href="">All</a></option>
                                                    <option value='Action'><a href="#">Review ID</a></option>
-                                                    <option value='Action'><a href="#">Patient ID</a></option>
-                                                   <option value='Action'><a href="#">pharmacy Name</a></option>
+                                                   <option value='Action'><a href="#">Patient ID</a></option>
+                                                   <option value='Action'><a href="#">patient Name</a></option>
                                                    <option value='Action'><a href="#">Date</a></option>
-                                                   <option value='Action'><a href="#">City</a></option>
+                                                   <option value='Action'><a href="#">Status</a></option>
                                                </select>
                                       </div>
                                  </div>
@@ -102,8 +102,11 @@
 
 
                             </div>
-                        </form> 
+                              </form>
+                                               
                         <hr>
+                        
+                        
                         <div class="charts">
                           
                             <div class="charts_table_div">
@@ -112,50 +115,45 @@
                                                   <tr>
                                                        <th>#</th>
                                                        <th>Patient ID</th>
-                                                       <th>Patient</th>
+                                                       <th>Patient Name</th>
                                                        <th>Date</th>
-                                                       <th>Responded</th>
+                                                       <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>121</td>
                                                        <td>Patient 1</td>
-                                                       <td>10/15/2020</td>
+                                                       <td>Weligama</td>
                                                        <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>121</td>
                                                        <td>Patient 1</td>
-                                                       <td>10/15/2020</td>
+                                                       <td>Weligama</td>
                                                        <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>121</td>
                                                        <td>Patient 1</td>
-                                                       <td>10/15/2020</td>
+                                                       <td>Weligama</td>
                                                        <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>121</td>
                                                        <td>Patient 1</td>
-                                                       <td>10/15/2020</td>
+                                                       <td>Weligama</td>
                                                        <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></td>
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <<td>121</td>
                                                        <td>Patient 1</td>
-                                                       <td>10/15/2020</td>
+                                                       <td>Weligama</td>
                                                        <td>Active</td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
                                                   </tr>
@@ -165,6 +163,7 @@
                                              </tbody>
                                         </table>
                                    </div>
+
                               </div>
                         </div>                            
                     <!--######################-->
