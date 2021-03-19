@@ -53,6 +53,7 @@ public class PharmacyDashboard extends HttpServlet {
                 
 
                 request.setAttribute("orders", p.getAllOrders()); //directly get all order details
+                request.setAttribute("pendingOrders", p.getPendingOrders()); //directly get all pending order details
                 request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
         }
         else{

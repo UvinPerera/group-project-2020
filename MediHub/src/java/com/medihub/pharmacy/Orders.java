@@ -22,11 +22,11 @@ public class Orders {
     public String description;
     public int status;
     public String createdAt;
+    public String orderStatus;
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
-    
-    public String orderStatus;
+    public String expectedDeliveryDate;
     public int patientId;
     public String patientFirstName;
     public String patientLastName;

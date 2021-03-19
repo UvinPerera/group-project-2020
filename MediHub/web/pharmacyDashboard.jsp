@@ -202,56 +202,58 @@
                                         <!--pending orders starts-->
                                         
                                         <%
-                                             if(request.getAttribute("orders")!=null){
+                                             if(request.getAttribute("pendingOrders")!=null){
                                                   List<Orders> table = (ArrayList<Orders>)request.getAttribute("orders");
                                                   if(table.size()>0){
                                         %>
                                         <!--js array-->
                                         <script>
                                              var id = [];
-                                             var hospital = [];
-                                             var doctor = [];
-                                             var appointmentNo = [];
-                                             var date = [];
-                                             var time = [];
+                                             var pharmacyId = [];
                                              var description = [];
-                                             var paymentMethod = [];
-                                             var paymentAmount = [];
-                                             var paidAmount = [];
-                                             var paymentDescription = [];
-                                             var paymentStatus = [];
+                                             var status = [];
+                                             var orderStatus = [];
+                                             var patientId = [];
+                                             var patientFirstName = [];
+                                             var patientLastName = [];
+                                             var patientAddress1 = [];
+                                             var patientAddress2 = [];
+                                             var patientMobileNumber = [];
+                                             var patientLandNumber = [];
+                                             var expectedDeliveryDate = [];
+                                             var orderStatus = [];
                                              var size =<%= table.size() %>;
                                         </script>
                                         <!--js array end-->
 
-                                   <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
+                                   <!-- limit the results to 5 in db query... view more option will lead to all results -->
                                         <div class="charts_table_div">
                                              <table class="charts_table">
                                                   <thead>
                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Hospital</th>
-                                                            <th>Doctor</th>
-                                                            <th>Date / Time</th>
-                                                            <th>App #</th>
+                                                            
+                                                            <th>Patient Name</th>
+                                                            <th>Order Status</th>
+                                                            <th>Expected Delivery Date</th>
+                                                            <th>Order Number</th>
                                                             <th>View</th>
                                                        </tr>
                                                   </thead>
                                                   <tbody>
                                                        <% 
                                                            int cc = 0;
-                                                           for(Channelling row : table) { 
+                                                           for(Orders row : table) { 
                                                                 cc++;
-                                                                if (cc>5){
+                                                                if (cc>10){
                                                                     break;
                                                                 }
                                                        %>
                                                        <tr>
-                                                            <td><%= row.id %></td>
-                                                            <td><%= row.hospital %></td>
-                                                            <td><%= row.doctor %></td>
-                                                            <td><%= row.date %><br><%= row.start_time %></td>
-                                                            <td><%= row.appointmentNo %></td>
+                                                            <td><%= row.patientFirstName %><%= row.patientLastName %></td>
+                                                            <td><%= row.orderStatus %></td>
+                                                            <td><%= row.expectedDeliveryDate %></td>
+                                                            <td><%= row.id %>></td>
+                                                            
                                                             <td><button id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></td>
                                                        </tr>
                                                        

@@ -159,7 +159,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select o.id,o.pharmacy_id, o.description, o.status,o.created_at,o.updated_at,o.created_by,o.updated_by from pharmacy_orders o where pharmacy_id="+this.id;
+        String query="select o.id,o.pharmacy_id,o.expected_delivery_date,o.order_status, o.description, o.status,o.created_at,o.updated_at,o.created_by,o.updated_by from pharmacy_orders o where pharmacy_id="+this.id;
         
         try
         {
@@ -186,6 +186,8 @@ public class Pharmacy extends User {
                 ord.patientAddress2 = rs2.getString("address_2");
                 ord.patientLandNumber = rs2.getString("land_number");
                 ord.patientMobileNumber = rs2.getString("mobile_number");
+                ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
+                ord.orderStatus = rs.getString("order_status");
                 o.add(ord);
             }
             
@@ -199,5 +201,59 @@ public class Pharmacy extends User {
         }
       
     }
+     
+     public List<Orders> getPendingOrders(){
+        
+        //date and time formatting
+        Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
+        String strDate = dateFormat.format(date);
+        String strTime = timeFormat.format(date);
+               
+        //sql query
+        String query="select o.id,o.pharmacy_id, o.description, o.status,o.created_at,o.updated_at,o.created_by,o.updated_by,o.expected_delivery_date from pharmacy_orders,o.order_status o where pharmacy_id="+this.id+" and o.created_at < CURRENT_TIMESTAMP and expected_delivery_date <= CURRENT_TIMESTAMP";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            String query2 = "select p.id,p.first_name,p.last_name,p.mobile_number,p.land_number,p.address_1,p.address_2 from users where p.id="+rs.getInt("created_by");
+            PreparedStatement pst2 = con.prepareStatement(query2);
+            ResultSet rs2 = pst2.executeQuery();
+            List<Orders> o = new ArrayList<Orders>();
+            
+                        
+            while(rs.next()) { 
+                Orders ord = new Orders(); 
+                ord.description = rs.getString("description"); 
+                ord.status = rs.getInt("status");
+                ord.patientId = rs.getInt("created_by");
+                ord.patientFirstName = rs2.getString("first_name");
+                ord.patientLastName = rs2.getString("last_name");
+                ord.patientAddress1= rs2.getString("address_1");
+                ord.patientAddress2 = rs2.getString("address_2");
+                ord.patientLandNumber = rs2.getString("land_number");
+                ord.patientMobileNumber = rs2.getString("mobile_number");
+                ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
+                ord.orderStatus = rs.getString("order_status");
+                o.add(ord);
+            }
+            
+            con.close();
+            return o;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+      
+    }
+     
     
 }
