@@ -53,7 +53,7 @@
 
     <div class="row">
       <div class="column">
-          <form action="#">
+          <form action="contact" method="post">
             <br><br><h2>Contact Us</h2>
             <br><br><br>
             <div class="input-container">
@@ -73,7 +73,7 @@
 
             <div class="input-container">
               <i class="fa fa-commenting icon"></i>
-              <textarea name="Comment" cols="69" rows="5">Add your message ...
+              <textarea name="message" cols="69" rows="5">Add your message ...
               </textarea>
             </div>
             <br/><br>
