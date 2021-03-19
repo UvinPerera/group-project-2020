@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.medihub.user.*;
 import com.medihub.resources.*;
 import com.medihub.email.EMail;
+import com.medihub.email.EmailData;
 
 /**
  *
@@ -65,7 +66,8 @@ public class Registration extends HttpServlet {
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             EMail confrimEmail = new EMail();
-            confrimEmail.send("uvininduwaraperera@gmail.com","Test","Test");
+            EmailData ed = new EmailData();
+            confrimEmail.send("uvininduwaraperera@gmail.com","Test",ed.confirmEmail);
             response.sendRedirect("login.jsp");
             con.close();  
         }

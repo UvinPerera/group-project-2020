@@ -45,7 +45,8 @@ public class EmailTest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EMail emailTest = new EMail();
-        emailTest.send("uvinperera@hotmail.com","Test","Test");
+        EmailData ed = new EmailData();
+        emailTest.send("uvininduwaraperera@gmail.com","Test",ed.confirmEmail);
         
     }
 
