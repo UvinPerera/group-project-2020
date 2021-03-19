@@ -46,9 +46,14 @@ public class PharmacyDashboard extends HttpServlet {
             throws ServletException, IOException {
        
        HttpSession session = request.getSession();
-        int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==4){
-           request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
+        int userType = Integer.parseInt(session.getAttribute("usertype").toString());
+        int pharmacyId = Integer.parseInt(session.getAttribute("userid").toString());
+        if(userType==4){
+               Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
+                
+
+                request.setAttribute("orders", p.getAllOrders()); //directly get all order details
+                request.getRequestDispatcher("pharmacyDashboard.jsp").forward(request, response);
         }
         else{
             request.getRequestDispatcher("403.jsp").forward(request, response);
