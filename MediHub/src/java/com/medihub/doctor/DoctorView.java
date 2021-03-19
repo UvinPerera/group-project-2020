@@ -61,7 +61,7 @@ public class DoctorView extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+doctorId);
+                ResultSet rs=stmt.executeQuery("SELECT * FROM users INNER JOIN doctors ON users.id=doctors.id WHERE users.id="+doctorId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
@@ -72,6 +72,7 @@ public class DoctorView extends HttpServlet {
                 }
                 
                 request.setAttribute("profile", Profile);
+                
                 request.getRequestDispatcher("viewdoctor.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
