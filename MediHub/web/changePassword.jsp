@@ -74,7 +74,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Current Password</p>
-                                        <input class="data" type="text" name="current_password" id="current_password" placeholder="Current Password" value="">
+                                        <input class="data" type="password" name="current_password" id="current_password" placeholder="Current Password" value="">
                                         <div class="alert-danger" id="currentPasswordError">
                                             * Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters
                                         </div>
@@ -88,7 +88,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">New Password</p>
-                                        <input class="data" type="text" name="new_password" id="new_password" placeholder="New Password" value="">
+                                        <input class="data" type="password" name="new_password" id="new_password" placeholder="New Password" value="">
                                         <div class="alert-danger" id="newPasswordError">
                                             * Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters
                                         </div>
@@ -102,7 +102,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Confirm New Password</p>
-                                        <input class="data" type="text" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password" value="">
+                                        <input class="data" type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Confirm New Password" value="">
                                         <div class="alert-danger" id="newPasswordConfirmationError">
                                             * Password Must Contain a Uppercase Letter, Lowercase Letter, Number, and 6-20 Characters
                                         </div>
