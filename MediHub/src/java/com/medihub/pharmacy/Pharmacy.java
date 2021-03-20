@@ -212,7 +212,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select o.id,o.pharmacy_id, o.description, o.status,o.created_at,o.updated_at,o.created_by,o.updated_by,o.expected_delivery_date from pharmacy_orders,o.order_status o where pharmacy_id="+this.id+" and o.created_at < CURRENT_TIMESTAMP and expected_delivery_date => CURRENT_TIMESTAMP";
+        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status=pending";
         
         try
         {
@@ -222,7 +222,7 @@ public class Pharmacy extends User {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
-            String query2 = "select p.id,p.first_name,p.last_name,p.mobile_number,p.land_number,p.address_1,p.address_2 from users where p.id="+rs.getInt("created_by");
+            String query2 = "select id,first_name,last_name,mobile_number,land_number,address_1,address_2 from users where id="+rs.getInt("created_by");
             PreparedStatement pst2 = con.prepareStatement(query2);
             ResultSet rs2 = pst2.executeQuery();
             List<Orders> o = new ArrayList<Orders>();
@@ -265,7 +265,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select o.id,o.pharmacy_id, o.description, o.status,o.created_at,o.updated_at,o.created_by,o.updated_by,o.expected_delivery_date from pharmacy_orders,o.order_status o where pharmacy_id="+this.id+" and o.order_status = 'completed' ORDER BY o.expected_delivery_date DESC";
+        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status=completed";
         
         try
         {
@@ -275,7 +275,7 @@ public class Pharmacy extends User {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
-            String query2 = "select p.id,p.first_name,p.last_name,p.mobile_number,p.land_number,p.address_1,p.address_2 from users where p.id="+rs.getInt("created_by");
+            String query2 = "select id,first_name,last_name,mobile_number,land_number,address_1,address_2 from users where id="+rs.getInt("created_by");
             PreparedStatement pst2 = con.prepareStatement(query2);
             ResultSet rs2 = pst2.executeQuery();
             List<Orders> o2 = new ArrayList<Orders>();
