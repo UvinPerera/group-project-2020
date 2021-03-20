@@ -6,6 +6,7 @@
 package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -49,40 +50,28 @@ public class EditPharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                HttpSession session = request.getSession();
-            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+             HttpSession session = request.getSession();
+            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
-            try{
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
+            
+       
+             try
+            {
+                Pharmacy p = new Pharmacy(patientId);
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE id="+pharmacyId);
-                ArrayList Details = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 20 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Details.add(row);
-                }
+                District d = new District();
                 
-                ResultSet rs2=stmt.executeQuery("SELECT * FROM pharmacies WHERE pharmacist_id="+pharmacyId);
-                ArrayList Details2 = new ArrayList();
-                while(rs2.next()){
-                        ArrayList row2 = new ArrayList();
-                        for (int i = 1; i <= 20 ; i++){
-                            row2.add(rs2.getString(i));
-                        }
-                        Details2.add(row2);
-                }
+                City c = new City();
                 
-                request.setAttribute("details", Details);
-                request.setAttribute("details2", Details2);
+                request.setAttribute("cities", c.getAllCities()); //directly get districts
+                request.setAttribute("districts", d.getAllDistricts()); //directly get districts
+                request.setAttribute("profile", p.getProfile());
                 request.getRequestDispatcher("editpharmacy.jsp").forward(request, response);
-                }catch(Exception e){
+            }
+             catch(Exception e){
                     out.println(e.toString());
                 }
+                
     }
 
     /**
