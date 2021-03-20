@@ -28,6 +28,7 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
           <div class="container">
@@ -231,7 +232,13 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <% 
+                   String sidebar = "";
+                    if(userType==1) {
+                        sidebar = "patientSidebar";
+                    } 
+               %>
+               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
