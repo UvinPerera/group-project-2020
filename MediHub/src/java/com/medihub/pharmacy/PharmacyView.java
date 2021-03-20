@@ -51,38 +51,20 @@ public class PharmacyView extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             HttpSession session = request.getSession();
-            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
+            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
             
             try
             {
-                //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
-                
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+adminId);
-                int pharmacyId=0;
-                while(rs.next()){
-                        pharmacyId=rs.getInt("pharmacy_id");
-                }
-                rs=stmt.executeQuery("SELECT * FROM pharmacies WHERE id="+pharmacyId);
-                ArrayList Profile = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 22 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Profile.add(row);
-                }
-                
-                request.setAttribute("profile", Profile);
+                Pharmacy p = new Pharmacy(pharmacyId);
+                request.setAttribute("profile", p.getProfile());
                 request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
     }
+
 
     
     @Override
