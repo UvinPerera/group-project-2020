@@ -147,39 +147,59 @@
                                                   %>
 </center>
  <br>
- <div id="viewOrder" class="modal">
+  <div id="modalBox" class="modal">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>View Order</h2>
-      </div>
-      
-      <div class="modal-body">
-  
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="tableheading">Order ID</th>
-              <th class="tableheading">Pharmacy ID</th>
-              <th class="tableheading">Pharmacy Name</th>
-              <th class="tableheading">Date</th>
-              <th class="tableheading">Status</th>
-              <th class="tableheading">Description</th>
-              
-            </tr>
-            <tr>
-              <td class="Row">001</td>
-              <td class="Row">101</td>
-              <td class="Row">Apolo Pharmacy</td>
-              <td class="Row">15/10/2020</td>
-              <td class="Row">Oredred</td>
-              <td class="Row">This is some random description of something boring</td>
+            <!-- Modal content -->
+            <div id="printPart" class="modal-content">
+                <span class="close">&times;</span>
+                <h3 style="text-align: center;">Order Details</h3>
+                <table style="border:none; text-align: left;">
+
+                    <tr>
+                        <td> Order ID : </td>
+                        <td id="modal_id"> ** </td>
+                        <td> Delivery Date / Time : </td>
+                        <td id="modal_date_time"> ** </td>
+                    </tr>
+
+                    <tr>
+                        <td> Pharmacy ID : </td>
+                        <td id="modal_pharmacyId"> ** </td>
+                        <td> Pharmacy Name : </td>
+                        <td id="modal_pharmacyName"> ** </td>
+                    </tr>
+
+                    <tr>
+                        <td> Order Status : </td>
+                        <td id="modal_orderStatus"> ** </td>
+                        <td> Patient Order Description : </td>
+                        <td id="modal_description"> ** </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"> File Path : </td>
+                        <td colspan="2" id="modal_filePath"> ** </td>
+                        
+                    </tr>
+
+                   
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
             
-              </tr>
-          </thead>
-        </table>
-      </div>
+             </div>
     </div>
 
 
@@ -191,21 +211,67 @@
 
 
 <script>
-var modal = document.getElementById("viewOrder");
-var btn = document.getElementById("vieworder");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+         var modal = document.getElementById("modalBox");
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
+    // Get the button that opens the modal
+    var btn = document.getElementById("popUp");
 
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    //modal print btn
+    var print = document.getElementById("print");
+
+    // When the user clicks on the button, open the modal
+    //    btn.onclick = function() 
+    function popup(indexId) {
+        modal.style.display = "block";
+        
+        var index=indexId;
+        
+        document.getElementById("modal_id").innerHTML = id[index];
+        document.getElementById("modal_pharmacyId").innerHTML = pharmacyId[index];
+        document.getElementById("modal_pharmacyName").innerHTML = pharmacyName[index];
+        document.getElementById("modal_date_time").innerHTML = datetime[index];
+        document.getElementById("modal_description").innerHTML = description[index];
+        document.getElementById("modal_orderStatus").innerHTML = status[index];
+        document.getElementById("modal_filePath").innerHTML = filepath[index];
+        
+
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    //when printing
+    print.onclick = function () {
+        print.style.display = "none";
+        var win = window.open();
+        var printContent = $("#printPart").html();
+
+        $(win.document.body).html(printContent);
+        win.print();
+        print.style.display = "block";
+    }
+    
+        function confirmdelete(index) {
+        var orderId=index;
+        var del = confirm("Are you sure you want delete this order permenently ?");
+        if (del == true){
+            window.location.href="deleteorder?orderid="+orderId;
+          //$(location).attr('href',reidrect);
+        }
+        
+
+    }
+   </script>
 </html>

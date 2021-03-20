@@ -166,6 +166,7 @@ public class Pharmacy extends User {
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
             
+            
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
