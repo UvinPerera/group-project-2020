@@ -60,7 +60,20 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dropbox"></i>
-                              <a href="trackOrder(phar).jsp">Pharmacy Orders</a>
+                              <a href="trackpatientorder">Pharmacy Orders</a>
+                         </div>
+                         
+                         
+                         <h2>Pharmacy</h2>
+
+                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-user-circle"></i>
+                              <a href="#">View Pharmacy</a>
+                         </div>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacist.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-user-circle-o"></i>
+                              <a href="#">Edit Pharmacy</a>
                          </div>
 
                          <h2>User</h2>

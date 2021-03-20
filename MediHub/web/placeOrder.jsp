@@ -1,97 +1,208 @@
-<!doctype html>
-<%@page import="com.medihub.location.*"%>
+<%-- 
+    Document   : place_order
+    Created on : Mar 20, 2021, 7:13:40 PM
+    Author     : Yash
+--%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.pharmacy.*"%> 
+<%@page import="com.medihub.location.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/placeorder.css" media="screen"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-</head>
-<body>
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
+          <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+          <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+     </head>
 
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><button class="styled" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
-       <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
+     <body>
 
-  <div class="container">
-    <h1>Order Form</h1><br>
-    <form action="submitorder" method="post">
+          <% 
+               String username="";              
 
-      <div class="dropdown">
-        <div class="filterContainer">
-        <div class="filtername"><h2 class="name">Select Your District </h2></div>
-        <div class="filter"><select name='district' id="district">
-                 <option value='' selected>Select District</option>
-                 <%
-                            if(request.getAttribute("districts")!=null){
-                                List<District> table = (ArrayList<District>)request.getAttribute("districts");
-                                if(table.size()>0){
-                                    for(District row : table) { %>
-                                        <option value='<%= row.id %>'><%= row.nameEn %></option>
-                        <%
-                                }}}
-                        %>
-                      
-        </select>
-      </div>
-    </div>
-      <div class="filterContainer">
-        <div class="filtername"><h2 class="name">Select Your City </h2></div>
-        <div class="filter"><select name='city' id="city" class="filter_dropdown">
-                    <option value='' selected>Select City</option>
+               username= session.getAttribute("username").toString();
+                     
+             
+                     
+               
+          %>
 
-                </select>
-      </div>
-    </div>
-    <div class="filterContainer">
-      <div class="filtername"><h2 class="name">Select a preferred Pharmacy </h2></div>
-      <div class="filter">
-     <select name='pharmacy' id="pharmacy" class="filter_dropdown">
-                    <option value='' selected>Select pharmacy</option>
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
+              
+              <jsp:include page="./public/includes/navbar.jsp"/>
+              
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
 
-      </select>
-      </div>
-    </div>
-  </div>
-  <h2 class="details">Prescription</h2>
-   <input class="input" type="file" name="file_path" id="email" placeholder="Select Image">
+               <main>
+                   <h3 style="padding-left: 5%;padding-top:2%;">Place Pharmacy Order</h3>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
 
-  <h2 class="details">Description</h2>
-   <input class="input" type="text" name="description" id="email" placeholder="Enter description">
+<!--                         <div class="main_title">
+                             <img src="./public/images/p3.jpg" alt="hello">
+                              <div class="main_greeting">
+                                   <h1>Hello <%//=username%></h1>
+                                   <p>Profile</p>
+                              </div>
+                         </div>-->
 
-   <div class="button-container">
-         <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
-         <button class="button" type="reset" id="clear"><b>Clear</b></button>
-         <button class="button" type="submit"><b>Submit</b></button>
+                         <!-- change the main cards css fragments to change number of cards Available -->
+                         <form action="submitorder" method="post">
+<!--                         <form class="" action="channelling" method="GET" id="submitForm">-->
+<!--                             <input type="hidden" name="search" value="1"/>-->
+                            <div class="main_cards">
 
-  </div>
-    </form>
+                                 <div class="card">
+                                      <i class="fa fa-map-marker fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Select District</p>
+                                          <select name='district' id="district">
+                                                <option value='' selected>Select District</option>
+                                                <%
+                                                           if(request.getAttribute("districts")!=null){
+                                                               List<District> table = (ArrayList<District>)request.getAttribute("districts");
+                                                               if(table.size()>0){
+                                                                   for(District row : table) { %>
+                                                                       <option value='<%= row.id %>'><%= row.nameEn %></option>
+                                                       <%
+                                                               }}}
+                                                       %>
+
+                                       </select>
+                                               
+                                      </div>
+                                 </div>
+
+                                <div class="card">
+                                      <i class="fa fa-map-marker fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Select City</p>
+                                                    <select name='city' id="city" class="filter_dropdown">
+                                                        <option value='' selected>Select City</option>
+
+                                                    </select>
+                                                                                  
+                                      </div>
+                                 </div>
 
 
+                               
 
+                                 <div class="card">
+                                      <i class="fa fa-medkit fa-2x text-yellow"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Select Pharmacy</p>
+                                            <select name='pharmacy' id="pharmacy" class="filter_dropdown">
+                                                <option value='' selected>Select pharmacy</option>
 
+                                             </select>
+                                          
+                                      </div></div>
+                                      
+                                 <div class="card">
+                                      <i class="fa fa-calendar fa-2x text-yellow"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Expected Delivery Date</p>
+                                            <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
+                                          
+                                      </div></div>
 
+                                 
+                                <div class="card">
+                                      <i class="fa fa-file-image-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Prescription</p>
+                                           <p class="text-secondary-p"><input class="input" type="file" name="file_path" id="email" placeholder="Select Image"></p>
+                                      </div>
+                                </div></div>
+                                 
+                                <div class="card">
+                                      <i class="fa fa-comment-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Additional Comments</p>
+                                           <p class="text-secondary-p"><input class="input" type="text" name="description" id="email" placeholder="Enter description"></p>
+                                      </div>
+                                 </div>
+                                                       <br><br>
+                                 <div class="buttons">
+                                     <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
+                                    <button class="button" type="reset" id="clear"><b>Clear</b></button>
+                                 
+                                   <button class="button-success" type="submit"><b>Place Order</b></button>     
+                                 </div>
 
+                                 
 
-  </div>
+                            </div>
+                         </form>
+                                               
+                        <br>
+                         
+                        
+                        
+                    
 
-  </body>
-  </html>
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
+          </div>
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
+
+          
+     </body>
+</html>
 <script>
     
     //date selection limiting

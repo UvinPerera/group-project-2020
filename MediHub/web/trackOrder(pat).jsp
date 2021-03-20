@@ -1,3 +1,18 @@
+<%-- 
+    Document   : trackOrder(phar)
+    Created on : Nov 30, 2020, 03:50:50 AM
+    Author     : Yash
+--%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<!doctype html>
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -9,59 +24,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(pat).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
 </head>
 <body>
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="style" type="button" onclick="window.location.href='logout';"> Logout </button></li>
-        <li><button class="style" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
-        <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
-   
-  <div id="viewOrder" class="modal">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>View Order</h2>
-      </div>
-      
-      <div class="modal-body">
+  <div class="container">  
+           <jsp:include page="./public/includes/navbar.jsp"/>
+           <main>
+     
+   <% String username="";
+       username= session.getAttribute("username").toString();
+  
+       
+       ArrayList array = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       int size = 0;
+       
+       if(request.getAttribute("orders")!=null){
+           array=(ArrayList)request.getAttribute("orders");
+            size= array.size();
+//            for(int i=0; i<size; i++){
+//            a2 =(ArrayList) array.get(i);  
+            //}
+       //}
         
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="tableheading">Order ID</th>
-              <th class="tableheading">Pharmacy ID</th>
-              <th class="tableheading">Pharmacy Name</th>
-              <th class="tableheading">Date</th>
-              <th class="tableheading">Status</th>
-              <th class="tableheading">Description</th>
-              
-            </tr>
-            <tr>
-              <td class="Row">001</td>
-              <td class="Row">101</td>
-              <td class="Row">Apolo Pharmacy</td>
-              <td class="Row">15/10/2020</td>
-              <td class="Row">Oredred</td>
-              <td class="Row">This is some random description of something boring</td>
-            
-              </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
-
-
-</div>
+  %>
+   
+ 
     <br><br><h3>Track Orders</h3><hr>
   <div class="Dropdown">
     <select name='Dropdown' class="filters">
@@ -87,6 +77,17 @@
   </div>
   <br>
 <center>
+     <script>
+                var id = [];
+                var pharmacyId = [];
+                var pharmacyName= [];
+                var datetime = [];
+                var status = [];
+                var filepath= [];
+                var description = [];
+                
+  
+  </script>
   <div class="container-table" style="clear:both;">
     <table class="table">
       <thead>
@@ -94,122 +95,183 @@
         <th class="tableheading">Order ID</th>
         <th class="tableheading">Pharmacy ID</th>
         <th class="tableheading">Pharmacy Name</th>
-        <th class="tableheading">Date</th>
+        <th class="tableheading">Delivery Date</th>
         <th class="tableheading">Status</th>
         <th class="tableheading">Actions</th>
       </tr>
       </thead>
       <tbody>
+          <%for(int i=0; i<size; i++){
+            a2 =(ArrayList) array.get(i);%>
       <tr>
-        <td class="Row">001</td>
-        <td class="Row">101</td>
-        <td class="Row">Apolo Pharmacy</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Oredred</td>
+        <td class="Row"><%=a2.get(0)%></td>
+        <td class="Row"><%=a2.get(1)%></td>
+        <td class="Row"><%=a2.get(2)%></td>
+        <td class="Row"><%=a2.get(3)%></td>
+        <td class="Row"><%=a2.get(4)%></td>
         <td>
           <ul class="actions">
-              <li><button class="btn" id="vieworder"><i class="fa fa-eye"></i></button></li>
-              <li><button class="btn" id="editorder"><i class="fa fa-edit"></i></button></li>
-              <li><button class="btn" id="deleteOrder" onclick="confirm('Do you want to delete this order?')"><i class="fa fa-trash"></i></button></li>
-          </ul>
+              <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
+              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
+          </ul>  
         </td>
+        <script>
+                            id[<%=i%>]                   ="<%=a2.get(0)%>"; 
+                            pharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
+                            pharmacyName[<%=i%>]         ="<%=a2.get(1)%>";
+                            datetime[<%=i%>]             ="<%=a2.get(2)%>";
+                            status[<%=i%>]               ="<%=a2.get(3)%>";
+                            filepath[<%=i%>]             ="<%=a2.get(4)%>";
+                            description[<%=i%>]          ="<%=a2.get(6)%>"; 
+                            
+          </script>
       </tr>
-      <tr>
-        <td class="Row">002</td>
-        <td class="Row">102</td>
-        <td class="Row">Medi Center</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Received</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">003</td>
-        <td class="Row">103</td>
-        <td class="Row">Lanka Osusala</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Cancelled</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">004</td>
-        <td class="Row">104</td>
-        <td class="Row">Health Plus</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Cancelled</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
+       <%}%>
+       <tr>
+
       </tbody>
     </table>
- </div>
+      </div>
+    <%
+                                                       }
+                                                       else
+                                                       {
+                                                  %>
+                                                  <div>
+                                                      No order information
+                                                         
+                                                  </div>
+                                                  <%
+                                                       }
+                                                  %>
 </center>
  <br>
+  <div id="modalBox" class="modal">
 
- 
-</body>
-<br><br>
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
-      </div>
+            <!-- Modal content -->
+            <div id="printPart" class="modal-content">
+                <span class="close">&times;</span>
+                <h3 style="text-align: center;">Order Details</h3>
+                <table style="border:none; text-align: left;">
+
+                    <tr>
+                        <td> Order ID : </td>
+                        <td id="modal_id"> ** </td>
+                        <td> Delivery Date / Time : </td>
+                        <td id="modal_date_time"> ** </td>
+                    </tr>
+
+                    <tr>
+                        <td> Pharmacy ID : </td>
+                        <td id="modal_pharmacyId"> ** </td>
+                        <td> Pharmacy Name : </td>
+                        <td id="modal_pharmacyName"> ** </td>
+                    </tr>
+
+                    <tr>
+                        <td> Order Status : </td>
+                        <td id="modal_orderStatus"> ** </td>
+                        <td> Patient Order Description : </td>
+                        <td id="modal_description"> ** </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"> File Path : </td>
+                        <td colspan="2" id="modal_filePath"> ** </td>
+                        
+                    </tr>
+
+                   
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            
+             </div>
     </div>
-    <!--<div class="column4"><br>
-      <div class="footerText"> -->
-        <br><br>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-      </div>
-  <!--  </div>
-  </div> -->
-  <br>
-  <div class="footerText">
-    All rights Reserved @MediHub2020
-  </div>
-  <br><br>
-</footer>
-</center>
+
+
+</div>
+   </main>
+           <jsp:include page="./public/includes/patientSidebar.jsp"/>
+        </div>
+     </body>
+
 
 <script>
-var modal = document.getElementById("viewOrder");
-var btn = document.getElementById("vieworder");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+         var modal = document.getElementById("modalBox");
 
-span.onclick = function() {
-  modal.style.display = "none";
-}
+    // Get the button that opens the modal
+    var btn = document.getElementById("popUp");
 
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    //modal print btn
+    var print = document.getElementById("print");
+
+    // When the user clicks on the button, open the modal
+    //    btn.onclick = function() 
+    function popup(indexId) {
+        modal.style.display = "block";
+        
+        var index=indexId;
+        
+        document.getElementById("modal_id").innerHTML = id[index];
+        document.getElementById("modal_pharmacyId").innerHTML = pharmacyId[index];
+        document.getElementById("modal_pharmacyName").innerHTML = pharmacyName[index];
+        document.getElementById("modal_date_time").innerHTML = datetime[index];
+        document.getElementById("modal_description").innerHTML = description[index];
+        document.getElementById("modal_orderStatus").innerHTML = status[index];
+        document.getElementById("modal_filePath").innerHTML = filepath[index];
+        
+
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    //when printing
+    print.onclick = function () {
+        print.style.display = "none";
+        var win = window.open();
+        var printContent = $("#printPart").html();
+
+        $(win.document.body).html(printContent);
+        win.print();
+        print.style.display = "block";
+    }
+    
+        function confirmdelete(index) {
+        var orderId=index;
+        var del = confirm("Are you sure you want delete this order permenently ?");
+        if (del == true){
+            window.location.href="deleteorder?orderid="+orderId;
+          //$(location).attr('href',reidrect);
+        }
+        
+
+    }
+   </script>
 </html>
