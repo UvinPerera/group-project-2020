@@ -40,28 +40,15 @@
 
           <% 
                String username="";
-               String getDoctor="";
-               int getHospital=0;
-               int getSpecialisation=0;
-               String getDate="";
+               String getPharmacy="";
+               
 
                username= session.getAttribute("username").toString();
                      
-               if (request.getParameter("doctor")!=null && request.getParameter("doctor")!="") {
-                    getDoctor=request.getParameter("doctor");
+               if (request.getParameter("pharmacy")!=null && request.getParameter("pharmacy")!="") {
+                    getPharmacy=request.getParameter("pharmacy");
                }
                      
-               if (request.getParameter("hospital")!=null && request.getParameter("hospital")!="") {
-                    getHospital=Integer.parseInt(request.getParameter("hospital"));
-               }
-                     
-               if (request.getParameter("specialisation")!=null && request.getParameter("specialisation")!="") {
-                    getSpecialisation=Integer.parseInt(request.getParameter("specialisation"));
-               }
-                     
-               if (request.getParameter("date")!=null && request.getParameter("date")!="") {
-                    getDate=request.getParameter("date");
-               }
                
           %>
 
@@ -100,11 +87,11 @@
                                  <div class="card">
                                       <i class="fa fa-stethoscope fa-2x text-red"></i>
                                       <div class="card_inner_profile">
-                                           <p class="text-primary-p">Doctor Name</p>
+                                           <p class="text-primary-p">Pharmacy Name</p>
                                            <!--<p class="text-secondary-p doctor_select"><input placeholder="Search Doctor" type="text" name="doctor" id="doctor" maxlength="10" class="" value="<%= getDoctor %>"/></p>-->
                                            
                                            <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor">
-                                               <option value="" disabled>Search Doctor</option>
+                                               <option value="" disabled>Search Pharmacy</option>
                                            </select>
                                       </div>
                                  </div>
@@ -132,34 +119,29 @@
                                       </div>
                                  </div>
 
-                                 <div class="card">
-                                      <i class="fa fa-filter fa-2x text-lightblue"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Specialisation</p>
-                                           <p class="text-secondary-p">
-                                               <!--<input placeholder="Select Specialisation" list="specialisations" name="specialisationText" id="specialisationText" onkeyup="findList('specialisationText','specialisation')">-->
-                                               
-                                               <select name='specialisation' class="specialisation_select" style="width: 100%" id="specialisation">
-                                                   <option value="">Select Specialisation</option>
-                                                    <%
-                                                        if(request.getAttribute("specialisations")!=null){
-                                                            List<DoctorSpecialisation> specialTable = (ArrayList<DoctorSpecialisation>)request.getAttribute("specialisations");
-                                                            if(specialTable.size()>0){
-                                                                for(DoctorSpecialisation spl : specialTable) { %>
-                                                                    <option value='<%= spl.id %>' <% if(spl.id==getSpecialisation){ out.print("selected");} %>><%= spl.name %></option>
-                                                    <%
-                                                            }}}else{out.print("<option>sfd</option>");}
-                                                    %>
-                                               </select>
-                                           </p>
-                                      </div>
-                                 </div>
+                               
 
                                  <div class="card">
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Date</p>
-                                           <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
+                                           <p class="text-secondary-p"><input type="date" name="estimatedDeliveryDate" id="estimatedDeliveryDate" class="form-control text" style="width: 100%" value=""/></p>
+                                      </div>
+                                 </div>
+                                 
+                                <div class="card">
+                                      <i class="fa fa-file-image-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Prescription</p>
+                                           <p class="text-secondary-p"><input type="image" name="prescription" id="prescription" class="form-control text" style="width: 100%" value=""/></p>
+                                      </div>
+                                 </div>
+                                 
+                                <div class="card">
+                                      <i class="fa fa-comment-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Additional Comments</p>
+                                           <p class="text-secondary-p"><input type="date" name="estimatedDeliveryDate" id="="estimatedDeliveryDate" class="form-control text" style="width: 100%" value=""/></p>
                                       </div>
                                  </div>
 
