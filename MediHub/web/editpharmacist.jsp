@@ -1,6 +1,7 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.pharmacy.*"%>
 <%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -59,13 +60,13 @@
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Patient row = (Patient)request.getAttribute("profile");
+                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="patientupdate" method="POST" id="updateForm">
+                         <form class="" action="pharmacistupdate" method="POST" id="updateForm">
                             <div class="main_cards">
 
                               <div class="card">
@@ -231,7 +232,7 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->

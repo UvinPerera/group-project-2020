@@ -147,7 +147,7 @@
                                    </div>
                               </div>
                              
-                             <% if(!row.landNumber.equalsIgnoreCase("") || row.landNumber.equalsIgnoreCase("null")) { %>
+                             <% if(!row.landNumber==null) { %>
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>

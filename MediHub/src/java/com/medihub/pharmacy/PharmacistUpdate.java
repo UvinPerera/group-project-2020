@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Yash
  */
-@WebServlet(name = "PharmacyUpdate", urlPatterns = {"/pharmacyupdate"})
-public class PharmacyUpdate extends HttpServlet {
+@WebServlet(name = "PharmacistUpdate", urlPatterns = {"/pharmacistupdate"})
+public class PharmacistUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +39,7 @@ public class PharmacyUpdate extends HttpServlet {
             PrintWriter out = response.getWriter();
             
              HttpSession session = request.getSession();
-             int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
             
         try
         {
@@ -84,9 +84,9 @@ public class PharmacyUpdate extends HttpServlet {
                     + "city="+city+","
                     + "mobile_number='"+mobile+"',"
                     + "land_number='"+land_line+"',"
-                    + "updated_by="+pharmacyId+","
+                    + "updated_by="+pharmacistId+","
                     + "updated_at=CURRENT_TIMESTAMP "
-                    + "where id="+pharmacyId;
+                    + "where id="+pharmacistId;
 //                    + "'"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             
 //            out.print(query);
@@ -94,7 +94,7 @@ public class PharmacyUpdate extends HttpServlet {
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
-            response.sendRedirect("editpharmacy");
+            response.sendRedirect("editpharmacist");
             con.close();  
         }
         catch(Exception e)
