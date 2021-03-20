@@ -14,6 +14,7 @@ import com.medihub.user.*;
 import com.medihub.resources.*;
 import com.medihub.email.EMail;
 import com.medihub.email.EmailData;
+import java.util.Random;
 
 /**
  *
@@ -65,11 +66,18 @@ public class Registration extends HttpServlet {
             String query="INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,city,mobile_number,land_number,password,user_type,status,created_at,updated_at) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
+            
+            con.close();  
+            
+            String token =getSaltString();
+            String query2="INSERT INTO email_activation (email,token,ack) VALUES('"+email+"','"+token+"',"+0+"))";
             EMail confrimEmail = new EMail();
             EmailData ed = new EmailData();
-            confrimEmail.send("uvininduwaraperera@gmail.com","Test",ed.confirmEmail);
+            
+            String activationLink ="http://localhost:8080/MediHub/activate?token="+token;
+            
+            confrimEmail.send(email,"Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink).replaceFirst("#Name", first_name));
             response.sendRedirect("login.jsp");
-            con.close();  
         }
         catch(Exception e)
         { 
@@ -77,7 +85,21 @@ public class Registration extends HttpServlet {
         }  
     }
 
+    protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
     
+    
+
     @Override
     public String getServletInfo() {
         return "Short description";

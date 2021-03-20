@@ -1,174 +1,134 @@
 <!DOCTYPE html>
-<html lang="en-US" >
+<html lang="en-US">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-  </head>
-  <body>
-    <hr>
-    <div id="box">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    hr {
+      border-top: 25px solid #2b3030;
+    }
+
+    #heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #box {
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    h6 {
+      font-family: sans-serif;
+
+      font-size: 15px;
+      padding-bottom: 15px;
+    }
+
+    #emailBody {
+      padding-top: 20px;
+      padding-left: 5%;
+      padding-right: 5%;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .styled {
+      border: 0px;
+      margin-left: 10px;
+      margin-right: 15px;
+      padding: 0 20px;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 1px #000;
+      background-color: #0087a1;
+      line-height: 3;
+      box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+        inset -2px -2px 3px rgba(0, 0, 0, .6);
+    }
+
+    .styled:hover {
+      background-color: white;
+      color: black;
+      text-shadow: none;
+    }
+
+    footer {
+      background-color: #2b3030;
+    }
+
+
+    .footerText {
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .fa {
+      padding: 25px;
+      font-size: 20px;
+      width: 6px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+      color: white;
+    }
+
+    .styled:active {
+      box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+        inset 2px 2px 3px rgba(0, 0, 0, .6);
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <hr>
+  <div id="box">
     <div id="heading">
       <center>
         <div id="logo">
 
-          <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-           width="300.000000pt" height="137.000000pt" viewBox="0 0 300.000000 137.000000"
-           preserveAspectRatio="xMidYMid meet">
-          <metadata>
-          Created by potrace 1.10, written by Peter Selinger 2001-2011
-          </metadata>
-          <g transform="translate(0.000000,137.000000) scale(0.050000,-0.050000)"
-          fill="#b4e2db" stroke="none">
-          <path d="M830 1961 c-118 -28 -192 -89 -220 -179 -12 -39 -8 -46 16 -36 17 6
-          36 1 42 -12 6 -13 9 -6 6 16 -13 106 240 196 331 118 32 -28 37 -29 19 -5 -22
-          28 -20 35 10 42 27 7 18 17 -38 42 -81 36 -78 36 -166 14z"/>
-          <path d="M900 1779 c-192 -64 -363 -118 -380 -118 -87 -4 -86 -27 13 -338 64
-          -200 107 -303 125 -303 25 0 547 162 622 194 17 6 45 15 62 18 67 14 140 48
-          132 63 -5 8 -51 148 -102 310 -51 162 -100 294 -108 293 -8 -1 -171 -54 -364
-          -119z m73 -159 c15 -77 28 -84 106 -57 74 25 77 23 93 -57 11 -57 8 -62 -62
-          -75 -55 -10 -70 -21 -62 -44 40 -102 36 -122 -26 -143 -67 -24 -70 -21 -90 63
-          -14 58 -35 61 -138 22 -22 -9 -34 6 -44 52 -15 67 8 98 72 99 51 0 56 19 27
-          90 -28 65 -27 67 26 87 81 30 85 28 98 -37z"/>
-          <path d="M1640 1310 l0 -470 79 0 79 0 -12 285 c-11 282 13 367 44 155 7 -49
-          17 -94 21 -101 4 -6 12 -52 19 -100 29 -212 37 -229 101 -229 61 0 81 63 140
-          440 31 202 54 112 42 -166 l-12 -286 80 6 81 6 0 460 0 460 -100 6 c-96 6
-          -101 3 -113 -50 -7 -31 -21 -87 -30 -126 -9 -38 -22 -107 -28 -152 -7 -45 -20
-          -110 -30 -145 -21 -71 -21 -74 -21 -106 0 -50 -23 2 -31 71 -8 61 -31 167 -99
-          467 -9 39 -23 45 -110 45 l-100 0 0 -470z"/>
-          <path d="M2420 1311 l0 -471 241 0 241 0 -6 75 -6 75 -155 0 -155 0 0 126 0
-          126 120 -14 120 -13 0 95 0 96 -120 -11 -120 -11 0 118 0 118 159 0 159 0 -5
-          75 -5 75 -234 6 -234 5 0 -470z"/>
-          <path d="M3000 1310 l0 -470 188 0 c290 0 282 -13 282 457 0 485 1 483 -283
-          483 l-187 0 0 -470z m302 3 c0 -164 -2 -300 -6 -302 -3 -3 -35 -11 -71 -18
-          l-65 -12 0 321 0 320 71 -6 72 -6 -1 -297z"/>
-          <path d="M3580 1309 l0 -471 80 6 c45 3 81 13 80 21 0 8 0 218 0 465 l0 450
-          -80 0 -80 0 0 -471z"/>
-          <path d="M3860 1760 c-1 -11 -1 -220 -1 -465 l-1 -445 81 -6 81 -6 0 201 0
-          201 70 0 70 0 0 -197 c0 -226 -2 -220 91 -205 l71 12 1 460 0 460 -82 6 -81 6
-          0 -202 0 -202 -73 6 -73 6 4 195 4 195 -81 0 c-44 0 -81 -9 -81 -20z"/>
-          <path d="M4440 1351 c0 -519 -4 -511 232 -511 242 0 238 -9 238 503 l0 427
-          -80 0 -80 0 0 -380 0 -380 -70 0 -70 0 -5 385 -6 385 -79 0 -80 0 0 -429z"/>
-          <path d="M5020 1310 l0 -470 188 0 c259 0 280 17 289 246 6 158 4 171 -40 202
-          -36 25 -39 32 -12 32 46 0 61 71 52 239 -12 198 -42 221 -290 221 l-187 0 0
-          -470z m308 278 c43 -111 0 -208 -92 -208 -55 0 -56 2 -56 120 l0 120 68 0 c43
-          0 72 -11 80 -32z m7 -448 c7 -109 -6 -130 -90 -146 l-65 -13 0 131 0 130 75
-          -6 c74 -6 75 -8 80 -96z"/>
-          </g>
-          </svg>
-
-
-
-</div>
+          <img src="http://localhost:8080/MediHub/public/images/onlylogo.png">
+        </div>
         <h2>Welcome to Medihub!</h2>
       </center>
     </div>
-        <div id="emailBody">
-          <h6> Hello Name, </h6>
-          Thank you for registering with MediHub! Please click the button to verify your email address.
-          </br></br></br>
-          <button class="styled" type="button" onclick="window.location.href='#'"> Click To Verify </button>
-         </br></br></br>
-          Please note that failure to verify your email address within 24 hours will terminate your registration.</br></br>
-          If you have any issues, please contact medihub54@gmail.com
-      </div>
+    <div id="emailBody">
+      <h6> Hello Name, </h6>
+      Thank you for registering with MediHub! Please click the button to verify your email address.
+      </br></br></br>
+      <button class="styled" type="button"> <a href="#">Click To Verify</a> </button>
+      </br></br></br>
+      Please note that failure to verify your email address within 24 hours will terminate your registration.</br></br>
+      If you have any issues, please contact medihub54@gmail.com
     </div>
-    <footer>
+  </div>
+  <footer>
     </br>
-      <div class="footerText">
+    <div class="footerText">
       All rights Reserved @MediHub2020
       <div class="footerText">
-      <center>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-      </center>
+        <center>
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-google"></a>
+          <a href="#" class="fa fa-instagram"></a>
+        </center>
       </div>
     </div>
-    </footer>
-  </body>
-  <style>
-    *{
-  margin:0;
-  padding:0;
-}
-hr{
-  border-top: 25px solid  #2b3030;
-}
-
-#heading{
-  font-family: 'Montserrat', sans-serif;
-}
-
-#box{
-  text-align: center;
-  padding-bottom: 40px;
-}
-
-h6{
-  font-family: sans-serif;
-
-  font-size: 15px;
-  padding-bottom: 15px;
-}
-
-#emailBody{
-  padding-top: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
-  font-family: sans-serif;
-  text-align: center;
-}
-
-.styled {
-    border:0px;
-    margin-left: 10px;
-    margin-right: 15px;
-    padding: 0 20px;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    color: white;
-    text-shadow: 1px 1px 1px #000;
-    background-color:  #0087a1;
-    line-height: 3;
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-                inset -2px -2px 3px rgba(0, 0, 0, .6);
-}
-
-.styled:hover {
-    background-color: white;
-    color:black;
-    text-shadow:none;
-}
-footer{
-    background-color: #2b3030;
-}
-
-
-.footerText{
-    color:white;
-    font-family: sans-serif;
-    text-align: center;
-}
-.fa {
-  padding: 25px;
-  font-size: 20px;
-  width: 6px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 50%;
-  color:white;
-}
-.styled:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-                inset 2px 2px 3px rgba(0, 0, 0, .6);
-}
-
-  </style>
+  </footer>
+</body>
 
 </html>

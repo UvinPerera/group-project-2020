@@ -7,6 +7,7 @@ package com.medihub.email;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,8 +47,23 @@ public class EmailTest extends HttpServlet {
             throws ServletException, IOException {
         EMail emailTest = new EMail();
         EmailData ed = new EmailData();
-        emailTest.send("uvininduwaraperera@gmail.com","Test",ed.confirmEmail);
+        String activationLink ="http://localhost:8080/MediHub/activate?token="+getSaltString();
+            
+            emailTest.send("uvininduwaraperera@gmail.com","Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink));
         
+    }
+    
+    protected String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
     }
 
     
