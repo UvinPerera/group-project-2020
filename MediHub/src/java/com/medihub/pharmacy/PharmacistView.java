@@ -26,8 +26,8 @@ import javax.servlet.http.HttpSession;
  * @author yash
  */
 
-@WebServlet(name = "PharmacyView", urlPatterns = {"/pharmacyview"})
-public class PharmacyView extends HttpServlet {
+@WebServlet(name = "PharmacistView", urlPatterns = {"/pharmacistview"})
+public class PharmacistView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -61,7 +61,7 @@ public class PharmacyView extends HttpServlet {
                 Pharmacist p = new Pharmacist(pharmacistId);
 //                out.println(p.getProfile().id);
                 request.setAttribute("profile", p.getProfile());
-                request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
+                request.getRequestDispatcher("viewpharmacist.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }

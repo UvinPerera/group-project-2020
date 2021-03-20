@@ -6,11 +6,10 @@
 package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
-import com.medihub.user.User;
+import com.medihub.location.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -23,11 +22,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author yash
+ * @author Yash
  */
-
-@WebServlet(name = "PharmacyView", urlPatterns = {"/pharmacyview"})
-public class PharmacyView extends HttpServlet {
+@WebServlet(name = "EditPharmacist", urlPatterns = {"/editpharmacist"})
+public class EditPharmacist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +36,8 @@ public class PharmacyView extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+ 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -51,24 +50,45 @@ public class PharmacyView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HttpSession session = request.getSession();
+             HttpSession session = request.getSession();
             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
-            PrintWriter out = response.getWriter();   
+             PrintWriter out = response.getWriter();
             
-            
-            try
+       
+             try
             {
                 Pharmacist p = new Pharmacist(pharmacistId);
-//                out.println(p.getProfile().id);
+                
+                District d = new District();
+                
+                City c = new City();
+                
+                request.setAttribute("cities", c.getAllCities()); //directly get districts
+                request.setAttribute("districts", d.getAllDistricts()); //directly get districts
                 request.setAttribute("profile", p.getProfile());
-                request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
-                }catch(Exception e){
+                request.getRequestDispatcher("editpharmacist.jsp").forward(request, response);
+            }
+             catch(Exception e){
                     out.println(e.toString());
                 }
+                
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+   
 
-    
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

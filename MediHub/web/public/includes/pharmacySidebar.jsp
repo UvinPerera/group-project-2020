@@ -65,14 +65,14 @@
 
                          <h2>User</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacy.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
-                              <a href="pharmacyview">View Profile</a>
+                              <a href="pharmacistview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacy.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="editpharmacy">Edit Profile</a>
+                              <a href="editpharmacist">Edit Profile</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
