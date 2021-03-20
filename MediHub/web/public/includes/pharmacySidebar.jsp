@@ -58,19 +58,19 @@
 
                          <h2>Report</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(pat).jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dropbox"></i>
-                              <a href="trackOrder(pat).jsp">Pharmacy Orders</a>
+                              <a href="trackOrder(phar).jsp">Pharmacy Orders</a>
                          </div>
 
                          <h2>User</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpatient.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
                               <a href="pharmacyview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editPatient.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
                               <a href="editpharmacy">Edit Profile</a>
                          </div>
