@@ -314,7 +314,7 @@
                                    <!--pending orders starts-->
                                         
                                         <%
-                                            
+                                            try{
                                              if(request.getAttribute("completedOrders")!=null){
                                                   List<Orders> table = (ArrayList<Orders>)request.getAttribute("completedOrders");
                                                   if(table.size()>0){
@@ -404,7 +404,7 @@
                                                          
                                                   </div>
                                                   <%
-                                                       }}
+                                                       }}}catch(Exception e){e.printStackTrace();}
                                                   %>
 
 

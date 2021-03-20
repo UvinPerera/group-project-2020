@@ -51,8 +51,19 @@ public class EMail{
                     InternetAddress.parse(to)
             );
             message.setSubject(sub);
+            //Multipart emailConetent = new MimeMultipart();
+            
+            //MimeBodyPart htmls = new MimeBodyPart();
+            //MimeBodyPart csss = new MimeBodyPart();
+            //EmailData ed = new EmailData();
+            //htmls.setContent(msg, "text/html");
+           // csss.setContent(ed.emailCss,"text/css");
+            
+            //emailConetent.addBodyPart(htmls);
+           // emailConetent.addBodyPart(csss);
+            
             message.setContent(msg,"text/html");
-
+            
             Transport.send(message);
 
            // System.out.println("Done");   
@@ -62,11 +73,7 @@ public class EMail{
         }  
              
     }  
-       public static void main(String args[]){
-
-           //EMail.send("uvininduwaraperera@gmail.com","Welcome to Medihub","Hello by Medihub"); 
-
-    }
+       
 }  
     
 
