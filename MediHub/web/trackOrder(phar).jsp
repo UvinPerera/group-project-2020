@@ -20,21 +20,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(phar).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(phar).js"></script>
 </head>
 <body>
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="style" type="button" onclick="window.location.href='logout';"> Log out </button></li>
-        <li><button class="style" type="button" onclick="window.location.href='pharmacy'"> Dashboard </button></li>
-         <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
-    
+  <div class="container">  
+           <jsp:include page="./public/includes/navbar.jsp"/>
+           <main>
+     
    <% String username="";
        username= session.getAttribute("username").toString();
   
@@ -192,11 +185,13 @@
 
 </center>
             <!--Modal content ends-->
-        
- <br>
- <div><li><button class="style back" type="button" onclick="window.location.href='pharmacyDashboard.jsp';"> < Back to Dashboard </button></li></div>
-</body>
+  
 <br><br>
+  </main>
+           <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
+        </div>
+     </body>
+
 
 </html>
 <script>
