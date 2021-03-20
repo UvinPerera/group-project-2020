@@ -1,3 +1,18 @@
+<%-- 
+    Document   : trackOrder(phar)
+    Created on : Nov 30, 2020, 03:50:50 AM
+    Author     : Yash
+--%>
+
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<!doctype html>
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -9,23 +24,130 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(pat).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
 </head>
 <body>
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="style" type="button" onclick="window.location.href='logout';"> Logout </button></li>
-        <li><button class="style" type="button" onclick="window.location.href='patient'"> Dashboard </button></li>
-        <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
+  <div class="container">  
+           <jsp:include page="./public/includes/navbar.jsp"/>
+           <main>
+     
+   <% String username="";
+       username= session.getAttribute("username").toString();
+  
+       
+       ArrayList array = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       int size = 0;
+       
+       if(request.getAttribute("orders")!=null){
+           array=(ArrayList)request.getAttribute("orders");
+            size= array.size();
+//            for(int i=0; i<size; i++){
+//            a2 =(ArrayList) array.get(i);  
+            //}
+       //}
+        
+  %>
    
-  <div id="viewOrder" class="modal">
+ 
+    <br><br><h3>Track Orders</h3><hr>
+  <div class="Dropdown">
+    <select name='Dropdown' class="filters">
+      <option value='Action' selected><a href="">All</a></option>
+      <option value='Action'><a href="#">Oredred</a></option>
+      <option value='Action'><a href="#">Received</a></option>
+      <option value='Action'><a href="#">Cancelled</a></option>
+   </select>
+   
+   <select name='Dropdown' class="filter_dropdown filters">
+      <option value='Action' selected><a href="">All</a></option>
+      <option value='Action'><a href="#">Order ID</a></option>
+      <option value='Action'><a href="#">Pharmacy ID</a></option>
+      <option value='Action'><a href="#">Pharmacy Name</a></option>
+      <option value=99><a href="#">Date</a></option>
+      <option value='Action'><a href="#">Status</a></option>
+   </select>
+   <input type="text" class="filter_text textt" placeholder="Filter">
+   <input type="date" class="filter_date textt" placeholder="From">
+   <input type="date" class="filter_date textt" placeholder="To">
+   <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
+
+  </div>
+  <br>
+<center>
+     <script>
+                var id = [];
+                var pharmacyId = [];
+                var pharmacyName= [];
+                var datetime = [];
+                var status = [];
+                var filepath= [];
+                var description = [];
+                
+  
+  </script>
+  <div class="container-table" style="clear:both;">
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="tableheading">Order ID</th>
+        <th class="tableheading">Pharmacy ID</th>
+        <th class="tableheading">Pharmacy Name</th>
+        <th class="tableheading">Delivery Date</th>
+        <th class="tableheading">Status</th>
+        <th class="tableheading">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+          <%for(int i=0; i<size; i++){
+            a2 =(ArrayList) array.get(i);%>
+      <tr>
+        <td class="Row"><%=a2.get(0)%></td>
+        <td class="Row"><%=a2.get(1)%></td>
+        <td class="Row"><%=a2.get(2)%></td>
+        <td class="Row"><%=a2.get(3)%></td>
+        <td class="Row"><%=a2.get(4)%></td>
+        <td>
+          <ul class="actions">
+              <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
+              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
+          </ul>  
+        </td>
+        <script>
+                            id[<%=i%>]                   ="<%=a2.get(0)%>"; 
+                            pharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
+                            pharmacyName[<%=i%>]         ="<%=a2.get(1)%>";
+                            datetime[<%=i%>]             ="<%=a2.get(2)%>";
+                            status[<%=i%>]               ="<%=a2.get(3)%>";
+                            filepath[<%=i%>]             ="<%=a2.get(4)%>";
+                            description[<%=i%>]          ="<%=a2.get(6)%>"; 
+                            
+          </script>
+      </tr>
+       <%}%>
+       <tr>
+
+      </tbody>
+    </table>
+      </div>
+    <%
+                                                       }
+                                                       else
+                                                       {
+                                                  %>
+                                                  <div>
+                                                      No order information
+                                                         
+                                                  </div>
+                                                  <%
+                                                       }
+                                                  %>
+</center>
+ <br>
+ <div id="viewOrder" class="modal">
 
     <div class="modal-content">
       <div class="modal-header">
@@ -34,7 +156,7 @@
       </div>
       
       <div class="modal-body">
-        
+  
         <table class="table">
           <thead>
             <tr>
@@ -62,137 +184,11 @@
 
 
 </div>
-    <br><br><h3>Track Orders</h3><hr>
-  <div class="Dropdown">
-    <select name='Dropdown' class="filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Oredred</a></option>
-      <option value='Action'><a href="#">Received</a></option>
-      <option value='Action'><a href="#">Cancelled</a></option>
-   </select>
-   
-   <select name='Dropdown' class="filter_dropdown filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Order ID</a></option>
-      <option value='Action'><a href="#">Pharmacy ID</a></option>
-      <option value='Action'><a href="#">Pharmacy Name</a></option>
-      <option value=99><a href="#">Date</a></option>
-      <option value='Action'><a href="#">Status</a></option>
-   </select>
-   <input type="text" class="filter_text textt" placeholder="Filter">
-   <input type="date" class="filter_date textt" placeholder="From">
-   <input type="date" class="filter_date textt" placeholder="To">
-   <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
+   </main>
+           <jsp:include page="./public/includes/patientSidebar.jsp"/>
+        </div>
+     </body>
 
-  </div>
-  <br>
-<center>
-  <div class="container-table" style="clear:both;">
-    <table class="table">
-      <thead>
-      <tr>
-        <th class="tableheading">Order ID</th>
-        <th class="tableheading">Pharmacy ID</th>
-        <th class="tableheading">Pharmacy Name</th>
-        <th class="tableheading">Date</th>
-        <th class="tableheading">Status</th>
-        <th class="tableheading">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="Row">001</td>
-        <td class="Row">101</td>
-        <td class="Row">Apolo Pharmacy</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Oredred</td>
-        <td>
-          <ul class="actions">
-              <li><button class="btn" id="vieworder"><i class="fa fa-eye"></i></button></li>
-              <li><button class="btn" id="editorder"><i class="fa fa-edit"></i></button></li>
-              <li><button class="btn" id="deleteOrder" onclick="confirm('Do you want to delete this order?')"><i class="fa fa-trash"></i></button></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">002</td>
-        <td class="Row">102</td>
-        <td class="Row">Medi Center</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Received</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">003</td>
-        <td class="Row">103</td>
-        <td class="Row">Lanka Osusala</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Cancelled</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">004</td>
-        <td class="Row">104</td>
-        <td class="Row">Health Plus</td>
-        <td class="Row">15/10/2020</td>
-        <td class="Row">Cancelled</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-edit"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      </tbody>
-    </table>
- </div>
-</center>
- <br>
-
- 
-</body>
-<br><br>
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
-      </div>
-    </div>
-    <!--<div class="column4"><br>
-      <div class="footerText"> -->
-        <br><br>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-      </div>
-  <!--  </div>
-  </div> -->
-  <br>
-  <div class="footerText">
-    All rights Reserved @MediHub2020
-  </div>
-  <br><br>
-</footer>
-</center>
 
 <script>
 var modal = document.getElementById("viewOrder");

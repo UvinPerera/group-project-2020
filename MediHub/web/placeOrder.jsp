@@ -60,6 +60,7 @@
               <!--######################-->
 
                <main>
+                   <h3 style="padding-left: 5%;padding-top:2%;">Place Pharmacy Order</h3>
                     <!-- the content tag anything to do with the dashboard -->
                     
                     <!--######################-->
@@ -152,7 +153,7 @@
                                            <p class="text-secondary-p"><input class="input" type="text" name="description" id="email" placeholder="Enter description"></p>
                                       </div>
                                  </div>
-
+                                                       <br><br>
                                  <div class="buttons">
                                      <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
                                     <button class="button" type="reset" id="clear"><b>Clear</b></button>
@@ -165,7 +166,7 @@
                             </div>
                          </form>
                                                
-                        <hr><br>
+                        <br>
                          
                         
                         
