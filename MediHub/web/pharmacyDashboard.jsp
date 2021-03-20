@@ -314,6 +314,7 @@
                                    <!--pending orders starts-->
                                         
                                         <%
+                                            
                                              if(request.getAttribute("completedOrders")!=null){
                                                   List<Orders> table = (ArrayList<Orders>)request.getAttribute("completedOrders");
                                                   if(table.size()>0){
@@ -393,6 +394,19 @@
                                                   </tbody>
                                         </table>
                                    </div>
+                                                     <%
+                                                       }
+                                                       else
+                                                       {
+                                                  %>
+                                                  <div class="buttons">
+                                                      No completed Orders !
+                                                         
+                                                  </div>
+                                                  <%
+                                                       }}
+                                                  %>
+
 
                               </div>
                              <!--end of right table-->
