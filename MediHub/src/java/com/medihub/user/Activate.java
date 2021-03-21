@@ -57,17 +57,16 @@ public class Activate extends HttpServlet {
             throws ServletException, IOException {
             
         try{
-            /*DbConfig db = DbConfig.getInstance();
+            DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
         
             String token = request.getParameter("token");
-             response.setContentType("text/html;charset=UTF-8");
-            String query = "SELECT * FROM email_activtion WHERE token='"+token+"' AND ack=0";
+            
+            String query = "SELECT * FROM email_activation WHERE token='"+token+"' AND ack=0";
             PreparedStatement stmt=con.prepareStatement(query);  
-            ResultSet rs=stmt.executeQuery();*/
-            PrintWriter out = response.getWriter();
-            out.println("Hello world");
-            /*String email ;
+            ResultSet rs=stmt.executeQuery();
+            
+            String email ;
             
             while(rs.next()){
                  email = rs.getString("email");
@@ -80,15 +79,15 @@ public class Activate extends HttpServlet {
                  
                  
             }
-            */
-           // con.close();
+            
+            con.close();
         }catch(Exception e){
             
         }
-     //   response.sendRedirect("login.jsp");
+        response.sendRedirect("login.jsp");
     }
-
-    /**
+  
+    /** 
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
