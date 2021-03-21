@@ -45,9 +45,11 @@ public class UpdatePatientOrder extends HttpServlet {
         try
         {
              HttpSession session = request.getSession();
-             int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              String description=request.getParameter("orderdescription");
+             String filepath = request.getParameter("file_path");
              int orderId=Integer.parseInt(request.getParameter("orderid"));
+             String date = request.getParameter("deliverydate");
              
              
              try{
@@ -55,10 +57,12 @@ public class UpdatePatientOrder extends HttpServlet {
                     Connection con = db.getConnecton();
                     
                     Statement stmt=con.createStatement(); 
-                   
-                   int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET description='"+description+"' WHERE id ="+ orderId);
                     
-                  response.sendRedirect("pharmacy");
+                    int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by='"+patientId+"', expected_delivery_date='"+date+"' WHERE id ="+ orderId);
+                   
+                   int rs2=stmt.executeUpdate("UPDATE order_items SET updated_at=CURRENT_TIMESTAMP,file_path='"+filepath+"', updated_by='"+patientId+"',description='"+description+"' WHERE order_id ="+ orderId);
+                    
+                  response.sendRedirect("patient");
                     }catch(Exception e){
                        out.println(e.toString());
                    }

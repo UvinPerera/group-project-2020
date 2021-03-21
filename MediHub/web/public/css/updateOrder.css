@@ -80,8 +80,8 @@ float: left;
 margin-top: 0%;
 }
 
-.container{
-  width:65%;
+.container1{
+  width:100%;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -181,6 +181,14 @@ select{
               inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
-  .button-container{
+  .button-container1{
    margin-left: 250px;
   }
+
+   hr{
+  width:91%;
+  text-align: center;
+  border-top: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+}

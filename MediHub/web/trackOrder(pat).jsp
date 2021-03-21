@@ -151,8 +151,9 @@
 
             <!-- Modal content -->
             <div id="printPart" class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">&times;  &nbsp;&nbsp;</span>
                 <h3 style="text-align: center;">Order Details</h3>
+                <center>
                 <table style="border:none; text-align: left;">
 
                     <tr>
@@ -191,11 +192,11 @@
                         <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
                     </tr>
                     <tr>
-                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        <td colspan="4" style="text-align: center;"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
                         </td>
                     </tr>
 
-                </table>
+                </table></center>
 
             </div>
             

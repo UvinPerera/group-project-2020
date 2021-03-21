@@ -1,12 +1,16 @@
-<%@page import="java.util.ArrayList"%>
+
+<%-- 
+    Document   : trackOrder(phar)
+    Created on : Nov 30, 2020, 03:50:50 AM
+    Author     : Yash
+--%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.pharmacy.*"%>
-
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
-
 <!doctype html>
 <html>
 <head>
@@ -16,23 +20,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/updateOrder.css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="./public/css/updateOrder.css" media="screen" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
+  
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+  
+ 
 </head>
 <body>
-
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="styled" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><button class="styled" type="button" onclick="window.location.href='pharmacy'"> Dashboard </button></li>
-        <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
+  <div class="container">  
+           <jsp:include page="./public/includes/navbar.jsp"/>
+           <main>
    
 <%ArrayList al = new ArrayList();
        ArrayList a2 = new ArrayList();
@@ -42,39 +40,47 @@
             a2 =(ArrayList ) al.get(0);
         }
 %>
-  <div class="container">
-    <h1>Update Order </h1><br>
-    <form action="updatepatientorder?orderid=<%=a2.get(0)%>"" method="post">
+            <div class="container1">
+                <h1>Update Order </h1><br><hr><br><br>
+                
+              <form action="updatepatientorder?orderid=<%=a2.get(0)%>" method="post">
 
-      <h2 class="details">Order ID</h2>
-      <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
+                <h2 class="details">Order ID</h2>
+                <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
 
-       <h2 class="details">Date and Time</h2>
-      <input class="input" type="text" name="datetime" id="datetime" placeholder="<%=a2.get(3)%>" readonly>
+                 <h2 class="details">Date and Time</h2>
+                <input class="input" type="text" name="datetime" id="datetime" placeholder="<%=a2.get(3)%>" readonly>
 
-      <h2 class="details">Patient ID</h2>
-       <input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly>
+                <h2 class="details">Patient ID</h2>
+                 <input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly>
 
-       <h2 class="details">Patient Name </h2>
-        <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
+                 <h2 class="details">Patient Name </h2>
+                  <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
 
-        <h2 class="details"> Patient Order Description</h2>
-         <input class="input" type="text" name="patientdescription" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly>
+                  <h2 class="details"> Order Status </h2>
+                   <input class="input" type="text" name="orderstatus" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly>
 
-         <h2 class="details">Order Description</h2>
-          <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>">
+                   <h2 class="details">Order Description</h2>
+                    <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>">
 
-      <h2 class="details">Prescription</h2>
-       <input class="input" type="text" name="file_path" id="filepath" placeholder="<%=a2.get(5)%>" readonly>
+                <h2 class="details">Prescription</h2>
+                 <input class="input" type="file" name="file_path" id="file_path" placeholder="<%=a2.get(5)%>" >
 
-       <div class="button-container">
-             <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
-             <button class="button" type="reset" id="clear"><b>Clear</b></button>
-             <button class="button" type="submit"><b>Submit</b></button>
+                 <h2 class="details">Order Delivery Date</h2>
+                 <input class="input" type="date" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" >
 
-      </div>
+                 <div class="button-container1">
+                       <button class="button" id="id" onclick="window.location.href='/medihub';"><b>Cancel</b></button>
+                       <button class="button" type="reset" id="clear"><b>Clear</b></button>
+                       <button class="button" type="submit"><b>Submit</b></button>
 
-    </form>
-  </div>
-</body>
+                </div>
+
+              </form>
+            </div>
+        </main>
+           <jsp:include page="./public/includes/patientSidebar.jsp"/>
+        </div>
+     </body>
+
 </html>
