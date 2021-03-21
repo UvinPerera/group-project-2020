@@ -28,6 +28,7 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
           <div class="container">
@@ -231,7 +232,13 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <% 
+                   String sidebar = "";
+                    if(userType==1) {
+                        sidebar = "patientSidebar";
+                    } 
+               %>
+               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
@@ -309,11 +316,11 @@
                   $("#numberError").show();
                     x=1;
                 }
-                if(($("#land_number").val().match(/^[0-9]{10}$/)==null) && $("#land_number").val()!=""){
-//                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
-                  $("#landNumberError").show();
-                    x=1;
-                }
+//                if(($("#land_number").val().match(/^[0-9]{10}$/)==null) && $("#land_number").val()!=""){
+////                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+//                  $("#landNumberError").show();
+//                    x=1;
+//                }
 
                 if(x==1){
                     return false;

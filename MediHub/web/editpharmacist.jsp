@@ -60,13 +60,13 @@
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("profile");
+                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacyupdate" method="POST" id="updateForm">
+                         <form class="" action="pharmacistupdate" method="POST" id="updateForm">
                             <div class="main_cards">
 
                               <div class="card">
@@ -310,11 +310,11 @@
                   $("#numberError").show();
                     x=1;
                 }
-                if(($("#land_number").val().match(/^[0-9]{10}$/)==null) && $("#land_number").val()!=""){
-//                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
-                  $("#landNumberError").show();
-                    x=1;
-                }
+//                if(($("#land_number").val().match(/^[0-9]{10}$/)==null) && $("#land_number").val()!=""){
+////                if(($("#mobile_number").val()=="")||($("#mobile_number").val().match(/^[0-9]{10}$/)==null)||(($("#land_number").val().match(/^[0-9]{10}$/)==null) && ($("#land_number").val()==""))){
+//                  $("#landNumberError").show();
+//                    x=1;
+//                }
 
                 if(x==1){
                     return false;

@@ -1,15 +1,15 @@
 <%-- 
-    Document   : adminSidebar
-    Created on : Jan 11, 2021, 11:54:31 PM
-    Author     : Ifra
+    Document   : pharmacySidebar
+    Created on : Mar 19, 2021, 4:56:07 PM
+    Author     : Yash
 --%>
 
-                <div id="sidebar">
+ <div id="sidebar">
 
                     <div class="sidebar_title">
                          <div class="sidebar_img">
                               <img src="./public/images/onlylogo.png" alt="sidebar">
-                              <h1>Medihub</h1>
+                              
                          </div>
                          <i class="fa fa-times" id="sidebarIcon" onclick="closeSidebar()"></i>
                     </div>
@@ -42,61 +42,55 @@
 
                          </div>
                          <!-- add "active_menu_link" to class to make it active -->
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/adminDashboard.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/patientDashboard.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dashboard"></i>
-                              <a href="admin">Dashboard</a>
+                              <a href="pharmacy">Dashboard</a>
                          </div>
 
-                         <h2>Alerts</h2>
+                         <h2>Orders</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-bell"></i>
-                              <a href="#">Notifications</a>
+                              <i class="fa fa-bullseye"></i>
+                              <a href="#">Track Orders</a>
                          </div>
 
-                         <h2>Services</h2>
+                        
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePatients.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-wheelchair"></i>
-                              <a href="managePatients.jsp">Manage Patients</a>
+                         <h2>Report</h2>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-dropbox"></i>
+                              <a href="trackpatientorder">Pharmacy Orders</a>
+                         </div>
+                         
+                         
+                         <h2>Pharmacy</h2>
+
+                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-user-circle"></i>
+                              <a href="#">View Pharmacy</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageDoctors.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-stethoscope"></i>
-                              <a href="manageDoctors.jsp">Manage Doctors</a>
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacist.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-user-circle-o"></i>
+                              <a href="#">Edit Pharmacy</a>
                          </div>
-
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePharamcy.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-medkit"></i>
-                              <a href="managePharmacy.jsp">Manage Pharmacies</a>
-                         </div>
-
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageHospital.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-hospital-o"></i>
-                              <a href="manageHospital.jsp">Manage Hospitals</a>
-                         </div>
-
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageReviews.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-reply-all"></i>
-                              <a href="manageReviews.jsp">Manage Reviews</a>
-                         </div>
-
 
                          <h2>User</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewadmin.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
-                              <a href="adminview">View Profile</a>
+                              <a href="pharmacistview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editadmin.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="editadmin">Edit Profile</a>
+                              <a href="editpharmacist">Edit Profile</a>
                          </div>
 
-                        <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/changePassword.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/changePasswordPharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-secret"></i>
-                              <a href="changepassword">Change Password</a>
+                              <a href="changepasswordpharmacy">Change Password</a>
                          </div>
 
                          <div class="sidebar_logout">

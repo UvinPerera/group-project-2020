@@ -39,6 +39,7 @@
                int getHospital=0;
                int getSpecialisation=0;
                String getDate="";
+               int getLimit=0;
 
                username= session.getAttribute("username").toString();
                      
@@ -56,6 +57,10 @@
                      
                if (request.getParameter("date")!=null && request.getParameter("date")!="") {
                     getDate=request.getParameter("date");
+               }
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
                }
                
           %>
@@ -211,7 +216,14 @@
                                                        </tr>
                                                   </thead>
                                                   <tbody>
-                                                       <% for(DoctorAvailability row : table) { %>
+                                                       <% 
+                                                           int cc = 0;
+                                                           for(DoctorAvailability row : table) {
+                                                               cc++;
+                                                                if (cc>10){
+                                                                    break;
+                                                                }
+                                                       %>
                                                        <tr>
                                                             <td><%= row.doctorName %></td>
                                                             <td><%= row.hospitalName %></td>
@@ -228,6 +240,7 @@
                                                        </tr>
                                 
                                                         <%}%>
+                                                        
 
                                                   </tbody>
                                                   
@@ -245,6 +258,21 @@
                                                   </tfoot>
                                                   
                                              </table>
+                                                        
+                                                        <% if(table.size()>10 || getLimit>0) { %>
+                                                        <div class="card">
+                                                        <p style="text-align: center;">
+                                                            <% if(getLimit>0) { %>
+                                                                <a href="channelling?search=1&doctor=<%=getDoctor%>&hospital=<%if(getHospital==0){out.println("");}else{out.println(getHospital);}%>&specialisation=<%if(getSpecialisation==0){out.println("");}else{out.println(getSpecialisation);}%>&date=<%=getDate%>&limit=<%=getLimit-10%>">Prev</a>
+                                                            <% } %>
+                                                            &nbsp;
+                                                            <% if(table.size()>10) { %>
+                                                                <a href="channelling?search=1&doctor=<%=getDoctor%>&hospital=<%if(getHospital==0){out.println("");}else{out.println(getHospital);}%>&specialisation=<%if(getSpecialisation==0){out.println("");}else{out.println(getSpecialisation);}%>&date=<%=getDate%>&limit=<%=getLimit+10%>">Next</a>
+                                                            <% } %>
+                                                        </p>
+                                                        </div>
+                                                        <%}%>
+                                                        
                                         </div>
                                               
                                         <!--when there is no pending appointments-->

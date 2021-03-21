@@ -69,10 +69,14 @@ public class PatientChannelling extends HttpServlet {
                                 String getHospital=request.getParameter("hospital");
                                 String getSpecialisation=request.getParameter("specialisation");
                                 String getDate=request.getParameter("date");
+                                String getLimit="0";
+                                if(request.getParameter("limit")!=null){
+                                    getLimit=request.getParameter("limit");
+                                }
 
                                 DoctorAvailability da = new DoctorAvailability();
-//                                out.print(da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate));
-                                request.setAttribute("availabilities", da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate));
+//                                out.print(da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate, getLimit));
+                                request.setAttribute("availabilities", da.getDoctorAvailabilitiesChanneling(getDoctor, getHospital, getSpecialisation, getDate, getLimit));
                             }
                         }
                         request.setAttribute("hospitals", h.getAllActiveHospitals()); //directly get districts

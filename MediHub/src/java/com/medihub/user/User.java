@@ -108,7 +108,7 @@ public class User {
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            e.toString();
             return null;        
         }
     }

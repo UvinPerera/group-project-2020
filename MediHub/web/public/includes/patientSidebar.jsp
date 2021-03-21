@@ -58,7 +58,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/channelling.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hand-pointer-o"></i>
-                              <a href="channelling?search=0&doctor=&hospital=&specialisation=&date=">E-Channelling</a>
+                              <a href="channelling?search=0&doctor=&hospital=&specialisation=&date=&limit=">E-Channelling</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/placeOrder.jsp' ? 'active_menu_link' : ''}">
@@ -95,7 +95,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(pat).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dropbox"></i>
-                              <a href="trackOrder(pat).jsp">Pharmacy Orders</a>
+                              <a href="TrackOrders">Pharmacy Orders</a>
                          </div>
 
                          <h2>User</h2>
@@ -110,9 +110,9 @@
                               <a href="editpatient">Edit Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/changePassword.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-secret"></i>
-                              <a href="#">Change Password</a>
+                              <a href="changepassword">Change Password</a>
                          </div>
 
                          <div class="sidebar_logout">

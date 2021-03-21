@@ -27,6 +27,7 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
           <div class="container">
@@ -147,7 +148,7 @@
                                    </div>
                               </div>
                              
-                             <% if(!row.landNumber.equalsIgnoreCase("") || row.landNumber.equalsIgnoreCase("null")) { %>
+                             <% if(row.landNumber!=null) { %>
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
@@ -168,7 +169,13 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <% 
+                   String sidebar = "";
+                    if(userType==1) {
+                        sidebar = "patientSidebar";
+                    } 
+               %>
+               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
