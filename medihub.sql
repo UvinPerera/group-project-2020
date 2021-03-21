@@ -2132,6 +2132,14 @@ CREATE TABLE `email_activation` (
 -- Table structure for table `doctor_hospital`
 --
 
+ALTER TABLE `email_activation`
+  ADD PRIMARY KEY (`id`);
+
+-- AUTO_INCREMENT for table `email_activation`
+--
+ALTER TABLE `email_activation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 CREATE TABLE `doctor_hospital` (
   `doctor_id` int(11) NOT NULL,
   `hospital_id` int(11) NOT NULL,

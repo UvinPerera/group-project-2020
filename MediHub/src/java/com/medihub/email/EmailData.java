@@ -122,7 +122,7 @@ public class EmailData {
 "      <h6> Hello #Name, </h6>\n" +
 "      Thank you for registering with MediHub! Please click the button to verify your email address.\n" +
 "      </br></br></br>\n" +
-"      <button class=\"styled\" type=\"button\"> <a href=\"#activationLink\">Click To Verify</a> </button>\n" +
+"      <a href=\"#activationLink\">Click To Verify</a> \n" +
 "      </br></br></br>\n" +
 "      Please note that failure to verify your email address within 24 hours will terminate your registration.</br></br>\n" +
 "      If you have any issues, please contact medihub54@gmail.com\n" +
