@@ -88,9 +88,9 @@
                               <a href="editpharmacist">Edit Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/changePasswordPharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-secret"></i>
-                              <a href="#">Change Password</a>
+                              <a href="changepasswordpharmacy">Change Password</a>
                          </div>
 
                          <div class="sidebar_logout">
