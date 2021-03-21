@@ -113,7 +113,7 @@ public class EmailData {
 "      <center>\n" +
 "        <div id=\"logo\">\n" +
 "\n" +
-"          <img src=\"http://localhost:8080/MediHub/public/images/onlylogo.png\">\n" +
+"          <img src=\"https://i.postimg.cc/dtBCqRPb/logo.png\">\n" +
 "        </div>\n" +
 "        <h2>Welcome to Medihub!</h2>\n" +
 "      </center>\n" +
