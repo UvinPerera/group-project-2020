@@ -58,7 +58,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/channelling.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hand-pointer-o"></i>
-                              <a href="channelling?search=0&doctor=&hospital=&specialisation=&date=">E-Channelling</a>
+                              <a href="channelling?search=0&doctor=&hospital=&specialisation=&date=&limit=">E-Channelling</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/placeOrder.jsp' ? 'active_menu_link' : ''}">

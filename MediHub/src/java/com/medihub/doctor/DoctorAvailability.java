@@ -120,7 +120,7 @@ public class DoctorAvailability {
         
     }
     
-    public List<DoctorAvailability> getDoctorAvailabilitiesChanneling(String cDoctor, String cHospital, String cSpecialisation, String cDate) {
+    public List<DoctorAvailability> getDoctorAvailabilitiesChanneling(String cDoctor, String cHospital, String cSpecialisation, String cDate, String climit) {
         
         //date and time foramtting
         Date date = Calendar.getInstance().getTime();  
@@ -156,7 +156,9 @@ public class DoctorAvailability {
         String q_where  = "where da.status=1 and da.count<da.max_count and da.date='"+cDate+"' and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"') ";
         
         String q_order  = "order by h.id ASC, d.id ASC";
-        String query = q_select + q_join_h + q_join_d + q_join_ds + q_join_dss + q_join_u + q_where + q_where_hos + q_where_doc + q_where_special + q_order;
+        
+        String q_limit = " limit "+climit+",11";
+        String query = q_select + q_join_h + q_join_d + q_join_ds + q_join_dss + q_join_u + q_where + q_where_hos + q_where_doc + q_where_special + q_order + q_limit;
 //        return query;
         
         try
