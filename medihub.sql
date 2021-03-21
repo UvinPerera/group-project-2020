@@ -2118,7 +2118,16 @@ INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `st
 (4, 7, 1, '2020-12-03', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4);
 
 -- --------------------------------------------------------
+-- Table structure for table `email_activation`
+--
 
+CREATE TABLE `email_activation` (
+  `id` int(11) NOT NULL,
+  `email` varchar(90) NOT NULL,
+  `token` varchar(30) NOT NULL,
+  `ack` int(11) NOT NULL,
+  `dateTime` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Table structure for table `doctor_hospital`
 --

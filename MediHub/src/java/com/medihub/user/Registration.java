@@ -67,10 +67,13 @@ public class Registration extends HttpServlet {
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
+            String token =getSaltString();
+            String query2="INSERT INTO email_activation (email,token,ack) VALUES('"+email+"','"+token+"',0)";
+            PreparedStatement stmt1=con.prepareStatement(query2);  
+            int rs1 = stmt1.executeUpdate();
             con.close();  
             
-            String token =getSaltString();
-            String query2="INSERT INTO email_activation (email,token,ack) VALUES('"+email+"','"+token+"',"+0+"))";
+            
             EMail confrimEmail = new EMail();
             EmailData ed = new EmailData();
             
