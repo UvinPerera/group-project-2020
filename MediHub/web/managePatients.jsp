@@ -1,202 +1,201 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.patient.*"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>MediHub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Manage_Patients.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
-</head>
-<body>
-  <div class="navbar" id="navbar">
-      <ul>
-        <li><button class="style" type="button" onclick="window.location.href='logout';"> LOGOUT </button></li>
-        <li><button class="style" type="button" onclick="window.location.href='admin'"> Dashboard </button></li>
-        <li><a href="About.jsp" id="end">About</a></li>
-      <li><a href="contactUs.jsp">Contact</a></li>
-      <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
-      <li><a href="/MediHub">Home</a></li>
-        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
-      </ul>
-  </div>
-  <br>
-  <h3>Manage Patients</h3><hr>
-  <div class="Dropdown">
-    <select name='Dropdown' class="filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Active</a></option>
-      <option value='Action'><a href="#">Inactive</a></option>
-      <option value='Action'><a href="#">Blacklisted</a></option>
-   </select>
-   
-   <select name='Dropdown' class="filter_dropdown filters" >
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">ID</a></option>
-      <option value='Action'><a href="#">Patient</a></option>
-      <option value=99><a href="#">Phone Number</a></option>
-      <option value='Action'><a href="#">Status</a></option>
-   </select>
-   <input type="text" class="filter_text textt" placeholder="Filter">
-   <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
-  </div>
-  <br>
-  
-      
-  <div id="viewPatient" class="modal">
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>View Order</h2>
-      </div>
-      
-      <div class="modal-body">
-        
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="tableheading">Patient ID</th>
-              <th class="tableheading">Patient</th>
-              <th class="tableheading">Phone Number</th>
-              <th class="tableheading">DOB</th>
+     <head>
+          <meta charset=utf-8>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>MediHub</title>
+          <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <link rel="stylesheet" type="text/css" href="./public/css/managePatients.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
+          <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+          <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+     </head>
+
+     <body>
+
+
+          <div class="container">
+              <!--######################-->
+                 <!--navbar starting-->
+              <!--######################-->
               
-              <th class="tableheading">NIC</th>
-              <th class="tableheading">Status</th>
-            
-              <th class="tableheading">Description</th>
+              <jsp:include page="./public/includes/navbar.jsp"/>
               
-            </tr>
-            <tr>
-              <td class="Row">001</td>
-              <td class="Row">John</td>
-              <td class="Row">0771231231</td>
-              <td class="Row">15/10/2020</td>
-              <td class="Row">985678908V</td>
-              <td class="Row">Active</td>
-              <td class="Row">This is some random description of something boring</td>
+              <!--######################-->
+                 <!--navbar ending-->
+              <!--######################-->
+
+               <main>
+                    <!-- the content tag anything to do with the dashboard -->
+                    
+                    <!--######################-->
+                        <!--container starting-->
+                     <!--######################-->
+                    <div class="main_container">
+                        <div class="main_title">
+                             <div class="main_greeting">
+                                 <h3>Manage Patients</h3>
+                             </div>
+                        </div> 
+                        <form class="" action="managePatient" method="GET" id="submitForm">
+                             <input type="hidden" name="searching" value=""/>
+                        <div class="main_cards">
+
+                            <div class="card">
+                                      <i class="fa fa-search-plus fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Status</p>
+                                           
+                                           <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
+                                               <option value='Action' selected><a href="">All</a></option>
+                                               <option value='Action'><a href="#">Pending</a></option>
+                                               <option value='Action'><a href="#">Active</a></option>
+                                               <option value='Action'><a href="#">Inactive</a></option>
+                                               <option value='Action'><a href="#">Blacklisted</a></option>
+                                           </select>
+                                      </div>
+                             </div>
+
+                                 <div class="card">
+                                      <i class="fa fa-medkit fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Search</p>
+                                               
+                                               <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
+                                                   <option value='Action' selected><a href="">All</a></option>
+                                                   <option value='Action'><a href="#">Patient ID</a></option>
+                                                   <option value='Action'><a href="#">patient Name</a></option>
+                                                   <option value='Action'><a href="#">Status</a></option>
+                                                   <option value='Action'><a href="#">City</a></option>
+                                               </select>
+                                      </div>
+                                 </div>
+
+                                 <div class="card">
+                                      <i class="fa fa-filter fa-2x text-lightblue"></i>
+                                      <div class="card_inner_profile">
+                                          <p class="text-primary-p">Value</p>
+                                            <input type="text" class="filter_text textt" style="width: 100%" >
+                                      </div>
+                                 </div>
+               
+                                 <div class="buttons">
+                                   <button class="button-success" type="submit"><b>Search</b></button>
+                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                 </div>
+
+
+                            </div>
+                              </form>
+                                               
+                        <hr>
+                        
+                        
+                        <div class="charts">
+                          
+                            <div class="charts_table_div">
+                                        <table class="charts_table">
+                                             <thead>
+                                                  <tr>
+                                                       <th>#</th>
+                                                       <th>Patient</th>
+                                                       <th>City</th>
+                                                       <th>Status</th>
+                                                       <th>Action</th>
+                                                  </tr>
+                                             </thead>
+                                             <tbody>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td colspan="6"><a href="#">View More...</a></td>
+                                                  </tr>
+                                             </tbody>
+                                        </table>
+                                   </div>
+
+                              </div>
+                        </div>                            
+                    <!--######################-->
+                        <!--container ending-->
+                    <!--######################-->
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
+               
+                <jsp:include page="./public/includes/adminSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
+          </div>
             
-              </tr>
-          </thead>
-        </table>
-      </div>
-    </div>
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
 
-
-</div>
-    </div>
-  <div class="container-table">
-    <table class="table">
-      <thead>
-      <tr>
-        <th class="tableheading">Patient ID</th>
-        <th class="tableheading">Patient</th>
-        <th class="tableheading">Phone Number</th>
-        <th class="tableheading">Status</th>
-        <th class="tableheading">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="Row">001</td>
-        <td class="Row">John</td>
-        <td class="Row">0771231231</td>
-        <td class="Row">Active</td>
-        <td>
-          <ul class="actions">
-              <li><button class="btn" id="viewpatient"><i class="fa fa-eye"></i></button></li>
-              <li><button class="btn" onclick="confirm('Do you want to remove this patient')"><i class="fa fa-trash"></i></button></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">002</td>
-        <td class="Row">James Potter</td>
-        <td class="Row">0761231234</td>
-        <td class="Row">Inactive</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">003</td>
-        <td class="Row">George Leo</td>
-        <td class="Row">0711231235</td>
-        <td class="Row">Blacklisted</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td class="Row">004</td>
-        <td class="Row">David Oscar</td>
-        <td class="Row">0786786789</td>
-        <td class="Row">Active</td>
-        <td>
-          <ul class="actions">
-              <li><a href="#"><button class="btn"><i class="fa fa-eye"></i></button></a></li>
-              <li><a href="#"><button class="btn"><i class="fa fa-trash"></i></button></a></li>
-          </ul>
-        </td>
-      </tr>
-      </tbody>
-    </table>
- </div>
- <br>
-</body>
-<br><br>
-<center>
-<footer>
-  <div class="row4">
-    <div class="column4">
-      <div class="footerText">
-        <br>ABOUT <br><br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. <br>MediHub also
-        provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
-        them with the best experience in accessing medical<br> services.<br>
-      </div>
-    </div>
-    <!--<div class="column4"><br>
-      <div class="footerText"> -->
-        <br><br>
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-google"></a>
-        <a href="#" class="fa fa-instagram"></a>
-      </div>
-  <!--  </div>
-  </div> -->
-  <br>
-  <div class="footerText">
-    All rights Reserved @MediHub2020
-  </div>
-  <br><br>
-</footer>
-</center>
-<script>
-var modal = document.getElementById("viewPatient");
-var btn = document.getElementById("viewpatient");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+     </body>
 </html>

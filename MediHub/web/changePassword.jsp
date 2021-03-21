@@ -140,6 +140,12 @@
                     if(userType==1) {
                         sidebar = "patientSidebar";
                     } 
+                    else if(userType==0){
+                        sidebar = "adminSidebar";
+                    }
+                    else{
+                        sidebar = "";
+                    }
                %>
                <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 <!--######################-->
