@@ -200,10 +200,8 @@
             </div>
             
              </div>
-    </div>
+   
 
-
-</div>
    </main>
            <jsp:include page="./public/includes/patientSidebar.jsp"/>
         </div>
