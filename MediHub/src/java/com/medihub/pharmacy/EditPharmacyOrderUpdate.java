@@ -40,13 +40,13 @@ public class EditPharmacyOrderUpdate extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs =stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,oi.description , oi.file_path, po.order_status,po.expected_delivery_date FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.id="+orderId);
+                ResultSet rs =stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name,oi.absolute_path, po.created_at,oi.description , oi.file_path, po.order_status,po.expected_delivery_date FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.id="+orderId);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 8 ; i++){
+                        for (int i = 0; i <9 ; i++){
                             row.add(rs.getString(i));
                         }
                         Orders.add(row);

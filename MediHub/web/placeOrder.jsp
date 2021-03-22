@@ -77,7 +77,7 @@
                          </div>-->
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form action="submitorder" method="post">
+                         <form action="submitorder" method="post" >
 <!--                         <form class="" action="channelling" method="GET" id="submitForm">-->
 <!--                             <input type="hidden" name="search" value="1"/>-->
                             <div class="main_cards">
@@ -142,7 +142,7 @@
                                       <i class="fa fa-file-image-o fa-2x text-blue"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Prescription</p>
-                                           <p class="text-secondary-p"><input class="input" type="file" name="file_path" id="email" placeholder="Select Image"></p>
+                                           <p class="text-secondary-p"><input class="input" type="file" name="file_path" id="filepath" placeholder="Select Image"></p>
                                       </div>
                                 </div></div>
                                  
@@ -163,14 +163,13 @@
 
                                  
 
-                            </div>
                          </form>
                                                
                         <br>
                          
                         
                         
-                    
+                    </div>
 
                </main>
 
