@@ -5,6 +5,7 @@
  */
 package com.medihub.pharmacy;
 import com.medihub.user.*;
+import com.medihub.db.*;
 import com.medihub.db.DbConfig;
 import com.medihub.hospital.Hospital;
 import java.sql.Connection;
@@ -149,6 +150,40 @@ public class Pharmacy extends User {
         return licenseNumber;
     }
     
+    public Pharmacy getPharmacyProfile(){
+        
+        String query = "select p.id,p.name,p.license_number,p.pharmacist_id,p.display_name,p.land_number,p.fax,p.email,p.address_1,p.address_2,p.city from pharmacies p where p.status=1 and p.id="+this.id;
+          try{
+       
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()) { 
+                    this.id=rs.getInt("id");
+                    this.name=rs.getString("name") ;
+                    this.licenseNumber = rs.getInt("license_number");
+                    this.displayName = rs.getString("display_name"); 
+                    this.landNumber =rs.getString("land_number");
+                    this.email = rs.getString("email");
+                    this.fax = rs.getString("fax");
+                    this.address1 = rs.getString("address1");
+                    this.address2 = rs.getString("address2");
+                    this.city = rs.getInt("city");              
+          
+            }
+            
+            con.close();
+            return this;
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+    }
      public List<Orders> getAllOrders(){
         
         //date and time formatting

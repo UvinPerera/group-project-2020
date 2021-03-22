@@ -70,7 +70,8 @@ public class PharmacyView extends HttpServlet {
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
                 Pharmacy p = new Pharmacy(pharmacyId);
-                request.setAttribute("profile", p.getProfile());
+                
+                request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
                 request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
