@@ -133,7 +133,7 @@
                                         </script>
                                         <!--js array end-->
 
-                                   <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
+                                   <!-- limit the results to 5 in db query... view more option will lead to all results -->
                                         <div class="charts_table_div">
                                              <table class="charts_table">
                                                   <thead>

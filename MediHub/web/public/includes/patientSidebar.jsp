@@ -88,9 +88,9 @@
 
                          <h2>Report</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/channellingRecords.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-address-book"></i>
-                              <a href="#">Channelling</a>
+                              <a href="channellingRecords">Channelling</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(pat).jsp' ? 'active_menu_link' : ''}">
