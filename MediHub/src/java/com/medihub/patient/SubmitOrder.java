@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package com.medihub.patient;
-import java.sql.*; 
+import java.io.*;
+import java.util.*;
+
+
+
 import com.medihub.db.DbConfig;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.io.PrintWriter;
-import java.nio.file.Paths;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Random;
@@ -20,7 +24,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.*;
 
 /**
  *
@@ -31,6 +40,11 @@ import javax.servlet.http.Part;
 @MultipartConfig
 public class SubmitOrder extends HttpServlet {
     
+   private boolean isMultipart;
+   private int maxFileSize = 15 * 1024*1024; //max upload size in  bytes
+   private File file ;
+
+   
  protected String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         StringBuilder salt = new StringBuilder();
@@ -56,30 +70,84 @@ public class SubmitOrder extends HttpServlet {
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
             
+            String description="";//=request.getParameter("description");
+            String filepath="";//=request.getParameter("file_path");
+            String date="" ;//= request.getParameter("date");
+            String pharmacyid="1";//=Integer.parseInt(request.getParameter("pharmacy"));
+            
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
-                    
-            String description=request.getParameter("description");
-            String filepath=request.getParameter("file_path");
-            String date = request.getParameter("date");
-            int pharmacyid=Integer.parseInt(request.getParameter("pharmacy"));
-            int id;
+             
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setSizeMax( maxFileSize );
+            
+            
             String status="Pending";
             String randomString = getSaltString();
-            String extension = ".pdf"; 
+            String extension = ".pdf";//filepath.substring(filepath.length()-4, filepath.length()-1);
             String absolutePath = randomString+extension;
             
-            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by,order_status,expected_delivery_date) VALUES(NULL,'"+pharmacyid+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"','"+status+"','"+date+"')";
+            try{
+                List fileItems = upload.parseRequest(request);
+                Iterator iter = fileItems.iterator();
+                
+                while (iter.hasNext()) {
+                    FileItem item = (FileItem) iter.next();
+
+                    if (item.isFormField()) {
+
+                      String name = item.getFieldName();//text1
+                      String value = item.getString();
+                      if(name.compareTo("description")==0){
+                          description=value;
+                      }
+                      
+                      else if(name.compareTo("date")==0){
+                          date = value;
+                      }
+                      else if(name.compareTo("pharmacy")==0){
+                          pharmacyid=value;
+                      }
+                      
+
+                    } else {
+                        String fieldName = item.getFieldName();
+                        String fileName = item.getName();
+                        String contentType = item.getContentType();
+                        boolean isInMemory = item.isInMemory();
+                        long sizeInBytes = item.getSize();
+                        
+                        filepath=fileName;
+                        
+                            
+                            file = new File("F:/group-project-2020/MediHub/web/public/storage/pres/"+absolutePath) ;
+                        
+                            
+                         
+                            item.write( file ) ;
+                              }
+                          }
+            
+            String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by,order_status,expected_delivery_date) VALUES(NULL,"+pharmacyid+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"','"+status+"','"+date+"')";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
             String query2="INSERT INTO order_items (id,order_id,file_path,absolute_path,description,status,created_at,updated_at,created_by) VALUES(NULL,LAST_INSERT_ID(),'"+filepath+"','"+absolutePath+"','"+description+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"')";
             PreparedStatement stmt2=con.prepareStatement(query2);  
             int rs2=stmt2.executeUpdate();
-//            Part filePart = request.getPart("file");
-//            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-//            InputStream fileContent = filePart.getInputStream();
-//            out.println("fileName");
+            
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            
+            
+            
+            
+            
+           //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
+
            response.sendRedirect("patient");
             con.close();  
         }
