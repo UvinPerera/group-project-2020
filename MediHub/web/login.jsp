@@ -19,7 +19,7 @@
                 <p>Email:</p><input type="text" name="email" id="email" placeholder="Enter Email"><br>
                 <p>Password:</p><input type="password" name="userpassword" id="userpassword" placeholder="Enter Password"><br><br>
                 <input type="submit" name="submit" id="submit" value="Login">
-                <br><br><a href="#">Forgot password?</a>
+                <br><br><a href="forgetPassword.jsp">Forgot password?</a>
             </form>
         </div>
 

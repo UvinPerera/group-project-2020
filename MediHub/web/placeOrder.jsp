@@ -77,7 +77,7 @@
                          </div>-->
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form action="submitorder" method="post" >
+                         <form action="submitorder" method="post" enctype="multipart/form-data">
 <!--                         <form class="" action="channelling" method="GET" id="submitForm">-->
 <!--                             <input type="hidden" name="search" value="1"/>-->
                             <div class="main_cards">

@@ -22,4 +22,11 @@
       <description>Keep a copy of the generated servlet class' java code.</description>
     </property>
   </jsp-config>
+  <context-param> 
+      <description>Location to store uploaded file</description> 
+      <param-name>file-upload</param-name> 
+      <param-value>
+         F:\group-project-2020\MediHub\web\public\storage\pres
+      </param-value> 
+   </context-param>
 </glassfish-web-app>
