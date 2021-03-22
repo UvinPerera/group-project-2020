@@ -234,14 +234,14 @@
 
     }
     function displayPrescriptionFun(){
-         document.getElementById("displayPrescription").href = "/MediHub/public/storage/"+absolutepath[finalId];
+         document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
        
      
     
     }
     function downloadPrescriptionFun(){
         
-         document.getElementById("downloadPrescription").download = "/MediHub/public/storage/"+absolutepath[finalId];;
+         document.getElementById("downloadPrescription").download = "public/storage/pres/"+absolutepath[finalId];;
         
     
     }
