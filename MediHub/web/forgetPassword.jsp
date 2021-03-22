@@ -5,6 +5,16 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
+
+<%
+    int status;
+    try{
+    status = Integer.parseInt(request.getParameter("status"));
+    }catch(NumberFormatException e){
+        status=0;
+    }
+
+%>
 <html>
 
      <head>
@@ -46,15 +56,17 @@
                          </div>
                                   
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="verificationCode.jsp" method="POST" id="updateForm">
+                         <form class="" action="passreset" method="POST" id="updateForm">
                          <div class="main_cards" id="">
 
                               <div class="card">
                                   <div class="main_greeting">
+                                      <%if(status!=1){%>
                                       <center><i class="fa fa-lock" style="font-size: 100px; color: #2e4a66;"></i></center>
                                       <h1><center>FORGET PASSWORD?</center></h1>
+                                      
                                       <div class="paragraph"><center>Enter your email address and reset your password.</center></div>
-                                 
+                                      
                                       <br><br>
                                       <center><input class="data" type="email" name="email" id="email" placeholder="Email address" value=""></center>
                                       <div class="alert-danger" id="emailError">
@@ -62,8 +74,23 @@
                                       </div>
                                       <br><br>
                                       <div class="buttons">
-                                       <center><button class="button"><b>Next</b></button></center>   
+                                          <center><button class="button" type="submit"><b>Next</b></button></center>   
                                      </div>
+                                      <%}else{%>
+                                      <div class="card">
+                                  <div class="main_greeting">
+                                      <h1><center>EMAIL SENT</center></h1>
+                                      <br>
+                                      <center><i class="fa fa-check-circle" style="font-size: 100px; color: #2e4a66;"></i></center>
+                             
+                                      <div class="paragraph"><center>Check your Email for Password Reset Code</center></div>
+                                      <br><br>
+                                      <div class="buttons">
+                                          <center><a href="login.jsp" class=""><button class="button" type="button"><b>LOGIN</b></button></a></center>   
+                                     </div>
+                                   </div>
+                              </div>
+                                      <%}%>
                                    </div>
                               </div>
                                                              
