@@ -47,6 +47,7 @@
   %>
   <br><br>
   <h3>Your Orders </h3><hr>
+  <h4><%=array%></h4>
   <div class="Dropdown">
       <center>
     <select name='Dropdown'class="filters">
@@ -78,9 +79,9 @@
                 var patientName= [];
                 var datetime = [];
                 var orderdescription = [];
-                var itemdescription = [];
+                var orderStatus = [];
                 var filepath= [];
-  
+                var absolutepath = [];
   </script>
   <div class="container-table">
     <table class="table">
@@ -89,7 +90,7 @@
         <th class="tableheading">Order ID</th>
         <th class="tableheading">Patient ID</th>
         <th class="tableheading">Patient Name</th>
-        <th class="tableheading">Date & Time</th>
+        <th class="tableheading">Delivery Date </th>
         <th class="tableheading">Status</th>
         <th class="tableheading">Actions</th>
       </tr>
@@ -107,7 +108,7 @@
           
           <ul class="actions">
               <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
-              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+              <li><a href="editpharmacyorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
               <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td> 
@@ -116,9 +117,10 @@
                             patientId[<%=i%>]            ="<%=a2.get(1)%>";
                             patientName[<%=i%>]          ="<%=a2.get(2)%>";
                             datetime[<%=i%>]             ="<%=a2.get(3)%>";
-                            orderdescription[<%=i%>]     ="<%=a2.get(4)%>";
-                            itemdescription[<%=i%>]      ="<%=a2.get(6)%>"; 
+                            orderdescription[<%=i%>]     ="<%=a2.get(6)%>";
+                            orderStatus[<%=i%>]          ="<%=a2.get(4)%>"; 
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
+                            
           </script>
       </tr>
        <%}}%>
@@ -140,7 +142,7 @@
                     <tr>
                         <td> Order ID : </td>
                         <td id="modal_id"> ** </td>
-                        <td> Date / Time : </td>
+                        <td> Delivery Date : </td>
                         <td id="modal_date_time"> ** </td>
                     </tr>
 
@@ -154,8 +156,8 @@
                     <tr>
                         <td> Order Description : </td>
                         <td id="modal_orderDescription"> ** </td>
-                        <td> Patient Order Description : </td>
-                        <td id="modal_itemDescription"> ** </td>
+                        <td> Order Status : </td>
+                        <td id="modal_orderStatus"> ** </td>
                         
                     </tr>
 
@@ -222,7 +224,7 @@
         document.getElementById("modal_patientName").innerHTML = patientName[index];
         document.getElementById("modal_date_time").innerHTML = datetime[index];
         document.getElementById("modal_orderDescription").innerHTML = orderdescription[index];
-        document.getElementById("modal_itemDescription").innerHTML = itemdescription[index];
+        document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
         
 

@@ -1,9 +1,9 @@
-
 <%-- 
-    Document   : trackOrder(phar)
-    Created on : Nov 30, 2020, 03:50:50 AM
+    Document   : updateOrderPhar
+    Created on : Mar 21, 2021, 8:00:43 PM
     Author     : Yash
 --%>
+
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.pharmacy.*"%>
 <%@page import="java.util.ArrayList"%>
@@ -43,7 +43,7 @@
             <div class="container1">
                 <h1>Update Order </h1><br><hr><br><br>
                 
-              <form action="updatepatientorder?orderid=<%=a2.get(0)%>" method="post">
+              <form action="updatepharmacyorder?orderid=<%=a2.get(0)%>" method="post">
 
                 <h2 class="details">Order ID</h2>
                 <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
@@ -58,19 +58,19 @@
                   <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
 
                   <h2 class="details"> Order Status </h2>
-                   <input class="input" type="text" name="orderstatus" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly>
+                   <input class="input" type="text" name="orderstatus" id="orderstatus" placeholder="<%=a2.get(6)%>" >
 
                    <h2 class="details">Order Description</h2>
-                    <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>">
+                    <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>" readonly>
 
                 <h2 class="details">Prescription</h2>
-                 <input class="input" type="file" name="file_path" id="file_path" placeholder="<%=a2.get(5)%>" >
+                 <input class="input" type="file" name="file_path" id="file_path" placeholder="<%=a2.get(5)%>" readonly>
 
                  <h2 class="details">Order Delivery Date</h2>
                  <input class="input" type="date" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" >
 
                  <div class="button-container1">
-                       <button class="button" id="id" onclick="window.location.href='patient';"><b>Cancel</b></button>
+                       <button class="button" id="id" onclick="window.location.href='pharmacy';"><b>Cancel</b></button>
                        <button class="button" type="reset" id="clear"><b>Clear</b></button>
                        <button class="button" type="submit"><b>Submit</b></button>
 
@@ -79,7 +79,7 @@
               </form>
             </div>
         </main>
-           <jsp:include page="./public/includes/patientSidebar.jsp"/>
+           <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
         </div>
      </body>
 

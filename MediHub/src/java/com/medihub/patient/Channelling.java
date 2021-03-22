@@ -3,9 +3,13 @@ package com.medihub.patient;
 //import java.util.Date;
 
 import com.medihub.db.DbConfig;
+import com.medihub.doctor.DoctorAvailability;
 import com.medihub.location.District;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -26,6 +30,8 @@ public class Channelling {
     public int createdBy;
     public int updatedBy;
     
+    public String specialisation_1;
+    public String specialisation_2;
     public String date;
     public String start_time;
     public String end_time;
@@ -279,7 +285,7 @@ public class Channelling {
         
         return this;
     }
-
+    
     public int getId() {
         return id;
     }
