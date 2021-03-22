@@ -164,10 +164,10 @@
                     </tr>
 
                     <tr>
-                        <td><button class=""> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
-                        <td><button class=""><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
-<!--                        <td colspan="4"><a href="#" id="prescriptionFile">Click to View Prescription</a></td>-->
-                        
+                        <td colspan="2" ><button class="style"> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
+                        <td colspan="2" ><button class="style"><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
+
+                    
                     </tr>
 
                    
@@ -178,7 +178,7 @@
                         <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
                     </tr>
                     <tr>
-                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        <td colspan="4" style="text-align: right;"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
                         </td>
                     </tr>
 
@@ -241,7 +241,7 @@
     }
     function downloadPrescriptionFun(){
         
-         document.getElementById("downloadPrescription").download = "public/storage/pres/"+absolutepath[finalId];;
+         document.getElementById("downloadPrescription").download = filepath[finalId];;
         
     
     }
