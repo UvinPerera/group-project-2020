@@ -121,7 +121,7 @@ public class SubmitOrder extends HttpServlet {
                         filepath=fileName;
                         
                             
-                            file = new File("F:/group-project-2020/MediHub/web/public/storage/pres/"+absolutePath) ;
+                            file = new File(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath) ;
                         
                             
                          
