@@ -47,7 +47,7 @@
   %>
   <br><br>
   <h3>Your Orders </h3><hr>
-  <h4><%=array%></h4>
+ 
   <div class="Dropdown">
       <center>
     <select name='Dropdown'class="filters">
@@ -82,6 +82,7 @@
                 var orderStatus = [];
                 var filepath= [];
                 var absolutepath = [];
+                var finalId;
   </script>
   <div class="container-table">
     <table class="table">
@@ -120,7 +121,8 @@
                             orderdescription[<%=i%>]     ="<%=a2.get(6)%>";
                             orderStatus[<%=i%>]          ="<%=a2.get(4)%>"; 
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
-                            
+                            absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
+                           
           </script>
       </tr>
        <%}}%>
@@ -162,8 +164,9 @@
                     </tr>
 
                     <tr>
-                        <td colspan="2"> File Path : </td>
-                        <td colspan="2" id="modal_filePath"> ** </td>
+                        <td><button class=""> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
+                        <td><button class=""><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
+<!--                        <td colspan="4"><a href="#" id="prescriptionFile">Click to View Prescription</a></td>-->
                         
                     </tr>
 
@@ -197,10 +200,7 @@
 
 </html>
 <script>
-    //    #########################
-    //    modal script start
-    //    #########################
-
+    
     var modal = document.getElementById("modalBox");
 
     // Get the button that opens the modal
@@ -214,11 +214,12 @@
 
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
+    var link=10;
     function popup(indexId) {
         modal.style.display = "block";
         
         var index=indexId;
-        
+        finalId =index; 
         document.getElementById("modal_id").innerHTML = id[index];
         document.getElementById("modal_patientId").innerHTML = patientId[index];
         document.getElementById("modal_patientName").innerHTML = patientName[index];
@@ -226,10 +227,24 @@
         document.getElementById("modal_orderDescription").innerHTML = orderdescription[index];
         document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
-        
+        //document.getElementById("modal_absFilePath").innerHTML = absolutepath[index];
+        // = "www.google.com";/
+        //link = 20;//"http://facebook.com";//"/public/storage/"+absolutepath[index];
+       
 
     }
-
+    function displayPrescriptionFun(){
+         document.getElementById("displayPrescription").href = "/MediHub/public/storage/"+absolutepath[finalId];
+       
+     
+    
+    }
+    function downloadPrescriptionFun(){
+        
+         document.getElementById("downloadPrescription").download = "/MediHub/public/storage/"+absolutepath[finalId];;
+        
+    
+    }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
