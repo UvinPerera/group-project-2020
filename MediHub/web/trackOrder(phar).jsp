@@ -47,6 +47,7 @@
   %>
   <br><br>
   <h3>Your Orders </h3><hr>
+  <h4><%=array%></h4>
   <div class="Dropdown">
       <center>
     <select name='Dropdown'class="filters">
@@ -80,7 +81,7 @@
                 var orderdescription = [];
                 var orderStatus = [];
                 var filepath= [];
-  
+                var absolutepath = [];
   </script>
   <div class="container-table">
     <table class="table">
@@ -119,6 +120,7 @@
                             orderdescription[<%=i%>]     ="<%=a2.get(6)%>";
                             orderStatus[<%=i%>]          ="<%=a2.get(4)%>"; 
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
+                            
           </script>
       </tr>
        <%}}%>

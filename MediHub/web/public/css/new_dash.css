@@ -46,6 +46,10 @@ body {
      color: #2e4a66;
 }
 
+.text-blue {
+     color: #05418a;
+}
+
 .text-lightblue {
      color: #469cac;
 }
@@ -62,6 +66,10 @@ body {
 
 .text-yellow {
      color: #a98921;
+}
+
+.text-brown {
+     color: #3d2e29;
 }
 
 .text-green {
