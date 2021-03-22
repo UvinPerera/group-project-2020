@@ -24,7 +24,7 @@
           <link rel="stylesheet" type="text/css" href="./public/css/forgetpwd.css" media="screen">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      </head>
-
+            <%String email = request.getAttribute("email").toString();%>
      <body>
          
           <div class="container">
@@ -52,7 +52,7 @@
                          </div>
                                   
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pwdsuccessfullyupdate.jsp" method="POST" id="updateForm">
+                         <form class="" action="passchange" method="POST" id="updateForm">
                          <div class="main_cards" id="">
 
                               <div class="card">
@@ -71,6 +71,7 @@
                                             * Password did not match.
                                       </div>
                                       <br><br>
+                                      <input type="hidden" name="email" value="<%=email%>">
                                       <div class="buttons">
                                        <center><a href="#" class=""><button class="button"><b>Submit</b></button></a></center>   
                                      </div>
