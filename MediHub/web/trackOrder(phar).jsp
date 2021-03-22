@@ -214,7 +214,7 @@
 
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
-    var link=10;
+  
     function popup(indexId) {
         modal.style.display = "block";
         
@@ -227,9 +227,7 @@
         document.getElementById("modal_orderDescription").innerHTML = orderdescription[index];
         document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
-        //document.getElementById("modal_absFilePath").innerHTML = absolutepath[index];
-        // = "www.google.com";/
-        //link = 20;//"http://facebook.com";//"/public/storage/"+absolutepath[index];
+        
        
 
     }

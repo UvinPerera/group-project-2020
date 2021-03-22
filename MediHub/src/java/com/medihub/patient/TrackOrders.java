@@ -40,13 +40,13 @@ public class TrackOrders extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement();
-                ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE  po.created_by="+patientId);
+                ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE  po.created_by="+patientId);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 7 ; i++){
+                        for (int i = 1; i <= 8 ; i++){
                             row.add(rs.getString(i));
                         }
                         Orders.add(row);
