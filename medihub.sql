@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 02:35 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Host: localhost
+-- Generation Time: Mar 22, 2021 at 01:10 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -2112,33 +2112,24 @@ CREATE TABLE `doctor_availability` (
 --
 
 INSERT INTO `doctor_availability` (`id`, `doctor_id`, `hospital_id`, `date`, `start_time`, `end_time`, `max_count`, `count`, `payment`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 3, 1, '2021-01-02', '08:00:00', '10:00:00', 20, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4),
-(2, 3, 1, '2021-01-02', '13:00:00', '14:00:00', 20, 0, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
-(3, 3, 1, '2020-12-03', '19:00:00', '21:00:00', 20, 1, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
-(4, 7, 1, '2020-12-03', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4);
+(1, 3, 1, '2021-03-24', '08:00:00', '10:00:00', 20, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4),
+(2, 3, 1, '2021-03-24', '13:00:00', '14:00:00', 20, 0, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(3, 3, 1, '2021-03-24', '19:00:00', '21:00:00', 20, 1, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(4, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4),
+(5, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4),
+(6, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4),
+(7, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4),
+(8, 3, 1, '2021-03-24', '13:00:00', '14:00:00', 20, 0, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(9, 3, 1, '2021-03-24', '19:00:00', '21:00:00', 20, 1, 1500, 1, '2020-12-02 12:01:09', '2020-12-02 12:01:09', 4, 4),
+(10, 3, 1, '2021-03-24', '08:00:00', '10:00:00', 20, 1, 1000, 1, '2020-11-19 12:43:29', '2020-11-19 12:43:29', 4, 4),
+(11, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4),
+(12, 7, 1, '2021-03-24', '12:00:00', '14:00:00', 10, 1, 2000, 1, '2020-12-02 12:04:24', '2020-12-02 12:04:24', 4, 4);
 
 -- --------------------------------------------------------
--- Table structure for table `email_activation`
---
 
-CREATE TABLE `email_activation` (
-  `id` int(11) NOT NULL,
-  `email` varchar(90) NOT NULL,
-  `token` varchar(30) NOT NULL,
-  `ack` int(11) NOT NULL,
-  `dateTime` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Table structure for table `doctor_hospital`
 --
-
-ALTER TABLE `email_activation`
-  ADD PRIMARY KEY (`id`);
-
--- AUTO_INCREMENT for table `email_activation`
---
-ALTER TABLE `email_activation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 CREATE TABLE `doctor_hospital` (
   `doctor_id` int(11) NOT NULL,
@@ -2207,6 +2198,20 @@ INSERT INTO `doctor_specialisation` (`id`, `name`, `description`, `status`, `cre
 (2, 'Cardiology Physician', 'Heart', 1, '2020-10-30 21:13:12', '2020-10-30 21:13:16', 1, 1),
 (3, 'ENT Surgeon', 'ENT', 1, '2020-10-30 21:13:12', '2020-10-30 21:13:16', 1, 1),
 (4, 'ENT Physician', 'ENT', 1, '2020-10-30 21:13:12', '2020-10-30 21:13:16', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_activation`
+--
+
+CREATE TABLE `email_activation` (
+  `id` int(11) NOT NULL,
+  `email` varchar(90) NOT NULL,
+  `token` varchar(30) NOT NULL,
+  `ack` int(11) NOT NULL,
+  `dateTime` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -2316,6 +2321,20 @@ CREATE TABLE `intervals` (
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `intervals`
+--
+
+INSERT INTO `intervals` (`id`, `name`, `times_per_day`, `meal_preference`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 'tds/tid ac', 3, 1, '8am, 2pm, 8pm Before Meals', 1, '2021-03-22 05:23:39', '2021-03-22 05:23:39', 1, 1),
+(2, 'tds/tid pc', 3, 2, '8am, 2pm, 8pm After Meals', 1, '2021-03-22 05:23:39', '2021-03-22 05:23:39', 1, 1),
+(3, 'bd/bid ac', 2, 1, '8am, 8pm Before Meals', 1, '2021-03-22 05:23:39', '2021-03-22 05:23:39', 1, 1),
+(4, 'bd/bid pc', 2, 2, '8am, 8pm After Meals', 1, '2021-03-22 05:23:39', '2021-03-22 05:23:39', 1, 1),
+(5, 'sos/pm', 0, 0, 'As per needed', 1, '2021-03-22 05:27:33', '2021-03-22 05:27:33', 1, 1),
+(6, 'eod/qod', 0, 0, 'Every Other Day', 1, '2021-03-22 05:27:33', '2021-03-22 05:27:33', 1, 1),
+(7, '6h/q6h', 0, 0, 'Every 6 hrs', 1, '2021-03-22 05:27:33', '2021-03-22 05:27:33', 1, 1),
+(8, '4h/q4h', 0, 0, 'Every 4 hrs', 1, '2021-03-22 05:27:33', '2021-03-22 05:27:33', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2333,6 +2352,22 @@ CREATE TABLE `interval_times` (
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `interval_times`
+--
+
+INSERT INTO `interval_times` (`id`, `interval_id`, `time`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 1, '08:00:00', 'tds ac', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(2, 1, '14:00:00', 'tds ac', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(3, 1, '20:00:00', 'tds ac', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(4, 2, '08:00:00', 'tds pc', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(5, 2, '14:00:00', 'tds pc', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(6, 2, '20:00:00', 'tds pc', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(7, 3, '08:00:00', 'bd ac', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(8, 3, '20:00:00', 'bd ac', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(9, 4, '08:00:00', 'bd pc', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1),
+(10, 4, '20:00:00', 'bd pc', 1, '2021-03-22 05:32:20', '2021-03-22 05:32:20', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2417,7 +2452,8 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `file_path`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 1, 'final.pdf', '', 1, '2021-03-20 19:29:46', '2021-03-21 17:13:38', 10, 10),
-(2, 2, '2018cs040.pdf', 'Online Store for Young girls', 1, '2021-03-20 23:06:02', '2021-03-20 23:06:02', 10, NULL);
+(2, 2, '2018cs040.pdf', 'Online Store for Young girls', 1, '2021-03-20 23:06:02', '2021-03-20 23:06:02', 10, NULL),
+(3, 3, '', 'dxv', 1, '2021-03-21 21:59:02', '2021-03-21 21:59:02', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -2578,7 +2614,8 @@ CREATE TABLE `pharmacy_orders` (
 
 INSERT INTO `pharmacy_orders` (`id`, `pharmacy_id`, `description`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`, `expected_delivery_date`, `order_status`) VALUES
 (1, 1, '', 1, '2021-03-20 19:29:46', '2021-03-21 17:13:38', 10, 10, '2021-03-07 00:00:00', NULL),
-(2, 1, NULL, 1, '2021-03-20 23:06:02', '2021-03-20 23:06:02', 10, NULL, '2021-03-10 00:00:00', 'Pending');
+(2, 1, NULL, 1, '2021-03-20 23:06:02', '2021-03-20 23:06:02', 10, NULL, '2021-03-10 00:00:00', 'Pending'),
+(3, 1, NULL, 1, '2021-03-21 21:59:02', '2021-03-21 21:59:02', 2, NULL, '2021-03-21 00:00:00', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -2705,12 +2742,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_pic_path`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 'Admin', NULL, 'Admin', NULL, 'admin@medihub.com', 'admin123', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
-(2, 'Uvin', 'Perera', 'Uvin', NULL, 'uvin@gmial.com', '123', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
-(3, 'Yashithi', 'Dharma', 'Yash', NULL, 'yash@gmial.com', '123', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(4, 'Aysha', 'Ifra', 'Aysha', NULL, 'aysha@gmial.com', '123', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, 'tharshan@gmial.com', '123', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(7, 'John', 'Doe', 'John', NULL, 'john@gmail.com', 'Qwerty12345', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
-(9, 'Jane', 'Doe', 'Jane', NULL, 'jane@gmail.com', 'Qwerty12345', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
+(2, 'Uvin', 'Perera', 'Uvin', NULL, 'uvin@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
+(3, 'Yashithi', 'Dharma', 'Yash', NULL, 'yash@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(4, 'Aysha', 'Ifra', 'Aysha', NULL, 'aysha@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, 'tharshan@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(7, 'John', 'Doe', 'John', NULL, 'john@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(9, 'Jane', 'Doe', 'Jane', NULL, 'jane@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
 (10, 'Yashithi', 'dharme', 'Yashsha', NULL, 'yashsha7@gmail.com', '77aae185203edc6357676db95caa25d0f398d402c1723e6a7b42cfe8d2967f2e', 1, '987380012v', '2021-03-16', 'F', '0755821611', '0112913950', 'No>90,1st cross street', '', 333, NULL, 1, NULL, '2021-03-17 14:18:42', '2021-03-17 14:18:42', NULL, NULL),
 (11, 'Pharmacist', 'Dharmawimala', 'Pharmacy', NULL, 'pharmacy@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '389358495', '2021-03-03', 'M', '0728018617', '0755821611', 'NO:18/8B, waragoda road, Kelaniya, Sri lanka', '', 1294, NULL, 1, NULL, '2021-03-18 18:08:24', '2021-03-21 11:58:47', NULL, 11);
 
@@ -2830,6 +2867,12 @@ ALTER TABLE `doctor_specialisation`
   ADD UNIQUE KEY `name` (`name`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
+
+--
+-- Indexes for table `email_activation`
+--
+ALTER TABLE `email_activation`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `hospitals`
@@ -3080,7 +3123,7 @@ ALTER TABLE `districts`
 -- AUTO_INCREMENT for table `doctor_availability`
 --
 ALTER TABLE `doctor_availability`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `doctor_reviews`
@@ -3093,6 +3136,12 @@ ALTER TABLE `doctor_reviews`
 --
 ALTER TABLE `doctor_specialisation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `email_activation`
+--
+ALTER TABLE `email_activation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hospitals`
@@ -3110,13 +3159,13 @@ ALTER TABLE `hospital_reviews`
 -- AUTO_INCREMENT for table `intervals`
 --
 ALTER TABLE `intervals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `interval_times`
 --
 ALTER TABLE `interval_times`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `medical_records`
@@ -3140,7 +3189,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_payments`
@@ -3170,7 +3219,7 @@ ALTER TABLE `pharmacies`
 -- AUTO_INCREMENT for table `pharmacy_orders`
 --
 ALTER TABLE `pharmacy_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prescriptions`
