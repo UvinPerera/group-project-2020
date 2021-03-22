@@ -36,7 +36,8 @@ public class User {
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
-    
+    public String profilePicPath;
+    public String absoluteProfilePicPath;
     public String districtStr;
     public int district;
     public String cityStr;
@@ -99,7 +100,8 @@ public class User {
                 this.description = rs.getString("description"); 
                 this.createdAt = rs.getString("created_at");
                 this.updatedAt = rs.getString("updated_at");
-                
+                this.profilePicPath = rs.getString("profile_pic_path");
+                this.absoluteProfilePicPath = rs.getString("absolute_pp_path");
                 
             }
             
