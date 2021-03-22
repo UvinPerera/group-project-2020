@@ -278,11 +278,15 @@
         var orderId=index;
         var del = confirm("Are you sure you want delete this order permenently ?");
         if (del == true){
+            if((status[index]=="Completed")||(status[index]=="Cancelled")){
             window.location.href="deleteorder?orderid="+orderId;
-          //$(location).attr('href',reidrect);
+       
+        }
+        else{
+            alert("You cannot delete an order which is not completed nor cancelled.")
         }
         
 
-    }
+    }}
    </script>
 </html>
