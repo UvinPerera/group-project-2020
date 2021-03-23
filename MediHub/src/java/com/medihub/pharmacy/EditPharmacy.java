@@ -27,32 +27,15 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "EditPharmacy", urlPatterns = {"/editpharmacy"})
 public class EditPharmacy extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
- 
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             HttpSession session = request.getSession();
-             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
-             PrintWriter out = response.getWriter();
+            PrintWriter out = response.getWriter();
+            
+            HttpSession session = request.getSession();
+            int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
+            
             
        
              try
@@ -62,10 +45,12 @@ public class EditPharmacy extends HttpServlet {
                 
                 Statement stmt=con.createStatement();
                 ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
-                int pharmacyId=-1;
+                int pharmacyId=0;
                 while(rs.next()){
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
+                
+                Pharmacist ps = new Pharmacist(pharmacistId);
                 Pharmacy p = new Pharmacy(pharmacyId);
                 
                 District d = new District();
@@ -74,7 +59,7 @@ public class EditPharmacy extends HttpServlet {
                 
                 request.setAttribute("cities", c.getAllCities()); //directly get districts
                 request.setAttribute("districts", d.getAllDistricts()); //directly get districts
-                request.setAttribute("profile", p.getProfile());
+                request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
                 request.getRequestDispatcher("editpharmacy.jsp").forward(request, response);
             }
              catch(Exception e){
@@ -83,21 +68,6 @@ public class EditPharmacy extends HttpServlet {
                 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-   
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

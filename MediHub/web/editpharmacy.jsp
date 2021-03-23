@@ -71,28 +71,23 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">First Name</p>
-                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
-                                        <div class="alert-danger" id="firstNameError">
-                                            * First name can't be empty and must contain only letters
-                                        </div>
+                                        <p class="text-primary-p">Pharmacy Name</p>
+                                        <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
+                                       
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Last Name</p>
-                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
-                                        <div class="alert-danger" id="lastNameError">
-                                            * Last name can't be empty and must contain only letters
-                                        </div>
-                                   </div>
+                                        <input class="data" type="text" name="license_number" id="license_number" placeholder="<%= row.getLicenseNumber()%>" value="<%= row.getLicenseNumber()%>" readonly>
+                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="Display Name" value="<%= row.displayName %>">
+                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -105,30 +100,7 @@
                                         <p class="text-secondary-p"><%= row.email %></p>
                                    </div>
                               </div>         
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">NIC</p>
-                                        <p class="text-secondary-p"><%= row.nic %></p>
-                                   </div>
-                              </div>
-                             
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Date of Birth</p>
-                                        <p class="text-secondary-p"><%= row.dob %></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Gender</p>
-                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
-                                   </div>
-                              </div>
-                             
-                             <div class=""></div>
-
+           
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
@@ -153,7 +125,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
-                                        <select class="data" name="city" id="city">
+                                        <select class="data" name="city" id="city" >
                                                             <%
                                                                 if(request.getAttribute("cities")!=null){
                                                                     List<City> cities = (ArrayList<City>)request.getAttribute("cities");
@@ -191,15 +163,7 @@
                                    </div>
                               </div>
                                                            
-                             <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Mobile Number</p>
-                                        <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
-                                        <div class="alert-danger" id="numberError">
-                                            * Enter valid mobile number
-                                        </div>                                   
-                                   </div>
-                              </div>
+                             
                              
                              <div class="card">
                                    <div class="card_inner_profile">
