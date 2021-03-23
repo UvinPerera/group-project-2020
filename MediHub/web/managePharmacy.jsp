@@ -26,6 +26,7 @@
           <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
           <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+          
      </head>
 
      <body>
@@ -117,60 +118,62 @@
                           
                             <div class="charts_table_div">
                                         <table class="charts_table">
+                                        <%
+                                         if(request.getAttribute("pharmacies")!=null){
+                                         List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("pharmacies");
+                                         if(table.size()>0){
+                                        %>
+                                        <!--js array-->
+                                        <script>
+                                        var licenseNumber = [];
+                                        var display_name = [];
+                                        var pharmacist = [];
+                                        var district = [];
+                                        var city = [];
+                                        var pstatus = [];
+                
+                                        var size =<%= table.size() %>;
+                                        </script>
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
+                                                      
+                                                       <th>License Number</th>
                                                        <th>Pharmacy</th>
                                                        <th>Director</th>
+                                                       <th>District</th>
                                                        <th>City</th>
                                                        <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Pharmacy 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
+                                              <% for(Pharmacy row : table) { %>
+                                                  <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
+                                                       
+                                                       <td><%= row.getLicenseNumber()%></td>
+                                                       <td><%= row.displayName %></td>
+                                                       <td><%= row.pharmacist %></td>
+                                                       <td><%= row.districtStr %></td>
+                                                       <td><%= row.cityStr %></td>
+                                                       <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Pharmacy 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Pharmacy 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Pharmacy 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Pharmacy 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
+                                                  <script>
+                                                   licenseNumber[<%= table.indexOf(row) %>]                     = <%= row.getLicenseNumber() %>;
+                                                   display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
+                                                   pharmacist[<%= table.indexOf(row) %>]                        = "<%= row.pharmacist %>";
+                                                   district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
+                                                   city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";
+                                                   pstatus[<%= table.indexOf(row) %>]                            = <%= row.status %>;
+
+                                                 </script>
+      
+                                                 <% } %>
+                                               <% } } %>
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>
+                                                  
                                              </tbody>
                                         </table>
                                    </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2021 at 01:10 AM
+-- Generation Time: Mar 23, 2021 at 09:17 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -2172,6 +2172,53 @@ CREATE TABLE `doctor_reviews` (
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `doctor_reviews`
+--
+
+INSERT INTO `doctor_reviews` (`id`, `patient_id`, `doctor_id`, `rating`, `description`, `status`, `approved_at`, `approved_by`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 2, 3, 3, 'bla bla', 1, NULL, NULL, '2021-03-23 04:22:24', '2021-03-23 04:22:24', 2, 2),
+(2, 2, 3, 3, 'dsgfdsg sg s gzd gxfg fxg xf gs xf dsf dsv djv dj jd cjd vjd dj', 1, NULL, NULL, '2021-03-23 04:23:02', '2021-03-23 04:23:02', 2, 2),
+(3, 2, 3, 5, 'vfxv', 1, NULL, NULL, '2021-03-23 05:03:17', '2021-03-23 05:03:17', 2, 2),
+(4, 2, 3, 1, 'dxv', 0, NULL, NULL, '2021-03-23 05:33:16', '2021-03-23 05:33:16', 2, 2),
+(5, 2, 3, 4, 'xfbfxbd', 1, NULL, NULL, '2021-03-23 05:33:24', '2021-03-23 05:33:24', 2, 2),
+(6, 2, 3, 3, '', 0, NULL, NULL, '2021-03-23 05:33:29', '2021-03-23 05:33:29', 2, 2),
+(7, 2, 3, 1, '', 0, NULL, NULL, '2021-03-23 05:43:11', '2021-03-23 05:43:11', 2, 2),
+(8, 2, 3, 1, '', 0, NULL, NULL, '2021-03-23 05:43:12', '2021-03-23 05:43:12', 2, 2),
+(9, 2, 3, 1, '', 0, NULL, NULL, '2021-03-23 05:43:14', '2021-03-23 05:43:14', 2, 2),
+(10, 2, 3, 1, '', 0, NULL, NULL, '2021-03-23 05:43:14', '2021-03-23 05:43:14', 2, 2),
+(11, 2, 3, 1, '', 0, NULL, NULL, '2021-03-23 05:43:15', '2021-03-23 05:43:15', 2, 2),
+(12, 2, 3, 5, 'qwe', 0, NULL, NULL, '2021-03-23 05:43:15', '2021-03-23 07:25:56', 2, 2),
+(13, 2, 3, 4, 'lllkkk', 1, NULL, NULL, '2021-03-23 05:43:15', '2021-03-23 07:30:35', 2, 2),
+(14, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:16', '2021-03-23 05:43:16', 2, 2),
+(15, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:16', '2021-03-23 05:43:16', 2, 2),
+(16, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:16', '2021-03-23 05:43:16', 2, 2),
+(17, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:16', '2021-03-23 05:43:16', 2, 2),
+(18, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:16', '2021-03-23 05:43:16', 2, 2),
+(19, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:17', '2021-03-23 05:43:17', 2, 2),
+(20, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:17', '2021-03-23 05:43:17', 2, 2),
+(21, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:17', '2021-03-23 05:43:17', 2, 2),
+(22, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:18', '2021-03-23 05:43:18', 2, 2),
+(23, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:18', '2021-03-23 05:43:18', 2, 2),
+(24, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:18', '2021-03-23 05:43:18', 2, 2),
+(25, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:18', '2021-03-23 05:43:18', 2, 2),
+(26, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:19', '2021-03-23 05:43:19', 2, 2),
+(27, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:19', '2021-03-23 05:43:19', 2, 2),
+(28, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:19', '2021-03-23 05:43:19', 2, 2),
+(29, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:19', '2021-03-23 05:43:19', 2, 2),
+(30, 2, 3, 1, '', 1, NULL, NULL, '2021-03-23 05:43:20', '2021-03-23 05:43:20', 2, 2),
+(31, 2, 3, 5, 'hhhh', 1, NULL, NULL, '2021-03-23 07:19:28', '2021-03-23 07:19:28', 2, 2),
+(32, 2, 3, 5, 'QWE', 1, NULL, NULL, '2021-03-23 07:19:43', '2021-03-23 07:19:43', 2, 2),
+(33, 2, 3, 5, 'qwe', 1, NULL, NULL, '2021-03-23 07:21:01', '2021-03-23 07:21:01', 2, 2),
+(34, 2, 3, 5, 'qwe', 1, NULL, NULL, '2021-03-23 07:23:24', '2021-03-23 07:23:24', 2, 2),
+(35, 2, 3, 3, 'qwe', 1, NULL, NULL, '2021-03-23 07:26:19', '2021-03-23 07:26:19', 2, 2),
+(36, 2, 3, 3, 'n', 1, NULL, NULL, '2021-03-23 07:27:17', '2021-03-23 07:27:17', 2, 2),
+(37, 2, 3, 4, 'lll', 1, NULL, NULL, '2021-03-23 07:29:23', '2021-03-23 07:29:23', 2, 2),
+(38, 2, 3, 4, 'nnn', 1, NULL, NULL, '2021-03-23 07:29:42', '2021-03-23 07:29:42', 2, 2),
+(39, 2, 3, 4, 'l', 1, NULL, NULL, '2021-03-23 09:36:22', '2021-03-23 09:36:22', 2, 2),
+(40, 2, 3, 3, 'm', 1, NULL, NULL, '2021-03-23 09:40:15', '2021-03-23 09:40:15', 2, 2),
+(41, 2, 3, 3, 'm', 1, NULL, NULL, '2021-03-23 09:40:23', '2021-03-23 09:40:23', 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -2253,7 +2300,7 @@ CREATE TABLE `hospitals` (
 --
 
 INSERT INTO `hospitals` (`id`, `name`, `license_number`, `license_proof_location`, `director_id`, `director_id_proof_location`, `display_name`, `display_pic_path`, `land_number`, `fax`, `email`, `address_1`, `address_2`, `city`, `longitude`, `latitude`, `description`, `status`, `last_login`, `last_login_by`, `created_at`, `updated_at`, `created_by`, `updated_by`, `approved_by`, `approved_at`) VALUES
-(1, 'Medihub Hospital', 999, NULL, 3, NULL, 'MH Hospital', NULL, NULL, NULL, 'medihub@gmail.com', NULL, NULL, 1, NULL, NULL, 'Owners', 1, '2020-10-30 21:20:14', 4, '2020-10-30 21:22:01', '2020-10-30 21:22:04', 1, 1, 1, '2020-10-30 21:22:22');
+(1, 'Medihub Hospital', 999, NULL, 3, NULL, 'MH Hospital', NULL, NULL, NULL, 'medihub@gmail.com', 'gcgfg jgffgv jgf jgv jgv ', 'fhdhf h fhf tg ft', 1, NULL, NULL, 'Owners', 1, '2020-10-30 21:20:14', 4, '2020-10-30 21:22:01', '2020-10-30 21:22:04', 1, 1, 1, '2020-10-30 21:22:22');
 
 -- --------------------------------------------------------
 
@@ -2301,6 +2348,26 @@ CREATE TABLE `hospital_reviews` (
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hospital_reviews`
+--
+
+INSERT INTO `hospital_reviews` (`id`, `patient_id`, `hospital_id`, `rating`, `description`, `status`, `approved_at`, `approved_by`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 1, 1, 3, 'j', 1, NULL, NULL, '2021-03-23 09:45:07', '2021-03-23 09:45:07', 1, 1),
+(2, 2, 1, 3, 'j', 1, NULL, NULL, '2021-03-23 09:45:13', '2021-03-23 09:45:13', 2, 2),
+(3, 2, 1, 4, ',mm', 0, NULL, NULL, '2021-03-23 09:45:27', '2021-03-23 09:45:27', 2, 2),
+(4, 1, 1, 3, 'j', 1, NULL, NULL, '2021-03-23 09:46:37', '2021-03-23 09:46:37', 1, 1),
+(5, 2, 1, 1, 'h', 1, NULL, NULL, '2021-03-23 10:02:15', '2021-03-23 10:05:12', 2, 2),
+(6, 2, 1, 3, 'j', 1, NULL, NULL, '2021-03-23 10:05:25', '2021-03-23 10:05:25', 2, 2),
+(7, 2, 1, 2, 'j', 1, NULL, NULL, '2021-03-23 10:05:31', '2021-03-23 10:05:31', 2, 2),
+(8, 2, 1, 2, 'm', 1, NULL, NULL, '2021-03-23 10:05:50', '2021-03-23 10:05:50', 2, 2),
+(9, 2, 1, 1, 'k', 1, NULL, NULL, '2021-03-23 10:05:56', '2021-03-23 10:05:56', 2, 2),
+(10, 2, 1, 3, 'j ', 1, NULL, NULL, '2021-03-23 10:06:02', '2021-03-23 10:06:40', 2, 2),
+(11, 2, 1, 4, 'hgvjhv', 1, NULL, NULL, '2021-03-23 10:06:08', '2021-03-23 10:06:08', 2, 2),
+(12, 2, 1, 3, 'jgvgj', 1, NULL, NULL, '2021-03-23 10:06:13', '2021-03-23 10:06:13', 2, 2),
+(13, 2, 1, 4, 'hfdhy', 1, NULL, NULL, '2021-03-23 10:06:19', '2021-03-23 10:06:19', 2, 2),
+(14, 2, 1, 2, ' m', 1, NULL, NULL, '2021-03-23 11:01:33', '2021-03-23 11:01:33', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -2496,6 +2563,20 @@ CREATE TABLE `order_refunds` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `password_reset`
+--
+
+CREATE TABLE `password_reset` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `ack` int(11) NOT NULL DEFAULT 0,
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment_methods`
 --
 
@@ -2620,6 +2701,63 @@ INSERT INTO `pharmacy_orders` (`id`, `pharmacy_id`, `description`, `status`, `cr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pharmacy_reviews`
+--
+
+CREATE TABLE `pharmacy_reviews` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `pharmacy_id` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
+  `description` varchar(512) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `approved_at` int(11) DEFAULT NULL,
+  `approved_by` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pharmacy_reviews`
+--
+
+INSERT INTO `pharmacy_reviews` (`id`, `patient_id`, `pharmacy_id`, `rating`, `description`, `status`, `approved_at`, `approved_by`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 2, 2, 3, 'bcsdf', 0, NULL, NULL, '2021-03-23 10:53:07', '2021-03-23 10:53:16', 2, 2),
+(2, 2, 2, 1, 'sdc', 1, NULL, NULL, '2021-03-23 10:53:24', '2021-03-23 10:53:24', 2, 2),
+(3, 2, 2, 1, 'dsf', 1, NULL, NULL, '2021-03-23 10:53:27', '2021-03-23 10:53:27', 2, 2),
+(4, 2, 2, 4, 'd', 1, NULL, NULL, '2021-03-23 10:53:31', '2021-03-23 10:53:31', 2, 2),
+(5, 2, 2, 3, 'cd', 1, NULL, NULL, '2021-03-23 10:53:34', '2021-03-23 10:53:34', 2, 2),
+(6, 2, 2, 3, 'cdsc', 1, NULL, NULL, '2021-03-23 10:53:36', '2021-03-23 10:53:36', 2, 2),
+(7, 2, 2, 4, 'scd', 1, NULL, NULL, '2021-03-23 10:53:39', '2021-03-23 10:53:39', 2, 2),
+(8, 2, 2, 3, 'cd', 1, NULL, NULL, '2021-03-23 10:53:43', '2021-03-23 10:53:43', 2, 2),
+(9, 2, 2, 5, 'scd', 1, NULL, NULL, '2021-03-23 10:53:46', '2021-03-23 10:53:46', 2, 2),
+(10, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:53:50', '2021-03-23 10:53:50', 2, 2),
+(11, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:53:52', '2021-03-23 10:53:52', 2, 2),
+(12, 2, 2, 5, 'dxcv', 1, NULL, NULL, '2021-03-23 10:53:54', '2021-03-23 10:54:18', 2, 2),
+(13, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:53:55', '2021-03-23 10:53:55', 2, 2),
+(14, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:53:56', '2021-03-23 10:53:56', 2, 2),
+(15, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:53:58', '2021-03-23 10:53:58', 2, 2),
+(16, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:54:00', '2021-03-23 10:54:00', 2, 2),
+(17, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:54:02', '2021-03-23 10:54:02', 2, 2),
+(18, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:54:03', '2021-03-23 10:54:03', 2, 2),
+(19, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:54:05', '2021-03-23 10:54:05', 2, 2),
+(20, 2, 2, 1, 'd', 1, NULL, NULL, '2021-03-23 10:54:06', '2021-03-23 10:54:06', 2, 2),
+(21, 2, 2, 1, 'sef', 1, NULL, NULL, '2021-03-23 10:54:09', '2021-03-23 10:54:09', 2, 2),
+(22, 2, 2, 1, 'dfv', 1, NULL, NULL, '2021-03-23 10:56:30', '2021-03-23 10:56:30', 2, 2),
+(23, 2, 2, 3, 'df', 1, NULL, NULL, '2021-03-23 10:56:33', '2021-03-23 10:56:33', 2, 2),
+(24, 2, 1, 5, 'qwertyeeeee', 1, NULL, NULL, '2021-03-23 10:59:14', '2021-03-23 11:02:02', 2, 2),
+(25, 2, 1, 3, 'df', 1, NULL, NULL, '2021-03-23 10:59:21', '2021-03-23 10:59:21', 2, 2),
+(26, 2, 1, 2, 'dsf', 1, NULL, NULL, '2021-03-23 10:59:24', '2021-03-23 10:59:24', 2, 2),
+(27, 2, 1, 1, 'dsv', 1, NULL, NULL, '2021-03-23 10:59:27', '2021-03-23 10:59:27', 2, 2),
+(28, 2, 1, 1, 'dcccccccc', 1, NULL, NULL, '2021-03-23 10:59:31', '2021-03-23 11:01:48', 2, 2),
+(29, 2, 1, 4, 'dsc', 1, NULL, NULL, '2021-03-23 10:59:34', '2021-03-23 10:59:34', 2, 2),
+(30, 2, 1, 3, 'sdc', 1, NULL, NULL, '2021-03-23 10:59:37', '2021-03-23 10:59:37', 2, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prescriptions`
 --
 
@@ -2716,6 +2854,7 @@ CREATE TABLE `users` (
   `last_name` varchar(64) DEFAULT NULL,
   `display_name` varchar(64) DEFAULT NULL,
   `profile_pic_path` varchar(256) DEFAULT NULL,
+  `absolute_pp_path` varchar(256) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `user_type` int(11) DEFAULT NULL,
@@ -2740,16 +2879,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_pic_path`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
-(1, 'Admin', NULL, 'Admin', NULL, 'admin@medihub.com', 'admin123', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
-(2, 'Uvin', 'Perera', 'Uvin', NULL, 'uvin@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
-(3, 'Yashithi', 'Dharma', 'Yash', NULL, 'yash@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(4, 'Aysha', 'Ifra', 'Aysha', NULL, 'aysha@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, 'tharshan@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
-(7, 'John', 'Doe', 'John', NULL, 'john@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
-(9, 'Jane', 'Doe', 'Jane', NULL, 'jane@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
-(10, 'Yashithi', 'dharme', 'Yashsha', NULL, 'yashsha7@gmail.com', '77aae185203edc6357676db95caa25d0f398d402c1723e6a7b42cfe8d2967f2e', 1, '987380012v', '2021-03-16', 'F', '0755821611', '0112913950', 'No>90,1st cross street', '', 333, NULL, 1, NULL, '2021-03-17 14:18:42', '2021-03-17 14:18:42', NULL, NULL),
-(11, 'Pharmacist', 'Dharmawimala', 'Pharmacy', NULL, 'pharmacy@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '389358495', '2021-03-03', 'M', '0728018617', '0755821611', 'NO:18/8B, waragoda road, Kelaniya, Sri lanka', '', 1294, NULL, 1, NULL, '2021-03-18 18:08:24', '2021-03-21 11:58:47', NULL, 11);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_pic_path`, `absolute_pp_path`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 'Admin', NULL, 'Admin', NULL, NULL, 'admin@medihub.com', 'admin123', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
+(2, 'Uvin', 'Perera', 'Uvin', NULL, NULL, 'uvin@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
+(3, 'Yashithi', 'Dharma', 'Yash', NULL, NULL, 'yash@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(4, 'Aysha', 'Ifra', 'Aysha', NULL, NULL, 'aysha@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, NULL, 'tharshan@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(7, 'John', 'Doe', 'John', NULL, NULL, 'john@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(9, 'Jane', 'Doe', 'Jane', NULL, NULL, 'jane@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
+(10, 'Yashithi', 'dharme', 'Yashsha', NULL, NULL, 'yashsha7@gmail.com', '77aae185203edc6357676db95caa25d0f398d402c1723e6a7b42cfe8d2967f2e', 1, '987380012v', '2021-03-16', 'F', '0755821611', '0112913950', 'No>90,1st cross street', '', 333, NULL, 1, NULL, '2021-03-17 14:18:42', '2021-03-17 14:18:42', NULL, NULL),
+(11, 'Pharmacist', 'Dharmawimala', 'Pharmacy', NULL, NULL, 'pharmacy@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '389358495', '2021-03-03', 'M', '0728018617', '0755821611', 'NO:18/8B, waragoda road, Kelaniya, Sri lanka', '', 1294, NULL, 1, NULL, '2021-03-18 18:08:24', '2021-03-21 11:58:47', NULL, 11);
 
 --
 -- Indexes for dumped tables
@@ -2988,6 +3127,12 @@ ALTER TABLE `order_refunds`
   ADD KEY `refund_method` (`refund_method`);
 
 --
+-- Indexes for table `password_reset`
+--
+ALTER TABLE `password_reset`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
@@ -3026,6 +3171,18 @@ ALTER TABLE `pharmacy_admins`
 ALTER TABLE `pharmacy_orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pharmacy_id` (`pharmacy_id`),
+  ADD KEY `created_by` (`created_by`),
+  ADD KEY `updated_by` (`updated_by`);
+
+--
+-- Indexes for table `pharmacy_reviews`
+--
+ALTER TABLE `pharmacy_reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_id` (`patient_id`),
+  ADD KEY `hospital_id` (`pharmacy_id`),
+  ADD KEY `approved_at` (`approved_at`),
+  ADD KEY `approved_by` (`approved_by`),
   ADD KEY `created_by` (`created_by`),
   ADD KEY `updated_by` (`updated_by`);
 
@@ -3129,7 +3286,7 @@ ALTER TABLE `doctor_availability`
 -- AUTO_INCREMENT for table `doctor_reviews`
 --
 ALTER TABLE `doctor_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `doctor_specialisation`
@@ -3153,7 +3310,7 @@ ALTER TABLE `hospitals`
 -- AUTO_INCREMENT for table `hospital_reviews`
 --
 ALTER TABLE `hospital_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `intervals`
@@ -3204,6 +3361,12 @@ ALTER TABLE `order_refunds`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `password_reset`
+--
+ALTER TABLE `password_reset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `payment_methods`
 --
 ALTER TABLE `payment_methods`
@@ -3220,6 +3383,12 @@ ALTER TABLE `pharmacies`
 --
 ALTER TABLE `pharmacy_orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `pharmacy_reviews`
+--
+ALTER TABLE `pharmacy_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `prescriptions`

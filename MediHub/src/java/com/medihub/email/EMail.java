@@ -10,7 +10,10 @@ package com.medihub.email;
  * @author diabalo
  */
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;    
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.*;    
 import javax.mail.internet.*;  
 
@@ -20,7 +23,7 @@ public class EMail{
     public  void send(String to,String sub,String msg){  
           //Get properties object  
          final String username = "medihub54@gmail.com";
-        final String password = "ucsc@1234";
+        final String password = "ndbotuhnvrhipfgt";
           
          Properties props = new Properties();    
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -45,7 +48,7 @@ public class EMail{
           //compose message    
           try {    
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("medihub54@gmail.com"));
+            message.setFrom(new InternetAddress("medihub54@gmail.com","Medi Hub"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(to)
@@ -70,6 +73,8 @@ public class EMail{
            // System.out.println("message sent successfully");    
           }  catch (MessagingException e) {
             e.printStackTrace();
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(EMail.class.getName()).log(Level.SEVERE, null, ex);
         }  
              
     }  

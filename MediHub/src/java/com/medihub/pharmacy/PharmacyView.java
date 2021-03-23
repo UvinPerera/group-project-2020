@@ -48,6 +48,7 @@ public class PharmacyView extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,9 +59,19 @@ public class PharmacyView extends HttpServlet {
             
             try
             {
-                Pharmacist p = new Pharmacist(pharmacistId);
-//                out.println(p.getProfile().id);
-                request.setAttribute("profile", p.getProfile());
+                
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
+                int pharmacyId=1;
+                while(rs.next()){
+                        pharmacyId=rs.getInt("pharmacy_id");
+                }
+                Pharmacy p = new Pharmacy(pharmacyId);
+                
+                request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
                 request.getRequestDispatcher("viewpharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());

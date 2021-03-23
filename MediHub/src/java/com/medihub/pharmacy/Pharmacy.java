@@ -5,6 +5,7 @@
  */
 package com.medihub.pharmacy;
 import com.medihub.user.*;
+import com.medihub.db.*;
 import com.medihub.db.DbConfig;
 import com.medihub.hospital.Hospital;
 import java.sql.Connection;
@@ -28,6 +29,7 @@ public class Pharmacy extends User {
     public String name;
     private int licenseNumber;
     private String licenseProofLocation;
+    public String displayPicLocation;
     public String displayName;
     public int pharmacistId;
     public int pharmacyId;
@@ -95,6 +97,83 @@ public class Pharmacy extends User {
         }
     }
     
+    public Pharmacy getPharmacy(int id) {
+        
+        String query = "SELECT h.id, h.name, h.display_name, h.display_pic_path, h.land_number, h.fax, h.email, h.address_1, h.address_2, c.name_en as city, d.name_en as district FROM pharmacies h "
+                + "JOIN cities c ON c.id=h.city "
+                + "JOIN districts d ON d.id=c.district_id "
+                + "WHERE h.status=1 and h.id="+id;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            Pharmacy h = new Pharmacy(); 
+                        
+            while(rs.next()) { 
+                
+                h.id = rs.getInt("id"); 
+                h.name = rs.getString("name");
+                h.displayName = rs.getString("display_name");
+                h.displayPicLocation = rs.getString("display_pic_path");
+                h.landNumber = rs.getString("land_number");
+                h.fax = rs.getString("fax");
+                h.email = rs.getString("email");
+                h.address1 = rs.getString("address_1");
+                h.address2 = rs.getString("address_2");
+                h.cityStr = rs.getString("city");
+                h.districtStr = rs.getString("district");
+                
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
+    public List<Pharmacy> getAllActivePharmacies() {
+        
+        String query = "select id, display_name from pharmacies where status=1";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<Pharmacy> h =new ArrayList<Pharmacy>();
+                        
+            while(rs.next()) { 
+                Pharmacy ho = new Pharmacy(); 
+                ho.id = rs.getInt("id"); 
+                ho.displayName = rs.getString("display_name");
+                
+                h.add(ho);
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
     public List<Pharmacy> getAllPharmacies(){
         
         String query = "select p.*, c.name_en as city_name, d.name_en as district, u.display_name as pharmacist from pharmacies p "
@@ -149,6 +228,40 @@ public class Pharmacy extends User {
         return licenseNumber;
     }
     
+    public Pharmacy getPharmacyProfile(){
+        
+        String query = "select p.id,p.name,p.license_number,p.pharmacist_id,p.display_name,p.land_number,p.fax,p.email,p.address_1,p.address_2,p.city from pharmacies p where p.status=1 and p.id="+this.id;
+          try{
+       
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()) { 
+                    
+                    this.name=rs.getString("name") ;
+                    this.licenseNumber = rs.getInt("license_number");
+                    this.displayName = rs.getString("display_name"); 
+                    this.landNumber =rs.getString("land_number");
+                    this.email = rs.getString("email");
+                    this.fax = rs.getString("fax");
+                    this.address1 = rs.getString("address_1");
+                    this.address2 = rs.getString("address_2");
+                    this.city = rs.getInt("city");              
+          
+            }
+            
+            con.close();
+            return this;
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+    }
      public List<Orders> getAllOrders(){
         
         //date and time formatting
@@ -213,8 +326,8 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status=pending";
-        
+        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Pending'";
+         
         try
         {
             DbConfig db = DbConfig.getInstance();

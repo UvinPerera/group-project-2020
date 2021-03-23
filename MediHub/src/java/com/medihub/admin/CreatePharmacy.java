@@ -93,9 +93,10 @@ public class CreatePharmacy extends HttpServlet {
             PrintWriter out = response.getWriter();
             String Pharmacy_Name = request.getParameter("pharmacy_name");
             int License_Number = Integer.parseInt(request.getParameter("license_number"));
-            String License_Proof_Location = request.getParameter("license_proof_location");
+            String Pharmacy_Display_Name = request.getParameter("pharmacy_display_name");
+ //         String License_Proof_Location = request.getParameter("license_proof_location");
 //          int Pharmacist_Id = Integer.parseInt(request.getParameter("pharmacist_id"));
-            String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
+//          String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
             String Land_Number = request.getParameter("land_number");
             String Fax = request.getParameter("fax");
             String Email = request.getParameter("email");
@@ -105,7 +106,7 @@ public class CreatePharmacy extends HttpServlet {
             String Description = request.getParameter("description");
             String First_Name = request.getParameter("first_name");
             String Last_Name = request.getParameter("last_name");
-            String Display_Name = request.getParameter("display_name");
+            String Display_Name = request.getParameter("user_display_name");
             String Pharmacist_Email = request.getParameter("pharmacyadmin_email");
             String NIC = request.getParameter("nic_no");
             String Mobile_Number = request.getParameter("mobile_number");
@@ -118,8 +119,8 @@ public class CreatePharmacy extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs1=stmt.executeUpdate("insert into pharmacies(name,license_number,license_proof_location,pharmacist_id_proof_location,display_name,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
-                        + "values('"+Pharmacy_Name+"',"+License_Number+",'"+License_Proof_Location+"','"+Pharmacist_Proof_Location+"','"+Display_Name+"','"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+City+",1,'"+Description+"',"+adminId+","+adminId+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
+                int rs1=stmt.executeUpdate("insert into pharmacies(name,license_number,display_name,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
+                        + "values('"+Pharmacy_Name+"',"+License_Number+",'"+Pharmacy_Display_Name+"','"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+City+",1,'"+Description+"',"+adminId+","+adminId+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
                 int rs2=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,mobile_number,created_at,updated_at,created_by,updated_by) "
                         +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Pharmacist_Email+"','"+Password+"',4,'"+NIC+"','"+Mobile_Number+"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 response.sendRedirect("readpharmacy");

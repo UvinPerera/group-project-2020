@@ -83,8 +83,9 @@ public class DoctorDashboard extends HttpServlet {
                         }
                         Appointments.add(row);
                 }
-                
-                
+                Doctor p = new Doctor(doctorId);
+                String absolutePath = p.getAbsPath();
+                request.setAttribute("absolutePath",absolutePath);
                 request.setAttribute("prescriptions", Prescriptions);
                 request.setAttribute("appointments", Appointments);
                 request.getRequestDispatcher("doctorDashboard.jsp").forward(request, response);

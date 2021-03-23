@@ -56,7 +56,8 @@ public class ReadPharmacy extends HttpServlet {
             int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
-                        String query = "select p.*, c.name_en as city, d.name_en as district, u.display_name as pharmacist from pharmacies p "
+                        String query = "select p.*, c.name_en as city, d.name_en as district, p.pharmacy_display_name as display_name from pharmacies p "
+                                + "select u.*, u.user_display_name as display_name from users"
                                 + "join cities c on c.id=p.city "+ "join districts d on d.id=c.district_id "
                                 + "join users u on u.id=p.pharmacist_id ";
 

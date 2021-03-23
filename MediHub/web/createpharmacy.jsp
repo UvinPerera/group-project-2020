@@ -60,12 +60,16 @@
                                   <h1>Hello <%=username%></h1>
                                    <p>Create a new pharmacy </p>
                               </div>
-                         </div>
-                         
+                          </div>
+                          <hr>
                           <!-- change the main cards css fragments to change number of cards Available -->
                           <form action="createpharmacy" method="POST" id="">
+                             <div class="main_title">
+                              <div class="main_greeting">
+                                   <p>Pharmacy details</p>
+                              </div>
+                            </div>
                             <div class="main_cards">
-
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
@@ -86,7 +90,7 @@
                                         </div>
                                    </div>
                               </div>
-                              <div class="card">
+                             <!-- <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">License Proof Location</p>
@@ -105,7 +109,17 @@
                                             * Pharmacist proof location can't be empty and must contain only letters
                                         </div>
                                    </div>
-                              </div>
+                              </div>  -->
+                             <div class="card">
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <input class="data" type="text" name="pharmacy_display_name" id="pharmacydisplayname" placeholder="Display Name">
+                                        <div class="alert-danger" id="pharmacyDisplayNameError">
+                                            * Pharmacy display name can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>  
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
@@ -129,7 +143,7 @@
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-primary-p">Pharmacy Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="Email">
                                         <div class="alert-danger" id="EmailError">
                                             * Email can't be empty and must contain only letters
@@ -202,6 +216,13 @@
                                         </div>
                                    </div>
                               </div>
+                            </div>
+                            <div class="main_title">
+                              <div class="main_greeting">
+                                   <p>Pharmacy admin details</p>
+                              </div>
+                            </div>
+                              <div class="main_cards">
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
@@ -228,7 +249,7 @@
                                    <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="pharmacyadmin_display_name" id="displayName" placeholder="Display Name">
+                                        <input class="data" type="text" name="user_display_name" id="displayName" placeholder="Display Name">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -322,33 +343,6 @@
             <!--footer ending-->
             <!--######################-->
           <script src="./public/js/new_script.js"></script>
- <!--
-    
-    
-   
-
-  <div class="record">
-    <div class="label">Description</div>
-    <input class="data" type="text" name="description" id="description" placeholder="Description">
-  </div>
-<!--
-  <div class="record">
-    <div class="label">Status</div>
-    <input class="data" type="text" name="status" id="status" placeholder="Status">
-  </div>
-
-  <div class="buttons">
-      <br>
-      <button class="button" type="reset"><b>Clear</b></button>
-      <button class="button" type="submit"><b>Submit</b></button>
-    <!--  <button class="button" onclick="window.location.href='readpharmacy'"><b>Cancel</b></button>
-   </div>
-    </form>
-   
-
-  </div>
-</div> -->
-
 
 <script>
     

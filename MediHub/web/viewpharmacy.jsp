@@ -61,8 +61,8 @@
                          </div>
                         
                         <%
-                            if(request.getAttribute("profile")!=null){
-                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
+                            if(request.getAttribute("pharmacyprofile")!=null){
+                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
                                 
                         %> 
 
@@ -71,16 +71,16 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">First Name</p>
-                                        <p class="text-secondary-p"><%= row.firstName %></p>
+                                        <p class="text-primary-p">Pharmacy Name</p>
+                                        <p class="text-secondary-p"><%= row.name %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Last Name</p>
-                                        <p class="text-secondary-p"><%= row.lastName %></p>
-                                   </div>
+                                        <p class="text-primary-p">License Number</p>
+                                        <p class="text-secondary-p"><%= row.getLicenseNumber()%></p>
+                                   </div> 
                               </div>
 
                               <div class="card">
@@ -97,42 +97,15 @@
                                    </div>
                               </div>
 
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">NIC</p>
-                                        <p class="text-secondary-p"><%= row.nic %></p>
-                                   </div>
-                              </div>
-                             
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Date of Birth</p>
-                                        <p class="text-secondary-p"><%= row.dob %></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Gender</p>
-                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
-                                   </div>
-                              </div>
-                             
-                             <div class=""></div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">District</p>
-                                        <p class="text-secondary-p"><%= row.districtStr %></p>
-                                   </div>
-                              </div>
-
+                         
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
-                                        <p class="text-secondary-p"><%= row.cityStr %></p>
+                                        <p class="text-secondary-p"><%= row.city %></p>
                                    </div>
                               </div>
+
+                            
 
                               <div class="card">
                                    <div class="card_inner_profile">
@@ -140,15 +113,9 @@
                                         <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
                                    </div>
                               </div>
-                             
-                             <div class=""></div>
+                        
                               
-                             <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Mobile Number</p>
-                                        <p class="text-secondary-p"><%= row.mobileNumber %></p>
-                                   </div>
-                              </div>
+                     
                              
                              <% if(row.landNumber!=null) { %>
                              <div class="card">

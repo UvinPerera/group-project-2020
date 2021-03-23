@@ -93,6 +93,9 @@
       box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
         inset 2px 2px 3px rgba(0, 0, 0, .6);
     }
+    table{
+      width:100%;
+    }
   </style>
 
 
@@ -106,23 +109,35 @@
       <center>
         <div id="logo">
 
-          <img src="http://localhost:8080/MediHub/public/images/onlylogo.png">
+          <img src="https://i.postimg.cc/dtBCqRPb/logo.png">
         </div>
         <h2>Welcome to Medihub!</h2>
       </center>
     </div>
     <div id="emailBody">
-      <h6 style="text-align:left;"> Hello Name, </h6>
+      <h6 style="text-align:left;"> Hello #Name, </h6>
       Your appointment has been confirmed. The details of this appointment are as follows:
       <br><br><br><hr>
       <div class="appointment">
-          Appointment Name : <br>
-          Hospital : <br>
-          Doctor : <br>
-          Date : <br>
-          Time : <br>
-          Description : <br>
-          Payment Status : <br>
+<<<<<<< HEAD
+        <table>
+          <tr><td colspan="2" >Appointment Name : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Hospital : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Doctor : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td>Date : </td> <td style="text-align:left;">Value </td>
+          <td >Time : </td> <td style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Description : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+           <tr><td colspan="2">Payment Status : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+         </table></center>
+=======
+          Appointment Name : #appointName<br>
+          Hospital : #hospitalName<br>
+          Doctor : #doctorName<br>
+          Date : #date<br>
+          Time : #time<br>
+          Description : #description<br>
+          Payment Status : #payment<br>
+>>>>>>> c4607dca8e89e875284dca026c60bd4e8ae5825c
       </div>
         <hr><br>
         For further inquiries send us an email via medihub@gmail.com<br><br><br>

@@ -22,11 +22,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(pat).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(phar).css" media="screen"/>
 </head>
 <body>
   <div class="container">  
@@ -85,8 +85,8 @@
                 var status = [];
                 var filepath= [];
                 var description = [];
-                
-  
+                var absolutepath = [];
+                var finalId;
   </script>
   <div class="container-table" style="clear:both;">
     <table class="table">
@@ -124,7 +124,7 @@
                             status[<%=i%>]               ="<%=a2.get(3)%>";
                             filepath[<%=i%>]             ="<%=a2.get(4)%>";
                             description[<%=i%>]          ="<%=a2.get(6)%>"; 
-                            
+                            absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
           </script>
       </tr>
        <%}%>
@@ -178,10 +178,11 @@
                         
                     </tr>
 
-                    <tr>
-                        <td colspan="2"> File Path : </td>
-                        <td colspan="2" id="modal_filePath"> ** </td>
-                        
+                   <tr>
+                        <td colspan="2" ><button class="style"> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
+                        <td colspan="2" ><button class="style"><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
+
+                    
                     </tr>
 
                    
@@ -227,7 +228,7 @@
         modal.style.display = "block";
         
         var index=indexId;
-        
+         finalId =index; 
         document.getElementById("modal_id").innerHTML = id[index];
         document.getElementById("modal_pharmacyId").innerHTML = pharmacyId[index];
         document.getElementById("modal_pharmacyName").innerHTML = pharmacyName[index];
@@ -238,7 +239,18 @@
         
 
     }
-
+        function displayPrescriptionFun(){
+            document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
+       
+     
+    
+    }
+        function downloadPrescriptionFun(){
+        
+            document.getElementById("downloadPrescription").download = filepath[finalId];;
+        
+    
+    }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
@@ -266,11 +278,15 @@
         var orderId=index;
         var del = confirm("Are you sure you want delete this order permenently ?");
         if (del == true){
+            if((status[index]=="Completed")||(status[index]=="Cancelled")){
             window.location.href="deleteorder?orderid="+orderId;
-          //$(location).attr('href',reidrect);
+       
+        }
+        else{
+            alert("You cannot delete an order which is not completed nor cancelled.")
         }
         
 
-    }
+    }}
    </script>
 </html>

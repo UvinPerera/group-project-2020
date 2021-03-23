@@ -58,8 +58,15 @@
                   <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
 
                   <h2 class="details"> Order Status </h2>
-                   <input class="input" type="text" name="orderstatus" id="orderstatus" placeholder="<%=a2.get(6)%>" >
-
+                  <select name="orderstatus" id="orderstatus" class="input">
+                      <option value='<%=a2.get(6)%>' selected>Change Order Status</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="Delayed">Delayed</option>
+                      <option value="Cancelled">Cancelled</option>
+                      <option value="Completed">Completed</option>
+                  </select>
+                   
                    <h2 class="details">Order Description</h2>
                     <input class="input" type="text" name="orderdescription" id="orderdescription" placeholder="<%=a2.get(4)%>" readonly>
 
@@ -67,7 +74,7 @@
                  <input class="input" type="file" name="file_path" id="file_path" placeholder="<%=a2.get(5)%>" readonly>
 
                  <h2 class="details">Order Delivery Date</h2>
-                 <input class="input" type="date" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" >
+                 <input class="input" type="date" value="<%=a2.get(7)%>" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" >
 
                  <div class="button-container1">
                        <button class="button" id="id" onclick="window.location.href='pharmacy';"><b>Cancel</b></button>

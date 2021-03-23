@@ -67,13 +67,13 @@ public class TrackPatientOrder extends HttpServlet {
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
                 //ResultSet rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON oi.created_by=u.id WHERE oi.status=1 and po.pharmacy_id="+pharmacyId);
-                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId);
+                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 7 ; i++){
+                        for (int i = 1; i <= 8 ; i++){
                             row.add(rs.getString(i));
                         }
                         Orders.add(row);

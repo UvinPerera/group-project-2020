@@ -36,7 +36,8 @@ public class User {
     public String updatedAt;
     public int createdBy;
     public int updatedBy;
-    
+    public String profilePicPath;
+    public String absoluteProfilePicPath;
     public String districtStr;
     public int district;
     public String cityStr;
@@ -62,10 +63,54 @@ public class User {
         }
         
     }
-    
+    public String getAbsPath(){
+        String query = "select absolute_pp_path from users where id="+this.id;
+        String absPath="";
+        try{
+         DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) { 
+                absPath = rs.getString("absolute_pp_path");
+            }
+            return absPath;
+        }
+         catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+        
+            
+    }
+    public String getAbsPath(int id){
+        int userId = id;
+        String query = "select absolute_pp_path from users where id="+userId;
+        String absPath="";
+        try{
+         DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) { 
+                absPath = rs.getString("absolute_pp_path");
+            }
+            return absPath;
+        }
+         catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+        
+            
+    }
     public User getProfile(){
         //sql query
-        String q_select="select u.*, c.name_en as city_name, d.name_en as district_name, d.id as district from users u ";
+        String q_select="select u.*, c.name_en as city_name, d.name_en as district_name,u.profile_pic_path,u.absolute_pp_path, d.id as district from users u ";
         String q_join_c="join cities c on c.id=u.city ";
         String q_join_d="join districts d on d.id=c.district_id ";
         String q_where="where u.status=1 and u.id="+this.id;
@@ -99,7 +144,8 @@ public class User {
                 this.description = rs.getString("description"); 
                 this.createdAt = rs.getString("created_at");
                 this.updatedAt = rs.getString("updated_at");
-                
+                this.profilePicPath = rs.getString("profile_pic_path");
+                this.absoluteProfilePicPath = rs.getString("absolute_pp_path");
                 
             }
             

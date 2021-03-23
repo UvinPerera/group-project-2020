@@ -47,7 +47,7 @@
   %>
   <br><br>
   <h3>Your Orders </h3><hr>
-  <h4><%=array%></h4>
+ 
   <div class="Dropdown">
       <center>
     <select name='Dropdown'class="filters">
@@ -82,6 +82,7 @@
                 var orderStatus = [];
                 var filepath= [];
                 var absolutepath = [];
+                var finalId;
   </script>
   <div class="container-table">
     <table class="table">
@@ -109,7 +110,7 @@
           <ul class="actions">
               <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
               <li><a href="editpharmacyorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
-              <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete(<%=a2.get(0)%>);"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td> 
          <script>
@@ -120,7 +121,8 @@
                             orderdescription[<%=i%>]     ="<%=a2.get(6)%>";
                             orderStatus[<%=i%>]          ="<%=a2.get(4)%>"; 
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
-                            
+                            absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
+                           
           </script>
       </tr>
        <%}}%>
@@ -162,9 +164,10 @@
                     </tr>
 
                     <tr>
-                        <td colspan="2"> File Path : </td>
-                        <td colspan="2" id="modal_filePath"> ** </td>
-                        
+                        <td colspan="2" ><button class="style"> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
+                        <td colspan="2" ><button class="style"><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
+
+                    
                     </tr>
 
                    
@@ -175,7 +178,7 @@
                         <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
                     </tr>
                     <tr>
-                        <td colspan="4"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        <td colspan="4" style="text-align: right;"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
                         </td>
                     </tr>
 
@@ -197,10 +200,7 @@
 
 </html>
 <script>
-    //    #########################
-    //    modal script start
-    //    #########################
-
+    
     var modal = document.getElementById("modalBox");
 
     // Get the button that opens the modal
@@ -214,11 +214,12 @@
 
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
+  
     function popup(indexId) {
         modal.style.display = "block";
         
         var index=indexId;
-        
+        finalId =index; 
         document.getElementById("modal_id").innerHTML = id[index];
         document.getElementById("modal_patientId").innerHTML = patientId[index];
         document.getElementById("modal_patientName").innerHTML = patientName[index];
@@ -227,9 +228,21 @@
         document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
         
+       
 
     }
-
+    function displayPrescriptionFun(){
+         document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
+       
+     
+    
+    }
+    function downloadPrescriptionFun(){
+        
+         document.getElementById("downloadPrescription").download = filepath[finalId];;
+        
+    
+    }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
@@ -253,14 +266,19 @@
         print.style.display = "block";
     }
     
-        function confirmdelete(index) {
-        var orderId=index;
-        var del = confirm("Are you sure you want delete this order permenently ?");
-        if (del == true){
-            window.location.href="deleteorder?orderid="+orderId;
-          //$(location).attr('href',reidrect);
-        }
-        
+         function confirmdelete(index) {
+            var orderId=index;
+            var del = confirm("Are you sure you want delete this order permenently ?");
+            if (del == true){
+                if(orderStatus[orderId]==="Completed"||orderStatus[orderId]==="Cancelled"){
+                     alert(orderStatus[orderId]);
+                     window.location.href="deleteorder?orderid="+orderId;
+                }
+                else{
+                    alert(orderStatus[orderId]);
+                    alert("You cannot delete an order which is not completed nor cancelled.")
+                }
 
-    }
+
+    }}
    </script>

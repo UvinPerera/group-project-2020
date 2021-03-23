@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-
+<%@page import="com.medihub.doctor.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -27,16 +27,9 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
-          <%
-                            if(request.getAttribute("profile")!=null){
-                              ArrayList Profile = new ArrayList();
-                              ArrayList Profile1 = new ArrayList();
-                              Profile= (ArrayList)request.getAttribute("profile");
-                              Profile1 = (ArrayList)Profile.get(0);
-                                
-                        %>
           <div class="container">
               <!--######################-->
                  <!--navbar starting-->
@@ -64,7 +57,12 @@
                               </div>
                          </div>
                         
-                      
+                        <%
+                            if(request.getAttribute("profile")!=null){
+                                Doctor row = (Doctor)request.getAttribute("profile");
+                                
+                                int usrId = row.id;
+                        %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
@@ -72,49 +70,49 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">First Name</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(1)%></p>
+                                        <p class="text-secondary-p"><%= row.firstName %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Last Name</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(2)%></p>
+                                        <p class="text-secondary-p"><%= row.lastName %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(3)%></p>
+                                        <p class="text-secondary-p"><%= row.displayName %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Email</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(5)%></p>
+                                        <p class="text-secondary-p"><%= row.email %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">NIC</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(8)%></p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
                                    </div>
                               </div>
                              
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Date of Birth</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(9)%></p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Gender</p>
-                                        <p class="text-secondary-p"><%if(Profile1.get(10).toString().equalsIgnoreCase("M")){out.print("Male");}else if(Profile1.get(10).toString().equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
                                    </div>
                               </div>
                              
@@ -123,21 +121,21 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.districtStr %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.cityStr %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
                                    </div>
                               </div>
                              
@@ -146,25 +144,63 @@
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.mobileNumber %></p>
                                    </div>
                               </div>
                              
-                             
+                             <% if(row.landNumber!=null) { %>
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.landNumber %></p>
                                    </div>
                               </div>
-                            
+                             <% } %>
 
                          </div>
+                             
+                          <div class="main_greeting">
+                                   
+                                   <p>SLMC Details</p>
+                          </div>
+                             
+                             <div class="main_cards">
+                                 
+                                 <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">SLMC Registration Number</p>
+                                        <p class="text-secondary-p"><%= row.getDoctor(usrId).slmc %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Titles</p>
+                                        <p class="text-secondary-p"><%= row.getDoctor(usrId).titles %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Degrees</p>
+                                        <p class="text-secondary-p"><%= row.getDoctor(usrId).degress %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Specilizations</p>
+                                        <p class="text-secondary-p"><%= row.getDoctor(usrId).strSpecialisation_1 %></p>
+                                        <p class="text-secondary-p"><%= row.getDoctor(usrId).strSpecialisation_2 %></p>
+                                   </div>
+                              </div>
+
+                                 
+                             </div>
                          
-                        
+                        <% } %>
                         
                     </div>
-                    <% } %>
 
                </main>
 
@@ -172,7 +208,8 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/doctorSidebar.jsp"/>
+               
+               <jsp:include page="<%="./public/includes/doctorSidebar.jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
