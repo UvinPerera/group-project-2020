@@ -21,8 +21,8 @@ import com.google.gson.GsonBuilder;
  */
 public class Doctor extends User {
     
-    private int slmc;
-    private String slmcCardProofLocation;
+    public int slmc;
+    public String slmcCardProofLocation;
     public String doctorName;
     public int specialisation1;
     public int specialisation2;
@@ -97,6 +97,8 @@ public class Doctor extends User {
                 d.slmc = rs.getInt("slmc");
                 d.strSpecialisation_1 = rs.getString("specialisation_1");
                 d.strSpecialisation_2 = rs.getString("specialisation_2");
+                d.titles = rs.getString("titles");
+                d.degress=rs.getString("degrees");
                 d.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " " + rs.getString("degrees");
                 
             }
@@ -163,5 +165,10 @@ public class Doctor extends User {
     public int getSLMC(){
         return slmc;
     }
-    
+    public Doctor(int id){
+        this.id=id;
+    }
+     public Doctor(){
+        
+    }
 }

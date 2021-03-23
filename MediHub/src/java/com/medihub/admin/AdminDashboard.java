@@ -47,6 +47,9 @@ public class AdminDashboard extends HttpServlet {
          HttpSession session = request.getSession();
         int userid = Integer.parseInt(session.getAttribute("usertype").toString());
         if(userid==0){
+                Admin a = new Admin(userid);
+                String absolutePath = a.getAbsPath();
+                request.setAttribute("absolutePath",absolutePath);
             request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }
         else{

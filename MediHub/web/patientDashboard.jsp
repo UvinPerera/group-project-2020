@@ -26,8 +26,16 @@
 
           <% 
                String username="";
+               String absolutePath ="";
                username= session.getAttribute("username").toString();
+               try{
+               absolutePath = request.getAttribute("absolutePath").toString(); 
+               }
+               catch(NullPointerException ex){
+                   absolutePath ="";
+               }
           %>
+          
 
           <div class="container">
               <!--######################-->
@@ -49,7 +57,11 @@
                     <div class="main_container">
 
                          <div class="main_title">
-                              <img src="./public/images/p3.jpg" alt="hello">
+                             <%if(absolutePath.isEmpty()){%>
+                              <img src="./public/images/user.png" alt="hello">
+                              <%}else{%>
+                              <img src="./public/storage/pp/<%=absolutePath%>" alt="hello">
+                              <%}%>
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
                                    <p>Welcome</p>
@@ -184,7 +196,7 @@
                                                         
                                                         <% if(table.size()>5) {%>
                                                         <tr>
-                                                            <td colspan="6"><a href="#">View More...</a></td>
+                                                            <td colspan="6"><a href="channellingRecords">View More...</a></td>
                                                         </tr>
                                                         <%}%>
                                                   </tbody>
@@ -193,7 +205,7 @@
                                               
                                         <!--when there is no pending appointments-->
                                                   <%
-                                                       }
+                                                       } }
                                                        else
                                                        {
                                                   %>
@@ -202,7 +214,7 @@
                                                       <a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>    
                                                   </div>
                                                   <%
-                                                       }}
+                                                       }
                                                   %>
 
 

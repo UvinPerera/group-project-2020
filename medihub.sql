@@ -1,11 +1,18 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- Host: localhost
 -- Generation Time: Mar 23, 2021 at 09:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
+=======
+-- Host: 127.0.0.1
+-- Generation Time: Mar 23, 2021 at 07:43 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
+>>>>>>> 471cbd58ec982ade8b1ccc44132f95c8ad8a187d
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -2854,7 +2861,11 @@ CREATE TABLE `users` (
   `last_name` varchar(64) DEFAULT NULL,
   `display_name` varchar(64) DEFAULT NULL,
   `profile_pic_path` varchar(256) DEFAULT NULL,
+<<<<<<< HEAD
   `absolute_pp_path` varchar(256) DEFAULT NULL,
+=======
+  `absolute_pp_path` varchar(255) NOT NULL,
+>>>>>>> 471cbd58ec982ade8b1ccc44132f95c8ad8a187d
   `email` varchar(128) DEFAULT NULL,
   `password` varchar(128) DEFAULT NULL,
   `user_type` int(11) DEFAULT NULL,
@@ -2880,6 +2891,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_pic_path`, `absolute_pp_path`, `email`, `password`, `user_type`, `nic`, `dob`, `gender`, `mobile_number`, `land_number`, `address_1`, `address_2`, `city`, `description`, `status`, `last_login`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+<<<<<<< HEAD
 (1, 'Admin', NULL, 'Admin', NULL, NULL, 'admin@medihub.com', 'admin123', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
 (2, 'Uvin', 'Perera', 'Uvin', NULL, NULL, 'uvin@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
 (3, 'Yashithi', 'Dharma', 'Yash', NULL, NULL, 'yash@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
@@ -2889,6 +2901,17 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `display_name`, `profile_p
 (9, 'Jane', 'Doe', 'Jane', NULL, NULL, 'jane@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
 (10, 'Yashithi', 'dharme', 'Yashsha', NULL, NULL, 'yashsha7@gmail.com', '77aae185203edc6357676db95caa25d0f398d402c1723e6a7b42cfe8d2967f2e', 1, '987380012v', '2021-03-16', 'F', '0755821611', '0112913950', 'No>90,1st cross street', '', 333, NULL, 1, NULL, '2021-03-17 14:18:42', '2021-03-17 14:18:42', NULL, NULL),
 (11, 'Pharmacist', 'Dharmawimala', 'Pharmacy', NULL, NULL, 'pharmacy@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '389358495', '2021-03-03', 'M', '0728018617', '0755821611', 'NO:18/8B, waragoda road, Kelaniya, Sri lanka', '', 1294, NULL, 1, NULL, '2021-03-18 18:08:24', '2021-03-21 11:58:47', NULL, 11);
+=======
+(1, 'Admin', NULL, 'Admin', NULL, '', 'admin@medihub.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 0, '000', '2020-08-13', 'M', NULL, NULL, '', '', 1, '', 1, '2020-10-30 21:00:56', '2020-10-30 21:01:06', '2020-10-30 21:01:09', NULL, NULL),
+(2, 'Uvin', 'Perera', 'Uvin', NULL, '', 'uvin@gmial.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 1, '111', '2020-10-30', 'M', '1235744399', '', '08, Anderson Rd', 'Kalubowila', 118, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-12-21 06:43:22', 1, 2),
+(3, 'Yashithi', 'Dharma', 'Yash', NULL, '', 'yash@gmial.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 2, '222', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(4, 'Aysha', 'Ifra', 'Aysha', NULL, '', 'aysha@gmial.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 3, '333', '2020-10-30', 'F', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(5, 'Priyatharshan', 'Balachandran', 'Tharshan', NULL, '', 'tharshan@gmial.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '666', '2020-10-30', 'M', NULL, NULL, NULL, NULL, 1, NULL, 1, '2020-10-30 21:08:44', '2020-10-30 21:08:47', '2020-10-30 21:08:50', 1, 1),
+(7, 'John', 'Doe', 'John', NULL, '', 'john@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 2, '837475847V', '1997-07-08', 'M', '772746374', '112847563', '01, 2nd cross street', 'qwerty', 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
+(9, 'Jane', 'Doe', 'Jane', NULL, '', 'jane@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 1, '837472847V', '1997-06-20', 'F', '767837499', '112847563', '01, 2nd cross street', 'qwerty', 376, NULL, 1, NULL, '2020-11-24 22:56:07', '2020-11-24 22:56:07', NULL, NULL),
+(10, 'Yashithi', 'dharme', 'Yashsha', NULL, '', 'yashsha7@gmail.com', '77aae185203edc6357676db95caa25d0f398d402c1723e6a7b42cfe8d2967f2e', 1, '987380012v', '2021-03-16', 'F', '0755821611', '0112913950', 'No>90,1st cross street', '', 333, NULL, 1, NULL, '2021-03-17 14:18:42', '2021-03-17 14:18:42', NULL, NULL),
+(11, 'Pharmacist', 'Dharmawimala', 'Pharmacy', NULL, '', 'pharmacy@gmail.com', 'c228f6a59b06a4b9f01dabdbc43f44208137cf2bca247938af3cfc0ea2c376d4', 4, '389358495', '2021-03-03', 'M', '0728018617', '0755821611', 'NO:18/8B, waragoda road, Kelaniya, Sri lanka', '', 1294, NULL, 1, NULL, '2021-03-18 18:08:24', '2021-03-21 11:58:47', NULL, 11);
+>>>>>>> 471cbd58ec982ade8b1ccc44132f95c8ad8a187d
 
 --
 -- Indexes for dumped tables

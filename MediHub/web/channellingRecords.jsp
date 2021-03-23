@@ -503,7 +503,7 @@
                                         return {
                                             text: item.doctorName,
                                             id: item.id
-                                        }
+                                        };
                                     })
                                 };
                             },

@@ -57,22 +57,10 @@ public class DoctorView extends HttpServlet {
             try
             {
                 //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
-                
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM users INNER JOIN doctors ON users.id=doctors.id WHERE users.id="+doctorId);
-                ArrayList Profile = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 22 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Profile.add(row);
-                }
-                
-                request.setAttribute("profile", Profile);
-                
+               Doctor d = new Doctor();
+                d.id = doctorId;
+                request.setAttribute("profile", d.getProfile());
+                System.out.println(d.getDoctor(doctorId).titles);
                 request.getRequestDispatcher("viewdoctor.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
