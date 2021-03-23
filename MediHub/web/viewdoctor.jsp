@@ -123,22 +123,21 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(33)%></p>
+                                        <p class="text-secondary-p"></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(32)%></p>
+                                        <p class="text-secondary-p"></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(13)%></p>
-                                        <p class="text-secondary-p"><%=Profile1.get(14)%></p>
+                                        <p class="text-secondary-p"></p>
                                    </div>
                               </div>
                              
@@ -147,7 +146,7 @@
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(11)%></p>
+                                        <p class="text-secondary-p"></p>
                                    </div>
                               </div>
                              
@@ -155,62 +154,15 @@
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(12)%></p>
+                                        <p class="text-secondary-p"></p>
                                    </div>
                               </div>
                             
 
                          </div>
                          
-                        <div class="main_title">
-                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
-                              <div class="main_greeting">
-                                 
-                                   <p>SLMC Details</p>
-                              </div>
-                         </div>
-                        <div class="main_cards">
-                            <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">SLMC Registration Number</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(24)%></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Specialization 1</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(1)%></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Specialization 2</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(2)%></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Title</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(28)%></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Degrees</p>
-                                        <p class="text-secondary-p"><%=Profile1.get(29)%></p>
-                                   </div>
-                              </div>                        
-                              
-                          
-                            
-
-                         </div>
-                         
-
+                        
+                        
                     </div>
                     <% } %>
 

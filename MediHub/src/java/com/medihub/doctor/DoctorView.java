@@ -61,11 +61,11 @@ public class DoctorView extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT users.*,doctors.*,cities.name_en,districts.name_en FROM users INNER JOIN doctors ON users.id=doctors.id INNER JOIN cities ON users.city=cities.id INNER JOIN districts ON cities.district_id=districts.id WHERE users.id="+doctorId);
+                ResultSet rs=stmt.executeQuery("SELECT * FROM users INNER JOIN doctors ON users.id=doctors.id WHERE users.id="+doctorId);
                 ArrayList Profile = new ArrayList();
                 while(rs.next()){
                         ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 34 ; i++){
+                        for (int i = 1; i <= 22 ; i++){
                             row.add(rs.getString(i));
                         }
                         Profile.add(row);

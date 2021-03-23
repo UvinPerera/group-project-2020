@@ -26,8 +26,6 @@ public class Doctor extends User {
     public String doctorName;
     public int specialisation1;
     public int specialisation2;
-    public String strSpecialisation_1;
-    public String strSpecialisation_2;
     public String titles;
     public String degress;
     public int approvedBy;
@@ -74,45 +72,6 @@ public class Doctor extends User {
         }
     }
     
-    public Doctor getDoctor(int cId) {
-        String query="SELECT d.id,d.titles,u.first_name,u.last_name,d.degrees,ds.name as specialisation_1,dss.name as specialisation_2,d.slmc FROM doctors d "
-                + "JOIN users u ON u.id=d.id "
-                + "JOIN doctor_specialisation ds ON ds.id=d.specialisation_1 "
-                + "JOIN doctor_specialisation dss ON dss.id=d.specialisation_2 "
-                + "WHERE u.status=1 AND u.id="+cId;
-        
-        try
-        {
-            DbConfig db = DbConfig.getInstance();
-            Connection con = db.getConnecton();
-            
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            
-            Doctor d = new Doctor();
-            
-            while(rs.next()) { 
-                                
-                d.id = rs.getInt("id");
-                d.slmc = rs.getInt("slmc");
-                d.strSpecialisation_1 = rs.getString("specialisation_1");
-                d.strSpecialisation_2 = rs.getString("specialisation_2");
-                d.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " " + rs.getString("degrees");
-                
-            }
-            
-            con.close();
-            
-            
-            return d;
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
     public String getAllDoctorsByHospitalAndSpecialisationAsString(int cHospital, int cSpecialisation) {
         
         String q_select = "select u.id, u.first_name, u.last_name from hospitals ";
@@ -150,18 +109,6 @@ public class Doctor extends User {
             return null;        
         }
         
-    }
-    
-//    public Doctor(int id) {
-//        this.id=id;
-//    }
-//    
-//    public Doctor() {
-//        
-//    }
-    
-    public int getSLMC(){
-        return slmc;
     }
     
 }

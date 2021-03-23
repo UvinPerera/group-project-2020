@@ -94,7 +94,7 @@
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <form class="" action="channelling" method="GET" id="submitForm">
-                            <input type="hidden" name="search" value="1"/>
+                             <input type="hidden" name="search" value="1"/>
                             <div class="main_cards">
 
                                  <div class="card">
@@ -360,7 +360,7 @@
                                         return {
                                             text: item.doctorName,
                                             id: item.id
-                                        };
+                                        }
                                     })
                                 };
                             },
