@@ -64,7 +64,30 @@ public class User {
         
     }
     public String getAbsPath(){
-        String query = "select u.profile_pic_path,u.absolute_pp_path from users u where u.id="+this.id;
+        String query = "select absolute_pp_path from users where id="+this.id;
+        String absPath="";
+        try{
+         DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) { 
+                absPath = rs.getString("absolute_pp_path");
+            }
+            return absPath;
+        }
+         catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+        
+            
+    }
+    public String getAbsPath(int id){
+        int userId = id;
+        String query = "select absolute_pp_path from users where id="+userId;
         String absPath="";
         try{
          DbConfig db = DbConfig.getInstance();

@@ -5,8 +5,12 @@
  */
 package com.medihub.pharmacy;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,17 +50,28 @@ public class PharmacyDashboard extends HttpServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             int userType = Integer.parseInt(session.getAttribute("usertype").toString());
-            int pharmacyId = Integer.parseInt(session.getAttribute("userid").toString());
+            int pharmacistId = Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();
         if(userType==4){
              try
             {
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
+                int pharmacyId=-1;
+                while(rs.next()){
+                        pharmacyId=rs.getInt("pharmacy_id");
+                }
                 
                 Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
   
                  
-                String absolutePath = p.getAbsPath();
+                String absolutePath = p.getAbsPath(pharmacistId);
+                
                 request.setAttribute("absolutePath",absolutePath);
+                out.println(absolutePath);
                 request.setAttribute("orders", p.getAllOrders()); //directly get all order details
                 request.setAttribute("completedOrders", p.getCompletedOrders()); //directly get all completed order details
                 request.setAttribute("pendingOrders", p.getPendingOrders()); //directly get all pending order details

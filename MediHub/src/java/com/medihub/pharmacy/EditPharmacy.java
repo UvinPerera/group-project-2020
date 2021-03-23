@@ -51,13 +51,22 @@ public class EditPharmacy extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
              PrintWriter out = response.getWriter();
             
        
              try
             {
-                Pharmacy p = new Pharmacy(patientId);
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
+                int pharmacyId=-1;
+                while(rs.next()){
+                        pharmacyId=rs.getInt("pharmacy_id");
+                }
+                Pharmacy p = new Pharmacy(pharmacyId);
                 
                 District d = new District();
                 
