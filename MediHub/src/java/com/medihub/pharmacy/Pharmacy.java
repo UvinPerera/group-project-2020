@@ -162,15 +162,15 @@ public class Pharmacy extends User {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) { 
-                    this.id=rs.getInt("id");
+                    
                     this.name=rs.getString("name") ;
                     this.licenseNumber = rs.getInt("license_number");
                     this.displayName = rs.getString("display_name"); 
                     this.landNumber =rs.getString("land_number");
                     this.email = rs.getString("email");
                     this.fax = rs.getString("fax");
-                    this.address1 = rs.getString("address1");
-                    this.address2 = rs.getString("address2");
+                    this.address1 = rs.getString("address_1");
+                    this.address2 = rs.getString("address_2");
                     this.city = rs.getInt("city");              
           
             }
@@ -248,8 +248,8 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status=pending";
-        
+        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Pending'";
+         
         try
         {
             DbConfig db = DbConfig.getInstance();

@@ -58,7 +58,10 @@ public class PatientDashboard extends HttpServlet {
 //                get pending appointments from patient class
                 Patient p = new Patient(patientId); //create patient object
                 
-
+                
+                String absolutePath = p.getAbsPath();
+                System.out.println(absolutePath);
+                request.setAttribute("absolutePath",absolutePath);
                 request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);
                 }

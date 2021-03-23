@@ -63,10 +63,31 @@ public class User {
         }
         
     }
-    
+    public String getAbsPath(){
+        String query = "select u.profile_pic_path,u.absolute_pp_path from users u where u.id="+this.id;
+        String absPath="";
+        try{
+         DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) { 
+                absPath = rs.getString("absolute_pp_path");
+            }
+            return absPath;
+        }
+         catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+        
+            
+    }
     public User getProfile(){
         //sql query
-        String q_select="select u.*, c.name_en as city_name, d.name_en as district_name, d.id as district from users u ";
+        String q_select="select u.*, c.name_en as city_name, d.name_en as district_name,u.profile_pic_path,u.absolute_pp_path, d.id as district from users u ";
         String q_join_c="join cities c on c.id=u.city ";
         String q_join_d="join districts d on d.id=c.district_id ";
         String q_where="where u.status=1 and u.id="+this.id;
