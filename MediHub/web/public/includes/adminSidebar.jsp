@@ -68,7 +68,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePharamcy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-medkit"></i>
-                              <a href="managePharmacy.jsp">Manage Pharmacies</a>
+                              <a href="readpharmacy">Manage Pharmacies</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageHospital.jsp' ? 'active_menu_link' : ''}">
