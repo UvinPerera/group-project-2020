@@ -165,5 +165,10 @@ public class Doctor extends User {
     public int getSLMC(){
         return slmc;
     }
-    
+    public Doctor(int id){
+        this.id=id;
+    }
+     public Doctor(){
+        
+    }
 }

@@ -58,7 +58,7 @@
 
                          <div class="main_title">
                              <%if(absolutePath.isEmpty()){%>
-                              <img src="./public/images/p3.jpg" alt="hello">
+                              <img src="./public/images/user.png" alt="hello">
                               <%}else{%>
                               <img src="./public/storage/pp/<%=absolutePath%>" alt="hello">
                               <%}%>
