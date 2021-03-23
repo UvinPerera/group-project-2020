@@ -279,6 +279,7 @@ main {
      width: 100%;
      border-radius: 5px 5px 0 0;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+     /*table-layout: fixed;*/
 }
 
 .charts_table thead tr {
@@ -303,6 +304,7 @@ main {
 
 .charts_table td {
      font-weight: 700;
+     word-wrap: break-word;
 }
 
 .charts_table td button{
@@ -597,6 +599,7 @@ table.dataTable tr.dtrg-group.dtrg-level-1 td, table.dataTable tr.dtrg-group.dtr
 
 .footer_text {
      padding: 5px;
+     font-size: 12px;
 }
 
 .social {
@@ -623,6 +626,7 @@ table.dataTable tr.dtrg-group.dtrg-level-1 td, table.dataTable tr.dtrg-group.dtr
 .copyrights {
      display: flex;
      padding: 5px;
+     font-size: 12px;
      justify-content: center;
      text-align: center;
 }
