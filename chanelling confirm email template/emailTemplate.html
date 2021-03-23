@@ -93,6 +93,9 @@
       box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
         inset 2px 2px 3px rgba(0, 0, 0, .6);
     }
+    table{
+      width:100%;
+    }
   </style>
 
 
@@ -116,13 +119,15 @@
       Your appointment has been confirmed. The details of this appointment are as follows:
       <br><br><br><hr>
       <div class="appointment">
-          Appointment Name : <br>
-          Hospital : <br>
-          Doctor : <br>
-          Date : <br>
-          Time : <br>
-          Description : <br>
-          Payment Status : <br>
+        <table>
+          <tr><td colspan="2" >Appointment Name : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Hospital : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Doctor : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+          <tr><td>Date : </td> <td style="text-align:left;">Value </td>
+          <td >Time : </td> <td style="text-align:right;">Value </td></tr>
+          <tr><td colspan="2">Description : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+           <tr><td colspan="2">Payment Status : </td> <td colspan="2" style="text-align:right;">Value </td></tr>
+         </table></center>
       </div>
         <hr><br>
         For further inquiries send us an email via medihub@gmail.com<br><br><br>
