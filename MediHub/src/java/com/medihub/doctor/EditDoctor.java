@@ -57,22 +57,9 @@ public class EditDoctor extends HttpServlet {
             
             try{
                 
-                //getting from DbConfig class
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
-                
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT users.*,doctors.*,cities.name_en,districts.name_en FROM users INNER JOIN doctors ON users.id=doctors.id INNER JOIN cities ON users.city=cities.id INNER JOIN districts ON cities.district_id=districts.id WHERE users.id="+doctorId);
-                ArrayList Profile = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <= 34 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Profile.add(row);
-                }
-                
-                request.setAttribute("profile", Profile);
+                Doctor doc = new Doctor();
+                doc.id=doctorId;
+                request.setAttribute("profile", doc.getProfile());
         
                  District d = new District();
                 City c = new City();

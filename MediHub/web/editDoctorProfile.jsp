@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-
+<%@page import="com.medihub.doctor.*"%>
 <%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,20 +25,11 @@
 
      <body>
 
-         <% 
+          <% 
                String username="";
                username= session.getAttribute("username").toString();
                int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
-          
-          <%
-                            if(request.getAttribute("profile")!=null){
-                              ArrayList Profile = new ArrayList();
-                              ArrayList Profile1 = new ArrayList();
-                              Profile= (ArrayList)request.getAttribute("profile");
-                              Profile1 = (ArrayList)Profile.get(0);
-                                
-                        %>
 
           <div class="container">
               <!--######################-->
@@ -67,7 +58,12 @@
                               </div>
                          </div>
                         
-                       
+                        <%
+                            if(request.getAttribute("profile")!=null){
+                                Doctor row = (Doctor)request.getAttribute("profile");
+                                
+                                
+                        %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <form class="" action="patientupdate" method="POST" id="updateForm" enctype="multipart/form-data">
@@ -76,7 +72,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">First Name</p>
-                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="">
+                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="First Name" value="<%= row.firstName %>">
                                         <div class="alert-danger" id="firstNameError">
                                             * First name can't be empty and must contain only letters
                                         </div>
@@ -86,7 +82,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Last Name</p>
-                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="">
+                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="Last Name" value="<%= row.lastName %>">
                                         <div class="alert-danger" id="lastNameError">
                                             * Last name can't be empty and must contain only letters
                                         </div>
@@ -96,7 +92,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="Display Name" value="">
+                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="Display Name" value="<%= row.displayName %>">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -114,46 +110,46 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Email</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.email %></p>
                                    </div>
                               </div>         
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">NIC</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
                                    </div>
                               </div>
                              
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Date of Birth</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Gender</p>
-                                        <p class="text-secondary-p"></p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
                                    </div>
                               </div>
-                             
                              
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
                                         <select class="data" name="district" id="district">
-                                                 <%
+                                                            <%
                                                                 if(request.getAttribute("districts")!=null){
                                                                     List<District> districts = (ArrayList<District>)request.getAttribute("districts");
                                                                     if(districts.size()>0){
                                                                         for(District district : districts) { %>
-                                                                            <option value='<%= district.id %>' ><%= district.nameEn %></option>
+                                                                            <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
                                                             <%
                                                                     }}}
-                                                            %>           
+                                                            %>
+
                                         </select>
                                         <div class="alert-danger" id="districtError">
                                             * Select valid district
@@ -165,7 +161,15 @@
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
                                         <select class="data" name="city" id="city">
-                                                           
+                                                            <%
+                                                                if(request.getAttribute("cities")!=null){
+                                                                    List<City> cities = (ArrayList<City>)request.getAttribute("cities");
+                                                                    if(cities.size()>0){
+                                                                        for(City city : cities) { %>
+                                                                            <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
+                                                            <%
+                                                                    }}}
+                                                            %>
 
                                         </select>
                                         <div class="alert-danger" id="cityError">
@@ -177,7 +181,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address 1</p>
-                                        <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="">
+                                        <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1" value="<%= row.address1 %>">
                                         <div class="alert-danger" id="addressError">
                                             * Address 1 can't be empty
                                         </div>
@@ -187,7 +191,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address 2</p>
-                                        <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2" value="">
+                                        <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2" value="<%= row.address2 %>">
 <!--                                        <div class="alert-danger" id="addressError">
                                             * Address 2 can't be empty
                                         </div>-->
@@ -197,7 +201,7 @@
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
-                                        <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="">
+                                        <input class="data" type="text" name="mobile_number" id="mobile_number" placeholder="Mobile number" value="<%= row.mobileNumber %>">
                                         <div class="alert-danger" id="numberError">
                                             * Enter valid mobile number
                                         </div>                                   
@@ -207,7 +211,7 @@
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
-                                        <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="">
+                                        <input class="data" type="text" name="land_number" id="land_number" placeholder="Land number" value="<%= row.landNumber %>">
                                         <div class="alert-danger" id="landNumberError">
                                             * Enter valid land number
                                         </div>                                   
@@ -225,17 +229,17 @@
                          </div>
                          </form>
                          
-                     
+                        <% } %>
                         
                     </div>
-                        <%}%>
+
                </main>
 
                 <!--######################-->
                 <!--sidebar starting-->
                 <!--######################-->
                
-                
+               
                <jsp:include page="<%="./public/includes/doctorSidebar.jsp"%>"/>
                 
                 <!--######################-->
