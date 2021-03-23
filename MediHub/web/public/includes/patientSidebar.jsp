@@ -71,19 +71,19 @@
                               <a href="medicalRecords.jsp">Medical Records</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/reviewDoctor.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-stethoscope"></i>
-                              <a href="ReviewDoctor.jsp">Doctors</a>
+                              <a href="BrowseDoctor">Doctors</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/ReviewHospital.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseHospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hospital-o"></i>
-                              <a href="ReviewHospital.jsp">Hospitals</a>
+                              <a href="BrowseHospital">Hospitals</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/reviewPharmacy.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browsePharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-medkit"></i>
-                              <a href="ReviewPharmacy.jsp">Pharmacies</a>
+                              <a href="BrowsePharmacy">Pharmacies</a>
                          </div>
 
                          <h2>Report</h2>

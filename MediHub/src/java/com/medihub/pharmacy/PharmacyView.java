@@ -65,7 +65,7 @@ public class PharmacyView extends HttpServlet {
                 
                 Statement stmt=con.createStatement();
                 ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
-                int pharmacyId=0;
+                int pharmacyId=1;
                 while(rs.next()){
                         pharmacyId=rs.getInt("pharmacy_id");
                 }

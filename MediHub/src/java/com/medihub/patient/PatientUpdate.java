@@ -148,7 +148,7 @@ public class PatientUpdate extends HttpServlet {
                     
               
             Statement stmt=con.createStatement(); 
-            String query="UPDATE users SET first_name='"+first_name+"', last_name='"+last_name+"', display_name='"+display_name+"',address_1='"+address1+"',address_2='"+address2+"',city="+city+",mobile_number='"+mobile+"',land_number='"+land_line+"',updated_by="+patientId+",updated_at=CURRENT_TIMESTAMPwhere id="+patientId; 
+            String query="UPDATE users SET first_name='"+first_name+"', last_name='"+last_name+"', display_name='"+display_name+"',address_1='"+address1+"',address_2='"+address2+"',city="+city+",mobile_number='"+mobile+"',land_number='"+land_line+"',updated_by="+patientId+",updated_at=CURRENT_TIMESTAMP where id="+patientId; 
                    
               
               int rs=stmt.executeUpdate(query);
