@@ -54,7 +54,9 @@ public class PharmacyDashboard extends HttpServlet {
                 
                 Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
   
-
+                 
+                String absolutePath = p.getAbsPath();
+                request.setAttribute("absolutePath",absolutePath);
                 request.setAttribute("orders", p.getAllOrders()); //directly get all order details
                 request.setAttribute("completedOrders", p.getCompletedOrders()); //directly get all completed order details
                 request.setAttribute("pendingOrders", p.getPendingOrders()); //directly get all pending order details
