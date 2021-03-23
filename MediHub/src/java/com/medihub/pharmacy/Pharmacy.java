@@ -230,7 +230,7 @@ public class Pharmacy extends User {
     
     public Pharmacy getPharmacyProfile(){
         
-        String query = "select p.id,p.name,p.license_number,p.pharmacist_id,p.display_name,p.land_number,p.fax,p.email,p.address_1,p.address_2,p.city from pharmacies p where p.status=1 and p.id="+this.id;
+        String query = "select p.id,p.name,p.license_number,p.pharmacist_id,p.display_name,p.land_number,p.fax,p.email,p.address_1,p.address_2,p.city,c.name_en as city_name from pharmacies p join cities c on c.id=p.city where p.status=1 and p.id="+this.id;
           try{
        
             DbConfig db = DbConfig.getInstance();
@@ -249,7 +249,8 @@ public class Pharmacy extends User {
                     this.fax = rs.getString("fax");
                     this.address1 = rs.getString("address_1");
                     this.address2 = rs.getString("address_2");
-                    this.city = rs.getInt("city");              
+                    this.city = rs.getInt("city");      
+                    this.cityStr = rs.getString("city_name"); 
           
             }
             

@@ -71,9 +71,9 @@
                               <a href="pharmacyview">View Pharmacy</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editpharmacy.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="#">Edit Pharmacy</a>
+                              <a href="editpharmacy">Edit Pharmacy</a>
                          </div>
 
                          <h2>User</h2>
