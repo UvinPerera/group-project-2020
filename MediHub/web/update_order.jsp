@@ -43,7 +43,7 @@
             <div class="container1">
                 <h1>Update Order </h1><br><hr><br><br>
                 
-              <form action="updatepatientorder?orderid=<%=a2.get(0)%>" method="post">
+              <form action="updatepatientorder?orderid=<%=a2.get(0)%>" method="post" enctype="multipart/form-data">
 
                 <h2 class="details">Order ID</h2>
                 <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
@@ -67,7 +67,7 @@
                  <input class="input" type="file" name="file_path" id="file_path" value="<%=a2.get(5)%>" placeholder="<%=a2.get(5)%>" >
 
                  <h2 class="details">Order Delivery Date</h2>
-                 <input class="input" type="date" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" value="<%=a2.get(7)%>" >
+                 <input class="input" type="date" name="deliverydate" id="deliverydate" >
 
                  <div class="button-container1">
                        <button class="button" id="id" onclick="window.location.href='patient';"><b>Cancel</b></button>
