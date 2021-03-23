@@ -22,6 +22,7 @@ public class Hospital {
     public String name;
     private int licenseNo;
     private String licenseProofLocation;
+    public String displayPicLocation;
     public String displayName;
     public int directorId;
     public int status;
@@ -31,8 +32,11 @@ public class Hospital {
     public String address1;
     public String address2;
     public int city;
+    public String strCity;
+    public String strDistrict;
     public int district;
     public int province;
+    public String strProvince;
     public float longitude;
     public double latitude;
     public String description;
@@ -132,6 +136,50 @@ public class Hospital {
                 ho="<option value=\""+Id+"\">"+DisplayName+"</option>"; 
                 
                 h+=ho;
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
+    public Hospital getHospital(int id) {
+        
+        String query = "SELECT h.id, h.name, h.display_name, h.display_pic_path, h.land_number, h.fax, h.email, h.address_1, h.address_2, c.name_en as city, d.name_en as district FROM hospitals h "
+                + "JOIN cities c ON c.id=h.city "
+                + "JOIN districts d ON d.id=c.district_id "
+                + "WHERE h.status=1 and h.id="+id;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            Hospital h = new Hospital(); 
+                        
+            while(rs.next()) { 
+                
+                h.id = rs.getInt("id"); 
+                h.name = rs.getString("name");
+                h.displayName = rs.getString("display_name");
+                h.displayPicLocation = rs.getString("display_pic_path");
+                h.landNumber = rs.getString("land_number");
+                h.fax = rs.getString("fax");
+                h.email = rs.getString("email");
+                h.address1 = rs.getString("address_1");
+                h.address2 = rs.getString("address_2");
+                h.strCity = rs.getString("city");
+                h.strDistrict = rs.getString("district");
+                
             }
             
             con.close();
