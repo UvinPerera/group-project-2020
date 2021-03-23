@@ -184,7 +184,7 @@
                                                         
                                                         <% if(table.size()>5) {%>
                                                         <tr>
-                                                            <td colspan="6"><a href="#">View More...</a></td>
+                                                            <td colspan="6"><a href="channellingRecords">View More...</a></td>
                                                         </tr>
                                                         <%}%>
                                                   </tbody>
@@ -193,7 +193,7 @@
                                               
                                         <!--when there is no pending appointments-->
                                                   <%
-                                                       }
+                                                       } }
                                                        else
                                                        {
                                                   %>
@@ -202,7 +202,7 @@
                                                       <a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>    
                                                   </div>
                                                   <%
-                                                       }}
+                                                       }
                                                   %>
 
 
