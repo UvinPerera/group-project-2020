@@ -1,5 +1,6 @@
 
 
+<%@page import="java.util.ArrayList"%>
 <!doctype html>
 <html>
 
@@ -20,7 +21,14 @@
      </head>
 
      <body>
-
+         <%ArrayList al = new ArrayList();
+       ArrayList a2 = new ArrayList();
+       if(request.getAttribute("prescriptions")!=null){
+           al=(ArrayList )request.getAttribute("prescriptions");
+            
+            ;
+        }
+        %>
  
           <div class="container">
               <!--######################-->
@@ -46,6 +54,11 @@
                     <form action="doctor" method="POST">
                     <label>Prescription ID: </label>
                     <select class="input option" name="pid">
+                         <option disabled="disabled" selected="selected">--Choose Option--</option>
+                        <%for(int i=0;i<al.size();i++){a2 =(ArrayList ) al.get(i);%>
+                        <option value="<%=a2.get(0)%>">Prescription ID:<%=a2.get(0)%></option>
+                        
+                        <%}%>
                         
                     </select>
                 <br>
