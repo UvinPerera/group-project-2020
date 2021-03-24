@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.db.DbConfig"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -125,9 +126,9 @@
                                         %>
                                         <!--js array-->
                                         <script>
+                                       // var pharmacyId = [];
                                         var licenseNumber = [];
                                         var display_name = [];
-                                        var pharmacist = [];
                                         var district = [];
                                         var city = [];
                                         var pstatus = [];
@@ -136,10 +137,9 @@
                                         </script>
                                              <thead>
                                                   <tr>
-                                                      
+                                                 <!--  <th> Pharmacy Id</th> -->
                                                        <th>License Number</th>
                                                        <th>Pharmacy</th>
-                                                       <th>Director</th>
                                                        <th>District</th>
                                                        <th>City</th>
                                                        <th>Status</th>
@@ -150,18 +150,18 @@
                                               <% for(Pharmacy row : table) { %>
                                                   <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
                                                        
+                                                      <!-- <td></td>-->
                                                        <td><%= row.getLicenseNumber()%></td>
                                                        <td><%= row.displayName %></td>
-                                                       <td><%= row.pharmacist %></td>
                                                        <td><%= row.districtStr %></td>
                                                        <td><%= row.cityStr %></td>
                                                        <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                       <td><a href ="adminviewpharmacy.jsp"><button><i class="fa fa-eye"></i></button></a><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <script>
+                                                 
                                                    licenseNumber[<%= table.indexOf(row) %>]                     = <%= row.getLicenseNumber() %>;
                                                    display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
-                                                   pharmacist[<%= table.indexOf(row) %>]                        = "<%= row.pharmacist %>";
                                                    district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
                                                    city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";
                                                    pstatus[<%= table.indexOf(row) %>]                            = <%= row.status %>;

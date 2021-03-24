@@ -280,12 +280,38 @@
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Mobile Number</p>
-                                        <input class="data" type="text" name="mobile_number" id="mobilenumber" placeholder="Mobile Number">
+                                        <p class="text-primary-p">Data Of Birth</p>
+                                        <input class="input" type="date" name="dob" id="dob" placeholder="DOB">
+                                        <div class="alert-danger" id="dobError">
+                                             * Date Of Birth can't be empty
+                                        </div>
+                                  </div>
+                              </div>
+
+                              <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <select class="input option" name="gender" id="gender">
+                                          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                          <option value="M">Male</option>
+                                          <option value="F">Female</option>
+                                          <option value="N">Not preferred to say</option>
+                                        </select>
                                         <div class="alert-danger" id="displayNameError">
-                                            * Mobile number can't be empty and must contain only letters
+                                            * Gender can't be empty and must contain only letters
                                         </div>
                                    </div>
+                              </div>
+                             <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <input class="input" type="text" name="mobile_no" id="mobilenumber" placeholder="Mobile Number">
+                                        <div class="alert-danger" id="mobileNumberError">
+                                             * Mobile number can't be empty
+                                        </div>
+                                  </div>
                               </div>
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
@@ -309,13 +335,13 @@
                                            </div>
                                     </div>                                  
                                </div>
-                               <div class="buttons">
-                                <button class="button" type="clear" id="clear" style="background: red"><b>Clear</b></button>
-                                <button class="button-success" type="submit"><b>Submit</b></button>     
-                              </div>
+                               
                                
                               </div>
-                                                       
+                              <div class="buttons">
+                                <button class="button" type="clear" id="clear" style="background: red"><b>Clear</b></button>
+                                <button class="button-success" type="submit"><b>Submit</b></button>     
+                              </div>                         
                               
                           </form>
                     </div>
