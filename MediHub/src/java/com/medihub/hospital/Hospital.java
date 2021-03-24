@@ -49,6 +49,13 @@ public class Hospital {
     public int approvedBy;
     public String approvedAt;
     
+    public Hospital(){
+        
+    }
+    public Hospital(int id){
+        this.id=id;
+    }
+    
     public List<Hospital> getAllActiveHospitals() {
         
         String query = "select id, display_name from hospitals where status=1";
