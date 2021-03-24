@@ -138,8 +138,6 @@ public class CreatePharmacy extends HttpServlet {
                         temp = rs.getInt("temp");
 
                      }
-                    
-                    con.close();
 
                 }
                 catch(Exception e){
@@ -152,7 +150,10 @@ public class CreatePharmacy extends HttpServlet {
                 int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,status,created_at,updated_at,created_by,updated_by)"
                         + "values("+temp+",LAST_INSERT_ID(),1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 response.sendRedirect("readpharmacy");
-            }
+            
+                con.close();
+      
+      }
             catch(Exception e){
                 e.printStackTrace();
                 out.print(e.toString());
