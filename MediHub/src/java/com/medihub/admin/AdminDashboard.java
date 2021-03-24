@@ -44,13 +44,17 @@ public class AdminDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         PrintWriter out = response.getWriter();
          HttpSession session = request.getSession();
-        int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==0){
-                Admin a = new Admin(userid);
+         int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+         int adminId = Integer.parseInt(session.getAttribute("userid").toString());
+        if(usertype==0){
+                Admin a = new Admin(adminId);
                 String absolutePath = a.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
-            request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                out.println(absolutePath);
+           request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }
         else{
             request.getRequestDispatcher("403.jsp").forward(request, response);

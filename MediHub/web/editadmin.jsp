@@ -64,7 +64,7 @@
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="adminupdate" method="POST" id="updateForm">
+                         <form class="" action="adminupdate" method="POST" id="updateForm" enctype="multipart/form-data">
                             <div class="main_cards">
 
                               <div class="card">
@@ -94,6 +94,14 @@
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
+                                   </div>
+                              </div>
+                                        
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Update Profile Picture </p>
+                                        <input class="data" type="file" name="pp" id="pp" placeholder="Upload">
+                                        
                                    </div>
                               </div>
                                         
