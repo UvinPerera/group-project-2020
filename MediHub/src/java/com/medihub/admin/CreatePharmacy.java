@@ -11,6 +11,7 @@ import com.medihub.resources.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,8 +130,8 @@ public class CreatePharmacy extends HttpServlet {
                 int rs2=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,created_at,updated_at,created_by,updated_by) "
                         +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Pharmacist_Email+"','"+Password+"',4,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 
-                int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,status,created_at,updated_at,created_by,updated_by)"
-                        + "values("+rs+","++",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+               /* int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,status,created_at,updated_at,created_by,updated_by)"
+                        + "values("+rs+","++",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");*/
                 response.sendRedirect("readpharmacy");
             }
             catch(Exception e){
