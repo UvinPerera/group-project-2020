@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.user;
- 
+package com.medihub.hospital;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.medihub.email.*;
-
 /**
  *
  * @author uvinp
  */
-@WebServlet(name = "Contact", urlPatterns = {"/contact"})
-public class Contact extends HttpServlet {
+@WebServlet(name = "ManageAppointments", urlPatterns = {"/manageappointments"})
+public class ManageAppointments extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +29,7 @@ public class Contact extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -42,8 +40,14 @@ public class Contact extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-  
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        response.sendRedirect("manageAppointments.jsp");
+        
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -55,13 +59,7 @@ public class Contact extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String message = request.getParameter("message");
         
-        EMail em = new EMail();
-        em.send("uvininduwaraperera@gmail.com", name+" asks for assistance", message);
-        response.sendRedirect("contactUs.jsp");
     }
 
     /**
