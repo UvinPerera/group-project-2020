@@ -48,9 +48,7 @@
                 <h2 class="details">Order ID</h2>
                 <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" value="<%=a2.get(0)%>" readonly>
                 
-                 <h2 class="details">Date and Time</h2>
-                <input class="input" type="text" name="datetime" id="datetime" placeholder="<%=a2.get(3)%>" readonly>
-
+               
                 <h2 class="details">Patient ID</h2>
                  <input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly>
 
@@ -67,7 +65,7 @@
                  <input class="input" type="file" name="file_path" id="file_path" value="<%=a2.get(5)%>" placeholder="<%=a2.get(5)%>" >
 
                  <h2 class="details">Order Delivery Date</h2>
-                 <input class="input" type="date" name="deliverydate" id="deliverydate" >
+                 <input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(3)%>">
 
                  <div class="button-container1">
                        <button class="button" id="id" onclick="window.location.href='patient';"><b>Cancel</b></button>
