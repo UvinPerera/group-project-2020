@@ -58,8 +58,6 @@
                         <%
                             if(request.getAttribute("profile")!=null){
                                 User row = (User)request.getAttribute("profile");
-                                 
-                                
                                 int usrId = row.id;
                         %>
                         <br>
@@ -212,7 +210,7 @@
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address</p>
                                         <p class="text-secondary-p"><%= row2.address1%></p>
-                                        <p class="text-secondary-p"><%= row2.address2%></p>
+                                        
                                     </div>
                               </div>
                               

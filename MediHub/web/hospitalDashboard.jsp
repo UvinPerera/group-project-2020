@@ -22,14 +22,14 @@
 
       <% String username="";
       username= session.getAttribute("username").toString();
-     /* String absolutePath ="";
+      String absolutePath ="";
        
                try{
                     absolutePath = request.getAttribute("absolutePath").toString(); 
                }
                catch(NullPointerException ex){
                    absolutePath ="";
-               }*/
+               }
    %>
 
           <div class="container">
@@ -51,15 +51,18 @@
                      <!--######################-->
                     <div class="main_container">
 
-                         <div class="main_title">
-                               
+                        <div class="main_title">
+                             <%if(absolutePath.isEmpty()){%>
                               <img src="./public/images/user.png" alt="hello">
-                             
+                              <%}else{%>
+                              <img src="./public/storage/pp/<%=absolutePath%>" alt="hello">
+                              <%}%>
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
                                    <p>Welcome</p>
                               </div>
                          </div>
+
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">

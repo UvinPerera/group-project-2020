@@ -79,9 +79,9 @@
                               <a href="hospitalview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/edithospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="#">Edit Profile</a>
+                              <a href="edithospital">Edit Profile</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
