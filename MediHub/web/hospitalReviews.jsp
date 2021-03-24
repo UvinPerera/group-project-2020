@@ -331,6 +331,7 @@
                                 }
                                 else
                                 {
+                                if(usertype==1) {
                            %>
                            <div class="card">
                                    <div class="card_inner">
@@ -338,7 +339,7 @@
                                    </div>
                               </div>
                            <%
-                                }
+                                }}
                            %>
 
                     </div>
