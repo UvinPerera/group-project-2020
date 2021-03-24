@@ -82,7 +82,7 @@
                 var pharmacyId = [];
                 var pharmacyName= [];
                 var datetime = [];
-                var status = [];
+                var orderStatus = [];
                 var filepath= [];
                 var description = [];
                 var absolutepath = [];
@@ -119,10 +119,10 @@
         <script>
                             id[<%=i%>]                   ="<%=a2.get(0)%>"; 
                             pharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
-                            pharmacyName[<%=i%>]         ="<%=a2.get(1)%>";
-                            datetime[<%=i%>]             ="<%=a2.get(2)%>";
-                            status[<%=i%>]               ="<%=a2.get(3)%>";
-                            filepath[<%=i%>]             ="<%=a2.get(4)%>";
+                            pharmacyName[<%=i%>]         ="<%=a2.get(2)%>";
+                            datetime[<%=i%>]             ="<%=a2.get(3)%>";
+                            orderStatus[<%=i%>]               ="<%=a2.get(4)%>";
+                            filepath[<%=i%>]             ="<%=a2.get(5)%>";
                             description[<%=i%>]          ="<%=a2.get(6)%>"; 
                             absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
           </script>
@@ -234,7 +234,7 @@
         document.getElementById("modal_pharmacyName").innerHTML = pharmacyName[index];
         document.getElementById("modal_date_time").innerHTML = datetime[index];
         document.getElementById("modal_description").innerHTML = description[index];
-        document.getElementById("modal_orderStatus").innerHTML = status[index];
+        document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
         
 
@@ -277,16 +277,20 @@
         function confirmdelete(index) {
         var orderId=index;
         var del = confirm("Are you sure you want delete this order permenently ?");
-        if (del == true){
-            if((status[index]=="Completed")||(status[index]=="Cancelled")){
-            window.location.href="deleteorder?orderid="+orderId;
+        alert(orderId);
+        alert(orderStatus[orderId]);
        
-        }
-        else{
-            alert("You cannot delete an order which is not completed nor cancelled.")
-        }
-        
-
-    }}
+//        if (del == true){
+//            if((status[index]=="Completed")||(status[index]=="Cancelled")){
+//            window.location.href="deleteorder?orderid="+orderId;
+//       
+//        }
+//        else{
+//            alert("You cannot delete an order which is not completed nor cancelled.")
+//        }
+//        
+//
+//    }}
+}
    </script>
 </html>

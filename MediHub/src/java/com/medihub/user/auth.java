@@ -75,6 +75,7 @@ public class auth extends HttpServlet {
                             session.setAttribute("username", displayName);
                             session.setAttribute("userid", userId);
                             session.setAttribute("usertype", userType);
+                            
                         }
                         else if(userType==2){
                             response.sendRedirect("doctor");
