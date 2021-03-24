@@ -40,7 +40,7 @@ public class AdminViewPharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            HttpSession session = request.getSession();
+                        HttpSession session = request.getSession();
             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
@@ -58,10 +58,8 @@ public class AdminViewPharmacy extends HttpServlet {
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
                 Pharmacy p = new Pharmacy(pharmacyId);
-                Pharmacist pa = new Pharmacist(pharmacistId);
                 
                 request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
-                request.setAttribute("profile", pa.getProfile());
                 request.getRequestDispatcher("adminviewpharmacy.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
