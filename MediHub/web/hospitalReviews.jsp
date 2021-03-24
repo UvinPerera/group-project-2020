@@ -127,7 +127,7 @@
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
-
+                              <% if(usertype==1) { %>
                               <div class="card">
                                    <!--<i class="fa fa-user-o fa-2x text-lightblue"></i>-->
                                    <div class="card_inner">
@@ -143,7 +143,7 @@
                                         <p class=""><%=h.fax%></p>
                                    </div>
                               </div>
-                                   
+                              <% } %>
                                    <%
                                              if(request.getAttribute("star")!=null){
                                                   int[] s = (int[])request.getAttribute("star");
