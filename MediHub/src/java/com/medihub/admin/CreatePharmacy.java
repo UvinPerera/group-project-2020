@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.medihub.admin;
+
 import com.medihub.db.DbConfig;
 import com.medihub.location.District;
 import com.medihub.resources.*;
@@ -21,12 +22,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author DELL
  */
 @WebServlet(name = "CreatePharmacy", urlPatterns = {"/createpharmacy"})
 public class CreatePharmacy extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,7 +57,9 @@ public class CreatePharmacy extends HttpServlet {
                 int adminId =Integer.parseInt(session.getAttribute("userid").toString());
                 PrintWriter out = response.getWriter();
 //                response.setContentType("application/json");
+
                     String stage= request.getParameter("stage");
+
                         try
                         {
                             District d = new District();
@@ -69,7 +74,9 @@ public class CreatePharmacy extends HttpServlet {
                         }
                     
                    
+
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -125,15 +132,12 @@ public class CreatePharmacy extends HttpServlet {
                 try{
                     PreparedStatement pst = con.prepareStatement(query);
                     ResultSet rs = pst.executeQuery();
+
                     while(rs.next()) { 
+
                         temp = rs.getInt("temp");
 
                      }
-<<<<<<< HEAD
-
-                    con.close();
-=======
->>>>>>> e38c60af7adcc4277304e4a574f14b09194c3f7d
 
                 }
                 catch(Exception e){
@@ -146,16 +150,9 @@ public class CreatePharmacy extends HttpServlet {
                 int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,status,created_at,updated_at,created_by,updated_by)"
                         + "values("+temp+",LAST_INSERT_ID(),1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 response.sendRedirect("readpharmacy");
-<<<<<<< HEAD
-            }
-
-                con.close();
-
-=======
             
                 con.close();
       
->>>>>>> e38c60af7adcc4277304e4a574f14b09194c3f7d
       }
             catch(Exception e){
                 e.printStackTrace();
@@ -163,6 +160,7 @@ public class CreatePharmacy extends HttpServlet {
             }
       
     }
+
     /**
      * Returns a short description of the servlet.
      *
@@ -172,4 +170,5 @@ public class CreatePharmacy extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
