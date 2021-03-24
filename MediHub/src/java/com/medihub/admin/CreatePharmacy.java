@@ -114,7 +114,7 @@ public class CreatePharmacy extends HttpServlet {
             String Mobile_Number = request.getParameter("mobile_number");
             String Password= SecureUtils.generatePasswordHash(request.getParameter("password"));
   
-      
+       
       
       try{
                 DbConfig db = DbConfig.getInstance();

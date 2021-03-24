@@ -113,7 +113,7 @@
           <ul class="actions">
               <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
               <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
-              <li><a><button class="btn" onclick="confirmdelete('<%=a2.get(0)%>');"><i class="fa fa-trash"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td>
         <script>
@@ -277,20 +277,20 @@
         function confirmdelete(index) {
         var orderId=index;
         var del = confirm("Are you sure you want delete this order permenently ?");
-        alert(orderId);
-        alert(orderStatus[orderId]);
+        
+        alert(orderStatus[0]);
        
-//        if (del == true){
-//            if((status[index]=="Completed")||(status[index]=="Cancelled")){
-//            window.location.href="deleteorder?orderid="+orderId;
-//       
-//        }
-//        else{
-//            alert("You cannot delete an order which is not completed nor cancelled.")
-//        }
-//        
-//
-//    }}
+        if (del == true){
+            if((status[index]==="Completed")||(status[index]==="Cancelled")){
+            window.location.href="deleteorder?orderid="+orderId;
+       
+        }
+        else{
+            alert("You cannot delete an order which is not completed nor cancelled.")
+        }
+        
+
+    }}
 }
    </script>
 </html>
