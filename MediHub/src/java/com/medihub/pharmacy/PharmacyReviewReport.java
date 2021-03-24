@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.hospital;
+package com.medihub.pharmacy;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "HospitalReviewDelete", urlPatterns = {"/hospitalReviewDelete"})
-public class HospitalReviewDelete extends HttpServlet {
+@WebServlet(name = "PharmacyReviewReport", urlPatterns = {"/pharmacyReviewReport"})
+public class PharmacyReviewReport extends HttpServlet {
 
    
 
@@ -40,26 +40,26 @@ public class HospitalReviewDelete extends HttpServlet {
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1 || usertype==0){
+            if(usertype==4){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getHospital=Integer.parseInt(request.getParameter("hospital"));
+                        int getPharmacy=Integer.parseInt(request.getParameter("pharmacy"));
 
-                        HospitalReview dr = new HospitalReview();
-//                        out.print(dr.insertReview(patientId,getHospital,getRating,description));
-                        int dd=dr.deleteReview(getId);
+                        PharmacyReview dr = new PharmacyReview();
+//                        out.print(dr.insertReview(patientId,getPharmacy,getRating,description));
+                        int dd=dr.reportReview(getId);
                         if(dd>0){
                             session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Deleted !");
+                            session.setAttribute("message", "Review Successfully Reported !");
                         }
                         else{
                             session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Deletion Unsuccessful !");
+                            session.setAttribute("message", "Review Reporting Unsuccessful !");
                         }
                         
-                        response.sendRedirect("BrowseHospital?search=1&hospital="+getHospital);
+                        response.sendRedirect("BrowsePharmacyReviews?search=1&pharmacy="+getPharmacy);
                     }
                     catch(Exception e)
                     {

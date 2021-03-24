@@ -5,8 +5,12 @@
  */
 package com.medihub.pharmacy;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,10 +41,10 @@ public class BrowsePharmacyReviews extends HttpServlet {
             throws ServletException, IOException {
         
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
             
-            if(usertype==1){
+            if(usertype==1 || usertype==4){
              PrintWriter out = response.getWriter();
                     try
                     {
@@ -62,6 +66,19 @@ public class BrowsePharmacyReviews extends HttpServlet {
                                         session.removeAttribute("message");
                                     }
 
+                                    if(usertype==4){
+                                        DbConfig db = DbConfig.getInstance();
+                                        Connection con = db.getConnecton();
+                                        
+                                        PreparedStatement pst = con.prepareStatement("SELECT pharmacy_id FROM pharmacy_admins where user_id="+userId);
+                                        ResultSet rs = pst.executeQuery();
+
+                                        while(rs.next()) { 
+                                            getPharmacy = rs.getInt("pharmacy_id");
+                                        }
+
+                                        con.close();
+                                    }
                                     
                                     PharmacyReview hr = new PharmacyReview();
                                     request.setAttribute("pharmacy", h.getPharmacy(getPharmacy));

@@ -77,6 +77,11 @@
                          </div>
 
                          <h2>User</h2>
+                         
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-stethoscope"></i>
+                              <a href="BrowsePharmacyReviews?search=1&pharmacy=0">Reviews</a>
+                         </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
