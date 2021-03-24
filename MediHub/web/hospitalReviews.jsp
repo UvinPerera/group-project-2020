@@ -259,7 +259,7 @@
                                                                 <a class="button" id="" href="hospitalReviewDelete?id=<%=row.id%>&hospital=<%=getHospital%>" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
                                                                 <% } else if(usertype==3) { %>
                                                                 <br>
-                                                                <a class="button" id="" href="hospitalReviewReport?id=<%=row.id%>&pharmacy=<%=getHospital%>" onclick="return confirm('Are you sure want to report?');"><i class="fa fa-user-secret"></i></a>
+                                                                <a class="button" id="" href="hospitalReviewReport?id=<%=row.id%>&hospital=<%=getHospital%>" onclick="return confirm('Are you sure want to report?');"><i class="fa fa-user-secret"></i></a>
                                                                 <% } %>
                                                             </td>
                                                        </tr>
