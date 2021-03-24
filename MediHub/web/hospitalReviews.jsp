@@ -34,6 +34,7 @@
           <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_hos.css" media="screen" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <% if(usertype==1) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
