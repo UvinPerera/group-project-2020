@@ -75,11 +75,10 @@ public class UpdatePatientOrder extends HttpServlet {
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             /////BUG
-            out.println("hi1");
-            out.println(request.getParameter("orderid"));
-            int orderId=Integer.parseInt(request.getParameter("orderid")); 
-            out.println("hi");
-             
+            
+            
+            int orderId=0; 
+         
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setSizeMax( maxFileSize );
@@ -101,14 +100,18 @@ public class UpdatePatientOrder extends HttpServlet {
                       String name = item.getFieldName();//text1
                       String value = item.getString();
                       
-                      if(name.compareTo("description")==0){
+                      if(name.compareTo("orderdescription")==0){
                           description=value;
                       }
                       
-                      else if(name.compareTo("date")==0){
+                      else if(name.compareTo("deliverydate")==0){
                           date = value;
                       }
+                      else if(name.compareTo("orderid")==0){
+                          orderId = Integer.parseInt(value);
+                      }
                       
+                  
                       
 
                     } else {
@@ -123,12 +126,12 @@ public class UpdatePatientOrder extends HttpServlet {
                             
                             file = new File(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath) ;
                         
-                            
+                             
                          
                             item.write( file ) ;
                               }
                           }
-            
+         
             String query = "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+", expected_delivery_date='"+date+"' WHERE id ="+ orderId;
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();

@@ -269,16 +269,18 @@
          function confirmdelete(index) {
             var orderId=index;
             var del = confirm("Are you sure you want delete this order permenently ?");
-            if (del == true){
-                if(orderStatus[orderId]==="Completed"||orderStatus[orderId]==="Cancelled"){
-                     alert(orderStatus[orderId]);
-                     window.location.href="deleteorder?orderid="+orderId;
-                }
-                else{
-                    alert(orderStatus[orderId]);
-                    alert("You cannot delete an order which is not completed nor cancelled.")
-                }
-
-
-    }}
-   </script>
+            alert(orderStatus[orderId]);
+//            if (del == true){
+//                if(orderStatus[orderId]==="Completed"||orderStatus[orderId]==="Cancelled"){
+//                     
+//                     window.location.href="deleteorder?orderid="+orderId;
+//                }
+//                else{
+//                    alert(orderStatus[orderId]);
+//                    alert("You cannot delete an order which is not completed nor cancelled.")
+//                }
+//
+//
+//    }}
+         }
+     </script>

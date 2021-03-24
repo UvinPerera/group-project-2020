@@ -59,8 +59,8 @@
                          </div>
                         
                         <%
-                            if(request.getAttribute("profile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("profile");
+                            if(request.getAttribute("pharmacyprofile")!=null){
+                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
                                 
                                 
                         %>
@@ -177,6 +177,8 @@
 
                               <div></div>
                               <div></div>
+                              <div></div>
+                              
                               
                               <div class="buttons">
                                 <button class="button" type="reset" id="clear"><b>Reset</b></button>

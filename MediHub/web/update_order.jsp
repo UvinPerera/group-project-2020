@@ -43,11 +43,11 @@
             <div class="container1">
                 <h1>Update Order </h1><br><hr><br><br>
                 
-              <form action="updatepatientorder?orderid=<%=a2.get(0)%>" method="post" enctype="multipart/form-data">
+              <form action="updatepatientorder" method="post" enctype="multipart/form-data">
 
                 <h2 class="details">Order ID</h2>
-                <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" readonly>
-
+                <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" value="<%=a2.get(0)%>" readonly>
+                
                  <h2 class="details">Date and Time</h2>
                 <input class="input" type="text" name="datetime" id="datetime" placeholder="<%=a2.get(3)%>" readonly>
 
