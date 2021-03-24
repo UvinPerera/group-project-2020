@@ -131,11 +131,11 @@ public class UpdatePatientOrder extends HttpServlet {
                             item.write( file ) ;
                               }
                           }
-         
+                
             String query = "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+", expected_delivery_date='"+date+"' WHERE id ="+ orderId;
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
-//            
+            
             String query2="UPDATE order_items SET updated_at=CURRENT_TIMESTAMP,file_path='"+filepath+"',absolute_path='"+absolutePath+"', updated_by="+patientId+",description='"+description+"' WHERE order_id ="+ orderId;
             PreparedStatement stmt2=con.prepareStatement(query2);  
             int rs2=stmt2.executeUpdate();
@@ -151,7 +151,7 @@ public class UpdatePatientOrder extends HttpServlet {
             
            //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
 
-           response.sendRedirect("patient");
+            response.sendRedirect("patient");
             con.close();  
         }
         catch(Exception e)
