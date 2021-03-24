@@ -43,7 +43,7 @@ public class DeletePatientOrder extends HttpServlet {
                    
                     int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET status = 0 WHERE id ="+ orderId);
                     
-                   response.sendRedirect("patient");
+                   response.sendRedirect("TrackOrders");
                     }catch(Exception e){
                        out.println(e.toString());
                    }

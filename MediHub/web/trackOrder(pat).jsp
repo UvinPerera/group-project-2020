@@ -275,13 +275,14 @@
     }
     
         function confirmdelete(index) {
-        var orderId=index;
+        
         var del = confirm("Are you sure you want delete this order permenently ?");
         
        
        
         if (del == true){
             if((orderStatus[index]==="Completed")||(orderStatus[index]==="Cancelled")){
+            var orderId = index+1;
             window.location.href="deletepatientorder?orderid="+orderId;
        
         }
