@@ -66,7 +66,7 @@ public class BrowseHospitalReviews extends HttpServlet {
                                         session.removeAttribute("message");
                                     }
                                     
-                                    if(usertype==4){
+                                    if(usertype==3){
                                         DbConfig db = DbConfig.getInstance();
                                         Connection con = db.getConnecton();
                                         

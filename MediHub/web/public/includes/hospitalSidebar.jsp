@@ -71,7 +71,7 @@
                          
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-stethoscope"></i>
-                              <a href="BrowseDoctorReviews?search=1&doctor=0">Reviews</a>
+                              <a href="BrowseHospitalReviews?search=1&hospital=0">Reviews</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpatient.jsp' ? 'active_menu_link' : ''}">
