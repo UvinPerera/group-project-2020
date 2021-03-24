@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "HospitalReviewDelete", urlPatterns = {"/hospitalReviewDelete"})
-public class HospitalReviewDelete extends HttpServlet {
+@WebServlet(name = "HospitalReviewReport", urlPatterns = {"/hospitalReviewReport"})
+public class HospitalReviewReport extends HttpServlet {
 
    
 
@@ -40,7 +40,7 @@ public class HospitalReviewDelete extends HttpServlet {
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1 || usertype==0){
+            if(usertype==3){
                 PrintWriter out = response.getWriter();
                     try
                     {
@@ -49,17 +49,17 @@ public class HospitalReviewDelete extends HttpServlet {
 
                         HospitalReview dr = new HospitalReview();
 //                        out.print(dr.insertReview(patientId,getHospital,getRating,description));
-                        int dd=dr.deleteReview(getId);
+                        int dd=dr.reportReview(getId);
                         if(dd>0){
                             session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Deleted !");
+                            session.setAttribute("message", "Review Successfully Reported !");
                         }
                         else{
                             session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Deletion Unsuccessful !");
+                            session.setAttribute("message", "Review Reporting Unsuccessful !");
                         }
                         
-                        response.sendRedirect("BrowseHospital?search=1&hospital="+getHospital);
+                        response.sendRedirect("BrowseHospitalReviews?search=1&hospital="+getHospital);
                     }
                     catch(Exception e)
                     {
