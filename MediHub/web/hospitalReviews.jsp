@@ -7,6 +7,23 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
+          <% 
+               String username="";
+               int getLimit=0;
+               username= session.getAttribute("username").toString();
+               int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+               String getHospital="";
+                     
+               if (request.getParameter("hospital")!=null && request.getParameter("hospital")!="") {
+                    getHospital=request.getParameter("hospital");
+               }
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
+               }
+          %>
+
 <!doctype html>
 <html>
 
@@ -18,7 +35,11 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <% if(usertype==1) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <% } else if(usertype==3) { %>
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <% } %>
           <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
@@ -30,22 +51,6 @@
      </head>
 
      <body>
-
-          <% 
-               String username="";
-               int getLimit=0;
-               username= session.getAttribute("username").toString();
-               
-               String getHospital="";
-                     
-               if (request.getParameter("hospital")!=null && request.getParameter("hospital")!="") {
-                    getHospital=request.getParameter("hospital");
-               }
-                     
-               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
-                    getLimit=Integer.parseInt(request.getParameter("limit"));
-               }
-          %>
 
           <div class="container">
               <!--######################-->
@@ -76,7 +81,7 @@
                                        <% } %>
                                    </div>
                                    <% } %>
-                        
+                        <% if(usertype==1) { %>
                         <form class="" action="BrowseHospital" method="GET" id="">
                             <input type="hidden" name="search" value="1"/>
                             <div class="card">
@@ -104,6 +109,7 @@
                                 </div>
                             </div>
                         </form>
+                        <% } %>
                                  <!--checking for availability of hospital-->
                                         <%
                                              if(request.getAttribute("hospital")!=null){
@@ -121,7 +127,7 @@
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
-
+                              <% if(usertype==1) { %>
                               <div class="card">
                                    <!--<i class="fa fa-user-o fa-2x text-lightblue"></i>-->
                                    <div class="card_inner">
@@ -137,7 +143,7 @@
                                         <p class=""><%=h.fax%></p>
                                    </div>
                               </div>
-                                   
+                              <% } %>
                                    <%
                                              if(request.getAttribute("star")!=null){
                                                   int[] s = (int[])request.getAttribute("star");
@@ -162,7 +168,7 @@
                               </div>
                                         
                                         <% } %>
-                              
+                              <% if(usertype==1) { %>
                               <div class="card">
                                    <i class="fa fa-book fa-2x text-yellow"></i>
                                    <div class="card_inner">
@@ -171,7 +177,7 @@
                                         </p>
                                    </div>
                               </div>
-
+                                        <% } %>
                          </div>
 
                          <!--<div class="charts">-->
@@ -251,6 +257,9 @@
                                                                 <br>
                                                                 <button class="button" id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-edit"></i></button>
                                                                 <a class="button" id="" href="hospitalReviewDelete?id=<%=row.id%>&hospital=<%=getHospital%>" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
+                                                                <% } else if(usertype==3) { %>
+                                                                <br>
+                                                                <a class="button" id="" href="hospitalReviewReport?id=<%=row.id%>&pharmacy=<%=getHospital%>" onclick="return confirm('Are you sure want to report?');"><i class="fa fa-user-secret"></i></a>
                                                                 <% } %>
                                                             </td>
                                                        </tr>
@@ -322,6 +331,7 @@
                                 }
                                 else
                                 {
+                                if(usertype==1) {
                            %>
                            <div class="card">
                                    <div class="card_inner">
@@ -329,7 +339,7 @@
                                    </div>
                               </div>
                            <%
-                                }
+                                }}
                            %>
 
                     </div>
@@ -374,7 +384,19 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                <% 
+                   String sidebar = "";
+                    if(usertype==1) {
+                        sidebar = "patientSidebar";
+                    } 
+                    else if(usertype==3){
+                        sidebar = "hospitalSidebar";
+                    }
+                    else{
+                        sidebar = "";
+                    }
+               %>
+               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->

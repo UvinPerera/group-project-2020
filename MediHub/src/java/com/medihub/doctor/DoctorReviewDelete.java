@@ -40,7 +40,7 @@ public class DoctorReviewDelete extends HttpServlet {
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1){
+            if(usertype==1 || usertype==0){
                 PrintWriter out = response.getWriter();
                     try
                     {

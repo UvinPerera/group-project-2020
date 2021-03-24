@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.hospital;
+package com.medihub.doctor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "HospitalReviewDelete", urlPatterns = {"/hospitalReviewDelete"})
-public class HospitalReviewDelete extends HttpServlet {
+@WebServlet(name = "DoctorReviewReport", urlPatterns = {"/doctorReviewReport"})
+public class DoctorReviewReport extends HttpServlet {
 
    
 
@@ -37,29 +37,29 @@ public class HospitalReviewDelete extends HttpServlet {
             throws ServletException, IOException {
         
             HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1 || usertype==0){
+            if(usertype==2){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getHospital=Integer.parseInt(request.getParameter("hospital"));
+                        int getDoctor=Integer.parseInt(request.getParameter("doctor"));
 
-                        HospitalReview dr = new HospitalReview();
-//                        out.print(dr.insertReview(patientId,getHospital,getRating,description));
-                        int dd=dr.deleteReview(getId);
+                        DoctorReview dr = new DoctorReview();
+//                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
+                        int dd=dr.reportReview(getId);
                         if(dd>0){
                             session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Deleted !");
+                            session.setAttribute("message", "Review Successfully Reported !");
                         }
                         else{
                             session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Deletion Unsuccessful !");
+                            session.setAttribute("message", "Review Reporting Unsuccessful !");
                         }
                         
-                        response.sendRedirect("BrowseHospital?search=1&hospital="+getHospital);
+                        response.sendRedirect("BrowseDoctorReviews?search=1&doctor="+getDoctor);
                     }
                     catch(Exception e)
                     {

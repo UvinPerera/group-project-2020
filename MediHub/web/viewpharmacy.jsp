@@ -101,7 +101,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
-                                        <p class="text-secondary-p"><%= row.city %></p>
+                                        <p class="text-secondary-p"><%= row.cityStr %></p>
                                    </div>
                               </div>
 

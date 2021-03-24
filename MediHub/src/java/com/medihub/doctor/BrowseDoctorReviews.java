@@ -37,10 +37,10 @@ public class BrowseDoctorReviews extends HttpServlet {
             throws ServletException, IOException {
         
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
             
-            if(usertype==1){
+            if(usertype==1 || usertype==2){
              PrintWriter out = response.getWriter();
                     try
                     {
@@ -60,7 +60,11 @@ public class BrowseDoctorReviews extends HttpServlet {
                                         session.removeAttribute("alert");
                                         session.removeAttribute("message");
                                     }
-
+                                    
+                                    if(usertype==2){
+                                        getDoctor=userId;
+                                    }
+                                    
                                     Doctor d = new Doctor();
                                     DoctorReview dr = new DoctorReview();
                                     request.setAttribute("doctor", d.getDoctor(getDoctor));

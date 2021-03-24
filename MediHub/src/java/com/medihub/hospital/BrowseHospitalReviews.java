@@ -5,8 +5,12 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,10 +41,10 @@ public class BrowseHospitalReviews extends HttpServlet {
             throws ServletException, IOException {
         
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
             
-            if(usertype==1){
+            if(usertype==1 || usertype==3){
              PrintWriter out = response.getWriter();
                     try
                     {
@@ -60,6 +64,20 @@ public class BrowseHospitalReviews extends HttpServlet {
                                         request.setAttribute("message", session.getAttribute("message"));
                                         session.removeAttribute("alert");
                                         session.removeAttribute("message");
+                                    }
+                                    
+                                    if(usertype==4){
+                                        DbConfig db = DbConfig.getInstance();
+                                        Connection con = db.getConnecton();
+                                        
+                                        PreparedStatement pst = con.prepareStatement("SELECT hospital_id FROM hospital_admins where user_id="+userId);
+                                        ResultSet rs = pst.executeQuery();
+
+                                        while(rs.next()) { 
+                                            getHospital = rs.getInt("hospital_id");
+                                        }
+
+                                        con.close();
                                     }
 
                                     
