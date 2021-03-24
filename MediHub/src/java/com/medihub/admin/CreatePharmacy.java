@@ -11,6 +11,8 @@ import com.medihub.resources.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,15 +126,34 @@ public class CreatePharmacy extends HttpServlet {
                 int rs1=stmt.executeUpdate("insert into pharmacies(name,license_number,display_name,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
                         + "values('"+Pharmacy_Name+"',"+License_Number+",'"+Pharmacy_Display_Name+"','"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+City+",1,'"+Description+"',"+adminId+","+adminId+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
                 
-                ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID(pharmacy_id) FROM pharmacies"); 
+                String query = "SELECT LAST_INSERT_ID() AS temp";
+                int temp=0;
+                
+                try{
+                    PreparedStatement pst = con.prepareStatement(query);
+                    ResultSet rs = pst.executeQuery();
+
+                    while(rs.next()) { 
+
+                        temp = rs.getInt("temp");
+
+                     }
+
+                }
+                catch(Exception e){
+                    e.toString();
+                }
                 
                 int rs2=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,created_at,updated_at,created_by,updated_by) "
                         +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Pharmacist_Email+"','"+Password+"',4,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 
                 int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,status,created_at,updated_at,created_by,updated_by)"
-                        + "values("+rs+","++",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+                        + "values("+temp+",LAST_INSERT_ID(),1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 response.sendRedirect("readpharmacy");
-            }
+            
+                con.close();
+      
+      }
             catch(Exception e){
                 e.printStackTrace();
                 out.print(e.toString());
