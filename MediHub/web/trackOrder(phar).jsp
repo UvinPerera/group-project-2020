@@ -110,7 +110,7 @@
           <ul class="actions">
               <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
               <li><a href="editpharmacyorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
-              <li><a><button class="btn" onclick="confirmdelete(<%=a2.get(0)%>);"><i class="fa fa-trash"></i></button></a></li> 
+              <li><a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
         </td> 
          <script>
@@ -267,20 +267,20 @@
     }
     
          function confirmdelete(index) {
-            var orderId=index;
-            var del = confirm("Are you sure you want delete this order permenently ?");
-            alert(orderStatus[orderId]);
-//            if (del == true){
-//                if(orderStatus[orderId]==="Completed"||orderStatus[orderId]==="Cancelled"){
-//                     
-//                     window.location.href="deleteorder?orderid="+orderId;
-//                }
-//                else{
-//                    alert(orderStatus[orderId]);
-//                    alert("You cannot delete an order which is not completed nor cancelled.")
-//                }
-//
-//
-//    }}
-         }
+        var orderId=index;
+        var del = confirm("Are you sure you want delete this order permenently ?");
+        
+       
+       
+        if (del == true){
+            if((orderStatus[index]==="Completed")||(orderStatus[index]==="Cancelled")){
+            window.location.href="deleteorder?orderid="+orderId;
+       
+        }
+        else{
+            alert("You cannot delete an order which is not completed nor cancelled.")
+        }
+        
+
+    }}
      </script>

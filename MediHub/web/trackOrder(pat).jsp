@@ -278,11 +278,11 @@
         var orderId=index;
         var del = confirm("Are you sure you want delete this order permenently ?");
         
-        alert(orderStatus[0]);
+       
        
         if (del == true){
-            if((status[index]==="Completed")||(status[index]==="Cancelled")){
-            window.location.href="deleteorder?orderid="+orderId;
+            if((orderStatus[index]==="Completed")||(orderStatus[index]==="Cancelled")){
+            window.location.href="deletepatientorder?orderid="+orderId;
        
         }
         else{
@@ -291,6 +291,6 @@
         
 
     }}
-}
+
    </script>
 </html>
