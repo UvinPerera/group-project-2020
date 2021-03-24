@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.medihub.user.User;
 
 /**
  *
@@ -46,8 +47,13 @@ public class HospitalDashboard extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int userid = Integer.parseInt(session.getAttribute("usertype").toString());
-        if(userid==3){
+        int userType = Integer.parseInt(session.getAttribute("usertype").toString());
+        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        if(userType==3){
+            
+            User u = new User(hospitalAdminId);
+            String absolutePath = u.getAbsPath();
+            request.setAttribute("absolutePath",absolutePath);
             request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
         }
         else{

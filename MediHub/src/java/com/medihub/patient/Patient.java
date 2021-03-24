@@ -200,6 +200,10 @@ public class Patient extends User {
     public Patient(int id){
         this.id=id;
     }
+     public Patient(){
+       
+    }
+    
     
     public void makeAppointment() {
 
