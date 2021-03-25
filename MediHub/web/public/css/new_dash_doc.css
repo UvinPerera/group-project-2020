@@ -212,7 +212,6 @@ main {
 
 .charts {
      display: grid;
-     grid-template-columns: 2fr 2fr;
      gap: 30px;
      margin-top: 50px;
 }

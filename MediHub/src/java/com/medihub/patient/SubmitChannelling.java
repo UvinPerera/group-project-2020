@@ -46,6 +46,37 @@ public class SubmitChannelling extends HttpServlet {
             Channelling c = new Channelling();
 //            out.print(c.submitChannelling(id,patientId,description));
                 String lastId=c.submitChannelling(id,patientId,description);
+                
+                int paymentMethod = Integer.parseInt(request.getParameter("payment_method"));
+                String captureId = request.getParameter("captureId");
+                String payerId = request.getParameter("payerId");
+                String transactionId =request.getParameter("transactionId");
+                String payement = request.getParameter("price");
+                String payementDis="";
+                
+                if(paymentMethod==1){
+                    payementDis="Payement Not received";
+                
+                }
+                else{
+                    payementDis="Full Payement Done";
+                }
+                
+                String query="INSERT INTO channelling_payments(channelling_id,payerId,captureId,transactionId,payment_amount,payment_method,description)"
+                        + " values("+lastId+",'"+payerId+"','"+captureId+"','"+transactionId+"',"+payement+","+paymentMethod+",'"+payementDis+"')";
+                
+                try{
+                    DbConfig db = DbConfig.getInstance();
+                    Connection con = db.getConnecton();
+                    
+                    PreparedStatement pst = con.prepareStatement(query);
+                    int rs = pst.executeUpdate();
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+                
+                
             
 //            request.setAttribute("channelling", lastId); //directly get appointment status
 //            request.getRequestDispatcher("channellingresult").forward(request, response);

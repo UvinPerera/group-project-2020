@@ -42,9 +42,9 @@
 
                          </div>
                          <!-- add "active_menu_link" to class to make it active -->
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/patientDashboard.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/hospitalDashboard.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dashboard"></i>
-                              <a href="doctor">Dashboard</a>
+                              <a href="hospital">Dashboard</a>
                          </div>
 
                          <h2>Alerts</h2>
@@ -74,14 +74,14 @@
                               <a href="BrowseHospitalReviews?search=1&hospital=0">Reviews</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpatient.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewhospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>
-                              <a href="DoctorView">View Profile</a>
+                              <a href="hospitalview">View Profile</a>
                          </div>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/editDoctorProfile.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/edithospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle-o"></i>
-                              <a href="EditDoctor">Edit Profile</a>
+                              <a href="edithospital">Edit Profile</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">

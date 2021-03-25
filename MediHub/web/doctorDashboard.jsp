@@ -91,22 +91,7 @@
                              <!--######################-->
                                 <!--left table section starting-->
                              <!--######################-->
-                              <div class="charts_left">
-                                   <!-- <div class=""> -->
-                                        <div class="charts_left_title">
-                                             <div>
-                                                  <h1>Upcoming Patients</h1>
-                                                  <!-- <p>Something</p> -->
-                                             </div>
-                                             <!--<i class="fa fa-suitcase"></i>-->
-                                        </div>
-                                   
-                                        <!--pending appointments starts-->
-                                        <!--checking for availability-->
-                                        
-                                        
-                                    <!--</div>--> 
-                              </div>
+                              
                              <!--######################-->
                                 <!--left table section ending-->
                              <!--######################-->
@@ -133,11 +118,11 @@
                                              <thead>
                                                   <tr>
                                                        <th>#</th>
-                                                       <th>Pharmacy</th>
+                                                       <th>Hospital</th>
                                                        <th>Doctor</th>
                                                        <th>Date / Time</th>
-                                                       <th>App #</th>
-                                                       <th>Action</th>
+                                                       <th>Number Of Patients</th>
+                                                       
                                                   </tr>
                                              </thead>
                                              <tbody>
@@ -147,39 +132,7 @@
                                                        <td>Doctor 1</td>
                                                        <td>2020-12-12<br>08:00:00</td>
                                                        <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
+                                                       
                                                   </tr>
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>

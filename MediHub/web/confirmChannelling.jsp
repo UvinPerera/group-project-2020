@@ -28,6 +28,7 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               float paymentVal=0.0F;
           %>
 
           <div class="container">
@@ -62,7 +63,7 @@
                         DoctorAvailability da = (DoctorAvailability)request.getAttribute("doctorAvalability");
                     %>
                     
-                    <form action="submitchannelling" method="post">
+                    <form id="payementForm" action="submitchannelling" method="post">
                         <input type="hidden" name="id" value="<%= da.id%>"/>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
@@ -149,10 +150,15 @@
                                              </p>
                                         </div>
                                    </div>
-
+                                                 <input type="hidden" id="captureId" name="captureId" value="">
+                                                 <input type="hidden" id="payerId" name="payerId" value="">
+                                                 <input type="hidden" id="transactionId" name="transactionId" value="">
+                                                 <input type="hidden" id="price" name="price" value="<%= da.payment %>">
+                                                 
                                     <div class="buttons" style="align-self:center;margin: auto;display: block;">
                                        <button class="button" type="reset" id="clear"><b>Reset</b></button>
-                                       <button class="button-success" type="submit"><b>Accept</b></button>     
+                                       <button id="button_submit" class="button-success" type="submit"><b>Accept</b></button>     
+                                        <div id="paypal-button-container"></div>
                                     </div>
 
                                     <div class=""></div>
@@ -161,10 +167,11 @@
                                             
                     </form>
                          
-                        <% } else { %>
+                        <% paymentVal=da.payment;} else { %>
                             <div class="alert-danger" id="appointmentAlert">
                                 Channelling cannot be proceeded !
                             </div>
+                            
                         <% } %>
                         
                     </div>
@@ -197,4 +204,61 @@
           <script src="./public/js/new_script.js"></script>
           
      </body>
+     <script
+    src="https://www.paypal.com/sdk/js?client-id=ASEtIC54L4jyZBnDG75kWu0ZUkk6UJ05fyG2fFq5Bb6eYx_u2D8k0TLnCDNcSykA3-M7tig2qbJTp-GQ&disable-funding=card"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+  </script>
+  <script>
+      var payerId;
+      var transactionId;
+      var captureId;
+   paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '<%=paymentVal%>'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        //alert('Transaction completed by ' + details.payer.name.given_name);
+        payerId = details.payer.payer_id;
+        transactionId = details.purchase_units[0].reference_id;
+        captureId = details.purchase_units[0].payments.captures[0].id;
+        //alert('Payer ID:'+payerId);
+        //alert('Capture Id'+captureId);
+        
+        $("#payerId").val(payerId);
+        $("#transactionId").val(transactionId);
+        $("#captureId").val(captureId);
+        
+        $("#payementForm").submit();
+        
+      });
+    }
+  }).render('#paypal-button-container');
+    $("#paypal-button-container").hide();
+    // This function displays Smart Payment Buttons on your web page.
+  </script>
+     <script>
+         $("#payment_method").change(function(){
+             if($(this).val()==4){
+             $("#button_submit").hide();
+             $("#paypal-button-container").show();
+         }
+         
+         else{
+             
+             $("#button_submit").show();
+             $("#paypal-button-container").hide();
+         }
+             
+         });
+         
+     </script>
 </html>

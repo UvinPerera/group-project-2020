@@ -63,6 +63,13 @@ public class User {
         }
         
     }
+
+    public User(int hospitalAdminId) {
+        this.id = hospitalAdminId;
+    }
+    public User(){
+        
+    }
     public String getAbsPath(){
         String query = "select absolute_pp_path from users where id="+this.id;
         String absPath="";

@@ -53,7 +53,7 @@ public class AdminDashboard extends HttpServlet {
                 Admin a = new Admin(adminId);
                 String absolutePath = a.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
-                out.println(absolutePath);
+                
            request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }
         else{
