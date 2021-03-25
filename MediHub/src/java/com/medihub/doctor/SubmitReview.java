@@ -25,17 +25,18 @@ public class SubmitReview extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+            System.out.println("docotrReview");
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
-        
+            
             if(usertype==1){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getRating=Integer.parseInt(request.getParameter("rating"));
                         int getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                        System.out.println(getDoctor);
                         String description=request.getParameter("review");
 
                         DoctorReview dr = new DoctorReview();

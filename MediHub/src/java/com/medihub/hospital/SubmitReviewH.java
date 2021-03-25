@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "SubmitReview", urlPatterns = {"/submitReviewH"})
+@WebServlet(name = "SubmitReviewH", urlPatterns = {"/submitReviewH"})
 public class SubmitReviewH extends HttpServlet {
 
     

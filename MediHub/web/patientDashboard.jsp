@@ -440,7 +440,7 @@
                var status = "";
                var colour = "";
 
-               if (paymentStatus[index] != "") {
+               if (paymentStatus[index] == 1) {
                     status = "Paid";
                     colour = "green";
                }
