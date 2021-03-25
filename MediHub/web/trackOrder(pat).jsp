@@ -23,10 +23,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+  
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(phar).css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
 </head>
 <body>
   <div class="container">  
@@ -36,7 +37,52 @@
    <% String username="";
        username= session.getAttribute("username").toString();
   
-       
+   
+  %>
+   
+     <div class="main_container">
+    
+     <form class="" action="TrackOrders" method="GET" id="submitForm">
+                            <input type="hidden" name="search" value="1"/>
+                            <div class="main_cards">
+                                
+                                 <div class="card">
+                                      <i class="fa fa-plus-square fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Pharmacy Name</p>
+                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="pharmacy" id="pharmacy">
+                                               <option value="" disabled>Search Pharmacy</option>
+                                           </select>
+                                      </div>
+                                 </div>
+                                
+                                <div class="card">
+                                      <i class="fa fa-tachometer fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Order Status</p>
+                                           <select class="text-secondary-p status_select" style="width: 100%" name="status" id="ostatus">
+                                               <option value="" disabled>Search Order Status</option>
+                                               <option value="Pending">Pending</option>
+                                               <option value="Delayed">Delayed</option>
+                                               <option value="Cancelled">Cancelled</option>
+                                               <option value ="Completed">Completed</option>
+                                               
+                                           </select>
+                                      </div>
+                                 </div>
+                               <div class=""></div>
+                                <div class=""></div>
+                                <div class="buttons">
+                                   <button class="button" type="reset" id="clear"><b>Reset</b></button>
+                                   <button class="button-success" type="submit"><b>Search</b></button>     
+                                 </div>
+                            </div>
+ </form>
+  <br>
+  <div></div>
+<center>
+    <%
+                  
        ArrayList array = new ArrayList();
        ArrayList a2 = new ArrayList();
        int size = 0;
@@ -44,39 +90,7 @@
        if(request.getAttribute("orders")!=null){
            array=(ArrayList)request.getAttribute("orders");
             size= array.size();
-//            for(int i=0; i<size; i++){
-//            a2 =(ArrayList) array.get(i);  
-            //}
-       //}
-        
-  %>
-   
- 
-    <br><br><h3>Track Orders</h3><hr>
-  <div class="Dropdown">
-    <select name='Dropdown' class="filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Oredred</a></option>
-      <option value='Action'><a href="#">Received</a></option>
-      <option value='Action'><a href="#">Cancelled</a></option>
-   </select>
-   
-   <select name='Dropdown' class="filter_dropdown filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Order ID</a></option>
-      <option value='Action'><a href="#">Pharmacy ID</a></option>
-      <option value='Action'><a href="#">Pharmacy Name</a></option>
-      <option value=99><a href="#">Date</a></option>
-      <option value='Action'><a href="#">Status</a></option>
-   </select>
-   <input type="text" class="filter_text textt" placeholder="Filter">
-   <input type="date" class="filter_date textt" placeholder="From">
-   <input type="date" class="filter_date textt" placeholder="To">
-   <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
-
-  </div>
-  <br>
-<center>
+    %>
      <script>
                 var id = [];
                 var pharmacyId = [];
@@ -88,8 +102,16 @@
                 var absolutepath = [];
                 var finalId;
   </script>
-  <div class="container-table" style="clear:both;">
-    <table class="table">
+  <div class="charts_left">
+      <div class="charts_left_title">
+          <div>
+               <h1>Order Details</h1>
+                                                
+            </div>
+       </div>
+      
+  <div class="charts_table_div" style="clear:both;">
+    <table  class="display charts_table">
       <thead>
       <tr>
         <th class="tableheading">Order ID</th>

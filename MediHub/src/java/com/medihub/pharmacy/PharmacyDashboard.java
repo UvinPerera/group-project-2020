@@ -42,7 +42,7 @@ public class PharmacyDashboard extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
+     * @throws ServletException if a servlet-specific error occurs 
      * @throws IOException if an I/O error occurs
      */
     @Override
@@ -51,7 +51,7 @@ public class PharmacyDashboard extends HttpServlet {
             HttpSession session = request.getSession();
             int userType = Integer.parseInt(session.getAttribute("usertype").toString());
             int pharmacistId = Integer.parseInt(session.getAttribute("userid").toString());
-            PrintWriter out = response.getWriter();
+            PrintWriter out = response.getWriter(); 
         if(userType==4){
              try
             {
