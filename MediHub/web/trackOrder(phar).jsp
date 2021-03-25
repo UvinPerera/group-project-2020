@@ -32,6 +32,51 @@
        username= session.getAttribute("username").toString();
   
        
+      
+
+  %><div class="main_container">
+    
+     <form class="" action="trackpatientorder" method="GET" id="submitForm">
+                            <input type="hidden" name="search" value="1"/>
+                            <div class="main_cards">
+                                
+                                 <div class="card">
+                                      <i class="fa fa-plus-square fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Patient Name</p>
+                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="patient" id="patient">
+                                               <option value="" disabled>Search Patient</option>
+                                           </select>
+                                      </div>
+                                 </div>
+                                
+                                <div class="card">
+                                      <i class="fa fa-tachometer fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Order Status</p>
+                                           <select class="text-secondary-p status_select" style="width: 100%" name="status" id="ostatus">
+                                               <option value="" disabled>Search Order Status</option>
+                                               <option value="Pending">Pending</option>
+                                               <option value="Delayed">Delayed</option>
+                                               <option value="Cancelled">Cancelled</option>
+                                               <option value ="Completed">Completed</option>
+                                               
+                                           </select>
+                                      </div>
+                                 </div>
+                               <div class=""></div>
+                                <div class=""></div>
+                                <div class="buttons">
+                                   <button  onclick="window.location.href='TrackPatientOrder?search=0"><b>Reset</b></button>
+                                   <button class="button-success" type="submit"><b>Search</b></button>     
+                                 </div>
+                            </div>
+     </form>
+  <br>
+  <div></div>
+<center>
+    <%
+                  
        ArrayList array = new ArrayList();
        ArrayList a2 = new ArrayList();
        int size = 0;
@@ -39,40 +84,7 @@
        if(request.getAttribute("orders")!=null){
            array=(ArrayList)request.getAttribute("orders");
             size= array.size();
-//            for(int i=0; i<size; i++){
-//            a2 =(ArrayList) array.get(i);  
-            //}
-       //}
-        
-  %>
-  <br><br>
-  <h3>Your Orders </h3><hr>
- 
-  <div class="Dropdown">
-      <center>
-    <select name='Dropdown'class="filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Pending</a></option>
-      <option value='Action'><a href="#">Shipped</a></option>
-      <option value='Action'><a href="#">Accepted</a></option>
-      <option value='Action'><a href="#">Rejected</a></option>
-    </select>
-   
-   <select name='Dropdown' class="filter_dropdown filters">
-      <option value='Action' selected><a href="">All</a></option>
-      <option value='Action'><a href="#">Order ID</a></option>
-      <option value='Action'><a href="#">Patient ID</a></option>
-      <option value='Action'><a href="#">Patient Name</a></option>
-      <option value=99><a href="#">Date</a></option>
-      <option value='Action'><a href="#">Status</a></option>
-   </select>
-   <input type="text" class="filter_text textt" placeholder="Filter">
-   <input type="date" class="filter_date textt" placeholder="From">
-   <input type="date" class="filter_date textt" placeholder="To">
-   <a href="#"><button class="btn1"><i class="fa fa-filter"></i></button></a>
-   </center>
-  </div>
-  <br> 
+    %>
  <script>
                 var id = [];
                 var patientId = [];
@@ -84,8 +96,15 @@
                 var absolutepath = [];
                 var finalId;
   </script>
-  <div class="container-table">
-    <table class="table">
+  <div class="charts_left">
+      <div class="charts_left_title">
+          <div>
+               <h1>Order Details</h1>
+                                                
+            </div>
+       </div>
+ <div class="charts_table_div" style="clear:both;">
+    <table  class="display charts_table">
       <thead>
       <tr>
         <th class="tableheading">Order ID</th>

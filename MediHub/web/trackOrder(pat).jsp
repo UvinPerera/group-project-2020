@@ -73,7 +73,7 @@
                                <div class=""></div>
                                 <div class=""></div>
                                 <div class="buttons">
-                                   <button class="button" type="reset" id="clear"><b>Reset</b></button>
+                                   <button  onclick="window.location.href='TrackOrders?search=0"><b>Reset</b></button>
                                    <button class="button-success" type="submit"><b>Search</b></button>     
                                  </div>
                             </div>

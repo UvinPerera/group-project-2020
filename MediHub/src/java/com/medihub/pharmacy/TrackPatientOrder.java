@@ -61,12 +61,16 @@ public class TrackPatientOrder extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement();
+                
                 ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+adminId);
                 int pharmacyId=0;
                 while(rs.next()){
                         pharmacyId=rs.getInt("pharmacy_id");
                 }
                 //ResultSet rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.created_at,po.description FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON oi.created_by=u.id WHERE oi.status=1 and po.pharmacy_id="+pharmacyId);
+                
+                
+                if(Integer.parseInt(request.getParameter("search"))==0){
                 rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId);
                 
                 //out.println(pharmacyId);
@@ -80,8 +84,27 @@ public class TrackPatientOrder extends HttpServlet {
                 }
                
                 request.setAttribute("orders", Orders);
+                }
+                else{
+                   
+                    String patientName=request.getParameter("patient");
+                    String orderStatus=request.getParameter("status");
+                     rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId+" and (po.created_by='"+patientName+"' or po.order_status='"+orderStatus+"')");
+                
+                    
+                    ArrayList Orders = new ArrayList();
+                    while(rs.next()){
+                            ArrayList row = new ArrayList();
+                            for (int i = 1; i <= 8 ; i++){
+                                row.add(rs.getString(i));
+                            }
+                            Orders.add(row);
+                    }
+                    request.setAttribute("orders", Orders);
+                }
                 request.getRequestDispatcher("trackOrder(phar).jsp").forward(request, response);
-                }catch(Exception e){
+                }
+            catch(Exception e){
                     out.println(e.toString());
                 }
     }

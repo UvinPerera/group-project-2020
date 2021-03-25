@@ -60,7 +60,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dropbox"></i>
-                              <a href="trackpatientorder">Pharmacy Orders</a>
+                              <a href="trackpatientorder?search=0">Pharmacy Orders</a>
                          </div>
                          
                          
