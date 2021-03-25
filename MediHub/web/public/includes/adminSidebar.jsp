@@ -58,7 +58,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePatients.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-wheelchair"></i>
-                              <a href="managePatients.jsp">Manage Patients</a>
+                              <a href="readpatient">Manage Patients</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageDoctors.jsp' ? 'active_menu_link' : ''}">

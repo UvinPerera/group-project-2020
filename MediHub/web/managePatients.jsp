@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="com.medihub.user.*"%>
 <%@page import="com.medihub.patient.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -112,51 +113,60 @@
                           
                             <div class="charts_table_div">
                                         <table class="charts_table">
+                                            <%
+                                         if(request.getAttribute("users")!=null){
+                                         List<User> table = (ArrayList<User>)request.getAttribute("users");
+                                         if(table.size()>0){
+                                        %>
+                                        <!--js array-->
+                                        <script>
+                                        var Id = [];
+                                        var first_name = [];
+                                        var last_name = [];
+                                        var display_name = [];
+                                        var district = [];
+                                        var city = [];
+                                        var pstatus = [];
+                
+                                        var size =<%= table.size() %>;
+                                        </script>
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
-                                                       <th>Patient</th>
+                                                       <th>Patient Id</th>
+                                                       <th>First Name</th>
+                                                       <th>Last Name</th>
+                                                       <th>Display Name</th>
+                                                       <th>District</th>
                                                        <th>City</th>
-                                                       <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  < <% for( User row : table) { %>
+                                                  <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
+                                                       
+                                                      <td><%=row.id%></td>
+                                                       <td><%= row.firstName%></td>
+                                                       <td><%= row.lastName%></td>
+                                                       <td><%= row.displayName %></td>
+                                                       <td><%= row.districtStr %></td>
+                                                       <td><%= row.cityStr %></td>
+                                                       <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
+                                                       <td><a href ="#"><button><i class="fa fa-eye"></i></button></a><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
+                                                 <script>
+                                                   Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
+                                                   first_name[<%= table.indexOf(row) %>]                        = "<%= row.firstName%>";
+                                                   last_name[<%= table.indexOf(row) %>]                         = "<%= row.lastName%>";
+                                                   display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName%>";
+                                                   district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr%>";
+                                                   city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr%>";
+                                                   pstatus[<%= table.indexOf(row) %>]                           = <%= row.status%>;
+
+                                                 </script>
+      
+                                                 <% } %>
+                                               <% } } %>
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>
