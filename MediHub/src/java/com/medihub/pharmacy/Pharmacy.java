@@ -227,6 +227,9 @@ public class Pharmacy extends User {
     public int getLicenseNumber(){
         return licenseNumber;
     }
+    public int getId(){
+        return this.id;
+    }
     
     public Pharmacy getPharmacyProfile(){
         
@@ -327,7 +330,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Pending'";
+        String query="select id,description,created_by,expected_delivery_date from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Pending' and status=1";
          
         try
         {
@@ -338,29 +341,32 @@ public class Pharmacy extends User {
             ResultSet rs = pst.executeQuery();
             
             String query2 = "select id,first_name,last_name,mobile_number,land_number,address_1,address_2 from users where id="+rs.getInt("created_by");
+            
             PreparedStatement pst2 = con.prepareStatement(query2);
             ResultSet rs2 = pst2.executeQuery();
-            List<Orders> o = new ArrayList<Orders>();
+            
+            List<Orders> orderList = new ArrayList<Orders>();
             
                         
-            while(rs.next()) { 
-                Orders ord = new Orders(); 
+            while(rs.next() ) { 
+                Orders ord = new Orders();
+                ord.id = rs2.getInt(id);
                 ord.description = rs.getString("description"); 
-                ord.status = rs.getInt("status");
                 ord.patientId = rs.getInt("created_by");
+                ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
                 ord.patientFirstName = rs2.getString("first_name");
                 ord.patientLastName = rs2.getString("last_name");
                 ord.patientAddress1= rs2.getString("address_1");
                 ord.patientAddress2 = rs2.getString("address_2");
                 ord.patientLandNumber = rs2.getString("land_number");
                 ord.patientMobileNumber = rs2.getString("mobile_number");
-                ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
-                ord.orderStatus = rs.getString("order_status");
-                o.add(ord);
+                
+                ord.orderStatus = "Pending";
+                orderList.add(ord);
             }
             
             con.close();
-            return o;
+            return orderList;
         }
         catch(Exception e)
         {
@@ -380,7 +386,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select id,pharmacy_id, description, status,created_at,updated_at,created_by,updated_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status=completed";
+        String query="select pharmacy_id, description,created_by,expected_delivery_date,order_status from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Completed'";
         
         try
         {
@@ -398,8 +404,8 @@ public class Pharmacy extends User {
                         
             while(rs.next()) { 
                 Orders ord2 = new Orders(); 
+                ord2.id = rs2.getInt(id);
                 ord2.description = rs.getString("description"); 
-                ord2.status = rs.getInt("status");
                 ord2.patientId = rs.getInt("created_by");
                 ord2.patientFirstName = rs2.getString("first_name");
                 ord2.patientLastName = rs2.getString("last_name");
