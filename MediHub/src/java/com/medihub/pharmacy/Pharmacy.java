@@ -330,7 +330,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select id,description,created_by,expected_delivery_date from pharmacy_orders where pharmacy_id="+this.id+" and order_status='Pending' and status=1";
+        String query="select p.description,p.created_by,p.expected_delivery_date,u.id ,u.first_name,u.last_name,u.mobile_number,u.land_number,u.address_1,u.address_2 from pharmacy_orders p inner join users u on u.id=p.created_by where p.pharmacy_id="+this.id+" and p.order_status='Pending' and p.status=1";
          
         try
         {
@@ -340,26 +340,23 @@ public class Pharmacy extends User {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
-            String query2 = "select id,first_name,last_name,mobile_number,land_number,address_1,address_2 from users where id="+rs.getInt("created_by");
-            
-            PreparedStatement pst2 = con.prepareStatement(query2);
-            ResultSet rs2 = pst2.executeQuery();
+          
             
             List<Orders> orderList = new ArrayList<Orders>();
             
                         
             while(rs.next() ) { 
                 Orders ord = new Orders();
-                ord.id = rs2.getInt(id);
+                ord.id = rs.getInt(id);
                 ord.description = rs.getString("description"); 
                 ord.patientId = rs.getInt("created_by");
                 ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
-                ord.patientFirstName = rs2.getString("first_name");
-                ord.patientLastName = rs2.getString("last_name");
-                ord.patientAddress1= rs2.getString("address_1");
-                ord.patientAddress2 = rs2.getString("address_2");
-                ord.patientLandNumber = rs2.getString("land_number");
-                ord.patientMobileNumber = rs2.getString("mobile_number");
+                ord.patientFirstName = rs.getString("first_name");
+                ord.patientLastName = rs.getString("last_name");
+                ord.patientAddress1= rs.getString("address_1");
+                ord.patientAddress2 = rs.getString("address_2");
+                ord.patientLandNumber = rs.getString("land_number");
+                ord.patientMobileNumber = rs.getString("mobile_number");
                 
                 ord.orderStatus = "Pending";
                 orderList.add(ord);

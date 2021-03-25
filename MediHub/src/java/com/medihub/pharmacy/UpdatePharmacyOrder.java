@@ -44,9 +44,12 @@ public class UpdatePharmacyOrder extends HttpServlet {
                     Connection con = db.getConnecton();
                     
                     Statement stmt=con.createStatement(); 
-                    
+                    if(date.isEmpty()){
+                        int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by='"+pharmacistId+"',order_status='"+orderStatus+"' WHERE id ="+ orderId);
+                    }
+                    else{
                     int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by='"+pharmacistId+"', expected_delivery_date='"+date+"',order_status='"+orderStatus+"' WHERE id ="+ orderId);
-                   
+                    }
                   // int rs2=stmt.executeUpdate("UPDATE order_items SET updated_at=CURRENT_TIMESTAMP, updated_by='"+pharmacistId+"',description='"+description+"' WHERE order_id ="+ orderId);
                     
                   response.sendRedirect("pharmacy");
