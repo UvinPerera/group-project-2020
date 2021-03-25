@@ -20,8 +20,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/updateOrder.css" media="screen" />
+ 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   
   <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
   
@@ -40,45 +51,119 @@
             a2 =(ArrayList ) al.get(0);
         }
 %>
-            <div class="container1">
-                <h1>Update Order </h1><br><hr><br><br>
-                
-              <form action="updatepatientorder" method="post" enctype="multipart/form-data">
+                <h3 style="padding-left: 5%;padding-top:2%;">Update Pharmacy Order</h3>
 
-                <h2 class="details">Order ID</h2>
-                <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" value="<%=a2.get(0)%>" readonly>
-                
+                <div class="main_container">
+                    <form action="updatepatientorder" method="post" enctype="multipart/form-data">
+                        <div class="main_cards">
+                            
+                             <div class="card">
+                                      <i class="fa fa-id-card-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Order ID</p>
+                                            <p class="text-secondary-p"> <input class="input" type="text" name="orderid" id="orderid" placeholder="<%=a2.get(0)%>" value="<%=a2.get(0)%>" readonly></p>
+                                          
+                                      </div>
+                             </div>
+                             
+                             <div class="card">
+                                      <i class="fa fa-user-o fa-2x text-yellow"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Patient ID</p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly></p>
+                                          
+                                      </div>
+                             </div>
+                            
+                            <div class="card">
+                                      <i class="fa fa-user-circle fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Patient Name </p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly></p>
+                                          
+                                      </div>
+                             </div>
+                             
+                              <div class="card">
+                                      <i class="fa fa-tachometer fa-2x text-lightblue"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Order Status </p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="orderstatus" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly></p>
+                                          
+                                      </div>
+                             </div>
+                                            
+                            <div class="card">
+                                      <i class="fa fa-commenting fa-2x text-red"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Order Description</p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="orderdescription" id="orderdescription" value="<%=a2.get(4)%>" placeholder="<%=a2.get(4)%>"></p>
+                                          
+                                      </div>
+                             </div>
+                                   
+                            <div class="card">
+                                      <i class="fa fa-file fa-2x text-brown"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Update Prescription</p>
+                                            <p class="text-secondary-p"><input class="input" type="file" name="file_path" id="file_path" value="<%=a2.get(5)%>" placeholder="<%=a2.get(5)%>" ></p>
+                                          
+                                      </div>
+                             </div>
+                                            
+                            <div class="card">
+                                      <i class="fa fa-calendar fa-2x text-yellow"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Order Delivery Date</p>
+                                            <p class="text-secondary-p"><input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(3)%>"></p>
+                                          
+                                      </div>
+                             </div>
+                                            <div class=""></div>   
+                             <div class="buttons">
+                                     <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
+                                    <button class="button" type="reset" id="clear"><b>Clear</b></button>
+                                 
+                                   <button class="button-success" type="submit"><b>Update Order</b></button>     
+                                 </div>
+
+                       </div>  
+                 </form>
+                                               
+                        <br>
+                         
+                        
+                        
+                   
+
+               </main>
+
+                <!--######################-->
+                <!--sidebar starting-->
+                <!--######################-->
                
-                <h2 class="details">Patient ID</h2>
-                 <input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly>
+                <jsp:include page="./public/includes/patientSidebar.jsp"/>
+                
+                <!--######################-->
+                <!--sidebar ending-->
+                <!--######################-->
+          </div>
+            
+            <!--######################-->
+            <!--footer starting-->
+            <!--######################-->                                      
+                       
+            <jsp:include page="./public/includes/footer.jsp"/>
+            
+            <!--######################-->
+            <!--footer ending-->
+            <!--######################-->
+            
+            
+            
+          <script src="./public/js/new_script.js"></script>
+          
 
-                 <h2 class="details">Patient Name </h2>
-                  <input class="input" type="text" name="patientname" id="patientname" placeholder="<%=a2.get (2)%>" readonly>
-
-                  <h2 class="details"> Order Status </h2>
-                   <input class="input" type="text" name="orderstatus" id="patientorderdescription" placeholder="<%=a2.get(6)%>" readonly>
-
-                   <h2 class="details">Order Description</h2>
-                    <input class="input" type="text" name="orderdescription" id="orderdescription" value="<%=a2.get(4)%>" placeholder="<%=a2.get(4)%>">
-
-                <h2 class="details">Update Prescription</h2>
-                 <input class="input" type="file" name="file_path" id="file_path" value="<%=a2.get(5)%>" placeholder="<%=a2.get(5)%>" >
-
-                 <h2 class="details">Order Delivery Date</h2>
-                 <input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(3)%>">
-
-                 <div class="button-container1">
-                       <button class="button" id="id" onclick="window.location.href='patient';"><b>Cancel</b></button>
-                       <button class="button" type="reset" id="clear"><b>Clear</b></button>
-                       <button class="button" type="submit"><b>Submit</b></button>
-
-                </div>
-
-              </form>
-            </div>
-        </main>
-           <jsp:include page="./public/includes/patientSidebar.jsp"/>
-        </div>
+          
      </body>
-
 </html>
