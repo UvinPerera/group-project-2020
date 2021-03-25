@@ -339,7 +339,7 @@
                                
                               </div>
                               <div class="buttons">
-                                <button class="button" type="clear" id="clear" style="background: red"><b>Clear</b></button>
+                                <button class="button" type="reset" id="clear" style="background: red"><b>Clear</b></button>
                                 <button class="button-success" type="submit"><b>Submit</b></button>     
                               </div>                         
                               

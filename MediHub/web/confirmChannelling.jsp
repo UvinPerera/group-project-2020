@@ -153,6 +153,7 @@
                                                  <input type="hidden" id="captureId" name="captureId" value="">
                                                  <input type="hidden" id="payerId" name="payerId" value="">
                                                  <input type="hidden" id="transactionId" name="transactionId" value="">
+                                                 <input type="hidden" id="price" name="price" value="<%= da.payment %>">
                                                  
                                     <div class="buttons" style="align-self:center;margin: auto;display: block;">
                                        <button class="button" type="reset" id="clear"><b>Reset</b></button>
@@ -204,7 +205,7 @@
           
      </body>
      <script
-    src="https://www.paypal.com/sdk/js?client-id=ASEtIC54L4jyZBnDG75kWu0ZUkk6UJ05fyG2fFq5Bb6eYx_u2D8k0TLnCDNcSykA3-M7tig2qbJTp-GQ"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+    src="https://www.paypal.com/sdk/js?client-id=ASEtIC54L4jyZBnDG75kWu0ZUkk6UJ05fyG2fFq5Bb6eYx_u2D8k0TLnCDNcSykA3-M7tig2qbJTp-GQ&disable-funding=card"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
   </script>
   <script>
       var payerId;
@@ -246,9 +247,16 @@
   </script>
      <script>
          $("#payment_method").change(function(){
-             
+             if($(this).val()==4){
              $("#button_submit").hide();
              $("#paypal-button-container").show();
+         }
+         
+         else{
+             
+             $("#button_submit").show();
+             $("#paypal-button-container").hide();
+         }
              
          });
          

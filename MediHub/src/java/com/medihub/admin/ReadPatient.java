@@ -6,13 +6,17 @@
 package com.medihub.admin;
 
 import com.medihub.db.DbConfig;
-import com.medihub.pharmacy.Pharmacist;
-import com.medihub.pharmacy.Pharmacy;
+import com.medihub.patient.*;
+import com.medihub.user.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +28,18 @@ import javax.servlet.http.HttpSession;
  *
  * @author DELL
  */
-@WebServlet(name = "AdminViewPharmacy", urlPatterns = {"/adminviewpharmacy"})
-public class AdminViewPharmacy extends HttpServlet {
+@WebServlet(name = "ReadPatient", urlPatterns = {"/readpatient"})
+public class ReadPatient extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -42,24 +56,36 @@ public class AdminViewPharmacy extends HttpServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             int adminId =Integer.parseInt(session.getAttribute("userid").toString());
-            PrintWriter out = response.getWriter();   
-            
-                        String query = "select p.*, c.name_en as city, d.name_en as district, p.pharmacy_display_name as display_name from pharmacies p "
-                                + "join cities c on c.id=p.city "+ "join districts d on d.id=c.district_id "
-                                + "join users u on u.id=p.pharmacist_id ";
+            PrintWriter out = response.getWriter();
+            PreparedStatement pst = null;
+            ResultSet rs;
+            ArrayList<String> patient = new ArrayList<String>();
 
             try
             {
-            
-                Pharmacy p = new Pharmacy();
-//                out.print(p.getAllPharmacies().get(1).displayName);
-                
-                request.setAttribute("pharmacies", p.getAllPharmacies());
-                request.getRequestDispatcher("adminviewpharmacy.jsp").forward(request, response);
+               DbConfig db = DbConfig.getInstance();
+               Connection con = db.getConnecton();
+               pst = con.prepareStatement("");
+               String query= "SELECT first_name,last_name,display_name FROM users WHERE user_type =1";
+               pst.executeQuery(query);
+               rs = pst.getResultSet();
+                    int i = 0;
+                    while(rs.next()) { 
+                   patient.add(rs.getString("first_name"));
+                   patient.add(rs.getString("last_name"));
+                   patient.add(rs.getString("display_name"));
+                   
+                       
+                   }
+                request.setAttribute("users", patient);
+                request.getRequestDispatcher("managePatients.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
+    
     }
+
+    
 
     /**
      * Returns a short description of the servlet.
