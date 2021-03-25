@@ -116,58 +116,59 @@
                         <div class="charts">
                           
                             <div class="charts_table_div">
+                                       <%
+                                         if(request.getAttribute("hospitals")!=null){
+                                         List<Hospital> table = (ArrayList<Hospital>)request.getAttribute("hospitals");
+                                         if(table.size()>0){
+                                        %>
+                                        <!--js array-->
+                                        <script>
+                                        var Id = [];
+                                        var licenseNumber = [];
+                                        var display_name = [];
+                                        var district = [];
+                                        var city = [];
+                                        var pstatus = [];
+                
+                                        var size =<%= table.size() %>;
+                                        </script>
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
+                                                       <th>Hospital Id</th>
+                                                       <th>License Number</th>
                                                        <th>Hospital</th>
-                                                       <th>Director</th>
+                                                       <th>District</th>
                                                        <th>City</th>
                                                        <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                   <% for(Hospital row : table) { %>
+                                                  <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
+                                                       
+                                                      <td><%=row.id%></td>
+                                                       <td><%= row.getLicenseNumber() %></td>
+                                                       <td><%= row.displayName %></td>
+                                                       <td><%= row.strDistrict %></td>
+                                                       <td><%= row.strCity %></td>
+                                                       <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
+                                                       <td><a href ="adminviewpharmacy"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Director 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
+                                                  <script>
+                                                   Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
+                                                   licenseNumber[<%= table.indexOf(row) %>]                     = <%= row.getLicenseNumber() %>;
+                                                   display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
+                                                   district[<%= table.indexOf(row) %>]                          = "<%= row.strDistrict %>";
+                                                   city[<%= table.indexOf(row) %>]                              = "<%= row.strCity %>";
+                                                   pstatus[<%= table.indexOf(row) %>]                           = <%= row.status %>;
+
+                                                 </script>
+      
+                                                 <% } %>
+                                               <% } } %>
+
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>

@@ -3,7 +3,6 @@
     Created on : Mar 19, 2021, 10:27:17 AM
     Author     : Ifra
 --%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.hospital.*"%>
@@ -26,7 +25,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" type="text/css" href="./public/css/createHospital.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/admincreatepharmacy.css" media="screen" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -60,24 +59,28 @@
                                   <h1>Hello <%=username%></h1>
                                    <p>Create a new hospital </p>
                               </div>
-                         </div>
-                         
+                          </div>
+                          <hr>
                           <!-- change the main cards css fragments to change number of cards Available -->
                           <form action="createhospital" method="POST" id="">
+                             <div class="main_title">
+                              <div class="main_greeting">
+                                   <p>Hospital details</p>
+                              </div>
+                            </div>
                             <div class="main_cards">
-
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Hospital Name</p>
-                                        <input class="data" type="text" name="hospital_name" id="hospitalname" placeholder="Hospital Name">
+                                        <input class="data" type="text" name="hospital_name" id="pharmacyname" placeholder="Hospital Name">
                                         <div class="alert-danger" id="hospitalNameError">
-                                            * Hospital name can't be empty and must contain only letters
+                                            * Pharmacy name can't be empty and must contain only letters
                                         </div>
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">License Number</p>
                                         <input class="data" type="text" name="license_number" id="licensenumber" placeholder="License Number">
@@ -86,8 +89,8 @@
                                         </div>
                                    </div>
                               </div>
-                              <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                             <!-- <div class="card">
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">License Proof Location</p>
                                         <input class="data" type="text" name="license_proof_location" id="licenceprooflocation" placeholder="License Proof Location">
@@ -96,18 +99,19 @@
                                         </div>
                                    </div>
                               </div>
-                              <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                -->
+                             <div class="card">
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Director Proof Location</p>
-                                        <input class="data" type="text" name="Director_proof_location" id="directorprooflocation" placeholder="Director Proof Location">
-                                        <div class="alert-danger" id="directorProofLocationError">
-                                            * Director proof location can't be empty and must contain only letters
+                                        <p class="text-primary-p">Display Name</p>
+                                        <input class="data" type="text" name="hospital_display_name" id="hospitaldisplayname" placeholder="Display Name">
+                                        <div class="alert-danger" id="hospitalDisplayNameError">
+                                            * Pharmacy display name can't be empty and must contain only letters
                                         </div>
                                    </div>
-                              </div>
+                              </div>  
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
                                         <input class="data" type="text" name="land_number" id="landnumber" placeholder="Land Number">
@@ -117,7 +121,7 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Fax</p>
                                         <input class="data" type="text" name="fax" id="fax" placeholder="Fax">
@@ -127,9 +131,9 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Email</p>
+                                        <p class="text-primary-p">Hospital Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="Email">
                                         <div class="alert-danger" id="EmailError">
                                             * Email can't be empty and must contain only letters
@@ -137,7 +141,7 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address 1</p>
                                         <input class="data" type="text" name="address_1" id="address1" placeholder="Address 1">
@@ -147,7 +151,7 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address 2</p>
                                         <input class="data" type="text" name="address_2" id="address2" placeholder="Address 2">
@@ -156,13 +160,13 @@
                                         </div>-->
                                    </div>
                               </div>
-                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                              <div class="card">
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
                                         <select class="data" name="district" id="district">
                                        <option disabled="disabled" selected="selected">--Choose Option--</option>
-                                          <%
+                                        <%
                                               if(request.getAttribute("districts")!=null){
                                               List<District> table = (ArrayList<District>)request.getAttribute("districts");
                                               if(table.size()>0){
@@ -180,7 +184,7 @@
                               </div>
 
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
                                         <select class="data" name="city" id="city">
@@ -193,7 +197,7 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-hospital-o fa-2x text-green"></i>
+                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Description</p>
                                         <input class="data" type="text" name="discription" id="description" placeholder="Description">
@@ -202,6 +206,13 @@
                                         </div>
                                    </div>
                               </div>
+                            </div>
+                            <div class="main_title">
+                              <div class="main_greeting">
+                                   <p>Hospital admin details</p>
+                              </div>
+                            </div>
+                              <div class="main_cards">
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
@@ -228,7 +239,7 @@
                                    <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="Display Name">
+                                        <input class="data" type="text" name="user_display_name" id="displayName" placeholder="Display Name">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -259,12 +270,38 @@
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Mobile Number</p>
-                                        <input class="data" type="text" name="mobile_number" id="mobilenumber" placeholder="Mobile Number">
-                                        <div class="alert-danger" id="mobileNumberError">
-                                            * Mobile number can't be empty and must contain only letters
+                                        <p class="text-primary-p">Data Of Birth</p>
+                                        <input class="input" type="date" name="dob" id="dob" placeholder="DOB">
+                                        <div class="alert-danger" id="dobError">
+                                             * Date Of Birth can't be empty
+                                        </div>
+                                  </div>
+                              </div>
+
+                              <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <select class="input option" name="gender" id="gender">
+                                          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                          <option value="M">Male</option>
+                                          <option value="F">Female</option>
+                                          <option value="N">Not preferred to say</option>
+                                        </select>
+                                        <div class="alert-danger" id="displayNameError">
+                                            * Gender can't be empty and must contain only letters
                                         </div>
                                    </div>
+                              </div>
+                             <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <input class="input" type="text" name="mobile_no" id="mobilenumber" placeholder="Mobile Number">
+                                        <div class="alert-danger" id="mobileNumberError">
+                                             * Mobile number can't be empty
+                                        </div>
+                                  </div>
                               </div>
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
@@ -288,13 +325,13 @@
                                            </div>
                                     </div>                                  
                                </div>
-                               <div class="buttons">
-                                <button class="button" type="clear" id="clear" style="background: red"><b>Clear</b></button>
-                                <button class="button-success" type="submit"><b>Submit</b></button>     
-                              </div>
+                               
                                
                               </div>
-                                                       
+                              <div class="buttons">
+                                <button class="button" type="reset" id="clear" style="background: red"><b>Clear</b></button>
+                                <button class="button-success" type="submit"><b>Submit</b></button>     
+                              </div>                         
                               
                           </form>
                     </div>
@@ -322,33 +359,6 @@
             <!--footer ending-->
             <!--######################-->
           <script src="./public/js/new_script.js"></script>
- <!--
-    
-    
-   
-
-  <div class="record">
-    <div class="label">Description</div>
-    <input class="data" type="text" name="description" id="description" placeholder="Description">
-  </div>
-<!--
-  <div class="record">
-    <div class="label">Status</div>
-    <input class="data" type="text" name="status" id="status" placeholder="Status">
-  </div>
-
-  <div class="buttons">
-      <br>
-      <button class="button" type="reset"><b>Clear</b></button>
-      <button class="button" type="submit"><b>Submit</b></button>
-    <!--  <button class="button" onclick="window.location.href='readpharmacy'"><b>Cancel</b></button>
-   </div>
-    </form>
-   
-
-  </div>
-</div> -->
-
 
 <script>
     
@@ -377,4 +387,4 @@
 </script>
 
 </body>
-</html>>
+</html>

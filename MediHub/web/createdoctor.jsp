@@ -98,16 +98,7 @@
                                         </div>
                                    </div>
                               </div>
-                             <div class="card">
-                                  <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">SLMC Number</p>
-                                        <input class="data" type="text" name="slmc_number" id="slmcnumber" placeholder="SLMC Number">
-                                        <div class="alert-danger" id="SLMCNumberError">
-                                            * SLMC Number can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>  
+  
                               <div class="card">
                                   <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
@@ -195,7 +186,7 @@
                                         </div>
                                    </div>
                               </div>
-                                                            <div class="card">
+                              <div class="card">
                                   <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
@@ -212,16 +203,6 @@
                                         <input class="data" type="text" name="land_number" id="landnumber" placeholder="Land Number">
                                         <div class="alert-danger" id="landNumberError">
                                             * Land number can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="card">
-                                  <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Description</p>
-                                        <input class="data" type="text" name="discription" id="description" placeholder="Description">
-                                        <div class="alert-danger" id="discriptionError">
-                                            * Description can't be empty
                                         </div>
                                    </div>
                               </div>

@@ -5,9 +5,9 @@
  */
 package com.medihub.admin;
 
+
 import com.medihub.db.DbConfig;
-import com.medihub.patient.*;
-import com.medihub.user.*;
+import com.medihub.hospital.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -28,8 +28,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author DELL
  */
-@WebServlet(name = "ReadPatient", urlPatterns = {"/readpatient"})
-public class ReadPatient extends HttpServlet {
+@WebServlet(name = "ReadHospital", urlPatterns = {"/readhospital"})
+public class ReadHospital extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,17 +40,7 @@ public class ReadPatient extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,21 +51,15 @@ public class ReadPatient extends HttpServlet {
             try
             {
             
-                User h = new User();
-                request.setAttribute("users", h.getAllPatient());
-                request.getRequestDispatcher("managePatients.jsp").forward(request, response);
+                Hospital h = new Hospital();
+                request.setAttribute("hospitals", h.getAllHospitals());
+                request.getRequestDispatcher("manageHospital.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
                 }
     }
 
     
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
