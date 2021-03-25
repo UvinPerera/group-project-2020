@@ -62,8 +62,8 @@ public class SubmitChannelling extends HttpServlet {
                     payementDis="Full Payement Done";
                 }
                 
-                String query="INSERT INTO channelling_payments(channelling_id,payerId,captureId,transactionId,payment_amount,payment_method,description)"
-                        + " values("+lastId+",'"+payerId+"','"+captureId+"','"+transactionId+"',"+payement+","+paymentMethod+",'"+payementDis+"')";
+                String query="INSERT INTO channelling_payments(channelling_id,payerId,captureId,transactionId,payment_amount,payment_method,description,status)"
+                        + " values("+lastId+",'"+payerId+"','"+captureId+"','"+transactionId+"',"+payement+","+paymentMethod+",'"+payementDis+"',1)";
                 
                 try{
                     DbConfig db = DbConfig.getInstance();
