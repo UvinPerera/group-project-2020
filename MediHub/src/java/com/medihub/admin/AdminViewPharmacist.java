@@ -5,9 +5,13 @@
  */
 package com.medihub.admin;
 
+import com.medihub.db.DbConfig;
 import com.medihub.pharmacy.Pharmacist;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +29,22 @@ public class AdminViewPharmacist extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                   HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
             int pharmacistId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
             
             
             try
             {
+                 DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+pharmacistId);
+                int pharmacyId=0;
+                while(rs.next()){
+                    pharmacyId=rs.getInt("pharmacy_id");
+                }
                 Pharmacist p = new Pharmacist(pharmacistId);
 //                out.println(p.getProfile().id);
                 request.setAttribute("profile", p.getProfile());

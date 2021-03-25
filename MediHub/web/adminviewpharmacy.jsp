@@ -131,7 +131,7 @@
                          
                         <% } %>
                         <br>
-                        <b><a class="click" href="AdminViewPharmacist.jsp">Click here to see pharmacy admin's details</a></b>
+                        <b><a class="click" href="adminviewpharmacist">Click here to see pharmacy admin's details</a></b>
                         
                     </div>
 

@@ -159,6 +159,43 @@ public class User {
         }
     }
     
+      public List<Patient> getAllPatient(){
+        
+        String query = "SELECT first_name,last_name,display_name,city,district FROM users WHERE user_type=1";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pt = con.prepareStatement(query);
+            ResultSet rs = pt.executeQuery();
+            
+            List<Patient> p =new ArrayList<Patient>();
+                        
+            while(rs.next()) { 
+                User ph = new User();
+                ph.id=rs.getInt("id");
+                ph.firstName=rs.getString("first_name");
+                ph.lastName=rs.getString("last_name");
+                ph.displayName=rs.getString("display_name");
+                ph.districtStr=rs.getString("district");
+                ph.cityStr=rs.getString("city_name");
+                ph.status=rs.getInt("status");
+                
+            }
+            
+            con.close();
+            return p;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
     public void register() {
 
     }
