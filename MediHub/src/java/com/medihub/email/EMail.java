@@ -23,7 +23,7 @@ public class EMail{
     public  void send(String to,String sub,String msg){  
           //Get properties object  
          final String username = "medihub54@gmail.com";
-        final String password = "ndbotuhnvrhipfgt";
+        final String password = "ybziiybrtytvbgxr";
           
          Properties props = new Properties();    
         props.put("mail.smtp.host", "smtp.gmail.com");
