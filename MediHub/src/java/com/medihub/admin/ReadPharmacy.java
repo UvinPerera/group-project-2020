@@ -55,17 +55,11 @@ public class ReadPharmacy extends HttpServlet {
             HttpSession session = request.getSession();
             int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             PrintWriter out = response.getWriter();   
-            
-                        String query = "select p.*, c.name_en as city, d.name_en as district, p.pharmacy_display_name as display_name from pharmacies p "
-                                + "join cities c on c.id=p.city "+ "join districts d on d.id=c.district_id "
-                                + "join users u on u.id=p.pharmacist_id ";
 
             try
             {
             
                 Pharmacy p = new Pharmacy();
-//                out.print(p.getAllPharmacies().get(1).displayName);
-                
                 request.setAttribute("pharmacies", p.getAllPharmacies());
                 request.getRequestDispatcher("managePharmacy.jsp").forward(request, response);
                 }catch(Exception e){

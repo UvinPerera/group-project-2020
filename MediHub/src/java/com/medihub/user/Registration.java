@@ -81,6 +81,7 @@ public class Registration extends HttpServlet {
             
             confrimEmail.send(email,"Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink).replaceFirst("#Name", first_name));
             response.sendRedirect("login.jsp");
+            
         }
         catch(Exception e)
         { 
