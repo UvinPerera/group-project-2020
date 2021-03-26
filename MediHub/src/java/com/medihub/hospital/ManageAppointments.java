@@ -44,7 +44,7 @@ public class ManageAppointments extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.sendRedirect("manageAppointments.jsp");
+        request.getRequestDispatcher("manageAppointments.jsp").forward(request, response);
         
     }
 
