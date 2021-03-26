@@ -5,26 +5,20 @@
  */
 package com.medihub.hospital;
 
-import com.medihub.db.DbConfig;
-import com.medihub.doctor.DoctorAvailability;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author uvinp
  */
-@WebServlet(name = "ManageAppointments", urlPatterns = {"/manageappointments"})
-public class ManageAppointments extends HttpServlet {
+@WebServlet(name = "CreateAppointment", urlPatterns = {"/createappointment"})
+public class CreateAppointment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +29,7 @@ public class ManageAppointments extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -49,33 +43,9 @@ public class ManageAppointments extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
         
-        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
-        int hospitalId=0;
-        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+hospitalAdminId;
-        DoctorAvailability da = new DoctorAvailability();
-            try{
-                
-            DbConfig db = DbConfig.getInstance();
-            Connection con = db.getConnecton();
-            
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            
-            while(rs.next()){
-                hospitalId = Integer.parseInt(rs.getString("hospital_id"));
-            }
-            
-            }
-            
-            catch(Exception e){
-                e.printStackTrace();
-            }
-            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId));
-        
-        request.getRequestDispatcher("manageAppointments.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("createappointment.jsp").forward(request, response);
+       
     }
 
     /**
@@ -89,7 +59,7 @@ public class ManageAppointments extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+       
     }
 
     /**
