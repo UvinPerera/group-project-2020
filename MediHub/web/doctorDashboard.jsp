@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 
 
+
 <!doctype html>
 <html>
 
@@ -30,6 +31,7 @@
                catch(NullPointerException ex){
                    absolutePath ="";
                }
+       
    %>
 
           <div class="container">

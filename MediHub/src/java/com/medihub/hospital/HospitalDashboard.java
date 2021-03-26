@@ -5,6 +5,7 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.doctor.DoctorAvailability;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -49,11 +50,17 @@ public class HospitalDashboard extends HttpServlet {
         HttpSession session = request.getSession();
         int userType = Integer.parseInt(session.getAttribute("usertype").toString());
         int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        String query ="";
         if(userType==3){
             
+            DoctorAvailability da = new DoctorAvailability();
+            
+            
             User u = new User(hospitalAdminId);
+            
             String absolutePath = u.getAbsPath();
             request.setAttribute("absolutePath",absolutePath);
+            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(1));
             request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
         }
         else{
