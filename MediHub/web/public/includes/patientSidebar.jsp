@@ -48,11 +48,17 @@
                          </div>
 
                          <h2>Alerts</h2>
-
+                         
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/userNotifications.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-bell"></i>
+                              <a href="userNotifications">Notifications</a>
+                         </div>
+                              
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
                               <a href="#">Reminders</a>
                          </div>
+
 
                          <h2>Services</h2>
 
