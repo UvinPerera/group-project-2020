@@ -5,6 +5,7 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.db.DbConfig;
 import com.medihub.doctor.DoctorAvailability;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.medihub.user.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -50,17 +54,38 @@ public class HospitalDashboard extends HttpServlet {
         HttpSession session = request.getSession();
         int userType = Integer.parseInt(session.getAttribute("usertype").toString());
         int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
-        String query ="";
+        int hospitalId=0;
+        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+hospitalAdminId;
         if(userType==3){
             
             DoctorAvailability da = new DoctorAvailability();
+            try{
+                
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
             
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                hospitalId = Integer.parseInt(rs.getString("hospital_id"));
+            }
+            
+            }
+            
+            catch(Exception e){
+                e.printStackTrace();
+            }
             
             User u = new User(hospitalAdminId);
             
             String absolutePath = u.getAbsPath();
             request.setAttribute("absolutePath",absolutePath);
-            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(1));
+            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId));
+            
+            //PrintWriter out = response.getWriter();
+            //out.println(da.getAllDoctorAvailability(hospitalId)); 
+            
             request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
         }
         else{

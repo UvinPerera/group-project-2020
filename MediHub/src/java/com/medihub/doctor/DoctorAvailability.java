@@ -263,7 +263,7 @@ public class DoctorAvailability {
     
     public List<DoctorAvailability> getAllDoctorAvailability(int hosId) {
        
-        String q_select = "select h.name, d.titles, u.first_name, u.last_name, d.degrees, da.date, da.start_time, da.payment, da.count, da.max_count from doctor_availability da ";
+        String q_select = "select da.id, h.name, d.titles, u.first_name, u.last_name, d.degrees, da.date, da.start_time, da.end_time ,da.payment, da.count, da.max_count from doctor_availability da ";
         String q_join_h  = "join hospitals h on h.id=da.hospital_id ";
         String q_join_d  = "join doctors d on d.id=da.doctor_id ";
         String q_join_u  = "join users u on d.id=u.id ";
@@ -288,6 +288,7 @@ public class DoctorAvailability {
                 da.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + rs.getString("degrees");
                 da.date = rs.getString("date");
                 da.startTime = rs.getString("start_time");
+                da.endTime = rs.getString("end_time");
                 da.payment = rs.getFloat("payment");
                 da.maxCount= rs.getInt("max_count");
                 da.count= rs.getInt("count");

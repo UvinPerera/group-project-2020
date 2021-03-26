@@ -67,8 +67,8 @@ public class ManageDoctorHos extends HttpServlet {
                 hospitalId = Integer.parseInt(rs.getString("hospital_id"));
             }
             
-            PrintWriter out = response.getWriter();
-            out.println(hospitalId); 
+            //PrintWriter out = response.getWriter();
+            //out.println(hospitalId); 
             
             String query2 ="SELECT d.*,u.first_name,u.last_name FROM doctors d INNER JOIN doctor_hospital dh ON d.id=dh.doctor_id INNER JOIN hospitals h ON h.id= dh.hospital_id INNER JOIN users u ON u.id =d.id WHERE h.id ="+hospitalId;
             
