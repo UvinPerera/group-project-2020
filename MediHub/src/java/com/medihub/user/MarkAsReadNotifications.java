@@ -45,7 +45,7 @@ public class MarkAsReadNotifications extends HttpServlet {
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        System.out.println("hgfd");
+//                        System.out.println("hgfd");
                         Notifications n = new Notifications();
 //                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
                         int nn=n.readNotification(getId);
