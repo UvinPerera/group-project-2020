@@ -1,3 +1,4 @@
+<%@page import="com.medihub.doctor.DoctorAvailability"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -92,22 +93,7 @@
                              <!--######################-->
                                 <!--left table section starting-->
                              <!--######################-->
-                              <div class="charts_left">
-                                   <!-- <div class=""> -->
-                                        <div class="charts_left_title">
-                                             <div>
-                                                  <h1>Upcoming Patients</h1>
-                                                  <!-- <p>Something</p> -->
-                                             </div>
-                                             <!--<i class="fa fa-suitcase"></i>-->
-                                        </div>
-                                   
-                                        <!--pending appointments starts-->
-                                        <!--checking for availability-->
-                                        
-                                        
-                                    <!--</div>--> 
-                              </div>
+                              
                              <!--######################-->
                                 <!--left table section ending-->
                              <!--######################-->
@@ -134,54 +120,35 @@
                                              <thead>
                                                   <tr>
                                                        <th>#</th>
-                                                       <th>Pharmacy</th>
-                                                       <th>Doctor</th>
-                                                       <th>Date / Time</th>
-                                                       <th>App #</th>
+                                                       <th>Doctor Name</th>
+                                                       <th>Start Time</th>
+                                                       <th>End Time</th>
+                                                       <th>Max patients</th>
+                                                       <th>Current patients</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
+                                                 <%
+                                                     if(request.getAttribute("doctoravailability")!=null){
+                                                         
+                                                     List <DoctorAvailability> apList = (ArrayList<DoctorAvailability>)request.getAttribute("doctoravailability");
+                                                     int maxCount=5;
+                                                     if(apList.size()<maxCount) maxCount = apList.size();
+                                                     
+                                                     for(int i =0;i<maxCount;i++){
+                                                 
+                                                 %>
                                                   <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                       <td><%=apList.get(i).id %></td>
+                                                       <td><%=apList.get(i).doctorName %></td>
+                                                       <td><%=apList.get(i).date %><br><%=apList.get(i).startTime %></td>
+                                                       <td><%=apList.get(i).date %><br><%=apList.get(i).endTime %></td>
+                                                       <td><%=apList.get(i).maxCount %></td>
+                                                       <td><%=apList.get(i).count %></td>
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
+                                                  <%}}%>
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>

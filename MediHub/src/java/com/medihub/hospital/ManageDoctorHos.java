@@ -6,26 +6,27 @@
 package com.medihub.hospital;
 
 import com.medihub.db.DbConfig;
-import com.medihub.doctor.DoctorAvailability;
+import com.medihub.doctor.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.medihub.user.User;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /**
  *
- * @author hp
+ * @author uvinp
  */
-@WebServlet(name = "Hospital", urlPatterns = {"/hospital"})
-public class HospitalDashboard extends HttpServlet {
+@WebServlet(name = "ManageDoctorHos", urlPatterns = {"/managedoctorhos"})
+public class ManageDoctorHos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +37,7 @@ public class HospitalDashboard extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -52,15 +53,10 @@ public class HospitalDashboard extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        int userType = Integer.parseInt(session.getAttribute("usertype").toString());
-        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        String adminId = session.getAttribute("userid").toString();
+        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+adminId;
         int hospitalId=0;
-        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+hospitalAdminId;
-        if(userType==3){
-            
-            DoctorAvailability da = new DoctorAvailability();
-            try{
-                
+        try{
             DbConfig db = DbConfig.getInstance();
             Connection con = db.getConnecton();
             
@@ -71,26 +67,41 @@ public class HospitalDashboard extends HttpServlet {
                 hospitalId = Integer.parseInt(rs.getString("hospital_id"));
             }
             
-            }
-            
-            catch(Exception e){
-                e.printStackTrace();
-            }
-            
-            User u = new User(hospitalAdminId);
-            
-            String absolutePath = u.getAbsPath();
-            request.setAttribute("absolutePath",absolutePath);
-            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId));
-            
             //PrintWriter out = response.getWriter();
-            //out.println(da.getAllDoctorAvailability(hospitalId)); 
+            //out.println(hospitalId); 
             
-            request.getRequestDispatcher("hospitalDashboard.jsp").forward(request, response);
+            String query2 ="SELECT d.*,u.first_name,u.last_name FROM doctors d INNER JOIN doctor_hospital dh ON d.id=dh.doctor_id INNER JOIN hospitals h ON h.id= dh.hospital_id INNER JOIN users u ON u.id =d.id WHERE h.id ="+hospitalId;
+            
+            PreparedStatement pst1 = con.prepareStatement(query2);
+            ResultSet rs1 = pst1.executeQuery();
+            
+             List<Doctor> ds = new ArrayList<Doctor>();
+            
+            while(rs1.next()){
+                
+                
+                
+                Doctor dcTemp = new Doctor();
+                int docId = rs1.getInt("id");
+                ds.add(dcTemp.getDoctor(docId));
+                
+                
+            
+            }
+            
+            request.setAttribute("doctors", ds);
+            
+            //out.println(ds.get(0).doctorName);
         }
-        else{
-            request.getRequestDispatcher("403.jsp").forward(request, response);
+        
+        catch(Exception e){
+        
+            e.printStackTrace();
+        
         }
+        
+        request.getRequestDispatcher("manageDoctors(hos).jsp").forward(request, response);
+        
     }
 
     /**
@@ -101,7 +112,11 @@ public class HospitalDashboard extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+    }
 
     /**
      * Returns a short description of the servlet.

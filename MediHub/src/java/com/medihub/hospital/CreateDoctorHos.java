@@ -5,8 +5,11 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.location.District;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author uvinp
  */
-@WebServlet(name = "ManageDoctor", urlPatterns = {"/managedoctor"})
-public class ManageDoctor extends HttpServlet {
+@WebServlet(name = "CreateDoctorHos", urlPatterns = {"/createdoctorhos"})
+public class CreateDoctorHos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,7 +46,23 @@ public class ManageDoctor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("manageDoctors(hos).jsp");
+         District d = new District();
+        
+        try{
+            List<District> returnData =new ArrayList<District>();
+            returnData=d.getAllDistricts();
+            request.setAttribute("districts", returnData); //directly get districts
+        
+        }
+        catch(Exception e){
+        
+           
+                    
+        }
+        
+        request.getRequestDispatcher("linkDoctor.jsp").forward(request, response);
+       
+            
     }
 
     /**
@@ -57,7 +76,7 @@ public class ManageDoctor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+       
     }
 
     /**

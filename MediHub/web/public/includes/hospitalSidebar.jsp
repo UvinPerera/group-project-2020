@@ -46,12 +46,17 @@
                               <i class="fa fa-dashboard"></i>
                               <a href="hospital">Dashboard</a>
                          </div>
-
+                         
                          <h2>Alerts</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/userNotifications.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-bell"></i>
+                              <a href="userNotifications">Admin Notifications</a>
+                         </div>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/serviceNotifications.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
-                              <a href="#">Reminders</a>
+                              <a href="serviceNotifications">Hospital Notifications</a>
                          </div>
 
                          <h2>Services</h2>
@@ -63,7 +68,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/placeOrder.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bookmark"></i>
-                              <a href="managedoctor">Manage Doctors</a>
+                              <a href="managedoctorhos">Manage Doctors</a>
                          </div>
 
                          

@@ -48,11 +48,17 @@
                          </div>
 
                          <h2>Alerts</h2>
-
+                         
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/userNotifications.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-bell"></i>
+                              <a href="userNotifications">Notifications</a>
+                         </div>
+                              
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
                               <a href="#">Reminders</a>
                          </div>
+
 
                          <h2>Services</h2>
 
@@ -95,7 +101,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(pat).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-dropbox"></i>
-                              <a href="TrackOrders">Pharmacy Orders</a>
+                              <a href="TrackOrders?search=0">Pharmacy Orders</a>
                          </div>
 
                          <h2>User</h2>
@@ -123,3 +129,4 @@
                     </div>
 
                </div>
+                              
