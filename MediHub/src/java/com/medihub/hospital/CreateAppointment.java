@@ -5,13 +5,19 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.db.DbConfig;
+import com.medihub.doctor.Doctor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,7 +49,11 @@ public class CreateAppointment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        Doctor doc = new Doctor();
+        HttpSession session = request.getSession();
+        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        int hospitalId = hosId(hospitalAdminId);
+       request.setAttribute("doctors", doc.getAllDoctorsByHospital(hospitalId));
         request.getRequestDispatcher("createappointment.jsp").forward(request, response);
        
     }
@@ -59,7 +69,59 @@ public class CreateAppointment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        HttpSession session = request.getSession();
+        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        
+        String docId = request.getParameter("doctor");
+        String date = request.getParameter("date");
+        String startTime = request.getParameter("sTime");
+        String endTime = request.getParameter("eTime");
+        String maxPat = request.getParameter("maxCount");
+        String doctorFee = request.getParameter("fee");
+        int hospitalId = hosId(hospitalAdminId);
+        String query ="INSERT INTO doctor_availability(doctor_id,hostpital_id,date,start_time,end_time,max_count,payement) "
+                + "VALUES("+docId+","+hospitalId+",'"+date+"','"+startTime+"','"+endTime+"',+"+maxPat+","+doctorFee+")";
+        
+        try{
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            int rs = pst.executeUpdate();
+            
+            response.sendRedirect("manageappointments");
+        
+        }
+        
+        catch(Exception e){
+        
+            e.printStackTrace();
+        }
+    }
+    
+    protected int hosId(int adminId){
+    
+        
+        int hospitalId=0;
+        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+adminId;
+        try{
+                
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                hospitalId = Integer.parseInt(rs.getString("hospital_id"));
+            }
+            
+            }
+            
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        return hospitalId;
     }
 
     /**

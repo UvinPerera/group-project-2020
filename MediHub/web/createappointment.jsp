@@ -62,7 +62,7 @@
                          </div>-->
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="channelling" method="GET" id="submitForm">
+                         <form class="" action="createappointment" method="POST" id="submitForm">
                             <input type="hidden" name="search" value="1"/>
                             <div class="main_cards">
 
@@ -72,8 +72,16 @@
                                            <p class="text-primary-p">Doctor Name</p>
                                            <!--<p class="text-secondary-p doctor_select"><input placeholder="Search Doctor" type="text" name="doctor" id="doctor" maxlength="10" class="" value="#getdoctor"/></p>-->
                                            
-                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor">
+                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor" required>
                                                <option value="" disabled>Search Doctor</option>
+                                               <%
+                                                   if(request.getAttribute("doctors")!=null){
+                                                     
+                                                       List<Doctor> doc = (ArrayList<Doctor>)request.getAttribute("doctors");
+                                                   for(int i=0;i<doc.size();i++){
+                                               %>
+                                                <option value="<%=doc.get(i).id %>"><%=doc.get(i).doctorName %></option>
+                                               <%}}%>
                                            </select>
                                       </div>
                                  </div>
@@ -94,7 +102,7 @@
                                       <i class="fa fa-clock-o fa-2x text-green"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Start Time</p>
-                                           <p class="text-secondary-p"><input type="time" name="sTime" id="sTime" class="form-control text" style="width: 100%" value="" required=""/></p>
+                                           <p class="text-secondary-p"><input type="time" name="sTime" id="sTime" class="form-control text" style="width: 100%" value="" required/></p>
                                       </div>
                                  </div>
                                 
