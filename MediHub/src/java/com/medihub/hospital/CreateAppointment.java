@@ -7,11 +7,14 @@ package com.medihub.hospital;
 
 import com.medihub.db.DbConfig;
 import com.medihub.doctor.Doctor;
+import com.sun.xml.bind.util.CalendarConv;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,11 +78,20 @@ public class CreateAppointment extends HttpServlet {
         String docId = request.getParameter("doctor");
         String date = request.getParameter("date");
         String startTime = request.getParameter("sTime");
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
         String endTime = request.getParameter("eTime");
         String maxPat = request.getParameter("maxCount");
         String doctorFee = request.getParameter("fee");
         int hospitalId = hosId(hospitalAdminId);
-        String query ="INSERT INTO doctor_availability(doctor_id,hostpital_id,date,start_time,end_time,max_count,payement) "
+        
+        //String strDate = dateFormat.format(date);
+        //String strStartTime = timeFormat.format(startTime);
+        //String strEndTime = timeFormat.format(endTime);
+        
+        
+        String query ="INSERT INTO doctor_availability(doctor_id,hospital_id,date,start_time,end_time,max_count,payment,status=1) "
                 + "VALUES("+docId+","+hospitalId+",'"+date+"','"+startTime+"','"+endTime+"',+"+maxPat+","+doctorFee+")";
         
         try{

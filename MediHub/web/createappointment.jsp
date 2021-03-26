@@ -102,7 +102,7 @@
                                       <i class="fa fa-clock-o fa-2x text-green"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Start Time</p>
-                                           <p class="text-secondary-p"><input type="time" name="sTime" id="sTime" class="form-control text" style="width: 100%" value="" required/></p>
+                                           <p class="text-secondary-p"><input type="time" name="sTime" id="sTime" class="form-control text" style="width: 100%" required/></p>
                                       </div>
                                  </div>
                                 
