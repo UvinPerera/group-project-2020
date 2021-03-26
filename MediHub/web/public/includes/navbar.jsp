@@ -23,7 +23,21 @@
                               <i class="fa fa-clock-o"></i>
                          </a> -->
                          <a href="#">
-                              <img src="./public/images/p3.jpg" alt="avatar">
+                              <img id="dp" src="./public/images/user.png" alt="avatar">
                          </a>
                     </div>
                </nav>
+
+               <% String userId;
+                                  userId= session.getAttribute("userid").toString(); %>
+                              
+                              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                              <script>
+                                  
+                                  $.get("getdp?uId=<%=userId%>",function(data,status){
+                                     if(data!=="") 
+                                     $("#dp").attr("src","./public/storage/pp/"+data);
+                                      
+                                  })
+                                  
+                              </script>
