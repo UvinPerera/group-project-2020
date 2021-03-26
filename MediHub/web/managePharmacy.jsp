@@ -56,58 +56,35 @@
                                  <h3>Manage Pharmacies</h3>
                              </div>
                         </div> 
-                        <form class="" action="managePharmacy" method="GET" id="submitForm">
-                             <input type="hidden" name="searching" value=""/>
-                        <div class="main_cards">
-
+                       <form class="" action="BrowsePharmacy" method="GET" id="">
+                            <input type="hidden" name="search" value="1"/>
                             <div class="card">
-                                      <i class="fa fa-search-plus fa-2x text-red"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Status</p>
-                                           
-                                           <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
-                                               <option value='Action' selected><a href="">All</a></option>
-                                               <option value='Action'><a href="#">Pending</a></option>
-                                               <option value='Action'><a href="#">Active</a></option>
-                                               <option value='Action'><a href="#">Inactive</a></option>
-                                               <option value='Action'><a href="#">Blacklisted</a></option>
-                                           </select>
-                                      </div>
-                             </div>
+                                <div class="card_inner_profile">
+                                     <p class="text-primary-p">Pharmacy Name</p>
+                                   
 
-                                 <div class="card">
-                                      <i class="fa fa-medkit fa-2x text-green"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Search</p>
-                                               
-                                               <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                                   <option value='Action' selected><a href="">All</a></option>
-                                                   <option value='Action'><a href="#">Pharmacy ID</a></option>
-                                                   <option value='Action'><a href="#">pharmacy Name</a></option>
-                                                   <option value='Action'><a href="#">License No</a></option>
-                                                   <option value='Action'><a href="#">City</a></option>
-                                               </select>
-                                      </div>
-                                 </div>
-
-                                 <div class="card">
-                                      <i class="fa fa-filter fa-2x text-lightblue"></i>
-                                      <div class="card_inner_profile">
-                                          <p class="text-primary-p">Value</p>
-                                            <input type="text" class="filter_text textt" style="width: 100%" >
-                                      </div>
-                                 </div>
-               
-                                 <div class="buttons">
-                                   <button class="button-success" type="submit"><b>Search</b></button>
-                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
-                                 </div>
-
-
+                                      <select class="text-secondary-p pharmacy_select" style="width: 100%" name="pharmacy" id="pharmacy">
+                                         <option value="" disabled>Select Pharmacy</option>
+                                         <%
+                             if(request.getAttribute("allPharmacies")!=null){
+                                 List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("allPharmacies");
+                                 if(table.size()>0){
+                                     for(Pharmacy row : table) { %>
+                                         <option value='<%= row.id %>'><%= row.displayName %></option>
+                         <%
+                                 }}}
+                         %>
+                                     </select>
+                                     <div class="buttons">
+                                            <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                            <button class="button-success" type="submit"><b>Submit</b></button>     
+                                       </div>
+                                </div>
                             </div>
-                              </form>
+                        </form>
                                                
                         <hr>
+                        <br>
                         <!--######################-->
                         <!--create button-->
                         <!--######################-->
@@ -128,6 +105,7 @@
                                         <script>
                                         var Id = [];
                                         var licenseNumber = [];
+                                        var name = [];
                                         var display_name = [];
                                         var district = [];
                                         var city = [];
@@ -139,6 +117,7 @@
                                                   <tr>
                                                        <th> Pharmacy Id</th> 
                                                        <th>License Number</th>
+                                                       <th>Pharmacy Name</th>
                                                        <th>Pharmacy</th>
                                                        <th>District</th>
                                                        <th>City</th>
@@ -152,15 +131,17 @@
                                                        
                                                       <td><%=row.id%></td>
                                                        <td><%= row.getLicenseNumber()%></td>
+                                                       <td><%= row.name %></td>
                                                        <td><%= row.displayName %></td>
                                                        <td><%= row.districtStr %></td>
                                                        <td><%= row.cityStr %></td>
                                                        <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
-                                                       <td><a href ="adminviewpharmacy.jsp"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
+                                                       <td><a href ="adminviewpharmacy.jsp"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><a href="admindeletepharmacy?pId=<%=row.id%>"><button><i class="fa fa-trash"></i></button></a></td>
                                                   </tr>
                                                   <script>
                                                    Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
                                                    licenseNumber[<%= table.indexOf(row) %>]                     = <%= row.getLicenseNumber() %>;
+                                                   name[<%= table.indexOf(row) %>]                              = "<%= row.name %>";
                                                    display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
                                                    district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
                                                    city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";

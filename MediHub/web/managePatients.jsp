@@ -19,7 +19,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <link rel="stylesheet" type="text/css" href="./public/css/managePatients.css" media="screen" />
-          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+        <!--  <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" /> -->
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
           <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -55,65 +55,31 @@
                                  <h3>Manage Patients</h3>
                              </div>
                         </div> 
-                        <form class="" action="managePatient" method="GET" id="submitForm">
-                             <input type="hidden" name="searching" value=""/>
-                        <div class="main_cards">
-
+                        <form class="" action="BrowseDoctor" method="GET" id="">
+                            <input type="hidden" name="search" value="1"/>
                             <div class="card">
-                                      <i class="fa fa-search-plus fa-2x text-red"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Status</p>
-                                           
-                                           <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
-                                               <option value='Action' selected><a href="">All</a></option>
-                                               <option value='Action'><a href="#">Pending</a></option>
-                                               <option value='Action'><a href="#">Active</a></option>
-                                               <option value='Action'><a href="#">Inactive</a></option>
-                                               <option value='Action'><a href="#">Blacklisted</a></option>
-                                           </select>
-                                      </div>
-                             </div>
+                                <div class="card_inner_profile">
+                                     <p class="text-primary-p">Patient Name</p>
 
-                                 <div class="card">
-                                      <i class="fa fa-medkit fa-2x text-green"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Search</p>
-                                               
-                                               <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                                   <option value='Action' selected><a href="">All</a></option>
-                                                   <option value='Action'><a href="#">Patient ID</a></option>
-                                                   <option value='Action'><a href="#">patient Name</a></option>
-                                                   <option value='Action'><a href="#">Status</a></option>
-                                                   <option value='Action'><a href="#">City</a></option>
-                                               </select>
-                                      </div>
-                                 </div>
-
-                                 <div class="card">
-                                      <i class="fa fa-filter fa-2x text-lightblue"></i>
-                                      <div class="card_inner_profile">
-                                          <p class="text-primary-p">Value</p>
-                                            <input type="text" class="filter_text textt" style="width: 100%" >
-                                      </div>
-                                 </div>
-               
-                                 <div class="buttons">
-                                   <button class="button-success" type="submit"><b>Search</b></button>
-                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
-                                 </div>
-
-
+                                     <select class="text-secondary-p doctor_select" style="width: 100%" name="patient" id="doctor">
+                                         <option value="" disabled>Search Doctor</option>
+                                     </select>
+                                     <div class="buttons">
+                                            <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                            <button class="button-success" type="submit"><b>Submit</b></button>      
+                                       </div>
+                                </div>
                             </div>
-                              </form>
+                        </form>
                                                
                         <hr>
                         
-                        
+                      
                         <div class="charts">
                           
                             <div class="charts_table_div">
                                         <table class="charts_table">
-                                            <%
+                                         <%
                                          if(request.getAttribute("users")!=null){
                                          List<User> table = (ArrayList<User>)request.getAttribute("users");
                                          if(table.size()>0){
@@ -138,11 +104,12 @@
                                                        <th>Display Name</th>
                                                        <th>District</th>
                                                        <th>City</th>
+                                                       <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                  < <% for( User row : table) { %>
+                                                  <% for( User row : table) { %>
                                                   <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
                                                        
                                                       <td><%=row.id%></td>

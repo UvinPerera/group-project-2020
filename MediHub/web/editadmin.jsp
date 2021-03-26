@@ -133,7 +133,6 @@
                                    </div>
                               </div>
                              
-                             <div class=""></div>
 
                               <div class="card">
                                    <div class="card_inner_profile">

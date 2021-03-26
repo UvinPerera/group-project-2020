@@ -136,13 +136,13 @@ public class CreateHospital extends HttpServlet {
                     e.toString();
                 }
 
-               int rs2=stmt.executeUpdate("insert into pharmacies(name,license_number,pharmacist_id,display_name,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
+               int rs2=stmt.executeUpdate("insert into hospitals(name,license_number,director_id,display_name,land_number,fax,email,address_1,address_2,city,status,description,created_by,updated_by,created_at,updated_at) "
                         + "values('"+Hospital_Name+"',"+License_Number+","+temp+",'"+Hospital_Display_Name+"','"+Land_Number+"','"+Fax+"','"+Email+"','"+Address1+"','"+Address2+"',"+City+",1,'"+Description+"',"+adminId+","+adminId+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
                 
                                 
                 
                 
-                int rs3=stmt.executeUpdate("insert into pharmacy_admins(user_id,pharmacy_id,privilege,status,created_at,updated_at,created_by,updated_by)"
+                int rs3=stmt.executeUpdate("insert into hospital_admins(user_id,hospital_id,privilege,status,created_at,updated_at,created_by,updated_by)"
                         + "values("+temp+",LAST_INSERT_ID(),1,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 response.sendRedirect("readhospital");
           

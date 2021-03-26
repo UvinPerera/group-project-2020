@@ -69,15 +69,7 @@
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
-                              
-                             <div class="card">
-                                   <i class="fa fa-user-o fa-2x text-lightblue"></i>
-                                   <div class="card_inner">
-                                        <p class="text-primary-p">Pending Reviews</p>
-                                        <span class="font-bold text-title">2</span>
-                                   </div>
-                              </div>
-                             
+
                               <div class="card">
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
@@ -85,19 +77,79 @@
                                         <span class="font-bold text-title">2</span>
                                    </div>
                               </div>
-                             
-                             
-
                          </div>
                          
-                 
-                         <div class="charts">
-                      <!--Admin DASHBOARD COLUMN-->
+                <div class="charts">
+                          
+                            <div class="charts_right">
 
-                         </div>
+                                   <div class="charts_right_title">
+                                        <div>
+                                             <h1>Pending Reviews</h1>
+                                             <!-- <p>Something</p> -->
+                                        </div>
+                                        <!--<i class="fa fa-usd"></i>-->
+                                   </div>
 
+                                   <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
+                                   <div class="charts_table_div">
+                                        <table class="charts_table">
+                                             <thead>
+                                                  <tr>
+                                                       <th>Reiew Id</th>
+                                                       <th>Patient Id</th>
+                                                       <th>Patient Name</th>
+                                                       <th>Date / Time</th>
+                                                       <th>Action</th>
+                                                  </tr>
+                                             </thead>
+                                             <tbody>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Hospital 1</td>
+                                                       <td>Doctor 1</td>
+                                                       <td>2020-12-12<br>08:00:00</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Hospital 1</td>
+                                                       <td>Doctor 1</td>
+                                                       <td>2020-12-12<br>08:00:00</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Hospital 1</td>
+                                                       <td>Doctor 1</td>
+                                                       <td>2020-12-12<br>08:00:00</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Hospital 1</td>
+                                                       <td>Doctor 1</td>
+                                                       <td>2020-12-12<br>08:00:00</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
+                                                       <td>Hospital 1</td>
+                                                       <td>Doctor 1</td>
+                                                       <td>2020-12-12<br>08:00:00</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td colspan="6"><center><a href="#">View More...</a></center></td>
+                                                  </tr>
+                                             </tbody>
+                                        </table>
+                                   </div>
 
-                    </div>
+                              </div>
+
+                              </div>
+                        </div>     
                                                   
                     <!--######################-->
                         <!--container ending-->

@@ -1,3 +1,4 @@
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.doctor.*"%>
@@ -54,13 +55,13 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Edit Profile</p>
+                                   <p>Edit doctor</p>
                               </div>
                          </div>
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Doctor row = (Doctor)request.getAttribute("profile");
+                                User row = (User)request.getAttribute("profile");
                                 
                                 
                         %>
@@ -127,7 +128,6 @@
                                    </div>
                               </div>
                              
-                             <div class=""></div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
@@ -211,15 +211,15 @@
                                    </div>
                               </div>
 
-                              <div></div>
-                              <div></div>
+
+
+                         </div>
+                                                                     
                               
                               <div class="buttons">
                                 <button class="button" type="reset" id="clear"><b>Reset</b></button>
                                 <button class="button-success" type="submit"><b>Update</b></button>     
                               </div>
-
-                         </div>
                          </form>
                          
                         <% } %>
@@ -232,13 +232,8 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <% 
-                   String sidebar = "";
-                    if(userType==1) {
-                        sidebar = "patientSidebar";
-                    } 
-               %>
-               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
+               <jsp:include page="./public/includes/adminSidebar.jsp"/>
+                
                 
                 <!--######################-->
                 <!--sidebar ending-->

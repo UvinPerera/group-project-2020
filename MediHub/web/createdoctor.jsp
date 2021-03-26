@@ -98,7 +98,16 @@
                                         </div>
                                    </div>
                               </div>
-  
+                               <div class="card">
+                                  <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">SLMC</p>
+                                        <input class="data" type="text" name="slmc_no" id="slmc" placeholder="SLMC number">
+                                        <div class="alert-danger" id="slmcError">
+                                             * SLMC Number can't be empty
+                                        </div>
+                                  </div>
+                              </div>
                               <div class="card">
                                   <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
@@ -245,11 +254,10 @@
                                     </div>                                  
                                </div>
   
-                               <div class="buttons">
+                              </div>
+                              <div class="buttons">
                                 <button class="button" type="clear" id="clear" style="background: red"><b>Clear</b></button>
                                 <button class="button-success" type="submit"><b>Submit</b></button>     
-                              </div>
-                               
                               </div>
                                                        
                               

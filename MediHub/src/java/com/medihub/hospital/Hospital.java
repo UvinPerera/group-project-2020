@@ -209,10 +209,7 @@ public class Hospital {
                 + "join cities c on c.id=h.city "
                 + "join districts d on d.id=c.district_id "
                 + "left join users u on u.id=h.director_id ";
-//                + "left join users ul on u.id=p.last_login_by "
-//                + "left join users uc on u.id=p.created_by "
-//                + "left join users uu on u.id=p.updated_by "
-//                + "left join users ua on u.id=p.approved_by ";
+
         
         try
         {
@@ -228,11 +225,12 @@ public class Hospital {
                 Hospital ho = new Hospital();
                 ho.id=rs.getInt("id");
                 ho.licenseNo=rs.getInt("license_number");
+                ho.name=rs.getString("name");
                 ho.displayName=rs.getString("display_name");
                 ho.strCity=rs.getString("district");
                 ho.strDistrict=rs.getString("city_name");
                 ho.status=rs.getInt("status");
-                
+               
                 h.add(ho);
             }
             

@@ -210,49 +210,9 @@ main {
 
 .charts {
      display: grid;
-     grid-template-columns: 2fr 2fr;
      gap: 30px;
-     margin-top: 50px;
-}
-
-.charts_left {
-     /* overflow: auto; */
-     display: grid;
-     grid-template-columns: 1fr;
-     padding: 25px;
-     border-radius: 5px;
+     margin-top: 5px;
      background: #ffffff;
-     box-shadow: 5px 5px 5px 13px #ededed,
-                    -5x -5px 13px #ffffff;
-}
-
-.charts_left_title {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-}
-
-.charts_left_title > div > h1 {
-     font-size: 24px;
-     color: #2e4a66;
-     margin-bottom: 5px;
-}
-
-.charts_left_title > div > p {
-     font-size: 14px;
-     font-weight: 700;
-     color: #a5aaad;
-}
-
-.charts_left_title > i {
-     color: #ffffff;
-     font-size: 20px;
-     background: #ffc100;
-     border-radius: 200px 0 200px 200px;
-     -moz-border-radius: 200px 0 200px 200px;
-     -webkit-border-radius: 200px 0 200px 200px;
-     border: 0px solid #000000;
-     padding: 15px;
 }
 
 .charts_table_div {
@@ -265,10 +225,11 @@ main {
      border-collapse: collapse;
      margin: 25px 0;
      font-size: 0.9em;
-     min-width: 400px;
+     min-width: 600px;
      width: 100%;
      border-radius: 5px 5px 0 0;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+     /*table-layout: fixed;*/
 }
 
 .charts_table thead tr {
@@ -293,6 +254,7 @@ main {
 
 .charts_table td {
      font-weight: 700;
+     word-wrap: break-word;
 }
 
 .charts_table td button{

@@ -18,29 +18,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DELL
  */
-@WebServlet(name = "AdminViewPatient", urlPatterns = {"/adminviewpatient"})
-public class AdminViewPatient extends HttpServlet {
+@WebServlet(name = "AdminDeleteDoctor", urlPatterns = {"/admindeletedoctor"})
+public class AdminDeleteDoctor extends HttpServlet {
 
  
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            int patientId = Integer.parseInt(request.getParameter("pId"));
+        int doctorId = Integer.parseInt(request.getParameter("dId"));
+        User doctor = new User();
+        doctor.setId(doctorId);
         
-            User patient = new User();
-            patient.setId(patientId); 
         
          try
             {
-            
-               
-                request.setAttribute("profile", patient.getProfile());
-                request.getRequestDispatcher("adminviewpatient.jsp").forward(request, response);
+                doctor.DeleteUser();
+                response.sendRedirect("readdoctor");
                 }catch(Exception e){
                    e.printStackTrace();
                 }
-        
-       
     }
 
     /**
@@ -54,7 +51,7 @@ public class AdminViewPatient extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             
+        
     }
 
     /**

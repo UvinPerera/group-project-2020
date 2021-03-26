@@ -1,3 +1,4 @@
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.doctor.*"%>
@@ -53,13 +54,13 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Profile</p>
+                                   <p>View doctor</p>
                               </div>
                          </div>
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Patient row = (Patient)request.getAttribute("profile");
+                                User row = (User)request.getAttribute("profile");
                                 
                                 
                         %>

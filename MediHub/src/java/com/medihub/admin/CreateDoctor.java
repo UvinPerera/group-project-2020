@@ -98,6 +98,7 @@ public class CreateDoctor extends HttpServlet {
             String Last_Name = request.getParameter("last_name");
             String Display_Name = request.getParameter("display_name");
             String DOB = request.getParameter("dob");
+            String SLMC = request.getParameter("slmc_no");
             String Email = request.getParameter("email");
             String NIC = request.getParameter("nic_no");
             String Address1 = request.getParameter("address_1");
@@ -114,8 +115,11 @@ public class CreateDoctor extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,mobile_number,land_number,address_1,address_2,city,created_at,updated_at,created_by,updated_by) "
-                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Email+"','"+Password+"',2,'"+NIC+"','"+DOB+"','"+Mobile_Number+"','"+Land_Number+"','"+Address1+"','"+Address2+"',"+City+",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,mobile_number,land_number,address_1,address_2,city,status,created_at,updated_at,created_by,updated_by) "
+                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Email+"','"+Password+"',2,'"+NIC+"','"+DOB+"','"+Mobile_Number+"','"+Land_Number+"','"+Address1+"','"+Address2+"',"+City+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+                
+                int rs2=stmt.executeUpdate("insert into doctors(id,slmc,approved_by,approved_at)"
+                        +  "values(LAST_INSERT_ID(),"+SLMC+","+adminId+",CURRENT_TIMESTAMP) ");
                  response.sendRedirect("readdoctor");
                 con.close();
       

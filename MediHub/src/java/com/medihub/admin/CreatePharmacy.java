@@ -96,9 +96,6 @@ public class CreatePharmacy extends HttpServlet {
             String Pharmacy_Name = request.getParameter("pharmacy_name");
             int License_Number = Integer.parseInt(request.getParameter("license_number"));
             String Pharmacy_Display_Name = request.getParameter("pharmacy_display_name");
- //         String License_Proof_Location = request.getParameter("license_proof_location");
-//          int Pharmacist_Id = Integer.parseInt(request.getParameter("pharmacist_id"));
-//          String Pharmacist_Proof_Location = request.getParameter("pharmacist_proof_location");
             String Land_Number = request.getParameter("land_number");
             String Fax = request.getParameter("fax");
             String Email = request.getParameter("email");
@@ -123,8 +120,8 @@ public class CreatePharmacy extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,created_at,updated_at,created_by,updated_by) "
-                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Pharmacist_Email+"','"+Password+"',4,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,status,created_at,updated_at,created_by,updated_by) "
+                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+Pharmacist_Email+"','"+Password+"',4,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 
                 String query = "SELECT LAST_INSERT_ID() AS temp";
                 int temp=0;

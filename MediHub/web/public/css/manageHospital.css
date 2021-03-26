@@ -173,7 +173,7 @@ main {
      display: flex;
      flex-direction: column;
      justify-content: space-around;
-     height: 70px;
+     height: 100px;
      padding: 25px;
      background: #ffffff;
      box-shadow: 5px 5px 5px #ededed, -5px -5px -px #ffffff;
@@ -269,7 +269,7 @@ main {
     padding: 5px;
     margin: 5px;
     color: #ffffff;
-    background: #2e4a66;
+    background: red;
     border: 0px solid #2e4a66;
     border-radius: 5px;
 }

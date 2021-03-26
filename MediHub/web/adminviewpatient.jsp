@@ -54,7 +54,7 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Profile</p>
+                                   <p>View patient</p>
                               </div>
                          </div>
                         

@@ -56,63 +56,30 @@
                                  <h3>Manage Doctors</h3>
                              </div>
                         </div> 
-                        <form class="" action="manageDoctor" method="GET" id="submitForm">
-                             <input type="hidden" name="searching" value=""/>
-                        <div class="main_cards">
-
+                     <form class="" action="BrowseDoctor" method="GET" id="">
+                            <input type="hidden" name="search" value="1"/>
                             <div class="card">
-                                      <i class="fa fa-search-plus fa-2x text-red"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Status</p>
-                                           
-                                           <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
-                                               <option value='Action' selected><a href="">All</a></option>
-                                               <option value='Action'><a href="#">Pending</a></option>
-                                               <option value='Action'><a href="#">Active</a></option>
-                                               <option value='Action'><a href="#">Inactive</a></option>
-                                               <option value='Action'><a href="#">Blacklisted</a></option>
-                                           </select>
-                                      </div>
-                             </div>
+                                <div class="card_inner_profile">
+                                     <p class="text-primary-p">Doctor Name</p>
+                                     
 
-                                 <div class="card">
-                                      <i class="fa fa-medkit fa-2x text-green"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Search</p>
-                                               
-                                               <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                                   <option value='Action' selected><a href="">All</a></option>
-                                                   <option value='Action'><a href="#">Doctor ID</a></option>
-                                                   <option value='Action'><a href="#">Doctor Name</a></option>
-                                                   <option value='Action'><a href="#">SLMC No</a></option>
-                                                   <option value='Action'><a href="#">City</a></option>
-                                               </select>
-                                      </div>
-                                 </div>
-
-                                 <div class="card">
-                                      <i class="fa fa-filter fa-2x text-lightblue"></i>
-                                      <div class="card_inner_profile">
-                                          <p class="text-primary-p">Value</p>
-                                            <input type="text" class="filter_text textt" style="width: 100%" >
-                                      </div>
-                                 </div>
-               
-                                 <div class="buttons">
-                                   <button class="button-success" type="submit"><b>Search</b></button>
-                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
-                                 </div>
-
-
+                                     <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor">
+                                         <option value="" disabled>Search Doctor</option>
+                                     </select>
+                                     <div class="buttons">
+                                            <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                            <button class="button-success" type="submit"><b>Submit</b></button>      
+                                       </div>
+                                </div>
                             </div>
-                              </form>
+                        </form>
                                                
                         <hr>
                         <!--######################-->
                         <!--create button-->
                         <!--######################-->
                         <div class="buttons">
-                            <a href="createdoctor.jsp" class=""><button class="button" ><b>Create a new doctor</b></button></a>
+                            <a href="createdoctor" class=""><button class="button" ><b>Create a new doctor</b></button></a>
                         </div>
                         
                         <div class="charts">
@@ -126,6 +93,8 @@
                                         <!--js array-->
                                         <script>
                                         var Id = [];
+                                        var first_name = [];
+                                        var last_name = [];
                                         var display_name = [];
                                         var district = [];
                                         var city = [];
@@ -137,7 +106,9 @@
                                              <thead>
                                                   <tr>
                                                        <th>Doctor Id</th>
-                                                       <th>Doctor</th>
+                                                       <th>First Name</th>
+                                                       <th>Last Name</th>
+                                                       <th>Display Name</th>
                                                        <th>District</th>
                                                        <th>City</th>
                                                        <th>Status</th>
@@ -148,15 +119,19 @@
                                                   <% for(User row : table) { %>
                                                   <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
                                                        
-                                                      <td><%=row.id%></td>
+                                                       <td><%=row.id%></td>
+                                                       <td><%= row.firstName %></td>
+                                                       <td><%= row.lastName %></td>
                                                        <td><%= row.displayName %></td>
                                                        <td><%= row.districtStr %></td>
                                                        <td><%= row.cityStr %></td>
                                                        <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
-                                                       <td><a href ="adminviewdoctor.jsp"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditDoctor.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
+                                                       <td><a href ="adminviewdoctor?dId=<%=row.id%>"><button><i class="fa fa-eye"></i></button></a><a href ="admineditdoctor?dId=<%=row.id%>"><button><i class="fa fa-edit"></i></button></a><a href="admindeletedoctor?dId=<%=row.id%>"><button><i class="fa fa-trash"></i></button></a></td>
                                                   </tr>
                                                   <script>
                                                    Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
+                                                   first_name[<%= table.indexOf(row) %>]                        = "<%= row.firstName %>";
+                                                   last_name[<%= table.indexOf(row) %>]                         = "<%= row.lastName %>";
                                                    display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
                                                    district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
                                                    city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";

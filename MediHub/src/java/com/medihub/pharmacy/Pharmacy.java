@@ -180,10 +180,6 @@ public class Pharmacy extends User {
                 + "join cities c on c.id=p.city "
                 + "join districts d on d.id=c.district_id "
                 + "left join users u on u.id=p.pharmacist_id ";
-//                + "left join users ul on u.id=p.last_login_by "
-//                + "left join users uc on u.id=p.created_by "
-//                + "left join users uu on u.id=p.updated_by "
-//                + "left join users ua on u.id=p.approved_by ";
         
         try
         {
@@ -199,6 +195,7 @@ public class Pharmacy extends User {
                 Pharmacy ph = new Pharmacy();
                 ph.id=rs.getInt("id");
                 ph.licenseNumber=rs.getInt("license_number");
+                ph.name=rs.getString("name");
                 ph.displayName=rs.getString("display_name");
                 ph.pharmacist=rs.getString("pharmacist");
                 ph.districtStr=rs.getString("district");
@@ -218,6 +215,31 @@ public class Pharmacy extends User {
         }
         
     }
+        public void DeletePharmacy(){
+    
+        String query = "UPDATE pharmacies SET status=0 WHERE id="+this.id;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            int rs = pst.executeUpdate();
+            
+
+            
+            con.close();
+         
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();
+                 
+        }
+    
+    }
+    
     public Pharmacy(){
         
     }

@@ -114,8 +114,7 @@
                                         <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
                                    </div>
                               </div>
-                             
-                             <div class=""></div>
+
 
                               <div class="card">
                                    <div class="card_inner_profile">
@@ -137,9 +136,7 @@
                                         <p class="text-secondary-p"><%= row.address1+", \n"+row.address2 %></p>
                                    </div>
                               </div>
-                             
-                             <div class=""></div>
-                              
+                                                           
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
