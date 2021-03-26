@@ -90,26 +90,7 @@
                                         </div>
                                    </div>
                               </div>
-                             <!-- <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">License Proof Location</p>
-                                        <input class="data" type="text" name="license_proof_location" id="licenceprooflocation" placeholder="License Proof Location">
-                                        <div class="alert-danger" id="licenseProofLocationError">
-                                            * License proof location can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacist Proof Location</p>
-                                        <input class="data" type="text" name="Pharmacist_proof_location" id="pharmacistprooflocation" placeholder="Pharmacist Proof Location">
-                                        <div class="alert-danger" id="pharmacistProofLocationError">
-                                            * Pharmacist proof location can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>  -->
+
                              <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">

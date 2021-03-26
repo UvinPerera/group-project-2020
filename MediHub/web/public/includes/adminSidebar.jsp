@@ -63,7 +63,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageDoctors.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-stethoscope"></i>
-                              <a href="manageDoctors.jsp">Manage Doctors</a>
+                              <a href="readdoctor">Manage Doctors</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/managePharamcy.jsp' ? 'active_menu_link' : ''}">
@@ -73,7 +73,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageHospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hospital-o"></i>
-                              <a href="manageHospital.jsp">Manage Hospitals</a>
+                              <a href="readhospital">Manage Hospitals</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageReviews.jsp' ? 'active_menu_link' : ''}">

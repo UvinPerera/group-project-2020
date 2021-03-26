@@ -87,6 +87,7 @@ public class UpdatePatientOrder extends HttpServlet {
             String randomString = getSaltString();
             String extension = ".pdf";//filepath.substring(filepath.length()-4, filepath.length()-1);
             String absolutePath = randomString+extension;
+            boolean flag=false;
             
             try{
                 List fileItems = upload.parseRequest(request);
@@ -105,7 +106,11 @@ public class UpdatePatientOrder extends HttpServlet {
                       }
                       
                       else if(name.compareTo("deliverydate")==0){
-                          date = value;
+                          if(!value.isEmpty())
+                                date = value;
+                          else
+                              flag=true;
+                              
                       }
                       else if(name.compareTo("orderid")==0){
                           orderId = Integer.parseInt(value);
@@ -132,7 +137,11 @@ public class UpdatePatientOrder extends HttpServlet {
                               }
                           }
                 
-            String query = "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+", expected_delivery_date='"+date+"' WHERE id ="+ orderId;
+            String query;
+            if(!flag){
+                query= "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+", expected_delivery_date='"+date+"' WHERE id ="+ orderId;
+            }else{
+                query= "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+" WHERE id ="+ orderId;}
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             

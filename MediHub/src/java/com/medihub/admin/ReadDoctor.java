@@ -3,22 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.hospital;
+package com.medihub.admin;
 
+
+import com.medihub.doctor.*;
+import com.medihub.user.*;
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 /**
  *
- * @author uvinp
+ * @author DELL
  */
-@WebServlet(name = "ManageDoctor", urlPatterns = {"/managedoctor"})
-public class ManageDoctor extends HttpServlet {
+@WebServlet(name = "ReadDoctor", urlPatterns = {"/readdoctor"})
+public class ReadDoctor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +40,7 @@ public class ManageDoctor extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+ 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -40,24 +51,22 @@ public class ManageDoctor extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("manageDoctors(hos).jsp");
-    }
+            HttpSession session = request.getSession();
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
+            PrintWriter out = response.getWriter();   
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+            try
+            {
+            
+                User h = new User();
+                request.setAttribute("users", h.getAllDoctor());
+                request.getRequestDispatcher("manageDoctors.jsp").forward(request, response);
+                }catch(Exception e){
+                    out.println(e.toString());
+                }
     }
 
     /**

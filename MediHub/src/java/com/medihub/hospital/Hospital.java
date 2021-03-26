@@ -56,6 +56,9 @@ public class Hospital {
         this.id=id;
     }
     
+     public int getLicenseNumber(){
+        return licenseNo;
+    }
     public List<Hospital> getAllActiveHospitals() {
         
         String query = "select id, display_name from hospitals where status=1";
@@ -187,6 +190,50 @@ public class Hospital {
                 h.strCity = rs.getString("city");
                 h.strDistrict = rs.getString("district");
                 
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
+    
+        public List<Hospital> getAllHospitals(){
+        
+        String query = "select h.*, c.name_en as city_name, d.name_en as district, u.display_name as director from hospitals h "
+                + "join cities c on c.id=h.city "
+                + "join districts d on d.id=c.district_id "
+                + "left join users u on u.id=h.director_id ";
+//                + "left join users ul on u.id=p.last_login_by "
+//                + "left join users uc on u.id=p.created_by "
+//                + "left join users uu on u.id=p.updated_by "
+//                + "left join users ua on u.id=p.approved_by ";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<Hospital> h =new ArrayList<Hospital>();
+                        
+            while(rs.next()) { 
+                Hospital ho = new Hospital();
+                ho.id=rs.getInt("id");
+                ho.licenseNo=rs.getInt("license_number");
+                ho.displayName=rs.getString("display_name");
+                ho.strCity=rs.getString("district");
+                ho.strDistrict=rs.getString("city_name");
+                ho.status=rs.getInt("status");
+                
+                h.add(ho);
             }
             
             con.close();

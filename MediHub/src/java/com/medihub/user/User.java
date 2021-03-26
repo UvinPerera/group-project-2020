@@ -2,6 +2,7 @@ package com.medihub.user;
 import com.medihub.db.*;
 import com.medihub.patient.Channelling;
 import com.medihub.patient.Patient;
+import com.medihub.doctor.Doctor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -168,7 +169,9 @@ public class User {
     
       public List<Patient> getAllPatient(){
         
-        String query = "SELECT first_name,last_name,display_name,city,district FROM users WHERE user_type=1";
+        String query = "select p.*, c.name_en as city_name, d.name_en as district, u.display_name as doctor from users p where user_type=1"
+                + "join cities c on c.id=h.city "
+                + "join districts d on d.id=c.district_id ";
         
         try
         {
@@ -203,6 +206,48 @@ public class User {
         
     }
     
+    public  List<User> getAllDoctor(){
+        
+        String query = "select h.*, c.name_en as city_name, d.name_en as district, u.display_name as doctor from users h where user_type=2"
+                + "join cities c on c.id=h.city "
+                + "join districts d on d.id=c.district_id ";
+//                + "left join users u on u.id=h.director_id ";
+//                + "left join users ul on u.id=p.last_login_by "
+//                + "left join users uc on u.id=p.created_by "
+//                + "left join users uu on u.id=p.updated_by "
+//                + "left join users ua on u.id=p.approved_by ";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<User> h =new ArrayList<User>();
+                        
+            while(rs.next()) { 
+                User doc = new User();
+                doc.id=rs.getInt("id");
+                doc.displayName=rs.getString("display_name");
+                doc.districtStr=rs.getString("district");
+                doc.cityStr=rs.getString("city_name");
+                doc.status=rs.getInt("status");
+                
+                h.add(doc);
+            }
+            
+            con.close();
+            return h;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
     public void register() {
 
     }

@@ -1,6 +1,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.doctor.*"%>
+<%@page import="com.medihub.user.*"%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -116,58 +118,52 @@
                         <div class="charts">
                           
                             <div class="charts_table_div">
+                                <%
+                                         if(request.getAttribute("users")!=null){
+                                         List<User> table = (ArrayList<User>)request.getAttribute("users");
+                                         if(table.size()>0){
+                                        %>
+                                        <!--js array-->
+                                        <script>
+                                        var Id = [];
+                                        var display_name = [];
+                                        var district = [];
+                                        var city = [];
+                                        var pstatus = [];
+                
+                                        var size =<%= table.size() %>;
+                                        </script>
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
+                                                       <th>Doctor Id</th>
                                                        <th>Doctor</th>
-                                                       <th>SLMC #</th>
+                                                       <th>District</th>
                                                        <th>City</th>
                                                        <th>Status</th>
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>111</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
+                                                  <% for(User row : table) { %>
+                                                  <tr id="id_<%= table.indexOf(row) %>" value="<%= table.indexOf(row) %>">
+                                                       
+                                                      <td><%=row.id%></td>
+                                                       <td><%= row.displayName %></td>
+                                                       <td><%= row.districtStr %></td>
+                                                       <td><%= row.cityStr %></td>
+                                                       <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
+                                                       <td><a href ="adminviewpharmacy"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>111</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>111</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>111</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>111</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button><button><i class="fa fa-trash"></i></button></td>
-                                                  </tr>
+                                                  <script>
+                                                   Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
+                                                   display_name[<%= table.indexOf(row) %>]                      = "<%= row.displayName %>";
+                                                   district[<%= table.indexOf(row) %>]                          = "<%= row.districtStr %>";
+                                                   city[<%= table.indexOf(row) %>]                              = "<%= row.cityStr %>";
+                                                   pstatus[<%= table.indexOf(row) %>]                           = <%= row.status %>;
+
+                                                 </script>
+                                                  
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>

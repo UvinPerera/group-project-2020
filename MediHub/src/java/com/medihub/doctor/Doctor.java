@@ -32,6 +32,10 @@ public class Doctor extends User {
     public String degress;
     public int approvedBy;
     public String approvedAt;
+    public int city;
+    public String strCity;
+    public String strDistrict;
+    public int district;
     
     public String searchDoctors(String q) {
         String query="SELECT d.id,d.titles,u.first_name,u.last_name,d.degrees FROM doctors d "
@@ -153,6 +157,8 @@ public class Doctor extends User {
         }
         
     }
+       
+   
     
 //    public Doctor(int id) {
 //        this.id=id;
