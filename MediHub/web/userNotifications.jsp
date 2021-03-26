@@ -1,7 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.patient.*"%>
-<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.user.Notifications"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,11 +12,6 @@
                int getLimit=0;
                username= session.getAttribute("username").toString();
                int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
-               String getPharmacy="";
-                     
-               if (request.getParameter("pharmacy")!=null && request.getParameter("pharmacy")!="") {
-                    getPharmacy=request.getParameter("pharmacy");
-               }
                      
                if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
                     getLimit=Integer.parseInt(request.getParameter("limit"));
@@ -35,8 +29,14 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <% if(usertype==1) { %>
+          <% if(usertype==0) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <% } else if(usertype==1) { %>
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <% } else if(usertype==2) { %>
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_doc.css" media="screen" />
+          <% } else if(usertype==3) { %>
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_hos.css" media="screen" />
           <% } else if(usertype==4) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
           <% } %>
@@ -81,107 +81,7 @@
                                        <% } %>
                                    </div>
                                    <% } %>
-                        <% if(usertype==1) { %>
-                        <form class="" action="BrowsePharmacy" method="GET" id="">
-                            <input type="hidden" name="search" value="1"/>
-                            <div class="card">
-                                <i class="fa fa-stethoscope fa-2x text-red"></i>
-                                <div class="card_inner_profile">
-                                     <p class="text-primary-p">Pharmacy Name</p>
-                                     <!--<p class="text-secondary-p pharmacy_select"><input placeholder="Search Pharmacy" type="text" name="pharmacy" id="pharmacy" maxlength="10" class="" value="<%= getPharmacy %>"/></p>-->
-
-                                     <select class="text-secondary-p pharmacy_select" style="width: 100%" name="pharmacy" id="pharmacy">
-                                         <option value="" disabled>Search Pharmacy</option>
-                                         <%
-                             if(request.getAttribute("allPharmacies")!=null){
-                                 List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("allPharmacies");
-                                 if(table.size()>0){
-                                     for(Pharmacy row : table) { %>
-                                         <option value='<%= row.id %>'><%= row.displayName %> </option>
-                         <%
-                                 }}}
-                         %>
-                                     </select>
-                                     <div class="buttons">
-                                            <button class="button" type="reset" id="clear"><b>Reset</b></button>
-                                            <button class="button-success" type="submit"><b>Submit</b></button>     
-                                       </div>
-                                </div>
-                            </div>
-                        </form>
-                         <%
-                                 }
-                         %>            
-                                 <!--checking for availability of pharmacy-->
-                                        <%
-                                             if(request.getAttribute("pharmacy")!=null){
-                                                  Pharmacy p = (Pharmacy)request.getAttribute("pharmacy");
-                                                  
-                                        %>
-                                        <br>
-                         <div class="main_title">
-                              <img src="./public/images/p3.jpg" alt="pharmacy Profile">
-                              <div class="main_greeting">
-                                   <h1><%=p.displayName%></h1>
-                                   
-                              </div>
-                         </div>
-
-                         <!-- change the main cards css fragments to change number of cards Available -->
-                         <div class="main_cards">
-                             <% if(usertype==1) { %>
-                              <div class="card">
-                                   <!--<i class="fa fa-user-o fa-2x text-lightblue"></i>-->
-                                   <div class="card_inner">
-                                        <p class="text-primary-p">Address</p>
-                                        <p><%=p.address1%><br><%=p.address2%></p>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <p class="text-primary-p">Tel Number / Fax</p>
-                                   <div class="card_inner">
-                                        <p class=""><%=p.landNumber%></p>
-                                        <p class=""><%=p.fax%></p>
-                                   </div>
-                              </div>
-                              <% } %>     
-                                   <%
-                                             if(request.getAttribute("star")!=null){
-                                                  int[] s = (int[])request.getAttribute("star");
-                                                  
-                                        %>
-                              
-                              <div class="card">
-                                   <div class="card_inner">
-                                        <p class="text-primary-p">Rating</p>
-                                        <p>
-                                            <% for(int i=0;i<s[0];i++) { %>
-                                            <i class="fa fa-star fa-2x text-red"></i>
-                                            <% } %>
-                                            <% for(int i=0;i<s[1];i++) { %>
-                                            <i class="fa fa-star-half-o fa-2x text-red"></i>
-                                            <% } %>
-                                            <% for(int i=0;i<s[2];i++) { %>
-                                            <i class="fa fa-star-o fa-2x"></i>
-                                            <% } %>
-                                        </p>
-                                   </div>
-                              </div>
-                                        
-                                        <% } %>
-                              <% if(usertype==1) { %>
-                              <div class="card">
-                                   <i class="fa fa-book fa-2x text-yellow"></i>
-                                   <div class="card_inner">
-                                        <p class="text-primary-p">
-                                            <a href="#" class="button-success"><button class="button-success" type=""><b>Order Pharmacy</b></button></a>
-                                        </p>
-                                   </div>
-                              </div>
-                               <% } %>
-                         </div>
-
+                                 
                          <!--<div class="charts">-->
 
                              <!--######################-->
@@ -191,7 +91,7 @@
                                    <!-- <div class=""> -->
                                         <div class="charts_left_title">
                                              <div>
-                                                  <h1>Reviews</h1>
+                                                  <h1>Notifications</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
                                              <!--<i class="fa fa-suitcase"></i>-->
@@ -200,81 +100,46 @@
                                         <!--Review starts-->
                                         <!--checking for availability-->
                                         <%   
-                                             if(request.getAttribute("reviews")!=null){
-                                                  List<PharmacyReview> table = (ArrayList<PharmacyReview>)request.getAttribute("reviews");
+                                             if(request.getAttribute("notifications")!=null){
+                                                  List<Notifications> table = (ArrayList<Notifications>)request.getAttribute("notifications");
                                                   if(table.size()>0){
                                                       
                                         %>
-                                        
-                                        <!--js array-->
-                                        <script>
-                                             var id = [];
-                                             var rating = [];
-                                             var star0 = [];
-                                             var star1 = [];
-                                             var star2 = [];
-                                             var description = [];
-                                             var size =<%= table.size() %>;
-                                        </script>
-                                        <!--js array end-->
-                                        
 
                                    <!-- limit the results to 5 in db query... view more option will lead to all results -->
                                         <div class="charts_table_div">
                                              <table id="avail" class="display charts_table" style="width:100%">
                                                   <thead>
                                                        <tr>
-                                                            <th>Patient</th>
+                                                            <th>Origin</th>
                                                             <th>Description</th>
-                                                            <th>Review</th>
+                                                            <th>Read</th>
                                                        </tr>
                                                   </thead>
                                                   <tbody>
                                                        <% 
                                                            int cc = 0;
-                                                           for(PharmacyReview row : table) { 
+                                                           for(Notifications row : table) { 
                                                                 cc++;
                                                                 if (cc>10){
                                                                     break;
                                                                 }
                                                        %>
                                                        <tr>
-                                                           <td class="<% if(Integer.parseInt(session.getAttribute("userid").toString())==row.patientId){out.print("text-blue");} %>">
-                                                               <%= row.PatientFirstName %> <%= row.PatientLastName %>
+                                                           <td>
+                                                               <%= row.fromName %>
                                                                <br>
-                                                               <text style="font-size:10px;"><%= row.createdAt %></text>
+                                                               <text style="font-size:10px;"><%= row.created_at %></text>
                                                            </td>
                                                            <td style='white-space: normal;'><%= row.description %></td>
                                                            <td>
-                                                                <% for(int i=0;i<row.star[0];i++) { %>
-                                                                <i class="fa fa-star text-red"></i>
-                                                                <% } %>
-                                                                <% for(int i=0;i<row.star[1];i++) { %>
-                                                                <i class="fa fa-star-half-o text-red"></i>
-                                                                <% } %>
-                                                                <% for(int i=0;i<row.star[2];i++) { %>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <% } %>
-                                                                <% if(Integer.parseInt(session.getAttribute("userid").toString())==row.patientId) { %>
-                                                                <br>
-                                                                <button class="button" id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-edit"></i></button>
-                                                                <a class="button" id="" href="pharmacyReviewDelete?id=<%=row.id%>&pharmacy=<%=getPharmacy%>" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
-                                                                <% } else if(usertype==4) { %>
-                                                                <br>
-                                                                <a class="button" id="" href="pharmacyReviewReport?id=<%=row.id%>&pharmacy=<%=getPharmacy%>" onclick="return confirm('Are you sure want to report?');"><i class="fa fa-user-secret"></i></a>
-                                                                <% } %>
-                                                            </td>
+                                                               <% if(row.status!=0) { %>
+                                                                <button class="button" id="x<%= row.id %>" onclick="markAsRead('<%= row.id %>');"><i class="fa fa-eye"></i></button><span><i id="y<%= row.id %>" class="fa fa-lock text-primary-p" style="display: none;"></i></span>
+                                                               <% } else { %>
+                                                                <span><i id="y<%= row.id %>" class="fa fa-lock text-primary-p"></i></span>
+                                                               <% } %>
+                                                           </td>
                                                        </tr>
-                                                       
-                                                       <script>
-                                                            id[<%= table.indexOf(row) %>]                   =<%= row.id %>;
-                                                            rating[<%= table.indexOf(row) %>]               =<%= row.rating %>;
-                                                            star0[<%= table.indexOf(row) %>]                =<%= row.star[0] %>;
-                                                            star1[<%= table.indexOf(row) %>]                =<%= row.star[1] %>;
-                                                            star2[<%= table.indexOf(row) %>]                =<%= row.star[2] %>;
-                                                            description[<%= table.indexOf(row) %>]          ="<%= row.description %>";
-                                                                
-                                                        </script>
                                 
                                                         <% } %>
                                                         
@@ -282,9 +147,9 @@
                                                   </tbody>
                                                    <tfoot>
                                                        <tr>
-                                                            <th>Patient</th>
+                                                            <th>Origin</th>
                                                             <th>Description</th>
-                                                            <th>Review</th>
+                                                            <th>Read</th>
                                                        </tr>
                                                   </tfoot>
                                              </table>
@@ -293,11 +158,11 @@
                                                         <div class="card">
                                                         <p style="text-align: center;">
                                                             <% if(getLimit>0) { %>
-                                                                <a href="BrowsePharmacyReviews?search=1&pharmacy=<%=getPharmacy%>&limit=<%=getLimit-10%>">Prev</a>
+                                                                <a href="userNotifications?&limit=<%=getLimit-10%>">Prev</a>
                                                             <% } %>
                                                             &nbsp;
                                                             <% if(table.size()>10) { %>
-                                                                <a href="BrowsePharmacyReviews?search=1&pharmacy=<%=getPharmacy%>&limit=<%=getLimit+10%>">Next</a>
+                                                                <a href="userNotifications?limit=<%=getLimit+10%>">Next</a>
                                                             <% } %>
                                                         </p>
                                                         </div>
@@ -311,7 +176,7 @@
                                                        { 
                                                   %>
                                                   <div class="buttons">
-                                                      No Reviews available !
+                                                      No Notifications available !
                                                       <!--<a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>-->    
                                                   </div>
                                                   <%
@@ -329,54 +194,14 @@
 
                          <!--</div>-->
                                                   
-                           <%
-                                }
-                                else
-                                {
-                                if(usertype==1) {
-                           %>
-                           <div class="card">
-                                   <div class="card_inner">
-                                        <p class="text-primary-p">Search For a Pharmacy</p>
-                                   </div>
-                              </div>
-                           <%
-                                }}
-                           %>
+                          
 
                     </div>
                                                   
                     <!--######################-->
                         <!--container ending-->
                     <!--######################-->
-                    
-                    
-                    <!-- Modal starts -->
-                         <div id="modalBox" class="modal">
 
-                              <!-- Modal content -->
-                              <div id="printPart" class="modal-content">
-                                   <span id="modalCloseIcon" class="close">&times;</span>
-                                   <h3 style="text-align: center;">Update Review</h3>
-                                   
-                                   <form class="" action="updateReviewP" method="POST" id="submitForm">
-                                        <div class="star-rating" id='modal-star'>
-                                            
-                                        </div>
-                                       <input type="hidden" name="rating" id='ratingUpdate' value="">
-                                       <input type="hidden" name="id" id='modal-id' value="">
-                                       <input type="hidden" name="pharmacy" id='' value="<%=getPharmacy%>">
-                                       <br>
-                                       <textarea name="review" cols="50" rows="6" placeholder="Write Review" id='modal-review' value="" required></textarea>
-                                       <div class="buttons">
-                                            <button class="button" type="reset" id=""><b>Reset</b></button>
-                                            <button class="button-success" type="submit"><b>Submit</b></button>     
-                                       </div>
-                                    </form>
-                                       
-                              </div>
-                         </div>
-                         <!--Modal content ends-->  
                     
                     
 
@@ -388,9 +213,18 @@
                
                 <% 
                    String sidebar = "";
-                    if(usertype==1) {
-                        sidebar = "patientSidebar";
+                    if(usertype==0) {
+                        sidebar = "adminSidebar";
                     } 
+                    else if(usertype==1) {
+                        sidebar = "patientSidebar";
+                    }
+                    else if(usertype==2){
+                        sidebar = "doctorSidebar";
+                    }
+                    else if(usertype==3){
+                        sidebar = "hospitalSidebar";
+                    }
                     else if(usertype==4){
                         sidebar = "pharmacySidebar";
                     }
@@ -422,11 +256,6 @@
 
                 $(document).ready( function () {
                     
-                    //select2
-                    $('.pharmacy_select').select2({
-                        placeholder: "Select Pharmacy",
-                        allowClear: true,
-                    }).val("<%=getPharmacy%>").trigger("change");
         
                     //data table
                     $('#avail').DataTable( {
@@ -443,103 +272,20 @@
         
                 } );
                 
-                function changeColour(qq)
+                function markAsRead(qq)
                 {
-                    // alert($(qq).attr('id'));
-
-                    $(".rateStar").css('color','black');
-                    var s = $(".rateStar");
-                    var r = $(qq).attr('title');
-                    $("#ratingSubmit").val(r);
-                    var i;
-                    for (i = 0; i < r; i++) {
-                        $(s[i]).css('color','orange');
-                    }
+                    $.ajax({
+                        url: "markAsReadNotifications?id="+qq,
+                        success: function(result){
+                            $("#x"+qq).hide();
+                            $("#y"+qq).show();
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                            alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                        } 
+                    });
                 }
                 
-                function changeColourr(qq)
-                {
-                    // alert($(qq).attr('id'));
-
-                    $(".rateStarr").css('color','black');
-                    var s = $(".rateStarr");
-                    var r = $(qq).attr('title');
-                    $("#ratingUpdate").val(r);
-                    var i;
-                    for (i = 0; i < r; i++) {
-                        $(s[i]).css('color','orange');
-                    }
-                }
-
-                    
-                  //    #########################
-               //    modal script start
-               //    #########################
-
-               var modal = document.getElementById("modalBox");
-
-               // Get the button that opens the modal
-               var btn = document.getElementById("popUp");
-
-               // Get the <span> element that closes the modal
-               var span = document.getElementsByClassName("close")[0];
-
-               //modal print btn
-               var print = document.getElementById("print");
-
-               // When the user clicks on the button, open the modal
-               //    btn.onclick = function() 
-               function popup(indexId) {
-               modal.style.display = "block";
-               //        var index=btn.getAttribute("index");
-               var index = indexId;
-               
-               var i=0;
-               document.getElementById("modal-star").innerHTML="";
-               for(i=0;i<rating[index];i++) {
-                       document.getElementById("modal-star").innerHTML += "<span onclick=\"changeColourr(this);\" id='one' class=\"rateStarr fa fa-star\" title=\""+(i+1)+"\" style=\"color: orange;\"></span>";
-               }
-               var j=0;
-               for(j=i;j<5;j++) {
-                       document.getElementById("modal-star").innerHTML += "<span onclick=\"changeColourr(this);\" id='one' class=\"rateStarr fa fa-star\" title=\""+(j+1)+"\"></span>";
-               }
-               
-               $("#ratingUpdate").val(rating[index]);
-               $("#modal-review").val(description[index]);
-               $("#modal-id").val(id[index]);
-               
-               }
-
-               // When the user clicks on <span> (x), close the modal
-               span.onclick = function () {
-               modal.style.display = "none";
-
-               document.getElementById("modal-star").innerHTML = "";
-               $("#ratingUpdate").val(0);
-               $("#modal-review").val("");
-               $("#modal-id").val(0);
-
-               }
-
-               // When the user clicks anywhere outside of the modal, close it
-               window.onclick = function (event) {
-               if (event.target == modal) {
-                    modal.style.display = "none";
-
-                    document.getElementById("modal-star").innerHTML = "";
-               $("#ratingUpdate").val(0);
-               $("#modal-review").val("");
-               $("#modal-id").val(0);
-               
-               }
-               }
-
-
-               //    #########################
-               //    modal script end
-               //    #########################
-
-
           </script>
 
      </body>

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.user;
 
+import com.medihub.doctor.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "BrowseDoctorReviews", urlPatterns = {"/BrowseDoctorReviews"})
-public class BrowseDoctorReviews extends HttpServlet {
+@WebServlet(name = "ServiceNotifications", urlPatterns = {"/serviceNotifications"})
+public class ServiceNotifications extends HttpServlet {
 
    
 
@@ -40,15 +41,10 @@ public class BrowseDoctorReviews extends HttpServlet {
             int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
             
-            if(usertype==1 || usertype==2){
              PrintWriter out = response.getWriter();
                     try
                     {
-                        if(request.getParameter("search")!=null){
-                            if(request.getParameter("search").equalsIgnoreCase("1")){
-                                if(request.getParameter("doctor")!=null){
     //                                out.print(request.getParameter("search"));
-                                    int getDoctor=Integer.parseInt(request.getParameter("doctor"));
                                     String getLimit="0";
                                     if(request.getParameter("limit")!=null){
                                         getLimit=request.getParameter("limit");
@@ -61,30 +57,18 @@ public class BrowseDoctorReviews extends HttpServlet {
                                         session.removeAttribute("message");
                                     }
                                     
-                                    if(usertype==2){
-                                        getDoctor=userId;
-                                    }
-                                    
-                                    Doctor d = new Doctor();
-                                    DoctorReview dr = new DoctorReview();
-                                    request.setAttribute("doctor", d.getDoctor(getDoctor));
+                                    Notifications n = new Notifications();
+                                    request.setAttribute("notifications", n.getServiceNotifications(userId, usertype, getLimit));
 //                                    out.print(dr.getDoctorReviews(getDoctor, getLimit));
-                                    request.setAttribute("reviews", dr.getDoctorReviews(getDoctor, getLimit));
-                                    request.setAttribute("star", dr.getDoctorRating(getDoctor));
-                                }
-                            }
-                        }
 //                            out.print("jhfvgj");
-                        request.getRequestDispatcher("doctorReviews.jsp").forward(request, response);
+                        request.getRequestDispatcher("serviceNotifications.jsp").forward(request, response);
                     }
                     catch(Exception e)
                     {
                         out.println(e.toString());
                         out.print("jhfvgj");
                     }
-            }else{
-                request.getRequestDispatcher("403.jsp").forward(request, response);
-            }
+            
     }
 
     

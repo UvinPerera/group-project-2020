@@ -46,6 +46,18 @@
                               <i class="fa fa-dashboard"></i>
                               <a href="pharmacy">Dashboard</a>
                          </div>
+                         
+                         <h2>Alerts</h2>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/userNotifications.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-bell"></i>
+                              <a href="userNotifications">Admin Notifications</a>
+                         </div>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/serviceNotifications.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-bullseye"></i>
+                              <a href="serviceNotifications">Pharmacy Notifications</a>
+                         </div>
 
                          <h2>Orders</h2>
 

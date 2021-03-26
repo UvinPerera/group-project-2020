@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.user;
 
+import com.medihub.doctor.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "DoctorReviewReport", urlPatterns = {"/doctorReviewReport"})
-public class DoctorReviewReport extends HttpServlet {
+@WebServlet(name = "MarkAsReadNotifications", urlPatterns = {"/markAsReadNotifications"})
+public class MarkAsReadNotifications extends HttpServlet {
 
    
 
@@ -40,35 +41,28 @@ public class DoctorReviewReport extends HttpServlet {
             int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==2){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getDoctor=Integer.parseInt(request.getParameter("doctor"));
-
-                        DoctorReview dr = new DoctorReview();
+                        System.out.println("hgfd");
+                        Notifications n = new Notifications();
 //                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
-                        int dd=dr.reportReview(getId);
-                        if(dd>0){
-                            session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Reported !");
+                        int nn=n.readNotification(getId);
+                        if(nn>0){
+                            out.print("success");
                         }
                         else{
-                            session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Reporting Unsuccessful !");
+                            out.print("err");
                         }
                         
-                        response.sendRedirect("BrowseDoctorReviews?search=1&doctor="+getDoctor);
                     }
                     catch(Exception e)
                     {
                         out.println(e.toString());
                         out.print("jhfvgj");
                     }
-            }else{
-                request.getRequestDispatcher("403.jsp").forward(request, response);
-            }
+            
     }
 
     

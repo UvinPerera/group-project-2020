@@ -39,7 +39,7 @@
           <% if(usertype==1) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
           <% } else if(usertype==3) { %>
-          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_doc_hos.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/new_dash_hos.css" media="screen" />
           <% } %>
           <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
