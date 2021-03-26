@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.doctor.*"%>
 <%@page import="com.medihub.db.DbConfig"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,7 +33,13 @@
 
      <body>
 
-
+         <%
+             List<Doctor> doc = new ArrayList<Doctor>();
+             if(request.getAttribute("doctors")!=null){
+                 doc = (ArrayList<Doctor>)request.getAttribute("doctors");
+             }
+         
+         %>
           <div class="container">
               <!--######################-->
                  <!--navbar starting-->
@@ -61,20 +67,7 @@
                              <input type="hidden" name="searching" value=""/>
                         <div class="main_cards">
 
-                            <div class="card">
-                                      <i class="fa fa-search-plus fa-2x text-red"></i>
-                                      <div class="card_inner_profile">
-                                           <p class="text-primary-p">Status</p>
-                                           
-                                           <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
-                                               <option value='Action' selected><a href="">All</a></option>
-                                               <option value='Action'><a href="#">Pending</a></option>
-                                               <option value='Action'><a href="#">Active</a></option>
-                                               <option value='Action'><a href="#">Inactive</a></option>
-                                               <option value='Action'><a href="#">Blacklisted</a></option>
-                                           </select>
-                                      </div>
-                             </div>
+                            
 
                                  <div class="card">
                                       <i class="fa fa-medkit fa-2x text-green"></i>
@@ -84,7 +77,7 @@
                                                <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
                                                    <option value='Action' selected><a href="">All</a></option>
                                                    <option value='Action'><a href="#">Doctor ID</a></option>
-                                                   <option value='Action'><a href="#">Name Name</a></option>
+                                                   <option value='Action'><a href="#">Doctor Name</a></option>
                                                    <option value='Action'><a href="#">Specialization 1</a></option>
                                                    <option value='Action'><a href="#">Specialization 2</a></option>
                                                </select>
@@ -130,22 +123,28 @@
                                                        <th>Specialization 1</th>
                                                        <th>Specialization 2</th>
                                      
-                                                       <th>Status</th>
+                                                       
                                                        <th>Action</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                              
+                                                 <%
+                                                     if(request.getAttribute("doctors")!=null){
+                                                         for(int i=0;i<doc.size();i++){
+                                                 %>
+                                             
                                                   <tr id="" value="">
+                                                 
+                                                      <td><%=doc.get(i).id%></td>
+                                                       <td><%=doc.get(i).doctorName %></td>
+                                                       <td><%=doc.get(i).strSpecialisation_1 %></td>
+                                                       <td><%=doc.get(i).strSpecialisation_2 %></td>
+                                                        
+                                                       <td></a><button type="button" id="docDel_<%=doc.get(i).id%>" docId="<%=doc.get(i).id%>"><i class="fa fa-trash"></i></button></td>
                                                        
-                                                      <td></td>
-                                                       <td></td>
-                                                       <td></td>
-                                                       
-                                                       <td></td>
-                                                       <td style="color: "></td>
-                                                       <td><a href ="adminviewpharmacy"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
+                                                  
+                                                  <%}}%>
                                                   
                                                
                                                   <tr>
@@ -188,6 +187,19 @@
             
             
           <script src="./public/js/new_script.js"></script>
+          <script>
+              
+              $("[id^=docDel_]").click(function(){
+                  
+                  var docId = $(this).attr("docId");
+                  var r = confirm("Do you want to unlink Doctor with id "+docId+" ?");
+                  
+                  if(r === true){
+                      
+                      
+                  }
+              });
+          </script>
 
      </body>
 </html>
