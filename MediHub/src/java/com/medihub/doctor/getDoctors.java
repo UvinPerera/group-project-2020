@@ -38,6 +38,8 @@ public class getDoctors extends HttpServlet {
                     String returnData=d.searchDoctors(q);
 //                    response.setContentType("text/html;charset=UTF-8");
                     response.setContentType("application/json");
+//                    System.out.println(q);
+//                    System.out.println(returnData);
                     out.print(returnData);
 
                 }

@@ -5,13 +5,19 @@
  */
 package com.medihub.hospital;
 
+import com.medihub.db.DbConfig;
+import com.medihub.doctor.DoctorAvailability;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,8 +49,32 @@ public class ManageAppointments extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         
-        response.sendRedirect("manageAppointments.jsp");
+        int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
+        int hospitalId=0;
+        String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+hospitalAdminId;
+        DoctorAvailability da = new DoctorAvailability();
+            try{
+                
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                hospitalId = Integer.parseInt(rs.getString("hospital_id"));
+            }
+            
+            }
+            
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId));
+        
+        request.getRequestDispatcher("manageAppointments.jsp").forward(request, response);
         
     }
 

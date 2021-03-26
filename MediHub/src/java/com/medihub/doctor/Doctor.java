@@ -32,10 +32,6 @@ public class Doctor extends User {
     public String degress;
     public int approvedBy;
     public String approvedAt;
-    public int city;
-    public String strCity;
-    public String strDistrict;
-    public int district;
     
     public String searchDoctors(String q) {
         String query="SELECT d.id,d.titles,u.first_name,u.last_name,d.degrees FROM doctors d "
@@ -121,7 +117,7 @@ public class Doctor extends User {
     
     public String getAllDoctorsByHospitalAndSpecialisationAsString(int cHospital, int cSpecialisation) {
         
-        String q_select = "select u.id, u.first_name, u.last_name from hospitals ";
+        String q_select = "select u.id, u.first_name, u.last_name from hospitals h ";
         String q_join_dh  = "join doctor_hospital dh on h.id=dh.id ";
         String q_join_d  = "join doctors d on d.id=dh.id ";
         String q_join_u  = "join users u on d.id=u.id ";
@@ -158,6 +154,45 @@ public class Doctor extends User {
         
     }
        
+    public List<Doctor> getAllDoctorsByHospital(int cHospital) {
+        
+        
+        String query = "select u.id, u.first_name, u.last_name,d.titles,d.degrees from hospitals h "
+                + "join doctor_hospital dh on h.id=dh.hospital_id "
+                + "join doctors d on d.id=dh.doctor_id "
+                + "join users u on d.id=u.id w"
+                + "here u.status=1 and h.id="+cHospital;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<Doctor> doc = new ArrayList<Doctor>();
+                        
+            while(rs.next()) { 
+                Doctor d = new Doctor();
+                d.id = rs.getInt("id");
+                d.titles = rs.getString("titles");
+                d.degress=rs.getString("degrees");
+                d.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " " + rs.getString("degrees");
+                doc.add(d);
+               
+            }
+            
+            con.close();
+            return doc;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;        
+        }
+        
+    }
    
     
 //    public Doctor(int id) {

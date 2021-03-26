@@ -150,7 +150,7 @@
                                                   </tr>
                                                   <%}}%>
                                                   <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
+                                                       <td colspan="6"><a href="manageappointments">View More...</a></td>
                                                   </tr>
                                              </tbody>
                                         </table>
