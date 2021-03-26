@@ -55,14 +55,14 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>View pharmacy</p>
+                                   <p>View hospital</p>
                               </div>
                          </div>
                          <hr>
                         
                         <%
-                            if(request.getAttribute("pharmacyprofile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
+                            if(request.getAttribute("hospitalprofile")!=null){
+                                Pharmacy row = (Pharmacy)request.getAttribute("hospitalprofile");
                                 
                         %> 
 
@@ -73,14 +73,14 @@
                               
                               <div class="main_title">
                               <div class="main_greeting">
-                                   <p>Pharmacy details</p>
+                                   <p>Hospital details</p>
                               </div>
                             </div>
                             <div class="main_cards">
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Name</p>
+                                        <p class="text-primary-p">Hospital Name</p>
                                         <p class="text-secondary-p"><%= row.name%></p>
                                    </div>
                               </div>
@@ -115,7 +115,7 @@
                               </div>
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Email</p>
+                                        <p class="text-primary-p">Hospital Email</p>
                                         <p class="text-secondary-p"><%= row.email %></p>
                                    </div>
                               </div>iv>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="main_title">
                               <div class="main_greeting">
-                                   <p>Pharmacy admin details</p>
+                                   <p>Hospital admin details</p>
                               </div>
                             </div>
                               <div class="main_cards">

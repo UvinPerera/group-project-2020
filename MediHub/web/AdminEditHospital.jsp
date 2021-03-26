@@ -60,7 +60,7 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Edit Hospital</p>
+                                   <p>Edit Pharmacy</p>
                               </div>
                          </div>
                          <hr>
@@ -82,8 +82,8 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Name</p>
-                                        <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
+                                        <p class="text-primary-p">Hospital Name</p>
+                                        <input class="data" type="text" name="hospital_name" id="hospitalname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
                                        
                                    </div>
                               </div>
@@ -98,7 +98,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">pharmacy Display Name</p>
-                                        <input class="data" type="text" name="pharmacydisplay_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
+                                        <input class="data" type="text" name="hospitaldisplay_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -126,7 +126,7 @@
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Email</p>
+                                        <p class="text-primary-p">Hospital Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="<%= row.email%>" value="<%= row.email%>" read only >
                                         <div class="alert-danger" id="EmailError">
                                             * Email can't be empty and must contain only letters
@@ -207,7 +207,7 @@
                                        
                             <div class="main_title">
                               <div class="main_greeting">
-                                   <p>Pharmacy admin details</p>
+                                   <p>Hospital admin details</p>
                               </div>
                             </div>
                          <div class="main_cards">

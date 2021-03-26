@@ -1,12 +1,7 @@
-<%-- 
-    Document   : AdminViewPharmacist
-    Created on : Mar 24, 2021, 9:14:20 PM
-    Author     : DELL
---%>
-
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.patient.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,9 +9,9 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
 <html>
-<head>
-  <meta charset=utf-8>
-   <meta charset=utf-8>
+
+     <head>
+          <meta charset=utf-8>
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>MediHub</title>
           <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
@@ -26,12 +21,14 @@
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
           <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+     </head>
 
-     <% 
+     <body>
+
+          <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
           <div class="container">
@@ -57,15 +54,16 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>View pharmacy admin</p>
+                                   <p>Profile</p>
                               </div>
                          </div>
-                         <hr>
+                        
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
+                                User row = (User)request.getAttribute("profile");
                                 
-                        %> 
+                                
+                        %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
                          <div class="main_cards">
@@ -119,14 +117,47 @@
                                    </div>
                               </div>
                              
+                             <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <p class="text-secondary-p"><%= row.districtStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <p class="text-secondary-p"><%= row.cityStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address</p>
+                                        <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
+                                   </div>
+                              </div>
                              
+                             <div class=""></div>
+                              
                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
                                         <p class="text-secondary-p"><%= row.mobileNumber %></p>
                                    </div>
                               </div>
-                            
+                             
+                             <% if(row.landNumber!=null) { %>
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <p class="text-secondary-p"><%= row.landNumber %></p>
+                                   </div>
+                              </div>
+                             <% } %>
+
                          </div>
                          
                         <% } %>
@@ -139,7 +170,8 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/adminSidebar.jsp"/>
+                
+               <jsp:include page="./public/includes/adminSidebar.jsp"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->

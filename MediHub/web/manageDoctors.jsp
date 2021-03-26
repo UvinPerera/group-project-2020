@@ -153,7 +153,7 @@
                                                        <td><%= row.districtStr %></td>
                                                        <td><%= row.cityStr %></td>
                                                        <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
-                                                       <td><a href ="adminviewpharmacy"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
+                                                       <td><a href ="adminviewdoctor.jsp"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditDoctor.jsp"><button><i class="fa fa-edit"></i></button></a><button><i class="fa fa-trash"></i></button></td>
                                                   </tr>
                                                   <script>
                                                    Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;
@@ -163,7 +163,7 @@
                                                    pstatus[<%= table.indexOf(row) %>]                           = <%= row.status %>;
 
                                                  </script>
-                                                  
+                                                  <%}}}%>
                                                   <tr>
                                                        <td colspan="6"><a href="#">View More...</a></td>
                                                   </tr>

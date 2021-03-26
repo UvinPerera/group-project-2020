@@ -167,11 +167,9 @@ public class User {
         }
     }
     
-      public List<Patient> getAllPatient(){
+      public List<User> getAllPatient(){
         
-        String query = "select p.*, c.name_en as city_name, d.name_en as district, u.display_name as doctor from users p where user_type=1"
-                + "join cities c on c.id=h.city "
-                + "join districts d on d.id=c.district_id ";
+        String query = "select p.*,d.name_en as district_name,c.name_en as city_name FROM users p inner join cities c on p.city =c.id INNER JOIN districts d on d.id=c.district_id where p.user_type=1 ";
         
         try
         {
@@ -181,7 +179,7 @@ public class User {
             PreparedStatement pt = con.prepareStatement(query);
             ResultSet rs = pt.executeQuery();
             
-            List<Patient> p =new ArrayList<Patient>();
+            List<User> p =new ArrayList<User>();
                         
             while(rs.next()) { 
                 User ph = new User();
@@ -189,9 +187,10 @@ public class User {
                 ph.firstName=rs.getString("first_name");
                 ph.lastName=rs.getString("last_name");
                 ph.displayName=rs.getString("display_name");
-                ph.districtStr=rs.getString("district");
+                ph.districtStr=rs.getString("district_name");
                 ph.cityStr=rs.getString("city_name");
                 ph.status=rs.getInt("status");
+                p.add(ph);
                 
             }
             
@@ -208,14 +207,7 @@ public class User {
     
     public  List<User> getAllDoctor(){
         
-        String query = "select h.*, c.name_en as city_name, d.name_en as district, u.display_name as doctor from users h where user_type=2"
-                + "join cities c on c.id=h.city "
-                + "join districts d on d.id=c.district_id ";
-//                + "left join users u on u.id=h.director_id ";
-//                + "left join users ul on u.id=p.last_login_by "
-//                + "left join users uc on u.id=p.created_by "
-//                + "left join users uu on u.id=p.updated_by "
-//                + "left join users ua on u.id=p.approved_by ";
+        String query = "select p.*,d.name_en as district_name,c.name_en as city_name FROM users p inner join cities c on p.city =c.id INNER JOIN districts d on d.id=c.district_id where p.user_type=2 ";
         
         try
         {
@@ -230,8 +222,10 @@ public class User {
             while(rs.next()) { 
                 User doc = new User();
                 doc.id=rs.getInt("id");
+                doc.firstName=rs.getString("first_name");
+                doc.lastName=rs.getString("last_name");
                 doc.displayName=rs.getString("display_name");
-                doc.districtStr=rs.getString("district");
+                doc.districtStr=rs.getString("district_name");
                 doc.cityStr=rs.getString("city_name");
                 doc.status=rs.getInt("status");
                 
@@ -247,6 +241,30 @@ public class User {
             return null;        
         }
         
+    }
+    public void DeleteUser(){
+    
+        String query = "UPDATE users SET status=0 WHERE id="+this.id;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            int rs = pst.executeUpdate();
+            
+
+            
+            con.close();
+         
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();
+                 
+        }
+    
     }
     public void register() {
 
