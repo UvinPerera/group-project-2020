@@ -33,4 +33,8 @@ public class SecureUtils {
         return hexString.toString();
     }
 
+    public static String generatePasswordHashvalue(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

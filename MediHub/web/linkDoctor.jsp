@@ -62,7 +62,7 @@
                     </div>
 
                     <!-- change the main cards css fragments to change number of cards Available -->
-                    <form action="createdoctor" method="POST" id="">
+                    <form action="createdoctorhos" method="POST" id="" enctype="multipart/form-data">
                         <div class="main_cards">
 
                             <div class="card">
