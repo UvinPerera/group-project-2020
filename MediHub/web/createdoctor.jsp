@@ -187,6 +187,21 @@
                                    </div>
                               </div>
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <select class="input option" name="gender" id="gender">
+                                          <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                          <option value="M">Male</option>
+                                          <option value="F">Female</option>
+                                          <option value="N">Not preferred to say</option>
+                                        </select>
+                                        <div class="alert-danger" id="displayNameError">
+                                            * Gender can't be empty and must contain only letters
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="card">
                                   <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>

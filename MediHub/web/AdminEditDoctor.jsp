@@ -1,13 +1,6 @@
-<%-- 
-    Document   : AdminEditPharmacist
-    Created on : Mar 24, 2021, 11:09:01 PM
-    Author     : Ifra
---%>
-
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.doctor.*"%>
 <%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,6 +28,7 @@
           <% 
                String username="";
                username= session.getAttribute("username").toString();
+               int userType = Integer.parseInt(session.getAttribute("usertype").toString());
           %>
 
           <div class="container">
@@ -66,13 +60,13 @@
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
+                                Doctor row = (Doctor)request.getAttribute("profile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacistupdate" method="POST" id="updateForm" enctype="multipart/form-data">
+                         <form class="" action="patientupdate" method="POST" id="updateForm" enctype="multipart/form-data">
                             <div class="main_cards">
 
                               <div class="card">
@@ -104,15 +98,7 @@
                                         </div>
                                    </div>
                               </div>
-                              
-                               <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Update Profile Picture </p>
-                                        <input class="data" type="file" name="pp" id="pp" placeholder="Upload">
-                                        
-                                   </div>
-                              </div>
-                                        
+                                                            
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Email</p>
@@ -246,7 +232,13 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
+                <% 
+                   String sidebar = "";
+                    if(userType==1) {
+                        sidebar = "patientSidebar";
+                    } 
+               %>
+               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
