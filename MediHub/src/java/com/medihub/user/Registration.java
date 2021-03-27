@@ -63,7 +63,7 @@ public class Registration extends HttpServlet {
 //            User user=new User();
 //            user.setEmail(email);
             
-            String query="INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,city,mobile_number,land_number,password,user_type,status,created_at,updated_at) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
+            String query="INSERT INTO users (first_name,last_name,display_name,nic,dob,gender,email,address_1,address_2,city,mobile_number,land_number,password,user_type,status,created_at,updated_at) VALUES('"+first_name+"','"+last_name+"','"+display_name+"','"+nic+"','"+dob+"','"+gender+"','"+email+"','"+address1+"','"+address2+"',"+city+",'"+mobile+"','"+land_line+"','"+password+"',"+type+",0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             

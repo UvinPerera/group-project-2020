@@ -1,3 +1,4 @@
+<%@page import="com.medihub.doctor.DoctorAvailability"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -72,7 +73,13 @@
                                    <i class="fa fa-user-o fa-2x text-lightblue"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Upcoming Appointments</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <%
+                                            if(request.getAttribute("appointments")!=null){
+                                            List <DoctorAvailability> da1 = (ArrayList<DoctorAvailability>)request.getAttribute("appointments");
+                                        
+                                        %>
+                                        <span class="font-bold text-title"><%=da1.size() %></span>
+                                        <%}else{%><span class="font-bold text-title">0</span><%}%>
                                    </div>
                               </div>
 
@@ -121,23 +128,37 @@
                                                   <tr>
                                                        <th>#</th>
                                                        <th>Hospital</th>
-                                                       <th>Doctor</th>
-                                                       <th>Date / Time</th>
-                                                       <th>Number Of Patients</th>
+                                                       <th>Date</th>
+                                                       <th>Start Time</th>
+                                                       <th>End Time</th>
+                                                       <th>Max patients</th>
+                                                       <th>Current patients</th>
+                                                       <th>Fee</th>
                                                        
                                                   </tr>
                                              </thead>
                                              <tbody>
+                                                 <%
+                                                     int maxCount =5;
+                                                     if(request.getAttribute("appointments")!=null){
+                                                     List <DoctorAvailability> da = (ArrayList<DoctorAvailability>)request.getAttribute("appointments");
+                                                     if(da.size()<maxCount) maxCount = da.size();
+                                                     for(int i =0;i<maxCount;i++){
+                                                 %>
                                                   <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
+                                                      <td><%=da.get(i).id %></td>
+                                                      <td><%=da.get(i).hospitalName %></td>
+                                                       <td><%=da.get(i).date %></td>
+                                                       <td><%=da.get(i).startTime %></td>
+                                                       <td><%=da.get(i).endTime %></td>
+                                                       <td><%=da.get(i).maxCount %></td>
+                                                       <td><%=da.get(i).count %></td>
+                                                       <td><%=da.get(i).payment %></td>
                                                        
                                                   </tr>
+                                                  <%}} else{%><tr><td colspan="6">No upcoming appointments</td></tr><%}%>
                                                   <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
+                                                       <td colspan="8"><a href="doctorviewappointments">View More...</a></td>
                                                   </tr>
                                              </tbody>
                                         </table>

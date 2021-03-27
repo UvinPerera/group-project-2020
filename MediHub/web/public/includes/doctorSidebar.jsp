@@ -58,7 +58,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/channelling.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-plus-square"></i>
-                              <a href="channelling?search=0&doctor=&hospital=&specialisation=&date=">Create Prescription</a>
+                              <a href="createprescription">Create Prescription</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/placeOrder.jsp' ? 'active_menu_link' : ''}">

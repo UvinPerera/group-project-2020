@@ -33,13 +33,7 @@
 
      <body>
 
-         <%
-             List<Doctor> doc = new ArrayList<Doctor>();
-             if(request.getAttribute("doctors")!=null){
-                 doc = (ArrayList<Doctor>)request.getAttribute("doctors");
-             }
-         
-         %>
+        
           <div class="container">
               <!--######################-->
                  <!--navbar starting-->
@@ -60,7 +54,7 @@
                     <div class="main_container">
                         <div class="main_title">
                              <div class="main_greeting">
-                                 <h3>Manage Doctors</h3>
+                                 <h3>View Appointments</h3>
                              </div>
                         </div> 
                         <form class="" action="managePharmacy" method="GET" id="submitForm">
@@ -76,10 +70,9 @@
                                                
                                                <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
                                                    <option value='Action' selected><a href="">All</a></option>
-                                                   <option value='Action'><a href="#">Doctor ID</a></option>
-                                                   <option value='Action'><a href="#">Doctor Name</a></option>
-                                                   <option value='Action'><a href="#">Specialization 1</a></option>
-                                                   <option value='Action'><a href="#">Specialization 2</a></option>
+                                                   <option value='Action'><a href="#">Hospital</a></option>
+                                                   <option value='Action'><a href="#">Date</a></option>
+                                                   
                                                </select>
                                       </div>
                                  </div>
@@ -105,10 +98,7 @@
                         <!--######################-->
                         <!--create button-->
                         <!--######################-->
-                        <div class="buttons">
-                            <a href="createdoctorhos" class=""><button class="button" ><b>Add a New Doctor</b></button></a>
-                            <a href="linkdoctor" class=""><button class="button" ><b>Link a Doctor</b></button></a>
-                        </div>
+                        
                         
                         <div class="charts">
                           
@@ -119,38 +109,43 @@
                                         
                                              <thead>
                                                   <tr>
-                                                       <th> Doctor Id</th> 
-                                                       <th>Doctor Name</th>
-                                                       <th>Specialization 1</th>
-                                                       <th>Specialization 2</th>
+                                                        <th>#</th>
+                                                       <th>Hospital</th>
+                                                       <th>Date</th>
+                                                       <th>Start Time</th>
+                                                       <th>End Time</th>
+                                                       <th>Max patients</th>
+                                                       <th>Current patients</th>
+                                                       <th>Fee</th>
                                      
                                                        
-                                                       <th>Action</th>
+                                                      
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                 <%
-                                                     if(request.getAttribute("doctors")!=null){
-                                                         for(int i=0;i<doc.size();i++){
+                                                
+                                             <%
+                                                     
+                                                     if(request.getAttribute("appointments")!=null){
+                                                     List <DoctorAvailability> da = (ArrayList<DoctorAvailability>)request.getAttribute("appointments");
+                                                     
+                                                     for(int i =0;i<da.size();i++){
                                                  %>
-                                             
                                                   <tr id="" value="">
                                                  
-                                                      <td><%=doc.get(i).id%></td>
-                                                       <td><%=doc.get(i).doctorName %></td>
-                                                       <td><%=doc.get(i).strSpecialisation_1 %></td>
-                                                       <td><%=doc.get(i).strSpecialisation_2 %></td>
+                                                      <td><%=da.get(i).id %></td>
+                                                      <td><%=da.get(i).hospitalName %></td>
+                                                       <td><%=da.get(i).date %></td>
+                                                       <td><%=da.get(i).startTime %></td>
+                                                       <td><%=da.get(i).endTime %></td>
+                                                       <td><%=da.get(i).maxCount %></td>
+                                                       <td><%=da.get(i).count %></td>
+                                                       <td><%=da.get(i).payment %></td>
                                                         
-                                                       <td></a><button type="button" id="docDel_<%=doc.get(i).id%>" docId="<%=doc.get(i).id%>"><i class="fa fa-trash"></i></button></td>
+                                                       
                                                        
                                                   </tr>
-                                                  
-                                                  <%}}%>
-                                                  
-                                               
-                                                  <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
-                                                  </tr>
+                                                  <%}} else{%><tr><td colspan="6">No upcoming appointments</td></tr><%}%>
                                                   
                                              </tbody>
                                         </table>
@@ -168,7 +163,7 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
-                <jsp:include page="./public/includes/hospitalSidebar.jsp"/>
+                <jsp:include page="./public/includes/doctorSidebar.jsp"/>
                 
                 <!--######################-->
                 <!--sidebar ending-->
