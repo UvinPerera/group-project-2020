@@ -1,5 +1,7 @@
-  /* new css starts */
-
+*{
+  margin:0;
+  padding:0;
+}
 
 ::-webkit-scrollbar {
      width: 5px;
@@ -44,6 +46,10 @@ body {
      color: #2e4a66;
 }
 
+.text-blue {
+     color: #05418a;
+}
+
 .text-lightblue {
      color: #469cac;
 }
@@ -60,6 +66,10 @@ body {
 
 .text-yellow {
      color: #a98921;
+}
+
+.text-brown {
+     color: #3d2e29;
 }
 
 .text-green {
@@ -156,10 +166,23 @@ main {
      align-items: center;
 }
 
-.main_greeting > h3 {
-     font-size: 30px;
+.main_title > img {
+     max-height: 100px;
+     object-fit: contain;
+     margin-right: 20px;
+     border-radius: 50px;
+}
+
+.main_greeting > h1 {
+     font-size: 20px;
      color: #2e4a66;
-     margin-bottom: 3px;
+     margin-bottom: 5px;
+}
+
+.main_greeting > p {
+     font-size: 14px;
+     font-weight: 700px;
+     color: #a5aaad;
 }
 
 .main_cards { 
@@ -195,74 +218,40 @@ main {
      font-size: 25px;
 }
 
-.charts {
-     display: grid;
-     gap: 30px;
-     margin-top: 5px;
-}
-
-.charts_table_div {
-     width: 100%; 
-     overflow-x: scroll;
-}
-
-.charts_table {
-     /* overflow: hidden; */
-     border-collapse: collapse;
-     margin: 25px 0;
-     font-size: 0.9em;
-     min-width: 400px;
-     width: 100%;
-     border-radius: 5px 5px 0 0;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.charts_table thead tr {
-     background-color: #0087a1;
-     color: #ffffff;
+.card1{
+     background-color: #d1ecf1;
+     color: #35a4ba;
      text-align: center;
-     font-weight: bold;
-}
-
-.charts_table th, .charts_table td {
-     padding: 12px 15px;
-     white-space: nowrap;
-     text-overflow: ellipsis;
-}
-
-.charts_table td {
-     font-weight: 700;
-     text-align: center;
-}
-
-.charts_table td button{
-     margin: 0 5px;
+     padding: 25px;
      border-radius: 5px;
+     font-size: 14px;
 }
 
-.charts_table tbody tr {
-     border-bottom: 1px solid #dddddd;
-}
-
-.charts_table tbody tr:nth-of-type(even) {
-     background-color: #f3f3f3;
-}
-
-.charts_table tbody tr:last-of-type {
-     border-bottom: 2px solid #0087a1;
-}
-
-.charts_table tbody tr:hover {
-     color: rgba(0, 0, 0, 0.6);
-}
-
-
-.modal th, td {
-    text-align: center;
-}
-
-.dataTable tfoot tr, .dataTable thead tr{
+.card2{
+     background-color: #d2f9ee;
+     color: #38e1ba;
      text-align: center;
+     padding: 25px;
+     border-radius: 5px;
+     font-size: 14px;
+}
+
+.card3{
+     background-color: #d6d849;
+     color: #3a3e41;
+     text-align: center;
+     padding: 25px;
+     border-radius: 5px;
+     font-size: 14px;
+}
+
+.card4{
+     background-color: #fddcdf;
+     color: #f65a6f;
+     text-align: center;
+     padding: 25px;
+     border-radius: 5px;
+     font-size: 14px;
 }
 
 .buttons button {
@@ -429,6 +418,7 @@ main {
 
 .footer_text {
      padding: 5px;
+     font-size: 12px;
 }
 
 .social {
@@ -455,6 +445,7 @@ main {
 .copyrights {
      display: flex;
      padding: 5px;
+     font-size: 12px;
      justify-content: center;
      text-align: center;
 }

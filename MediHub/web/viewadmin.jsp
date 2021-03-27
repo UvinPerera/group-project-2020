@@ -17,8 +17,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
-          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/admin_new_css.css" media="screen" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      </head>
 

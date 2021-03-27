@@ -295,7 +295,7 @@ main {
 }
 
 #sidebar {
-     background: #0087a1;
+     background: teal;
      grid-area: sidebar;
      overflow-y: auto;
      padding: 20px;

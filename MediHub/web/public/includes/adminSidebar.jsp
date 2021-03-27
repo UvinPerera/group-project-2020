@@ -96,7 +96,7 @@
 
                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/changePassword.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-secret"></i>
-                              <a href="changepassword">Change Password</a>
+                              <a href="changepasswordadmin">Change Password</a>
                          </div>
 
                          <div class="sidebar_logout">
