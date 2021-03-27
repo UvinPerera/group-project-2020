@@ -109,6 +109,22 @@
                                 </div>
                             </div>  
                             <div class="card">
+                                <i class="fa fa-stethoscope fa-2x text-green"></i>
+                                <div class="card_inner_profile">
+                                    <p class="text-primary-p">Gender</p>
+                                    <select class="data" name="gender" id="gender">
+                                        <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+
+                                    </select>
+                                    <div class="alert-danger" id="districtError">
+                                        * Select valid district
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
                                 <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Email</p>
@@ -268,7 +284,15 @@
                                     <p class="text-primary-p">Specialization 1</p>
                                     <select class="data" name="spec1" id="spec1">
                                         <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                        <%
+                                        if(request.getAttribute("specialization")!=null){
+                                            
+                                            List<DoctorSpecialisation> ds = (ArrayList<DoctorSpecialisation>)request.getAttribute("specialization");
+                                            for(DoctorSpecialisation row : ds){
+                                        %>
                                         
+                                        <option value="<%=row.id %>" ><%=row.name %></option>
+                                        <%}}%>
                                     </select>
                                     
                                 </div>                                  
@@ -278,9 +302,17 @@
                                 <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Specialization 2</p>
-                                    <select class="data" name="spec1" id="spec1">
+                                    <select class="data" name="spec2" id="spec1">
                                         <option disabled="disabled" selected="selected">--Choose Option--</option>
+                                        <%
+                                        if(request.getAttribute("specialization")!=null){
+                                            
+                                            List<DoctorSpecialisation> ds = (ArrayList<DoctorSpecialisation>)request.getAttribute("specialization");
+                                            for(DoctorSpecialisation row : ds){
+                                        %>
                                         
+                                        <option value="<%=row.id %>" ><%=row.name %></option>
+                                        <%}}%>
                                     </select>
                                     
                                 </div>                                  
