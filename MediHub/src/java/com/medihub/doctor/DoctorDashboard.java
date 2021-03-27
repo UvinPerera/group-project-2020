@@ -53,41 +53,19 @@ public class DoctorDashboard extends HttpServlet {
              HttpSession session = request.getSession();
             int doctorId =Integer.parseInt(session.getAttribute("userid").toString());
             int userid = Integer.parseInt(session.getAttribute("usertype").toString());
+             
+            
             
             if(userid==2){
              PrintWriter out = response.getWriter();
             try{
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
+               
                 
-                Statement stmt=con.createStatement(); 
-                ResultSet rs=stmt.executeQuery("SELECT * FROM prescriptions");
-                
-                
-                ArrayList Prescriptions = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <=1 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Prescriptions.add(row);
-                }
-                
-                //rs.close();
-                rs=stmt.executeQuery("SELECT doctor_availability.*,hospitals.name FROM `doctor_availability` INNER JOIN hospitals ON doctor_availability.hospital_id=hospitals.id");
-                ArrayList Appointments = new ArrayList();
-                while(rs.next()){
-                        ArrayList row = new ArrayList();
-                        for (int i = 1; i <=15 ; i++){
-                            row.add(rs.getString(i));
-                        }
-                        Appointments.add(row);
-                }
                 Doctor p = new Doctor(doctorId);
+                DoctorAvailability da = new DoctorAvailability();
                 String absolutePath = p.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
-                request.setAttribute("prescriptions", Prescriptions);
-                request.setAttribute("appointments", Appointments);
+                request.setAttribute("appointments", da.getCurrentAvailabilities(doctorId));
                 request.getRequestDispatcher("doctorDashboard.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());
@@ -100,17 +78,12 @@ public class DoctorDashboard extends HttpServlet {
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             PrintWriter out = response.getWriter();
-            int presId = Integer.parseInt(request.getParameter("pid"));
-            int duration = Integer.parseInt(request.getParameter("duration"));
-            String description = request.getParameter("desc");
-            int sms = request.getParameter("sms").equals("on")?1:0;
-            int email = request.getParameter("email").equals("on")?1:0;
+            
             try{
                 DbConfig db = DbConfig.getInstance();
                 Connection con = db.getConnecton();
                 
-                Statement stmt=con.createStatement(); 
-                int rs=stmt.executeUpdate("INSERT INTO medication_reminders(prescription_id,duration,through_mail,through_sms,description) VALUES("+presId+","+duration+","+email+","+sms+",'"+description+"')");
+                
                 response.sendRedirect("doctor");
             }
             catch(Exception e){

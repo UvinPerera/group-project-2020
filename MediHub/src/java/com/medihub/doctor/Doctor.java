@@ -47,8 +47,6 @@ public class Doctor extends User {
             ResultSet rs = pst.executeQuery();
             
             List<Doctor> ds = new ArrayList<Doctor>();
-            
-            
                         
             while(rs.next()) { 
                 
