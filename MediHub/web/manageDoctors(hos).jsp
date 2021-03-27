@@ -107,6 +107,7 @@
                         <!--######################-->
                         <div class="buttons">
                             <a href="createdoctorhos" class=""><button class="button" ><b>Add a New Doctor</b></button></a>
+                            <a href="linkdoctor" class=""><button class="button" ><b>Link a Doctor</b></button></a>
                         </div>
                         
                         <div class="charts">
