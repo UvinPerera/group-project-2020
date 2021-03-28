@@ -1,4 +1,5 @@
 package com.medihub.user;
+import com.google.gson.Gson;
 import com.medihub.db.*;
 import com.medihub.patient.Channelling;
 import com.medihub.patient.Patient;
@@ -19,6 +20,7 @@ public class User {
     public String firstName;
     public String lastName;
     public String displayName;
+    public String fullNameWithEmail;
     public String email;
     protected String password;
     public int userType;
@@ -42,6 +44,7 @@ public class User {
     public String districtStr;
     public int district;
     public String cityStr;
+    public int channelingId;
     
     public static String getDashboard(int userType) {
         if(userType==0){
@@ -263,6 +266,85 @@ public class User {
         {
           e.printStackTrace();
                  
+        }
+    
+    }
+    
+    public List<User> getPatientsByAvailability(int availabilityId){
+        String query = "select u.first_name,u.last_name,c.id,u.email FROM users u "
+                + "INNER JOIN channelling c ON c.patient_id=u.id "
+                + "INNER JOIN doctor_availability da ON da.id = c.doctor_availability_id "
+                + "WHERE da.id="+availabilityId;
+        
+        List<User> p = new ArrayList<User>();
+        
+        try{
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+            
+                User pat = new User();
+                
+                pat.id = rs.getInt("id");
+                pat.email = rs.getString("email");
+                pat.firstName = rs.getString("first_name");
+                pat.lastName = rs.getString("last_name");
+                
+                p.add(pat);
+            
+            }
+            
+            con.close();
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return p;
+    
+    }
+    
+    public String searchUser(String q){
+    
+    String query = "SELECT id,first_name,last_name,email FROM users "
+            + "WHERE (first_name LIKE '%"+q+"%' OR last_name LIKE '%"+q+"%' ) AND user_type=1";
+    
+    try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<User> us = new ArrayList<User>();
+                        
+            while(rs.next()) { 
+                
+                User u = new User();
+                
+                u.id = rs.getInt("id");
+                u.fullNameWithEmail = rs.getString("first_name") + " " + rs.getString("last_name") + " (" + rs.getString("email")+")";
+                
+                us.add(u);
+            }
+            
+            con.close();
+            
+            Gson gson = new Gson();
+            String json = gson.toJson(us);
+            
+            return json;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+                
         }
     
     }
