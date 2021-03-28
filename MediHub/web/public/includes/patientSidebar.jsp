@@ -74,7 +74,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/medicalRecords.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-file-archive-o"></i>
-                              <a href="medicalRecords.jsp">Medical Records</a>
+                              <a href="viewmedicalrecords">Medical Records</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">

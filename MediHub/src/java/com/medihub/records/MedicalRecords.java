@@ -71,4 +71,44 @@ public class MedicalRecords {
     
     
     }
+    
+    
+    public List<MedicalRecords> getRecordsByPatient(int patId){
+    
+        String query = "SELECT * from medical_records where patient_id="+patId;
+        try{
+            
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<MedicalRecords> mrl = new ArrayList<MedicalRecords>();
+            
+            while(rs.next()){
+            
+                MedicalRecords mr = new MedicalRecords();
+                mr.id = rs.getInt("id");
+                mr.name = rs.getString("name");
+                mr.path = rs.getString("path");
+                mr.patientId = rs.getInt("patient_id");
+                mr.description = rs.getString("description");
+                
+                mrl.add(mr);
+                
+            
+            }
+            
+            
+            return mrl;
+        
+        }
+        
+        catch(Exception e){
+        
+            e.printStackTrace();
+            return null;
+        }
+}
 }

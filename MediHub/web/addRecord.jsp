@@ -74,7 +74,7 @@
                           
                          <br><br>
                          <div class="buttons">
-                                <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
+                                <button class="button" id="id" type="button" onclick="window.location.href='viewmedicalrecords';"><b>Cancel</b></button>
                                 <button class="button" type="reset" id="clear"><b>Clear</b></button>
                                  
                                 <button class="button-success" type="submit"><b>Store Record</b></button>     

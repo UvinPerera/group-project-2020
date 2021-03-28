@@ -52,5 +52,15 @@ h3{
 .fill{
   margin-top: -10px;
   margin-left: 99%;
-  width:4%;
+  width:3%;
+}
+.card{
+    padding-top:45px;
+    padding-bottom: 40px;
+}
+svg{
+    cursor: pointer;
+}
+button{
+    cursor:pointer;
 }
