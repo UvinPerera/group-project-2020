@@ -244,5 +244,51 @@ public class Hospital {
         }
         
     }
+        
+   public Hospital getHospitalProfile(){
+        
+        String query = "select p.id,p.name,p.license_number,p.director_id,p.display_name,p.land_number,p.fax,p.email,p.address_1,p.address_2,p.city,c.name_en as city_name from hospitals p join cities c on c.id=p.city where p.status=1 and p.id="+this.id;
+          try{
+       
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()) { 
+                    
+                    this.name=rs.getString("name") ;
+                    this.licenseNo = rs.getInt("license_number");
+                    this.displayName = rs.getString("display_name"); 
+                    this.landNumber =rs.getString("land_number");
+                    this.email = rs.getString("email");
+                    this.fax = rs.getString("fax");
+                    this.address1 = rs.getString("address_1");
+                    this.address2 = rs.getString("address_2");
+                    this.city = rs.getInt("city");      
+                    this.strCity = rs.getString("city_name");
+                 //   this.district = rs.getInt("district");
+                 //   this.strDistrict = rs.getString("district");
+          
+            }
+            
+            con.close();
+            return this;
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            return null;        
+        }
+    }
+     
+   public int getId(){
+        return this.id;
+    }
     
+  public void setId(int Id){
+    this.id = Id;
+  }
+
 }

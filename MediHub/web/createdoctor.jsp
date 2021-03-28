@@ -26,7 +26,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" type="text/css" href="./public/css/createDoctor.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/admin_new_css.css" media="screen" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -160,7 +160,7 @@
                                    </div>
                               </div>
                                <div class="card">
-                                  <i class="fa fa-stethoscope fa-2x text-green"></i>
+                                  <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
                                         <select class="data" name="district" id="district">
@@ -196,7 +196,7 @@
                                    </div>
                               </div>
                               <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
+                                  <i class="fa fa-stethoscope fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Gender</p>
                                         <select class="input option" name="gender" id="gender">

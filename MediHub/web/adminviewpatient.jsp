@@ -69,12 +69,14 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
+                                       <i class="fa fa-user-circle fa-2x text-green"></i>
                                         <p class="text-primary-p">First Name</p>
                                         <p class="text-secondary-p"><%= row.firstName %></p>
                                    </div>
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Last Name</p>
                                         <p class="text-secondary-p"><%= row.lastName %></p>
@@ -82,6 +84,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
                                         <p class="text-secondary-p"><%= row.displayName %></p>
@@ -89,6 +92,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Email</p>
                                         <p class="text-secondary-p"><%= row.email %></p>
@@ -96,6 +100,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">NIC</p>
                                         <p class="text-secondary-p"><%= row.nic %></p>
@@ -103,6 +108,7 @@
                               </div>
                              
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Date of Birth</p>
                                         <p class="text-secondary-p"><%= row.dob %></p>
@@ -110,6 +116,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Gender</p>
                                         <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
@@ -119,6 +126,7 @@
                              <div class=""></div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">District</p>
                                         <p class="text-secondary-p"><%= row.districtStr %></p>
@@ -126,6 +134,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
                                         <p class="text-secondary-p"><%= row.cityStr %></p>
@@ -133,6 +142,7 @@
                               </div>
 
                               <div class="card">
+                                  <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Address</p>
                                         <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
@@ -142,6 +152,7 @@
                              <div class=""></div>
                               
                              <div class="card">
+                                 <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
                                         <p class="text-secondary-p"><%= row.mobileNumber %></p>
@@ -150,6 +161,7 @@
                              
                              <% if(row.landNumber!=null) { %>
                              <div class="card">
+                                 <i class="fa fa-user-circle fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
                                         <p class="text-secondary-p"><%= row.landNumber %></p>

@@ -66,7 +66,7 @@
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="patientupdate" method="POST" id="updateForm" enctype="multipart/form-data">
+                         <form class="" action="admineditdoctor?dId=<%=row.id%>" method="POST" id="updateForm" enctype="multipart/form-data">
                             <div class="main_cards">
 
                               <div class="card">

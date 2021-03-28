@@ -104,7 +104,7 @@ public class CreateDoctor extends HttpServlet {
             String Address1 = request.getParameter("address_1");
             String Address2 = request.getParameter("address_2");
             int City = Integer.parseInt(request.getParameter("city"));
-            String Mobile_Number = request.getParameter("mobile_no");
+            String Mobile_Number = request.getParameter("mobile_number");
             String Land_Number = request.getParameter("land_number");
             String Password= SecureUtils.generatePasswordHash(request.getParameter("password"));
   

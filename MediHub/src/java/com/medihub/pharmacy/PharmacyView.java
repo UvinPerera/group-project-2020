@@ -76,6 +76,7 @@ public class PharmacyView extends HttpServlet {
                 }catch(Exception e){
                     out.println(e.toString());
                 }
+            
     }
 
 

@@ -17,8 +17,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <link rel="stylesheet" type="text/css" href="./public/css/manageReviews.css" media="screen" />
-          <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/manageHospital.css" media="screen" />
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
           <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
           <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -105,7 +104,7 @@
                               </form>
                                                
                         <hr>
-                        
+                        <br>
                         
                         <div class="charts">
                           
@@ -113,7 +112,7 @@
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
+                                                      <th>Review ID</th>
                                                        <th>Patient ID</th>
                                                        <th>Patient Name</th>
                                                        <th>Date</th>
@@ -123,6 +122,7 @@
                                              </thead>
                                              <tbody>
                                                   <tr>
+                                                       <td>1</td> 
                                                        <td>1</td>
                                                        <td>Patient 1</td>
                                                        <td>Weligama</td>
@@ -131,12 +131,6 @@
                                                   </tr>
                                                   <tr>
                                                        <td>1</td>
-                                                       <td>Patient 1</td>
-                                                       <td>Weligama</td>
-                                                       <td>Active</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
                                                        <td>1</td>
                                                        <td>Patient 1</td>
                                                        <td>Weligama</td>
@@ -144,6 +138,15 @@
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
                                                   </tr>
                                                   <tr>
+                                                       <td>1</td>
+                                                       <td>1</td>
+                                                       <td>Patient 1</td>
+                                                       <td>Weligama</td>
+                                                       <td>Active</td>
+                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>1</td>
                                                        <td>1</td>
                                                        <td>Patient 1</td>
                                                        <td>Weligama</td>
@@ -151,6 +154,7 @@
                                                        <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></td>
                                                   </tr>
                                                   <tr>
+                                                       <td>1</td> 
                                                        <td>1</td>
                                                        <td>Patient 1</td>
                                                        <td>Weligama</td>
