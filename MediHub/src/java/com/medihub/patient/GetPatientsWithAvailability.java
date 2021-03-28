@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.patient;
 
+import com.medihub.user.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author uvinp
  */
-@WebServlet(name = "CreatePrescription", urlPatterns = {"/createprescription"})
-public class CreatePrescription extends HttpServlet {
+@WebServlet(name = "GetPatientsWithAvailability", urlPatterns = {"/getpatientswithavailability"})
+public class GetPatientsWithAvailability extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +32,7 @@ public class CreatePrescription extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -44,14 +45,24 @@ public class CreatePrescription extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int doctorId =Integer.parseInt(session.getAttribute("userid").toString());
-        
-        DoctorAvailability da = new DoctorAvailability();
-        
-        request.setAttribute("hospitals", da.getCurrentAvailabilitiesCurrent(doctorId));
-        request.getRequestDispatcher("createprescription.jsp").forward(request, response);
-        
+            User p = new User();
+            int availId = Integer.parseInt(request.getParameter("aId"));
+            
+            List<User> pl = p.getPatientsByAvailability(availId);
+            
+            String optString ="";
+            
+            for(User pat :pl){
+                
+            String name = pat.firstName+" "+pat.lastName+"("+pat.email+")";
+            String temp="<option value='"+pat.id+"'>"+name+"</option>";
+            optString = optString+temp;
+            }
+            
+            PrintWriter out = response.getWriter();
+            
+            out.print(optString);
+            
     }
 
     /**
@@ -65,19 +76,7 @@ public class CreatePrescription extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        
-        String hosId = request.getParameter("hosId");
-        String patientId = request.getParameter("patient");
-        String reminder = request.getParameter("reminder");
-        String duration = request.getParameter("");
-        
-        Map<String,String[]> m =request.getParameterMap();
-        String[] genericName = m.get("gName");
-        String[] tradeName = m.get("tName");
-        String[] dosage = m.get("dosage");
-        String[] interval = m.get("interval");
-        
+       
     }
 
     /**

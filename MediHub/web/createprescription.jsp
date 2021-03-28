@@ -52,12 +52,13 @@
                 <!--container starting-->
                 <!--######################-->
                 <div class="main_container">
+                    <form action="createprescription" method="POST">
                     <div class="main_title">
                         <div class="main_greeting">
                             <h3>Create Prescriptions</h3>
                         </div>
                     </div> 
-                    <form class="" action="managePharmacy" method="GET" id="submitForm">
+                    
                         <input type="hidden" name="searching" value=""/>
                         <div class="main_cards">
 
@@ -68,8 +69,15 @@
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Hospital</p>
 
-                                    <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                        
+                                    <select id="hosSelect" name='hosId' class="text-secondary-p search_select" style="width: 100%" id="search">
+                                        <option selected="" disabled="">--Choose Hospital--</option>
+                                        <%
+                                            if(request.getAttribute("hospitals")!=null){
+                                            List<DoctorAvailability> da = (ArrayList<DoctorAvailability>)request.getAttribute("hospitals");
+                                            for(DoctorAvailability hs :da){
+                                        %>
+                                        <option value="<%=hs.id %>" ><%=hs.hospitalName %></option>
+                                        <%}}%>
 
                                     </select>
                                 </div>
@@ -80,8 +88,8 @@
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Patient</p>
 
-                                    <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                        
+                                    <select name='patient' id="pat" class="text-secondary-p search_select" style="width: 100%" id="search">
+                                        <option selected="" disabled="">--Choose patient--</option>
 
                                     </select>
                                 </div>
@@ -91,7 +99,15 @@
                                 <i class="fa fa-clock-o fa-2x text-red"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Set Reminder</p>
-                                    <input type="checkbox" class="filter_text textt" style="width: 100%" >
+                                    <input id="reminder" name="reminder" type="checkbox" class="filter_text textt" style="width: 100%" >
+                                </div>
+                            </div>
+                            
+                            <div class="card" id="duration">
+                                <i class="fa fa-calendar fa-2x text-yellow"></i>
+                                <div class="card_inner_profile">
+                                    <p class="text-primary-p">Duration</p>
+                                    <input name="duration" type="text" class="filter_text textt" style="width: 100%" value="">
                                 </div>
                             </div>
                             
@@ -100,7 +116,7 @@
 
 
                         </div>
-                    </form>
+                    
 
                     <hr>
                     <!--######################-->
@@ -135,10 +151,10 @@
                                     <tr  value="">
 
                                        
-                                        <td><input type="text" required></td>
-                                        <td><input type="text" required></td>
-                                        <td><input type="number" required></td>
-                                        <td><select required="">
+                                        <td><input name="gName" type="text" required></td>
+                                        <td><input name="tName" type="text" required></td>
+                                        <td><input name="dosage" type="number" required></td>
+                                        <td><select name="interval" required="">
                                                 <option selected="" disabled="">Choose Interval</option>
                                                 <option value="0">Before Meals</option>
                                                 <option value="1">After Meals</option>
@@ -158,11 +174,12 @@
                         </div>
 
                     </div>
+                    </form>
                 </div>                            
                 <!--######################-->
                 <!--container ending-->
                 <!--######################-->
-
+            
             </main>
 
             <!--######################-->
@@ -190,11 +207,33 @@
 
         <script src="./public/js/new_script.js"></script>
         <script>
+             $("#duration").hide();
             var medItems=1;
             var tData = $("#mediRow").html();
             $("#addItem").click(function () {
-                var x= $("#mediRow").html();
-                $("#mediRow").html(x+tData);
+                $(tData).appendTo("#mediRow");
+                //var x= $("#mediRow").html();
+                //$("#mediRow").html(x+tData);
+            });
+            
+            $("#reminder").change(function(){
+                alert($(this).val());
+                if($(this).val()==="on"){
+                    $("#duration").show();
+                    
+                }else if($(this).val()==="off"){
+                    
+                     $("#duration").hide();
+                }
+            });
+            
+            $("#hosSelect").change(function(){
+                
+                alert('da id:'+$(this).val());
+                $.get("getpatientswithavailability?aId="+$(this).val(),function(data,status){
+                    
+                    $(data).appendTo("#pat");
+                });
             });
         </script>
 

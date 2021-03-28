@@ -266,6 +266,44 @@ public class User {
         }
     
     }
+    
+    public List<User> getPatientsByAvailability(int availabilityId){
+        String query = "select u.first_name,u.last_name,u.id,u.email FROM users u "
+                + "INNER JOIN channelling c ON c.patient_id=u.id "
+                + "INNER JOIN doctor_availability da ON da.id = c.doctor_availability_id "
+                + "WHERE da.id="+availabilityId;
+        
+        List<User> p = new ArrayList<User>();
+        
+        try{
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+            
+                User pat = new User();
+                
+                pat.id = rs.getInt("id");
+                pat.email = rs.getString("email");
+                pat.firstName = rs.getString("first_name");
+                pat.lastName = rs.getString("last_name");
+                
+                p.add(pat);
+            
+            }
+            
+            con.close();
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return p;
+    
+    }
     public void register() {
 
     }

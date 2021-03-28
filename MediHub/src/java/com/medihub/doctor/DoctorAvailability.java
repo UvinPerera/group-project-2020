@@ -238,7 +238,7 @@ public class DoctorAvailability {
 
     public List<DoctorAvailability> getCurrentAvailabilities(int docId) {
 
-        String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE Date(date)>CURRENT_DATE AND da.status=1 AND d.id=" + docId;
+        String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE Date(date)>=CURRENT_DATE AND da.status=1 AND d.id=" + docId;
         List<DoctorAvailability> daList = new ArrayList<DoctorAvailability>();
         try {
             DbConfig db = DbConfig.getInstance();
@@ -250,6 +250,77 @@ public class DoctorAvailability {
                 
             DoctorAvailability da = new DoctorAvailability();
             da.hospitalName=rs.getString("name");
+            da.id = rs.getInt("id");
+            da.startTime = rs.getString("start_time");
+            da.endTime = rs.getString("end_time");
+            da.maxCount = rs.getInt("max_count");
+            da.count = rs.getInt("count");
+            da.payment = rs.getFloat("payment");
+            da.date = rs.getString("date");
+            
+            daList.add(da);
+            
+            
+            }
+            
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return daList;
+    }
+    public List<DoctorAvailability> getCurrentAvailabilitiesCurrent(int docId) {
+
+        String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE Date(date)=CURRENT_DATE AND da.status=1 AND d.id=" + docId;
+        List<DoctorAvailability> daList = new ArrayList<DoctorAvailability>();
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+            DoctorAvailability da = new DoctorAvailability();
+            da.hospitalName=rs.getString("name");
+            da.id = rs.getInt("id");
+            da.startTime = rs.getString("start_time");
+            da.endTime = rs.getString("end_time");
+            da.maxCount = rs.getInt("max_count");
+            da.count = rs.getInt("count");
+            da.payment = rs.getFloat("payment");
+            da.date = rs.getString("date");
+            
+            daList.add(da);
+            
+            
+            }
+            
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return daList;
+    }
+    public List<DoctorAvailability> getCurrentAvailabilitiesHos(int docId,int hosId) {
+
+        String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE Date(date)=CURRENT_DATE AND da.status=1 AND d.id=" + docId;
+        List<DoctorAvailability> daList = new ArrayList<DoctorAvailability>();
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+            DoctorAvailability da = new DoctorAvailability();
+            da.hospitalName=rs.getString("name");
+            da.hospitalId = rs.getInt("hospital_id");
             da.id = rs.getInt("id");
             da.startTime = rs.getString("start_time");
             da.endTime = rs.getString("end_time");
