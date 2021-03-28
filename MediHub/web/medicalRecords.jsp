@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                     </div>
-                <button class="styled" type="button"> ADD NEW </button>
+                <a href="addRecord.jsp"><button class="styled" type="button"> ADD NEW </button></a>
 
            </main>
            <jsp:include page="./public/includes/patientSidebar.jsp"/>

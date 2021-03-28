@@ -352,7 +352,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select p.description,p.created_by,p.expected_delivery_date,u.id ,u.first_name,u.last_name,u.mobile_number,u.land_number,u.address_1,u.address_2 from pharmacy_orders p inner join users u on u.id=p.created_by where p.pharmacy_id="+this.id+" and p.order_status='Pending' and p.status=1";
+        String query="select p.description,p.id,p.created_by,p.expected_delivery_date,u.first_name,u.last_name,u.mobile_number,u.land_number,u.address_1,u.address_2 from pharmacy_orders p inner join users u on u.id=p.created_by where p.pharmacy_id="+this.id+" and p.order_status='Pending' and p.status=1";
          
         try
         {
@@ -405,7 +405,7 @@ public class Pharmacy extends User {
         String strTime = timeFormat.format(date);
                
         //sql query
-        String query="select p.description,p.created_by,p.expected_delivery_date,u.id,u.first_name,u.last_name,u.mobile_number,u.land_number,u.address_1,u.address_2 from pharmacy_orders p inner join users u on u.id = p.created_by where p.pharmacy_id="+this.id+" and p.order_status='Completed'";
+        String query="select p.description,p.created_by,p.expected_delivery_date,p.id,u.first_name,u.last_name,u.mobile_number,u.land_number,u.address_1,u.address_2 from pharmacy_orders p inner join users u on u.id = p.created_by where p.pharmacy_id="+this.id+" and p.order_status='Completed'";
         
         try
         {
