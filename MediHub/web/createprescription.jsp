@@ -88,7 +88,7 @@
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Patient</p>
 
-                                    <select name='patient' id="pat" class="text-secondary-p search_select" style="width: 100%" id="search">
+                                    <select name='channel' id="pat" class="text-secondary-p search_select" style="width: 100%" id="search">
                                         <option selected="" disabled="">--Choose patient--</option>
 
                                     </select>
@@ -99,7 +99,7 @@
                                 <i class="fa fa-clock-o fa-2x text-red"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Set Reminder</p>
-                                    <input id="reminder" name="reminder" type="checkbox" class="filter_text textt" style="width: 100%" >
+                                    <input id="reminder" name="reminder" type="checkbox" class="filter_text textt" style="width: 100%" value=" ">
                                 </div>
                             </div>
                             
@@ -108,6 +108,14 @@
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Duration</p>
                                     <input name="duration" type="text" class="filter_text textt" style="width: 100%" value="">
+                                </div>
+                            </div>
+                            
+                           <div class="card" id="des">
+                                <i class="fa fa-calendar fa-2x text-yellow"></i>
+                                <div class="card_inner_profile">
+                                    <p class="text-primary-p">Description</p>
+                                    <input name="des" type="text" class="filter_text textt" style="width: 100%" value="">
                                 </div>
                             </div>
                             
@@ -138,7 +146,8 @@
                                         <th>Generic Name</th>
                                         <th>Trade Name</th>
                                         <th>Dosage</th>
-                                        <th>Interval</th>
+                                        <th>Duration</th>
+                                        <th>Meal Preference</th>
 
 
 
@@ -153,11 +162,20 @@
                                        
                                         <td><input name="gName" type="text" required></td>
                                         <td><input name="tName" type="text" required></td>
-                                        <td><input name="dosage" type="number" required></td>
+                                        <td><input name="dosage" type="text" required></td>
                                         <td><select name="interval" required="">
                                                 <option selected="" disabled="">Choose Interval</option>
+                                                <option value="8">Three Times Per Day</option>
+                                                <option value="12">Two Times Per Day</option>
+                                                <option value="24">One Times Per Day</option>
+                                                
+
+                                            </select></td>
+                                        <td><select name="mp" required="">
+                                                <option selected="" disabled="">Choose Meal Preference</option>
                                                 <option value="0">Before Meals</option>
                                                 <option value="1">After Meals</option>
+                                                
                                                 
 
                                             </select></td>
@@ -208,7 +226,9 @@
         <script src="./public/js/new_script.js"></script>
         <script>
              $("#duration").hide();
+             $("#des").hide();
             var medItems=1;
+            var toggle=1;
             var tData = $("#mediRow").html();
             $("#addItem").click(function () {
                 $(tData).appendTo("#mediRow");
@@ -216,20 +236,24 @@
                 //$("#mediRow").html(x+tData);
             });
             
-            $("#reminder").change(function(){
-                alert($(this).val());
-                if($(this).val()==="on"){
+            $("#reminder").click(function(){
+                toggle=toggle+1;
+               
+                if(toggle%2===0){
                     $("#duration").show();
+                    $("#des").show();
                     
-                }else if($(this).val()==="off"){
+                }else {
                     
                      $("#duration").hide();
+                     $("#des").hide();
                 }
+                toggle = toggle%2;
             });
             
             $("#hosSelect").change(function(){
                 
-                alert('da id:'+$(this).val());
+                
                 $.get("getpatientswithavailability?aId="+$(this).val(),function(data,status){
                     
                     $(data).appendTo("#pat");

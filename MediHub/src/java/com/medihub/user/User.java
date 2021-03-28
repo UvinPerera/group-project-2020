@@ -42,6 +42,7 @@ public class User {
     public String districtStr;
     public int district;
     public String cityStr;
+    public int channelingId;
     
     public static String getDashboard(int userType) {
         if(userType==0){
@@ -268,7 +269,7 @@ public class User {
     }
     
     public List<User> getPatientsByAvailability(int availabilityId){
-        String query = "select u.first_name,u.last_name,u.id,u.email FROM users u "
+        String query = "select u.first_name,u.last_name,c.id,u.email FROM users u "
                 + "INNER JOIN channelling c ON c.patient_id=u.id "
                 + "INNER JOIN doctor_availability da ON da.id = c.doctor_availability_id "
                 + "WHERE da.id="+availabilityId;
