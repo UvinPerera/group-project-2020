@@ -63,7 +63,7 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/placeOrder.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bookmark"></i>
-                              <a href="medicationreminder">Set Medication Reminder</a>
+                              <a href="doctorrecords">Patient Records</a>
                          </div>
 
                          

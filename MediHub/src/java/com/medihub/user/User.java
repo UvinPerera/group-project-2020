@@ -1,4 +1,5 @@
 package com.medihub.user;
+import com.google.gson.Gson;
 import com.medihub.db.*;
 import com.medihub.patient.Channelling;
 import com.medihub.patient.Patient;
@@ -19,6 +20,7 @@ public class User {
     public String firstName;
     public String lastName;
     public String displayName;
+    public String fullNameWithEmail;
     public String email;
     protected String password;
     public int userType;
@@ -303,6 +305,47 @@ public class User {
         }
         
         return p;
+    
+    }
+    
+    public String searchUser(String q){
+    
+    String query = "SELECT id,first_name,last_name,email FROM users "
+            + "WHERE (first_name LIKE '%"+q+"%' OR last_name LIKE '%"+q+"%' ) AND user_type=1";
+    
+    try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<User> us = new ArrayList<User>();
+                        
+            while(rs.next()) { 
+                
+                User u = new User();
+                
+                u.id = rs.getInt("id");
+                u.fullNameWithEmail = rs.getString("first_name") + " " + rs.getString("last_name") + " (" + rs.getString("email")+")";
+                
+                us.add(u);
+            }
+            
+            con.close();
+            
+            Gson gson = new Gson();
+            String json = gson.toJson(us);
+            
+            return json;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+                
+        }
     
     }
     public void register() {
