@@ -12,9 +12,10 @@ import com.medihub.user.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +27,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author DELL
  */
-@WebServlet(name = "AdminViewPharmacy", urlPatterns = {"/adminviewpharmacy"})
-public class AdminViewPharmacy extends HttpServlet {
+@WebServlet(name = "AdminViewPharmacist", urlPatterns = {"/adminviewpharmacist"})
+public class AdminViewPharmacist extends HttpServlet {
+
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -42,26 +44,34 @@ public class AdminViewPharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              int pharmacyId = Integer.parseInt(request.getParameter("pId"));
-        
-              Pharmacy pharmacy = new Pharmacy(pharmacyId);
-              pharmacy.setId(pharmacyId); 
-              
-             
-        
+             HttpSession session = request.getSession();
+           
          try
             {
-                        
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+               
+               String query="select p.pharmacist_id from  pharmacies p "
+                           + "where p.id=pId";
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery(query);
+                int userId=1;
+                while(rs.next()){
+                       userId=rs.getInt("pharmacist_id");
                 
-                Pharmacy p = new Pharmacy(pharmacyId);
-                request.setAttribute("pharmacyprofile", pharmacy.getPharmacyProfile());
-                request.getRequestDispatcher("adminviewpharmacy.jsp").forward(request, response);
-            
+                }
+                userId = Integer.parseInt(request.getParameter("uId"));
+                User u = new User(userId);
+                u.setId(userId);
+                request.setAttribute("profile", u.getProfile());
+                request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
                 } catch(Exception e){
                    e.printStackTrace();
                 }
     }
-    
+
+  
+
     /**
      * Returns a short description of the servlet.
      *

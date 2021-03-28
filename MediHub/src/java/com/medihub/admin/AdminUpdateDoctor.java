@@ -72,7 +72,7 @@ public class AdminUpdateDoctor extends HttpServlet {
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
-        response.sendRedirect("admineditdoctor");
+        response.sendRedirect("admineditdoctor"+doctorId+"");
             con.close();  
         }
         catch(Exception e)

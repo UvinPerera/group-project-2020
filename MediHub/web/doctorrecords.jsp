@@ -1,3 +1,4 @@
+<%@page import="com.medihub.records.MedicalRecords"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.doctor.*"%>
@@ -18,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="./public/css/managePharmacy.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="./public/css/medicalRecords.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
@@ -51,7 +52,7 @@
                 <!--######################-->
                 <div class="main_container">
                     <form method="GET" action="doctorrecords">
-                         <div class="main_cards">
+                        <div class="main_cards">
                             <div class="card">
                                 <i class="fa fa-user fa-2x text-green"></i>
                                 <div class="card_inner_profile">
@@ -68,13 +69,42 @@
                                 <button class="button-success" type="submit"><b>Search</b></button>     
                             </div>
                         </div>
-                        
+                        <%
+                            if(request.getAttribute("records")!=null){
+                                
+                            List<MedicalRecords> mrl = (ArrayList<MedicalRecords>)request.getAttribute("records");
+                            
+                            if(mrl.size()>0){
+                            
+                        %>
+                        <div class="main_title">
+                            <div class="main_greeting">
+                                
+                                <h4>Medical Records of <%=mrl.get(0).patientName %></h4>
+                                
+                            </div>
+                        </div>
+                        <div class="main_cards">
+                            <%for(MedicalRecords row:mrl){%>
+                            <div class="card">
+                                <!-- <i class="fa fa-user fa-2x text-green"></i>-->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png" width="50px">
+                                <div class="card_inner_profile">
+                                    <p class="text-primary-p"><%=row.name %></p>
+                                    <p class="text-secondary-p"><a href="public/storage/mr/<%=row.path %>">Click to View</a></p>
+
+
+                                </div>
+                            </div>
+                            <%}%>
+                        </div>
+                        <%}}%>
                     </form>
                 </div>                            
                 <!--######################-->
                 <!--container ending-->
                 <!--######################-->
-            
+
             </main>
 
             <!--######################-->
@@ -101,10 +131,10 @@
 
 
         <script src="./public/js/new_script.js"></script>
-        
+
 
     </body>
-    
+
     <script>
 
         $('.doctor_select').select2({

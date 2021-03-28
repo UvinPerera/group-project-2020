@@ -42,7 +42,7 @@ public class changepasswordupdateadmin extends HttpServlet {
             PrintWriter out = response.getWriter();
             
              HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int adminId =Integer.parseInt(session.getAttribute("userid").toString());
             
         try
         {
@@ -55,7 +55,7 @@ public class changepasswordupdateadmin extends HttpServlet {
             String newPassword=SecureUtils.generatePasswordHash(request.getParameter("new_password"));
             String newPasswordConfirmation=SecureUtils.generatePasswordHash(request.getParameter("new_password_confirmation"));
             
-            String query="SELECT password FROM users WHERE status=1 AND id="+patientId;
+            String query="SELECT password FROM users WHERE status=1 AND id="+adminId;
             
             PreparedStatement stmt=con.prepareStatement(query);  
             ResultSet rs=stmt.executeQuery();
@@ -71,7 +71,7 @@ public class changepasswordupdateadmin extends HttpServlet {
             if(checkPassword.equals(curentPassword)){
                 
                 if(newPassword.equals(newPasswordConfirmation)) {
-                    query="UPDATE users SET password='"+newPassword+"', updated_at=CURRENT_TIMESTAMP, updated_by='"+patientId+"' WHERE status=1 AND id="+patientId;
+                    query="UPDATE users SET password='"+newPassword+"', updated_at=CURRENT_TIMESTAMP, updated_by='"+adminId+"' WHERE status=1 AND id="+adminId;
                     
                     stmt=con.prepareStatement(query);
                     rss=stmt.executeUpdate();

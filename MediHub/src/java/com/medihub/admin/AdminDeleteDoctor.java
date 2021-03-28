@@ -25,7 +25,7 @@ public class AdminDeleteDoctor extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         int doctorId = Integer.parseInt(request.getParameter("dId"));
         User doctor = new User();
         doctor.setId(doctorId);

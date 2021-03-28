@@ -46,9 +46,9 @@ public class DoctorRecords extends HttpServlet {
 
         HttpSession session = request.getSession();
         int doctorId = Integer.parseInt(session.getAttribute("userid").toString());
-
+        
         String patId = "";
-       
+       try{
             patId = request.getParameter("patient");
         
         if (patId!=null) {
@@ -56,8 +56,13 @@ public class DoctorRecords extends HttpServlet {
             MedicalRecords mr = new MedicalRecords();
             request.setAttribute("records", mr.getReocrdsByDoctorAndPatient(doctorId, patientId));
         }
+        
 
         request.getRequestDispatcher("doctorrecords.jsp").forward(request, response);
+       }
+       catch(Exception ex){
+           ex.printStackTrace();
+       }
     }
 
     /**

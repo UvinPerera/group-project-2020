@@ -59,156 +59,20 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Edit hospital</p>
+                                   <p>Edit pharmacist</p>
                               </div>
                          </div>
                          <hr>
                         <%
-                            if(request.getAttribute("pharmacyprofile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
+                            if(request.getAttribute("profile")!=null){
+                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacyupdateadmin" method="POST" id="updateForm">
-                            <div class="main_title">
-                              <div class="main_greeting">
-                                   <p>Pharmacy details</p>
-                              </div>
-                            </div>
-                            <div class="main_cards">
+                         <form class="" action="pharmacyadminupdateadmin" method="POST" id="updateForm">
 
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Hospital Name</p>
-                                        <input class="data" type="text" name="hospital_name" id="hospitalname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
-                                       
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">License Number</p>
-                                        <input class="data" type="text" name="license_number" id="license_number" placeholder="<%= row.getLicenseNumber()%>" value="<%= row.getLicenseNumber()%>" readonly>
-                                    </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">pharmacy Display Name</p>
-                                        <input class="data" type="text" name="hospitaldisplay_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
-                                        <div class="alert-danger" id="displayNameError">
-                                            * Display name can't be empty and must contain only alphanumeric
-                                        </div>
-                                   </div>
-                              </div>
-                               <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Land Number</p>
-                                        <input class="data" type="text" name="land_number" id="land_number" placeholder="<%= row.landNumber %>" value="<%= row.landNumber %>">
-                                        <div class="alert-danger" id="landNumberError">
-                                            * Enter valid land number
-                                        </div>                                   
-                                   </div>
-                              </div>
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Fax</p>
-                                        <input class="data" type="text" name="fax" id="fax" placeholder="<%= row.fax %>" value="<%= row.fax %>">
-                                        <div class="alert-danger" id="landNumberError">
-                                            * Enter valid land number
-                                        </div>
-                                  </div>
-                              </div>         
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Hospital Email</p>
-                                        <input class="data" type="text" name="email" id="email" placeholder="<%= row.email%>" value="<%= row.email%>" read only >
-                                        <div class="alert-danger" id="EmailError">
-                                            * Email can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>         
-                             <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Address 1</p>
-                                        <input class="data" type="text" name="address_1" id="address1" placeholder="<%= row.address1 %>" value="<%= row.address1 %>">
-                                        <div class="alert-danger" id="addressError">
-                                            * Address 1 can't be empty
-                                        </div>
-                                   </div>
-                              </div>
-                                        
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Address 2</p>
-                                        <input class="data" type="text" name="address_2" id="address2" placeholder="<%= row.address2%>" value="<%= row.address2%>">
-<!--                                        <div class="alert-danger" id="addressError">
-                                            * Address 2 can't be empty
-                                        </div>-->
-                                   </div>
-                              </div>
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">District</p>
-                                        <select class="data" name="district" id="district">
-                                                            <%
-                                                                if(request.getAttribute("districts")!=null){
-                                                                    List<District> districts = (ArrayList<District>)request.getAttribute("districts");
-                                                                    if(districts.size()>0){
-                                                                        for(District district : districts) { %>
-                                                                            <option value='<%= district.id %>' <% if(district.id==row.district){out.print("Selected");}%>><%= district.nameEn %></option>
-                                                            <%
-                                                                    }}}
-                                                            %>
-
-                                        </select>
-                                        <div class="alert-danger" id="districtError">
-                                            * Select valid district
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">City</p>
-                                        <select class="data" name="city" id="city" >
-                                                            <%
-                                                                if(request.getAttribute("cities")!=null){
-                                                                    List<City> cities = (ArrayList<City>)request.getAttribute("cities");
-                                                                    if(cities.size()>0){
-                                                                        for(City city : cities) { %>
-                                                                            <option value='<%= city.id %>' <% if(city.id==row.city){out.print("Selected");}%>><%= city.nameEn %></option>
-                                                            <%
-                                                                    }}}
-                                                            %>
-
-                                        </select>
-                                        <div class="alert-danger" id="cityError">
-                                            * Select valid city
-                                        </div>
-                                   </div>
-                              </div>
-                               <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Description</p>
-                                        <input class="data" type="text" name="discription" id="description" placeholder="<%= row.description%>" value="<%= row.description%>">
-                                        <div class="alert-danger" id="discriptionError">
-                                            * Description can't be empty
-                                        </div>
-                                   </div>
-                              </div>
-                            </div>
-                                       
-                            <div class="main_title">
-                              <div class="main_greeting">
-                                   <p>Hospital admin details</p>
-                              </div>
-                            </div>
                          <div class="main_cards">
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
@@ -303,7 +167,8 @@
                               
                               <div class="buttons">
                                 <button class="button" type="reset" id="clear"><b>Reset</b></button>
-                                <button class="button-success" type="submit"><b>Update</b></button>     
+                                <button class="button-success" type="submit"><b>Update</b></button>
+                                
                               </div>
 
                          </div>
@@ -442,3 +307,4 @@
           
      </body>
 </html>
+

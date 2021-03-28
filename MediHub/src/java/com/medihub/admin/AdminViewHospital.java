@@ -5,30 +5,23 @@
  */
 package com.medihub.admin;
 
-import com.medihub.db.DbConfig;
-import com.medihub.pharmacy.Pharmacist;
-import com.medihub.pharmacy.Pharmacy;
-import com.medihub.user.User;
+import com.medihub.hospital.Hospital;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author DELL
  */
-@WebServlet(name = "AdminViewPharmacy", urlPatterns = {"/adminviewpharmacy"})
-public class AdminViewPharmacy extends HttpServlet {
+@WebServlet(name = "AdminViewHospital", urlPatterns = {"/adminviewhospital"})
+public class AdminViewHospital extends HttpServlet {
 
+  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -42,26 +35,27 @@ public class AdminViewPharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              int pharmacyId = Integer.parseInt(request.getParameter("pId"));
+             int hospitalId = Integer.parseInt(request.getParameter("hId"));
         
-              Pharmacy pharmacy = new Pharmacy(pharmacyId);
-              pharmacy.setId(pharmacyId); 
+              Hospital hospital = new Hospital(hospitalId);
+              hospital.setId(hospitalId); 
               
-             
-        
+
          try
             {
                         
                 
-                Pharmacy p = new Pharmacy(pharmacyId);
-                request.setAttribute("pharmacyprofile", pharmacy.getPharmacyProfile());
-                request.getRequestDispatcher("adminviewpharmacy.jsp").forward(request, response);
+                Hospital h = new Hospital(hospitalId);
+                request.setAttribute("hospitalprofile", h.getHospitalProfile());
+                request.getRequestDispatcher("adminviewhospital.jsp").forward(request, response);
             
                 } catch(Exception e){
                    e.printStackTrace();
                 }
     }
-    
+
+  
+
     /**
      * Returns a short description of the servlet.
      *

@@ -1,12 +1,11 @@
 <%-- 
-    Document   : changepasswordadmin
-    Created on : Mar 27, 2021, 10:07:18 PM
-    Author     : Ifra
+    Document   : changePasswordPharmacy
+    Created on : Mar 21, 2021, 10:56:09 AM
+    Author     : Yash
 --%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
->
+<%@page import="com.medihub.admin.*"%> 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -72,7 +71,7 @@
                                    </div>
                                    <% } %>
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="changepasswordupdate" method="POST" id="updateForm">
+                         <form class="" action="changepasswordupdateadmin" method="POST" id="updateForm">
                          <div class="main_cards" id="">
 
                               <div class="card">
@@ -135,39 +134,14 @@
 
                </main>
 
-                <!--######################-->
-                <!--sidebar starting-->
-                <!--use else if to assign correct sidebar-->
-                <!--######################-->
-               <% 
-                   String sidebar = "";
-                    if(userType==1) {
-                        sidebar = "patientSidebar";
-                    } 
-                    else if(userType==0){
-                        sidebar = "adminSidebar";
-                    }
-                    else{
-                        sidebar = "";
-                    }
-               %>
-               <jsp:include page="<%="./public/includes/"+sidebar+".jsp"%>"/>
-                <!--######################-->
-                <!--sidebar ending-->
-                <!--######################-->
+              <jsp:include page="./public/includes/adminSidebar.jsp"/>
+             
           </div>
             
-            <!--######################-->
-            <!--footer starting-->
-            <!--######################-->                                      
+                                                 
                        
             <jsp:include page="./public/includes/footer.jsp"/>
-            
-            <!--######################-->
-            <!--footer ending-->
-            <!--######################-->
-            
-            
+          
             
           <script src="./public/js/new_script.js"></script>
           

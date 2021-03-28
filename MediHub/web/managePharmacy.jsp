@@ -55,32 +55,49 @@
                                  <h3>Manage Pharmacies</h3>
                              </div>
                         </div> 
-                       <form class="" action="BrowsePharmacy" method="GET" id="">
-                            <input type="hidden" name="search" value="1"/>
-                            <div class="card">
-                                <div class="card_inner_profile">
-                                     <p class="text-primary-p">Pharmacy Name</p>
-                                   
+                         <form class="" action="searchpharmacy" method="GET" id="submitForm">
+                             <input type="hidden" name="search" value="1"/>
+                            <div class="main_cards">
 
-                                      <select class="text-secondary-p pharmacy_select" style="width: 100%" name="pharmacy" id="pharmacy">
-                                         <option value="" disabled>Select Pharmacy</option>
-                                         <%
-                             if(request.getAttribute("allPharmacies")!=null){
-                                 List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("allPharmacies");
-                                 if(table.size()>0){
-                                     for(Pharmacy row : table) { %>
-                                         <option value='<%= row.id %>'><%= row.displayName %></option>
-                         <%
-                                 }}}
-                         %>
-                                     </select>
-                                     <div class="buttons">
-                                            <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
-                                            <button class="button-success" type="submit"><b>Submit</b></button>     
-                                       </div>
-                                </div>
+                                 <div class="card">
+                                      <i class="fa fa-binoculars fa-2x text-lightblue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Status</p>
+                                      
+                                           
+                                           <select class="text-secondary-p status_select" style="width: 100%" name="status" id="status">
+                                               <option value="0" >All</option>
+                                               <option value="1">Pending</option>
+                                               <option value="2" >Finished</option>
+                                               <option value="3">Canceled</option>
+                                           </select>
+                                      </div>
+                                 </div>
+
+                                 <div class="card">
+                                      <i class="fa fa-medkit fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Pharmacy</p>
+                                           <p class="text-secondary-p">
+                                      
+                                               
+                                               <select name='pharmacy' class="pharmacy_select" style="width: 100%" id="pharmacy">
+                                                   <option value="">Select Pharmacy</option>
+                                        
+                                               </select>
+                                           </p>
+                                      </div>
+                                 </div>
+
+
+
+                                 <div class="buttons">
+                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                   <button class="button-success" type="submit"><b>Search</b></button>     
+                                 </div>
+
                             </div>
-                        </form>
+                         </form>
                                                
                         <hr>
                         <br>
@@ -135,7 +152,7 @@
                                                        <td><%= row.districtStr %></td>
                                                        <td><%= row.cityStr %></td>
                                                        <td style="color: <% if(row.status==1){out.print("green");}else if(row.status==2){out.print("orange");}else if(row.status==3){out.print("red");}else{out.print("brown");} %>"><% if(row.status==1){out.print("Active");}else if(row.status==2){out.print("Pending");}else if(row.status==3){out.print("BlackListed");}else{out.print("Inactive");} %></td>
-                                                       <td><a href ="adminviewpharmacy.jsp"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><a href="admindeletepharmacy?pId=<%=row.id%>"><button><i class="fa fa-trash"></i></button></a></td>
+                                                       <td><a href ="adminviewpharmacy?pId=<%=row.id%>"><button><i class="fa fa-eye"></i></button></a><a href ="AdminEditPharmacy.jsp"><button><i class="fa fa-edit"></i></button></a><a href="admindeletepharmacy?pId=<%=row.id%>"><button><i class="fa fa-trash"></i></button></a></td>
                                                   </tr>
                                                   <script>
                                                    Id[<%= table.indexOf(row)%>]                                 = <%=row.id%>;

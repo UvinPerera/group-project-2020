@@ -1,3 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 28, 2021, 9:47:42 PM
+    Author     : Yash
+*/
+
   /* new css starts */
 
 
@@ -173,7 +183,7 @@ main {
      display: flex;
      flex-direction: column;
      justify-content: space-around;
-     height: 70px;
+     height: 100px;
      padding: 25px;
      background: #ffffff;
      box-shadow: 5px 5px 5px #ededed, -5px -5px -px #ffffff;
@@ -199,13 +209,11 @@ main {
      display: grid;
      gap: 30px;
      margin-top: 5px;
-     width:100%;
 }
 
 .charts_table_div {
      width: 100%; 
      overflow-x: scroll;
-     background: #ffffff;
 }
 
 .charts_table {
@@ -213,13 +221,14 @@ main {
      border-collapse: collapse;
      margin: 25px 0;
      font-size: 0.9em;
+     min-width: 400px;
      width: 100%;
      border-radius: 5px 5px 0 0;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .charts_table thead tr {
-     background-color: teal;
+     background-color: #0087a1;
      color: #ffffff;
      text-align: center;
      font-weight: bold;
@@ -250,7 +259,7 @@ main {
 }
 
 .charts_table tbody tr:last-of-type {
-    border-bottom: 2px solid teal;
+     border-bottom: 2px solid #0087a1;
 }
 
 .charts_table tbody tr:hover {
@@ -532,13 +541,3 @@ main {
      }
 
 }
-
-/* @media only screen and (max-width: 540px) {
-
-     .navbar_left {
-          display: none;
-     }
-
-} */
-
-  /* new css ends */

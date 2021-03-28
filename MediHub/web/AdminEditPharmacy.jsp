@@ -59,7 +59,7 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Edit Hospital</p>
+                                   <p>Edit pharmacy</p>
                               </div>
                          </div>
                          <hr>
@@ -71,12 +71,8 @@
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacyupdate" method="POST" id="updateForm">
-                            <div class="main_title">
-                              <div class="main_greeting">
-                                   <p>Pharmacy details</p>
-                              </div>
-                            </div>
+                         <form class="" action="pharmacyupdateadmin" method="POST" id="updateForm">
+
                             <div class="main_cards">
 
                               <div class="card">
@@ -310,7 +306,9 @@
                          </form>
                          
                         <% } %>
-                        
+                        <div class="buttons">
+                        <a href="AdminEditPharmacyAdmin.jsp"> <button class="button-success"><b>Edit Pharmacist</b></button></a> 
+                        </div>
                     </div>
                         
                </main>

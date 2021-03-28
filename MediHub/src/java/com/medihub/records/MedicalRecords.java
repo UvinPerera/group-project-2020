@@ -33,6 +33,7 @@ public class MedicalRecords {
                 + "INNER JOIN record_premissions ON medical_records.id = record_premissions.record_id "
                 + "INNER JOIN users ON users.id=medical_records.patient_id  "
                 + "WHERE record_premissions.doctor_id="+docId+" AND medical_records.patient_id="+patId;
+         List<MedicalRecords> mrl = new ArrayList<MedicalRecords>();
         try{
             
             DbConfig db = DbConfig.getInstance();
@@ -41,7 +42,7 @@ public class MedicalRecords {
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             
-            List<MedicalRecords> mrl = new ArrayList<MedicalRecords>();
+           
             
             while(rs.next()){
             
