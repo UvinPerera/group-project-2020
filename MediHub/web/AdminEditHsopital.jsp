@@ -1,5 +1,5 @@
 <%-- 
-    Document   : AdminEditPharmacy
+    Document   : AdminEditHospital
     Created on : Mar 24, 2021, 11:08:35 PM
     Author     : Ifra
 --%>
@@ -77,7 +77,7 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Name</p>
+                                        <p class="text-primary-p">Hospital Name</p>
                                         <input class="data" type="text" name="name" id="name" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
                                        
                                    </div>
@@ -121,7 +121,7 @@
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Email</p>
+                                        <p class="text-primary-p">Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="<%= row.email%>" value="<%= row.email%>" read only >
                                         <div class="alert-danger" id="EmailError">
                                             * Email can't be empty and must contain only letters
@@ -196,6 +196,9 @@
                               </div>
                            </form>
                          
+                           <div class="buttons">
+                             <a href="adminedithospitaladmin>"><button class="button-success"><b>Edit Director</b></button></a> 
+                          </div>                                 
                         <% } %>
                         
                     </div>
