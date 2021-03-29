@@ -79,11 +79,14 @@ public class LinkDoctor extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-        //int docId = request.
+        int docId = Integer.parseInt(request.getParameter("docId"));
         int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
         int hosId = hosId(hospitalAdminId);
         
         Doctor d = new Doctor();
+        d.linkDoctor(hosId, docId);
+        
+        response.sendRedirect("managedoctorhos");
         
         
 

@@ -88,7 +88,7 @@
                         <div class="buttons">
                             <%if (!b.booleanValue()) {%>
                             <form method="POST" action="linkdoctor">
-                                <input type="hidden" value="<%=d.id%>">
+                                <input name="docId" type="hidden" value="<%=d.id%>">
                                 <button class="button-success" type="submit"><b>Link Doctor</b></button> 
                             </form>
                             <%}%>
