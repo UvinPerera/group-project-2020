@@ -6,6 +6,7 @@
 package com.medihub.records;
 
 import com.medihub.db.DbConfig;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -58,6 +59,8 @@ public class updatePermissions extends HttpServlet {
                     int rs2=stmt2.executeUpdate("INSERT INTO record_premissions (doctor_id,patient_id,description,status,created_at,created_by) VALUES ("+doctorId+","+patientId+",'"+description+"',"+status+",CURRENT_TIMESTAMP,"+patientId+")");
                   
                  } 
+                 Notifications n = new Notifications();
+                 //n.createNotification(flag, flag, "", 1)
                   response.sendRedirect("patient");
                     }catch(Exception e){
                        out.println(e.toString());
