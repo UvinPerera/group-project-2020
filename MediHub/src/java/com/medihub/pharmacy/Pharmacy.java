@@ -370,7 +370,7 @@ public class Pharmacy extends User {
                         
             while(rs.next() ) { 
                 Orders ord = new Orders();
-                ord.id = rs.getInt(id);
+                ord.id = rs.getInt("id");
                 ord.description = rs.getString("description"); 
                 ord.patientId = rs.getInt("created_by");
                 ord.expectedDeliveryDate = rs.getString("expected_delivery_date");
