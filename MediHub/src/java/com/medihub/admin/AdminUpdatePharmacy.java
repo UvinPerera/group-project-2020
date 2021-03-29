@@ -6,6 +6,9 @@
 package com.medihub.admin;
 
 import com.medihub.db.DbConfig;
+import com.medihub.location.City;
+import com.medihub.location.District;
+import com.medihub.pharmacy.Pharmacy;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,6 +38,37 @@ public class AdminUpdatePharmacy extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+      @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int pharmacyId = Integer.parseInt(request.getParameter("pId"));
+        
+        Pharmacy pharmacy = new Pharmacy(pharmacyId);
+              pharmacy.setId(pharmacyId); 
+              
+             
+        
+         try
+            {
+                        
+                District d = new District();
+                
+                City c = new City();
+                
+                request.setAttribute("cities", c.getAllCities()); //directly get districts
+                request.setAttribute("districts", d.getAllDistricts()); //directly get districts
+                
+                Pharmacy p = new Pharmacy(pharmacyId);
+                request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
+                request.getRequestDispatcher("AdminEditPharmacy.jsp").forward(request, response);
+            
+                } catch(Exception e){
+                   e.printStackTrace();
+                }
+    
+    }
+    
      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
