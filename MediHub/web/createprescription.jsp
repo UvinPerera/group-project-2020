@@ -99,7 +99,7 @@
                                 <i class="fa fa-clock-o fa-2x text-red"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Set Reminder</p>
-                                    <input id="reminder" name="reminder" type="checkbox" class="filter_text textt" style="width: 100%" value=" ">
+                                    <input id="reminder" name="reminder" type="checkbox" class="filter_text textt" style="width: 100%">
                                 </div>
                             </div>
                             
@@ -107,7 +107,7 @@
                                 <i class="fa fa-calendar fa-2x text-yellow"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Duration</p>
-                                    <input name="duration" type="text" class="filter_text textt" style="width: 100%" value="">
+                                    <input name="duration" type="text" class="filter_text textt" style="width: 100%">
                                 </div>
                             </div>
                             
@@ -115,7 +115,7 @@
                                 <i class="fa fa-calendar fa-2x text-yellow"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Description</p>
-                                    <input name="des" type="text" class="filter_text textt" style="width: 100%" value="">
+                                    <input name="des" type="text" class="filter_text textt" style="width: 100%">
                                 </div>
                             </div>
                             

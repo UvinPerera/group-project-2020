@@ -102,7 +102,8 @@ public class CreatePrescription extends HttpServlet {
             Connection con = db.getConnecton();
             PreparedStatement pst = con.prepareStatement(query);
             PreparedStatement pst2 = con.prepareStatement(query2);
-
+            
+            
             int rs = pst.executeUpdate();
             ResultSet rs2 = pst2.executeQuery();
             while (rs2.next()) {
@@ -128,6 +129,9 @@ public class CreatePrescription extends HttpServlet {
             e.printStackTrace();
         }
         
+        /*out.println(reminder);
+        out.println(duration);
+        out.println(description);*/
         response.sendRedirect("createprescription");
 
     }
