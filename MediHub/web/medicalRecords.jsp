@@ -41,13 +41,14 @@
            <main>
                <div class="main_container">
                    <br><h3>Medical Records</h3><br>
+                    
                 <div class="main_cards" style="padding-left: 15px;padding-right: 15px">
                 <%
                     if(request.getAttribute("medicalRecords")!=null){
                                                   List<MedicalRecords> table = (ArrayList<MedicalRecords>)request.getAttribute("medicalRecords");
                                                   if(table.size()>0){
                  %>
-                 
+                
                 <script>
                      var id = [];
                      var name = [];
@@ -79,18 +80,18 @@
                                 <div class="options">
                                     <ul>
                                         <li class="actions" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></li>
-                                        <li class="actions" onclick="popup('<%=i%>');"><i class="fa fa-edit"></i></li>
-                                        <li class="actions"><a href="#" id="displayRecord" onclick="displayRecord('<%=i%>');" target="_blank"><i class="fa fa-eye"></i></a></li>
+                                        <a href="EditRecordUpdate?recordid=<%=row.id%>"><li class="actions"><i class="fa fa-edit"></i></li></a>
+                                        <a href="#" id="displayRecord" onclick="displayRecord('<%=i%>');" target="_blank"><li class="actions"><i class="fa fa-eye"></i></li></a>
                                     </ul>
                                 </div>
                     </div>
              <script>
-                            id[<%=i%>]                   ="<%= row.id %>";  
+                            id[<%=i%>]                   ="<%= row.id %>"; 
                             name[<%=i%>]                 ="<%= row.name %>";
                             description[<%=i%>]          ="<%= row.description%>"; 
                             status[<%=i%>]               ="<%= row.status %>"; 
                             category_id[<%=i%>]          ="<%= row.category_id %>"; 
-                            channelling_id[<%=i%>]       ="<%=row.channelingId%>";
+                            channelling_id[<%=i%>]       ="<%= row.channelingId%>";
                             path[<%=i%>]                 ="<%=row.path%>";
           </script>
                 <% } %>
@@ -153,33 +154,13 @@
                     </div>-->
                 </div>
                 <br><br>
-                <a href="addRecord.jsp"><button class="style" type="button">ADD NEW</button></a>
+                
+                <a href="addRecord.jsp"><button class="style" type="button">Add New</button></a>
+                <a href="#"><button class="style" type="button">Manage Permissions</button></a>
                </div>
             
                                                   
-            <div id="modalBox" class="modal">
-
-            <!-- Modal content -->
-            <div id="printPart" class="modal-content">
-                <span class="close">&times;  &nbsp;&nbsp;</span>
-                <h3 style="text-align: center;">Medical Record Details</h3>
-                <center>
-                <img src="#" id="modal_image">
-                <table style="border:none; text-align: left;">
-
-                    <tr>
-                        <td> Name of Record : </td>
-                        <td id="modal_name"> ** </td>
-                        <td> Description : </td>
-                        <td id="modal_description"> ** </td>
-                    </tr>
-
-                  
-                 </table><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button></center>
-
-            </div>
             
-             </div>
            </main>
            <jsp:include page="./public/includes/patientSidebar.jsp"/>
         </div>
@@ -199,29 +180,7 @@
 
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
-    function popup(indexId) {
-        modal.style.display = "block";
-        var index=indexId;
-        finalId =index; 
-        document.getElementById("modal_name").innerHTML = name[index];
-        document.getElementById("modal_description").innerHTML = description[index];
-        document.getElementById("modal_image").src = "public/storage/rec/"+path[index];
-        document.getElementById("modal_filePath").innerHTML = filepath[index];
-        
-
-    }
-       
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+   
     function displayRecord(finalId){
         
             document.getElementById("displayRecord").href = "public/storage/rec/"+path[finalId];

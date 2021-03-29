@@ -28,8 +28,12 @@
                     </div>
                </nav>
 
-               <% String userId;
-                                  userId= session.getAttribute("userid").toString(); %>
+               <% 
+                                    String userId;
+                                  if(session.getAttribute("userid")!=null)  {
+                                  userId= session.getAttribute("userid").toString(); 
+               
+               %>
                               
                               <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
                               <script>
@@ -41,3 +45,5 @@
                                   })
                                   
                               </script>
+                              
+                              <% } %>

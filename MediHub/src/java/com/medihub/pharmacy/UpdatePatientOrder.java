@@ -74,7 +74,7 @@ public class UpdatePatientOrder extends HttpServlet {
              
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
-            /////BUG
+            
             
             
             int orderId=0; 
