@@ -41,13 +41,14 @@
            <main>
                <div class="main_container">
                    <br><h3>Medical Records</h3><br>
+                    
                 <div class="main_cards" style="padding-left: 15px;padding-right: 15px">
                 <%
                     if(request.getAttribute("medicalRecords")!=null){
                                                   List<MedicalRecords> table = (ArrayList<MedicalRecords>)request.getAttribute("medicalRecords");
                                                   if(table.size()>0){
                  %>
-                 
+                
                 <script>
                      var id = [];
                      var name = [];
@@ -153,7 +154,9 @@
                     </div>-->
                 </div>
                 <br><br>
-                <a href="addRecord.jsp"><button class="style" type="button">ADD NEW</button></a>
+                
+                <a href="addRecord.jsp"><button class="style" type="button">Add New</button></a>
+                <a href="#"><button class="style" type="button">Manage Permissions</button></a>
                </div>
             
                                                   
