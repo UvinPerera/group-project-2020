@@ -57,6 +57,7 @@
                      var channelling_id = [];
                      var path = [];
                      var size =<%= table.size() %>;
+                      var finalId;
                 </script>
                 
                 <% 
@@ -78,8 +79,8 @@
                                 <div class="options">
                                     <ul>
                                         <li class="actions" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></li>
-                                        <li class="actions"><i class="fa fa-edit"></i></li>
-                                        <li class="actions" onclick="popup('<%=i%>');"><i class="fa fa-eye"></i></li>
+                                        <li class="actions" onclick="popup('<%=i%>');"><i class="fa fa-edit"></i></li>
+                                        <li class="actions"><a href="#" id="displayRecord" onclick="displayRecord('<%=i%>');" target="_blank"><i class="fa fa-eye"></i></a></li>
                                     </ul>
                                 </div>
                     </div>
@@ -163,7 +164,7 @@
                 <span class="close">&times;  &nbsp;&nbsp;</span>
                 <h3 style="text-align: center;">Medical Record Details</h3>
                 <center>
-                <img src="" id="modal_image">
+                <img src="#" id="modal_image">
                 <table style="border:none; text-align: left;">
 
                     <tr>
@@ -173,9 +174,7 @@
                         <td id="modal_description"> ** </td>
                     </tr>
 
-                   
-
-                   
+                  
                  </table><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button></center>
 
             </div>
@@ -194,7 +193,7 @@
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
+    
     //modal print btn
     var print = document.getElementById("print");
 
@@ -202,9 +201,8 @@
     //    btn.onclick = function() 
     function popup(indexId) {
         modal.style.display = "block";
-        
         var index=indexId;
-      
+        finalId =index; 
         document.getElementById("modal_name").innerHTML = name[index];
         document.getElementById("modal_description").innerHTML = description[index];
         document.getElementById("modal_image").src = "public/storage/rec/"+path[index];
@@ -224,7 +222,13 @@
             modal.style.display = "none";
         }
     }
-
+    function displayRecord(finalId){
+        
+            document.getElementById("displayRecord").href = "public/storage/rec/"+path[finalId];
+       
+     
+    
+    }
     //when printing
     print.onclick = function () {
         print.style.display = "none";
