@@ -201,7 +201,6 @@
     //    btn.onclick = function() 
     function popup(indexId) {
         modal.style.display = "block";
-        
         var index=indexId;
         finalId =index; 
         document.getElementById("modal_name").innerHTML = name[index];
