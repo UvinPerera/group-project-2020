@@ -77,7 +77,7 @@ public class MedicalRecords {
     
     public List<MedicalRecords> getRecordsByPatient(int patId){
     
-        String query = "SELECT * from medical_records where status = 1 and patient_id="+patId;
+        String query = "SELECT * from medical_records where status = 1 and patient_id="+patId+" order by created_at DESC";
         try{
             
             DbConfig db = DbConfig.getInstance();
