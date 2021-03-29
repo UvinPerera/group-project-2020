@@ -1,0 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.medihub.patient;
+
+import com.medihub.db.DbConfig;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ *
+ * @author Yash
+ */
+@WebServlet(name = "EditRecordUpdate", urlPatterns = {"/EditRecordUpdate"})
+public class EditRecordUpdate extends HttpServlet {
+
+   @Override
+            protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+             HttpSession session = request.getSession();
+            int pharmacyId =Integer.parseInt(session.getAttribute("userid").toString());
+            int recordId = Integer.parseInt(request.getParameter("recordid"));
+            PrintWriter out = response.getWriter();
+            
+            try{
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                
+                Statement stmt=con.createStatement(); 
+                ResultSet rs =stmt.executeQuery("SELECT * FROM medical_records  WHERE status=1 and id="+recordId);
+                
+                
+                ArrayList MR = new ArrayList();
+                while(rs.next()){
+                        ArrayList row = new ArrayList();
+                        for (int i = 1; i <= 12 ; i++){
+                            row.add(rs.getString(i));
+                        }
+                        MR.add(row);
+                }
+               
+                request.setAttribute("medicalRecord", MR);
+                request.getRequestDispatcher("updateRecord.jsp").forward(request, response);
+                }catch(Exception e){
+                    out.println(e.toString());
+                }
+                
+}}

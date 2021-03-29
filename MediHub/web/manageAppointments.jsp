@@ -51,7 +51,7 @@
                 <div class="main_container">
                     <div class="main_title">
                         <div class="main_greeting">
-                            <h3>Manage Patients</h3>
+                            <h3>Manage Appointments</h3>
                         </div>
                     </div> 
                     <form class="" action="managePatient" method="GET" id="submitForm">
@@ -145,7 +145,7 @@
                                     <td><%=apList.get(i).maxCount%></td>
                                     <td><%=apList.get(i).count%></td>
                                     <td><%=apList.get(i).payment%></td>
-                                    <td><button><i class="fa fa-edit"></i></button></td>
+                                    <td><button id="app_<%=apList.get(i).id%>" appId="<%=apList.get(i).id%>"><i class="fa fa-trash"></i></button></td>
                                 </tr>
                                 <%}
                                                       }%>
@@ -186,6 +186,16 @@
 
 
         <script src="./public/js/new_script.js"></script>
-
+        <script>
+            $("[id^=app]").click(function(){
+                
+                var r = confirm('WARNING! Are you sure you want to delete this appointment? This process is Irriversible');
+                if(r===true){
+                    window.location.href="deleteappointment?aId="+$(this).attr("appId");
+                }
+                
+            });
+            
+        </script>
     </body>
 </html>

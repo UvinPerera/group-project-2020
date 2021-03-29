@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.medihub.pharmacy;
+package com.medihub.patient;
+import java.io.*;
+import java.util.*;
+
+
 
 import com.medihub.db.DbConfig;
-import com.medihub.db.*;
-import java.io.File;
-import java.sql.*; 
 import java.io.IOException;
+
 import java.io.PrintWriter;
+
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.sql.PreparedStatement;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -25,19 +19,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.*;
 
 /**
  *
  * @author Yash
  */
-@WebServlet(name = "UpdatePatientOrder", urlPatterns = {"/updatepatientorder"})
-@MultipartConfig
-public class UpdatePatientOrder extends HttpServlet {
 
-    private boolean isMultipart;
+@WebServlet(name = "addRecord", urlPatterns = {"/addrecord"})
+@MultipartConfig
+public class addRecord extends HttpServlet {
+    
+   private boolean isMultipart;
    private int maxFileSize = 15 * 1024*1024; //max upload size in  bytes
    private File file ;
 
@@ -69,25 +67,20 @@ public class UpdatePatientOrder extends HttpServlet {
             
             String description="";//=request.getParameter("description");
             String filepath="";//=request.getParameter("file_path");
-            String date="" ;//= request.getParameter("date");
+            String recordname="" ;//= request.getParameter("date");
             
-             
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
-            
-            
-            
-            int orderId=0; 
-         
+             
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setSizeMax( maxFileSize );
             
             
+           
             String randomString = getSaltString();
             String extension = ".pdf";//filepath.substring(filepath.length()-4, filepath.length()-1);
             String absolutePath = randomString+extension;
-            boolean flag=false;
             
             try{
                 List fileItems = upload.parseRequest(request);
@@ -100,23 +93,13 @@ public class UpdatePatientOrder extends HttpServlet {
 
                       String name = item.getFieldName();//text1
                       String value = item.getString();
-                      
-                      if(name.compareTo("orderdescription")==0){
+                      if(name.compareTo("description")==0){
                           description=value;
                       }
                       
-                      else if(name.compareTo("deliverydate")==0){
-                          if(!value.isEmpty())
-                                date = value;
-                          else
-                              flag=true;
-                              
+                      else if(name.compareTo("recordName")==0){
+                          recordname = value;
                       }
-                      else if(name.compareTo("orderid")==0){
-                          orderId = Integer.parseInt(value);
-                      }
-                      
-                  
                       
 
                     } else {
@@ -129,37 +112,24 @@ public class UpdatePatientOrder extends HttpServlet {
                         filepath=fileName;
                         
                             
-                            file = new File(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath) ;
+                            file = new File(getServletContext().getRealPath("public/storage/rec/").replace('\\', '/')+"/"+absolutePath) ;
                         
-                             
+                            
                          
                             item.write( file ) ;
                               }
                           }
-                
-            String query;
-            if(!flag){
-                query= "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+", expected_delivery_date='"+date+"' WHERE id ="+ orderId;
-            }else{
-                query= "UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by="+patientId+" WHERE id ="+ orderId;}
+            
+            String query="INSERT INTO medical_records (id,name,path,patient_id,description,status,created_at,created_by) VALUES(NULL,'"+recordname+"','"+absolutePath+"',"+patientId+",'"+description+"',1,CURRENT_TIMESTAMP,'"+patientId+"')";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
             
-            String query2="UPDATE order_items SET updated_at=CURRENT_TIMESTAMP,file_path='"+filepath+"',absolute_path='"+absolutePath+"', updated_by="+patientId+",description='"+description+"' WHERE order_id ="+ orderId;
-            PreparedStatement stmt2=con.prepareStatement(query2);  
-            int rs2=stmt2.executeUpdate();
-            
+           
             }
             catch(Exception e){
                 e.printStackTrace();
             }
             
-            
-            
-            
-            
-           //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
-
             response.sendRedirect("patient");
             con.close();  
         }
@@ -169,8 +139,3 @@ public class UpdatePatientOrder extends HttpServlet {
         }  
     }
 }
-
-    ////////////////////////////////////
-      
-   
-            

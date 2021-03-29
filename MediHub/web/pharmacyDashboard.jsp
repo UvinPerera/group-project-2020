@@ -153,13 +153,13 @@
                                                             <td><%= row.patientFirstName %><%= row.patientLastName %></td>
                                                             <td><%= row.orderStatus %></td>
                                                             <td><%= row.expectedDeliveryDate %></td>
-                                                            <td><%= row.id %>></td>
+                                                            <td><%= row.id %></td>
                                                             
                                                             <td><button id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></td>
                                                        </tr>
                                                        
                                                        <script>
-                                                            id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;                                                            
+                                                            id[<%= table.indexOf(row) %>]                   =<%= row.id %>;                                                            
                                                             patientFirstName[<%= table.indexOf(row) %>]     ="<%= row.patientFirstName %>";
                                                             patientLastName[<%= table.indexOf(row) %>]      ="<%= row.patientLastName %>";
                                                             orderStatus[<%= table.indexOf(row) %>]          =<%= row.orderStatus %>;

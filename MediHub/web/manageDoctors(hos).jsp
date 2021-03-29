@@ -195,6 +195,7 @@
                   
                   if(r === true){
                       
+                      window.location.href="unlinkdoctor?dId="+docId;
                       
                   }
               });

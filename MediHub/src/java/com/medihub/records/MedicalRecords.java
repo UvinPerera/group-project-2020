@@ -26,6 +26,7 @@ public class MedicalRecords {
     public String description;
     public String patientName;
     public int doctorId;
+    public int status;
     
     public List<MedicalRecords> getReocrdsByDoctorAndPatient(int docId,int patId){
     
@@ -72,4 +73,44 @@ public class MedicalRecords {
     
     
     }
+    
+    
+    public List<MedicalRecords> getRecordsByPatient(int patId){
+    
+        String query = "SELECT * from medical_records where status = 1 and patient_id="+patId+" order by created_at DESC";
+        try{
+            
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            List<MedicalRecords> mrl = new ArrayList<MedicalRecords>();
+            
+            while(rs.next()){
+            
+                MedicalRecords mr = new MedicalRecords();
+                mr.id = rs.getInt("id");
+                mr.name = rs.getString("name");
+                mr.path = rs.getString("path");
+                mr.patientId = rs.getInt("patient_id");
+                mr.description = rs.getString("description");
+                mr.status=rs.getInt("status");
+                mrl.add(mr);
+                
+            
+            }
+            
+            
+            return mrl;
+        
+        }
+        
+        catch(Exception e){
+        
+            e.printStackTrace();
+            return null;
+        }
+}
 }
