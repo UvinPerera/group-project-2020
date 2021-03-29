@@ -49,7 +49,7 @@ public class EmailTest extends HttpServlet {
         EmailData ed = new EmailData();
         String activationLink ="http://localhost:8080/MediHub/activate?token="+getSaltString();
             
-            emailTest.send("uvininduwaraperera@gmail.com","Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink));
+            emailTest.send("uvininduwaraperera@gmail.com,uvinperera@hotmail.com","Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink));
         
     }
     
