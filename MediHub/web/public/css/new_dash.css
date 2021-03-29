@@ -565,8 +565,19 @@ table.dataTable tr.dtrg-group.dtrg-level-1 td, table.dataTable tr.dtrg-group.dtr
      color: #dc1028;
 }
 
+.sidebar_login {
+     margin-top: 20px;
+     padding: 10px;
+     color: #2EFF00;
+}
+
 .sidebar_logout:hover {
      background: rgba(230, 80, 98, 0.4);
+     color: #252424;
+}
+
+.sidebar_login:hover {
+     background: rgba(8, 209, 79, 0.4);
      color: #252424;
 }
 
@@ -577,7 +588,14 @@ table.dataTable tr.dtrg-group.dtrg-level-1 td, table.dataTable tr.dtrg-group.dtr
      text-transform: uppercase;
 }
 
-.sidebar_logout > i {
+.sidebar_login > a {
+     text-decoration: none;
+     color: #2EFF00;
+     font-weight: 700;
+     text-transform: uppercase;
+}
+
+.sidebar_logout > i, .sidebar_login > i {
      margin-right: 10px;
      font-size: 18;
 }
