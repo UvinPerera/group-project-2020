@@ -53,12 +53,12 @@
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/BrowseHospitalReviewsGuest.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hospital-o"></i>
-                              <a href="BrowseHospitalReviewsGuest?search=1">Create Prescription</a>
+                              <a href="BrowseHospitalReviewsGuest?search=1">Hospitals</a>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/BrowsePharmacyReviewsGuest.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-medkit"></i>
-                              <a href="BrowsePharmacyReviewsGuest?search=1">Patient Records</a>
+                              <a href="BrowsePharmacyReviewsGuest?search=1">Pharmacies</a>
                          </div>
                               
 
