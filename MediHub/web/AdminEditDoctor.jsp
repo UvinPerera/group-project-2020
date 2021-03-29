@@ -66,9 +66,10 @@
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="admineditdoctor?dId=<%=row.id%>" method="POST" id="updateForm" enctype="multipart/form-data">
+                         <form class="" action="adminupdatedoctor" method="POST" id="updateForm">
+                             <input type="hidden" name="did" value="<%=row.id%>">
                             <div class="main_cards">
-
+                                
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">First Name</p>

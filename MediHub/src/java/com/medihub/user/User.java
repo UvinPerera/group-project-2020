@@ -511,6 +511,4 @@ public class User {
     public void setUpdatedBy(int updatedBy) {
         this.updatedBy = updatedBy;
     }
-
-    
 }

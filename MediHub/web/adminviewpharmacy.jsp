@@ -70,13 +70,8 @@
 
                       
                             <div class="main_cards">
-                           <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Id</p>
-                                        <p class="text-secondary-p"><%= row.id%></p>
-                                   </div>
-                             </div> 
+                          
+                                
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
@@ -91,7 +86,7 @@
                                         <p class="text-secondary-p"><%= row.getLicenseNumber()%></p>
                                    </div>
                               </div>
-                             <div class=""></div>
+                             
                              <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
@@ -113,7 +108,7 @@
                                         <p class="text-secondary-p"><%= row.fax%></p>
                                    </div>
                               </div>
-                              <div class=""></div>
+                             
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
@@ -137,13 +132,13 @@
                               </div>
                             
                              </div>
-                   
+                   <br>
+                     <div class="buttons">
+                         <a href="adminviewpharmacist?pid=<%=row.pharmacistId%>"><button class="button-success"><b>View pharmacist</b></button></a> 
+                       </div>  
                          
                         <% } %>
-                        <br>
-                       <div class="buttons">
-                           <a href="adminviewpharmacist"> <button class="button-success"><b>View pharmacist</b></button></a> 
-                       </div>
+                        
                     </div>
 
                </main>
