@@ -148,9 +148,7 @@
                                                   <%}}%>
                                                   
                                                
-                                                  <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
-                                                  </tr>
+                                               
                                                   
                                              </tbody>
                                         </table>

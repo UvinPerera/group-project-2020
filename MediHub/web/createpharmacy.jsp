@@ -63,7 +63,7 @@
                           </div>
                           <hr>
                           <!-- change the main cards css fragments to change number of cards Available -->
-                          <form action="createpharmacy" method="POST" id="">
+                          <form action="createpharmacy" method="POST" id="createpharmacy">
                              <div class="main_title">
                               <div class="main_greeting">
                                    <p>Pharmacy details</p>
@@ -242,7 +242,7 @@
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Email</p>
                                         <input class="data" type="text" name="pharmacyadmin_email" id="email" placeholder="Email">
-                                        <div class="alert-danger" id="EmailError">
+                                        <div class="alert-danger" id="emailError">
                                             * Email can't be empty and must contain only letters
                                         </div>
                                    </div>
@@ -353,7 +353,111 @@
 
 <script>
     
-    //    onchange district
+        $("#firstNameError").hide();
+        $("#displayNameError").hide();
+        $("#nicError").hide();
+        $("#dobError").hide();
+        $("#genderError").hide();
+        $("#emailError").hide();
+        $("#addressError").hide();
+        $("#cityError").hide();
+        $("#districtError").hide();
+//        $("#zipError").hide();
+        $("#numberError").hide();
+        $("#passwordError").hide();
+        $("#password2Error").hide();
+        $("#typeError").hide();
+        
+        $("#createpharmacy").on('submit',function(e){
+            
+            //to always refresh when submitting (hide and show only relevant)
+            $("#firstNameError").hide();
+            $("#displayNameError").hide();
+            $("#nicError").hide();
+            $("#dobError").hide();
+            $("#genderError").hide();
+            $("#emailError").hide();
+            $("#addressError").hide();
+            $("#cityError").hide();
+            $("#districtError").hide();
+    //        $("#zipError").hide();
+            $("#numberError").hide();
+            $("#passwordError").hide();
+            $("#password2Error").hide();
+            $("#typeError").hide();
+            
+            var x=0;
+               if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)||($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
+                $("#firstNameError").show();
+                x=1;
+                
+            }
+            if(($("#displayName").val()=="")||($("#displayName").val().match(/^[A-Za-z]*$/)== null)){
+                $("#displayNameError").show();
+                x=1;
+                
+            }
+            if($("#nic").val()==""){
+                $("#nicError").show();
+                x=1;
+            }
+            if($("#dob").val()==""){
+                $("#dobError").show();
+                x=1;
+            }
+            if($("#gender").val()==""){
+                $("#genderError").show();
+                x=1;
+            }
+             if ($("#email").val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null){
+                $("#emailError").show();
+                x=1;
+             }
+              if($("#address1").val()==""){
+                $("#addressError").show();
+                x=1;
+            }
+            if($("#city").val()==""){
+                $("#cityError").show();
+                x=1;
+            }
+            if($("#district").val()==""){
+                $("#districtError").show();
+                x=1;
+            }
+//            if($("#zip").val().match(/^[0-9]{5}$/)==null){
+//               $("#zipError").show();
+//                x=1;
+//            }
+            
+            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||($("#land").val().match(/^[0-9]{10}$/)==null)){
+//            if(($("#mobile").val()=="")||($("#mobile").val().match(/^[0-9]{10}$/)==null)||(($("#land").val().match(/^[0-9]{10}$/)==null) && ($("#land").val()==""))){
+              $("#numberError").show();
+                x=1;
+            }
+           
+            
+            if ($("#password").val().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9\S]{6,20}$/) == null) {
+                $("#passwordError").show();
+                x=1;
+               
+            }
+            if ($("#password").val()!==$("#password2").val()) {
+               $("#password2Error").show();
+                x=1;
+            }
+            if($("#type").val()==""){
+               $("#typeError").show();
+                x=1;
+            }
+            if(x==1){
+                return false;
+            }
+        })
+        
+        
+        
+//    onchange district
     $('#district').change(function(){
         var districtId=$(this).find(':selected').val();
         
@@ -375,6 +479,8 @@
           });
 
     });
+
+  
 </script>
 
 </body>
