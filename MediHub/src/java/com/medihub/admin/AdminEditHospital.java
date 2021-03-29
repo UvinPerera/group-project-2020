@@ -56,6 +56,8 @@ public class AdminEditHospital extends HttpServlet {
                 request.setAttribute("districts", d.getAllDistricts()); //directly get districts
                 request.setAttribute("hospitalprofile", h.getHospitalProfile());
                 request.getRequestDispatcher("AdminEditHospital.jsp").forward(request, response);
+               
+                
             }
              catch(Exception e){
                     out.println(e.toString());

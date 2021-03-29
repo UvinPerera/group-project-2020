@@ -52,11 +52,11 @@ public class AdminViewPharmacist extends HttpServlet {
                 
                 User p = new User();
                
-                
+                p.id=userId;
                 //out.println(p.getProfile().districtStr);
                 request.setAttribute("profile", p.getProfile());
-                out.print(p.firstName);
-               // request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
+                //out.print(p.firstName);
+               request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
                 }catch(Exception e){
                     e.printStackTrace();
                 }
