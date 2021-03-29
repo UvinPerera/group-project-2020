@@ -81,7 +81,23 @@
                               <a href="manageReviews.jsp">Manage Reviews</a>
                          </div>
 
+                         <h2>Reviews</h2>
+                         
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/doctorReviewsAdmin.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-stethoscope"></i>
+                              <a href="BrowseDoctorReviewsAdmin">Doctors</a>
+                         </div>
 
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/hospitalReviewsAdmin.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-hospital-o"></i>
+                              <a href="BrowseHospitalReviewsAdmin">Hospitals</a>
+                         </div>
+
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/pharmacyReviewsAdmin.jsp' ? 'active_menu_link' : ''}">
+                              <i class="fa fa-medkit"></i>
+                              <a href="BrowsePharmacyReviewsAdmin">Pharmacies</a>
+                         </div>
+                              
                          <h2>User</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewadmin.jsp' ? 'active_menu_link' : ''}">
