@@ -6,6 +6,7 @@
 package com.medihub.records;
 
 import com.medihub.db.DbConfig;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,14 +36,14 @@ public class managePermissions extends HttpServlet {
              int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              int search=Integer.parseInt(request.getParameter("search"));
              int status=0;
-          
+             int doctorId=-1;
              try{
                     DbConfig db = DbConfig.getInstance();
                     Connection con = db.getConnecton();
                     
                     Statement stmt=con.createStatement(); 
                     if(search==1){
-                        int doctorId=Integer.parseInt(request.getParameter("doctor"));
+                         doctorId=Integer.parseInt(request.getParameter("doctor"));
 //                        if(doctorId==""){ response.sendRedirect("managePermissions?search=0");}
                         ResultSet rs=stmt.executeQuery("SELECT status FROM record_premissions WHERE patient_id="+patientId+" and doctor_id = "+doctorId);
                    
@@ -52,8 +53,12 @@ public class managePermissions extends HttpServlet {
                     }
                     request.setAttribute("search", search);
                     request.setAttribute("status",status);
+                    Notifications n = new Notifications(); 
+                    n.createNotification(patientId,doctorId,"Record Permission Update", 1);
                     request.getRequestDispatcher("managePermissions.jsp").forward(request, response);
-                  
+                   
+                    
+               
                     }catch(Exception e){
                        out.println(e.toString());
                    }

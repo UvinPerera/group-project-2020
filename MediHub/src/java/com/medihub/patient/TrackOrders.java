@@ -53,7 +53,7 @@ public class TrackOrders extends HttpServlet {
                         records.add(row);
                 }
                 
-                request.setAttribute("records", records);
+                request.setAttribute("orders", records);
                 }
                 else{
                     String Pharmacy=request.getParameter("pharmacy");
