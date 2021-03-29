@@ -1,20 +1,19 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
-<%@page import="com.medihub.doctor.*"%>
+<%@page import="com.medihub.pharmacy.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
-
            <% 
                int getLimit=0;
-               String getDoctor="";
+               String getPharmacy="";
                      
-               if (request.getParameter("doctor")!=null && request.getParameter("doctor")!="") {
-                    getDoctor=request.getParameter("doctor");
+               if (request.getParameter("pharmacy")!=null && request.getParameter("pharmacy")!="") {
+                    getPharmacy=request.getParameter("pharmacy");
                }
                      
                if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
@@ -64,18 +63,27 @@
                         <!--container starting-->
                      <!--######################-->
                     <div class="main_container">
-                       
-
-                        <form class="" action="BrowseDoctorReviewsGuest" method="GET" id="">
+                        
+                   
+                        <form class="" action="BrowsePharmacyReviewsGuest" method="GET" id="">
                             <input type="hidden" name="search" value="1"/>
                             <div class="card">
                                 <i class="fa fa-stethoscope fa-2x text-red"></i>
                                 <div class="card_inner_profile">
-                                     <p class="text-primary-p">Doctor Name</p>
-                                     <!--<p class="text-secondary-p doctor_select"><input placeholder="Search Doctor" type="text" name="doctor" id="doctor" maxlength="10" class="" value="<%= getDoctor %>"/></p>-->
+                                     <p class="text-primary-p">Pharmacy Name</p>
+                                     <!--<p class="text-secondary-p pharmacy_select"><input placeholder="Search Pharmacy" type="text" name="pharmacy" id="pharmacy" maxlength="10" class="" value="<%= getPharmacy %>"/></p>-->
 
-                                     <select class="text-secondary-p doctor_select" style="width: 100%" name="doctor" id="doctor">
-                                         <option value="" disabled>Search Doctor</option>
+                                     <select class="text-secondary-p pharmacy_select" style="width: 100%" name="pharmacy" id="pharmacy">
+                                         <option value="" disabled>Search Pharmacy</option>
+                                         <%
+                             if(request.getAttribute("allPharmacies")!=null){
+                                 List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("allPharmacies");
+                                 if(table.size()>0){
+                                     for(Pharmacy row : table) { %>
+                                         <option value='<%= row.id %>'><%= row.displayName %> </option>
+                         <%
+                                 }}}
+                         %>
                                      </select>
                                      <div class="buttons">
                                             <button class="button" type="reset" id="clear"><b>Reset</b></button>
@@ -84,17 +92,17 @@
                                 </div>
                             </div>
                         </form>
-                                 <!--checking for availability of doctor-->
+                             <!--checking for availability of pharmacy-->
                                         <%
-                                             if(request.getAttribute("doctor")!=null){
-                                                  Doctor d = (Doctor)request.getAttribute("doctor");
+                                             if(request.getAttribute("pharmacy")!=null){
+                                                  Pharmacy p = (Pharmacy)request.getAttribute("pharmacy");
                                                   
                                         %>
                                         <br>
                          <div class="main_title">
-                              <img src="./public/images/p3.jpg" alt="doctor Profile">
+                              <img src="./public/images/p3.jpg" alt="pharmacy Profile">
                               <div class="main_greeting">
-                                   <h1><%=d.doctorName%></h1>
+                                   <h1><%=p.displayName%></h1>
                                    
                               </div>
                          </div>
@@ -104,16 +112,31 @@
                               <div class="card">
                                    <!--<i class="fa fa-user-o fa-2x text-lightblue"></i>-->
                                    <div class="card_inner">
-                                        <p class="text-primary-p">SLMC Number</p>
-                                        <p><%=d.getSLMC()%></p>
+                                       <!--<p class="text-primary-p">Address</p>-->
+                                       <p><%=p.address1%><br><%=p.address2%></p>
                                    </div>
                               </div>
 
                               <div class="card">
-                                   <p class="text-primary-p">Specialisation</p>
+                                   <p class="text-primary-p">District / City</p>
                                    <div class="card_inner">
-                                        <p class=""><%=d.strSpecialisation_1%></p>
-                                        <p class=""><%=d.strSpecialisation_2%></p>
+                                        <p class=""><%=p.cityStr%></p>
+                                        <p class=""><%=p.districtStr%></p>
+                                   </div>
+                              </div>
+                                   
+                              <div class="card">
+                                   <p class="text-primary-p">Tel Number / Fax</p>
+                                   <div class="card_inner">
+                                        <p class=""><%=p.landNumber%></p>
+                                        <p class=""><%=p.fax%></p>
+                                   </div>
+                              </div>
+                                   
+                              <div class="card">
+                                   <p class="text-primary-p">Email</p>
+                                   <div class="card_inner">
+                                        <p class=""><%=p.email%></p>
                                    </div>
                               </div>
                                    <%
@@ -162,10 +185,11 @@
                                         <!--checking for availability-->
                                         <%   
                                              if(request.getAttribute("reviews")!=null){
-                                                  List<DoctorReview> table = (ArrayList<DoctorReview>)request.getAttribute("reviews");
+                                                  List<PharmacyReview> table = (ArrayList<PharmacyReview>)request.getAttribute("reviews");
                                                   if(table.size()>0){
                                                       
                                         %>
+                                        
                                         
 
                                    <!-- limit the results to 5 in db query... view more option will lead to all results -->
@@ -181,7 +205,7 @@
                                                   <tbody>
                                                        <% 
                                                            int cc = 0;
-                                                           for(DoctorReview row : table) { 
+                                                           for(PharmacyReview row : table) { 
                                                                 cc++;
                                                                 if (cc>10){
                                                                     break;
@@ -208,6 +232,7 @@
                                                             </td>
                                                        </tr>
                                                        
+                                                       
                                 
                                                         <% } %>
                                                         
@@ -226,11 +251,11 @@
                                                         <div class="card">
                                                         <p style="text-align: center;">
                                                             <% if(getLimit>0) { %>
-                                                                <a href="BrowseDoctorReviewsGuest?search=1&doctor=<%=getDoctor%>&limit=<%=getLimit-10%>">Prev</a>
+                                                                <a href="BrowsePharmacyReviewsGuest?search=1&pharmacy=<%=getPharmacy%>&limit=<%=getLimit-10%>">Prev</a>
                                                             <% } %>
                                                             &nbsp;
                                                             <% if(table.size()>10) { %>
-                                                                <a href="BrowseDoctorReviewsGuest?search=1&doctor=<%=getDoctor%>&limit=<%=getLimit+10%>">Next</a>
+                                                                <a href="BrowsePharmacyReviewsGuest?search=1&pharmacy=<%=getPharmacy%>&limit=<%=getLimit+10%>">Next</a>
                                                             <% } %>
                                                         </p>
                                                         </div>
@@ -270,7 +295,7 @@
                            %>
                            <div class="card">
                                    <div class="card_inner">
-                                        <p class="text-primary-p">Search For a Doctor</p>
+                                        <p class="text-primary-p">Search For a Pharmacy</p>
                                    </div>
                               </div>
                            <%
@@ -286,6 +311,7 @@
                     
                     
                     
+                    
 
                </main>
 
@@ -293,6 +319,7 @@
                 <!--sidebar starting-->
                 <!--######################-->
                
+                
                <jsp:include page="<%="./public/includes/guestSidebar.jsp"%>"/>
                 
                 <!--######################-->
@@ -318,33 +345,10 @@
                 $(document).ready( function () {
                     
                     //select2
-                    $('.doctor_select').select2({
-                        placeholder: "Select Doctor",
-                        minimumInputLength: 2,
+                    $('.pharmacy_select').select2({
+                        placeholder: "Select Pharmacy",
                         allowClear: true,
-                        ajax: {
-                            url: "getDoctors",
-                            dataType: 'json',
-                            type: "GET",
-                            quietMillis: 50,
-                            data: function (term) {
-                            return {
-                                q: term
-                            };
-                            },
-                            processResults: function (data) {
-                                return {
-                                    results: $.map(data, function (item) {
-                                        return {
-                                            text: item.doctorName,
-                                            id: item.id
-                                        };
-                                    })
-                                };
-                            },
-                            cache: true
-                        }
-                    }).val("<%=getDoctor%>").trigger("change");
+                    }).val("<%=getPharmacy%>").trigger("change");
         
                     //data table
                     $('#avail').DataTable( {
@@ -389,6 +393,7 @@
                     }
                 }
 
+                
           </script>
 
      </body>
