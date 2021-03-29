@@ -64,7 +64,7 @@
                         <%
                             if(request.getAttribute("profile")!=null){
                                 User row = (User)request.getAttribute("profile");
-                                
+                                //out.write(row.id);
                         %> 
 
                          <!-- change the main cards css fragments to change number of cards Available -->
@@ -120,6 +120,27 @@
                               </div>
                              
                              <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <p class="text-secondary-p"><%= row.districtStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">City</p>
+                                        <p class="text-secondary-p"><%= row.cityStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address</p>
+                                        <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
+                                   </div>
+                              </div>
                              
                              <div class=""></div>
                               
@@ -130,6 +151,15 @@
                                    </div>
                               </div>
                              
+                             <% if(row.landNumber!=null) { %>
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <p class="text-secondary-p"><%= row.landNumber %></p>
+                                   </div>
+                              </div>
+                             <% } %>
+
                          </div>
                          
                         <% } %>

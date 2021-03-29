@@ -54,22 +54,49 @@
                                  <h3>Manage Patients</h3>
                              </div>
                         </div> 
-                        <form class="" action="BrowseDoctor" method="GET" id="">
-                            <input type="hidden" name="search" value="1"/>
-                            <div class="card">
-                                <div class="card_inner_profile">
-                                     <p class="text-primary-p">Patient Name</p>
+                        <form class="" action="searchdoctor" method="GET" id="submitForm">
+                             <input type="hidden" name="search" value="1"/>
+                            <div class="main_cards">
 
-                                     <select class="text-secondary-p doctor_select" style="width: 100%" name="patient" id="doctor">
-                                         <option value="" disabled>Search Doctor</option>
-                                     </select>
-                                     <div class="buttons">
-                                            <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
-                                            <button class="button-success" type="submit"><b>Submit</b></button>      
-                                       </div>
-                                </div>
+                                 <div class="card">
+                                      <i class="fa fa-binoculars fa-2x text-lightblue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Status</p>
+                                      
+                                           
+                                           <select class="text-secondary-p status_select" style="width: 100%" name="status" id="status">
+                                               <option value="0" >All</option>
+                                               <option value="1">Pending</option>
+                                               <option value="2" >Finished</option>
+                                               <option value="3">Canceled</option>
+                                           </select>
+                                      </div>
+                                 </div>
+
+                                 <div class="card">
+                                      <i class="fa fa-medkit fa-2x text-green"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Patient</p>
+                                           <p class="text-secondary-p">
+                                      
+                                               
+                                               <select name='pharmacy' class="pharmacy_select" style="width: 100%" id="pharmacy">
+                                                   <option value="">Select Patient</option>
+                                        
+                                               </select>
+                                           </p>
+                                      </div>
+                                 </div>
+
+
+
+                                 <div class="buttons">
+                                   <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
+                                   <button class="button-success" type="submit"><b>Search</b></button>     
+                                 </div>
+
                             </div>
-                        </form>
+                         </form>
                                                
                         <hr>
                         
@@ -133,9 +160,7 @@
       
                                                  <% } %>
                                                <% } } %>
-                                                  <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
-                                                  </tr>
+                                                  
                                              </tbody>
                                         </table>
                                    </div>

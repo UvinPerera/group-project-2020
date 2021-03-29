@@ -276,7 +276,7 @@ public class Pharmacy extends User {
                     this.address2 = rs.getString("address_2");
                     this.city = rs.getInt("city");      
                     this.cityStr = rs.getString("city_name");
-                    ;
+                    this.pharmacistId = rs.getInt("pharmacist_id");
           
             }
             

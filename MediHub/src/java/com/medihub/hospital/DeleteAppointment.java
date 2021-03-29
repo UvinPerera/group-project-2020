@@ -107,7 +107,7 @@ public class DeleteAppointment extends HttpServlet {
                 if(payMethod==4){
                     Refunds rf = new Refunds();
                     String capId = rs2.getString("captureId");
-                    
+                     
                     rf.refundOrder(capId, true, payement);
                 
                 }

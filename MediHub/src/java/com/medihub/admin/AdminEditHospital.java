@@ -5,29 +5,25 @@
  */
 package com.medihub.admin;
 
-import com.medihub.db.DbConfig;
-import com.medihub.pharmacy.Pharmacist;
+import com.medihub.hospital.Hospital;
+import com.medihub.location.City;
+import com.medihub.location.District;
 import com.medihub.pharmacy.Pharmacy;
-import com.medihub.user.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author DELL
  */
-@WebServlet(name = "AdminViewPharmacy", urlPatterns = {"/adminviewpharmacy"})
-public class AdminViewPharmacy extends HttpServlet {
+@WebServlet(name = "AdminEditHospital", urlPatterns = {"/adminedithospital"})
+public class AdminEditHospital extends HttpServlet {
+
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -42,31 +38,31 @@ public class AdminViewPharmacy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              int pharmacyId = Integer.parseInt(request.getParameter("pId"));
-        
-              Pharmacy pharmacy = new Pharmacy(pharmacyId);
-              pharmacy.setId(pharmacyId); 
-              
+             int hospitalId = Integer.parseInt(request.getParameter("hId"));
+            PrintWriter out = response.getWriter();
              
-        
-         try
-            {
-                        
-                
-                Pharmacy p = new Pharmacy(pharmacyId);
-                request.setAttribute("pharmacyprofile", p.getPharmacyProfile());
-                request.getRequestDispatcher("adminviewpharmacy.jsp").forward(request, response);
             
-                } catch(Exception e){
-                   e.printStackTrace();
+       
+             try
+            {
+                
+                Hospital h = new Hospital();
+                h.setId(hospitalId);
+                District d = new District();
+                
+                City c = new City();
+                
+                request.setAttribute("cities", c.getAllCities()); //directly get districts
+                request.setAttribute("districts", d.getAllDistricts()); //directly get districts
+                request.setAttribute("hospitalprofile", h.getHospitalProfile());
+                request.getRequestDispatcher("AdminEditHospital.jsp").forward(request, response);
+               
+                
+            }
+             catch(Exception e){
+                    out.println(e.toString());
                 }
     }
-    
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

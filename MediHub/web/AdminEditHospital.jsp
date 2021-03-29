@@ -1,13 +1,13 @@
 <%-- 
-    Document   : AdminEditPharmacy
+    Document   : AdminEditHospital
     Created on : Mar 24, 2021, 11:08:35 PM
     Author     : Ifra
 --%>
 
 
+<%@page import="com.medihub.hospital.Hospital"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.pharmacy.*"%>
 <%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -64,25 +64,21 @@
                          </div>
                          <hr>
                         <%
-                            if(request.getAttribute("pharmacyprofile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
+                            if(request.getAttribute("hospitalprofile")!=null){
+                                Hospital row = (Hospital)request.getAttribute("hospitalprofile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacyupdateadmin" method="POST" id="updateForm">
-                            <div class="main_title">
-                              <div class="main_greeting">
-                                   <p>Pharmacy details</p>
-                              </div>
-                            </div>
+                         <form class="" action="adminupdatehospital" method="POST" id="updateForm">
+                           <input type="hidden" name="hId" value="<%=row.id%>">
                             <div class="main_cards">
 
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Hospital Name</p>
-                                        <input class="data" type="text" name="hospital_name" id="hospitalname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
+                                        <input class="data" type="text" name="name" id="name" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
                                        
                                    </div>
                               </div>
@@ -96,8 +92,8 @@
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">pharmacy Display Name</p>
-                                        <input class="data" type="text" name="hospitaldisplay_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
+                                        <p class="text-primary-p">Display Name</p>
+                                        <input class="data" type="text" name="display_name" id="displayName" placeholder="<%= row.displayName %>" value="<%= row.displayName %>">
                                         <div class="alert-danger" id="displayNameError">
                                             * Display name can't be empty and must contain only alphanumeric
                                         </div>
@@ -125,7 +121,7 @@
                               <div class="card">
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Hospital Email</p>
+                                        <p class="text-primary-p">Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="<%= row.email%>" value="<%= row.email%>" read only >
                                         <div class="alert-danger" id="EmailError">
                                             * Email can't be empty and must contain only letters
@@ -192,128 +188,26 @@
                                         </div>
                                    </div>
                               </div>
-                               <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Description</p>
-                                        <input class="data" type="text" name="discription" id="description" placeholder="<%= row.description%>" value="<%= row.description%>">
-                                        <div class="alert-danger" id="discriptionError">
-                                            * Description can't be empty
-                                        </div>
-                                   </div>
-                              </div>
                             </div>
-                                       
-                            <div class="main_title">
-                              <div class="main_greeting">
-                                   <p>Hospital admin details</p>
-                              </div>
-                            </div>
-                         <div class="main_cards">
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">First Name</p>
-                                        <input class="data" type="text" name="first_name" id="firstname" placeholder="<%= row.firstName%>" value="<%= row.firstName%>">
-                                        <div class="alert-danger" id="firstNameError">
-                                            * First name can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Last Name</p>
-                                        <input class="data" type="text" name="last_name" id="lastname" placeholder="<%= row.lastName%>" value="<%= row.lastName%>">
-                                        <div class="alert-danger" id="lastNameError">
-                                            * Last name can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="card">
-                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="user_display_name" id="displayName" placeholder="<%= row.displayName%>" value="<%= row.displayName%>">
-                                        <div class="alert-danger" id="displayNameError">
-                                            * Display name can't be empty and must contain only alphanumeric
-                                        </div>
-                                   </div>
-                              </div>
-                                        
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Email</p>
-                                        <input class="data" type="text" name="pharmacyadmin_email" id="email" placeholder="<%= row.email%>" value="<%= row.email%>" readonly>
-                                        <div class="alert-danger" id="EmailError">
-                                            * Email can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>         
-
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">NIC</p>
-                                        <input class="data" type="text" name="nic_no" id="nic" placeholder="<%= row.nic%>" value="<%= row.nic%>" readonly>
-                                        <div class="alert-danger" id="nicError">
-                                             * National Identity Card Number can't be empty
-                                        </div>
-                                  </div>
-                              </div>
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Data Of Birth</p>
-                                        <input class="input" type="date" name="dob" id="dob" placeholder="<%= row.dob%>" value="<%= row.dob%>" readonly>
-                                        <div class="alert-danger" id="dobError">
-                                             * Date Of Birth can't be empty
-                                        </div>
-                                  </div>
-                              </div>
-
-                              <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Gender</p>
-                                        <select class="input option" name="gender" id="gender" value="<%= row.gender%>" readonly>
-                                          <option disabled="disabled" selected="selected">--Choose Option--</option>
-                                          <option value="M">Male</option>
-                                          <option value="F">Female</option>
-                                          <option value="N">Not preferred to say</option>
-                                        </select>
-                                        <div class="alert-danger" id="displayNameError">
-                                            * Gender can't be empty and must contain only letters
-                                        </div>
-                                   </div>
-                              </div>
-                             <div class="card">
-                                  <i class="fa fa-user-circle fa-2x text-lightblue"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Mobile Number</p>
-                                        <input class="input" type="text" name="mobile_no" id="mobilenumber" placeholder="<%= row.mobileNumber%>" value="<%= row.mobileNumber%>" >
-                                        <div class="alert-danger" id="mobileNumberError">
-                                             * Mobile number can't be empty
-                                        </div>
-                                  </div>
-                              </div>
-                              
+                                                                     
                               <div class="buttons">
                                 <button class="button" type="reset" id="clear"><b>Reset</b></button>
                                 <button class="button-success" type="submit"><b>Update</b></button>     
                               </div>
-
-                         </div>
-                         </form>
+                           </form>
                          
+                           <div class="buttons">
+                             <a href="adminedithospitaladmin>"><button class="button-success"><b>Edit Director</b></button></a> 
+                          </div>                                 
                         <% } %>
                         
                     </div>
+   
+                      
+                  
                         
                </main>
+         
 
                 <!--######################-->
                 <!--sidebar starting-->

@@ -1,13 +1,14 @@
 <%-- 
-    Document   : AdminEditPharmacy
+    Document   : AdminEditHospitalAdmin
     Created on : Mar 24, 2021, 11:08:35 PM
     Author     : Ifra
 --%>
 
 
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.medihub.pharmacy.*"%>
+<%@page import="com.medihub.hospital.*"%>
 <%@page import="com.medihub.location.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -59,20 +60,25 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>Edit pharmacist</p>
+                                   <p>Edit hospital</p>
                               </div>
                          </div>
                          <hr>
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Pharmacist row = (Pharmacist)request.getAttribute("profile");
+                                User row = (User)request.getAttribute("profile");
                                 
                                 
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="pharmacyadminupdateadmin" method="POST" id="updateForm">
-
+                         <form class="" action="pharmacyupdateadmin" method="POST" id="updateForm">
+                                       
+                            <div class="main_title">
+                              <div class="main_greeting">
+                                   <p>Edit Hospital Adimn</p>
+                              </div>
+                            </div>
                          <div class="main_cards">
                               <div class="card">
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
@@ -167,8 +173,7 @@
                               
                               <div class="buttons">
                                 <button class="button" type="reset" id="clear"><b>Reset</b></button>
-                                <button class="button-success" type="submit"><b>Update</b></button>
-                                
+                                <button class="button-success" type="submit"><b>Update</b></button>     
                               </div>
 
                          </div>
@@ -307,4 +312,3 @@
           
      </body>
 </html>
-

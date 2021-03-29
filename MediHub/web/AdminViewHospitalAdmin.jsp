@@ -1,8 +1,10 @@
 <%-- 
-    Document   : adminviewpharmacy
-    Created on : Mar 24, 2021, 10:55:33 AM
+    Document   : AdminViewHospitalAdmin
+    Created on : Mar 28, 2021, 11:28:35 AM
     Author     : Ifra
 --%>
+
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.pharmacy.*"%>
@@ -55,87 +57,110 @@
                              <!--<img src="./public/images/p3.jpg" alt="hello">-->
                               <div class="main_greeting">
                                    <h1>Hello <%=username%></h1>
-                                   <p>View pharmacy</p>
+                                   <p>Profile</p>
                               </div>
                          </div>
-                         <hr>
                         
                         <%
-                            if(request.getAttribute("pharmacyprofile")!=null){
-                                Pharmacy row = (Pharmacy)request.getAttribute("pharmacyprofile");
-                                
+                            if(request.getAttribute("profile")!=null){
+                                User row = (User)request.getAttribute("profile");
+                                //out.write(row.id);
                         %> 
 
                          <!-- change the main cards css fragments to change number of cards Available -->
+                         <div class="main_cards">
 
-                      
-                            <div class="main_cards">
-                          
-                                
                               <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Name</p>
-                                        <p class="text-secondary-p"><%= row.name%></p>
-                                   </div>
-                             </div>
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">License Number</p>
-                                        <p class="text-secondary-p"><%= row.getLicenseNumber()%></p>
+                                        <p class="text-primary-p">First Name</p>
+                                        <p class="text-secondary-p"><%= row.firstName %></p>
                                    </div>
                               </div>
-                             
-                             <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Last Name</p>
+                                        <p class="text-secondary-p"><%= row.lastName %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <p class="text-secondary-p"><%= row.displayName%></p>
+                                        <p class="text-secondary-p"><%= row.displayName %></p>
                                    </div>
                               </div>
+
                               <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Land Number</p>
-                                        <p class="text-secondary-p"><%= row.landNumber%></p>
-                                   </div>
-                              </div>
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Fax</p>
-                                        <p class="text-secondary-p"><%= row.fax%></p>
-                                   </div>
-                              </div>
-                             
-                              <div class="card">
-                                  <i class="fa fa-medkit fa-2x text-green"></i>
-                                   <div class="card_inner_profile">
-                                        <p class="text-primary-p">Pharmacy Email</p>
+                                        <p class="text-primary-p">Email</p>
                                         <p class="text-secondary-p"><%= row.email %></p>
                                    </div>
                               </div>
-                             <div class="card">
-                                 <i class="fa fa-medkit fa-2x text-green"></i>
+
+                              <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Address</p>
-                                        <p class="text-secondary-p"><%= row.address1+", \n"+row.address2 %></p>
+                                        <p class="text-primary-p">NIC</p>
+                                        <p class="text-secondary-p"><%= row.nic %></p>
                                    </div>
                               </div>
-                               <div class="card">
-                                   <i class="fa fa-medkit fa-2x text-green"></i>
+                             
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Date of Birth</p>
+                                        <p class="text-secondary-p"><%= row.dob %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Gender</p>
+                                        <p class="text-secondary-p"><% if(row.gender.equalsIgnoreCase("M")){out.print("Male");}else if(row.gender.equalsIgnoreCase("F")){out.print("Female");}else{out.print("Not Specified");} %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">District</p>
+                                        <p class="text-secondary-p"><%= row.districtStr %></p>
+                                   </div>
+                              </div>
+
+                              <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">City</p>
                                         <p class="text-secondary-p"><%= row.cityStr %></p>
                                    </div>
                               </div>
-                            
-                             </div>
-                   <br>
-                     <div class="buttons">
-                         <a href="adminviewpharmacist?pid=<%=row.pharmacistId%>"><button class="button-success"><b>View pharmacist</b></button></a> 
-                       </div>  
+
+                              <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Address</p>
+                                        <p class="text-secondary-p"><%= row.address1+"\n"+row.address2 %></p>
+                                   </div>
+                              </div>
+                             
+                             <div class=""></div>
+                              
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Mobile Number</p>
+                                        <p class="text-secondary-p"><%= row.mobileNumber %></p>
+                                   </div>
+                              </div>
+                             
+                             <% if(row.landNumber!=null) { %>
+                             <div class="card">
+                                   <div class="card_inner_profile">
+                                        <p class="text-primary-p">Land Number</p>
+                                        <p class="text-secondary-p"><%= row.landNumber %></p>
+                                   </div>
+                              </div>
+                             <% } %>
+
+                         </div>
                          
                         <% } %>
                         

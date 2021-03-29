@@ -45,28 +45,20 @@ public class AdminViewPharmacist extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
              HttpSession session = request.getSession();
-           
+            PrintWriter out = response.getWriter();
          try
             {
-                DbConfig db = DbConfig.getInstance();
-                Connection con = db.getConnecton();
-               
-               String query="select p.pharmacist_id from  pharmacies p "
-                           + "where p.id=pId";
-                Statement stmt=con.createStatement();
-                ResultSet rs=stmt.executeQuery(query);
-                int userId=1;
-                while(rs.next()){
-                       userId=rs.getInt("pharmacist_id");
+                int userId = Integer.parseInt(request.getParameter("pid"));
                 
-                }
-                userId = Integer.parseInt(request.getParameter("uId"));
-                User u = new User(userId);
-                u.setId(userId);
-                request.setAttribute("profile", u.getProfile());
-                request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
-                } catch(Exception e){
-                   e.printStackTrace();
+                User p = new User();
+               
+                p.id=userId;
+                //out.println(p.getProfile().districtStr);
+                request.setAttribute("profile", p.getProfile());
+                //out.print(p.firstName);
+               request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
     }
 
