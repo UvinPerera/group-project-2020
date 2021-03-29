@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.pharmacy;
+package com.medihub.doctor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "PharmacyReviewDelete", urlPatterns = {"/pharmacyReviewDelete"})
-public class PharmacyReviewDelete extends HttpServlet {
+@WebServlet(name = "DoctorReviewAccept", urlPatterns = {"/doctorReviewAccept"})
+public class DoctorReviewAccept extends HttpServlet {
 
    
 
@@ -37,38 +37,33 @@ public class PharmacyReviewDelete extends HttpServlet {
             throws ServletException, IOException {
         
             HttpSession session = request.getSession();
-            int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+            int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1 || usertype==0){
+            if(usertype==0){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getPharmacy=0;
+                        
+                        int getDoctor=0;
                         if(request.getParameter("search")!=null){
-                            getPharmacy=Integer.parseInt(request.getParameter("pharmacy"));
+                            getDoctor=Integer.parseInt(request.getParameter("doctor"));
                         }
 
-                        PharmacyReview dr = new PharmacyReview();
-//                        out.print(dr.insertReview(patientId,getPharmacy,getRating,description));
-                        int dd=dr.deleteReview(getId);
+                        DoctorReview dr = new DoctorReview();
+//                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
+                        int dd=dr.approveReview(getId);
                         if(dd>0){
                             session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Deleted !");
+                            session.setAttribute("message", "Review Successfully Accepted !");
                         }
                         else{
                             session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Deletion Unsuccessful !");
+                            session.setAttribute("message", "Review Accepting Unsuccessful !");
                         }
                         
-                        
-                        if(usertype==1) {
-                            response.sendRedirect("BrowsePharmacy?search=1&pharmacy="+getPharmacy);
-                        }
-                        else if(usertype==0) {
-                            response.sendRedirect("BrowsePharmacyReviewsAdmin?search=1&pharmacy="+getPharmacy);
-                        }
+                        response.sendRedirect("BrowseDoctorReviewsAdmin?search=1&doctor="+getDoctor);
                     }
                     catch(Exception e)
                     {

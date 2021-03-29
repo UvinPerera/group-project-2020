@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "PharmacyReviewDelete", urlPatterns = {"/pharmacyReviewDelete"})
-public class PharmacyReviewDelete extends HttpServlet {
+@WebServlet(name = "PharmacyReviewAccept", urlPatterns = {"/pharmacyReviewAccept"})
+public class PharmacyReviewAccept extends HttpServlet {
 
    
 
@@ -40,7 +40,7 @@ public class PharmacyReviewDelete extends HttpServlet {
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
         
-            if(usertype==1 || usertype==0){
+            if(usertype==0){
                 PrintWriter out = response.getWriter();
                     try
                     {
@@ -52,23 +52,17 @@ public class PharmacyReviewDelete extends HttpServlet {
 
                         PharmacyReview dr = new PharmacyReview();
 //                        out.print(dr.insertReview(patientId,getPharmacy,getRating,description));
-                        int dd=dr.deleteReview(getId);
+                        int dd=dr.approveReview(getId);
                         if(dd>0){
                             session.setAttribute("alert", "success");
-                            session.setAttribute("message", "Review Successfully Deleted !");
+                            session.setAttribute("message", "Review Successfully Accepted !");
                         }
                         else{
                             session.setAttribute("alert", "error");
-                            session.setAttribute("message", "Review Deletion Unsuccessful !");
+                            session.setAttribute("message", "Review Accepting Unsuccessful !");
                         }
                         
-                        
-                        if(usertype==1) {
-                            response.sendRedirect("BrowsePharmacy?search=1&pharmacy="+getPharmacy);
-                        }
-                        else if(usertype==0) {
-                            response.sendRedirect("BrowsePharmacyReviewsAdmin?search=1&pharmacy="+getPharmacy);
-                        }
+                        response.sendRedirect("BrowsePharmacyReviewsAdmin?search=1&pharmacy="+getPharmacy);
                     }
                     catch(Exception e)
                     {

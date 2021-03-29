@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.hospital;
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author tharshan
  */
-@WebServlet(name = "BrowseDoctorReviewsAdmin", urlPatterns = {"/BrowseDoctorReviewsAdmin"})
-public class BrowseDoctorReviewsAdmin extends HttpServlet {
+@WebServlet(name = "BrowseHospitalReviewsAdmin", urlPatterns = {"/BrowseHospitalReviewsAdmin"})
+public class BrowseHospitalReviewsAdmin extends HttpServlet {
 
    
 
@@ -40,15 +44,15 @@ public class BrowseDoctorReviewsAdmin extends HttpServlet {
             int userId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
             
-            if(usertype==0) {
+            if(usertype==0){
              PrintWriter out = response.getWriter();
                     try
                     {
-                        int getDoctor = 0;
+                        int getHospital=0;
                         String getLimit="0";
                         
-                        Doctor d = new Doctor();
-                        DoctorReview dr = new DoctorReview();
+                        Hospital h = new Hospital();
+                        HospitalReview hr = new HospitalReview();
                         
                                     if(request.getParameter("limit")!=null && !request.getParameter("limit").equalsIgnoreCase("")){
                                         getLimit=request.getParameter("limit");
@@ -56,8 +60,9 @@ public class BrowseDoctorReviewsAdmin extends HttpServlet {
                         
                         if(request.getParameter("search")!=null){
                             if(request.getParameter("search").equalsIgnoreCase("1")){
-                                if(request.getParameter("doctor")!=null && !request.getParameter("doctor").equalsIgnoreCase("")){
-                                    getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                                if(request.getParameter("hospital")!=null && !request.getParameter("hospital").equalsIgnoreCase("")){
+    //                                out.print(request.getParameter("search"));
+                                    getHospital=Integer.parseInt(request.getParameter("hospital"));
                                     
                                     if(session.getAttribute("alert")!=null) {
                 //                        out.print(session.getAttribute("message"));
@@ -67,18 +72,17 @@ public class BrowseDoctorReviewsAdmin extends HttpServlet {
                                         session.removeAttribute("message");
                                     }
                                     
+                                    request.setAttribute("hospital", h.getHospital(getHospital));
+//                                    out.print(dr.getHospitalReviews(getHospital, getLimit));
                                     
-                                    request.setAttribute("doctor", d.getDoctor(getDoctor));
-//                                    out.print(dr.getDoctorReviews(getDoctor, getLimit));
-                                    
-                                    request.setAttribute("star", dr.getDoctorRating(getDoctor));
+                                    request.setAttribute("star", hr.getHospitalRating(getHospital));
                                 }
                             }
                         }
 //                            out.print("jhfvgj");
-                        request.setAttribute("reviews", dr.getDoctorReportedReviews(getDoctor, getLimit));
-//                        out.print(dr.getDoctorReportedReviews(getDoctor, getLimit));
-                        request.getRequestDispatcher("doctorReviewsAdmin.jsp").forward(request, response);
+                        request.setAttribute("reviews", hr.getHospitalReportedReviews(getHospital, getLimit));
+                        request.setAttribute("allHospitals", h.getAllActiveHospitals());
+                        request.getRequestDispatcher("hospitalReviewsAdmin.jsp").forward(request, response);
                     }
                     catch(Exception e)
                     {

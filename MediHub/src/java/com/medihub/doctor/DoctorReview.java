@@ -301,7 +301,7 @@ public class DoctorReview {
     
     public int approveReview(int id) {
         
-        String query="UPDATE doctor_reviews SET status=0 WHERE id="+id;
+        String query="UPDATE doctor_reviews SET status=1 WHERE id="+id;
         
         try{
             DbConfig db = DbConfig.getInstance();

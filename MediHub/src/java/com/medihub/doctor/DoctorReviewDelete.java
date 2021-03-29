@@ -45,7 +45,10 @@ public class DoctorReviewDelete extends HttpServlet {
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                        int getDoctor=0;
+                        if(request.getParameter("search")!=null){
+                            getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                        }
 
                         DoctorReview dr = new DoctorReview();
 //                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
