@@ -55,7 +55,8 @@
 
                 <div class="main_container">
                     <form action="updatepatientorder" method="post" enctype="multipart/form-data">
-                        <div class="main_cards">
+                        <input type="hidden" name="pharmacyId" value="<%=a2.get(8)%>"/>
+                        <div class="main_cards"> 
                             
                              <div class="card">
                                       <i class="fa fa-id-card-o fa-2x text-blue"></i>
@@ -115,7 +116,7 @@
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Order Delivery Date</p>
-                                            <p class="text-secondary-p"><input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(3)%>"></p>
+                                            <p class="text-secondary-p"><input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(7)%>"></p>
                                           
                                       </div>
                              </div>
