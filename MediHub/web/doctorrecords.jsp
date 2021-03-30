@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="./public/css/medicalRecords.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="./public/css/patient_modal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowgroup/1.1.2/css/rowGroup.dataTables.min.css">
@@ -91,7 +91,7 @@
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png" width="50px">
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p"><%=row.name %></p>
-                                    <p class="text-secondary-p"><a href="public/storage/mr/<%=row.path %>">Click to View</a></p>
+                                    <p class="text-secondary-p"><a href="public/storage/rec/<%=row.path %>">Click to View</a></p>
 
 
                                 </div>

@@ -38,7 +38,7 @@ public class Patient extends User {
         String q_join_h="join hospitals h on da.hospital_id=h.id ";
         String q_join_cp="left join channelling_payments cp on cp.channelling_id=c.id ";
         String q_join_pm="left join payment_methods pm on cp.payment_method=pm.id ";
-        String q_where="where c.status=1 and patient_id="+this.id+" and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"') limit 10";
+        String q_where="where c.status=1 and da.status=1 and patient_id="+this.id+" and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"') limit 10";
         String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_join_cp + q_join_pm + q_where;
   
         try

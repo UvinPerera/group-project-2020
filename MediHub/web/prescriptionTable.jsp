@@ -1,4 +1,7 @@
 
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.prescription.PrescriptionItem"%>
+<%@page import="com.medihub.prescription.Prescription"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -8,6 +11,7 @@
   <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <style>
 
@@ -64,52 +68,63 @@
 
   </style>
 </head>
-  <body>
+  <body id="printPart">
     <table>
       <thead>
         <th>Generic Name </th>
         <th>Trade Name</th>
         <th>Dosage</th>
+        <th>Interval</th>
         <th>Duration </th>
         <th>Meal Preference</th>
       </thead>
       <tbody>
+          <%
+          Prescription p = (Prescription)request.getAttribute("prescription");
+          List <PrescriptionItem> lst = p.presItems ;
+          for(PrescriptionItem row : lst){
+          %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%=row.genericName %></td>
+          <td><%=row.tradeName %></td>
+          <td><%=row.dosage %></td>
+          <% if(row.intervalId==8){ %>
+          <td>Three times a Day</td>
+          <% }%>
+          <% if(row.intervalId==12){ %>
+          <td>Twice a Day</td>
+          <% }%>
+          <% if(row.intervalId==24){ %>
+          <td>Once a Day (Morning)</td>
+          <% }%>
+          <% if(row.intervalId==25){ %>
+          <td>Once a Day (Evening)</td>
+          <% }%>
+          <% if(row.intervalId==26){ %>
+          <td>Once a Day (Night)</td>
+          <% }%>
+          <td><%=row.duration %></td>
+          <%if(row.mealPref==0){%>
+          <td>Before Meals</td>
+          <%}else{%>
+          <td>After Meals</td>
+          <%}%>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <%}%>
+        <button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
       </tbody>
     </table>
+        <script>
+            var print = document.getElementById("print");
+              print.onclick = function () {
+        print.style.display = "none";
+        var win = window.open();
+        var printContent = $("#printPart").html();
+
+        $(win.document.body).html(printContent);
+        win.print();
+        print.style.display = "block";
+    }
+         </script>
   </body>
   </html>

@@ -243,7 +243,9 @@
 
     //modal print btn
     var print = document.getElementById("print");
-
+    
+   
+    
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
     function popup(indexId) {
@@ -262,9 +264,13 @@
 
     }
         function displayPrescriptionFun(){
+            if(filepath[finalId]==="Doctor Prescription"){
+                 document.getElementById("displayPrescription").href = absolutepath[finalId];
+            }
+            else{
             document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
        
-     
+        }
     
     }
         function downloadPrescriptionFun(){

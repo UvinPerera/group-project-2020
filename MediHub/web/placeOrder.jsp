@@ -4,6 +4,7 @@
     Author     : Yash
 --%>
 
+<%@page import="com.medihub.prescription.Prescription"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
@@ -157,9 +158,15 @@
                                       <i class="fa fa-medkit fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Select Doctor Prescriptions</p>
+                                           
                                             <select name='doctorPrescriptions'  class="filter_dropdown">
-                                                <option value='1'>wl</option>
-
+                                                 <option selected disabled="">Choose Prescription</option>
+                                                <%if(request.getAttribute("prescriptions")!=null){
+                                                List<Prescription> p = (ArrayList<Prescription>)request.getAttribute("prescriptions");
+                                                for(Prescription row:p){
+                                                %>
+                                                <option value='<%=row.id %>'>Prescription of DR.<%=row.docName %>(<%=row.date %>)</option>
+                                                <%}}%>
                                              </select>
                                           
                                       </div></div>

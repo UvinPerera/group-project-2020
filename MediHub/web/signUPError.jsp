@@ -43,13 +43,10 @@
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
     </div>
-     
-    <br>
-     <div class="registerError" id="registerError" style="background-color: red ; color:#ffffff">
-          <center><h3><b>Registration is failed! please try again.</b></h3></center>  
-     </div> 
-    <div class="regform"><h1><br>Registration Form</h1><br></div>
+
     
+   
+    <div class="regform"><h1><br>Registration Form</h1><br></div>
    <div class="main">
      <form class="" action="registration" method="post" id="regform">
 

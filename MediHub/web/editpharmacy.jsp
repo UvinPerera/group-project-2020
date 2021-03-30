@@ -72,14 +72,16 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Pharmacy Name</p>
-                                        <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="<%= row.name %>" value="<%= row.name %>" readonly>
-                                       
+                                        <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="<%= row.name %>" value="<%= row.name %>" >
+                                        <div class="alert-danger" id="pharmacyNameError">
+                                            * Pharmacy name can't be empty and must contain only letters
+                                        </div>
                                    </div>
                               </div>
 
                               <div class="card">
                                    <div class="card_inner_profile">
-                                        <p class="text-primary-p">Last Name</p>
+                                        <p class="text-primary-p">License Number</p>
                                         <input class="data" type="text" name="license_number" id="license_number" placeholder="<%= row.getLicenseNumber()%>" value="<%= row.getLicenseNumber()%>" readonly>
                                     </div>
                               </div>
@@ -222,8 +224,7 @@
           
           <script>
         
-            $("#firstNameError").hide();
-            $("#lastNameError").hide();
+            $("#pharmacyNameError").hide();
             $("#displayNameError").hide();
             $("#addressError").hide();
             $("#cityError").hide();
@@ -234,8 +235,7 @@
             $("#updateForm").on('submit',function(e){
 //                event.preventDefault();
                 //to always refresh when submitting (hide and show only relevant)
-                $("#firstNameError").hide();
-                $("#lastNameError").hide();
+                $("#pharmacyNameError").hide();
                 $("#displayNameError").hide();
                 $("#addressError").hide();
                 $("#cityError").hide();
@@ -244,16 +244,12 @@
                 $("#landNumberError").hide();
 
                 var x=0;
-                   if(($("#firstname").val()=="")||($("#firstname").val().match(/^[A-Za-z]*$/)== null)){
-                    $("#firstNameError").show();
+                   if(($("#pharmacyname").val()=="")||($("#pharmacyname").val().match(/^[A-Za-z]*$/)== null)){
+                    $("#pharmacyNameError").show();
                     x=1;
 
                 }
-                   if(($("#lastname").val()=="")||($("#lastname").val().match(/^[A-Za-z]*$/)== null)){
-                    $("#lastNameError").show();
-                    x=1;
-
-                }
+            
                 if(($("#displayName").val()=="")||($("#displayName").val().match(/^[a-zA-Z0-9_]*$/)== null)){
                     $("#displayNameError").show();
                     x=1;

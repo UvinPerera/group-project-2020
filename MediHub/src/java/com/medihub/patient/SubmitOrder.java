@@ -136,7 +136,7 @@ public class SubmitOrder extends HttpServlet {
             int rs=stmt.executeUpdate();
             if(filepath.isEmpty()){
                 filepath="Doctor Prescription";
-                absolutePath="prescriptiontable?presId="+doctorPrescriptions;
+                absolutePath="prescriptionview?presId="+doctorPrescriptions;
                 
             }
             

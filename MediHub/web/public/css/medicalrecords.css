@@ -7,18 +7,19 @@ and open the template in the editor.
     Created on : Mar 28, 2021, 9:47:42 PM
     Author     : Yash
 */
-
+/*Edits*/
 svg{
     width:35%;
 }
 
 .card{
     padding:0px;
-    padding-top:75px;
+    padding-top:95px;
    padding-bottom:25px;
 }
 .card_inner_profile{
     padding:25px;
+    padding-left:0px;
 }
 .text{
     float:right;
@@ -40,7 +41,7 @@ li{
 
 }
 .actions{
-    width:31%;
+    width:35%;
     text-align: center;
     padding-top:20px;
     padding-bottom:20px;

@@ -10,8 +10,10 @@
     <title>Login</title>
 </head>
 <body>
-
-
+         <br>
+         <div class="registerSuccessful" id="registerSuccessful" style="background-color: green ; color:#ffff">
+            <center><h3><b>Registration is successful! You can login here.</b></h3></center>  
+        </div> 
         <div class="login-container"> <!--The container which has the login box-->
             <img class="avatar-image" src="./public/images/avatar-default-icon.png">
             <h1>Login</h1>

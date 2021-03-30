@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.prescription;
 
-import com.medihub.records.MedicalRecords;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author uvinp
  */
-@WebServlet(name = "DoctorRecords", urlPatterns = {"/doctorrecords"})
-public class DoctorRecords extends HttpServlet {
+@WebServlet(name = "PrescriptionView", urlPatterns = {"/prescriptionview"})
+public class PrescriptionView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,6 +29,7 @@ public class DoctorRecords extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -43,26 +42,11 @@ public class DoctorRecords extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        int doctorId = Integer.parseInt(session.getAttribute("userid").toString());
+         int presId = Integer.parseInt(request.getParameter("presId"));
         
-        String patId = "";
-       try{
-            patId = request.getParameter("patient");
-        
-        if (patId!=null) {
-            int patientId = Integer.parseInt(patId);
-            MedicalRecords mr = new MedicalRecords();
-            request.setAttribute("records", mr.getRecordsByPatient(patientId));
-        }
-        
-
-        request.getRequestDispatcher("doctorrecords.jsp").forward(request, response);
-       }
-       catch(Exception ex){
-           ex.printStackTrace();
-       }
+        Prescription pres = new Prescription();
+        request.setAttribute("prescription",pres.getPrescriptionById(presId));
+        request.getRequestDispatcher("prescriptionTable.jsp").forward(request, response);
     }
 
     /**
@@ -76,7 +60,7 @@ public class DoctorRecords extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+       
     }
 
     /**

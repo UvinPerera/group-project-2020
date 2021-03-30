@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.pharmacy;
 
-import com.medihub.records.MedicalRecords;
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author uvinp
  */
-@WebServlet(name = "DoctorRecords", urlPatterns = {"/doctorrecords"})
-public class DoctorRecords extends HttpServlet {
+@WebServlet(name = "DoctorPrescription", urlPatterns = {"/doctorprescription"})
+public class DoctorPrescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,25 +45,19 @@ public class DoctorRecords extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        int doctorId = Integer.parseInt(session.getAttribute("userid").toString());
-        
-        String patId = "";
-       try{
-            patId = request.getParameter("patient");
-        
-        if (patId!=null) {
-            int patientId = Integer.parseInt(patId);
-            MedicalRecords mr = new MedicalRecords();
-            request.setAttribute("records", mr.getRecordsByPatient(patientId));
-        }
-        
+        String presId = request.getParameter("presId");
+        String query="";
+        try{
+        DbConfig db = DbConfig.getInstance();
+        Connection con = db.getConnecton();
 
-        request.getRequestDispatcher("doctorrecords.jsp").forward(request, response);
-       }
-       catch(Exception ex){
-           ex.printStackTrace();
-       }
+        PreparedStatement pst = con.prepareStatement(query);
+        int rs = pst.executeUpdate();
+        }catch(Exception e){
+        
+        }
+
+        request.getRequestDispatcher("prescriptionTable.jsp").forward(request, response);
     }
 
     /**
