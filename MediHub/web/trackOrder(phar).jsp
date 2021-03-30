@@ -10,6 +10,10 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <!doctype html>
+
+
+
+<!doctype html>
 <html>
 <head>
   <meta charset=utf-8>
@@ -18,10 +22,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(phar).css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  
+  <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="./public/css/Track_Order(phar).css" media="screen"/>
   <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
-  <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(phar).js"></script>
 </head>
 <body>
   <div class="container">  
@@ -31,21 +37,21 @@
    <% String username="";
        username= session.getAttribute("username").toString();
   
-       
-      
-
-  %><div class="main_container">
+   
+  %>
+   
+     <div class="main_container">
     
-     <form class="" action="trackpatientorder" method="GET" id="submitForm">
+     <form class="" action="TrackOrders" method="GET" id="submitForm">
                             <input type="hidden" name="search" value="1"/>
                             <div class="main_cards">
                                 
                                  <div class="card">
                                       <i class="fa fa-plus-square fa-2x text-red"></i>
                                       <div class="card_inner_profile">
-                                           <p class="text-primary-p">Patient Name</p>
-                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="patient" id="patient">
-                                               <option value="" disabled>Search Patient</option>
+                                           <p class="text-primary-p">Pharmacy Name</p>
+                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="pharmacy" id="pharmacy">
+                                               <option value="" disabled>Search Pharmacy</option>
                                            </select>
                                       </div>
                                  </div>
@@ -67,11 +73,11 @@
                                <div class=""></div>
                                 <div class=""></div>
                                 <div class="buttons">
-                                   <button  onclick="window.location.href='TrackPatientOrder?search=0"><b>Reset</b></button>
+                                   <button  onclick="window.location.href='TrackOrders?search=0"><b>Reset</b></button>
                                    <button class="button-success" type="submit"><b>Search</b></button>     
                                  </div>
                             </div>
-     </form>
+ </form>
   <br>
   <div></div>
 <center>
@@ -85,14 +91,14 @@
            array=(ArrayList)request.getAttribute("orders");
             size= array.size();
     %>
- <script>
+     <script>
                 var id = [];
-                var patientId = [];
-                var patientName= [];
+                var pharmacyId = [];
+                var pharmacyName= [];
                 var datetime = [];
-                var orderdescription = [];
                 var orderStatus = [];
                 var filepath= [];
+                var description = [];
                 var absolutepath = [];
                 var finalId;
   </script>
@@ -103,14 +109,15 @@
                                                 
             </div>
        </div>
- <div class="charts_table_div" style="clear:both;">
+      
+  <div class="charts_table_div" style="clear:both;">
     <table  class="display charts_table">
       <thead>
       <tr>
         <th class="tableheading">Order ID</th>
-        <th class="tableheading">Patient ID</th>
-        <th class="tableheading">Patient Name</th>
-        <th class="tableheading">Delivery Date </th>
+        <th class="tableheading">Pharmacy ID</th>
+        <th class="tableheading">Pharmacy Name</th>
+        <th class="tableheading">Delivery Date</th>
         <th class="tableheading">Status</th>
         <th class="tableheading">Actions</th>
       </tr>
@@ -125,64 +132,75 @@
         <td class="Row"><%=a2.get(3)%></td>
         <td class="Row"><%=a2.get(4)%></td>
         <td>
-          
           <ul class="actions">
               <li><button  class="btn" onclick="popup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
-              <li><a href="editpharmacyorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+              <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
               <li><a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a></li> 
           </ul>  
-        </td> 
-         <script>
+        </td>
+        <script>
                             id[<%=i%>]                   ="<%=a2.get(0)%>"; 
-                            patientId[<%=i%>]            ="<%=a2.get(1)%>";
-                            patientName[<%=i%>]          ="<%=a2.get(2)%>";
+                            pharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
+                            pharmacyName[<%=i%>]         ="<%=a2.get(2)%>";
                             datetime[<%=i%>]             ="<%=a2.get(3)%>";
-                            orderdescription[<%=i%>]     ="<%=a2.get(6)%>";
-                            orderStatus[<%=i%>]          ="<%=a2.get(4)%>"; 
+                            orderStatus[<%=i%>]          ="<%=a2.get(4)%>";
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
+                            description[<%=i%>]          ="<%=a2.get(6)%>"; 
                             absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
-                           
           </script>
       </tr>
-       <%}}%>
-      <tr>
+       <%}%>
+       <tr>
 
       </tbody>
     </table>
       </div>
-      <!-- Modal starts -->
-<center>
-        <div id="modalBox" class="modal">
+    <%
+                                                       }
+                                                       else
+                                                       {
+                                                  %>
+                                                  <div>
+                                                      No order information
+                                                         
+                                                  </div>
+                                                  <%
+                                                       }
+                                                  %>
+</center>
+ <br>
+  <div id="modalBox" class="modal">
 
             <!-- Modal content -->
             <div id="printPart" class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">&times;  &nbsp;&nbsp;</span>
                 <h3 style="text-align: center;">Order Details</h3>
+                <center>
                 <table style="border:none; text-align: left;">
 
                     <tr>
                         <td> Order ID : </td>
                         <td id="modal_id"> ** </td>
-                        <td> Delivery Date : </td>
+                        <td> Delivery Date / Time : </td>
                         <td id="modal_date_time"> ** </td>
                     </tr>
 
                     <tr>
-                        <td> Patient ID : </td>
-                        <td id="modal_patientId"> ** </td>
-                        <td> Patient Name : </td>
-                        <td id="modal_patientName"> ** </td>
+                        <td> Pharmacy ID : </td>
+                        <td id="modal_pharmacyId"> ** </td>
+                        <td> Pharmacy Name : </td>
+                        <td id="modal_pharmacyName"> ** </td>
                     </tr>
 
                     <tr>
-                        <td> Order Description : </td>
-                        <td id="modal_orderDescription"> ** </td>
                         <td> Order Status : </td>
                         <td id="modal_orderStatus"> ** </td>
+                        <td> Patient Order Description : </td>
+                        <td id="modal_description"> ** </td>
                         
                     </tr>
 
-                    <tr>
+                   <tr>
                         <td colspan="2" ><button class="style"> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
                         <td colspan="2" ><button class="style"><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
 
@@ -197,30 +215,25 @@
                         <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: right;"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                        <td colspan="4" style="text-align: center;"><button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
                         </td>
                     </tr>
 
-                </table>
+                </table></center>
 
             </div>
             
              </div>
+   
 
-</center>
-            <!--Modal content ends-->
-  
-<br><br>
-  </main>
-           <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
+   </main>
+           <jsp:include page="./public/includes/patientSidebar.jsp"/>
         </div>
      </body>
 
 
-</html>
 <script>
-    
-    var modal = document.getElementById("modalBox");
+         var modal = document.getElementById("modalBox");
 
     // Get the button that opens the modal
     var btn = document.getElementById("popUp");
@@ -230,35 +243,39 @@
 
     //modal print btn
     var print = document.getElementById("print");
-
+    
+   
+    
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
-  
     function popup(indexId) {
         modal.style.display = "block";
         
         var index=indexId;
-        finalId =index; 
+         finalId =index; 
         document.getElementById("modal_id").innerHTML = id[index];
-        document.getElementById("modal_patientId").innerHTML = patientId[index];
-        document.getElementById("modal_patientName").innerHTML = patientName[index];
+        document.getElementById("modal_pharmacyId").innerHTML = pharmacyId[index];
+        document.getElementById("modal_pharmacyName").innerHTML = pharmacyName[index];
         document.getElementById("modal_date_time").innerHTML = datetime[index];
-        document.getElementById("modal_orderDescription").innerHTML = orderdescription[index];
+        document.getElementById("modal_description").innerHTML = description[index];
         document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
         document.getElementById("modal_filePath").innerHTML = filepath[index];
         
-       
 
     }
-    function displayPrescriptionFun(){
-         document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
+        function displayPrescriptionFun(){
+            if(filepath[finalId]==="Doctor Prescription"){
+                 document.getElementById("displayPrescription").href = absolutepath[finalId];
+            }
+            else{
+            document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
        
-     
+        }
     
     }
-    function downloadPrescriptionFun(){
+        function downloadPrescriptionFun(){
         
-         document.getElementById("downloadPrescription").download = filepath[finalId];;
+            document.getElementById("downloadPrescription").download = filepath[finalId];;
         
     
     }
@@ -285,7 +302,7 @@
         print.style.display = "block";
     }
     
-         function confirmdelete(index) {
+        function confirmdelete(index) {
         
         var del = confirm("Are you sure you want delete this order permenently ?");
         
@@ -293,8 +310,8 @@
        
         if (del == true){
             if((orderStatus[index]==="Completed")||(orderStatus[index]==="Cancelled")){
-            var orderId=index+1;
-            window.location.href="deleteorder?orderid="+orderId;
+            var orderId = index+1;
+            window.location.href="deletepatientorder?orderid="+orderId;
        
         }
         else{
@@ -303,4 +320,6 @@
         
 
     }}
-     </script>
+
+   </script>
+</html>
