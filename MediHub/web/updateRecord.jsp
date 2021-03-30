@@ -59,7 +59,7 @@
                                       <i class="fa fa-id-card-o fa-2x text-lightblue"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Name</p>
-                                            <p class="text-secondary-p"><input class="input" type="text" name="name" id="name" placeholder="<%=a2.get(1)%>" value="<%=a2.get(1)%>"></p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="name" id="name" placeholder="<%=a2.get(1)%>" value="<%=a2.get(1)%>" required></p>
                                           
                                       </div>
                              </div>

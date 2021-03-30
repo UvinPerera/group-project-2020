@@ -134,7 +134,7 @@
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Expected Delivery Date</p>
-                                            <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
+                                            <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value="" required></p>
                                           
                                       </div></div>
                                                        
