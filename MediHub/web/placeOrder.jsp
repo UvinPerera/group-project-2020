@@ -141,7 +141,7 @@
                                 <div class="card">
                                       <i class="fa fa-file-image-o fa-2x text-blue"></i>
                                       <div class="card_inner_profile">
-                                           <p class="text-primary-p">Prescription</p>
+                                           <p class="text-primary-p">Check the box if you wish to upload a prescription manually.</p>
                                            <p class="text-secondary-p"><input class="input" type="checkbox" name="" id="prescription" ></p>
                                       </div>
                                 </div>
