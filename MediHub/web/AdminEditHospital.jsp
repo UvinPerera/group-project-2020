@@ -195,10 +195,7 @@
                                 <button class="button-success" type="submit"><b>Update</b></button>     
                               </div>
                            </form>
-                         
-                           <div class="buttons">
-                             <a href="adminedithospitaladmin>"><button class="button-success"><b>Edit Director</b></button></a> 
-                          </div>                                 
+                                                        
                         <% } %>
                         
                     </div>
