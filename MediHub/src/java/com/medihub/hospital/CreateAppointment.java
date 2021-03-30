@@ -91,8 +91,8 @@ public class CreateAppointment extends HttpServlet {
         //String strEndTime = timeFormat.format(endTime);
         
         
-        String query ="INSERT INTO doctor_availability(doctor_id,hospital_id,date,start_time,end_time,max_count,payment,status=1) "
-                + "VALUES("+docId+","+hospitalId+",'"+date+"','"+startTime+"','"+endTime+"',+"+maxPat+","+doctorFee+")";
+        String query ="INSERT INTO doctor_availability(doctor_id,hospital_id,date,start_time,end_time,max_count,payment,status) "
+                + "VALUES("+docId+","+hospitalId+",'"+date+"','"+startTime+"','"+endTime+"',+"+maxPat+","+doctorFee+",1)";
         
         try{
             DbConfig db = DbConfig.getInstance();
