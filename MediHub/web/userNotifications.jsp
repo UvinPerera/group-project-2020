@@ -30,7 +30,7 @@
           <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <% if(usertype==0) { %>
-          <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
+          <link rel="stylesheet" type="text/css" href="./public/css/manageHospital.css" media="screen" />
           <% } else if(usertype==1) { %>
           <link rel="stylesheet" type="text/css" href="./public/css/new_dash.css" media="screen" />
           <% } else if(usertype==2) { %>

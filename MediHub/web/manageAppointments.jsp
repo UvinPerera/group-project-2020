@@ -6,6 +6,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
+          <% 
+               String username="";
+               int getLimit=0;
+               username= session.getAttribute("username").toString();
+               int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+               
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
+               }
+          %>
+
 <!doctype html>
 <html>
 
@@ -133,8 +146,13 @@
 
                                         List<DoctorAvailability> apList = (ArrayList<DoctorAvailability>) request.getAttribute("doctoravailability");
                                         
-
+                                        int cc=0;
                                         for (int i = 0; i < apList.size(); i++) {
+                                            
+                                                                cc++;
+                                                                if (cc>10){
+                                                                    break;
+                                                                }
 
                                 %>
                                 <tr>
@@ -147,11 +165,24 @@
                                     <td><%=apList.get(i).payment%></td>
                                     <td><button id="app_<%=apList.get(i).id%>" appId="<%=apList.get(i).id%>"><i class="fa fa-trash"></i></button></td>
                                 </tr>
-                                <%}
-                                                      }%>
+                                <% } %>
                                
                                 </tbody>
                             </table>
+                                                      
+                                                        <% if(apList.size()>10 || getLimit>0) { %>
+                                                        <div class="card">
+                                                        <p style="text-align: center;">
+                                                            <% if(getLimit>0) { %>
+                                                                <a href="manageappointments?limit=<%=getLimit-10%>">Prev</a>
+                                                            <% } %>
+                                                            &nbsp;
+                                                            <% if(apList.size()>10) { %>
+                                                                <a href="manageappointments?limit=<%=getLimit+10%>">Next</a>
+                                                            <% } %>
+                                                        </p>
+                                                        </div>
+                                                        <% }} %>
                         </div>
 
                     </div>
