@@ -56,6 +56,7 @@
                 <div class="main_container">
                     <form action="updatepatientorder" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="pharmacyId" value="<%=a2.get(8)%>"/>
+                        <input type="hidden" name="filepath" value="<%=a2.get(5)%>"/>
                         <div class="main_cards"> 
                             
                              <div class="card">

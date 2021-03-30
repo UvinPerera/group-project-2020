@@ -264,9 +264,13 @@
 
     }
         function displayPrescriptionFun(){
+            if(filepath[finalId]==="Doctor Prescription"){
+                 document.getElementById("displayPrescription").href = absolutepath[finalId];
+            }
+            else{
             document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
        
-     
+        }
     
     }
         function downloadPrescriptionFun(){
