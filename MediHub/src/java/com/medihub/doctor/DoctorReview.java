@@ -113,11 +113,17 @@ public class DoctorReview {
         String q_order = " ORDER BY created_at DESC";
         String q_limit = " limit "+climit+",11";
         
+        String q_where_d=  " AND dr.doctor_id="+dId;
+        
+        if(dId==0) {
+            q_where_d="";
+        }
+        
         String query="SELECT dr.id, dr.patient_id, dr.rating, dr.description, dr.status, dr.created_at, u.first_name, u.last_name, u.profile_pic_path, d.titles, d.degrees, du.first_name as d_first_name, du.last_name as d_last_name FROM doctor_reviews dr "
                 + "JOIN users u ON u.id=dr.patient_id "
                 + "JOIN doctors d ON d.id=dr.doctor_id "
                 + "JOIN users du ON du.id=d.id "
-                + "WHERE u.status=1 AND dr.status=5 AND dr.doctor_id="+dId + q_order + q_limit;
+                + "WHERE u.status=1 AND dr.status=5" + q_where_d + q_order + q_limit;
         
         try
         {
@@ -295,7 +301,7 @@ public class DoctorReview {
     
     public int approveReview(int id) {
         
-        String query="UPDATE doctor_reviews SET status=0 WHERE id="+id;
+        String query="UPDATE doctor_reviews SET status=1 WHERE id="+id;
         
         try{
             DbConfig db = DbConfig.getInstance();

@@ -74,7 +74,7 @@ public class SubmitOrder extends HttpServlet {
             String filepath="";//=request.getParameter("file_path");
             String date="" ;//= request.getParameter("date");
             String pharmacyid="1";//=Integer.parseInt(request.getParameter("pharmacy"));
-            
+            String doctorPrescriptions="";
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
              
@@ -109,7 +109,9 @@ public class SubmitOrder extends HttpServlet {
                       else if(name.compareTo("pharmacy")==0){
                           pharmacyid=value;
                       }
-                      
+                      else if(name.compareTo("doctorPrescriptions")==0){
+                          doctorPrescriptions=value;
+                      }
 
                     } else {
                         String fieldName = item.getFieldName();
@@ -132,6 +134,11 @@ public class SubmitOrder extends HttpServlet {
             String query="INSERT INTO pharmacy_orders (id,pharmacy_id,status,created_at,updated_at,created_by,order_status,expected_delivery_date) VALUES(NULL,"+pharmacyid+",1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"','"+status+"','"+date+"')";
             PreparedStatement stmt=con.prepareStatement(query);  
             int rs=stmt.executeUpdate();
+            if(filepath.isEmpty()){
+                filepath="Doctor Prescription";
+                absolutePath="prescriptiontable?presId="+doctorPrescriptions;
+                
+            }
             
             String query2="INSERT INTO order_items (id,order_id,file_path,absolute_path,description,status,created_at,updated_at,created_by) VALUES(NULL,LAST_INSERT_ID(),'"+filepath+"','"+absolutePath+"','"+description+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'"+patientId+"')";
             PreparedStatement stmt2=con.prepareStatement(query2);  

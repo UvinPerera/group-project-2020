@@ -52,8 +52,9 @@
                         </div>
                     </form>
                     <%
-                        if(request.getAttribute("doctor")!=null){
-                        Doctor d  = (Doctor)request.getAttribute("doctor");
+                        if (request.getAttribute("doctor") != null) {
+                            Doctor d = (Doctor) request.getAttribute("doctor");
+                            Boolean b = (Boolean) request.getAttribute("isLinked");
                     %>
                     <div class="charts">
                         <div class="charts_table_div">
@@ -64,27 +65,34 @@
                                         <th>Doctor Name</th>
                                         <th>Specialization 1</th>
                                         <th>Specialization 2</th>
-                                        
+
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td> <%=d.id %></td> 
-                                        <td><%=d.doctorName %></td>
-                                        <td><%=d.strSpecialisation_1 %></td>
-                                        <td><%=d.strSpecialisation_2 %></td>
-                                         
-                                        <td>Status</td>
+                                        <td> <%=d.id%></td> 
+                                        <td><%=d.doctorName%></td>
+                                        <td><%=d.strSpecialisation_1%></td>
+                                        <td><%=d.strSpecialisation_2%></td>
+                                        <%if (b.booleanValue()) {%>
+                                        <td style="color: green">Linked</td>
+                                        <%} else {%>
+                                        <td style="color: red">Not Linked</td>
+                                        <%}%>
                                     </tr>
                                 </tbody>
                             </table>
-                            
+
                         </div>
                         <div class="buttons">
-                                
-                                <button class="button-success" type="submit"><b>Link Doctor</b></button>     
-                            </div>
+                            <%if (!b.booleanValue()) {%>
+                            <form method="POST" action="linkdoctor">
+                                <input name="docId" type="hidden" value="<%=d.id%>">
+                                <button class="button-success" type="submit"><b>Link Doctor</b></button> 
+                            </form>
+                            <%}%>
+                        </div>
 
                     </div>
                     <%}%>

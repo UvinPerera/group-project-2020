@@ -143,7 +143,7 @@
                             pharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
                             pharmacyName[<%=i%>]         ="<%=a2.get(2)%>";
                             datetime[<%=i%>]             ="<%=a2.get(3)%>";
-                            orderStatus[<%=i%>]               ="<%=a2.get(4)%>";
+                            orderStatus[<%=i%>]          ="<%=a2.get(4)%>";
                             filepath[<%=i%>]             ="<%=a2.get(5)%>";
                             description[<%=i%>]          ="<%=a2.get(6)%>"; 
                             absolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 

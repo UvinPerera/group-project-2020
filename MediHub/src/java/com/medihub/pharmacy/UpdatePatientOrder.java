@@ -7,6 +7,7 @@ package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
 import com.medihub.db.*;
+import com.medihub.user.Notifications;
 import java.io.File;
 import java.sql.*; 
 import java.io.IOException;
@@ -70,6 +71,7 @@ public class UpdatePatientOrder extends HttpServlet {
             String description="";//=request.getParameter("description");
             String filepath="";//=request.getParameter("file_path");
             String date="" ;//= request.getParameter("date");
+            int pharmacyId=0;
             
              
             HttpSession session = request.getSession();
@@ -115,6 +117,9 @@ public class UpdatePatientOrder extends HttpServlet {
                       else if(name.compareTo("orderid")==0){
                           orderId = Integer.parseInt(value);
                       }
+                      else if(name.compareTo("pharmacyId")==0){
+                          pharmacyId = Integer.parseInt(value);
+                      }
                       
                   
                       
@@ -154,12 +159,10 @@ public class UpdatePatientOrder extends HttpServlet {
                 e.printStackTrace();
             }
             
-            
-            
-            
-            
-           //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
-
+              
+            Notifications n = new Notifications(); 
+            n.createNotification(patientId,pharmacyId,"Pharmacy Order has been updated", 1);
+           
             response.sendRedirect("patient");
             con.close();  
         }

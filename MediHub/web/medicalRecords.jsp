@@ -156,7 +156,7 @@
                 <br><br>
                 
                 <a href="addRecord.jsp"><button class="style" type="button">Add New</button></a>
-                <a href="#"><button class="style" type="button">Manage Permissions</button></a>
+                <a href="managePermissions?search=0"><button class="style" type="button">Manage Permissions</button></a>
                </div>
             
                                                   

@@ -87,8 +87,8 @@ public class DoctorUpdate extends HttpServlet {
             
            
             String randomString = getSaltString();
-            String extension = ".jpg";//filepath.substring(filepath.length()-4, filepath.length()-1);
-            String absolutePath = randomString+extension;
+          
+            String absolutePath = "";
             
             
                try{
@@ -137,9 +137,11 @@ public class DoctorUpdate extends HttpServlet {
                         String contentType = item.getContentType();
                         boolean isInMemory = item.isInMemory();
                         long sizeInBytes = item.getSize();
-                        
-                        
-                        filepath=fileName;
+                        filepath = fileName;
+                        int length = filepath.length();
+                        String extension = filepath.substring(length - 5, length - 1);
+
+                         absolutePath = randomString + extension;
                                     
                             
                             file = new File(getServletContext().getRealPath("public/storage/pp/").replace('\\', '/')+"/"+absolutePath) ;

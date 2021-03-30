@@ -136,15 +136,34 @@
                                             <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
                                           
                                       </div></div>
-
-                                 
+                                                       
                                 <div class="card">
                                       <i class="fa fa-file-image-o fa-2x text-blue"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Prescription</p>
-                                           <p class="text-secondary-p"><input class="input" type="file" name="file_path" id="filepath" placeholder="Select Image"></p>
+                                           <p class="text-secondary-p"><input class="input" type="checkbox" name="" id="prescription" ></p>
                                       </div>
-                                </div></div>
+                                </div>
+                                 
+                                <div class="card" id="filepath">
+                                      <i class="fa fa-file-image-o fa-2x text-blue"></i>
+                                      <div class="card_inner_profile">
+                                           <p class="text-primary-p">Prescription</p>
+                                           <p class="text-secondary-p"><input class="input" type="file" name="file_path"  placeholder="Select Image"></p>
+                                      </div>
+                                </div>
+                                                       
+                                 <div class="card" id="doctorPrescriptions">
+                                      <i class="fa fa-medkit fa-2x text-yellow"></i>
+                                      <div class="card_inner_profile">
+                                            <p class="text-primary-p">Select Doctor Prescriptions</p>
+                                            <select name='doctorPrescriptions'  class="filter_dropdown">
+                                                <option value='1'>wl</option>
+
+                                             </select>
+                                          
+                                      </div></div>
+                                      
                                  
                                 <div class="card">
                                       <i class="fa fa-comment-o fa-2x text-blue"></i>
@@ -153,7 +172,7 @@
                                            <p class="text-secondary-p"><input class="input" type="text" name="description" id="email" placeholder="Enter description"></p>
                                       </div>
                                  </div>
-                                                       <br><br>
+                                                      
                                  <div class="buttons">
                                      <button class="button" id="id" type="button" onclick="window.location.href='patient';"><b>Cancel</b></button>
                                     <button class="button" type="reset" id="clear"><b>Clear</b></button>
@@ -269,4 +288,25 @@
  
 //    });
     
+</script>
+<script>
+     $("#filepath").hide();
+     $("#doctorPrescriptions").show();
+             var toggle=1;
+           
+            
+            $("#prescription").click(function(){
+                toggle=toggle+1;
+               
+                if(toggle%2===0){
+                    $("#filepath").show();
+                    $("#doctorPrescriptions").hide();
+                    
+                }else {
+                    
+                     $("#filepath").hide();
+                     $("#doctorPrescriptions").show();
+                }
+                toggle = toggle%2;
+            });
 </script>

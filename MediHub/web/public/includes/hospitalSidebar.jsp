@@ -71,13 +71,14 @@
                               <a href="managedoctorhos">Manage Doctors</a>
                          </div>
 
-                         
-                         <h2>User</h2>
-                         
+                         <h2>Reviews</h2>
+                            
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-stethoscope"></i>
                               <a href="BrowseHospitalReviews?search=1&hospital=0">Reviews</a>
                          </div>
+                         
+                         <h2>User</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewhospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>

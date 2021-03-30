@@ -100,7 +100,7 @@
                               <div class="card">
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Update Profile Picture </p>
-                                        <input class="data" type="file" name="pp" id="pp" placeholder="Upload">
+                                        <input class="data" type="file" name="pp" id="pp" placeholder="Upload" accept="image/*">
                                         
                                    </div>
                               </div>

@@ -114,10 +114,16 @@ public class PharmacyReview {
         String q_order = " ORDER BY created_at DESC";
         String q_limit = " limit "+climit+",11";
         
+        String q_where_p=  " AND dr.pharmacy_id="+dId;
+        
+        if(dId==0) {
+            q_where_p="";
+        }
+        
         String query="SELECT dr.id, dr.patient_id, dr.rating, dr.description, dr.status, dr.created_at, u.first_name, u.last_name, u.profile_pic_path, p.display_name FROM pharmacy_reviews dr "
                 + "JOIN users u ON u.id=dr.patient_id "
                 + "JOIN pharmacies p ON p.id=dr.pharmacy_id "
-                + "WHERE u.status=1 AND dr.status=5 AND dr.pharmacy_id="+dId + q_order + q_limit;
+                + "WHERE u.status=1 AND dr.status=5" + q_where_p + q_order + q_limit;
         
         try
         {

@@ -6,6 +6,7 @@
 package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -37,6 +38,7 @@ public class UpdatePharmacyOrder extends HttpServlet {
              String orderStatus=request.getParameter("orderstatus");
              int orderId=Integer.parseInt(request.getParameter("orderid"));
              String date = request.getParameter("deliverydate");
+             int patientId=Integer.parseInt(request.getParameter("patientid"));
              
              
              try{
@@ -50,8 +52,10 @@ public class UpdatePharmacyOrder extends HttpServlet {
                     else{
                     int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by='"+pharmacistId+"', expected_delivery_date='"+date+"',order_status='"+orderStatus+"' WHERE id ="+ orderId);
                     }
-                  // int rs2=stmt.executeUpdate("UPDATE order_items SET updated_at=CURRENT_TIMESTAMP, updated_by='"+pharmacistId+"',description='"+description+"' WHERE order_id ="+ orderId);
                     
+                   Notifications n = new Notifications(); 
+                   n.createNotification(pharmacistId,patientId,"Pharmacy Order has been updated", 1);
+                   
                   response.sendRedirect("pharmacy");
                     }catch(Exception e){
                        out.println(e.toString());
