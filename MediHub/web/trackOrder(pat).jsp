@@ -243,7 +243,9 @@
 
     //modal print btn
     var print = document.getElementById("print");
-
+    
+   
+    
     // When the user clicks on the button, open the modal
     //    btn.onclick = function() 
     function popup(indexId) {
