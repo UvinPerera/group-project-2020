@@ -205,7 +205,7 @@
     </div>
     <div id="cookieConsent">
     <div id="closeCookieConsent">x</div>
-    This website uses cookies. <a href="#" target="_blank">More information</a> <a class="accept">I Accept</a>
+    This website uses cookies. These cookies will not be used to save or collect any personal data as we value your privacy. They will only be utilized when you are logged in to our site to ensure that you get the best experience! <a class="accept">I Accept</a>
 </div>
 
 </body>
@@ -216,7 +216,7 @@
     <div class="column4">
       <div class="footerText">
         </br>ABOUT </br></br>
-        MediHub is a mainly a patient portal providing users eaiser access to all medical services. </br>MediHub also
+        MediHub is a mainly a patient portal providing users easier access to all medical services. </br>MediHub also
         provides different doctors, hospitals and pharmacies interact with the patients directly in order to provide
         them with the best experience in accessing medical services</br>
       </div>
