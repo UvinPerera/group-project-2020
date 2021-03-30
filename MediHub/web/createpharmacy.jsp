@@ -74,8 +74,8 @@
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Pharmacy Name</p>
-                                        <input class="data" type="text" name="pharmacy_name" id="pharmacyname" placeholder="Pharmacy Name">
-                                        <div class="alert-danger" id="pharmacyNameError">
+                                        <input class="data" type="text" name="pharmacy_name" id="name" placeholder="Pharmacy Name">
+                                        <div class="alert-danger" id="nameError">
                                             * Pharmacy name can't be empty and must contain only letters
                                         </div>
                                    </div>
@@ -95,8 +95,8 @@
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Display Name</p>
-                                        <input class="data" type="text" name="pharmacy_display_name" id="pharmacydisplayname" placeholder="Display Name">
-                                        <div class="alert-danger" id="pharmacyDisplayNameError">
+                                        <input class="data" type="text" name="pharmacy_display_name" id="displayname" placeholder="Display Name">
+                                        <div class="alert-danger" id="displayNameError">
                                             * Pharmacy display name can't be empty and must contain only letters
                                         </div>
                                    </div>
@@ -105,8 +105,8 @@
                                   <i class="fa fa-medkit fa-2x text-green"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Land Number</p>
-                                        <input class="data" type="text" name="land_number" id="landnumber" placeholder="Land Number">
-                                        <div class="alert-danger" id="landNumberError">
+                                        <input class="data" type="text" name="land_number" id="land" placeholder="Land Number">
+                                        <div class="alert-danger" id="numberError">
                                             * Land number can't be empty and must contain only letters
                                         </div>
                                    </div>
@@ -126,7 +126,7 @@
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Pharmacy Email</p>
                                         <input class="data" type="text" name="email" id="email" placeholder="Email">
-                                        <div class="alert-danger" id="EmailError">
+                                        <div class="alert-danger" id="emailError">
                                             * Email can't be empty and must contain only letters
                                         </div>
                                    </div>
@@ -192,9 +192,9 @@
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Description</p>
                                         <input class="data" type="text" name="discription" id="description" placeholder="Description">
-                                        <div class="alert-danger" id="discriptionError">
+                                       <!-- <div class="alert-danger" id="discriptionError">
                                             * Description can't be empty
-                                        </div>
+                                        </div> -->
                                    </div>
                               </div>
                             </div>
@@ -288,8 +288,8 @@
                                   <i class="fa fa-user-circle fa-2x text-lightblue"></i>
                                    <div class="card_inner_profile">
                                         <p class="text-primary-p">Mobile Number</p>
-                                        <input class="input" type="text" name="mobile_no" id="mobilenumber" placeholder="Mobile Number">
-                                        <div class="alert-danger" id="mobileNumberError">
+                                        <input class="input" type="text" name="mobile_no" id="mobile" placeholder="Mobile Number">
+                                        <div class="alert-danger" id="numberError">
                                              * Mobile number can't be empty
                                         </div>
                                   </div>
@@ -311,7 +311,7 @@
                                         <p class="text-primary-p">Confirm Password</p>
                                         <input class="input" type="password" name="confirm_passsword" id="password2" placeholder="Confirm Password">
                                         <div id="errorMsg"></div>
-                                            <div class="alert-danger" id="passwordError">
+                                            <div class="alert-danger" id="password2Error">
                                                   * Password did not match.
                                            </div>
                                     </div>                                  
@@ -354,6 +354,7 @@
 <script>
     
         $("#firstNameError").hide();
+        $("#lastNameError").hide();
         $("#displayNameError").hide();
         $("#nicError").hide();
         $("#dobError").hide();
