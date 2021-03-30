@@ -1,4 +1,7 @@
 
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.prescription.PrescriptionItem"%>
+<%@page import="com.medihub.prescription.Prescription"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -75,13 +78,38 @@
         <th>Meal Preference</th>
       </thead>
       <tbody>
+          <%
+          Prescription p = (Prescription)request.getAttribute("prescription");
+          List <PrescriptionItem> lst = p.presItems ;
+          for(PrescriptionItem row : lst){
+          %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%=row.genericName %></td>
+          <td><%=row.tradeName %></td>
+          <td><%=row.dosage %></td>
+          <% if(row.intervalId==8){ %>
+          <td>Three times a Day</td>
+          <% }%>
+          <% if(row.intervalId==12){ %>
+          <td>Twice a Day</td>
+          <% }%>
+          <% if(row.intervalId==24){ %>
+          <td>Once a Day (Morning)</td>
+          <% }%>
+          <% if(row.intervalId==25){ %>
+          <td>Once a Day (Evening)</td>
+          <% }%>
+          <% if(row.intervalId==26){ %>
+          <td>Once a Day (Night)</td>
+          <% }%>
+          <td><%=row.duration %></td>
+          <%if(row.mealPref==0){%>
+          <td>Before Meals</td>
+          <%}else{%>
+          <td>After Meals</td>
+          <%}%>
         </tr>
+        <%}%>
         
       </tbody>
     </table>

@@ -39,30 +39,67 @@ public class Prescription {
 
             PreparedStatement pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
-            
-            while(rs.next()){
-            
+
+            while (rs.next()) {
+
                 PrescriptionItem pi = new PrescriptionItem();
                 Prescription p = new Prescription();
-                
+
                 p.id = rs.getInt("id");
                 p.channeling_id = rs.getInt("channel_id");
                 p.date = rs.getString("date");
                 p.docName = rs.getString("doc_name");
                 p.presItems = pi.getPresItems(p.id);
-                
+
                 prescriptions.add(p);
-                
-            
+
             }
 
         } catch (Exception e) {
-            
+
             e.printStackTrace();
         }
-        
-        
+
         return prescriptions;
     }
 
+    public Prescription getPrescriptionById(int presId) {
+
+        Prescription p = new Prescription();
+        String query = "SELECT p.id,ch.id AS channel_id,concat(u.first_name,\" \",u.last_name) AS doc_name,da.date FROM prescriptions p "
+                + "INNER JOIN channelling ch ON p.channeling_id=ch.id "
+                + "INNER JOIN doctor_availability da ON da.id=ch.doctor_availability_id "
+                + "INNER JOIN users u ON u.id=da.doctor_id "
+                + "JOIN users pat ON pat.id = ch.patient_id WHERE p.id=" + presId;
+        
+
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                PrescriptionItem pi = new PrescriptionItem();
+               
+
+                p.id = rs.getInt("id");
+                p.channeling_id = rs.getInt("channel_id");
+                p.date = rs.getString("date");
+                p.docName = rs.getString("doc_name");
+                p.presItems = pi.getPresItems(p.id);
+
+                
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return p;
+    }
 }
