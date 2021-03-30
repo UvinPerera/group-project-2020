@@ -7,6 +7,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
+          <% 
+               String username="";
+               int getLimit=0;
+               username= session.getAttribute("username").toString();
+               int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+               
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
+               }
+          %>
+          
 <!doctype html>
 <html>
 
@@ -129,7 +142,14 @@
                                                      if(request.getAttribute("appointments")!=null){
                                                      List <DoctorAvailability> da = (ArrayList<DoctorAvailability>)request.getAttribute("appointments");
                                                      
+                                                     int cc=0;
                                                      for(int i =0;i<da.size();i++){
+                                                                
+                                                                cc++;
+                                                                if (cc>10){
+                                                                    break;
+                                                                } 
+                                                         
                                                  %>
                                                   <tr id="" value="">
                                                  
@@ -145,10 +165,25 @@
                                                        
                                                        
                                                   </tr>
-                                                  <%}} else{%><tr><td colspan="6">No upcoming appointments</td></tr><%}%>
+                                                  
                                                   
                                              </tbody>
                                         </table>
+                                                       <% if(da.size()>10 || getLimit>0) { %>
+                                                        <div class="card">
+                                                        <p style="text-align: center;">
+                                                            <% if(getLimit>0) { %>
+                                                                <a href="doctorviewappointments?limit=<%=getLimit-10%>">Prev</a>
+                                                            <% } %>
+                                                            &nbsp;
+                                                            <% if(da.size()>10) { %>
+                                                                <a href="doctorviewappointments?limit=<%=getLimit+10%>">Next</a>
+                                                            <% } %>
+                                                        </p>
+                                                        </div>
+                                                        <% } %>  
+                                                       
+                                                       <% }} else{%><tr><td colspan="6">No upcoming appointments</td></tr><%}%>
                                    </div>
 
                               </div>
