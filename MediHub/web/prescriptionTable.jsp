@@ -11,6 +11,7 @@
   <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <style>
 
@@ -67,7 +68,7 @@
 
   </style>
 </head>
-  <body>
+  <body id="printPart">
     <table>
       <thead>
         <th>Generic Name </th>
@@ -110,8 +111,20 @@
           <%}%>
         </tr>
         <%}%>
-        
+        <button id="print" class="btn"><i class="fa fa-envelope"> Print </i></button>
       </tbody>
     </table>
+        <script>
+            var print = document.getElementById("print");
+              print.onclick = function () {
+        print.style.display = "none";
+        var win = window.open();
+        var printContent = $("#printPart").html();
+
+        $(win.document.body).html(printContent);
+        win.print();
+        print.style.display = "block";
+    }
+         </script>
   </body>
   </html>

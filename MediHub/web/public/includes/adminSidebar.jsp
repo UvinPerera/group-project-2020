@@ -74,12 +74,7 @@
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageHospital.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-hospital-o"></i>
                               <a href="readhospital">Manage Hospitals</a>
-                         </div>
-
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/manageReviews.jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-reply-all"></i>
-                              <a href="manageReviews.jsp">Manage Reviews</a>
-                         </div>
+                         </div> 
 
                          <h2>Reviews</h2>
                          
