@@ -46,7 +46,7 @@ public class TrackOrders extends HttpServlet {
                  }
                 String qlimit = " limit "+getLimit+",11";
                 if(Integer.parseInt(request.getParameter("search"))==0){
-                ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE po.status = 1 and po.created_by="+patientId+"ORDER BY created_at DESC"+qlimit);
+                ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE po.status = 1 and po.created_by="+patientId+" ORDER BY po.created_at DESC"+qlimit);
                 
                 //out.println(pharmacyId);
                 ArrayList records = new ArrayList();

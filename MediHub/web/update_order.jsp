@@ -117,7 +117,9 @@
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Order Delivery Date</p>
                                             <p class="text-secondary-p"><input class="input" type="date" name="deliverydate" id="deliverydate" value="<%=a2.get(7)%>"></p>
-                                          
+                                          <div class="alert-danger" id="dateError">
+                                            * Expected Delivery Date must be a future date
+                                        </div>
                                       </div>
                              </div>
                                             <div class=""></div>   
@@ -168,3 +170,13 @@
           
      </body>
 </html>
+<script>
+    //////FIX
+    deliveryDate = document.getElementById('deliverydate');
+    $("#dateError").hide();
+    $("#updateForm").on('submit',function(e){
+        $("#dateError").hide();
+         var date = Date.parse(deliveryDate);
+         alert(date);
+    }
+</script>
