@@ -115,8 +115,8 @@ public class CreateHospital extends HttpServlet {
                 Connection con = db.getConnecton();
                 
                 Statement stmt=con.createStatement(); 
-                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,created_at,updated_at,created_by,updated_by) "
-                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+HospitalAdmin_Email+"','"+Password+"',3,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
+                int rs1=stmt.executeUpdate("insert into users(first_name,last_name,display_name,email,password,user_type,nic,dob,gender,mobile_number,status,created_at,updated_at,created_by,updated_by) "
+                        +  "values('"+First_Name+"','"+Last_Name+"','"+Display_Name+"','"+HospitalAdmin_Email+"','"+Password+"',3,'"+NIC+"','"+DOB+"','"+Gender+"','"+Mobile_Number+"',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,"+adminId+","+adminId+") ");
                 
                 String query = "SELECT LAST_INSERT_ID() AS temp";
                 int temp=0;
