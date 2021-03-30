@@ -86,6 +86,15 @@
                                         <span class="font-bold text-title">2</span>
                                    </div>
                               </div>
+                             
+                             <div class="card">
+                                   <i class="fa fa-bell fa-2x text-green"></i>
+                                   <div class="card_inner">
+                                        <p class="text-primary-p">Notifications</p>
+                                        <span class="font-bold text-title">2</span>
+                                   </div>
+                              </div>
+
 
                          </div>
 
@@ -150,7 +159,7 @@
                                                                 }
                                                        %>
                                                        <tr>
-                                                            <td><%= row.patientFirstName %><%= row.patientLastName %></td>
+                                                            <td><%= row.patientFirstName %> <%= row.patientLastName %></td>
                                                             <td><%= row.orderStatus %></td>
                                                             <td><%= row.expectedDeliveryDate %></td>
                                                             <td><%= row.id %></td>
@@ -162,9 +171,9 @@
                                                             id[<%= table.indexOf(row) %>]                   =<%= row.id %>;                                                            
                                                             patientFirstName[<%= table.indexOf(row) %>]     ="<%= row.patientFirstName %>";
                                                             patientLastName[<%= table.indexOf(row) %>]      ="<%= row.patientLastName %>";
-                                                            orderStatus[<%= table.indexOf(row) %>]          =<%= row.orderStatus %>;
+                                                            orderStatus[<%= table.indexOf(row) %>]          ="<%= row.orderStatus %>";
                                                             patientAddress1[<%= table.indexOf(row) %>]      ="<%= row.patientAddress1 %>";
-                                                            patientAddress2[<%= table.indexOf(row) %>]      ="<%= row. patientAddress2 %>";
+                                                            patientAddress2[<%= table.indexOf(row) %>]      ="<%= row.patientAddress2 %>";
                                                             patientMobileNumber[<%= table.indexOf(row) %>]  ="<%= row.patientMobileNumber %>";
                                                             patientLandNumber[<%= table.indexOf(row) %>]    ="<%= row.patientLandNumber %>";
                                                             expectedDeliveryDate[<%= table.indexOf(row) %>] ="<%= row.expectedDeliveryDate %>";
@@ -262,7 +271,7 @@
                                                                 }
                                                        %>
                                                        <tr>
-                                                            <td><%= row.patientFirstName %><%= row.patientLastName %></td>
+                                                            <td><%= row.patientFirstName %> <%= row.patientLastName %></td>
                                                             <td><%= row.orderStatus %></td>
                                                             <td><%= row.expectedDeliveryDate %></td>
                                                             <td><%= row.id %></td>
@@ -448,36 +457,20 @@
                //    btn.onclick = function() 
                function popup(indexId) {
                modal.style.display = "block";
-               //        var index=btn.getAttribute("index");
+               
                var index = indexId;
 
                document.getElementById("modal_id").innerHTML = id[index];
-               document.getElementById("modal_delivery_date").innerHTML = expectedDeliveryDate[index] //+ " " + time[index];
+               document.getElementById("modal_delivery_date").innerHTML = expectedDeliveryDate[index];
                //document.getElementById("modal_patientId").innerHTML = hospital[index];
-               document.getElementById("modal_patientName").innerHTML = patientFirstName[index]+ " " + patientLastName[index];;
+               document.getElementById("modal_patientName").innerHTML = patientFirstName[index]+ " " + patientLastName[index];
                document.getElementById("modal_description").innerHTML = description[index];
                document.getElementById("modal_orderStatus").innerHTML = orderStatus[index];
                document.getElementById("modal_address1").innerHTML = patientAddress1[index];
                document.getElementById("modal_address2").innerHTML = patientAddress2[index];
                document.getElementById("modal_patientMobileNumber").innerHTML = patientMobileNumber[index];
                document.getElementById("modal_patientLandNumber").innerHTML = patientLandNumber[index];
-
-//               var status = "";
-//               var colour = "";
-//
-//               if (paymentStatus[index] != "") {
-//                    status = "Paid";
-//                    colour = "green";
-//               }
-//               else {
-//                    status = "Not Paid";
-//                    colour = "red";
-//               }
-//               document.getElementById("modal_payment_status").style.color = colour;
-//               document.getElementById("modal_payment_status").innerHTML = status;
-//
-//               }
-
+           }
                // When the user clicks on <span> (x), close the modal
                span.onclick = function () {
                modal.style.display = "none";
