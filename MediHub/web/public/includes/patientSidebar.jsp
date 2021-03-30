@@ -54,9 +54,9 @@
                               <a href="userNotifications">Notifications</a>
                          </div>
                               
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/medicalRemindersPatient.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
-                              <a href="#">Reminders</a>
+                              <a href="MedicalRemindersPatient">Reminders</a>
                          </div>
 
 
