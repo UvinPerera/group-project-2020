@@ -61,20 +61,13 @@
 
                          <h2>Orders</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
-                              <a href="#">Track Orders</a>
+                              <a href="trackpatientorder?search=0">Track Orders</a>
                          </div>
 
                         
 
-                         <h2>Report</h2>
-
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
-                              <i class="fa fa-dropbox"></i>
-                              <a href="trackpatientorder?search=0">Pharmacy Orders</a>
-                         </div>
-                         
                          
                          <h2>Pharmacy</h2>
 
@@ -88,12 +81,14 @@
                               <a href="editpharmacy">Edit Pharmacy</a>
                          </div>
 
-                         <h2>User</h2>
+                         <h2>Reviews</h2>
                          
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/browseDoctor.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-stethoscope"></i>
                               <a href="BrowsePharmacyReviews?search=1&pharmacy=0">Reviews</a>
                          </div>
+                         
+                         <h2>User</h2>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/viewpharmacist.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-user-circle"></i>

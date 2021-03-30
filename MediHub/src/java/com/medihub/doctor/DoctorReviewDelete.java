@@ -39,13 +39,16 @@ public class DoctorReviewDelete extends HttpServlet {
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
             int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
-        
+            System.out.println(usertype);
             if(usertype==1 || usertype==0){
                 PrintWriter out = response.getWriter();
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                        int getDoctor=0;
+                        if(request.getParameter("search")!=null){
+                            getDoctor=Integer.parseInt(request.getParameter("doctor"));
+                        }
 
                         DoctorReview dr = new DoctorReview();
 //                        out.print(dr.insertReview(patientId,getDoctor,getRating,description));
@@ -58,8 +61,12 @@ public class DoctorReviewDelete extends HttpServlet {
                             session.setAttribute("alert", "error");
                             session.setAttribute("message", "Review Deletion Unsuccessful !");
                         }
-                        
-                        response.sendRedirect("BrowseDoctor?search=1&doctor="+getDoctor);
+                        if(usertype==1){
+                            response.sendRedirect("BrowseDoctor?search=1&doctor="+getDoctor);
+                        }
+                        else if(usertype==0){
+                            response.sendRedirect("BrowseDoctorReviewsAdmin?search=1&doctor="+getDoctor);
+                        }
                     }
                     catch(Exception e)
                     {

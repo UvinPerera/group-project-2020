@@ -45,7 +45,10 @@ public class HospitalReviewDelete extends HttpServlet {
                     try
                     {
                         int getId=Integer.parseInt(request.getParameter("id"));
-                        int getHospital=Integer.parseInt(request.getParameter("hospital"));
+                        int getHospital=0;
+                        if(request.getParameter("search")!=null){
+                            getHospital=Integer.parseInt(request.getParameter("hospital"));
+                        }
 
                         HospitalReview dr = new HospitalReview();
 //                        out.print(dr.insertReview(patientId,getHospital,getRating,description));
@@ -59,7 +62,12 @@ public class HospitalReviewDelete extends HttpServlet {
                             session.setAttribute("message", "Review Deletion Unsuccessful !");
                         }
                         
-                        response.sendRedirect("BrowseHospital?search=1&hospital="+getHospital);
+                        if(usertype==1) {
+                            response.sendRedirect("BrowseHospital?search=1&hospital="+getHospital);
+                        }
+                        else if(usertype==0) {
+                            response.sendRedirect("BrowseHospitalReviewsAdmin?search=1&hospital="+getHospital);
+                        }
                     }
                     catch(Exception e)
                     {
