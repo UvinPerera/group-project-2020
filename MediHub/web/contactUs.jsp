@@ -55,7 +55,8 @@
       <div class="column">
           <form action="contact" method="post">
             <br><br><h2>Contact Us</h2>
-            <br><br><br>
+            <br><br>
+            <p> Contact us for inquiries, complaints, feedback or any comments! <br>If you wish to connect your pharmacy or hospital with our system, send us a message.<br> We are here to bring you the best online experience!</p><br>
             <div class="input-container">
 
               <!--Contact Form-->
@@ -78,7 +79,7 @@
             </div>
             <br/><br>
 
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" class="btn">Send Message</button>
         </form>
         </div>
 
