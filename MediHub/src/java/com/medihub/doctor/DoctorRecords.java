@@ -54,7 +54,7 @@ public class DoctorRecords extends HttpServlet {
         if (patId!=null) {
             int patientId = Integer.parseInt(patId);
             MedicalRecords mr = new MedicalRecords();
-            request.setAttribute("records", mr.getReocrdsByDoctorAndPatient(doctorId, patientId));
+            request.setAttribute("records", mr.getRecordsByPatient(patientId));
         }
         
 
