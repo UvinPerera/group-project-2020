@@ -70,6 +70,7 @@
         <th>Generic Name </th>
         <th>Trade Name</th>
         <th>Dosage</th>
+        <th>Interval</th>
         <th>Duration </th>
         <th>Meal Preference</th>
       </thead>
@@ -81,34 +82,7 @@
           <td></td>
           <td></td>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        
       </tbody>
     </table>
   </body>

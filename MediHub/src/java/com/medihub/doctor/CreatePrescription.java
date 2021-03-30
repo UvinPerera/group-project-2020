@@ -96,6 +96,7 @@ public class CreatePrescription extends HttpServlet {
         String[] dosage = m.get("dosage");
         String[] interval = m.get("interval");
         String[] mp = m.get("mp");
+        String[] durationMed = m.get("durationMed");
 
         try {
             DbConfig db = DbConfig.getInstance();
@@ -111,18 +112,33 @@ public class CreatePrescription extends HttpServlet {
             }
 
             for (int i = 0; i < genericName.length; i++) {
-                String query3 = "INSERT INTO prescription_items(prescription_id,generic_name,trade_name,dosage,interval_id,meal_preference,status)"
-                        + " VALUES(" + presId + ",'" + genericName[i] + "','" + tradeName[i] + "','" + dosage[i] + "'," + interval[i] + "," + mp[i] + ",1)";
+                String query3 = "INSERT INTO prescription_items(prescription_id,generic_name,trade_name,dosage,interval_id,meal_preference,status,duration)"
+                        + " VALUES(" + presId + ",'" + genericName[i] + "','" + tradeName[i] + "','" + dosage[i] + "'," + interval[i] + "," + mp[i] + ",1,"+durationMed[i]+")";
                 PreparedStatement pst3 = con.prepareStatement(query3);
                 int rs3 = pst3.executeUpdate();
             }
-            
+            try{
             if (reminder.compareTo("on") == 0) {
              String query4= "INSERT INTO medication_reminders(prescription_id,duration,through_mail,through_sms,description) "
                      + "VALUES("+presId+","+duration+",1,1,'"+description+"')";
              PreparedStatement pst4 = con.prepareStatement(query4);
              int rs4 = pst4.executeUpdate();
             }
+            }catch(NullPointerException e){}
+            
+            /*String patientId="";
+            String query5="SELECT u.id FROM users u "
+                    + "INNER JOIN channelling ch ON u.id=ch.patient_id "
+                    + "INNER JOIN prescriptions p ON p.channeling_id=ch.id "
+                    + "WHERE p.id="+presId;
+            
+            PreparedStatement pst5 = con.prepareStatement(query5);
+            ResultSet rs5 = pst5.executeQuery();
+            
+            
+             
+            String query6="INSERT INTO medical_records()";*/
+            
             con.close();
 
         } catch (Exception e) {

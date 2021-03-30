@@ -106,7 +106,7 @@
                             <div class="card" id="duration">
                                 <i class="fa fa-calendar fa-2x text-yellow"></i>
                                 <div class="card_inner_profile">
-                                    <p class="text-primary-p">Duration</p>
+                                    <p class="text-primary-p">Duration (In Days)</p>
                                     <input name="duration" type="text" class="filter_text textt" style="width: 100%">
                                 </div>
                             </div>
@@ -146,7 +146,8 @@
                                         <th>Generic Name</th>
                                         <th>Trade Name</th>
                                         <th>Dosage</th>
-                                        <th>Duration</th>
+                                        <th>Interval</th>
+                                        <th>Duration (In Days)</th>
                                         <th>Meal Preference</th>
 
 
@@ -167,10 +168,13 @@
                                                 <option selected="" disabled="">Choose Interval</option>
                                                 <option value="8">Three Times Per Day</option>
                                                 <option value="12">Two Times Per Day</option>
-                                                <option value="24">One Times Per Day</option>
+                                                <option value="24">One Times Per Day (morning)</option>
+                                                <option value="25">One Times Per Day (afternoon)</option>
+                                                <option value="26">One Times Per Day (night)</option>
                                                 
 
                                             </select></td>
+                                            <td><input name="durationMed" type="text" required></td>
                                         <td><select name="mp" required="">
                                                 <option selected="" disabled="">Choose Meal Preference</option>
                                                 <option value="0">Before Meals</option>

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.medihub.patient.*;
+import com.medihub.prescription.Prescription;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -44,7 +45,10 @@ public class PatientOrders extends HttpServlet {
                             District d = new District();
                             List<District> returnData =new ArrayList<District>();
                             returnData=d.getAllDistricts();
+                            Prescription p = new Prescription();
+                            System.out.println(p.getPrescriptionPatient(13));
                             request.setAttribute("districts", returnData); //directly get districts
+                            request.setAttribute("prescriptions", p.getPrescriptionPatient(13));
                             request.getRequestDispatcher("placeOrder.jsp").forward(request, response);
                         }
                         catch(Exception e)
