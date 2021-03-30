@@ -72,7 +72,7 @@ public class AdminUpdateHospital extends HttpServlet {
          //   System.out.println(address1+"\n");
             String address2=request.getParameter("address_2");
         //    System.out.println(address2+"\n");
-            String mobile=request.getParameter("mobile_number");
+         //   String mobile=request.getParameter("mobile_number");
          //   System.out.println(mobile+"\n");
             String landNumber=request.getParameter("land_number");
          //   System.out.println(land_line+"\n");
@@ -88,7 +88,7 @@ public class AdminUpdateHospital extends HttpServlet {
                     + "address_1='"+address1+"',"
                     + "address_2='"+address2+"',"
                     + "city="+city+","
-                    + "mobile_number='"+mobile+"',"
+                  //  + "mobile_number='"+mobile+"',"
                     + "land_number='"+landNumber+"',"
                     + "updated_by="+adminId+","
                     + "updated_at=CURRENT_TIMESTAMP "

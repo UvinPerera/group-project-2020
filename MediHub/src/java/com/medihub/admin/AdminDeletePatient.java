@@ -28,8 +28,8 @@ public class AdminDeletePatient extends HttpServlet {
             throws ServletException, IOException {
             int patientId = Integer.parseInt(request.getParameter("pId"));
         
-        User patient = new User();
-        patient.setId(patientId);
+               User patient = new User();
+              patient.setId(patientId);
         
         
          try

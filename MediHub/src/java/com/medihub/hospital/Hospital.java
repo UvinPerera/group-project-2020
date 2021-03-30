@@ -282,6 +282,31 @@ public class Hospital {
             return null;        
         }
     }
+   
+   public void DeleteHospital(){
+    
+        String query = "UPDATE hospitals SET status=0 WHERE id="+this.id;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            int rs = pst.executeUpdate();
+            
+
+            
+            con.close();
+         
+        }
+        catch(Exception e)
+        {
+          e.printStackTrace();
+                 
+        }
+    
+    }
      
    public int getId(){
         return this.id;
