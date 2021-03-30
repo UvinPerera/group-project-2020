@@ -53,6 +53,12 @@ public class ManageDoctorHos extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
+        
+        String getLimit="0";
+        if(request.getParameter("limit")!=null){
+            getLimit=request.getParameter("limit");
+        }
+        
         String adminId = session.getAttribute("userid").toString();
         String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+adminId;
         int hospitalId=0;
@@ -69,8 +75,8 @@ public class ManageDoctorHos extends HttpServlet {
             
             //PrintWriter out = response.getWriter();
             //out.println(hospitalId); 
-            
-            String query2 ="SELECT d.*,u.first_name,u.last_name FROM doctors d INNER JOIN doctor_hospital dh ON d.id=dh.doctor_id INNER JOIN hospitals h ON h.id= dh.hospital_id INNER JOIN users u ON u.id =d.id WHERE h.id ="+hospitalId;
+            String q_limit = " limit "+getLimit+",11";
+            String query2 ="SELECT d.*,u.first_name,u.last_name FROM doctors d INNER JOIN doctor_hospital dh ON d.id=dh.doctor_id INNER JOIN hospitals h ON h.id= dh.hospital_id INNER JOIN users u ON u.id =d.id WHERE h.id ="+hospitalId + q_limit;
             
             PreparedStatement pst1 = con.prepareStatement(query2);
             ResultSet rs1 = pst1.executeQuery();

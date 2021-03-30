@@ -227,7 +227,7 @@
    
 
    </main>
-           <jsp:include page="./public/includes/patientSidebar.jsp"/>
+           <jsp:include page="./public/includes/pharmacySidebar.jsp"/>
         </div>
      </body>
 

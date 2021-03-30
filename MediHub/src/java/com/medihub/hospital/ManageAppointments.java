@@ -51,6 +51,11 @@ public class ManageAppointments extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         
+        String getLimit="0";
+        if(request.getParameter("limit")!=null){
+            getLimit=request.getParameter("limit");
+        }
+        
         int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
         int hospitalId=0;
         String query ="SELECT hospital_id FROM hospital_admins WHERE user_id="+hospitalAdminId;
@@ -72,7 +77,7 @@ public class ManageAppointments extends HttpServlet {
             catch(Exception e){
                 e.printStackTrace();
             }
-            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId));
+            request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId,getLimit));
         
         request.getRequestDispatcher("manageAppointments.jsp").forward(request, response);
         
