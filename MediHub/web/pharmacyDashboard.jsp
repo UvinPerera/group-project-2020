@@ -33,13 +33,18 @@
           <% 
                String username="";
                String absolutePath ="";
+               String completeNo="";
+               String pendingNo=""; 
                username= session.getAttribute("username").toString();
                try{
-                    absolutePath = request.getAttribute("absolutePath").toString(); 
+                    absolutePath = request.getAttribute("absolutePath").toString();
+                    completeNo = request.getAttribute("noCompleted").toString();
+                    pendingNo = request.getAttribute("noPending").toString();
                }
                catch(NullPointerException ex){
                    absolutePath ="";
                }
+               
           %>
 
           <div class="container">
@@ -74,7 +79,7 @@
                                    <i class="fa fa-calendar fa-2x text-red"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Pending Orders</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title"><%=pendingNo%></span>
                                    </div>
                               </div>
 
@@ -82,8 +87,8 @@
                               <div class="card">
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
-                                        <p class="text-primary-p">Upcoming Orders</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <p class="text-primary-p">Completed Orders</p>
+                                        <span class="font-bold text-title"><%=completeNo%></span>
                                    </div>
                               </div>
                              
@@ -146,7 +151,7 @@
                                                             <th>Order Status</th>
                                                             <th>Expected Delivery Date</th>
                                                             <th>Order Number</th>
-                                                            <th>View</th>
+                                                            
                                                        </tr>
                                                   </thead>
                                                   <tbody>
@@ -163,8 +168,6 @@
                                                             <td><%= row.orderStatus %></td>
                                                             <td><%= row.expectedDeliveryDate %></td>
                                                             <td><%= row.id %></td>
-                                                            
-                                                            <td><button id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></td>
                                                        </tr>
                                                        
                                                        <script>
@@ -258,7 +261,7 @@
                                                             <th>Order Status</th>
                                                             <th>Expected Delivery Date</th>
                                                             <th>Order Number</th>
-                                                            <th>View</th>
+                                                           
                                                   </tr>
                                              </thead>
                                           <tbody>
@@ -276,8 +279,7 @@
                                                             <td><%= row.expectedDeliveryDate %></td>
                                                             <td><%= row.id %></td>
                                                             
-                                                            <td><button id="popUp" onclick="popup('<%= table.indexOf(row) %>');" index="<%= table.indexOf(row) %>"><i class="fa fa-eye"></i></button></td>
-                                                       </tr>
+                                                             </tr>
                                                        
                                                        <script>
                                                             id[<%= table.indexOf(row) %>]                   =<%= row.getId() %>;                                                            
@@ -296,11 +298,7 @@
                                 
                                                         <%}%>
                                                         
-                                                        <% if(table.size()>10) {%>
-                                                        <tr>
-                                                            <td colspan="6"><a href="#">View More...</a></td>
-                                                        </tr>
-                                                        <%}%>
+                                                        
                                                   </tbody>
                                         </table>
                                    </div>

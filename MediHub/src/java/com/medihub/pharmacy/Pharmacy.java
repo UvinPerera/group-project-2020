@@ -446,6 +446,65 @@ public class Pharmacy extends User {
         }
       
     }
-     
+    
+      public int getnoCompletedOrders(){
+      String query="select count(p.id) as count from pharmacy_orders p where p.pharmacy_id="+this.id+" and p.order_status='Completed'";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+           
+            int i =0;
+            
+                        
+            while(rs.next()) { 
+                
+                i = rs.getInt("count"); 
+            }
+            
+            con.close();
+            return i;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return -1;        
+        }
+      }
+      public int getnoPendingOrders(){
+      String query="select count(p.id) as count from pharmacy_orders p where p.pharmacy_id="+this.id+" and p.order_status='Pending'";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+           
+            int i =0;
+            
+                        
+            while(rs.next()) { 
+                
+                i = rs.getInt("count"); 
+            }
+            
+            con.close();
+            return i;
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return -1;        
+        }
+      
+      }
     
 }
