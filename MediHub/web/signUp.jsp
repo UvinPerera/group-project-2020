@@ -46,9 +46,13 @@
     </div>
      
     <br>
+     <%if(request.getAttribute("status")!=null){
+    
+    %>
      <div class="registerError" id="registerError" style="background-color: red ; color:#ffffff">
           <center><h3><b>Registration is failed! please try again.</b></h3></center>  
-     </div> 
+     </div>
+     <%}%>
     <div class="regform"><h1><br>Registration Form</h1><br></div>
     
    <div class="main">
