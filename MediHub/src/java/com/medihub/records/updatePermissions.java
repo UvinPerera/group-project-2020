@@ -60,7 +60,7 @@ public class updatePermissions extends HttpServlet {
                   
                  } 
                  Notifications n = new Notifications();
-                 //n.createNotification(flag, flag, "", 1)
+                 n.createNotification(patientId, doctorId, "Viewing Permissions have been updated", 1);
                   response.sendRedirect("patient");
                     }catch(Exception e){
                        out.println(e.toString());
