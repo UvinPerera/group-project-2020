@@ -82,6 +82,35 @@
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/serviceNotifications.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
                               <a href="serviceNotifications">Hospital Notifications</a>
+                              &nbsp;&nbsp;
+                              <i class="fa fa-envelope text-red" id="notit"></i>
+                              <b class="text-primary-p text-red" id="noti"></b>
+                                  
+                                  <% 
+                                    String ut;
+                                  if(session.getAttribute("usertype")!=null)  {
+                                  ut= session.getAttribute("usertype").toString(); 
+
+                                  if(session.getAttribute("userid")!=null)  {
+                                  uu= session.getAttribute("userid").toString(); 
+               
+               
+                                    %>
+                              
+                              <script>
+                                  $("#notit").hide();
+                                  $("#noti").hide();
+                                  $.get("getNotificationCountService?idd=<%=uu%>&ut=<%=ut%>",function(data,status){
+                                     if(data!==0 && data!=="" && data!=="0") {
+                                     $("#noti").html(data);
+                                     $("#notit").show();
+                                     $("#noti").show();
+//                                     alert(data);
+                                     }});
+                                  
+                              </script>
+                              
+                              <% } %>
                          </div>
 
                          <h2>Services</h2>
