@@ -6,8 +6,12 @@ package com.medihub.patient;
  * and open the template in the editor.
  */
 
+import com.medihub.db.DbConfig;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -62,6 +66,32 @@ public class PatientDashboard extends HttpServlet {
                 String absolutePath = p.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
                 request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
+                
+                
+                
+                DbConfig db = DbConfig.getInstance();
+                Connection con = db.getConnecton();
+                Statement stmt=con.createStatement();
+                ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po "
+                                            + "JOIN pharmacies p ON p.id=po.pharmacy_id "
+                                            + "JOIN order_items oi ON oi.order_id=po.id "
+                                            + "WHERE po.status = 1 and po.created_by="+patientId+" and po.order_status='Pending'"
+                                            + "ORDER BY po.created_at DESC LIMIT 6");
+                
+                //get orders;
+                ArrayList records = new ArrayList();
+                while(rs.next()){
+                        ArrayList row = new ArrayList();
+                        for (int i = 1; i <= 8 ; i++){
+                            row.add(rs.getString(i));
+                        }
+                        records.add(row);
+                }
+                
+                
+                
+                request.setAttribute("orders", records);
+//                System.out.println(p.getPendingAppointments());
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);
                 }
             catch(Exception e)

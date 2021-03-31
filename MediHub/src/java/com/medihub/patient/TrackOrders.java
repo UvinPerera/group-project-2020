@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.medihub.patient;
+import com.medihub.pharmacy.Pharmacy;
 
 import com.medihub.db.DbConfig;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class TrackOrders extends HttpServlet {
                 String getLimit="0";
                 if(request.getParameter("limit")!=null){
                     getLimit=request.getParameter("limit");
-                 }
+                }
                 String qlimit = " limit "+getLimit+",11";
                 if(Integer.parseInt(request.getParameter("search"))==0){
                 ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE po.status = 1 and po.created_by="+patientId+" ORDER BY po.created_at DESC"+qlimit);
@@ -61,11 +62,20 @@ public class TrackOrders extends HttpServlet {
                 request.setAttribute("orders", records);
                 }
                 else{
-                    String Pharmacy=request.getParameter("pharmacy");
-                    String orderStatus=request.getParameter("status");
+                    
+                    String Pharmacy="";
+                    String orderStatus="";
+                    
+                    if(request.getParameter("pharmacy")!=null && !request.getParameter("pharmacy").equalsIgnoreCase("") && !request.getParameter("pharmacy").equalsIgnoreCase("0")){
+                        Pharmacy=" and p.id="+request.getParameter("pharmacy");
+                    }
+                    if(request.getParameter("status")!=null && !request.getParameter("status").equalsIgnoreCase("")){
+                        orderStatus=" and po.order_status='"+request.getParameter("status")+"'";
+                    }
                     
                     
-                        ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE po.status = 1 and po.created_by="+patientId+" and (p.name='"+Pharmacy+"' or po.order_status='"+orderStatus+"')");
+                    
+                        ResultSet rs=stmt.executeQuery("SELECT po.id, po.pharmacy_id, p.name,po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN pharmacies p ON p.id=po.pharmacy_id JOIN order_items oi ON oi.order_id=po.id WHERE po.status = 1 and po.created_by="+patientId+ Pharmacy + orderStatus + qlimit);
 
                         //out.println(pharmacyId);
                         ArrayList Orders = new ArrayList();
@@ -79,6 +89,10 @@ public class TrackOrders extends HttpServlet {
                         request.setAttribute("orders", Orders);
                     
                 }
+                
+                Pharmacy p = new Pharmacy();
+                request.setAttribute("allPharmacies", p.getAllActivePharmacies());
+                
                 request.getRequestDispatcher("trackOrder(pat).jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());

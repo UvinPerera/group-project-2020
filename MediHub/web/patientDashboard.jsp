@@ -192,21 +192,31 @@
                                                         </script>
                                 
                                 
-                                                        <%}%>
+                                                        <% } %>
                                                         
                                                         <% if(table.size()>5) {%>
                                                         <tr>
                                                             <td colspan="6"><a href="channellingRecords">View More...</a></td>
                                                         </tr>
-                                                        <%}%>
+                                                        <% } %>
                                                   </tbody>
                                              </table>
                                         </div>
                                               
                                         <!--when there is no pending appointments-->
                                                   <%
-                                                       } }
-                                                       else
+                                                       } 
+                                                        else
+                                                       {
+                                                       %>
+                                                       <div class="buttons">
+                                                      No pending Appointments !
+                                                      <a href="channelling"><button class="button-success" type=""><b>Make New Appointment</b></button></a>    
+                                                  </div>
+                                                       
+                                                       <%
+                                                        }
+                                                        } else
                                                        {
                                                   %>
                                                   <div class="buttons">
@@ -223,8 +233,7 @@
                              <!--######################-->
                                 <!--left table section ending-->
                              <!--######################-->
-                                                  
-                                                  
+                             
                                                   
                                                   
                               <!--######################-->
@@ -239,67 +248,100 @@
                                         </div>
                                         <!--<i class="fa fa-usd"></i>-->
                                    </div>
+                                  
+                                   
+                             <%
+                  
+                                ArrayList array = new ArrayList();
+                                ArrayList a2 = new ArrayList();
+                                int size = 0;
+
+                                if(request.getAttribute("orders")!=null){
+                                    array=(ArrayList)request.getAttribute("orders");
+                                     size= array.size();
+                             %>
+                                                  
+                             <script>
+                                        var iid = [];
+                                        var ppharmacyId = [];
+                                        var ppharmacyName= [];
+                                        var ddatetime = [];
+                                        var oorderStatus = [];
+                                        var ffilepath= [];
+                                        var ddescription = [];
+                                        var aabsolutepath = [];
+                                        var ffinalId;
+                          </script>
 
                                    <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
                                    <div class="charts_table_div">
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                       <th>#</th>
-                                                       <th>Pharmacy</th>
-                                                       <th>Doctor</th>
-                                                       <th>Date / Time</th>
-                                                       <th>App #</th>
-                                                       <th>Action</th>
+                                                        <th class="">Order ID</th>
+                                                        <th class="">Pharmacy ID</th>
+                                                        <th class="">Pharmacy Name</th>
+                                                        <th class="">Delivery Date</th>
+                                                        <th class="">Status</th>
+                                                        <th class="">Actions</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
+                                                 <%
+                                                        int cc=0;
+                                                     for(int i=0; i<size; i++){
+                                                                cc++;
+                                                                if (cc>5){
+                                                                    break;
+                                                                }
+                                                    a2 =(ArrayList) array.get(i);%>
                                                   <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
+                                                    <td class="Row"><%=a2.get(0)%></td>
+                                                    <td class="Row"><%=a2.get(1)%></td>
+                                                    <td class="Row"><%=a2.get(2)%></td>
+                                                    <td class="Row"><%=a2.get(3)%></td>
+                                                    <td class="Row"><%=a2.get(4)%></td>
+                                                    <td>
+                                                      <ul class="actions">
+                                                          <li><button  class="btn" onclick="ppopup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
+                                                          <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
+                                                          <li><a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a></li> 
+                                                      </ul>  
+                                                    </td>
+                                                    <script>
+                                                                        iid[<%=i%>]                   ="<%=a2.get(0)%>"; 
+                                                                        ppharmacyId[<%=i%>]           ="<%=a2.get(1)%>"; 
+                                                                        ppharmacyName[<%=i%>]         ="<%=a2.get(2)%>";
+                                                                        ddatetime[<%=i%>]             ="<%=a2.get(3)%>";
+                                                                        oorderStatus[<%=i%>]          ="<%=a2.get(4)%>";
+                                                                        ffilepath[<%=i%>]             ="<%=a2.get(5)%>";
+                                                                        ddescription[<%=i%>]          ="<%=a2.get(6)%>"; 
+                                                                        aabsolutepath[<%=i%>]          ="<%=a2.get(7)%>"; 
+                                                      </script>
                                                   </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td>11</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td colspan="6"><a href="#">View More...</a></td>
-                                                  </tr>
+                                                   <% } %>
+                                                  
+                                                  <% if(size>5) { %>
+                                                        <tr>
+                                                            <td colspan="6"><a href="channellingRecords">View More...</a></td>
+                                                        </tr>
+                                                        <% } %>
                                              </tbody>
                                         </table>
                                    </div>
+                                                   
+                                                   <%
+                                                       }
+                                                       else
+                                                       {
+                                                  %>
+                                                  <div class="buttons">
+                                                      No pending Orders !
+                                                      <a href="patientorders"><button class="button-success" type=""><b>Make New Order</b></button></a>    
+                                                  </div>
+                                                  <%
+                                                       }
+                                                  %>
 
                               </div>
                              <!--######################-->
@@ -310,6 +352,12 @@
 
 
                          <!-- Modal starts -->
+                         
+                         
+                         
+                         <!--modal for appointments-->
+                         
+                         
                          <div id="modalBox" class="modal">
 
                               <!-- Modal content -->
@@ -368,6 +416,69 @@
 
                               </div>
                          </div>
+                         
+                         <!--appoint modal end-->
+                         
+                         
+                         <!--order modal-->
+                         
+                         <div id="mmodalBox" class="modal">
+
+                        <div id="pprintPart" class="modal-content">
+                            <span class="close">&times;  &nbsp;&nbsp;</span>
+                            <h3 style="text-align: center;">Order Details</h3>
+                            <center>
+                            <table style="border:none; text-align: left;">
+
+                                <tr>
+                                    <td> Order ID : </td>
+                                    <td id="mmodal_id"> ** </td>
+                                    <td> Delivery Date / Time : </td>
+                                    <td id="mmodal_date_time"> ** </td>
+                                </tr>
+
+                                <tr>
+                                    <td> Pharmacy ID : </td>
+                                    <td id="mmodal_pharmacyId"> ** </td>
+                                    <td> Pharmacy Name : </td>
+                                    <td id="mmodal_pharmacyName"> ** </td>
+                                </tr>
+
+                                <tr>
+                                    <td> Order Status : </td>
+                                    <td id="mmodal_orderStatus"> ** </td>
+                                    <td> Patient Order Description : </td>
+                                    <td id="mmodal_description"> ** </td>
+
+                                </tr>
+
+                               <tr>
+                                    <td colspan="2" ><button class="style"> <a href="#" id="displayPrescription" onclick="displayPrescriptionFun();" target="_blank">Click to View Prescription</a> </button></td> 
+                                    <td colspan="2" ><button class="style"><a href="#" id="downloadPrescription" download="#" onclick="downloadPrescriptionFun();" target="_blank">Click to Download Prescription</a></button></td>
+
+
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="4" style="text-align: center;"><tt>THIS IS A DIGITAL COPY</tt></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align: center;"><tt>* # M E D H U B # *</tt></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align: center;"><button id="pprint" class="btn"><i class="fa fa-envelope"> Print </i></button>
+                                    </td>
+                                </tr>
+
+                            </table></center>
+
+                        </div>
+
+                         </div>
+                         
+                         <!--order modal end-->
+                         
                          <!--Modal content ends-->
 
                     </div>
@@ -407,6 +518,11 @@
 
                //    #########################
                //    modal script start
+               //    #########################
+               //    
+               //    
+               //    #########################
+               //    appoint modal script start
                //    #########################
 
                var modal = document.getElementById("modalBox");
@@ -503,6 +619,107 @@
                     $("#modalCloseIcon").show();
                }
 
+               //    #########################
+               //    appoint modal script end
+               //    #########################
+               //    
+               //    
+               //    #########################
+               //    order modal script start
+               //    #########################
+               
+                var mmodal = document.getElementById("mmodalBox");
+
+                // Get the button that opens the modal
+                var bbtn = document.getElementById("ppopUp");
+
+                // Get the <span> element that closes the modal
+                var sspan = document.getElementsByClassName("close")[1];
+
+                //modal print btn
+                var pprint = document.getElementById("pprint");
+
+
+
+                // When the user clicks on the button, open the modal
+                //    btn.onclick = function() 
+                function ppopup(indexId) {
+                    mmodal.style.display = "block";
+
+                    var index=indexId;
+                     finalId =index; 
+                    document.getElementById("mmodal_id").innerHTML = iid[index];
+                    document.getElementById("mmodal_pharmacyId").innerHTML = ppharmacyId[index];
+                    document.getElementById("mmodal_pharmacyName").innerHTML = ppharmacyName[index];
+                    document.getElementById("mmodal_date_time").innerHTML = ddatetime[index];
+                    document.getElementById("mmodal_description").innerHTML = ddescription[index];
+                    document.getElementById("mmodal_orderStatus").innerHTML = oorderStatus[index];
+                    document.getElementById("mmodal_filePath").innerHTML = ffilepath[index];
+
+
+                }
+                    function displayPrescriptionFun(){
+                        if(filepath[finalId]==="Doctor Prescription"){
+                             document.getElementById("displayPrescription").href = absolutepath[finalId];
+                        }
+                        else{
+                        document.getElementById("displayPrescription").href = "public/storage/pres/"+absolutepath[finalId];
+
+                    }
+
+                }
+                    function downloadPrescriptionFun(){
+
+                        document.getElementById("downloadPrescription").download = filepath[finalId];;
+
+
+                }
+                // When the user clicks on <span> (x), close the modal
+                sspan.onclick = function () {
+                    mmodal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        mmodal.style.display = "none";
+                    }
+                }
+
+                //when printing
+                pprint.onclick = function () {
+                    pprint.style.display = "none";
+                    var win = window.open();
+                    var printContent = $("#pprintPart").html();
+
+                    $(win.document.body).html(printContent);
+                    win.print();
+                    pprint.style.display = "block";
+                }
+
+                    function confirmdelete(index) {
+
+                    var del = confirm("Are you sure you want delete this order permenently ?");
+
+
+
+                    if (del == true){
+                        if((orderStatus[index]==="Completed")||(orderStatus[index]==="Cancelled")){
+                        var orderId = index+1;
+                        window.location.href="deletepatientorder?orderid="+orderId;
+
+                    }
+                    else{
+                        alert("You cannot delete an order which is not completed nor cancelled.")
+                    }
+
+
+                }}
+               
+               //    #########################
+               //    order modal script end
+               //    #########################
+               //    
                //    #########################
                //    modal script end
                //    #########################

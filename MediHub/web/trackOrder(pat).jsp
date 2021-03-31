@@ -5,6 +5,8 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.medihub.pharmacy.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
@@ -36,7 +38,24 @@
      
    <% String username="";
        username= session.getAttribute("username").toString();
-  
+       
+               int getLimit=0;
+               username= session.getAttribute("username").toString();
+               int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+               int getPharmacy=0;
+               String getStatus="";
+                     
+               if (request.getParameter("pharmacy")!=null && request.getParameter("pharmacy")!="") {
+                    getPharmacy=Integer.parseInt(request.getParameter("pharmacy"));
+               }
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
+               }
+                     
+               if (request.getParameter("status")!=null && request.getParameter("status")!="") {
+                    getStatus=request.getParameter("status");
+               }
    
   %>
    
@@ -50,8 +69,17 @@
                                       <i class="fa fa-plus-square fa-2x text-red"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Pharmacy Name</p>
-                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="pharmacy" id="pharmacy">
-                                               <option value="" disabled>Search Pharmacy</option>
+                                           <select class="text-secondary-p pharmacy_select" style="width: 100%" name="pharmacy" id="pharmacy">
+                                               <option value="">Select Pharmacy</option>
+                                         <%
+                             if(request.getAttribute("allPharmacies")!=null){
+                                 List<Pharmacy> table = (ArrayList<Pharmacy>)request.getAttribute("allPharmacies");
+                                 if(table.size()>0){
+                                     for(Pharmacy row : table) { %>
+                                     <option value='<%= row.id %>' <% if(getPharmacy==row.id){out.print("selected");} %>><%= row.displayName %></option>
+                         <%
+                                 }}}
+                         %>
                                            </select>
                                       </div>
                                  </div>
@@ -62,10 +90,10 @@
                                            <p class="text-primary-p">Order Status</p>
                                            <select class="text-secondary-p status_select" style="width: 100%" name="status" id="ostatus">
                                                <option value="" disabled>Search Order Status</option>
-                                               <option value="Pending">Pending</option>
-                                               <option value="Delayed">Delayed</option>
-                                               <option value="Cancelled">Cancelled</option>
-                                               <option value ="Completed">Completed</option>
+                                               <option value="Pending" <% if(getStatus.equalsIgnoreCase("Pending")){out.print("selected");} %>>Pending</option>
+                                               <option value="Delayed" <% if(getStatus.equalsIgnoreCase("Delayed")){out.print("selected");} %>>Delayed</option>
+                                               <option value="Cancelled" <% if(getStatus.equalsIgnoreCase("Cancelled")){out.print("selected");} %>>Cancelled</option>
+                                               <option value ="Completed" <% if(getStatus.equalsIgnoreCase("CompleteZ")){out.print("selected");} %>>Completed</option>
                                                
                                            </select>
                                       </div>
@@ -123,7 +151,13 @@
       </tr>
       </thead>
       <tbody>
-          <%for(int i=0; i<size; i++){
+          <%
+              int cc=0;
+              for(int i=0; i<size; i++){
+                cc++;
+                if (cc>10){
+                    break;
+                }
             a2 =(ArrayList) array.get(i);%>
       <tr>
         <td class="Row"><%=a2.get(0)%></td>
@@ -150,10 +184,25 @@
           </script>
       </tr>
        <%}%>
-       <tr>
+       <!--<tr>-->
 
       </tbody>
     </table>
+       
+                                                        <% if(size>10 || getLimit>0) { %>
+                                                        <div class="card">
+                                                        <p style="text-align: center;">
+                                                            <% if(getLimit>0) { %>
+                                                                <a href="BrowseDoctorReviews?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit-10%>">Prev</a>
+                                                            <% } %>
+                                                            &nbsp;
+                                                            <% if(size>10) { %>
+                                                                <a href="BrowseDoctorReviews?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit+10%>">Next</a>
+                                                            <% } %>
+                                                        </p>
+                                                        </div>
+                                                        <%}%>
+       
       </div>
     <%
                                                        }
