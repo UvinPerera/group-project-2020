@@ -84,14 +84,14 @@
                               <i class="fa fa-bullseye"></i>
                               <a href="serviceNotifications">Pharmacy Notifications</a>
                               &nbsp;&nbsp;
-                              <i class="fa fa-envelope text-red" id="notit"></i>
-                              <b class="text-primary-p text-red" id="noti"></b>
+                              <i class="fa fa-envelope text-red" id="nnotit"></i>
+                              <b class="text-primary-p text-red" id="nnoti"></b>
                                   
                                   <% 
                                     String ut;
                                   if(session.getAttribute("usertype")!=null)  {
                                   ut= session.getAttribute("usertype").toString(); 
-
+                                  
                                   if(session.getAttribute("userid")!=null)  {
                                   uu= session.getAttribute("userid").toString(); 
                
@@ -99,19 +99,19 @@
                                     %>
                               
                               <script>
-                                  $("#notit").hide();
-                                  $("#noti").hide();
+                                  $("#nnotit").hide();
+                                  $("#nnoti").hide();
                                   $.get("getNotificationCountService?idd=<%=uu%>&ut=<%=ut%>",function(data,status){
                                      if(data!==0 && data!=="" && data!=="0") {
-                                     $("#noti").html(data);
-                                     $("#notit").show();
-                                     $("#noti").show();
+                                     $("#nnoti").html(data);
+                                     $("#nnotit").show();
+                                     $("#nnoti").show();
 //                                     alert(data);
                                      }});
                                   
                               </script>
                               
-                              <% } %>
+                              <% } } %>
                          </div>
 
                          <h2>Orders</h2>

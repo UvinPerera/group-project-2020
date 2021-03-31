@@ -69,7 +69,7 @@ public class ChangePasswordUpdate extends HttpServlet {
                         session.setAttribute("message", "Password Update Successful !");
                         
                         com.medihub.user.Notifications n = new com.medihub.user.Notifications();
-                        n.createNotification(0, patientId, "Your Password Hass been Updated", 1);
+                        n.createNotification(0, patientId, "Your Password Has been Updated", 1);
                     }
                     else{
 //                        out.println("subbb");
