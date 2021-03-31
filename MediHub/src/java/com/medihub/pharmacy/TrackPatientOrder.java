@@ -77,7 +77,7 @@ public class TrackPatientOrder extends HttpServlet {
                 
                 
                 if(Integer.parseInt(request.getParameter("search"))==0){
-                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId+qlimit);
+                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path, po.created_at FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId+" ORDER BY created_at DESC"+qlimit);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
@@ -102,7 +102,7 @@ public class TrackPatientOrder extends HttpServlet {
                         orderStatus=" and po.order_status='"+request.getParameter("status")+"'";
                     }
                    
-                     rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId +patientName+orderStatus+qlimit);
+                     rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path, po.created_at FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId +patientName+orderStatus+" ORDER BY created_at DESC"+qlimit);
                 
                     
                     ArrayList Orders = new ArrayList();
