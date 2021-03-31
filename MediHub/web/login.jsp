@@ -6,10 +6,24 @@
     <title>Medi hub</title>
     <link rel="icon" href="./public/images/onlylogo.png" type="image/icon type"> <!--Header icon-->
     <link rel="stylesheet" href="./public/css/loginstyle.css" type="text/css"><!--Login box styles-->
-    <link rel="stylesheet" href="./public/css/sidenavstyle.css" type="text/css"><!--Side navigation styles-->
+    
+     <link rel="stylesheet" type="text/css" href="./public/css/contactUs.css" media="screen" />
     <title>Login</title>
 </head>
 <body>
+    <div class="navbar" id="navbar">
+        <ul>  
+           
+        <li><button class="styled" type="button" onclick="window.location.href='signup';"> SIGN UP</button></li> 
+           <li><a href="About.jsp" id="end">About</a></li>
+            <li ><a href="contactUs.jsp">Contact</a></li>
+            <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+            <li><a href="BrowseDoctorReviewsGuest"> Browse Service Providers</a></li>
+            <li><a href="/MediHub">Home</a></li>
+        <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
+      </ul>
+    </div>
+    
     <%
         if(request.getParameter("status")!=null){
         int i = Integer.parseInt(request.getParameter("status")); %>
@@ -30,17 +44,7 @@
             </form>
         </div>
 
-    <div id="sidenav"><!--The side navigation, Use this tag at the bottm most always-->
-        <input type="checkbox" name="" checked="checked">
-        <span class="icon"></span>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </div>
-
+   
 </body>
 
 </html>

@@ -10,8 +10,8 @@ body{
 }
 
 .login-container{
-    width: 320px;
-    height: 480px;
+    width: 370px;
+    height: 530px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     top: 50%;
@@ -29,7 +29,7 @@ body{
     border-radius: 50%;
     position: absolute;
     top: -50px;
-    left: 35%;
+    left: 40%;
    
 }
 
