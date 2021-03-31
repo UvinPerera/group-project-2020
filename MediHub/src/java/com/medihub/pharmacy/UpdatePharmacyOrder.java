@@ -53,12 +53,12 @@ public class UpdatePharmacyOrder extends HttpServlet {
                     int rs=stmt.executeUpdate("UPDATE pharmacy_orders SET updated_at=CURRENT_TIMESTAMP,updated_by='"+pharmacistId+"', expected_delivery_date='"+date+"',order_status='"+orderStatus+"' WHERE id ="+ orderId);
                     }
                     
-                   Notifications n = new Notifications(); 
-                   n.createNotification(pharmacistId,patientId,"Pharmacy Order has been updated", 1);
+                   //Notifications n = new Notifications(); 
+                   //n.createNotification(pharmacistId,patientId,"Pharmacy Order has been updated", 1);
                    
                   response.sendRedirect("pharmacy");
                     }catch(Exception e){
-                       out.println(e.toString());
+                      e.printStackTrace();
                    }
                
        }

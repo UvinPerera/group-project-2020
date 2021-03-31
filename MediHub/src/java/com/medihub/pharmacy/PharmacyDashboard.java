@@ -6,6 +6,7 @@
 package com.medihub.pharmacy;
 
 import com.medihub.db.DbConfig;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -67,7 +68,10 @@ public class PharmacyDashboard extends HttpServlet {
                 
                 Pharmacy p = new Pharmacy(pharmacyId); //create a pharmacy object
   
+                   Notifications n =new Notifications();
+                request.setAttribute("anotifications", n.getUserNotificationsCount(pharmacyId));
                  
+                request.setAttribute("pnotifications", n.getServiceNotificationsCount(pharmacistId, userType));
                 String absolutePath = p.getAbsPath(pharmacistId);
                 
                 request.setAttribute("absolutePath",absolutePath);

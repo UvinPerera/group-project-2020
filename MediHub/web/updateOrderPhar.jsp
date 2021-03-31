@@ -51,7 +51,7 @@
             <h3 style="padding-left: 5%;padding-top:2%;">Update Pharmacy Order</h3>
 
                 <div class="main_container">
-                    <form action="updatepharmacyorder?orderid=<%=a2.get(0)%>" method="post">
+                    <form action="updatepharmacyorder" method="post">
                         
                         <div class="main_cards">
                             
@@ -76,7 +76,7 @@
                                       <i class="fa fa-user-o fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Patient ID</p>
-                                            <p class="text-secondary-p"><input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" readonly></p>
+                                            <p class="text-secondary-p"><input class="input" type="text" name="patientid" id="patientid" placeholder="<%=a2.get(1)%>" value="<%=a2.get(1)%>" readonly></p>
                                           
                                       </div>
                              </div>
@@ -122,7 +122,7 @@
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Order Delivery Date</p>
-                                            <p class="text-secondary-p"><input class="input" type="date" value="<%=a2.get(7)%>" name="deliverydate" id="deliverydate" placeholder="<%=a2.get(7)%>" ></p>
+                                            <p class="text-secondary-p"><input class="input" type="date" name="deliverydate" id="deliverydate" ></p>
                                           
                                       </div>
                              </div>
