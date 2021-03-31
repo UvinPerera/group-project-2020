@@ -90,7 +90,7 @@
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Notifications</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title">0</span>
                                    </div>
                               </div>
 
