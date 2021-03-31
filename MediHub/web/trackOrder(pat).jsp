@@ -93,7 +93,7 @@
                                                <option value="Pending" <% if(getStatus.equalsIgnoreCase("Pending")){out.print("selected");} %>>Pending</option>
                                                <option value="Delayed" <% if(getStatus.equalsIgnoreCase("Delayed")){out.print("selected");} %>>Delayed</option>
                                                <option value="Cancelled" <% if(getStatus.equalsIgnoreCase("Cancelled")){out.print("selected");} %>>Cancelled</option>
-                                               <option value ="Completed" <% if(getStatus.equalsIgnoreCase("CompleteZ")){out.print("selected");} %>>Completed</option>
+                                               <option value ="Completed" <% if(getStatus.equalsIgnoreCase("Completed")){out.print("selected");} %>>Completed</option>
                                                
                                            </select>
                                       </div>
@@ -193,11 +193,11 @@
                                                         <div class="card">
                                                         <p style="text-align: center;">
                                                             <% if(getLimit>0) { %>
-                                                                <a href="BrowseDoctorReviews?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit-10%>">Prev</a>
+                                                                <a href="TrackOrders?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit-10%>">Prev</a>
                                                             <% } %>
                                                             &nbsp;
                                                             <% if(size>10) { %>
-                                                                <a href="BrowseDoctorReviews?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit+10%>">Next</a>
+                                                                <a href="TrackOrders?search=1&pharmacy=<%=getPharmacy%>&status=<%=getStatus%>&limit=<%=getLimit+10%>">Next</a>
                                                             <% } %>
                                                         </p>
                                                         </div>

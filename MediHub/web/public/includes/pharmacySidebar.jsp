@@ -116,7 +116,7 @@
 
                          <h2>Orders</h2>
 
-                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp.jsp' ? 'active_menu_link' : ''}">
+                         <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/trackOrder(phar).jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bullseye"></i>
                               <a href="trackpatientorder?search=0">Track Orders</a>
                          </div>

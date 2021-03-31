@@ -9,6 +9,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+
+<% String username="";
+       username= session.getAttribute("username").toString();
+       
+               int getLimit=0;
+               username= session.getAttribute("username").toString();
+               int usertype = Integer.parseInt(session.getAttribute("usertype").toString());
+               int getPatient=0;
+               String getStatus="";
+                     
+               if (request.getParameter("patient")!=null && request.getParameter("patient")!="") {
+                    getPatient=Integer.parseInt(request.getParameter("patient"));
+               }
+                     
+               if (request.getParameter("limit")!=null && request.getParameter("limit")!="") {
+                    getLimit=Integer.parseInt(request.getParameter("limit"));
+               }
+                     
+               if (request.getParameter("status")!=null && request.getParameter("status")!="") {
+                    getStatus=request.getParameter("status");
+               }
+   
+  %>
+
 <!doctype html>
 
 
@@ -23,6 +47,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   
   <script language="JavaScript" type="text/javascript" src="./public/js/Track_Order(pat).js"></script>
   <link rel="stylesheet" type="text/css" href="./public/css/modal.css" media="screen" />
@@ -33,16 +60,10 @@
   <div class="container">  
            <jsp:include page="./public/includes/navbar.jsp"/>
            <main>
-     
-   <% String username="";
-       username= session.getAttribute("username").toString();
-  
-   
-  %>
-   
+
      <div class="main_container">
     
-     <form class="" action="TrackOrders" method="GET" id="submitForm">
+     <form class="" action="trackpatientorder" method="GET" id="submitForm">
                             <input type="hidden" name="search" value="1"/>
                             <div class="main_cards">
                                 
@@ -50,8 +71,8 @@
                                       <i class="fa fa-plus-square fa-2x text-red"></i>
                                       <div class="card_inner_profile">
                                            <p class="text-primary-p">Pharmacy Name</p>
-                                           <select class="text-secondary-p doctor_select" style="width: 100%" name="pharmacy" id="pharmacy">
-                                               <option value="" disabled>Search Pharmacy</option>
+                                           <select class="text-secondary-p patient_select" style="width: 100%" name="patient" id="patient">
+                                               <option value="" disabled>Search Patient</option>
                                            </select>
                                       </div>
                                  </div>
@@ -62,10 +83,10 @@
                                            <p class="text-primary-p">Order Status</p>
                                            <select class="text-secondary-p status_select" style="width: 100%" name="status" id="ostatus">
                                                <option value="" disabled>Search Order Status</option>
-                                               <option value="Pending">Pending</option>
-                                               <option value="Delayed">Delayed</option>
-                                               <option value="Cancelled">Cancelled</option>
-                                               <option value ="Completed">Completed</option>
+                                               <option value="Pending" <% if(getStatus.equalsIgnoreCase("Pending")){out.print("selected");} %>>Pending</option>
+                                               <option value="Delayed" <% if(getStatus.equalsIgnoreCase("Delayed")){out.print("selected");} %>>Delayed</option>
+                                               <option value="Cancelled" <% if(getStatus.equalsIgnoreCase("Cancelled")){out.print("selected");} %>>Cancelled</option>
+                                               <option value ="Completed" <% if(getStatus.equalsIgnoreCase("Completed")){out.print("selected");} %>>Completed</option>
                                                
                                            </select>
                                       </div>
@@ -73,7 +94,7 @@
                                <div class=""></div>
                                 <div class=""></div>
                                 <div class="buttons">
-                                   <button  onclick="window.location.href='TrackOrders?search=0"><b>Reset</b></button>
+                                   <button type="reset" onclick="window.location.href='trackpatientorder?search=0"><b>Reset</b></button>
                                    <button class="button-success" type="submit"><b>Search</b></button>     
                                  </div>
                             </div>
@@ -115,16 +136,23 @@
       <thead>
       <tr>
         <th class="tableheading">Order ID</th>
-        <th class="tableheading">Pharmacy ID</th>
-        <th class="tableheading">Pharmacy Name</th>
+        <th class="tableheading">Patient ID</th>
+        <th class="tableheading">Patient Name</th>
         <th class="tableheading">Delivery Date</th>
         <th class="tableheading">Status</th>
         <th class="tableheading">Actions</th>
       </tr>
       </thead>
       <tbody>
-          <%for(int i=0; i<size; i++){
-            a2 =(ArrayList) array.get(i);%>
+          <%
+              int cc=0;
+              for(int i=0; i<size; i++){
+                cc++;
+                if (cc>10){
+                    break;
+                }
+            a2 =(ArrayList) array.get(i);
+          %>
       <tr>
         <td class="Row"><%=a2.get(0)%></td>
         <td class="Row"><%=a2.get(1)%></td>
@@ -154,6 +182,21 @@
 
       </tbody>
     </table>
+       
+                                                        <% if(size>10 || getLimit>0) { %>
+                                                        <div class="card">
+                                                        <p style="text-align: center;">
+                                                            <% if(getLimit>0) { %>
+                                                                <a href="trackpatientorder?search=1&pharmacy=<%=getPatient%>&status=<%=getStatus%>&limit=<%=getLimit-10%>">Prev</a>
+                                                            <% } %>
+                                                            &nbsp;
+                                                            <% if(size>10) { %>
+                                                                <a href="trackpatientorder?search=1&pharmacy=<%=getPatient%>&status=<%=getStatus%>&limit=<%=getLimit+10%>">Next</a>
+                                                            <% } %>
+                                                        </p>
+                                                        </div>
+                                                        <%}%>
+       
       </div>
     <%
                                                        }
@@ -233,7 +276,45 @@
 
 
 <script>
-         var modal = document.getElementById("modalBox");
+    
+    
+    $(document).ready( function () {
+                    
+                    //select2
+                    $('.patient_select').select2({
+                        placeholder: "Select Patient",
+                        minimumInputLength: 2,
+                        allowClear: true,
+                        ajax: {
+                            url: "getPatients",
+                            dataType: 'json',
+                            type: "GET",
+                            quietMillis: 50,
+                            data: function (term) {
+                            return {
+                                q: term
+                            };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: $.map(data, function (item) {
+                                        return {
+                                            text: item.displayName+" ["+item.email+"]",
+                                            id: item.id
+                                        };
+                                    })
+                                };
+                            },
+                            cache: true
+                        }
+                    }).val("<%=getPatient%>").trigger("change");
+        
+        
+                } );
+    
+    
+    
+    var modal = document.getElementById("modalBox");
 
     // Get the button that opens the modal
     var btn = document.getElementById("popUp");
