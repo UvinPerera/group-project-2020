@@ -7,6 +7,8 @@ package com.medihub.patient;
  */
 
 import com.medihub.db.DbConfig;
+import com.medihub.prescription.PrescriptionItem;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -66,6 +68,7 @@ public class PatientDashboard extends HttpServlet {
                 String absolutePath = p.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
                 request.setAttribute("appointments", p.getPendingAppointments()); //directly get appointments
+                request.setAttribute("cappointments", p.getPendingAppointmentsCount()); //directly get appointments
                 
                 
                 
@@ -88,9 +91,31 @@ public class PatientDashboard extends HttpServlet {
                         records.add(row);
                 }
                 
+                rs=stmt.executeQuery("SELECT count(po.id) as ccount FROM pharmacy_orders po "
+                                            + "JOIN pharmacies p ON p.id=po.pharmacy_id "
+                                            + "JOIN order_items oi ON oi.order_id=po.id "
+                                            + "WHERE po.status = 1 and po.created_by="+patientId+" and po.order_status='Pending'"
+                                            + "ORDER BY po.created_at DESC");
+                
+                //get orders;
+                int  ccorders = 0;
+                while(rs.next()){
+                        ccorders=rs.getInt("ccount");
+                }
+                
+                Notifications n =new Notifications();
+                request.setAttribute("cnotifications", n.getUserNotificationsCount(patientId));
                 
                 
                 request.setAttribute("orders", records);
+                
+                request.setAttribute("corders", ccorders);
+                
+                PrescriptionItem pi = new PrescriptionItem();
+                request.setAttribute("creminders", pi.getRemindersCount(patientId)); 
+                
+                
+                
 //                System.out.println(p.getPendingAppointments());
                 request.getRequestDispatcher("patientDashboard.jsp").forward(request, response);
                 }

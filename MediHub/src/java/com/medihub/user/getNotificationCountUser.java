@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.medihub.doctor;
+package com.medihub.user;
 
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +21,8 @@ import com.google.gson.GsonBuilder;
  *
  * @author tharshan
  */
-@WebServlet(name = "getDoctors", urlPatterns = {"/getDoctors"})
-public class getDoctors extends HttpServlet {
+@WebServlet(name = "getNotificationCountUser", urlPatterns = {"/getNotificationCountUser"})
+public class getNotificationCountUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,11 +34,11 @@ public class getDoctors extends HttpServlet {
                 
                 try
                 {
-                    String q=(request.getParameter("q[term]"));
-                    Doctor d = new Doctor();
-                    String returnData=d.searchDoctors(q);
+                    int q=Integer.parseInt(request.getParameter("idd"));
+                    Notifications n = new Notifications();
+                    int returnData=n.getUserNotificationsCount(q);
 //                    response.setContentType("text/html;charset=UTF-8");
-                    response.setContentType("application/json");
+//                    response.setContentType("application/json");
 //                    System.out.println(q);
 //                    System.out.println(returnData);
                     out.print(returnData);
