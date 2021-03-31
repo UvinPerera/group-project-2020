@@ -153,7 +153,7 @@ public class SubmitOrder extends HttpServlet {
             
             
             Notifications n = new Notifications(); 
-            n.createNotification(patientId,Integer.parseInt(pharmacyid),"New Pharmacy Order has been placed", 1);
+            n.createNotification(patientId,Integer.parseInt(pharmacyid),"New Pharmacy Order has been placed", 3);
             
            //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
 
