@@ -134,14 +134,14 @@
                                       <i class="fa fa-calendar fa-2x text-yellow"></i>
                                       <div class="card_inner_profile">
                                             <p class="text-primary-p">Expected Delivery Date</p>
-                                            <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value=""/></p>
+                                            <p class="text-secondary-p"><input type="date" name="date" id="date" class="form-control text" style="width: 100%" value="" required></p>
                                           
                                       </div></div>
                                                        
                                 <div class="card">
                                       <i class="fa fa-file-image-o fa-2x text-blue"></i>
                                       <div class="card_inner_profile">
-                                           <p class="text-primary-p">Prescription</p>
+                                           <p class="text-primary-p">Check the box if you wish to upload a prescription manually.</p>
                                            <p class="text-secondary-p"><input class="input" type="checkbox" name="" id="prescription" ></p>
                                       </div>
                                 </div>

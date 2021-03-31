@@ -39,19 +39,16 @@
         <li><a href="About.jsp" id="end">About</a></li>
       <li><a href="contactUs.jsp">Contact</a></li>
       <li><a href="EmergencyServices.jsp">Emergency Services</a></li>
+      <li><a href="BrowseDoctorReviewsGuest"> Browse Service Providers</a></li>
       <li><a href="/MediHub">Home</a></li>
         <li id="logo"><img src="./public/images/onlylogo.png" width="15.5%"></li>
       </ul>
     </div>
      
     <br>
-    <%if(request.getAttribute("status")!=null){
-    
-    %>
      <div class="registerError" id="registerError" style="background-color: red ; color:#ffffff">
           <center><h3><b>Registration is failed! please try again.</b></h3></center>  
-     </div>
-     <%}%>
+     </div> 
     <div class="regform"><h1><br>Registration Form</h1><br></div>
     
    <div class="main">
@@ -197,21 +194,7 @@
           </div>
        </div>
 
-<!--       <h2 class="name">Register as</h2>-->
-<input type="hidden"  name="type" value="1">
-<!--         <option disabled="disabled" selected="selected">--Choose Option--</option>
-         <option value="0">Administrator</option>
-         <option value="1">Patient</option>
-         <option value="2">Doctor</option>
-         <option value="3">Hospital Admin</option>
-         <option value="4">Pharmacy Admin</option>
-       </select>
-       <div id="errorMsg"></div>
-       <div class="danger" id="typeError">
-          <div class="alert-message alert-message-danger" >
-                <h4>Select a valid user type</h4>
-          </div>
-       </div>-->
+      
 
 
        <div>
