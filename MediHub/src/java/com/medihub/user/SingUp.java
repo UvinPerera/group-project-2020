@@ -44,6 +44,7 @@ public class SingUp extends HttpServlet {
         
                 HttpSession session = request.getSession();
                 PrintWriter out = response.getWriter();
+                String status = request.getParameter("status");
 //                response.setContentType("application/json");
                 
                 try
@@ -52,6 +53,7 @@ public class SingUp extends HttpServlet {
                     List<District> returnData =new ArrayList<District>();
                     returnData=d.getAllDistricts();
                     request.setAttribute("districts", returnData); //directly get districts
+                    request.setAttribute("status", status);
                     request.getRequestDispatcher("signUp.jsp").forward(request, response);
                 }
                 catch(Exception e)

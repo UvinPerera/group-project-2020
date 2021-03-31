@@ -80,12 +80,13 @@ public class Registration extends HttpServlet {
             String activationLink ="http://localhost:8080/MediHub/activate?token="+token;
             
             confrimEmail.send(email,"Activate Account",ed.confirmEmail.replaceFirst("#activationLink", activationLink).replaceFirst("#Name", first_name));
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login.jsp?status=1");
             
         }
         catch(Exception e)
         { 
             out.println(e.toString());
+            response.sendRedirect("signup?status=1");
         }  
     }
 

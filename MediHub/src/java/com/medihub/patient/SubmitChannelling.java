@@ -71,6 +71,10 @@ public class SubmitChannelling extends HttpServlet {
                     
                     PreparedStatement pst = con.prepareStatement(query);
                     int rs = pst.executeUpdate();
+                    
+                    String msg ="Channeling Confrirmed!\n Payement Status - "+payementDis+"\nPayement Amount - "+payement;
+                    Notifications n = new Notifications();
+                    n.createNotification(0, patientId, msg, 1);
                 }
                 catch(Exception e){
                     e.printStackTrace();
