@@ -45,9 +45,13 @@
     </div>
      
     <br>
+    <%if(request.getAttribute("status")!=null){
+    
+    %>
      <div class="registerError" id="registerError" style="background-color: red ; color:#ffffff">
           <center><h3><b>Registration is failed! please try again.</b></h3></center>  
-     </div> 
+     </div>
+     <%}%>
     <div class="regform"><h1><br>Registration Form</h1><br></div>
     
    <div class="main">
@@ -193,9 +197,9 @@
           </div>
        </div>
 
-       <h2 class="name">Register as</h2>
-       <select class="input option" name="type" id="type">
-         <option disabled="disabled" selected="selected">--Choose Option--</option>
+<!--       <h2 class="name">Register as</h2>-->
+<input type="hidden"  name="type" value="1">
+<!--         <option disabled="disabled" selected="selected">--Choose Option--</option>
          <option value="0">Administrator</option>
          <option value="1">Patient</option>
          <option value="2">Doctor</option>
@@ -207,7 +211,7 @@
           <div class="alert-message alert-message-danger" >
                 <h4>Select a valid user type</h4>
           </div>
-       </div>
+       </div>-->
 
 
        <div>

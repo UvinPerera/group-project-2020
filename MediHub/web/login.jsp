@@ -10,10 +10,15 @@
     <title>Login</title>
 </head>
 <body>
+    <%
+        if(request.getParameter("status")!=null){
+        int i = Integer.parseInt(request.getParameter("status")); %>
          <br>
+         <%if(i==1){%>
          <div class="registerSuccessful" id="registerSuccessful" style="background-color: green ; color:#ffff">
-            <center><h3><b>Registration is successful! You can login here.</b></h3></center>  
+            <center><h3><b>Registration is successful! Confirm Email Address to Login.</b></h3></center>  
         </div> 
+         <%}}%>
         <div class="login-container"> <!--The container which has the login box-->
             <img class="avatar-image" src="./public/images/avatar-default-icon.png">
             <h1>Login</h1>
