@@ -89,9 +89,9 @@
               <div class="card">
                 <br><br>
                 <img src="./public/images/admin.png" alt="John" style="width:30%">
-                <br><br><br><h2>John Doe</h2><br>
+                <br><br><br><h2>MediHub Admin</h2><br>
                 <p>Administrater of MediHub</p>
-                <p>E-mail : something@gmail.com</p>
+                <p>E-mail : medihub54@gmail.com</p>
                 <p>Mobile : +94 75 658 3845</p>
                 <p>HotLine : +94 71 485 1234</p>
                 <p>Fax : +94 123 123 123 123</p>

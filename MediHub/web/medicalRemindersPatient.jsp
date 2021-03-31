@@ -82,6 +82,9 @@
                                                                     if(row.intervalId==8 || row.intervalId==12 || row.intervalId==26) {
                                                                         flag8pm=1;
                                                                     }
+                                                                    if(row.intervalId==6) {
+                                                                        flag2am=1;
+                                                                    }
                                                                 }
                                         %>
 
@@ -111,13 +114,13 @@
                                                        %>
                                                         <p class="text-primary-p">
                                                             Doctor <br> <%=row.doctorName%>
-                                                        </p>
+                                                        </p><br>
                                                         <% } %>
                                                         
                                                         <p class="text-secondary-p">
                                                             <%=row.tradeName%> (<%=row.genericName%>) <br>
                                                             Meal: <% if(row.mealPref==0){ out.println("Before Meals"); } else { out.println("Before Meals"); } %>
-                                                            Dos: <%=row.dosage%>
+                                                            Dos: <%=row.dosage%><br>
                                                         </p>
                                                        
                                                         <% } } %>
@@ -127,7 +130,6 @@
                                         </div>
                                                         <% } %>
                                         
-                              </div>
                              <!--######################-->
                                 <!--2am section ending-->
                              <!--######################-->
@@ -143,7 +145,7 @@
                                    <!-- <div class=""> -->
                                         <div class="charts_left_title">
                                              <div>
-                                                  <h1>2am Medications</h1>
+                                                  <h1>8am Medications</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
                                         </div>
@@ -158,14 +160,14 @@
                                                        %>
                                                         <p class="text-primary-p">
                                                             Doctor <br> <%=row.doctorName%>
-                                                        </p>
+                                                        </p><br>
                                                         <% } %>
                                                         
                                                         <p class="text-secondary-p">
                                                             <%=row.tradeName%> (<%=row.genericName%>) <br>
                                                             Meal: <% if(row.mealPref==0){ out.println("Before Meals"); } else { out.println("Before Meals"); } %>
                                                             Dos: <%=row.dosage%>
-                                                        </p>
+                                                        </p><br>
                                                        
                                                         <% } } %>
                                                         
@@ -174,7 +176,6 @@
                                         </div>
                                                         <% } %>
                                         
-                              </div>
                              <!--######################-->
                                 <!--8am section ending-->
                              <!--######################-->
@@ -182,7 +183,7 @@
                              <!--######################-->
                                 <!-- 2pm reminders -->
                              <!--######################-->
-                             <% if(flag2am==1) { 
+                             <% if(flag2pm==1) { 
                                     doc=0;
                                     pdoc=0;
                              %>
@@ -190,7 +191,7 @@
                                    <!-- <div class=""> -->
                                         <div class="charts_left_title">
                                              <div>
-                                                  <h1>2am Medications</h1>
+                                                  <h1>2pm Medications</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
                                         </div>
@@ -204,7 +205,7 @@
                                                             pdoc=row.doctorId;
                                                        %>
                                                         <p class="text-primary-p">
-                                                            Doctor <br> <%=row.doctorName%>
+                                                            Doctor <br> <%=row.doctorName%><br>
                                                         </p>
                                                         <% } %>
                                                         
@@ -212,7 +213,7 @@
                                                             <%=row.tradeName%> (<%=row.genericName%>) <br>
                                                             Meal: <% if(row.mealPref==0){ out.println("Before Meals"); } else { out.println("Before Meals"); } %>
                                                             Dos: <%=row.dosage%>
-                                                        </p>
+                                                        </p><br>
                                                        
                                                         <% } } %>
                                                         
@@ -221,7 +222,6 @@
                                         </div>
                                                         <% } %>
                                         
-                              </div>
                              <!--######################-->
                                 <!--2pm section ending-->
                              <!--######################-->
@@ -229,7 +229,7 @@
                              <!--######################-->
                                 <!-- 8pm reminders -->
                              <!--######################-->
-                             <% if(flag2am==1) { 
+                             <% if(flag8pm==1) { 
                                     doc=0;
                                     pdoc=0;
                              %>
@@ -237,7 +237,7 @@
                                    <!-- <div class=""> -->
                                         <div class="charts_left_title">
                                              <div>
-                                                  <h1>2am Medications</h1>
+                                                  <h1>8pm Medications</h1>
                                                   <!-- <p>Something</p> -->
                                              </div>
                                         </div>
@@ -252,14 +252,14 @@
                                                        %>
                                                         <p class="text-primary-p">
                                                             Doctor <br> <%=row.doctorName%>
-                                                        </p>
+                                                        </p><br>
                                                         <% } %>
                                                         
                                                         <p class="text-secondary-p">
                                                             <%=row.tradeName%> (<%=row.genericName%>) <br>
                                                             Meal: <% if(row.mealPref==0){ out.println("Before Meals"); } else { out.println("Before Meals"); } %>
                                                             Dos: <%=row.dosage%>
-                                                        </p>
+                                                        </p><br>
                                                        
                                                         <% } } %>
                                                         
@@ -268,7 +268,6 @@
                                         </div>
                                                         <% } %>
                                         
-                              </div>
                              <!--######################-->
                                 <!--8pm section ending-->
                              <!--######################-->

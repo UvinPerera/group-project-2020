@@ -161,7 +161,7 @@ public class Hospital {
     
     public Hospital getHospital(int id) {
         
-        String query = "SELECT h.id, h.name, h.display_name, h.display_pic_path, h.land_number, h.fax, h.email, h.address_1, h.address_2, c.name_en as city, d.name_en as district FROM hospitals h "
+        String query = "SELECT h.director_id,h.id, h.name, h.display_name, h.display_pic_path, h.land_number, h.fax, h.email, h.address_1, h.address_2, c.name_en as city, d.name_en as district FROM hospitals h "
                 + "JOIN cities c ON c.id=h.city "
                 + "JOIN districts d ON d.id=c.district_id "
                 + "WHERE h.status=1 and h.id="+id;
@@ -189,6 +189,7 @@ public class Hospital {
                 h.address2 = rs.getString("address_2");
                 h.strCity = rs.getString("city");
                 h.strDistrict = rs.getString("district");
+                h.directorId = rs.getInt("director_id");
                 
             }
             
@@ -230,6 +231,7 @@ public class Hospital {
                 ho.strCity=rs.getString("district");
                 ho.strDistrict=rs.getString("city_name");
                 ho.status=rs.getInt("status");
+                
                
                 h.add(ho);
             }

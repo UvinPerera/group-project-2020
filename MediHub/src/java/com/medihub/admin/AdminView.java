@@ -59,6 +59,7 @@ public class AdminView extends HttpServlet {
             {
                 Admin a = new Admin(adminId);
                 request.setAttribute("profile", a.getProfile());
+               // out.print(a.getProfile().firstName);
                 request.getRequestDispatcher("viewadmin.jsp").forward(request, response);
                 }catch(Exception e){
                     out.println(e.toString());

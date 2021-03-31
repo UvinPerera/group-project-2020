@@ -11,6 +11,7 @@ import com.medihub.user.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
@@ -35,8 +36,6 @@ public class AdminDeletePharmacy extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -48,23 +47,26 @@ public class AdminDeletePharmacy extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-          int pharmacyId = Integer.parseInt(request.getParameter("pId"));
-        
-               Pharmacy p = new Pharmacy();
-              p.setId(pharmacyId);
-        
-        
-         try
-            {
-                p.DeletePharmacy();
-                response.sendRedirect("readpharmacy");
+            throws ServletException, IOException {
+        int pharmacyId = Integer.parseInt(request.getParameter("pId"));
+
+        String query = "UPDATE pharmacies SET status=0 WHERE id=" + pharmacyId;
+
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+
+            PreparedStatement pst = con.prepareStatement(query);
+            int rs = pst.executeUpdate();
+
+            con.close();
+            response.sendRedirect("readpharmacy");
             //  request.setAttribute("profile", patient.getProfile());
             //  request.getRequestDispatcher("adminpatient.jsp").forward(request, response);
-                }catch(Exception e){
-                   e.printStackTrace();
-                }
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

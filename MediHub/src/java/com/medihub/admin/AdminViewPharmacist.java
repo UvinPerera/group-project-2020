@@ -55,7 +55,7 @@ public class AdminViewPharmacist extends HttpServlet {
                 p.id=userId;
                 //out.println(p.getProfile().districtStr);
                 request.setAttribute("profile", p.getProfile());
-                //out.print(p.firstName);
+                //out.print(p.id);
                request.getRequestDispatcher("adminviewpharmacist.jsp").forward(request, response);
                 }catch(Exception e){
                     e.printStackTrace();

@@ -273,7 +273,43 @@ public class DoctorAvailability {
         return daList;
         
     }
+    public List<DoctorAvailability> getCurrentAvailabilities(int docId, String climit,String search) {
 
+        String q_limit = " limit "+climit+",11";
+        String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE h.name LIKE '%"+search+"%' AND Date(date)>=CURRENT_DATE AND da.status=1 AND d.id=" + docId + q_limit;
+        List<DoctorAvailability> daList = new ArrayList<DoctorAvailability>();
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+            DoctorAvailability da = new DoctorAvailability();
+            da.hospitalName=rs.getString("name");
+            da.id = rs.getInt("id");
+            da.startTime = rs.getString("start_time");
+            da.endTime = rs.getString("end_time");
+            da.maxCount = rs.getInt("max_count");
+            da.count = rs.getInt("count");
+            da.payment = rs.getFloat("payment");
+            da.date = rs.getString("date");
+            
+            daList.add(da);
+            
+            
+            }
+            
+            
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return daList;
+        
+    }
     public List<DoctorAvailability> getCurrentAvailabilities(int docId) {
 
         String query = "SELECT da.*,h.name FROM `doctor_availability` da INNER JOIN doctors d on d.id=da.doctor_id INNER JOIN hospitals h ON h.id=da.hospital_id WHERE Date(date)>=CURRENT_DATE AND da.status=1 AND d.id=" + docId;
@@ -424,7 +460,50 @@ public class DoctorAvailability {
         }
         return daList;
     }
+    
+     public List<DoctorAvailability> getAllDoctorAvailability(int hosId,String climit,String search) {
+        
+        
+        String q_select = "select da.id, h.name, d.titles, u.first_name, u.last_name, d.degrees, da.date, da.start_time, da.end_time ,da.payment, da.count, da.max_count from doctor_availability da ";
+        String q_join_h = "join hospitals h on h.id=da.hospital_id ";
+        String q_join_d = "join doctors d on d.id=da.doctor_id ";
+        String q_join_u = "join users u on d.id=u.id ";
+        String q_where = "where da.status=1 and (u.first_name like '%"+search+"%' or u.last_name like '%"+search+"%')  order by da.date desc";
+        String q_limit = " limit "+climit+",11";
+        String query = q_select + q_join_h + q_join_d + q_join_u + q_where +q_limit;
+        List<DoctorAvailability> daList = new ArrayList<DoctorAvailability>();
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
 
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                DoctorAvailability da = new DoctorAvailability();
+                da.id = rs.getInt("id");
+                da.hospitalName = rs.getString("name");
+//                da.doctorId = rs.getInt("doctor_id");
+                da.doctorName = rs.getString("titles") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + rs.getString("degrees");
+                da.date = rs.getString("date");
+                da.startTime = rs.getString("start_time");
+                da.endTime = rs.getString("end_time");
+                da.payment = rs.getFloat("payment");
+                da.maxCount = rs.getInt("max_count");
+                da.count = rs.getInt("count");
+                daList.add(da);
+
+            }
+
+            con.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return daList;
+    }
+    
     public List<DoctorAvailability> getAllDoctorAvailability(int hosId) {
         
         
