@@ -275,9 +275,9 @@
                               <!--######################-->
                                 <!--right table section starting-->
                              <!--######################-->
-                              <div class="charts_right">
+                              <div class="charts_left">
 
-                                   <div class="charts_right_title">
+                                   <div class="charts_left_title">
                                         <div>
                                              <h1>Pending Orders</h1>
                                              <!-- <p>Something</p> -->
@@ -314,11 +314,11 @@
                                         <table class="charts_table">
                                              <thead>
                                                   <tr>
-                                                        <th class="">Order ID</th>
-                                                        <th class="">Pharmacy ID</th>
+                                                        <th class="">ID</th>
+                                                        <!--<th class="">Pharmacy ID</th>-->
                                                         <th class="">Pharmacy Name</th>
                                                         <th class="">Delivery Date</th>
-                                                        <th class="">Status</th>
+                                                        <!--<th class="">Status</th>-->
                                                         <th class="">Actions</th>
                                                   </tr>
                                              </thead>
@@ -333,16 +333,16 @@
                                                     a2 =(ArrayList) array.get(i);%>
                                                   <tr>
                                                     <td class="Row"><%=a2.get(0)%></td>
-                                                    <td class="Row"><%=a2.get(1)%></td>
+                                                    <!--<td class="Row"><%=a2.get(1)%></td>-->
                                                     <td class="Row"><%=a2.get(2)%></td>
                                                     <td class="Row"><%=a2.get(3)%></td>
-                                                    <td class="Row"><%=a2.get(4)%></td>
+                                                    <!--<td class="Row"><%=a2.get(4)%></td>-->
                                                     <td>
-                                                      <ul class="actions">
-                                                          <li><button  class="btn" onclick="ppopup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button></li> 
-                                                          <li><a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a></li> 
-                                                          <li><a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a></li> 
-                                                      </ul>  
+                                                      <!--<ul class="actions">-->
+                                                          <button  class="btn" onclick="ppopup('<%=i%>');"><center><i class="fa fa-eye"></i></<center></button>
+                                                          <a href="editorderupdate?orderid=<%=a2.get(0)%>"><button class="btn"><i class="fa fa-edit"></i></button></a> 
+                                                          <a><button class="btn" onclick="confirmdelete('<%=i%>');"><i class="fa fa-trash"></i></button></a>
+                                                      <!--</ul>-->  
                                                     </td>
                                                     <script>
                                                                         iid[<%=i%>]                   ="<%=a2.get(0)%>"; 

@@ -79,6 +79,9 @@ public class changepasswordupdateadmin extends HttpServlet {
                     if(rss>0){
                         session.setAttribute("alert", "success");
                         session.setAttribute("message", "Password Update Successful !");
+                        
+                        com.medihub.user.Notifications n = new com.medihub.user.Notifications();
+                        n.createNotification(0, adminId, "Your Password Has been Updated", 1);
                     }
                     else{
 //                        out.println("subbb");

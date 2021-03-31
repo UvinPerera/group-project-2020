@@ -62,6 +62,12 @@ public class TrackPatientOrder extends HttpServlet {
                 
                 Statement stmt=con.createStatement();
                 
+                String getLimit="0";
+                if(request.getParameter("limit")!=null){
+                    getLimit=request.getParameter("limit");
+                }
+                String qlimit = " limit "+getLimit+",11";
+                
                 ResultSet rs=stmt.executeQuery("SELECT pharmacy_id FROM pharmacy_admins WHERE user_id="+adminId);
                 int pharmacyId=0;
                 while(rs.next()){
@@ -71,7 +77,7 @@ public class TrackPatientOrder extends HttpServlet {
                 
                 
                 if(Integer.parseInt(request.getParameter("search"))==0){
-                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId);
+                rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId+qlimit);
                 
                 //out.println(pharmacyId);
                 ArrayList Orders = new ArrayList();
@@ -86,10 +92,17 @@ public class TrackPatientOrder extends HttpServlet {
                 request.setAttribute("orders", Orders);
                 }
                 else{
+                    String patientName="";
+                    String orderStatus="";
+                    
+                    if(request.getParameter("patient")!=null && !request.getParameter("patient").equalsIgnoreCase("") && !request.getParameter("patient").equalsIgnoreCase("0")){
+                        patientName=" and po.created_by="+request.getParameter("patient");
+                    }
+                    if(request.getParameter("status")!=null && !request.getParameter("status").equalsIgnoreCase("")){
+                        orderStatus=" and po.order_status='"+request.getParameter("status")+"'";
+                    }
                    
-                    String patientName=request.getParameter("patient");
-                    String orderStatus=request.getParameter("status");
-                     rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId+" and (po.created_by='"+patientName+"' or po.order_status='"+orderStatus+"')");
+                     rs=stmt.executeQuery("SELECT oi.order_id, po.created_by, u.display_name, po.expected_delivery_date,po.order_status, oi.file_path, oi.description,oi.absolute_path FROM pharmacy_orders po JOIN order_items oi ON po.id= oi.order_id JOIN users u ON po.created_by=u.id WHERE po.status=1 and po.pharmacy_id="+pharmacyId +patientName+orderStatus+qlimit);
                 
                     
                     ArrayList Orders = new ArrayList();

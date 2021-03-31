@@ -1,12 +1,14 @@
 
 package com.medihub.patient;
 
+import com.google.gson.Gson;
 import java.text.DateFormat;  
 import java.text.SimpleDateFormat;  
 import java.util.Date;  
 import java.util.Calendar;  
 
 import com.medihub.db.*;
+import com.medihub.doctor.Doctor;
 import com.medihub.user.*;
 import java.sql.*;
 import java.util.*;
@@ -19,6 +21,42 @@ public class Patient extends User {
 
     private Patient() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public String searchPatients(String q) {
+        String query = "SELECT u.id,u.first_name, u.last_name, u.display_name, u.email FROM users u "
+                + "WHERE display_name LIKE '%" + q + "%' AND u.user_type=1";
+
+        try {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            List<Patient> pp = new ArrayList<Patient>();
+
+            while (rs.next()) {
+
+                Patient p = new Patient(0);
+
+                p.id = rs.getInt("id");
+                p.displayName = rs.getString("display_name");
+                p.email = rs.getString("email");
+
+                pp.add(p);
+            }
+
+            con.close();
+
+            Gson gson = new Gson();
+            String json = gson.toJson(pp);
+
+            return json;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     
     public int getPendingAppointmentsCount() {
