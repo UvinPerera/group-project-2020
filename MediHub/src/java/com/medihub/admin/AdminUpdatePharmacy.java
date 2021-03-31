@@ -92,7 +92,7 @@ public class AdminUpdatePharmacy extends HttpServlet {
          //   System.out.println(address1+"\n");
             String address2=request.getParameter("address_2");
         //    System.out.println(address2+"\n");
-            String mobile=request.getParameter("mobile_number");
+            String mobile=request.getParameter("fax");
          //   System.out.println(mobile+"\n");
             String landNumber=request.getParameter("land_number");
          //   System.out.println(land_line+"\n");
@@ -108,7 +108,7 @@ public class AdminUpdatePharmacy extends HttpServlet {
                     + "address_1='"+address1+"',"
                     + "address_2='"+address2+"',"
                     + "city="+city+","
-                    + "mobile_number='"+mobile+"',"
+                    + "fax='"+mobile+"',"
                     + "land_number='"+landNumber+"',"
                     + "updated_by="+adminId+","
                     + "updated_at=CURRENT_TIMESTAMP "
@@ -125,7 +125,7 @@ public class AdminUpdatePharmacy extends HttpServlet {
            //     System.out.println("error");
           //  }
             
-        response.sendRedirect("admineditpharmacy?pId="+pharmacyId);
+        response.sendRedirect("adminupdatepharmacy?pId="+pharmacyId);
             con.close();  
         }
         catch(Exception e)

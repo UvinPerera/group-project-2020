@@ -71,7 +71,7 @@
                         %>
 
                          <!-- change the main cards css fragments to change number of cards Available -->
-                         <form class="" action="adminupdatepharmcy" method="POST" id="updateForm">
+                         <form class="" action="adminupdatepharmacy" method="POST" id="updateForm">
                            <input type="hidden" name="pId" value="<%=row.id%>">
                             <div class="main_cards">
 
