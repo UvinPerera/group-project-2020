@@ -48,6 +48,14 @@
                         <!--container starting-->
                      <!--######################-->
                     <div class="main_container">
+                        
+                        <div class="main_title">
+                             <!--<img src="./public/images/p3.jpg" alt="hello">-->
+                              <div class="main_greeting">
+                                   <h1>Hello <%=username%></h1>
+                                   <p>Medical Reminders</p>
+                              </div>
+                         </div>
 
                          <div class="charts">
                              
