@@ -57,7 +57,7 @@ public class Registration extends HttpServlet {
             String land_line=request.getParameter("land_line");
 //            int district=Integer.parseInt(request.getParameter("district"));
             int city=Integer.parseInt(request.getParameter("city"));
-            int type=Integer.parseInt(request.getParameter("type"));
+            int type=1;//Integer.parseInt(request.getParameter("type"));
 //            String zip_code=request.getParameter("zip_code");
             
 //            User user=new User();
@@ -86,7 +86,8 @@ public class Registration extends HttpServlet {
         catch(Exception e)
         { 
             out.println(e.toString());
-            response.sendRedirect("signup?status=1");
+            //response.sendRedirect("signup?status=1");
+             response.sendRedirect("login.jsp?status=1");
         }  
     }
 
