@@ -158,7 +158,7 @@
                                                   </tr>
                                                   <%}} else{%><tr><td colspan="6">No upcoming appointments</td></tr><%}%>
                                                   <tr>
-                                                       <td colspan="8"><a href="doctorviewappointments">View More...</a></td>
+                                                      <%if(maxCount>=5){%> <td colspan="8"><a href="doctorviewappointments">View More...</a></td><%}%>
                                                   </tr>
                                              </tbody>
                                         </table>

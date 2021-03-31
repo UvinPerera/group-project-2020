@@ -1,5 +1,10 @@
   /* new css starts */
-
+*{
+    
+    margin: 0;
+    padding: 0;
+    
+}
 
 ::-webkit-scrollbar {
      width: 5px;
@@ -19,6 +24,8 @@
 ::-webkit-scrollbar-thumb:hover {
      background: #a5aaad;
 }
+
+
 
 body {
      font-family: 'Montserrat','sans-serif';
