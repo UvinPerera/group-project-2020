@@ -52,8 +52,14 @@ public class ManageAppointments extends HttpServlet {
         HttpSession session = request.getSession();
         
         String getLimit="0";
+        String search="";
         if(request.getParameter("limit")!=null){
             getLimit=request.getParameter("limit");
+        }
+        if(request.getParameter("searching")!=null){
+        
+            search = request.getParameter("searching");
+        
         }
         
         int hospitalAdminId = Integer.parseInt(session.getAttribute("userid").toString());
@@ -77,7 +83,12 @@ public class ManageAppointments extends HttpServlet {
             catch(Exception e){
                 e.printStackTrace();
             }
+            if(search.isEmpty()){
             request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId,getLimit));
+            }
+            else{
+                request.setAttribute("doctoravailability", da.getAllDoctorAvailability(hospitalId,getLimit,search));
+            }
         
         request.getRequestDispatcher("manageAppointments.jsp").forward(request, response);
         

@@ -55,8 +55,19 @@ public class DoctorViewAppointments extends HttpServlet {
             getLimit=request.getParameter("limit");
         }
         
+        String searching = "";
+        if(request.getParameter("searching")!=null){
         
+         searching= request.getParameter("searching");
+        }
+        
+        if(searching.isEmpty()){
         request.setAttribute("appointments", da.getCurrentAvailabilities(doctorId,getLimit));
+        }
+        
+        else{
+            request.setAttribute("appointments", da.getCurrentAvailabilities(doctorId,getLimit,searching));
+        }
         request.getRequestDispatcher("viewdoctorappointments.jsp").forward(request, response);
 
     }

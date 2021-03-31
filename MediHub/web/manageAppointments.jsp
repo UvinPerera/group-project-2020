@@ -68,7 +68,7 @@
                         </div>
                     </div> 
                     <form class="" action="manageappointments" method="GET" id="submitForm">
-                        <input type="hidden" name="searching" value=""/>
+
                         <div class="main_cards">
 
                             
@@ -78,10 +78,10 @@
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Search</p>
 
-                                    <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
-                                        <option value='Action' selected><a href="">All</a></option>
+                                    <select class="text-secondary-p search_select" style="width: 100%" id="search">
+                                        <option disabled=""selected><a href="">Choose Filter</a></option>
                                         <option value='Action'><a href="#">Doctor Name</a></option>
-                                        <option value='Action'><a href="#">Doctor Name</a></option>    
+                                           
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <i class="fa fa-filter fa-2x text-lightblue"></i>
                                 <div class="card_inner_profile">
                                     <p class="text-primary-p">Value</p>
-                                    <input type="text" class="filter_text textt" style="width: 100%" >
+                                    <input name="searching" type="text" class="filter_text textt" style="width: 100%" >
                                 </div>
                             </div>
 
