@@ -52,6 +52,31 @@
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/userNotifications.jsp' ? 'active_menu_link' : ''}">
                               <i class="fa fa-bell"></i>
                               <a href="userNotifications">Admin Notifications</a>
+                              &nbsp;&nbsp;
+                              <i class="fa fa-envelope text-red" id="notit"></i>
+                              <b class="text-primary-p text-red" id="noti"></b>
+                                  
+                                  <% 
+                                    String uu;
+                                  if(session.getAttribute("userid")!=null)  {
+                                  uu= session.getAttribute("userid").toString(); 
+               
+                                    %>
+                              
+                              <script>
+                                  $("#notit").hide();
+                                  $("#noti").hide();
+                                  $.get("getNotificationCountUser?idd=<%=uu%>",function(data,status){
+                                     if(data!==0 || data!=="") 
+                                     $("#noti").html(data);
+                                     $("#notit").show();
+                                     $("#noti").show();
+//                                     alert(data);
+                                  })
+                                  
+                              </script>
+                              
+                              <% } %>
                          </div>
 
                          <div class="sidebar_link ${pageContext.request.requestURI eq '/MediHub/serviceNotifications.jsp' ? 'active_menu_link' : ''}">

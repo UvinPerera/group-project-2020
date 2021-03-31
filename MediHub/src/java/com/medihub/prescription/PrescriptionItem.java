@@ -70,6 +70,45 @@ public class PrescriptionItem {
         return pi;
     }
     
+    public int getRemindersCount(int patient) {
+        
+        String query="SELECT count(pi.id) as ccount FROM prescription_items pi "
+                + "JOIN prescriptions p ON p.id=pi.prescription_id "
+                + "JOIN channelling c ON c.id=p.channeling_id "
+                + "JOIN doctor_availability da ON c.doctor_availability_id=da.id "
+                + "JOIN doctors d ON da.doctor_id=d.id "
+                + "JOIN users u ON d.id=u.id "
+                + "WHERE pi.status=1 AND DATE_ADD(pi.created_at, INTERVAL pi.duration DAY)>=CURRENT_DATE AND c.patient_id="+patient+""
+                + "ORDER BY d.id";
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            int ccount=0;
+            
+            while(rs.next()) { 
+                       
+               ccount = rs.getInt("ccount");
+                
+            }
+            
+            con.close();
+            
+            return ccount;
+            
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            return 0;        
+        }
+    }
+    
     public List<PrescriptionItem> getReminders(int patient){
     
         String query="SELECT pi.*, d.id as did, d.titles, u.first_name, u.last_name, d.degrees FROM prescription_items pi "

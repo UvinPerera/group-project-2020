@@ -75,7 +75,16 @@
                                    <i class="fa fa-user-o fa-2x text-lightblue"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Pending Appointments</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title">
+                                        <%
+                                             if(request.getAttribute("cappointments")!=null){
+                                                 out.print(request.getAttribute("cappointments"));
+                                             }
+                                             else{
+                                                 out.print("-");
+                                             }
+                                        %>
+                                        </span>
                                    </div>
                               </div>
 
@@ -83,7 +92,16 @@
                                    <i class="fa fa-calendar fa-2x text-red"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Pending Orders</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title">
+                                        <%
+                                             if(request.getAttribute("corders")!=null){
+                                                 out.print(request.getAttribute("corders"));
+                                             }
+                                             else{
+                                                 out.print("-");
+                                             }
+                                        %>
+                                        </span>
                                    </div>
                               </div>
 
@@ -91,7 +109,16 @@
                                    <i class="fa fa-book fa-2x text-yellow"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Reminders</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title">
+                                            <%
+                                             if(request.getAttribute("creminders")!=null){
+                                                 out.print(request.getAttribute("creminders"));
+                                             }
+                                             else{
+                                                 out.print("-");
+                                             }
+                                            %>
+                                        </span>
                                    </div>
                               </div>
 
@@ -99,7 +126,16 @@
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Notifications</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title">
+                                        <%
+                                             if(request.getAttribute("cnotifications")!=null){
+                                                 out.print(request.getAttribute("cnotifications"));
+                                             }
+                                             else{
+                                                 out.print("-");
+                                             }
+                                        %>
+                                        </span>
                                    </div>
                               </div>
 

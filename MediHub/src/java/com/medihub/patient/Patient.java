@@ -21,6 +21,54 @@ public class Patient extends User {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public int getPendingAppointmentsCount() {
+        
+        //date and time foramtting
+        Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");  
+        String strDate = dateFormat.format(date);
+        String strTime = timeFormat.format(date);
+               
+        //sql query
+        String q_select="select count(c.id) as ccount from channelling c ";
+        String q_join_da="join doctor_availability da on c.doctor_availability_id=da.id ";
+        String q_join_d="join doctors d on da.doctor_id=d.id ";
+        String q_join_u="join users u on d.id=u.id ";
+        String q_join_h="join hospitals h on da.hospital_id=h.id ";
+        String q_join_cp="left join channelling_payments cp on cp.channelling_id=c.id ";
+        String q_join_pm="left join payment_methods pm on cp.payment_method=pm.id ";
+        String q_where="where c.status=1 and da.status=1 and patient_id="+this.id+" and ((da.date='"+strDate+"' and da.start_time>'"+strTime+"') or da.date>'"+strDate+"')";
+        String query=q_select + q_join_da + q_join_d + q_join_u + q_join_h + q_join_cp + q_join_pm + q_where;
+        
+        try
+        {
+            DbConfig db = DbConfig.getInstance();
+            Connection con = db.getConnecton();
+            
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            int ccount=0;
+            
+            while(rs.next()) { 
+                       
+               ccount = rs.getInt("ccount");
+                
+            }
+            
+            con.close();
+            
+            return ccount;
+            
+        }
+        catch(Exception e)
+        {
+            e.toString();
+            return 0;        
+        }
+    }
+    
     public List<Channelling> getPendingAppointments(){
         
         //date and time foramtting
