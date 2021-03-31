@@ -161,7 +161,7 @@ public class UpdatePatientOrder extends HttpServlet {
             
               
             Notifications n = new Notifications(); 
-            n.createNotification(patientId,pharmacyId,"Pharmacy Order has been updated", 1);
+            n.createNotification(patientId,pharmacyId,"Pharmacy Order has been updated", 3);
            
             response.sendRedirect("patient");
             con.close();  
