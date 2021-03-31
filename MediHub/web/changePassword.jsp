@@ -143,6 +143,12 @@
                     else if(userType==0){
                         sidebar = "adminSidebar";
                     }
+                    else if(userType==2){
+                        sidebar = "doctorSidebar";
+                    }
+                    else if(userType==3){
+                        sidebar = "hospitalSidebar";
+                    }
                     else{
                         sidebar = "";
                     }
