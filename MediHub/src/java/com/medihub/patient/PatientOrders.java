@@ -34,27 +34,33 @@ public class PatientOrders extends HttpServlet {
             throws ServletException, IOException {
         
                 HttpSession session = request.getSession();
-                int patientId =Integer.parseInt(session.getAttribute("userid").toString());
-                PrintWriter out = response.getWriter();
-//                response.setContentType("application/json");
+                int userType = Integer.parseInt(session.getAttribute("usertype").toString());
+                if (userType==1){
+                    int patientId =Integer.parseInt(session.getAttribute("userid").toString());
+                    PrintWriter out = response.getWriter();
+    //                response.setContentType("application/json");
 
-                    String stage= request.getParameter("stage");
+                        String stage= request.getParameter("stage");
 
-                        try
-                        {
-                            District d = new District();
-                            List<District> returnData =new ArrayList<District>();
-                            returnData=d.getAllDistricts();
-                            Prescription p = new Prescription();
-                            System.out.println(p.getPrescriptionPatient(13));
-                            request.setAttribute("districts", returnData); //directly get districts
-                            request.setAttribute("prescriptions", p.getPrescriptionPatient(13));
-                            request.getRequestDispatcher("placeOrder.jsp").forward(request, response);
-                        }
-                        catch(Exception e)
-                        {
-                            out.println(e.toString());
-                        }
+                            try
+                            {
+                                District d = new District();
+                                List<District> returnData =new ArrayList<District>();
+                                returnData=d.getAllDistricts();
+                                Prescription p = new Prescription();
+                                System.out.println(p.getPrescriptionPatient(13));
+                                request.setAttribute("districts", returnData); //directly get districts
+                                request.setAttribute("prescriptions", p.getPrescriptionPatient(13));
+                                request.getRequestDispatcher("placeOrder.jsp").forward(request, response);
+                            }
+                            catch(Exception e)
+                            {
+                                out.println(e.toString());
+                            }
+                }
+                 else{
+                    request.getRequestDispatcher("403.jsp").forward(request, response);
+                }
                     
                    
 

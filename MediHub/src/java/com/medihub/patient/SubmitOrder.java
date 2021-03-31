@@ -10,6 +10,7 @@ import java.util.*;
 
 
 import com.medihub.db.DbConfig;
+import com.medihub.user.Notifications;
 import java.io.IOException;
 
 import java.io.PrintWriter;
@@ -63,6 +64,7 @@ public class SubmitOrder extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             PrintWriter out = response.getWriter();
+            String pharmacyid="1";
         try
         {
             
@@ -73,7 +75,6 @@ public class SubmitOrder extends HttpServlet {
             String description="";//=request.getParameter("description");
             String filepath="";//=request.getParameter("file_path");
             String date="" ;//= request.getParameter("date");
-            String pharmacyid="1";//=Integer.parseInt(request.getParameter("pharmacy"));
             String doctorPrescriptions="";
             HttpSession session = request.getSession();
             int patientId =Integer.parseInt(session.getAttribute("userid").toString());
@@ -151,7 +152,8 @@ public class SubmitOrder extends HttpServlet {
             
             
             
-            
+            Notifications n = new Notifications(); 
+            n.createNotification(patientId,Integer.parseInt(pharmacyid),"New Pharmacy Order has been placed", 1);
             
            //out.print(getServletContext().getRealPath("public/storage/pres/").replace('\\', '/')+"/"+absolutePath);
 
