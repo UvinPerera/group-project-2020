@@ -5,6 +5,7 @@
  */
 package com.medihub.admin;
 
+import com.medihub.doctor.DoctorReview;
 import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,6 +58,9 @@ public class AdminDashboard extends HttpServlet {
                 
                 Notifications n =new Notifications();
                 request.setAttribute("cnotifications", n.getUserNotificationsCount(adminId));
+                
+                DoctorReview dr = new DoctorReview();
+                request.setAttribute("reviews", dr.getDoctorReportedReviews(0, "0"));
                 
            request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }

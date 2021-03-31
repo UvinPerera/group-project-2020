@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.patient.*"%>
+<%@page import="com.medihub.doctor.DoctorReview"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -101,59 +102,90 @@
                                    </div>
 
                                    <!-- limit the results to 5 in db query... view more option will lead to all resutls -->
+                                   
+                                   <%
+                                             if(request.getAttribute("reviews")!=null){
+                                                  List<DoctorReview> table = (ArrayList<DoctorReview>)request.getAttribute("reviews");
+                                                  if(table.size()>0){
+                                        %>
                                    <div class="charts_table_div">
-                                        <table class="charts_table">
-                                             <thead>
-                                                  <tr>
-                                                       <th>Reiew Id</th>
-                                                       <th>Patient Id</th>
-                                                       <th>Patient Name</th>
-                                                       <th>Date / Time</th>
-                                                       <th>Action</th>
-                                                  </tr>
-                                             </thead>
-                                             <tbody>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                       <td>1</td>
-                                                       <td>Hospital 1</td>
-                                                       <td>Doctor 1</td>
-                                                       <td>2020-12-12<br>08:00:00</td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-reply-all"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                      <td colspan="6"><center><a href="#">View More...</a></center></td>
-                                                  </tr>
-                                             </tbody>
-                                        </table>
-                                   </div>
+                                             <table class="charts_table">
+                                                  <thead>
+                                                       <tr>
+                                                            <th>Patient</th>
+                                                            <th>Doctor</th>
+                                                            <th>Description</th>
+                                                            <th>Review</th>
+                                                            <th>Action</th>
+                                                       </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                       <% 
+                                                           int cc = 0;
+                                                           for(DoctorReview row : table) { 
+                                                                cc++;
+                                                                if (cc>5){
+                                                                    break;
+                                                                }
+                                                       %>
+                                                       <tr>
+                                                           <td class="<% if(Integer.parseInt(session.getAttribute("userid").toString())==row.patientId){out.print("text-blue");} %>">
+                                                               <%= row.PatientFirstName %> <%= row.PatientLastName %>
+                                                               <br>
+                                                               <text style="font-size:10px;"><%= row.createdAt %></text>
+                                                           </td>
+                                                           <td style='white-space: normal;'><%= row.doctorName %></td>
+                                                           <td style='white-space: normal;'><%= row.description %></td>
+                                                           <td>
+                                                                <% for(int i=0;i<row.star[0];i++) { %>
+                                                                <i class="fa fa-star text-red"></i>
+                                                                <% } %>
+                                                                <% for(int i=0;i<row.star[1];i++) { %>
+                                                                <i class="fa fa-star-half-o text-red"></i>
+                                                                <% } %>
+                                                                <% for(int i=0;i<row.star[2];i++) { %>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <% } %>
+                                                           </td>
+                                                            <td>
+                                                                <a class="button" id="" href="doctorReviewDelete?id=<%=row.id%>" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a>
+                                                                &nbsp;
+                                                                <a class="button" id="" href="doctorReviewAccept?id=<%=row.id%>" onclick="return confirm('Are you sure want to Accept?');"><i class="fa fa-user-secret"></i></a>
+                                                            </td>
+                                                       </tr>
+                                                       
+                                                        <% } %>
+                                                        
+                                                        <% if(table.size()>5) { %>
+                                                        <tr>
+                                                            <td colspan="6"><a href="BrowseDoctorReviewsAdmin">View More...</a></td>
+                                                        </tr>
+                                                        <% } %>
+                                                  </tbody>
+                                             </table>
+                                        </div>
+                                              
+                                        <!--when there is no pending appointments-->
+                                                  <%
+                                                       } 
+                                                        else
+                                                       {
+                                                       %>
+                                                       <div class="buttons">
+                                                      No pending Reviews for Doctor !
+                                                  </div>
+                                                       
+                                                       <%
+                                                        }
+                                                        } else
+                                                       {
+                                                  %>
+                                                  <div class="buttons">
+                                                      No pending Reviews for Doctor !
+                                                  </div>
+                                                  <%
+                                                       }
+                                                  %>
 
                               </div>
 

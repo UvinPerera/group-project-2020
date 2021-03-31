@@ -186,6 +186,7 @@
                                                   <thead>
                                                        <tr>
                                                             <th>Patient</th>
+                                                            <th>Pharmacy</th>
                                                             <th>Description</th>
                                                             <th>Review</th>
                                                             <th>Action</th>
@@ -206,6 +207,7 @@
                                                                <br>
                                                                <text style="font-size:10px;"><%= row.createdAt %></text>
                                                            </td>
+                                                           <td style='white-space: normal;'><%= row.pharmacyName %></td>
                                                            <td style='white-space: normal;'><%= row.description %></td>
                                                            <td>
                                                                 <% for(int i=0;i<row.star[0];i++) { %>
@@ -233,6 +235,7 @@
                                                    <tfoot>
                                                        <tr>
                                                             <th>Patient</th>
+                                                            <th>Pharmacy</th>
                                                             <th>Description</th>
                                                             <th>Review</th>
                                                             <th>Action</th>
