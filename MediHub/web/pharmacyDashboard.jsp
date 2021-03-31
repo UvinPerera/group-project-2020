@@ -96,7 +96,18 @@
                                    <i class="fa fa-bell fa-2x text-green"></i>
                                    <div class="card_inner">
                                         <p class="text-primary-p">Notifications</p>
-                                        <span class="font-bold text-title">2</span>
+                                        
+                                        <span class="font-bold text-title">
+                                            <%
+                                             if(request.getAttribute("anotifications")!=null || request.getAttribute("pnotifications")!=null){
+                                                 out.print(Integer.parseInt(request.getAttribute("anotifications").toString())+Integer.parseInt(request.getAttribute("pnotifications").toString()));
+                                             }
+                                             else{
+                                                 out.print("-");
+                                             }%> 
+                                            
+                                       
+                                        </span>
                                    </div>
                               </div>
 
