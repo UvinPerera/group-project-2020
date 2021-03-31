@@ -78,6 +78,9 @@ public class ChangePasswordUpdatePharmacy extends HttpServlet {
                     if(rss>0){
                         session.setAttribute("alert", "success");
                         session.setAttribute("message", "Password Update Successful !");
+                        
+                        com.medihub.user.Notifications n = new com.medihub.user.Notifications();
+                        n.createNotification(0, pharmacistId, "Your Password Has been Updated", 1);
                     }
                     else{
 
