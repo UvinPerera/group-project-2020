@@ -5,6 +5,7 @@
  */
 package com.medihub.admin;
 
+import com.medihub.user.Notifications;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -53,6 +54,9 @@ public class AdminDashboard extends HttpServlet {
                 Admin a = new Admin(adminId);
                 String absolutePath = a.getAbsPath();
                 request.setAttribute("absolutePath",absolutePath);
+                
+                Notifications n =new Notifications();
+                request.setAttribute("cnotifications", n.getUserNotificationsCount(adminId));
                 
            request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
         }
