@@ -131,7 +131,7 @@
                                         <div class="card_inner_profile">
                                              <p class="text-primary-p">Payment Method</p>
                                              <p class="text-secondary-p">
-                                                 <select name='payment_method' id="payment_method" class="selectpayment">
+                                                 <select name='payment_method' id="payment_method" class="selectpayment" required="required">
                                                      <option disabled="disabled" value='' selected>Select Payment</option>
                                                          <%
                                                              if(request.getAttribute("payments")!=null){

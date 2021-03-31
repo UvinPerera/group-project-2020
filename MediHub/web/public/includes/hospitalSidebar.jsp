@@ -67,12 +67,12 @@
                                   $("#notit").hide();
                                   $("#noti").hide();
                                   $.get("getNotificationCountUser?idd=<%=uu%>",function(data,status){
-                                     if(data!==0 || data!=="") 
+                                     if(data!=0 && data!="" && data!=="0") {
                                      $("#noti").html(data);
                                      $("#notit").show();
                                      $("#noti").show();
 //                                     alert(data);
-                                  })
+                                     }})
                                   
                               </script>
                               
