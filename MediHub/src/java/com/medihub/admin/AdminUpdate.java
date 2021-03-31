@@ -139,7 +139,7 @@ public class AdminUpdate extends HttpServlet {
                         
                       filepath = fileName;
                         int length = filepath.length();
-                        String extension = filepath.substring(length - 5, length - 1);
+                        String extension = ".jpg";//filepath.substring(length - 5, length - 1);
 
                          absolutePath = randomString + extension;
                             file = new File(getServletContext().getRealPath("public/storage/pp/").replace('\\', '/')+"/"+absolutePath) ;

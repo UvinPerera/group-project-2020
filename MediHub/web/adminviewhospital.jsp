@@ -133,12 +133,13 @@
                               
                             </div>
                          
-                        <% } %>
+                        
                        <br>
                        <div class="buttons">
-                           <a href="adminviewhospitaldirector"> <button class="button-success"><b>View Director</b></button></a> 
+                           
+                           <a href="adminviewhospitaldirector?hid=<%=row.directorId %>"> <button class="button-success"><b>View Director</b></button></a> 
                        </div>
-                        
+                        <% } %>
                     </div>
 
                </main>

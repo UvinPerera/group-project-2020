@@ -1,3 +1,4 @@
+<%@page import="com.medihub.user.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.medihub.admin.*"%>
@@ -57,7 +58,7 @@
                         
                         <%
                             if(request.getAttribute("profile")!=null){
-                                Admin row = (Admin)request.getAttribute("profile");
+                                User row = (User)request.getAttribute("profile");
                                 
                                 
                         %>
