@@ -67,24 +67,11 @@
                             <h3>Manage Appointments</h3>
                         </div>
                     </div> 
-                    <form class="" action="managePatient" method="GET" id="submitForm">
+                    <form class="" action="manageappointments" method="GET" id="submitForm">
                         <input type="hidden" name="searching" value=""/>
                         <div class="main_cards">
 
-                            <div class="card">
-                                <i class="fa fa-search-plus fa-2x text-red"></i>
-                                <div class="card_inner_profile">
-                                    <p class="text-primary-p">Status</p>
-
-                                    <select class="text-secondary-p status_select" style="width: 100%" name='status' id="status">
-                                        <option value='Action' selected><a href="">All</a></option>
-                                        <option value='Action'><a href="#">Pending</a></option>
-                                        <option value='Action'><a href="#">Active</a></option>
-                                        <option value='Action'><a href="#">Inactive</a></option>
-                                        <option value='Action'><a href="#">Blacklisted</a></option>
-                                    </select>
-                                </div>
-                            </div>
+                            
 
                             <div class="card">
                                 <i class="fa fa-medkit fa-2x text-green"></i>
@@ -93,10 +80,8 @@
 
                                     <select name='search' class="text-secondary-p search_select" style="width: 100%" id="search">
                                         <option value='Action' selected><a href="">All</a></option>
-                                        <option value='Action'><a href="#">Patient ID</a></option>
-                                        <option value='Action'><a href="#">patient Name</a></option>
-                                        <option value='Action'><a href="#">Status</a></option>
-                                        <option value='Action'><a href="#">City</a></option>
+                                        <option value='Action'><a href="#">Doctor Name</a></option>
+                                        <option value='Action'><a href="#">Doctor Name</a></option>    
                                     </select>
                                 </div>
                             </div>
@@ -113,10 +98,10 @@
                                 <button class="button-success" type="submit"><b>Search</b></button>
                                 <button class="button" type="reset" id="clear" style="background: red"><b>Reset</b></button>
                             </div>
-
+                            </form>
 
                         </div>
-                    </form>
+                    
 
                     <hr>
                     <div class="buttons">

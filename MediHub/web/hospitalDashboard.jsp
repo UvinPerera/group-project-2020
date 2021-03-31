@@ -71,8 +71,16 @@
                               <div class="card">
                                    <i class="fa fa-user-o fa-2x text-lightblue"></i>
                                    <div class="card_inner">
+                                       <%if(request.getAttribute("doctoravailability")!=null){
+                                       
+                                       List <DoctorAvailability> apList1 = (ArrayList<DoctorAvailability>)request.getAttribute("doctoravailability");
+                                       %>
                                         <p class="text-primary-p">Upcoming Appointments</p>
-                                        <span class="font-bold text-title">2</span>
+                                        <span class="font-bold text-title"><%=apList1.size() %></span>
+                                       <%}else{%>
+                                        <p class="text-primary-p">Upcoming Appointments</p>
+                                        <span class="font-bold text-title">0</span>
+                                        <%}%>
                                    </div>
                               </div>
 
@@ -129,11 +137,11 @@
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                 <%
+                                                 <%int maxCount=5;
                                                      if(request.getAttribute("doctoravailability")!=null){
                                                          
                                                      List <DoctorAvailability> apList = (ArrayList<DoctorAvailability>)request.getAttribute("doctoravailability");
-                                                     int maxCount=5;
+                                                     
                                                      if(apList.size()<maxCount) maxCount = apList.size();
                                                      
                                                      for(int i =0;i<maxCount;i++){
@@ -146,12 +154,14 @@
                                                        <td><%=apList.get(i).date %><br><%=apList.get(i).endTime %></td>
                                                        <td><%=apList.get(i).maxCount %></td>
                                                        <td><%=apList.get(i).count %></td>
-                                                       <td><button><i class="fa fa-eye"></i></button><button><i class="fa fa-edit"></i></button></td>
+                                                       <td><button onclick="window.location.href='manageappointments'"><i class="fa fa-eye"></i></button></td>
                                                   </tr>
                                                   <%}}%>
+                                                  <%if(maxCount>=5){%>
                                                   <tr>
-                                                       <td colspan="6"><a href="manageappointments">View More...</a></td>
+                                                       <td colspan="7"><a href="manageappointments">View More...</a></td>
                                                   </tr>
+                                                  <%}%>
                                              </tbody>
                                         </table>
                                    </div>
